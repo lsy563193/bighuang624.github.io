@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,读书笔记,JavaScipt,ES 6,《ECMAScript 6 入门》," />
+  <meta name="keywords" content="前端,JavaScipt,读书笔记,ES 6,《ECMAScript 6 入门》," />
 
 
 
@@ -87,13 +87,13 @@
 
 
 <meta name="description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol…">
-<meta name="keywords" content="前端,读书笔记,JavaScipt,ES 6,《ECMAScript 6 入门》">
+<meta name="keywords" content="前端,JavaScipt,读书笔记,ES 6,《ECMAScript 6 入门》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《ECMAScript 6 入门》读书笔记(二)（更新至4.19）">
 <meta property="og:url" content="http://kyonhuang.top/34507/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol…">
-<meta property="og:updated_time" content="2017-04-19T11:58:50.000Z">
+<meta property="og:updated_time" content="2017-04-19T14:12:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《ECMAScript 6 入门》读书笔记(二)（更新至4.19）">
 <meta name="twitter:description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol…">
@@ -569,6 +569,13 @@
 <p><code>Object.getOwnPropertySymbols</code>方法返回一个数组，成员是当前对象的所有用作属性名的 Symbol 值。</p>
 <p><code>Reflect.ownKeys(obj)</code>方法可以返回所有类型的键名，包括常规键名和 Symbol 键名。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">  [<span class="built_in">Symbol</span>(<span class="string">'my_key'</span>)]: <span class="number">1</span>,</div><div class="line">  <span class="attr">enum</span>: <span class="number">2</span>,</div><div class="line">  <span class="attr">nonEnum</span>: <span class="number">3</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Reflect</span>.ownKeys(obj)</div><div class="line"><span class="comment">// ["enum", "nonEnum", Symbol(my_key)]</span></div></pre></td></tr></table></figure>
+<p>5.<code>Symbol.for()</code>、<code>Symbol.keyFor()</code>：接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 Symbol 值。如果有，就返回这个 Symbol 值，否则就新建并返回一个以该字符串为名称的 Symbol 值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">'foo'</span>);</div><div class="line"><span class="keyword">var</span> s2 = <span class="built_in">Symbol</span>.for(<span class="string">'foo'</span>);</div><div class="line"></div><div class="line">s1 === s2;  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p><code>Symbol.for()</code>与<code>Symbol()</code>这两种写法，都会生成新的<code>Symbol</code>。它们的区别是，前者会被登记在全局环境中供搜索，后者不会。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Symbol</span>.for(<span class="string">"bar"</span>) === <span class="built_in">Symbol</span>.for(<span class="string">"bar"</span>)</div><div class="line"><span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="built_in">Symbol</span>(<span class="string">"bar"</span>) === <span class="built_in">Symbol</span>(<span class="string">"bar"</span>)</div><div class="line"><span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p><code>Symbol.keyFor</code>方法返回一个<strong>已登记</strong>的 Symbol 类型值的<code>key</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">"foo"</span>);</div><div class="line"><span class="built_in">Symbol</span>.keyFor(s1);  <span class="comment">// "foo"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s2 = <span class="built_in">Symbol</span>(<span class="string">"foo"</span>)</div><div class="line"><span class="built_in">Symbol</span>.keyFor(s2);  <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
+<p>6.</p>
 
       
     </div>
@@ -594,9 +601,9 @@
           
             <a href="/tags/前端/" rel="tag"># 前端</a>
           
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
-          
             <a href="/tags/JavaScipt/" rel="tag"># JavaScipt</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
           
             <a href="/tags/ES-6/" rel="tag"># ES 6</a>
           
