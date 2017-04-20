@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-04-19T14:12:55.000Z</updated>
+  <updated>2017-04-20T03:47:24.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>《ECMAScript 6 入门》读书笔记(二)（更新至4.19）</title>
+    <title>《ECMAScript 6 入门》读书笔记(二)（更新至4.20）</title>
     <link href="http://kyonhuang.top/34507/"/>
     <id>http://kyonhuang.top/34507/</id>
-    <published>2017-04-19T02:22:13.000Z</published>
-    <updated>2017-04-19T14:12:55.000Z</updated>
+    <published>2017-04-20T03:46:13.000Z</published>
+    <updated>2017-04-20T03:47:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>》。希望能早日啃完，想去看 Vue.js 了…</p>
 <p>此博文包括：函数的扩展、对象的扩展、Symbol…</p>
@@ -207,7 +207,9 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Symbol</span>.for(<span class="string">"bar"</span>) === <span class="built_in">Symbol</span>.for(<span class="string">"bar"</span>)</div><div class="line"><span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="built_in">Symbol</span>(<span class="string">"bar"</span>) === <span class="built_in">Symbol</span>(<span class="string">"bar"</span>)</div><div class="line"><span class="comment">// false</span></div></pre></td></tr></table></figure>
 <p><code>Symbol.keyFor</code>方法返回一个<strong>已登记</strong>的 Symbol 类型值的<code>key</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">"foo"</span>);</div><div class="line"><span class="built_in">Symbol</span>.keyFor(s1);  <span class="comment">// "foo"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s2 = <span class="built_in">Symbol</span>(<span class="string">"foo"</span>)</div><div class="line"><span class="built_in">Symbol</span>.keyFor(s2);  <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>6.</p>
+<p>6.Singleton 模式：指调用一个类，任何时候返回的都是同一个实例。</p>
+<p>Node 中，模块文件可以看作一个类。可以使用 Symbol，通过把实例放到顶层对象<code>global</code>来实现 Singleton 模式。</p>
+<h3 id="内置的-Symbol-值"><a href="#内置的-Symbol-值" class="headerlink" title="内置的 Symbol 值"></a>内置的 Symbol 值</h3><p>7.<code>Symbol.hasInstance</code>属性：指向一个内部方法。</p>
 ]]></content>
     
     <summary type="html">
@@ -573,9 +575,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
@@ -746,9 +748,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
