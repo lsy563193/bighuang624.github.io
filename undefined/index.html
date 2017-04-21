@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="对 jQuery 了解不够，先读着。前面的基础知识也可查漏补缺。">
+<meta name="description" content="这几天看到很多前端大牛对学习中的一个共同认知：不要啃别人的二手资料。确实别人咀嚼后的产物质量参差不齐，还是要多读文档，然后是优秀的书籍。 感觉自己对 jQuery 了解不够，先读一读《精通jQuery》。前面几章的基础知识也可起查漏补缺的作用。">
 <meta name="keywords" content="前端,读书笔记,jQuery,《精通jQuery》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《精通jQuery》读书笔记">
 <meta property="og:url" content="http://kyonhuang.top/undefined/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="对 jQuery 了解不够，先读着。前面的基础知识也可查漏补缺。">
-<meta property="og:updated_time" content="2017-04-21T03:02:25.000Z">
+<meta property="og:description" content="这几天看到很多前端大牛对学习中的一个共同认知：不要啃别人的二手资料。确实别人咀嚼后的产物质量参差不齐，还是要多读文档，然后是优秀的书籍。 感觉自己对 jQuery 了解不够，先读一读《精通jQuery》。前面几章的基础知识也可起查漏补缺的作用。">
+<meta property="og:updated_time" content="2017-04-21T07:08:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《精通jQuery》读书笔记">
-<meta name="twitter:description" content="对 jQuery 了解不够，先读着。前面的基础知识也可查漏补缺。">
+<meta name="twitter:description" content="这几天看到很多前端大牛对学习中的一个共同认知：不要啃别人的二手资料。确实别人咀嚼后的产物质量参差不齐，还是要多读文档，然后是优秀的书籍。 感觉自己对 jQuery 了解不够，先读一读《精通jQuery》。前面几章的基础知识也可起查漏补缺的作用。">
 
 
 
@@ -331,7 +331,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-21T11:00:13+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-21T14:50:27+08:00">
                 2017-04-21
               </time>
             
@@ -390,7 +390,8 @@
       
 
       
-        <p>对 jQuery 了解不够，先读着。前面的基础知识也可查漏补缺。</p>
+        <p>这几天看到很多前端大牛对学习中的一个共同认知：不要啃别人的二手资料。确实别人咀嚼后的产物质量参差不齐，还是要多读文档，然后是优秀的书籍。</p>
+<p>感觉自己对 jQuery 了解不够，先读一读《精通jQuery》。前面几章的基础知识也可起查漏补缺的作用。</p>
   <a id="more"></a>
 <h2 id="了解-jQuery"><a href="#了解-jQuery" class="headerlink" title="了解 jQuery"></a>了解 jQuery</h2><h3 id="jQuery-核心库的工作"><a href="#jQuery-核心库的工作" class="headerlink" title="jQuery 核心库的工作"></a>jQuery 核心库的工作</h3><p>通过处理浏览器加载 HTML 时动态创建的 DOM（文档对象模型），达到动态修改页面内容的目标。</p>
 <h2 id="HTML-入门"><a href="#HTML-入门" class="headerlink" title="HTML 入门"></a>HTML 入门</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>一个事件在它的生命周期中要经历 3 个阶段：<strong>捕获</strong>、处理<strong>目标元素</strong>和<strong>冒泡</strong>。</p>
@@ -405,13 +406,16 @@
 <li>浏览器样式（浏览器提供的默认样式）。</li>
 </ol>
 <p>前三个又合称为作者样式。</p>
-<h4 id="important-规则"><a href="#important-规则" class="headerlink" title="important 规则"></a>important 规则</h4><p>在样式声明的末尾追加<code>!important</code>可以把改值标识为重要样式。浏览器会给重要样式以优先权，而不再考虑这个样式的定义位置。</p>
+<h4 id="important-规则"><a href="#important-规则" class="headerlink" title="important 规则"></a>important 规则</h4><p>在样式声明的末尾追加<code>!important</code>可以把改值标识为<strong>重要样式</strong>。浏览器会给重要样式以优先权，而不再考虑这个样式的定义位置。</p>
+<p>唯一能优先于作者样式中重要样式的样式是定义在用户样式表中的重要样式。对于普通样式来说，作者样式优先于用户样式。但对于重要样式，浏览器的做法恰恰相反。</p>
 <h4 id="“专一程度”"><a href="#“专一程度”" class="headerlink" title="“专一程度”"></a>“专一程度”</h4><p>浏览器根据以下 3 个特征计算样式的“专一程度”：</p>
 <ol>
 <li>选择器中出现的 id 值个数；</li>
 <li>选择器中出现的其他属性和伪类个数；</li>
-<li>选择器中出现的元素名字</li>
+<li>选择器中出现的元素名字和伪元素名字个数。</li>
 </ol>
+<p>以 a-b-c 这种形式评估样式规则的“专一”程度，逐位比较，每一位上数字越大表示越专一。例如，1-0-0 比 0-5-5 更专一。</p>
+<p>如果有多条样式规则的专一程度相同，那么浏览器会选择最后定义的那条规则。专一程度规则仅在同一层叠级别有效。</p>
 <h3 id="样式单位"><a href="#样式单位" class="headerlink" title="样式单位"></a>样式单位</h3><h4 id="相对长度单位"><a href="#相对长度单位" class="headerlink" title="相对长度单位"></a>相对长度单位</h4><ul>
 <li>em：相对于元素字号的高度；</li>
 <li>ex：相对于元素字体中小写字母 x 的高度；</li>
@@ -419,7 +423,12 @@
 <li>px：CSS 像素（假定位于一个 96dpi 的显示设备上，实际上是绝对单位，不会改变大小）；</li>
 <li>%：另一属性值的百分比。</li>
 </ul>
-
+<h2 id="jQuery-基础"><a href="#jQuery-基础" class="headerlink" title="jQuery 基础"></a>jQuery 基础</h2><h3 id="使用-CDN-版的-jQuery"><a href="#使用-CDN-版的-jQuery" class="headerlink" title="使用 CDN 版的 jQuery"></a>使用 CDN 版的 jQuery</h3><p>CDN（Content Delivery Network）：内容分发网络。当用户请求其数据时，CDN 能智能地分配离用户最近的服务器提供服务。</p>
+<p>使用 CDN 的两个优点：(1)用户体验更好（速度通常更快）；(2)节省了传输 jQuery 库所需带宽。</p>
+<p>CDN 不适合内联网应用程序。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="$ 函数"></a>$ 函数</h3><p><code>jQuery.noConflict</code>方法让 jQuery 放弃使用 $ 符号。也可将该方法的返回值赋给一个变量以自定义 jQuery 简写符号。</p>
+<h3 id="延迟-ready-事件的触发时间"><a href="#延迟-ready-事件的触发时间" class="headerlink" title="延迟 ready 事件的触发时间"></a>延迟 ready 事件的触发时间</h3><p><code>$.holdReady(true)</code>必须在 ready 事件触发之前调用，<code>$.holdReady(false)</code>告诉 jQuery 触发 ready 事件。可以多次调用，但在 ready 事件被真正触发之前，使用 true 参数调用次数要等于使用 false 参数调用次数。 </p>
+<h3 id="选择元素"><a href="#选择元素" class="headerlink" title="选择元素"></a>选择元素</h3>
       
     </div>
 
@@ -621,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解-jQuery"><span class="nav-number">1.</span> <span class="nav-text">了解 jQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-核心库的工作"><span class="nav-number">1.1.</span> <span class="nav-text">jQuery 核心库的工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML-入门"><span class="nav-number">2.</span> <span class="nav-text">HTML 入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流"><span class="nav-number">2.1.</span> <span class="nav-text">事件流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-基础"><span class="nav-number">3.</span> <span class="nav-text">CSS 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反选择器"><span class="nav-number">3.1.</span> <span class="nav-text">反选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样式层叠"><span class="nav-number">3.2.</span> <span class="nav-text">样式层叠</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#important-规则"><span class="nav-number">3.2.1.</span> <span class="nav-text">important 规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“专一程度”"><span class="nav-number">3.2.2.</span> <span class="nav-text">“专一程度”</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样式单位"><span class="nav-number">3.3.</span> <span class="nav-text">样式单位</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相对长度单位"><span class="nav-number">3.3.1.</span> <span class="nav-text">相对长度单位</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解-jQuery"><span class="nav-number">1.</span> <span class="nav-text">了解 jQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-核心库的工作"><span class="nav-number">1.1.</span> <span class="nav-text">jQuery 核心库的工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML-入门"><span class="nav-number">2.</span> <span class="nav-text">HTML 入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流"><span class="nav-number">2.1.</span> <span class="nav-text">事件流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-基础"><span class="nav-number">3.</span> <span class="nav-text">CSS 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反选择器"><span class="nav-number">3.1.</span> <span class="nav-text">反选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样式层叠"><span class="nav-number">3.2.</span> <span class="nav-text">样式层叠</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#important-规则"><span class="nav-number">3.2.1.</span> <span class="nav-text">important 规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“专一程度”"><span class="nav-number">3.2.2.</span> <span class="nav-text">“专一程度”</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样式单位"><span class="nav-number">3.3.</span> <span class="nav-text">样式单位</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相对长度单位"><span class="nav-number">3.3.1.</span> <span class="nav-text">相对长度单位</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery-基础"><span class="nav-number">4.</span> <span class="nav-text">jQuery 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-CDN-版的-jQuery"><span class="nav-number">4.1.</span> <span class="nav-text">使用 CDN 版的 jQuery</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">4.2.</span> <span class="nav-text">$ 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#延迟-ready-事件的触发时间"><span class="nav-number">4.3.</span> <span class="nav-text">延迟 ready 事件的触发时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择元素"><span class="nav-number">4.4.</span> <span class="nav-text">选择元素</span></a></li></ol></li></ol></div>
             
 
           </div>
