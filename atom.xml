@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-04-20T03:47:24.000Z</updated>
+  <updated>2017-04-21T03:02:25.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -16,11 +16,68 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《精通jQuery》读书笔记</title>
+    <link href="http://kyonhuang.top/undefined/"/>
+    <id>http://kyonhuang.top/undefined/</id>
+    <published>2017-04-21T03:00:13.000Z</published>
+    <updated>2017-04-21T03:02:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>对 jQuery 了解不够，先读着。前面的基础知识也可查漏补缺。</p>
+  <a id="more"></a>
+<h2 id="了解-jQuery"><a href="#了解-jQuery" class="headerlink" title="了解 jQuery"></a>了解 jQuery</h2><h3 id="jQuery-核心库的工作"><a href="#jQuery-核心库的工作" class="headerlink" title="jQuery 核心库的工作"></a>jQuery 核心库的工作</h3><p>通过处理浏览器加载 HTML 时动态创建的 DOM（文档对象模型），达到动态修改页面内容的目标。</p>
+<h2 id="HTML-入门"><a href="#HTML-入门" class="headerlink" title="HTML 入门"></a>HTML 入门</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>一个事件在它的生命周期中要经历 3 个阶段：<strong>捕获</strong>、处理<strong>目标元素</strong>和<strong>冒泡</strong>。</p>
+<p>目标元素：触发事件的元素。</p>
+<h2 id="CSS-基础"><a href="#CSS-基础" class="headerlink" title="CSS 基础"></a>CSS 基础</h2><h3 id="反选择器"><a href="#反选择器" class="headerlink" title="反选择器"></a>反选择器</h3><p><code>:not(&lt;selector&gt;)</code>：选取不匹配指定选择器的元素。</p>
+<h3 id="样式层叠"><a href="#样式层叠" class="headerlink" title="样式层叠"></a>样式层叠</h3><p>浏览器查找样式元素值的顺序：</p>
+<ol>
+<li>行内样式（定义在元素 style 属性中的样式）；</li>
+<li>内嵌样式（定义在 style 元素中的样式）；</li>
+<li>外部样式（使用 link 元素导入的样式）；</li>
+<li>用户样式（用户自己定义的样式）；</li>
+<li>浏览器样式（浏览器提供的默认样式）。</li>
+</ol>
+<p>前三个又合称为作者样式。</p>
+<h4 id="important-规则"><a href="#important-规则" class="headerlink" title="important 规则"></a>important 规则</h4><p>在样式声明的末尾追加<code>!important</code>可以把改值标识为重要样式。浏览器会给重要样式以优先权，而不再考虑这个样式的定义位置。</p>
+<h4 id="“专一程度”"><a href="#“专一程度”" class="headerlink" title="“专一程度”"></a>“专一程度”</h4><p>浏览器根据以下 3 个特征计算样式的“专一程度”：</p>
+<ol>
+<li>选择器中出现的 id 值个数；</li>
+<li>选择器中出现的其他属性和伪类个数；</li>
+<li>选择器中出现的元素名字</li>
+</ol>
+<h3 id="样式单位"><a href="#样式单位" class="headerlink" title="样式单位"></a>样式单位</h3><h4 id="相对长度单位"><a href="#相对长度单位" class="headerlink" title="相对长度单位"></a>相对长度单位</h4><ul>
+<li>em：相对于元素字号的高度；</li>
+<li>ex：相对于元素字体中小写字母 x 的高度；</li>
+<li>rem：相对于根元素的高度；</li>
+<li>px：CSS 像素（假定位于一个 96dpi 的显示设备上，实际上是绝对单位，不会改变大小）；</li>
+<li>%：另一属性值的百分比。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;对 jQuery 了解不够，先读着。前面的基础知识也可查漏补缺。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="jQuery" scheme="http://kyonhuang.top/tags/jQuery/"/>
+    
+      <category term="《精通jQuery》" scheme="http://kyonhuang.top/tags/%E3%80%8A%E7%B2%BE%E9%80%9AjQuery%E3%80%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《ECMAScript 6 入门》读书笔记(二)（更新至4.20）</title>
     <link href="http://kyonhuang.top/34507/"/>
     <id>http://kyonhuang.top/34507/</id>
     <published>2017-04-20T03:46:13.000Z</published>
-    <updated>2017-04-20T03:47:24.000Z</updated>
+    <updated>2017-04-20T13:38:34.000Z</updated>
     
     <content type="html"><![CDATA[<p>说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>》。希望能早日啃完，想去看 Vue.js 了…</p>
 <p>此博文包括：函数的扩展、对象的扩展、Symbol…</p>
@@ -209,8 +266,18 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">"foo"</span>);</div><div class="line"><span class="built_in">Symbol</span>.keyFor(s1);  <span class="comment">// "foo"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s2 = <span class="built_in">Symbol</span>(<span class="string">"foo"</span>)</div><div class="line"><span class="built_in">Symbol</span>.keyFor(s2);  <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
 <p>6.Singleton 模式：指调用一个类，任何时候返回的都是同一个实例。</p>
 <p>Node 中，模块文件可以看作一个类。可以使用 Symbol，通过把实例放到顶层对象<code>global</code>来实现 Singleton 模式。</p>
-<h3 id="内置的-Symbol-值"><a href="#内置的-Symbol-值" class="headerlink" title="内置的 Symbol 值"></a>内置的 Symbol 值</h3><p>7.<code>Symbol.hasInstance</code>属性：指向一个内部方法。</p>
-]]></content>
+<h3 id="内置的-Symbol-值-暂且略过"><a href="#内置的-Symbol-值-暂且略过" class="headerlink" title="内置的 Symbol 值(暂且略过)"></a>内置的 Symbol 值(暂且略过)</h3><p>7.<code>Symbol.hasInstance</code>属性：指向一个内部方法。</p>
+<p>8.<code>Symbol.isConcatSpreadable</code>属性：</p>
+<p>9.<code>Symbol.species</code></p>
+<p>10.<code>Symbol.match</code></p>
+<p>11.<code>Symbol.replace</code></p>
+<p>12.<code>Symbol.search</code></p>
+<p>13.<code>Symbol.split</code></p>
+<p>14.<code>Symbol.iterator</code></p>
+<p>15.<code>Symbol.toPrimitive</code></p>
+<p>16.<code>Symbol.toStringTag</code></p>
+<p>17.<code>Symbol.unscopables</code></p>
+<h2 id="Set-和-Map-数据结构"><a href="#Set-和-Map-数据结构" class="headerlink" title="Set 和 Map 数据结构"></a>Set 和 Map 数据结构</h2>]]></content>
     
     <summary type="html">
     
@@ -579,11 +646,11 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
       <category term="WebStorm" scheme="http://kyonhuang.top/tags/WebStorm/"/>
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -752,9 +819,9 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -1675,87 +1742,6 @@
       <category term="语义化" scheme="http://kyonhuang.top/tags/%E8%AF%AD%E4%B9%89%E5%8C%96/"/>
     
       <category term="CSS hack" scheme="http://kyonhuang.top/tags/CSS-hack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sublime Text使用技巧笔记</title>
-    <link href="http://kyonhuang.top/28753/"/>
-    <id>http://kyonhuang.top/28753/</id>
-    <published>2017-02-13T08:41:37.000Z</published>
-    <updated>2017-02-19T03:02:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>作为一款主流前端开发编辑器软件，Sublime Text具有代码高亮、语法提示、自动完成，轻量级，易上手，并且支持插件扩展机制，可以说功能十分强大。</p>
-<p>我用Sublime Text已经有一段时间了，但是只是浮于表面，没有进一步探索。作为一名准备在Web方面继续深研的软工学生，我决定对Sublime Text的使用技巧进行学习，并写下这篇笔记。</p>
-<a id="more"></a>
-<h2 id="快捷键-OS-X"><a href="#快捷键-OS-X" class="headerlink" title="快捷键(OS X)"></a>快捷键(OS X)</h2><ul>
-<li>Command + 光标 多点编辑</li>
-<li>Command + p 快速打开文件</li>
-<li>Command + Shift + p 打开命令行面板</li>
-<li>Command + + / - 字体放大/缩小</li>
-<li>Command + K + B 面板显示/隐藏</li>
-<li>Command + ] / [ 缩进/退回一个级别</li>
-<li>Command + L 选择当前行</li>
-<li>Command (+ Shift) + Enter (在上一行)下一行开辟新行</li>
-<li>Option + 鼠标左键 块选择(自动进入多点编辑)</li>
-<li>Alt(Command) + 左右键 单词(行)粒度的跳跃</li>
-<li>Alt(Command) + Shift + 左右键 单词(行)选择(可以叠加使用多次)</li>
-<li>Command + A 全选</li>
-</ul>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>编辑器右下角可以更改语法，也可以在命令行面板输入语法名进行选择。</p>
-<p>命令行面板输入”Key Bindings - Default”可以看到所有的快捷键设置。</p>
-<p><img src="/images/sublime.jpg"></p>
-<p>“Key Bindings - User”中自己可以设置快捷键，遵循JSON语法：</p>
-<pre><code>[
-  { &quot;keys&quot;: [&quot;shift+tab&quot;],&quot;command&quot;: &quot;reindent&quot;,&quot;args&quot;: {&quot;single_line&quot;:false}}
-]
-</code></pre><p>“Reindent Lines”调整缩进（已经被我设置快捷键Shift + Tab）。</p>
-<p>如何得到命令名和参数：</p>
-<ol>
-<li>Ctrl + ` 打开控制台，输入”sublime.log_commands(True)”；</li>
-<li>再在命令行面板中输入操作；</li>
-<li>在工作台即可看到命令名和参数；</li>
-</ol>
-<h2 id="自定制"><a href="#自定制" class="headerlink" title="自定制"></a>自定制</h2><p>用户的设置保存在<code>/~/Library/Application Support/Sublime Text 3/Packages/User</code>中，写到这里的数据是不会因自动升级而被覆盖的。</p>
-<p>推荐将这个文件夹中的内容同步到Github上。这样，在更换系统或电脑时，将文件夹clone下来进行替换，可以迅速按照自己的要求配置好。</p>
-<h2 id="扩展包"><a href="#扩展包" class="headerlink" title="扩展包"></a>扩展包</h2><p>到 <a href="https://packagecontrol.io/installation" target="_blank" rel="external">https://packagecontrol.io/installation</a> 可以看到 sublime3 中的安装方式，Control + ` 打开控制台，运行代码就可以安装上了。</p>
-<p>Command + Shift + p 打开命令行面板，敲<code>Install Package</code>来搜索并安装想要的包。<code>Remove Package</code>卸载插件。</p>
-<p><code>Packages/User/</code> 下面的文件 <code>Package Control.sublime-settings</code> 里面列出已经安装的包。</p>
-<p>我安装的包有（不定期更新）：</p>
-<p>Git：这个包可以帮助我们在编辑器里完成git相关操作。在命令行面板中输入”Git Add Current File”、”Git Commit”、”Git Push”来完成相应操作。</p>
-<p>emmet：Web前端开发必装包，敲 tab 键代码补齐。具体触发词参见 <a href="http://docs.emmet.io/cheat-sheet/" target="_blank" rel="external">http://docs.emmet.io/cheat-sheet/</a>。如果我想用标签来包裹一些内容，我就先把内容选中，然后 Ctrl-w 。这个命令也可以在命令面板上呼叫 Wrap with Abbreviation 。要是忘了快捷键了，就求助命令面板。弹出的输入框中输入后回车就可以看到效果了，语法上跟前面 tab 补齐的时候没有区别。如果要删除一层标签，用 Command + , (Remove Tag)。</p>
-<h2 id="快速查找文件或字符串"><a href="#快速查找文件或字符串" class="headerlink" title="快速查找文件或字符串"></a>快速查找文件或字符串</h2><p>Command + P 快捷键打开的功能叫做goto anything，见menu-&gt;Goto。支持模糊匹配，同时支持下面几种操作形式，让定位更准确：</p>
-<pre><code>filename:lineno    //定位至具体行号
-filename@css-selector    //定位至具体CSS选择器
-filename@function    //定位至具体函数
-</code></pre><p>还可以直接在新打开的文件中定位字符串。</p>
-<pre><code>filename#searchtext       
-</code></pre><p>Command + (Alt) + F <strong>当前文件内查找(替换)</strong>。Enter 查找下一处，Shift-Enter 查找上一处。敲 esc 就可以停在那里进行编辑。</p>
-<p>把光标停留在要找的单词上面，然后 Command + D 连续敲多次，就可以找出所有当前文件中的这个单词，而且是直接在多点编辑模式下，可以直接进行替换。</p>
-<p>如果要<strong>在一个文件夹内全局查找</strong>，鼠标右击文件夹，Find in Folder 就可以了。打开下一个匹配项用 F4，上一处 Shift+F4。</p>
-<p>Ctrl + - 跳回老位置（jump_back），Ctrl + Shift + - 反向操作跳（jump_forword）</p>
-<hr>
-<p>参考资料：</p>
-<p><a href="http://c.haoduoshipin.com/happysublime/" target="_blank" rel="external">HappySublime</a></p>
-<p><a href="http://www.jeffjade.com/2015/12/15/2015-04-17-toss-sublime-text/" target="_blank" rel="external">如何优雅地使用Sublime Text</a></p>
-<p>牛人总结的Sublime Text的心得经验 <a href="https://github.com/jikeytang/sublime-text" target="_blank" rel="external">jikeytang/sublime-text · GitHub</a>        </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;作为一款主流前端开发编辑器软件，Sublime Text具有代码高亮、语法提示、自动完成，轻量级，易上手，并且支持插件扩展机制，可以说功能十分强大。&lt;/p&gt;
-&lt;p&gt;我用Sublime Text已经有一段时间了，但是只是浮于表面，没有进一步探索。作为一名准备在Web方面继续深研的软工学生，我决定对Sublime Text的使用技巧进行学习，并写下这篇笔记。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="程序猿喜欢折腾" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
-    
-    
-      <category term="Sublime Text" scheme="http://kyonhuang.top/tags/Sublime-Text/"/>
-    
-      <category term="笔记" scheme="http://kyonhuang.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="编辑器" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     
   </entry>
   

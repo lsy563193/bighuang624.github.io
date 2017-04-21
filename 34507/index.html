@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://kyonhuang.top/34507/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol…">
-<meta property="og:updated_time" content="2017-04-20T03:47:24.000Z">
+<meta property="og:updated_time" content="2017-04-20T13:38:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《ECMAScript 6 入门》读书笔记(二)（更新至4.20）">
 <meta name="twitter:description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol…">
@@ -577,8 +577,18 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">"foo"</span>);</div><div class="line"><span class="built_in">Symbol</span>.keyFor(s1);  <span class="comment">// "foo"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s2 = <span class="built_in">Symbol</span>(<span class="string">"foo"</span>)</div><div class="line"><span class="built_in">Symbol</span>.keyFor(s2);  <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
 <p>6.Singleton 模式：指调用一个类，任何时候返回的都是同一个实例。</p>
 <p>Node 中，模块文件可以看作一个类。可以使用 Symbol，通过把实例放到顶层对象<code>global</code>来实现 Singleton 模式。</p>
-<h3 id="内置的-Symbol-值"><a href="#内置的-Symbol-值" class="headerlink" title="内置的 Symbol 值"></a>内置的 Symbol 值</h3><p>7.<code>Symbol.hasInstance</code>属性：指向一个内部方法。</p>
-
+<h3 id="内置的-Symbol-值-暂且略过"><a href="#内置的-Symbol-值-暂且略过" class="headerlink" title="内置的 Symbol 值(暂且略过)"></a>内置的 Symbol 值(暂且略过)</h3><p>7.<code>Symbol.hasInstance</code>属性：指向一个内部方法。</p>
+<p>8.<code>Symbol.isConcatSpreadable</code>属性：</p>
+<p>9.<code>Symbol.species</code></p>
+<p>10.<code>Symbol.match</code></p>
+<p>11.<code>Symbol.replace</code></p>
+<p>12.<code>Symbol.search</code></p>
+<p>13.<code>Symbol.split</code></p>
+<p>14.<code>Symbol.iterator</code></p>
+<p>15.<code>Symbol.toPrimitive</code></p>
+<p>16.<code>Symbol.toStringTag</code></p>
+<p>17.<code>Symbol.unscopables</code></p>
+<h2 id="Set-和-Map-数据结构"><a href="#Set-和-Map-数据结构" class="headerlink" title="Set 和 Map 数据结构"></a>Set 和 Map 数据结构</h2>
       
     </div>
 
@@ -617,6 +627,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/" rel="next" title="《精通jQuery》读书笔记">
+                <i class="fa fa-chevron-left"></i> 《精通jQuery》读书笔记
+              </a>
             
           </div>
 
@@ -694,7 +708,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -711,7 +725,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -782,7 +796,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的扩展"><span class="nav-number">1.</span> <span class="nav-text">函数的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数的默认值"><span class="nav-number">1.1.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数的默认值-1"><span class="nav-number">1.2.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.3.</span> <span class="nav-text">箭头函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的扩展"><span class="nav-number">2.</span> <span class="nav-text">对象的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性的可枚举性与遍历"><span class="nav-number">2.1.</span> <span class="nav-text">属性的可枚举性与遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto-属性及相关方法"><span class="nav-number">2.2.</span> <span class="nav-text">__proto__属性及相关方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">3.</span> <span class="nav-text">Symbol</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内置的-Symbol-值"><span class="nav-number">3.1.</span> <span class="nav-text">内置的 Symbol 值</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的扩展"><span class="nav-number">1.</span> <span class="nav-text">函数的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数的默认值"><span class="nav-number">1.1.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数的默认值-1"><span class="nav-number">1.2.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.3.</span> <span class="nav-text">箭头函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的扩展"><span class="nav-number">2.</span> <span class="nav-text">对象的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性的可枚举性与遍历"><span class="nav-number">2.1.</span> <span class="nav-text">属性的可枚举性与遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto-属性及相关方法"><span class="nav-number">2.2.</span> <span class="nav-text">__proto__属性及相关方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">3.</span> <span class="nav-text">Symbol</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内置的-Symbol-值-暂且略过"><span class="nav-number">3.1.</span> <span class="nav-text">内置的 Symbol 值(暂且略过)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-和-Map-数据结构"><span class="nav-number">4.</span> <span class="nav-text">Set 和 Map 数据结构</span></a></li></ol></div>
             
 
           </div>
