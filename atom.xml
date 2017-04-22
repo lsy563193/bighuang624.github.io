@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-04-21T07:08:55.000Z</updated>
+  <updated>2017-04-21T07:35:40.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>《精通jQuery》读书笔记</title>
-    <link href="http://kyonhuang.top/undefined/"/>
-    <id>http://kyonhuang.top/undefined/</id>
+    <link href="http://kyonhuang.top/read-jQuery-master/"/>
+    <id>http://kyonhuang.top/read-jQuery-master/</id>
     <published>2017-04-21T06:50:27.000Z</published>
-    <updated>2017-04-21T07:08:55.000Z</updated>
+    <updated>2017-04-21T07:35:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>这几天看到很多前端大牛对学习中的一个共同认知：不要啃别人的二手资料。确实别人咀嚼后的产物质量参差不齐，还是要多读文档，然后是优秀的书籍。</p>
 <p>感觉自己对 jQuery 了解不够，先读一读《精通jQuery》。前面几章的基础知识也可起查漏补缺的作用。</p>
@@ -87,7 +87,7 @@
     <link href="http://kyonhuang.top/34507/"/>
     <id>http://kyonhuang.top/34507/</id>
     <published>2017-04-20T03:46:13.000Z</published>
-    <updated>2017-04-20T13:38:34.000Z</updated>
+    <updated>2017-04-21T08:11:51.000Z</updated>
     
     <content type="html"><![CDATA[<p>说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>》。希望能早日啃完，想去看 Vue.js 了…</p>
 <p>此博文包括：函数的扩展、对象的扩展、Symbol…</p>
@@ -287,7 +287,13 @@
 <p>15.<code>Symbol.toPrimitive</code></p>
 <p>16.<code>Symbol.toStringTag</code></p>
 <p>17.<code>Symbol.unscopables</code></p>
-<h2 id="Set-和-Map-数据结构"><a href="#Set-和-Map-数据结构" class="headerlink" title="Set 和 Map 数据结构"></a>Set 和 Map 数据结构</h2>]]></content>
+<h2 id="Set-和-Map-数据结构"><a href="#Set-和-Map-数据结构" class="headerlink" title="Set 和 Map 数据结构"></a>Set 和 Map 数据结构</h2><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>1.基本用法：Set 结构不会添加重复的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line"></div><div class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>].forEach(<span class="function"><span class="params">x</span> =&gt;</span> s.add(x));</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> s)&#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 2 3 5 4</span></div></pre></td></tr></table></figure>
+<p>Set 函数可以接受一个数组（或类似数组的对象）作为参数，用来初始化。因此有一种去除数组重复成员的方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[...new <span class="built_in">Set</span>(array)]</div></pre></td></tr></table></figure>
+<p>Set 内部判断两个值是否不同，使用的算法叫做“Same-value equality”，类似精确相等运算符（<code>===</code>），主要的区别是<code>NaN</code>等于自身（<code>===</code>认为<code>NaN</code>不等于自身）。另外，两个对象总是不相等的。</p>
+<p>2.Set 实例的属性和方法：</p>
+]]></content>
     
     <summary type="html">
     
@@ -656,11 +662,11 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
       <category term="WebStorm" scheme="http://kyonhuang.top/tags/WebStorm/"/>
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -829,9 +835,9 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
