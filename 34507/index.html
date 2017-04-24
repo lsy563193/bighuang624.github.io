@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol…">
+<meta name="description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构…">
 <meta name="keywords" content="前端,JavaScipt,读书笔记,ES 6,《ECMAScript 6 入门》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《ECMAScript 6 入门》读书笔记(二)（更新至4.20）">
+<meta property="og:title" content="《ECMAScript 6 入门》读书笔记(二)（更新至4.24）">
 <meta property="og:url" content="http://kyonhuang.top/34507/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol…">
-<meta property="og:updated_time" content="2017-04-21T08:11:51.000Z">
+<meta property="og:description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构…">
+<meta property="og:updated_time" content="2017-04-24T11:43:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《ECMAScript 6 入门》读书笔记(二)（更新至4.20）">
-<meta name="twitter:description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol…">
+<meta name="twitter:title" content="《ECMAScript 6 入门》读书笔记(二)（更新至4.24）">
+<meta name="twitter:description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构…">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <title> 《ECMAScript 6 入门》读书笔记(二)（更新至4.20） | 大黄菌的个人博客 </title>
+  <title> 《ECMAScript 6 入门》读书笔记(二)（更新至4.24） | 大黄菌的个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -318,7 +318,7 @@
             
             
               
-                《ECMAScript 6 入门》读书笔记(二)（更新至4.20）
+                《ECMAScript 6 入门》读书笔记(二)（更新至4.24）
               
             
           </h1>
@@ -331,8 +331,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T11:46:13+08:00">
-                2017-04-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-24T18:36:13+08:00">
+                2017-04-24
               </time>
             
 
@@ -391,7 +391,7 @@
 
       
         <p>说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>》。希望能早日啃完，想去看 Vue.js 了…</p>
-<p>此博文包括：函数的扩展、对象的扩展、Symbol…</p>
+<p>此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构…</p>
   <a id="more"></a>
 <h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h2><h3 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h3><p>1.ES 6 允许为函数的参数设置默认值，即直接写在参数定义的后面。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x, y = <span class="string">'World'</span></span>)</span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">log(<span class="string">'Hello'</span>)  <span class="comment">// Hello World</span></div><div class="line">log(<span class="string">'Hello'</span>, <span class="string">'Kyon'</span>)  <span class="comment">// Hello Kyon</span></div><div class="line">log(<span class="string">'Hello'</span>, <span class="string">''</span>)  <span class="comment">// Hello</span></div><div class="line"></div><div class="line"><span class="comment">// 与解构赋值默认值结合使用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">&#123;x, y = <span class="number">5</span>&#125;</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(&#123;<span class="attr">x</span>: <span class="number">1</span>&#125;)  <span class="comment">// 1, 5</span></div><div class="line">foo()  <span class="comment">// TypeeError: Cannot read property 'x' of undefined</span></div><div class="line"></div><div class="line"><span class="comment">// 函数参数的默认值是空对象，但是设置了对象解构赋值的默认值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m1</span>(<span class="params">&#123;x = <span class="number">0</span>, y = <span class="number">0</span>&#125; = &#123;&#125;</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数参数的默认值是一个有具体属性的对象，但是没有设置对象解构赋值的默认值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m2</span>(<span class="params">&#123;x, y&#125; = &#123; x: <span class="number">0</span>, y: <span class="number">0</span> &#125;</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数没有参数的情况</span></div><div class="line">m1() <span class="comment">// [0, 0]</span></div><div class="line">m2() <span class="comment">// [0, 0]</span></div><div class="line"></div><div class="line"><span class="comment">// x有值，y无值的情况</span></div><div class="line">m1(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;) <span class="comment">// [3, 0]</span></div><div class="line">m2(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;) <span class="comment">// [3, undefined]</span></div><div class="line"></div><div class="line"><span class="comment">// x和y都无值的情况</span></div><div class="line">m1(&#123;&#125;) <span class="comment">// [0, 0];</span></div><div class="line">m2(&#123;&#125;) <span class="comment">// [undefined, undefined]</span></div></pre></td></tr></table></figure>
@@ -594,7 +594,62 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[...new <span class="built_in">Set</span>(array)]</div></pre></td></tr></table></figure>
 <p>Set 内部判断两个值是否不同，使用的算法叫做“Same-value equality”，类似精确相等运算符（<code>===</code>），主要的区别是<code>NaN</code>等于自身（<code>===</code>认为<code>NaN</code>不等于自身）。另外，两个对象总是不相等的。</p>
 <p>2.Set 实例的属性和方法：</p>
-
+<p>实例属性：</p>
+<ul>
+<li><code>Set.prototype.constructor</code>：构造函数，默认就是<code>Set</code>函数。</li>
+<li><code>Set.prototype.size</code>：返回<code>Set</code>实例的成员总数。</li>
+</ul>
+<p>操作方法：</p>
+<ul>
+<li><code>add(value)</code>：添加某个值，返回 Set 结构本身。</li>
+<li><code>delete(value)</code>：删除某个值，返回一个表示删除是否成功的布尔值。</li>
+<li><code>has(value)</code>：返回一个布尔值。</li>
+<li><code>clear()</code>：清除所有成员，没有返回值。</li>
+</ul>
+<p>遍历方法（Set 结构中，键名和键值是同一个值）：</p>
+<ul>
+<li><code>keys()</code>：返回键名的遍历器</li>
+<li><code>values()</code>：返回键值的遍历器</li>
+<li><code>entries()</code>：返回键值对的遍历器</li>
+<li><code>forEach()</code>：使用回调函数遍历每个成员</li>
+</ul>
+<p><code>Array.from</code>方法可以将 Set 结构转为数组。</p>
+<h3 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h3><p>3.含义：与 Set 类似，但成员只能是对象，且都是弱引用，即垃圾回收机制不考虑 WeakSet 对该对象的引用。如果其他对象都不再引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存，不考虑该对象还存在于 WeakSet 之中。</p>
+<p>ES 6 规定，WeakSet 不可遍历。</p>
+<p>4.语法：有<code>add</code>、<code>delete</code>、<code>has</code>方法；没有<code>size</code>属性。</p>
+<p>5.用处：是储存 DOM 节点，而不用担心这些节点从文档移除时，会引发内存泄漏。</p>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>6.含义和基本用法：为了解决 Object 的只能用字符串当作键名的问题，ES 6 提供了 Map 数据结构。各种类型的值（包括对象）都可以当作键。</p>
+<p>有<code>set(key, value)</code>、<code>get(key)</code>、<code>has(key)</code>、<code>delete(key)</code>、<code>clear()</code>方法。</p>
+<p>作为构造函数，Map 可以接受一个数组作为参数，该数组的成员是一个个<strong>表示键值对的数组</strong>。</p>
+<p>如果对同一个键多次赋值，后面的值将覆盖前面的值；如果读取一个未知的键，则返回<code>undefined</code>。</p>
+<p>7.与其他数据结构的互相转换：</p>
+<ul>
+<li>Map 转为数组：使用扩展运算符（<code>...</code>）。</li>
+<li>数组转为 Map：使用 Map 构造函数。</li>
+<li>Map 转为对象：如果所有 Map 的键都是字符串，可以转为对象。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">strMapToObj</span>(<span class="params">strMap</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> [k, v] <span class="keyword">of</span> strMap)&#123;</div><div class="line">    obj[k] = v;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> myMap = <span class="keyword">new</span> <span class="built_in">Map</span>().set(<span class="string">'yes'</span>, <span class="literal">true</span>).set(<span class="string">'no'</span>, <span class="literal">false</span>);</div><div class="line">strMapToObj(myMap);</div><div class="line"><span class="comment">// &#123; yes: true, no: false &#125;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>对象转为 Map：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">objToStrMap</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> strMap = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> k <span class="keyword">of</span> <span class="built_in">Object</span>.keys(obj))&#123;</div><div class="line">    strMap.set(k, obj[k]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> strMap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Map 转为 JSON：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 情况一：Map 的键名都是字符串</span></div><div class="line"><span class="comment">// 可以转换为对象 JSON</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">strMapToJson</span>(<span class="params">strMap</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(strMapToObj(strMap));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 情况二：Map 的键名有非字符串</span></div><div class="line"><span class="comment">// 可以转换为数组 JSON</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapToArrayJSON</span>(<span class="params">map</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify([...map]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>JSON 转为 Map：逆操作。</li>
+</ul>
+<h3 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h3><p>8.含义：与 Map 类似，用于生成键值对。但只接受对象作为键名（<code>null</code>除外），且键名所指向的对象不计入垃圾回收机制。</p>
+<p>专用场合：它的键所对应的对象可能会在将来消失。<code>WeakMap</code>结构有助于防止内存泄漏。</p>
+<p>9.语法：没有遍历操作，无法清空。只有四个方法可用：<code>get()</code>、<code>set()</code>、<code>has()</code>、<code>delete()</code>。</p>
+<p>10.用处：DOM 节点作为键名。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 一个例子</span></div><div class="line"><span class="keyword">let</span> myElement = <span class="built_in">document</span>.getElementById(<span class="string">'logo'</span>);</div><div class="line"><span class="keyword">let</span> myWeakmap = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"></div><div class="line">myWeakmap.set(myElement, &#123;<span class="attr">timesClicked</span>: <span class="number">0</span>&#125;);</div><div class="line"></div><div class="line">myElement.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> logoData = myWeakmap.get(myElement);</div><div class="line">  logoData.timesClicked++;</div><div class="line">&#125;, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="comment">// 一旦这个DOM节点删除，该状态就会自动消失，不存在内存泄漏风险</span></div></pre></td></tr></table></figure>
+<p>注册监听事件的<code>listener</code>对象，就很适合用 WeakMap 实现。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> listener = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"></div><div class="line">listener.set(element1, handler1);</div><div class="line">listener.set(element2, handler2);</div><div class="line"></div><div class="line">element1.addEventListener(<span class="string">'click'</span>, listener.get(element1), <span class="literal">false</span>);</div><div class="line">element2.addEventListener(<span class="string">'click'</span>, listener.get(element2), <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="comment">// 一旦DOM对象消失，跟它绑定的监听函数也会自动消失</span></div></pre></td></tr></table></figure>
+<p>WeakMap 的另一个用处是部署私有属性。</p>
+<h2 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h2>
       
     </div>
 
@@ -634,18 +689,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/read-jQuery-master/" rel="next" title="《精通jQuery》读书笔记">
-                <i class="fa fa-chevron-left"></i> 《精通jQuery》读书笔记
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/39685/" rel="prev" title="最近在干以及打算干些什么">
-                最近在干以及打算干些什么 <i class="fa fa-chevron-right"></i>
+              <a href="/read-jQuery-master/" rel="prev" title="《精通jQuery》读书笔记">
+                《精通jQuery》读书笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -811,7 +862,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的扩展"><span class="nav-number">1.</span> <span class="nav-text">函数的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数的默认值"><span class="nav-number">1.1.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数的默认值-1"><span class="nav-number">1.2.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.3.</span> <span class="nav-text">箭头函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的扩展"><span class="nav-number">2.</span> <span class="nav-text">对象的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性的可枚举性与遍历"><span class="nav-number">2.1.</span> <span class="nav-text">属性的可枚举性与遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto-属性及相关方法"><span class="nav-number">2.2.</span> <span class="nav-text">__proto__属性及相关方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">3.</span> <span class="nav-text">Symbol</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内置的-Symbol-值-暂且略过"><span class="nav-number">3.1.</span> <span class="nav-text">内置的 Symbol 值(暂且略过)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-和-Map-数据结构"><span class="nav-number">4.</span> <span class="nav-text">Set 和 Map 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">4.1.</span> <span class="nav-text">Set</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的扩展"><span class="nav-number">1.</span> <span class="nav-text">函数的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数的默认值"><span class="nav-number">1.1.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数的默认值-1"><span class="nav-number">1.2.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.3.</span> <span class="nav-text">箭头函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的扩展"><span class="nav-number">2.</span> <span class="nav-text">对象的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性的可枚举性与遍历"><span class="nav-number">2.1.</span> <span class="nav-text">属性的可枚举性与遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto-属性及相关方法"><span class="nav-number">2.2.</span> <span class="nav-text">__proto__属性及相关方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">3.</span> <span class="nav-text">Symbol</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内置的-Symbol-值-暂且略过"><span class="nav-number">3.1.</span> <span class="nav-text">内置的 Symbol 值(暂且略过)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-和-Map-数据结构"><span class="nav-number">4.</span> <span class="nav-text">Set 和 Map 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">4.1.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakSet"><span class="nav-number">4.2.</span> <span class="nav-text">WeakSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">4.3.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakMap"><span class="nav-number">4.4.</span> <span class="nav-text">WeakMap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proxy"><span class="nav-number">5.</span> <span class="nav-text">Proxy</span></a></li></ol></div>
             
 
           </div>

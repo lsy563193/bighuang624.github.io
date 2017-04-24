@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-04-22T12:50:16.000Z</updated>
+  <updated>2017-04-24T11:43:43.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -16,93 +16,14 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>《精通jQuery》读书笔记</title>
-    <link href="http://kyonhuang.top/read-jQuery-master/"/>
-    <id>http://kyonhuang.top/read-jQuery-master/</id>
-    <published>2017-04-21T06:50:27.000Z</published>
-    <updated>2017-04-22T12:50:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这几天看到很多前端大牛对学习中的一个共同认知：不要啃别人的二手资料。确实别人咀嚼后的产物质量参差不齐，还是要多读文档，然后是优秀的书籍。</p>
-<p>感觉自己对 jQuery 了解不够，看见别人有推荐《精通jQuery》，先读一读。前面几章的基础知识也可起查漏补缺的作用。这里只记录一些我不清楚或者感觉要背的那种知识点。</p>
-  <a id="more"></a>
-<h2 id="了解-jQuery"><a href="#了解-jQuery" class="headerlink" title="了解 jQuery"></a>了解 jQuery</h2><h3 id="jQuery-核心库的工作"><a href="#jQuery-核心库的工作" class="headerlink" title="jQuery 核心库的工作"></a>jQuery 核心库的工作</h3><p>通过处理浏览器加载 HTML 时动态创建的 DOM（文档对象模型），达到动态修改页面内容的目标。</p>
-<h2 id="HTML-入门"><a href="#HTML-入门" class="headerlink" title="HTML 入门"></a>HTML 入门</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>一个事件在它的生命周期中要经历 3 个阶段：<strong>捕获</strong>、处理<strong>目标元素</strong>和<strong>冒泡</strong>。</p>
-<p>目标元素：触发事件的元素。</p>
-<h2 id="CSS-基础"><a href="#CSS-基础" class="headerlink" title="CSS 基础"></a>CSS 基础</h2><h3 id="反选择器"><a href="#反选择器" class="headerlink" title="反选择器"></a>反选择器</h3><p><code>:not(&lt;selector&gt;)</code>：选取不匹配指定选择器的元素。</p>
-<h3 id="样式层叠"><a href="#样式层叠" class="headerlink" title="样式层叠"></a>样式层叠</h3><p>浏览器查找样式元素值的顺序：</p>
-<ol>
-<li>行内样式（定义在元素 style 属性中的样式）；</li>
-<li>内嵌样式（定义在 style 元素中的样式）；</li>
-<li>外部样式（使用 link 元素导入的样式）；</li>
-<li>用户样式（用户自己定义的样式）；</li>
-<li>浏览器样式（浏览器提供的默认样式）。</li>
-</ol>
-<p>前三个又合称为作者样式。</p>
-<h4 id="important-规则"><a href="#important-规则" class="headerlink" title="important 规则"></a>important 规则</h4><p>在样式声明的末尾追加<code>!important</code>可以把改值标识为<strong>重要样式</strong>。浏览器会给重要样式以优先权，而不再考虑这个样式的定义位置。</p>
-<p>唯一能优先于作者样式中重要样式的样式是定义在用户样式表中的重要样式。对于普通样式来说，作者样式优先于用户样式。但对于重要样式，浏览器的做法恰恰相反。</p>
-<h4 id="“专一程度”"><a href="#“专一程度”" class="headerlink" title="“专一程度”"></a>“专一程度”</h4><p>浏览器根据以下 3 个特征计算样式的“专一程度”：</p>
-<ol>
-<li>选择器中出现的 id 值个数；</li>
-<li>选择器中出现的其他属性和伪类个数；</li>
-<li>选择器中出现的元素名字和伪元素名字个数。</li>
-</ol>
-<p>以 a-b-c 这种形式评估样式规则的“专一”程度，逐位比较，每一位上数字越大表示越专一。例如，1-0-0 比 0-5-5 更专一。</p>
-<p>如果有多条样式规则的专一程度相同，那么浏览器会选择最后定义的那条规则。专一程度规则仅在同一层叠级别有效。</p>
-<h3 id="样式单位"><a href="#样式单位" class="headerlink" title="样式单位"></a>样式单位</h3><h4 id="相对长度单位"><a href="#相对长度单位" class="headerlink" title="相对长度单位"></a>相对长度单位</h4><ul>
-<li>em：相对于元素字号的高度；</li>
-<li>ex：相对于元素字体中小写字母 x 的高度；</li>
-<li>rem：相对于根元素的高度；</li>
-<li>px：CSS 像素（假定位于一个 96dpi 的显示设备上，实际上是绝对单位，不会改变大小）；</li>
-<li>%：另一属性值的百分比。</li>
-</ul>
-<h2 id="jQuery-基础"><a href="#jQuery-基础" class="headerlink" title="jQuery 基础"></a>jQuery 基础</h2><h3 id="使用-CDN-版的-jQuery"><a href="#使用-CDN-版的-jQuery" class="headerlink" title="使用 CDN 版的 jQuery"></a>使用 CDN 版的 jQuery</h3><p>CDN（Content Delivery Network）：内容分发网络。当用户请求其数据时，CDN 能智能地分配离用户最近的服务器提供服务。</p>
-<p>使用 CDN 的两个优点：(1)用户体验更好（速度通常更快）；(2)节省了传输 jQuery 库所需带宽。</p>
-<p>CDN 不适合内联网应用程序。</p>
-<h3 id="函数"><a href="#函数" class="headerlink" title="$ 函数"></a>$ 函数</h3><p><code>jQuery.noConflict</code>方法让 jQuery 放弃使用 $ 符号。也可将该方法的返回值赋给一个变量以自定义 jQuery 简写符号。</p>
-<h3 id="延迟-ready-事件的触发时间"><a href="#延迟-ready-事件的触发时间" class="headerlink" title="延迟 ready 事件的触发时间"></a>延迟 ready 事件的触发时间</h3><p><code>$.holdReady(true)</code>必须在 ready 事件触发之前调用，<code>$.holdReady(false)</code>告诉 jQuery 触发 ready 事件。可以多次调用，但在 ready 事件被真正触发之前，使用 true 参数调用次数要等于使用 false 参数调用次数。 </p>
-<h3 id="选择元素"><a href="#选择元素" class="headerlink" title="选择元素"></a>选择元素</h3><p><img src="/images/jQueryMaster/jquery-selector1.jpg"></p>
-<p><img src="/images/jQueryMaster/jquery-selector2.jpg"></p>
-<h4 id="使用上下文限制搜索范围"><a href="#使用上下文限制搜索范围" class="headerlink" title="使用上下文限制搜索范围"></a>使用上下文限制搜索范围</h4><p>多给 $ 函数提供一个参数以限制搜索的范围。如果提供的上下文选择器匹配多个元素，将会把匹配上下文选择器的元素收集在一起，然后再匹配主选择器。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"img:odd"</span>, $(<span class="string">".drow"</span>))</div><div class="line"><span class="comment">// img:odd选择器会应用在.drow选择器的结果上</span></div></pre></td></tr></table></figure>
-<h4 id="确定选择结果"><a href="#确定选择结果" class="headerlink" title="确定选择结果"></a>确定选择结果</h4><p><img src="/images/jQueryMaster/jquery-selector3.jpg"></p>
-<h2 id="数据模版"><a href="#数据模版" class="headerlink" title="数据模版"></a>数据模版</h2><p>介绍了模板库 Handlebars。</p>
-<h3 id="定义模板"><a href="#定义模板" class="headerlink" title="定义模板"></a>定义模板</h3><p>数据模板库的核心是<strong>数据模板</strong>——包含着占位符的 HTML 元素。</p>
-<p>p268</p>
-<h2 id="处理表单"><a href="#处理表单" class="headerlink" title="处理表单"></a>处理表单</h2><p>介绍了 jQuery 插件 Validation，它专门处理表单验证问题。</p>
-<p><a href="http://code.ciaoca.com/jquery/validation-engine/" target="_blank" rel="external">jQuery Validation Engine 表单验证</a></p>
-<p>p297</p>
-<h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p>p331</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这几天看到很多前端大牛对学习中的一个共同认知：不要啃别人的二手资料。确实别人咀嚼后的产物质量参差不齐，还是要多读文档，然后是优秀的书籍。&lt;/p&gt;
-&lt;p&gt;感觉自己对 jQuery 了解不够，看见别人有推荐《精通jQuery》，先读一读。前面几章的基础知识也可起查漏补缺的作用。这里只记录一些我不清楚或者感觉要背的那种知识点。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="jQuery" scheme="http://kyonhuang.top/tags/jQuery/"/>
-    
-      <category term="《精通jQuery》" scheme="http://kyonhuang.top/tags/%E3%80%8A%E7%B2%BE%E9%80%9AjQuery%E3%80%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《ECMAScript 6 入门》读书笔记(二)（更新至4.20）</title>
+    <title>《ECMAScript 6 入门》读书笔记(二)（更新至4.24）</title>
     <link href="http://kyonhuang.top/34507/"/>
     <id>http://kyonhuang.top/34507/</id>
-    <published>2017-04-20T03:46:13.000Z</published>
-    <updated>2017-04-21T08:11:51.000Z</updated>
+    <published>2017-04-24T10:36:13.000Z</published>
+    <updated>2017-04-24T11:43:43.000Z</updated>
     
     <content type="html"><![CDATA[<p>说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>》。希望能早日啃完，想去看 Vue.js 了…</p>
-<p>此博文包括：函数的扩展、对象的扩展、Symbol…</p>
+<p>此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构…</p>
   <a id="more"></a>
 <h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h2><h3 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h3><p>1.ES 6 允许为函数的参数设置默认值，即直接写在参数定义的后面。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x, y = <span class="string">'World'</span></span>)</span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">log(<span class="string">'Hello'</span>)  <span class="comment">// Hello World</span></div><div class="line">log(<span class="string">'Hello'</span>, <span class="string">'Kyon'</span>)  <span class="comment">// Hello Kyon</span></div><div class="line">log(<span class="string">'Hello'</span>, <span class="string">''</span>)  <span class="comment">// Hello</span></div><div class="line"></div><div class="line"><span class="comment">// 与解构赋值默认值结合使用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">&#123;x, y = <span class="number">5</span>&#125;</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(&#123;<span class="attr">x</span>: <span class="number">1</span>&#125;)  <span class="comment">// 1, 5</span></div><div class="line">foo()  <span class="comment">// TypeeError: Cannot read property 'x' of undefined</span></div><div class="line"></div><div class="line"><span class="comment">// 函数参数的默认值是空对象，但是设置了对象解构赋值的默认值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m1</span>(<span class="params">&#123;x = <span class="number">0</span>, y = <span class="number">0</span>&#125; = &#123;&#125;</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数参数的默认值是一个有具体属性的对象，但是没有设置对象解构赋值的默认值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m2</span>(<span class="params">&#123;x, y&#125; = &#123; x: <span class="number">0</span>, y: <span class="number">0</span> &#125;</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数没有参数的情况</span></div><div class="line">m1() <span class="comment">// [0, 0]</span></div><div class="line">m2() <span class="comment">// [0, 0]</span></div><div class="line"></div><div class="line"><span class="comment">// x有值，y无值的情况</span></div><div class="line">m1(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;) <span class="comment">// [3, 0]</span></div><div class="line">m2(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;) <span class="comment">// [3, undefined]</span></div><div class="line"></div><div class="line"><span class="comment">// x和y都无值的情况</span></div><div class="line">m1(&#123;&#125;) <span class="comment">// [0, 0];</span></div><div class="line">m2(&#123;&#125;) <span class="comment">// [undefined, undefined]</span></div></pre></td></tr></table></figure>
@@ -305,12 +226,67 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[...new <span class="built_in">Set</span>(array)]</div></pre></td></tr></table></figure>
 <p>Set 内部判断两个值是否不同，使用的算法叫做“Same-value equality”，类似精确相等运算符（<code>===</code>），主要的区别是<code>NaN</code>等于自身（<code>===</code>认为<code>NaN</code>不等于自身）。另外，两个对象总是不相等的。</p>
 <p>2.Set 实例的属性和方法：</p>
-]]></content>
+<p>实例属性：</p>
+<ul>
+<li><code>Set.prototype.constructor</code>：构造函数，默认就是<code>Set</code>函数。</li>
+<li><code>Set.prototype.size</code>：返回<code>Set</code>实例的成员总数。</li>
+</ul>
+<p>操作方法：</p>
+<ul>
+<li><code>add(value)</code>：添加某个值，返回 Set 结构本身。</li>
+<li><code>delete(value)</code>：删除某个值，返回一个表示删除是否成功的布尔值。</li>
+<li><code>has(value)</code>：返回一个布尔值。</li>
+<li><code>clear()</code>：清除所有成员，没有返回值。</li>
+</ul>
+<p>遍历方法（Set 结构中，键名和键值是同一个值）：</p>
+<ul>
+<li><code>keys()</code>：返回键名的遍历器</li>
+<li><code>values()</code>：返回键值的遍历器</li>
+<li><code>entries()</code>：返回键值对的遍历器</li>
+<li><code>forEach()</code>：使用回调函数遍历每个成员</li>
+</ul>
+<p><code>Array.from</code>方法可以将 Set 结构转为数组。</p>
+<h3 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h3><p>3.含义：与 Set 类似，但成员只能是对象，且都是弱引用，即垃圾回收机制不考虑 WeakSet 对该对象的引用。如果其他对象都不再引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存，不考虑该对象还存在于 WeakSet 之中。</p>
+<p>ES 6 规定，WeakSet 不可遍历。</p>
+<p>4.语法：有<code>add</code>、<code>delete</code>、<code>has</code>方法；没有<code>size</code>属性。</p>
+<p>5.用处：是储存 DOM 节点，而不用担心这些节点从文档移除时，会引发内存泄漏。</p>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>6.含义和基本用法：为了解决 Object 的只能用字符串当作键名的问题，ES 6 提供了 Map 数据结构。各种类型的值（包括对象）都可以当作键。</p>
+<p>有<code>set(key, value)</code>、<code>get(key)</code>、<code>has(key)</code>、<code>delete(key)</code>、<code>clear()</code>方法。</p>
+<p>作为构造函数，Map 可以接受一个数组作为参数，该数组的成员是一个个<strong>表示键值对的数组</strong>。</p>
+<p>如果对同一个键多次赋值，后面的值将覆盖前面的值；如果读取一个未知的键，则返回<code>undefined</code>。</p>
+<p>7.与其他数据结构的互相转换：</p>
+<ul>
+<li>Map 转为数组：使用扩展运算符（<code>...</code>）。</li>
+<li>数组转为 Map：使用 Map 构造函数。</li>
+<li>Map 转为对象：如果所有 Map 的键都是字符串，可以转为对象。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">strMapToObj</span>(<span class="params">strMap</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> [k, v] <span class="keyword">of</span> strMap)&#123;</div><div class="line">    obj[k] = v;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> myMap = <span class="keyword">new</span> <span class="built_in">Map</span>().set(<span class="string">'yes'</span>, <span class="literal">true</span>).set(<span class="string">'no'</span>, <span class="literal">false</span>);</div><div class="line">strMapToObj(myMap);</div><div class="line"><span class="comment">// &#123; yes: true, no: false &#125;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>对象转为 Map：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">objToStrMap</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> strMap = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> k <span class="keyword">of</span> <span class="built_in">Object</span>.keys(obj))&#123;</div><div class="line">    strMap.set(k, obj[k]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> strMap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Map 转为 JSON：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 情况一：Map 的键名都是字符串</span></div><div class="line"><span class="comment">// 可以转换为对象 JSON</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">strMapToJson</span>(<span class="params">strMap</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(strMapToObj(strMap));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 情况二：Map 的键名有非字符串</span></div><div class="line"><span class="comment">// 可以转换为数组 JSON</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapToArrayJSON</span>(<span class="params">map</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify([...map]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>JSON 转为 Map：逆操作。</li>
+</ul>
+<h3 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h3><p>8.含义：与 Map 类似，用于生成键值对。但只接受对象作为键名（<code>null</code>除外），且键名所指向的对象不计入垃圾回收机制。</p>
+<p>专用场合：它的键所对应的对象可能会在将来消失。<code>WeakMap</code>结构有助于防止内存泄漏。</p>
+<p>9.语法：没有遍历操作，无法清空。只有四个方法可用：<code>get()</code>、<code>set()</code>、<code>has()</code>、<code>delete()</code>。</p>
+<p>10.用处：DOM 节点作为键名。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 一个例子</span></div><div class="line"><span class="keyword">let</span> myElement = <span class="built_in">document</span>.getElementById(<span class="string">'logo'</span>);</div><div class="line"><span class="keyword">let</span> myWeakmap = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"></div><div class="line">myWeakmap.set(myElement, &#123;<span class="attr">timesClicked</span>: <span class="number">0</span>&#125;);</div><div class="line"></div><div class="line">myElement.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> logoData = myWeakmap.get(myElement);</div><div class="line">  logoData.timesClicked++;</div><div class="line">&#125;, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="comment">// 一旦这个DOM节点删除，该状态就会自动消失，不存在内存泄漏风险</span></div></pre></td></tr></table></figure>
+<p>注册监听事件的<code>listener</code>对象，就很适合用 WeakMap 实现。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> listener = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"></div><div class="line">listener.set(element1, handler1);</div><div class="line">listener.set(element2, handler2);</div><div class="line"></div><div class="line">element1.addEventListener(<span class="string">'click'</span>, listener.get(element1), <span class="literal">false</span>);</div><div class="line">element2.addEventListener(<span class="string">'click'</span>, listener.get(element2), <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="comment">// 一旦DOM对象消失，跟它绑定的监听函数也会自动消失</span></div></pre></td></tr></table></figure>
+<p>WeakMap 的另一个用处是部署私有属性。</p>
+<h2 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h2>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《&lt;a href=&quot;http://es6.ruanyifeng.com/#README&quot;&gt;ECMAScript 6 入门&lt;/a&gt;》。希望能早日啃完，想去看 Vue.js 了…&lt;/p&gt;
-&lt;p&gt;此博文包括：函数的扩展、对象的扩展、Symbol…&lt;/p&gt;
+&lt;p&gt;此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构…&lt;/p&gt;
     
     </summary>
     
@@ -326,6 +302,85 @@
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《精通jQuery》读书笔记</title>
+    <link href="http://kyonhuang.top/read-jQuery-master/"/>
+    <id>http://kyonhuang.top/read-jQuery-master/</id>
+    <published>2017-04-21T06:50:27.000Z</published>
+    <updated>2017-04-22T12:50:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这几天看到很多前端大牛对学习中的一个共同认知：不要啃别人的二手资料。确实别人咀嚼后的产物质量参差不齐，还是要多读文档，然后是优秀的书籍。</p>
+<p>感觉自己对 jQuery 了解不够，看见别人有推荐《精通jQuery》，先读一读。前面几章的基础知识也可起查漏补缺的作用。这里只记录一些我不清楚或者感觉要背的那种知识点。</p>
+  <a id="more"></a>
+<h2 id="了解-jQuery"><a href="#了解-jQuery" class="headerlink" title="了解 jQuery"></a>了解 jQuery</h2><h3 id="jQuery-核心库的工作"><a href="#jQuery-核心库的工作" class="headerlink" title="jQuery 核心库的工作"></a>jQuery 核心库的工作</h3><p>通过处理浏览器加载 HTML 时动态创建的 DOM（文档对象模型），达到动态修改页面内容的目标。</p>
+<h2 id="HTML-入门"><a href="#HTML-入门" class="headerlink" title="HTML 入门"></a>HTML 入门</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>一个事件在它的生命周期中要经历 3 个阶段：<strong>捕获</strong>、处理<strong>目标元素</strong>和<strong>冒泡</strong>。</p>
+<p>目标元素：触发事件的元素。</p>
+<h2 id="CSS-基础"><a href="#CSS-基础" class="headerlink" title="CSS 基础"></a>CSS 基础</h2><h3 id="反选择器"><a href="#反选择器" class="headerlink" title="反选择器"></a>反选择器</h3><p><code>:not(&lt;selector&gt;)</code>：选取不匹配指定选择器的元素。</p>
+<h3 id="样式层叠"><a href="#样式层叠" class="headerlink" title="样式层叠"></a>样式层叠</h3><p>浏览器查找样式元素值的顺序：</p>
+<ol>
+<li>行内样式（定义在元素 style 属性中的样式）；</li>
+<li>内嵌样式（定义在 style 元素中的样式）；</li>
+<li>外部样式（使用 link 元素导入的样式）；</li>
+<li>用户样式（用户自己定义的样式）；</li>
+<li>浏览器样式（浏览器提供的默认样式）。</li>
+</ol>
+<p>前三个又合称为作者样式。</p>
+<h4 id="important-规则"><a href="#important-规则" class="headerlink" title="important 规则"></a>important 规则</h4><p>在样式声明的末尾追加<code>!important</code>可以把改值标识为<strong>重要样式</strong>。浏览器会给重要样式以优先权，而不再考虑这个样式的定义位置。</p>
+<p>唯一能优先于作者样式中重要样式的样式是定义在用户样式表中的重要样式。对于普通样式来说，作者样式优先于用户样式。但对于重要样式，浏览器的做法恰恰相反。</p>
+<h4 id="“专一程度”"><a href="#“专一程度”" class="headerlink" title="“专一程度”"></a>“专一程度”</h4><p>浏览器根据以下 3 个特征计算样式的“专一程度”：</p>
+<ol>
+<li>选择器中出现的 id 值个数；</li>
+<li>选择器中出现的其他属性和伪类个数；</li>
+<li>选择器中出现的元素名字和伪元素名字个数。</li>
+</ol>
+<p>以 a-b-c 这种形式评估样式规则的“专一”程度，逐位比较，每一位上数字越大表示越专一。例如，1-0-0 比 0-5-5 更专一。</p>
+<p>如果有多条样式规则的专一程度相同，那么浏览器会选择最后定义的那条规则。专一程度规则仅在同一层叠级别有效。</p>
+<h3 id="样式单位"><a href="#样式单位" class="headerlink" title="样式单位"></a>样式单位</h3><h4 id="相对长度单位"><a href="#相对长度单位" class="headerlink" title="相对长度单位"></a>相对长度单位</h4><ul>
+<li>em：相对于元素字号的高度；</li>
+<li>ex：相对于元素字体中小写字母 x 的高度；</li>
+<li>rem：相对于根元素的高度；</li>
+<li>px：CSS 像素（假定位于一个 96dpi 的显示设备上，实际上是绝对单位，不会改变大小）；</li>
+<li>%：另一属性值的百分比。</li>
+</ul>
+<h2 id="jQuery-基础"><a href="#jQuery-基础" class="headerlink" title="jQuery 基础"></a>jQuery 基础</h2><h3 id="使用-CDN-版的-jQuery"><a href="#使用-CDN-版的-jQuery" class="headerlink" title="使用 CDN 版的 jQuery"></a>使用 CDN 版的 jQuery</h3><p>CDN（Content Delivery Network）：内容分发网络。当用户请求其数据时，CDN 能智能地分配离用户最近的服务器提供服务。</p>
+<p>使用 CDN 的两个优点：(1)用户体验更好（速度通常更快）；(2)节省了传输 jQuery 库所需带宽。</p>
+<p>CDN 不适合内联网应用程序。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="$ 函数"></a>$ 函数</h3><p><code>jQuery.noConflict</code>方法让 jQuery 放弃使用 $ 符号。也可将该方法的返回值赋给一个变量以自定义 jQuery 简写符号。</p>
+<h3 id="延迟-ready-事件的触发时间"><a href="#延迟-ready-事件的触发时间" class="headerlink" title="延迟 ready 事件的触发时间"></a>延迟 ready 事件的触发时间</h3><p><code>$.holdReady(true)</code>必须在 ready 事件触发之前调用，<code>$.holdReady(false)</code>告诉 jQuery 触发 ready 事件。可以多次调用，但在 ready 事件被真正触发之前，使用 true 参数调用次数要等于使用 false 参数调用次数。 </p>
+<h3 id="选择元素"><a href="#选择元素" class="headerlink" title="选择元素"></a>选择元素</h3><p><img src="/images/jQueryMaster/jquery-selector1.jpg"></p>
+<p><img src="/images/jQueryMaster/jquery-selector2.jpg"></p>
+<h4 id="使用上下文限制搜索范围"><a href="#使用上下文限制搜索范围" class="headerlink" title="使用上下文限制搜索范围"></a>使用上下文限制搜索范围</h4><p>多给 $ 函数提供一个参数以限制搜索的范围。如果提供的上下文选择器匹配多个元素，将会把匹配上下文选择器的元素收集在一起，然后再匹配主选择器。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"img:odd"</span>, $(<span class="string">".drow"</span>))</div><div class="line"><span class="comment">// img:odd选择器会应用在.drow选择器的结果上</span></div></pre></td></tr></table></figure>
+<h4 id="确定选择结果"><a href="#确定选择结果" class="headerlink" title="确定选择结果"></a>确定选择结果</h4><p><img src="/images/jQueryMaster/jquery-selector3.jpg"></p>
+<h2 id="数据模版"><a href="#数据模版" class="headerlink" title="数据模版"></a>数据模版</h2><p>介绍了模板库 Handlebars。</p>
+<h3 id="定义模板"><a href="#定义模板" class="headerlink" title="定义模板"></a>定义模板</h3><p>数据模板库的核心是<strong>数据模板</strong>——包含着占位符的 HTML 元素。</p>
+<p>p268</p>
+<h2 id="处理表单"><a href="#处理表单" class="headerlink" title="处理表单"></a>处理表单</h2><p>介绍了 jQuery 插件 Validation，它专门处理表单验证问题。</p>
+<p><a href="http://code.ciaoca.com/jquery/validation-engine/" target="_blank" rel="external">jQuery Validation Engine 表单验证</a></p>
+<p>p297</p>
+<h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p>p331</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这几天看到很多前端大牛对学习中的一个共同认知：不要啃别人的二手资料。确实别人咀嚼后的产物质量参差不齐，还是要多读文档，然后是优秀的书籍。&lt;/p&gt;
+&lt;p&gt;感觉自己对 jQuery 了解不够，看见别人有推荐《精通jQuery》，先读一读。前面几章的基础知识也可起查漏补缺的作用。这里只记录一些我不清楚或者感觉要背的那种知识点。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="jQuery" scheme="http://kyonhuang.top/tags/jQuery/"/>
+    
+      <category term="《精通jQuery》" scheme="http://kyonhuang.top/tags/%E3%80%8A%E7%B2%BE%E9%80%9AjQuery%E3%80%8B/"/>
     
   </entry>
   
