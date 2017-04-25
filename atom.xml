@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-04-24T11:43:43.000Z</updated>
+  <updated>2017-04-24T12:39:35.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -16,14 +16,14 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>《ECMAScript 6 入门》读书笔记(二)（更新至4.24）</title>
-    <link href="http://kyonhuang.top/34507/"/>
-    <id>http://kyonhuang.top/34507/</id>
+    <title>《ECMAScript 6 入门》读书笔记(二）</title>
+    <link href="http://kyonhuang.top/es6-2/"/>
+    <id>http://kyonhuang.top/es6-2/</id>
     <published>2017-04-24T10:36:13.000Z</published>
-    <updated>2017-04-24T11:43:43.000Z</updated>
+    <updated>2017-04-24T12:39:35.000Z</updated>
     
     <content type="html"><![CDATA[<p>说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>》。希望能早日啃完，想去看 Vue.js 了…</p>
-<p>此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构…</p>
+<p>此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构。</p>
   <a id="more"></a>
 <h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h2><h3 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h3><p>1.ES 6 允许为函数的参数设置默认值，即直接写在参数定义的后面。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x, y = <span class="string">'World'</span></span>)</span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">log(<span class="string">'Hello'</span>)  <span class="comment">// Hello World</span></div><div class="line">log(<span class="string">'Hello'</span>, <span class="string">'Kyon'</span>)  <span class="comment">// Hello Kyon</span></div><div class="line">log(<span class="string">'Hello'</span>, <span class="string">''</span>)  <span class="comment">// Hello</span></div><div class="line"></div><div class="line"><span class="comment">// 与解构赋值默认值结合使用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">&#123;x, y = <span class="number">5</span>&#125;</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(&#123;<span class="attr">x</span>: <span class="number">1</span>&#125;)  <span class="comment">// 1, 5</span></div><div class="line">foo()  <span class="comment">// TypeeError: Cannot read property 'x' of undefined</span></div><div class="line"></div><div class="line"><span class="comment">// 函数参数的默认值是空对象，但是设置了对象解构赋值的默认值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m1</span>(<span class="params">&#123;x = <span class="number">0</span>, y = <span class="number">0</span>&#125; = &#123;&#125;</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数参数的默认值是一个有具体属性的对象，但是没有设置对象解构赋值的默认值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m2</span>(<span class="params">&#123;x, y&#125; = &#123; x: <span class="number">0</span>, y: <span class="number">0</span> &#125;</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数没有参数的情况</span></div><div class="line">m1() <span class="comment">// [0, 0]</span></div><div class="line">m2() <span class="comment">// [0, 0]</span></div><div class="line"></div><div class="line"><span class="comment">// x有值，y无值的情况</span></div><div class="line">m1(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;) <span class="comment">// [3, 0]</span></div><div class="line">m2(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;) <span class="comment">// [3, undefined]</span></div><div class="line"></div><div class="line"><span class="comment">// x和y都无值的情况</span></div><div class="line">m1(&#123;&#125;) <span class="comment">// [0, 0];</span></div><div class="line">m2(&#123;&#125;) <span class="comment">// [undefined, undefined]</span></div></pre></td></tr></table></figure>
@@ -281,12 +281,14 @@
 <p>注册监听事件的<code>listener</code>对象，就很适合用 WeakMap 实现。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> listener = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"></div><div class="line">listener.set(element1, handler1);</div><div class="line">listener.set(element2, handler2);</div><div class="line"></div><div class="line">element1.addEventListener(<span class="string">'click'</span>, listener.get(element1), <span class="literal">false</span>);</div><div class="line">element2.addEventListener(<span class="string">'click'</span>, listener.get(element2), <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="comment">// 一旦DOM对象消失，跟它绑定的监听函数也会自动消失</span></div></pre></td></tr></table></figure>
 <p>WeakMap 的另一个用处是部署私有属性。</p>
-<h2 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h2>]]></content>
+<h2 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h2><p>暂时跳过。</p>
+<h2 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h2><p>暂时跳过。</p>
+]]></content>
     
     <summary type="html">
     
       &lt;p&gt;说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《&lt;a href=&quot;http://es6.ruanyifeng.com/#README&quot;&gt;ECMAScript 6 入门&lt;/a&gt;》。希望能早日啃完，想去看 Vue.js 了…&lt;/p&gt;
-&lt;p&gt;此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构…&lt;/p&gt;
+&lt;p&gt;此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构。&lt;/p&gt;
     
     </summary>
     
@@ -386,10 +388,10 @@
   
   <entry>
     <title>最近在干以及打算干些什么</title>
-    <link href="http://kyonhuang.top/39685/"/>
-    <id>http://kyonhuang.top/39685/</id>
+    <link href="http://kyonhuang.top/recent-and-will/"/>
+    <id>http://kyonhuang.top/recent-and-will/</id>
     <published>2017-04-19T02:22:33.000Z</published>
-    <updated>2017-04-24T12:18:23.000Z</updated>
+    <updated>2017-04-25T10:47:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>这几周很忙，有种没头没脑的感觉。简单地总结一下最近干了些什么以及打算干些什么。可能很快删。</p>
 <p><img src="/images/QinSir.jpg"></p>
@@ -432,10 +434,10 @@
   
   <entry>
     <title>《ECMAScript 6 入门》读书笔记(一)</title>
-    <link href="http://kyonhuang.top/26899/"/>
-    <id>http://kyonhuang.top/26899/</id>
+    <link href="http://kyonhuang.top/es6-1/"/>
+    <id>http://kyonhuang.top/es6-1/</id>
     <published>2017-04-06T08:21:52.000Z</published>
-    <updated>2017-04-19T12:05:46.000Z</updated>
+    <updated>2017-04-24T12:37:56.000Z</updated>
     
     <content type="html"><![CDATA[<p>《ECMAScript 6 入门》是一本 JavaScript 语言教程，全面介绍 ECMAScript 6 新引入的语法特性。作者阮一峰大佬慷慨地选择将全书开源：<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>。将知识点简便地总结一下，以供后续使用时参考或复习。</p>
 <p>此博文包括：let 和 const命令、变量的解构赋值、字符串的扩展、正则的扩展、数值的扩展、数组的扩展。</p>
@@ -686,10 +688,10 @@
   
   <entry>
     <title>初见Sass－便捷的CSS预处理器</title>
-    <link href="http://kyonhuang.top/1478/"/>
-    <id>http://kyonhuang.top/1478/</id>
+    <link href="http://kyonhuang.top/sass-begin/"/>
+    <id>http://kyonhuang.top/sass-begin/</id>
     <published>2017-04-03T11:21:22.000Z</published>
-    <updated>2017-04-04T12:33:32.000Z</updated>
+    <updated>2017-04-25T10:47:01.000Z</updated>
     
     <content type="html"><![CDATA[<p>发现自己又找到一本关于前端实践的优质开源书<a href="https://juntao.gitbooks.io/3-web-designs-in-3-weeks/content/index.html" target="_blank" rel="external">《3周3页面》</a>。作者通过实际项目介绍了前端必备的一些工具，教读者一步一步实现设计，而且步骤非常详细。写下这篇博文为止，我已经完成了第一个项目。在第一个项目中，作者向读者推荐了Sass，并且号称“一旦你开始使用它，你就再也回不去了。”</p>
 <a id="more"></a>
@@ -726,24 +728,24 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
       <category term="WebStorm" scheme="http://kyonhuang.top/tags/WebStorm/"/>
     
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
   </entry>
   
   <entry>
     <title>神奇的CSS动画</title>
-    <link href="http://kyonhuang.top/21422/"/>
-    <id>http://kyonhuang.top/21422/</id>
+    <link href="http://kyonhuang.top/css-animation/"/>
+    <id>http://kyonhuang.top/css-animation/</id>
     <published>2017-03-25T07:58:01.000Z</published>
-    <updated>2017-04-03T12:01:20.000Z</updated>
+    <updated>2017-04-25T10:44:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>按照传统的方式，在页面上实现动画的方式有多种，包括使用 GIF 图片、使用 JavaScript 来动态修改 DOM 的位置并加上一个定时器、使用 Flash 等。但这些方法都存在自己的问题，比如引入额外的文件会导致页面尺寸变大，这样会导致页面加载变慢，从而影响用户体验。</p>
 <p>通过浏览器对 CSS3 标准的支持，我们不必再依赖于大尺寸的外部文件，仅凭 CSS 就可以实现动画。我以前没有机会使用，所以基本没有接触功能强大的 CSS 动画。在这篇博文中系统地总结一下，后续补充几个使用示例进一步巩固。</p>
@@ -864,10 +866,10 @@
   
   <entry>
     <title>在把玩中学习——typewriter.js</title>
-    <link href="http://kyonhuang.top/45763/"/>
-    <id>http://kyonhuang.top/45763/</id>
+    <link href="http://kyonhuang.top/typewriter/"/>
+    <id>http://kyonhuang.top/typewriter/</id>
     <published>2017-03-17T03:28:32.000Z</published>
-    <updated>2017-03-20T08:16:58.000Z</updated>
+    <updated>2017-04-25T10:47:31.000Z</updated>
     
     <content type="html"><![CDATA[<p>大约两周前我在空间里发了一条说说，说感觉自己的创造力日渐枯竭。很多同学不以为然，实际上我是真的有这样的认知。我感觉自己在失去对代码之美的感知，而这种创造力的枯竭也一定程度影响着我的动手能力。我在看书、看视频，却不太愿意去写百度前端训练营里一些基础的代码（而且并不大会）。我安慰自己，我正在修炼内力，一旦出关便是绝世神功威震武林。然而事实是金庸小说中光有内力而不懂一点外家功夫的货，都只有乖乖挨揍的份，至于之后能否成功报仇又是两说。就像我昨天想写一个很简单的动画效果，却最终一筹莫展，只能暂时放弃。</p>
 <p>好吧，让我把自己从枯燥的读书笔记中暂时解放出来吧。正好有一个有趣的小 demo，从我还没有打算系统学习前端开发时就躺在收藏夹里了。不妨把玩一下，看看别人能凭借着兴趣写出怎样有意思的小东西。</p>
@@ -899,13 +901,13 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
   </entry>
   
@@ -1387,10 +1389,10 @@
   
   <entry>
     <title>【中文填词】三つ叶の结びめ -TV size.-</title>
-    <link href="http://kyonhuang.top/36132/"/>
-    <id>http://kyonhuang.top/36132/</id>
+    <link href="http://kyonhuang.top/lyrics-seaStory/"/>
+    <id>http://kyonhuang.top/lyrics-seaStory/</id>
     <published>2017-03-01T03:25:26.000Z</published>
-    <updated>2017-03-01T04:47:58.000Z</updated>
+    <updated>2017-04-25T10:45:17.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/images/lyrics/sea.jpeg"></p>
 <p>大一下学期考试周复习得好压抑，我就作死地补了《来自风平浪静的明天》。看完就感觉：啊，不愧是冈妈。虽然我不是那种容易被催泪的类型，但是还是有些胃痛的。</p>
@@ -1717,10 +1719,10 @@
   
   <entry>
     <title>又是一个新学期开始了</title>
-    <link href="http://kyonhuang.top/28480/"/>
-    <id>http://kyonhuang.top/28480/</id>
+    <link href="http://kyonhuang.top/new-term/"/>
+    <id>http://kyonhuang.top/new-term/</id>
     <published>2017-02-19T09:52:31.000Z</published>
-    <updated>2017-02-23T07:54:44.000Z</updated>
+    <updated>2017-04-25T10:45:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>大二的下学期就要开始了。在寒假里，我自学了JavaScript和jQuery，看完了极客学院这两部分以及AngularJS入门的视频，廖雪峰JS教程学到underscore为止。由于缺乏系统学习和动手实践，掌握肯定不甚牢固。寒假的充实度可以说差强人意吧。</p>
 <p>新学期课感觉要比上学期略少一点，但都是专业课，也有一定难度。希望自己在课业不放松的同时尽力实现以下学习目标，并产出有质量的博文以进行总结：</p>
