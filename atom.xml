@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-04-24T12:39:35.000Z</updated>
+  <updated>2017-04-26T11:49:42.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -16,11 +16,62 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>《ECMAScript 6 入门》读书笔记(二）</title>
+    <title>最近在干以及打算干些什么</title>
+    <link href="http://kyonhuang.top/recent-and-will/"/>
+    <id>http://kyonhuang.top/recent-and-will/</id>
+    <published>2017-04-26T10:22:33.000Z</published>
+    <updated>2017-04-26T11:49:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这几周很忙，有种没头没脑的感觉。简单地总结一下最近干了些什么以及打算干些什么。可能很快删。</p>
+<p><img src="/images/QinSir.jpg"></p>
+<p>在干什么：</p>
+<ul>
+<li>写花旗杯项目前端第一版。</li>
+<li>开始看 Vue.js 的文档。</li>
+<li>看一些关于前端工程化的博文。</li>
+</ul>
+<p>打算干什么：</p>
+<ul>
+<li>对花旗项目设计效果不是很满意，想抽时间自己设计一版并实现。</li>
+<li>继续看完 Vue.js 的文档并且找一个 Demo 做一做。</li>
+<li>尽早看完 ES 6 新特性。</li>
+<li>看一看 Grid。</li>
+</ul>
+<p>最近看的优秀文章：</p>
+<ul>
+<li><a href="http://www.alloyteam.com/2017/03/getting-started-with-css-modules-and-react-in-practice/" target="_blank" rel="external">CSS Modules 入门及 React 中实践</a></li>
+<li><a href="http://www.alloyteam.com/2016/03/master-npm/" target="_blank" rel="external">玩转 npm</a>：介绍了常用的 npm 命令。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这几周很忙，有种没头没脑的感觉。简单地总结一下最近干了些什么以及打算干些什么。可能很快删。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/QinSir.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在干什么：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;写花旗杯项目前端第一版。&lt;/li&gt;
+&lt;li&gt;开始看 V
+    
+    </summary>
+    
+      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
+    
+      <category term="学习之路" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《ECMAScript 6 入门》读书笔记(二)</title>
     <link href="http://kyonhuang.top/es6-2/"/>
     <id>http://kyonhuang.top/es6-2/</id>
     <published>2017-04-24T10:36:13.000Z</published>
-    <updated>2017-04-24T12:39:35.000Z</updated>
+    <updated>2017-04-25T10:53:52.000Z</updated>
     
     <content type="html"><![CDATA[<p>说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>》。希望能早日啃完，想去看 Vue.js 了…</p>
 <p>此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构。</p>
@@ -387,52 +438,6 @@
   </entry>
   
   <entry>
-    <title>最近在干以及打算干些什么</title>
-    <link href="http://kyonhuang.top/recent-and-will/"/>
-    <id>http://kyonhuang.top/recent-and-will/</id>
-    <published>2017-04-19T02:22:33.000Z</published>
-    <updated>2017-04-25T10:47:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这几周很忙，有种没头没脑的感觉。简单地总结一下最近干了些什么以及打算干些什么。可能很快删。</p>
-<p><img src="/images/QinSir.jpg"></p>
-<p>在干什么：</p>
-<ul>
-<li>写花旗杯项目前端第一版。</li>
-<li>开始看 Vue.js 的文档。</li>
-<li>看一些关于前端工程化的博文。</li>
-</ul>
-<p>打算干什么：</p>
-<ul>
-<li>对花旗项目设计效果不是很满意，想抽时间自己设计一版并实现。</li>
-<li>继续看完 Vue.js 的文档并且找一个 Demo 做一做。</li>
-<li>尽早看完 ES 6 新特性。</li>
-<li>看一看 Grid。</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这几周很忙，有种没头没脑的感觉。简单地总结一下最近干了些什么以及打算干些什么。可能很快删。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/QinSir.jpg&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在干什么：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;写花旗杯项目前端第一版。&lt;/li&gt;
-&lt;li&gt;开始看 V
-    
-    </summary>
-    
-      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
-    
-      <category term="学习之路" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>《ECMAScript 6 入门》读书笔记(一)</title>
     <link href="http://kyonhuang.top/es6-1/"/>
     <id>http://kyonhuang.top/es6-1/</id>
@@ -728,9 +733,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
@@ -901,9 +906,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
