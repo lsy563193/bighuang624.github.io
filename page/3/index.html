@@ -13,8 +13,14 @@
 
 
 
+
+
+
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
 
 
 
@@ -65,7 +71,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Kyon,大黄菌,大黄菌的个人博客,Web开发,kyonhuang,kyonhuang.top" />
@@ -79,7 +85,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/huang_full.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/huang_full.ico?v=5.1.1" />
 
 
 
@@ -103,7 +109,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -128,7 +134,7 @@
 
 
 
-  <title> 大黄菌的个人博客 </title>
+  <title>大黄菌的个人博客 - To be a better man</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -137,15 +143,19 @@
 
 
 
+
+
   <script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?38a1bce1ed7e84ef54ccd54545749913";
+      hm.src = "https://hm.baidu.com/hm.js?38a1bce1ed7e84ef54ccd54545749913";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
+
+
 
 
 
@@ -159,31 +169,35 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">大黄菌的个人博客</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大黄菌的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">To be a better man</p>
+      
   </div>
-  <p class="site-subtitle">To be a better man</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -244,32 +258,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
-
-
-    </div>
   
 </nav>
 
@@ -294,20 +285,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/57718/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/57718/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="大黄菌(Kyon)">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/touxiang.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="大黄菌的个人博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="大黄菌的个人博客" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大黄菌(Kyon)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
 
     
       <header class="post-header">
@@ -333,8 +321,10 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-24T11:54:37+08:00">
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-24T11:54:37+08:00">
                 2017-02-24
               </time>
             
@@ -346,11 +336,15 @@
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/前端学习笔记/" itemprop="url" rel="index">
@@ -369,8 +363,8 @@
           
 
           
-
           
+
           
 
           
@@ -380,7 +374,6 @@
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -392,7 +385,7 @@
           <p>这是完成<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001">百度前端学院2015的task1</a>后对前端布局知识点总结的第二篇博文。上一篇总结了一下overflow这个属性：<a href="http://kyonhuang.top/29199/">前端布局知识点(1)——overflow属性</a>。</p>
 <p>CSS中的负边距是布局中一个常用的技巧。因为在后面学习的双飞翼布局的实现就依赖于负边距，负边距又与文档流息息相关，所以我先对这部分的知识进行查询学习。</p>
           <!--noindex-->
-          <div class="post-more-link text-center">
+          <div class="post-button text-center">
             <a class="btn" href="/57718/#more" rel="contents">
               阅读全文 &raquo;
             </a>
@@ -410,8 +403,13 @@
       
     </div>
 
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -434,20 +432,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/29199/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/29199/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="大黄菌(Kyon)">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/touxiang.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="大黄菌的个人博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="大黄菌的个人博客" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大黄菌(Kyon)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
 
     
       <header class="post-header">
@@ -473,8 +468,10 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-23T10:34:12+08:00">
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-23T10:34:12+08:00">
                 2017-02-23
               </time>
             
@@ -486,11 +483,15 @@
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/前端学习笔记/" itemprop="url" rel="index">
@@ -509,8 +510,8 @@
           
 
           
-
           
+
           
 
           
@@ -520,7 +521,6 @@
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -532,7 +532,7 @@
           <p>完成了 <a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001">百度前端学院2015的task1</a> 后，感觉自己之前学习CSS以及前端布局确实不太全面，有很多知识点现在才接触到，而且也很久没有用过CSS写前端布局了。查漏补缺，总结了几个以前没有注意的知识点：overflow、负边距、圣杯布局和双飞翼布局。一开始想把所有知识点总结成一篇，写着写着发现较短的篇幅不足以把这些都总结清楚，所以还是每个知识点单写一篇。</p>
 <p>顺便推荐 <a href="http://zh.learnlayout.com/">学习CSS布局</a>，很好的布局学习资料，值得反复学习。用詹俊老师的话来说就是，好文不妨一看再看！</p>
           <!--noindex-->
-          <div class="post-more-link text-center">
+          <div class="post-button text-center">
             <a class="btn" href="/29199/#more" rel="contents">
               阅读全文 &raquo;
             </a>
@@ -550,8 +550,13 @@
       
     </div>
 
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -574,20 +579,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/new-term/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/new-term/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="大黄菌(Kyon)">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/touxiang.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="大黄菌的个人博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="大黄菌的个人博客" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大黄菌(Kyon)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
 
     
       <header class="post-header">
@@ -613,8 +615,10 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-19T17:52:31+08:00">
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-19T17:52:31+08:00">
                 2017-02-19
               </time>
             
@@ -626,11 +630,15 @@
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/程序员的生活/" itemprop="url" rel="index">
@@ -649,8 +657,8 @@
           
 
           
-
           
+
           
 
           
@@ -660,7 +668,6 @@
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -678,7 +685,7 @@
 <li><strong>英语</strong>：以尽量高的分数过六级。</li>
 </ol>
           <!--noindex-->
-          <div class="post-more-link text-center">
+          <div class="post-button text-center">
             <a class="btn" href="/new-term/#more" rel="contents">
               阅读全文 &raquo;
             </a>
@@ -696,8 +703,13 @@
       
     </div>
 
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -720,20 +732,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/8637/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/8637/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="大黄菌(Kyon)">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/touxiang.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="大黄菌的个人博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="大黄菌的个人博客" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大黄菌(Kyon)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
 
     
       <header class="post-header">
@@ -759,8 +768,10 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-19T14:24:51+08:00">
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-19T14:24:51+08:00">
                 2017-02-19
               </time>
             
@@ -772,11 +783,15 @@
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/前端学习笔记/" itemprop="url" rel="index">
@@ -795,8 +810,8 @@
           
 
           
-
           
+
           
 
           
@@ -807,7 +822,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -817,7 +831,7 @@
         
           <p>极客学院的视频《CSS 在工程中改变》中讲到了OO CSS这个概念，而在知乎上看到别人的回答中提到了语义化和CSS hack这两个概念。在查找了相关资料后，我对这几个概念有了一些自己的理解。</p>
           <!--noindex-->
-          <div class="post-more-link text-center">
+          <div class="post-button text-center">
             <a class="btn" href="/8637/#more" rel="contents">
               阅读全文 &raquo;
             </a>
@@ -835,8 +849,13 @@
       
     </div>
 
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -859,20 +878,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/sublime-learning/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/sublime-learning/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="大黄菌(Kyon)">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/touxiang.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="大黄菌的个人博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="大黄菌的个人博客" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大黄菌(Kyon)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
 
     
       <header class="post-header">
@@ -898,8 +914,10 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-13T16:41:37+08:00">
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-13T16:41:37+08:00">
                 2017-02-13
               </time>
             
@@ -911,11 +929,15 @@
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/程序猿喜欢折腾/" itemprop="url" rel="index">
@@ -934,8 +956,8 @@
           
 
           
-
           
+
           
 
           
@@ -945,7 +967,6 @@
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -957,7 +978,7 @@
           <p>作为一款主流前端开发编辑器软件，Sublime Text具有代码高亮、语法提示、自动完成，轻量级，易上手，并且支持插件扩展机制，可以说功能十分强大。</p>
 <p>我用Sublime Text已经有一段时间了，但是只是浮于表面，没有进一步探索。作为一名准备在Web方面继续深研的软工学生，我决定对Sublime Text的使用技巧进行学习，并写下这篇笔记。</p>
           <!--noindex-->
-          <div class="post-more-link text-center">
+          <div class="post-button text-center">
             <a class="btn" href="/sublime-learning/#more" rel="contents">
               阅读全文 &raquo;
             </a>
@@ -975,8 +996,13 @@
       
     </div>
 
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -999,20 +1025,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/biliInfoCrawler/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/biliInfoCrawler/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="大黄菌(Kyon)">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/touxiang.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="大黄菌的个人博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="大黄菌的个人博客" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大黄菌(Kyon)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
 
     
       <header class="post-header">
@@ -1038,8 +1061,10 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-27T18:24:19+08:00">
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-27T18:24:19+08:00">
                 2017-01-27
               </time>
             
@@ -1051,11 +1076,15 @@
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java学习笔记/" itemprop="url" rel="index">
@@ -1074,8 +1103,8 @@
           
 
           
-
           
+
           
 
           
@@ -1085,7 +1114,6 @@
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -1098,7 +1126,7 @@
 <p><img src="/images/biliCrawler/info.jpg" width="700px"/></p>
 <p>该项目使用的软件有Eclipse（IDE）、Charles（抓包工具）、MySQL（数据库）、Navicat Premium（数据库可视化工具）。以下代码截图全部基于OS X系统上自己编写的代码。</p>
           <!--noindex-->
-          <div class="post-more-link text-center">
+          <div class="post-button text-center">
             <a class="btn" href="/biliInfoCrawler/#more" rel="contents">
               阅读全文 &raquo;
             </a>
@@ -1116,8 +1144,13 @@
       
     </div>
 
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1140,20 +1173,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/bye2016hello2017/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/bye2016hello2017/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="大黄菌(Kyon)">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/touxiang.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="大黄菌的个人博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="大黄菌的个人博客" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大黄菌(Kyon)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
 
     
       <header class="post-header">
@@ -1179,8 +1209,10 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-30T22:52:51+08:00">
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-30T22:52:51+08:00">
                 2016-12-30
               </time>
             
@@ -1192,11 +1224,15 @@
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/程序员的生活/" itemprop="url" rel="index">
@@ -1215,8 +1251,8 @@
           
 
           
-
           
+
           
 
           
@@ -1227,7 +1263,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1237,7 +1272,7 @@
         
           <p>开始写的时候是12月30日晚上，刚刚考完的大物感觉还不错。然后马上就到了2016年的最后一天。希望能在2016年内写完这篇博文，给自己的这一年做一个回顾。更重要的是，认真地考虑一下，2017年应该去做些什么。</p>
           <!--noindex-->
-          <div class="post-more-link text-center">
+          <div class="post-button text-center">
             <a class="btn" href="/bye2016hello2017/#more" rel="contents">
               阅读全文 &raquo;
             </a>
@@ -1255,8 +1290,13 @@
       
     </div>
 
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1279,20 +1319,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/lyrics-aircloud/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/lyrics-aircloud/">
 
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="大黄菌(Kyon)">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/touxiang.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="大黄菌的个人博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="大黄菌的个人博客" src="">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="大黄菌(Kyon)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
     </span>
-  </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
 
     
       <header class="post-header">
@@ -1318,8 +1355,10 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-06T16:21:56+08:00">
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-06T16:21:56+08:00">
                 2016-12-06
               </time>
             
@@ -1331,11 +1370,15 @@
 
           
             <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/中文填词/" itemprop="url" rel="index">
@@ -1354,8 +1397,8 @@
           
 
           
-
           
+
           
 
           
@@ -1365,7 +1408,6 @@
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -1381,7 +1423,7 @@
 <p>当时B站恰巧推出了“夏日延长线”的翻唱活动，想填词＋翻唱来参加。词是以远高于一般速度地填完了（果然ddl是第一生产力w），但录制翻唱什么的，直到现在还没有尝试过。夏天终究是属于遗憾的季节。</p>
 <p>尽管写的很快，还是花了很多心思去斟酌如何表现那种孩童时的懵懂和错过时的心酸。如果看到这的人觉得这首词填的还不错，我就很开心了。要是有唱(mei)见(zi)愿意拿这首词翻唱，那我就可以上天了ε=ε=(ノ≧∇≦)ノ当然也欢迎交流讨论。<br>
           <!--noindex-->
-          <div class="post-more-link text-center">
+          <div class="post-button text-center">
             <a class="btn" href="/lyrics-aircloud/#more" rel="contents">
               阅读全文 &raquo;
             </a>
@@ -1399,8 +1441,13 @@
       
     </div>
 
+    <div>
+      
+    </div>
 
     <footer class="post-footer">
+      
+
       
 
       
@@ -1454,19 +1501,26 @@
                src="/images/touxiang.jpg"
                alt="大黄菌(Kyon)" />
           <p class="site-author-name" itemprop="name">大黄菌(Kyon)</p>
-          <p class="site-description motion-element" itemprop="description">大学软工狗/摸鱼型填词</p>
+           
+              <p class="site-description motion-element" itemprop="description">大学软工狗/摸鱼型填词</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">25</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
           
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -1474,8 +1528,10 @@
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -1497,7 +1553,7 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/bighuang624" target="_blank" rel="external nofollow">
+                <a href="https://github.com/bighuang624" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>
                   
@@ -1506,7 +1562,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/5674727867" target="_blank" rel="external nofollow">
+                <a href="http://weibo.com/5674727867" target="_blank" title="微博">
                   
                     <i class="fa fa-fw fa-weibo"></i>
                   
@@ -1515,7 +1571,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/huang-si-teng-67" target="_blank" rel="external nofollow">
+                <a href="https://www.zhihu.com/people/huang-si-teng-67" target="_blank" title="知乎">
                   
                     <i class="fa fa-fw fa-globe"></i>
                   
@@ -1524,7 +1580,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://music.163.com/#/user/home?id=85145665" target="_blank" rel="external nofollow">
+                <a href="http://music.163.com/#/user/home?id=85145665" target="_blank" title="网易云">
                   
                     <i class="fa fa-fw fa-music"></i>
                   
@@ -1548,6 +1604,8 @@
 
       
 
+      
+
     </div>
   </aside>
 
@@ -1565,45 +1623,55 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder"> 大黄菌(Kyon)</span>
+  <span class="author" itemprop="copyrightHolder">大黄菌(Kyon)</span>
 </div>
 
 
 <div class="powered-by">
-    个人博客
+  blog powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  天下武功，无勤不破
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
   </a>
 </div>
 
 
         
-
 <div class="busuanzi-count">
-
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-    <span class="site-uv">您是第<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>位访客</span>
+    <span class="site-uv">
+      您是第
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      位访客
+    </span>
   
 
   
-    <span class="site-pv">总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
-  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
   
 </div>
-
 
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
@@ -1626,6 +1694,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
@@ -1633,7 +1710,7 @@
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
   <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
@@ -1648,33 +1725,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
 
 
 
   
 
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
 
 
   
@@ -1687,134 +1763,31 @@
 
 
 
+
   
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-      search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
 
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = $( "entry", xmlResponse ).map(function() {
-            return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
-            };
-          }).get();
-          var $input = document.getElementById(search_id);
-          var $resultContent = document.getElementById(content_id);
-          $input.addEventListener('input', function(){
-            var matchcounts = 0;
-            var str='<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length > 1) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var content_index = [];
-                var data_title = data.title.trim().toLowerCase();
-                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
-                var index_title = -1;
-                var index_content = -1;
-                var first_occur = -1;
-                // only match artiles with not empty titles and contents
-                if(data_title != '') {
-                  keywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
 
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                  var content = data.content.trim().replace(/<[^>]+>/g,"");
-                  if (first_occur >= 0) {
-                    // cut out 100 characters
-                    var start = first_occur - 20;
-                    var end = first_occur + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if(start == 0){
-                      end = 50;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    var match_content = content.substring(start, end);
-                    // highlight all keywords
-                    keywords.forEach(function(keyword){
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                    });
 
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
-                  }
-                  str += "</li>";
-                }
-              })};
-            str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
 
 
   
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
 
   
 
@@ -1837,8 +1810,11 @@
 
   
 
-  <script type="text/javascript" src="/js/src/love.js"></script>
-  <script type="text/javascript" src="/js/src/copyright.js"></script>
-<!--   <script src="https://cdn.bootcss.com/moment.js/2.17.0/moment.min.js"></script> -->
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- <script type="text/javascript" src="/js/src/copyright.js"></script> -->
 </body>
 </html>

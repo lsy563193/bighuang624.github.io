@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-04-26T11:49:42.000Z</updated>
+  <updated>2017-04-27T01:32:14.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kyonhuang.top/recent-and-will/"/>
     <id>http://kyonhuang.top/recent-and-will/</id>
     <published>2017-04-26T10:22:33.000Z</published>
-    <updated>2017-04-26T11:49:42.000Z</updated>
+    <updated>2017-04-27T01:32:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>这几周很忙，有种没头没脑的感觉。简单地总结一下最近干了些什么以及打算干些什么。可能很快删。</p>
 <p><img src="/images/QinSir.jpg"></p>
@@ -41,6 +41,8 @@
 <ul>
 <li><a href="http://www.alloyteam.com/2017/03/getting-started-with-css-modules-and-react-in-practice/" target="_blank" rel="external">CSS Modules 入门及 React 中实践</a></li>
 <li><a href="http://www.alloyteam.com/2016/03/master-npm/" target="_blank" rel="external">玩转 npm</a>：介绍了常用的 npm 命令。</li>
+<li><a href="https://github.com/xufei/blog/issues/5" target="_blank" rel="external">构建单页Web应用</a></li>
+<li><a href="https://github.com/lin-xin/blog/issues/11" target="_blank" rel="external">HTML5 高级系列：web Storage</a></li>
 </ul>
 ]]></content>
     
@@ -733,15 +735,15 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
       <category term="WebStorm" scheme="http://kyonhuang.top/tags/WebStorm/"/>
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -906,13 +908,13 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
