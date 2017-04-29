@@ -71,10 +71,10 @@
   
   <entry>
     <title>《ECMAScript 6 入门》读书笔记(二)</title>
-    <link href="http://kyonhuang.top/es6-2/"/>
-    <id>http://kyonhuang.top/es6-2/</id>
+    <link href="http://kyonhuang.top/es6-2-notes/"/>
+    <id>http://kyonhuang.top/es6-2-notes/</id>
     <published>2017-04-24T10:36:13.000Z</published>
-    <updated>2017-04-25T10:53:52.000Z</updated>
+    <updated>2017-04-28T07:49:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>》。希望能早日啃完，想去看 Vue.js 了…</p>
 <p>此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构。</p>
@@ -363,10 +363,10 @@
   
   <entry>
     <title>《精通jQuery》读书笔记</title>
-    <link href="http://kyonhuang.top/read-jQuery-master/"/>
-    <id>http://kyonhuang.top/read-jQuery-master/</id>
+    <link href="http://kyonhuang.top/jQuery-master-notes/"/>
+    <id>http://kyonhuang.top/jQuery-master-notes/</id>
     <published>2017-04-21T06:50:27.000Z</published>
-    <updated>2017-04-22T12:50:16.000Z</updated>
+    <updated>2017-04-28T07:48:58.000Z</updated>
     
     <content type="html"><![CDATA[<p>这几天看到很多前端大牛对学习中的一个共同认知：不要啃别人的二手资料。确实别人咀嚼后的产物质量参差不齐，还是要多读文档，然后是优秀的书籍。</p>
 <p>感觉自己对 jQuery 了解不够，看见别人有推荐《精通jQuery》，先读一读。前面几章的基础知识也可起查漏补缺的作用。这里只记录一些我不清楚或者感觉要背的那种知识点。</p>
@@ -442,10 +442,10 @@
   
   <entry>
     <title>《ECMAScript 6 入门》读书笔记(一)</title>
-    <link href="http://kyonhuang.top/es6-1/"/>
-    <id>http://kyonhuang.top/es6-1/</id>
+    <link href="http://kyonhuang.top/es6-1-notes/"/>
+    <id>http://kyonhuang.top/es6-1-notes/</id>
     <published>2017-04-06T08:21:52.000Z</published>
-    <updated>2017-04-24T12:37:56.000Z</updated>
+    <updated>2017-04-28T07:49:07.000Z</updated>
     
     <content type="html"><![CDATA[<p>《ECMAScript 6 入门》是一本 JavaScript 语言教程，全面介绍 ECMAScript 6 新引入的语法特性。作者阮一峰大佬慷慨地选择将全书开源：<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>。将知识点简便地总结一下，以供后续使用时参考或复习。</p>
 <p>此博文包括：let 和 const命令、变量的解构赋值、字符串的扩展、正则的扩展、数值的扩展、数组的扩展。</p>
@@ -921,10 +921,10 @@
   
   <entry>
     <title>《JavaScript高级程序设计》读书笔记（五）</title>
-    <link href="http://kyonhuang.top/54943/"/>
-    <id>http://kyonhuang.top/54943/</id>
+    <link href="http://kyonhuang.top/JS-notes-5/"/>
+    <id>http://kyonhuang.top/JS-notes-5/</id>
     <published>2017-03-15T02:43:51.000Z</published>
-    <updated>2017-03-21T09:38:59.000Z</updated>
+    <updated>2017-04-28T07:50:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天看了看LESS。前端要研究的东西确实有点多，压力有点大。而且发现自己动手写代码的水平也有待提高。从今天开始理论学习要给实践让让路了，加油加油。</p>
 <p>这篇博文总结了《JavaScript高级程序设计》的20~21章：JSON、AJAX与Comet。此外，关于CORS的部分还参考了廖雪峰的JavaScript教程。</p>
@@ -1024,10 +1024,10 @@
   
   <entry>
     <title>《JavaScript高级程序设计》读书笔记（四）</title>
-    <link href="http://kyonhuang.top/5153/"/>
-    <id>http://kyonhuang.top/5153/</id>
+    <link href="http://kyonhuang.top/JS-notes-4/"/>
+    <id>http://kyonhuang.top/JS-notes-4/</id>
     <published>2017-03-12T04:13:51.000Z</published>
-    <updated>2017-03-14T10:08:22.000Z</updated>
+    <updated>2017-04-28T07:50:23.000Z</updated>
     
     <content type="html"><![CDATA[<p>花旗杯的团队已经组好了。自己要加快学习进度，保证不拖组织的后腿。全力以赴，尽善尽美，希望最后能够有好的成绩。</p>
 <p>这篇博文总结了《JavaScript高级程序设计》的13~14章：事件，表单脚本。</p>
@@ -1099,10 +1099,10 @@
   
   <entry>
     <title>《JavaScript高级程序设计》读书笔记（三）</title>
-    <link href="http://kyonhuang.top/31456/"/>
-    <id>http://kyonhuang.top/31456/</id>
+    <link href="http://kyonhuang.top/JS-notes-3/"/>
+    <id>http://kyonhuang.top/JS-notes-3/</id>
     <published>2017-03-10T02:23:02.000Z</published>
-    <updated>2017-03-13T11:00:28.000Z</updated>
+    <updated>2017-04-28T07:50:12.000Z</updated>
     
     <content type="html"><![CDATA[<p>稍微大致翻了一下这本书后续的内容。为了尽快的进入ES6以及框架部分的学习，决定暂时跳过某些章节的学习。后面打算学习的章节有6、7、13、14、20、21、22、24章，剩下的章节等到用到或者时间富余的时候再看。</p>
 <p>这篇博文总结了《JavaScript高级程序设计》的6~7章：面向对象的程序设计，以及函数表达式。</p>
@@ -1237,10 +1237,10 @@
   
   <entry>
     <title>《JavaScript高级程序设计》读书笔记（二）</title>
-    <link href="http://kyonhuang.top/30361/"/>
-    <id>http://kyonhuang.top/30361/</id>
+    <link href="http://kyonhuang.top/JS-notes-2/"/>
+    <id>http://kyonhuang.top/JS-notes-2/</id>
     <published>2017-03-03T09:33:08.000Z</published>
-    <updated>2017-03-08T12:35:11.000Z</updated>
+    <updated>2017-04-28T07:50:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>继续记录在读《JavaScript高级程序设计》时的零碎知识点。这几天在知乎上看到了别人使用 Electron 构建桌面应用，感觉还蛮有意思的。有兴趣的同学可以看看<a href="https://zhuanlan.zhihu.com/p/20225295?columnSlug=FrontendMagazine" target="_blank" rel="external">使用 Electron 构建桌面应用</a>和<a href="https://zhuanlan.zhihu.com/p/25415725" target="_blank" rel="external">用 ReactJs 创建Mac版的 keep</a>了解一下。也许在加深对JS的理解后，我也会选择用 Electron 做一个应用呢。Who knows?</p>
 <p>这篇博文总结了《JavaScript高级程序设计》的4~5章：变量、作用域和内存问题，以及引用类型。</p>
@@ -1438,10 +1438,10 @@
   
   <entry>
     <title>《JavaScript高级程序设计》读书笔记（一）</title>
-    <link href="http://kyonhuang.top/59107/"/>
-    <id>http://kyonhuang.top/59107/</id>
+    <link href="http://kyonhuang.top/JS-notes-1/"/>
+    <id>http://kyonhuang.top/JS-notes-1/</id>
     <published>2017-02-28T00:57:45.000Z</published>
-    <updated>2017-03-24T11:02:17.000Z</updated>
+    <updated>2017-04-28T07:49:54.000Z</updated>
     
     <content type="html"><![CDATA[<p>《JavaScript高级程序设计》，俗称红宝书。本来因为不太清楚的知识点零零碎碎，打算默默地看。但是学习热情不高，加上看到某大佬的对于这本书的读书笔记，最终决定做一个比较零散的、私人化的读书笔记，激励自己。</p>
 <p>顺便，这里有我的Java读书笔记：<a href="https://github.com/bighuang624/JAVALearningNotes" target="_blank" rel="external">Kyon Huang的java学习笔记 - Github</a>，内容比较多，就不放在博客上了。大概包含了Java核心卷一的内容，之后停了有一段时间了。这学期会继续更新的。</p>
@@ -1539,9 +1539,9 @@
     <link href="http://kyonhuang.top/cup-doubleWings/"/>
     <id>http://kyonhuang.top/cup-doubleWings/</id>
     <published>2017-02-25T01:54:43.000Z</published>
-    <updated>2017-04-27T15:38:27.000Z</updated>
+    <updated>2017-04-28T07:47:14.000Z</updated>
     
-    <content type="html"><![CDATA[<p>这是完成<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001" target="_blank" rel="external">百度前端学院2015的task1</a>后对前端布局知识点总结的第三篇博文。上两篇总结了一下overflow属性（<a href="http://kyonhuang.top/29199/">前端布局知识点(1)——overflow属性</a>）和负边距及文档流（<a href="http://kyonhuang.top/57718/">前端布局知识点(2)——负边距</a>）。</p>
+    <content type="html"><![CDATA[<p>这是完成<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001" target="_blank" rel="external">百度前端学院2015的task1</a>后对前端布局知识点总结的第三篇博文。上两篇总结了一下overflow属性（<a href="http://kyonhuang.top/something-about-margin-overflow/">前端布局知识点(1)——overflow属性</a>）和负边距及文档流（<a href="http://kyonhuang.top/something-about-margin-nega/">前端布局知识点(2)——负边距</a>）。</p>
 <p>在淘宝UED探讨中诞生的双飞翼布局主要解决了两个需求：</p>
 <ol>
 <li>要求三列布局，左右两边定宽，中间宽度自适应；</li>
@@ -1587,7 +1587,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;这是完成&lt;a href=&quot;https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001&quot;&gt;百度前端学院2015的task1&lt;/a&gt;后对前端布局知识点总结的第三篇博文。上两篇总结了一下overflow属性（&lt;a href=&quot;http://kyonhuang.top/29199/&quot;&gt;前端布局知识点(1)——overflow属性&lt;/a&gt;）和负边距及文档流（&lt;a href=&quot;http://kyonhuang.top/57718/&quot;&gt;前端布局知识点(2)——负边距&lt;/a&gt;）。&lt;/p&gt;
+      &lt;p&gt;这是完成&lt;a href=&quot;https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001&quot;&gt;百度前端学院2015的task1&lt;/a&gt;后对前端布局知识点总结的第三篇博文。上两篇总结了一下overflow属性（&lt;a href=&quot;http://kyonhuang.top/something-about-margin-overflow/&quot;&gt;前端布局知识点(1)——overflow属性&lt;/a&gt;）和负边距及文档流（&lt;a href=&quot;http://kyonhuang.top/something-about-margin-nega/&quot;&gt;前端布局知识点(2)——负边距&lt;/a&gt;）。&lt;/p&gt;
 &lt;p&gt;在淘宝UED探讨中诞生的双飞翼布局主要解决了两个需求：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;要求三列布局，左右两边定宽，中间宽度自适应；&lt;/li&gt;
@@ -1615,12 +1615,12 @@
   
   <entry>
     <title>前端布局知识点(2)——负边距</title>
-    <link href="http://kyonhuang.top/57718/"/>
-    <id>http://kyonhuang.top/57718/</id>
+    <link href="http://kyonhuang.top/something-about-margin-nega/"/>
+    <id>http://kyonhuang.top/something-about-margin-nega/</id>
     <published>2017-02-24T03:54:37.000Z</published>
-    <updated>2017-02-26T02:05:59.000Z</updated>
+    <updated>2017-04-28T07:46:19.000Z</updated>
     
-    <content type="html"><![CDATA[<p>这是完成<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001" target="_blank" rel="external">百度前端学院2015的task1</a>后对前端布局知识点总结的第二篇博文。上一篇总结了一下overflow这个属性：<a href="http://kyonhuang.top/29199/">前端布局知识点(1)——overflow属性</a>。</p>
+    <content type="html"><![CDATA[<p>这是完成<a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001" target="_blank" rel="external">百度前端学院2015的task1</a>后对前端布局知识点总结的第二篇博文。上一篇总结了一下overflow这个属性：<a href="http://kyonhuang.top/something-about-overflow/">前端布局知识点(1)——overflow属性</a>。</p>
 <p>CSS中的负边距是布局中一个常用的技巧。因为在后面学习的双飞翼布局的实现就依赖于负边距，负边距又与文档流息息相关，所以我先对这部分的知识进行查询学习。</p>
   <a id="more"></a>
 <h2 id="文档流与文本流"><a href="#文档流与文本流" class="headerlink" title="文档流与文本流"></a>文档流与文本流</h2><p>在我了解负边距的时候出现了一个词：文档流。而在查阅文档流相关资料的时候又出现一个词叫文本流。两者有什么区别？知乎上相关问题 <a href="https://www.zhihu.com/question/21911352" target="_blank" rel="external">HTML 的文档流和文本流分别是什么？- 知乎</a> 的高票答案提供了一个辨析的思路：文档流是相对于盒子模型讲的，而文本流是相对于文字段落讲的。</p>
@@ -1640,7 +1640,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;这是完成&lt;a href=&quot;https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001&quot;&gt;百度前端学院2015的task1&lt;/a&gt;后对前端布局知识点总结的第二篇博文。上一篇总结了一下overflow这个属性：&lt;a href=&quot;http://kyonhuang.top/29199/&quot;&gt;前端布局知识点(1)——overflow属性&lt;/a&gt;。&lt;/p&gt;
+      &lt;p&gt;这是完成&lt;a href=&quot;https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001&quot;&gt;百度前端学院2015的task1&lt;/a&gt;后对前端布局知识点总结的第二篇博文。上一篇总结了一下overflow这个属性：&lt;a href=&quot;http://kyonhuang.top/something-about-overflow/&quot;&gt;前端布局知识点(1)——overflow属性&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;CSS中的负边距是布局中一个常用的技巧。因为在后面学习的双飞翼布局的实现就依赖于负边距，负边距又与文档流息息相关，所以我先对这部分的知识进行查询学习。&lt;/p&gt;
     
     </summary>
@@ -1662,10 +1662,10 @@
   
   <entry>
     <title>前端布局知识点(1)——从overflow属性看浮动</title>
-    <link href="http://kyonhuang.top/29199/"/>
-    <id>http://kyonhuang.top/29199/</id>
+    <link href="http://kyonhuang.top/something-about-overflow/"/>
+    <id>http://kyonhuang.top/something-about-overflow/</id>
     <published>2017-02-23T02:34:12.000Z</published>
-    <updated>2017-04-14T11:35:04.000Z</updated>
+    <updated>2017-04-28T07:45:04.000Z</updated>
     
     <content type="html"><![CDATA[<p>完成了 <a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001" target="_blank" rel="external">百度前端学院2015的task1</a> 后，感觉自己之前学习CSS以及前端布局确实不太全面，有很多知识点现在才接触到，而且也很久没有用过CSS写前端布局了。查漏补缺，总结了几个以前没有注意的知识点：overflow、负边距、圣杯布局和双飞翼布局。一开始想把所有知识点总结成一篇，写着写着发现较短的篇幅不足以把这些都总结清楚，所以还是每个知识点单写一篇。</p>
 <p>顺便推荐 <a href="http://zh.learnlayout.com/" target="_blank" rel="external">学习CSS布局</a>，很好的布局学习资料，值得反复学习。用詹俊老师的话来说就是，好文不妨一看再看！</p>
@@ -1776,7 +1776,7 @@
     <link href="http://kyonhuang.top/8637/"/>
     <id>http://kyonhuang.top/8637/</id>
     <published>2017-02-19T06:24:51.000Z</published>
-    <updated>2017-02-19T07:26:01.000Z</updated>
+    <updated>2017-04-28T07:48:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>极客学院的视频《CSS 在工程中改变》中讲到了OO CSS这个概念，而在知乎上看到别人的回答中提到了语义化和CSS hack这两个概念。在查找了相关资料后，我对这几个概念有了一些自己的理解。</p>
   <a id="more"></a>

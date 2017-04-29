@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,JavaScipt,读书笔记,《JavaScript高级程序设计》," />
+  <meta name="keywords" content="总结,前端,布局,overflow," />
 
 
 
@@ -92,17 +92,21 @@
 
 
 
-<meta name="description" content="《JavaScript高级程序设计》，俗称红宝书。本来因为不太清楚的知识点零零碎碎，打算默默地看。但是学习热情不高，加上看到某大佬的对于这本书的读书笔记，最终决定做一个比较零散的、私人化的读书笔记，激励自己。 顺便，这里有我的Java读书笔记：Kyon Huang的java学习笔记 - Github，内容比较多，就不放在博客上了。大概包含了Java核心卷一的内容，之后停了有一段时间了。这学期会继续">
-<meta name="keywords" content="前端,JavaScipt,读书笔记,《JavaScript高级程序设计》">
+<meta name="description" content="完成了 百度前端学院2015的task1 后，感觉自己之前学习CSS以及前端布局确实不太全面，有很多知识点现在才接触到，而且也很久没有用过CSS写前端布局了。查漏补缺，总结了几个以前没有注意的知识点：overflow、负边距、圣杯布局和双飞翼布局。一开始想把所有知识点总结成一篇，写着写着发现较短的篇幅不足以把这些都总结清楚，所以还是每个知识点单写一篇。 顺便推荐 学习CSS布局，很好的布局学习资料">
+<meta name="keywords" content="总结,前端,布局,overflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《JavaScript高级程序设计》读书笔记（一）">
-<meta property="og:url" content="http://kyonhuang.top/59107/index.html">
+<meta property="og:title" content="前端布局知识点(1)——从overflow属性看浮动">
+<meta property="og:url" content="http://kyonhuang.top/something-about-overflow/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="《JavaScript高级程序设计》，俗称红宝书。本来因为不太清楚的知识点零零碎碎，打算默默地看。但是学习热情不高，加上看到某大佬的对于这本书的读书笔记，最终决定做一个比较零散的、私人化的读书笔记，激励自己。 顺便，这里有我的Java读书笔记：Kyon Huang的java学习笔记 - Github，内容比较多，就不放在博客上了。大概包含了Java核心卷一的内容，之后停了有一段时间了。这学期会继续">
-<meta property="og:updated_time" content="2017-03-24T11:02:17.000Z">
+<meta property="og:description" content="完成了 百度前端学院2015的task1 后，感觉自己之前学习CSS以及前端布局确实不太全面，有很多知识点现在才接触到，而且也很久没有用过CSS写前端布局了。查漏补缺，总结了几个以前没有注意的知识点：overflow、负边距、圣杯布局和双飞翼布局。一开始想把所有知识点总结成一篇，写着写着发现较短的篇幅不足以把这些都总结清楚，所以还是每个知识点单写一篇。 顺便推荐 学习CSS布局，很好的布局学习资料">
+<meta property="og:image" content="http://kyonhuang.top/images/overflow/overflow.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/overflow/overflow2.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/overflow/overflow3.jpg">
+<meta property="og:updated_time" content="2017-04-28T07:45:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记（一）">
-<meta name="twitter:description" content="《JavaScript高级程序设计》，俗称红宝书。本来因为不太清楚的知识点零零碎碎，打算默默地看。但是学习热情不高，加上看到某大佬的对于这本书的读书笔记，最终决定做一个比较零散的、私人化的读书笔记，激励自己。 顺便，这里有我的Java读书笔记：Kyon Huang的java学习笔记 - Github，内容比较多，就不放在博客上了。大概包含了Java核心卷一的内容，之后停了有一段时间了。这学期会继续">
+<meta name="twitter:title" content="前端布局知识点(1)——从overflow属性看浮动">
+<meta name="twitter:description" content="完成了 百度前端学院2015的task1 后，感觉自己之前学习CSS以及前端布局确实不太全面，有很多知识点现在才接触到，而且也很久没有用过CSS写前端布局了。查漏补缺，总结了几个以前没有注意的知识点：overflow、负边距、圣杯布局和双飞翼布局。一开始想把所有知识点总结成一篇，写着写着发现较短的篇幅不足以把这些都总结清楚，所以还是每个知识点单写一篇。 顺便推荐 学习CSS布局，很好的布局学习资料">
+<meta name="twitter:image" content="http://kyonhuang.top/images/overflow/overflow.jpg">
 
 
 
@@ -130,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://kyonhuang.top/59107/"/>
+  <link rel="canonical" href="http://kyonhuang.top/something-about-overflow/"/>
 
 
 
 
 
-  <title>《JavaScript高级程序设计》读书笔记（一） | 大黄菌的个人博客</title>
+  <title>前端布局知识点(1)——从overflow属性看浮动 | 大黄菌的个人博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -319,7 +323,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/59107/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/something-about-overflow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="大黄菌(Kyon)">
@@ -340,7 +344,7 @@
             
             
               
-                《JavaScript高级程序设计》读书笔记（一）
+                前端布局知识点(1)——从overflow属性看浮动
               
             
           </h1>
@@ -355,8 +359,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-28T08:57:45+08:00">
-                2017-02-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-23T10:34:12+08:00">
+                2017-02-23
               </time>
             
 
@@ -378,8 +382,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
+                  <a href="/categories/前端学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习笔记</span>
                   </a>
                 </span>
 
@@ -417,74 +421,44 @@
       
 
       
-        <p>《JavaScript高级程序设计》，俗称红宝书。本来因为不太清楚的知识点零零碎碎，打算默默地看。但是学习热情不高，加上看到某大佬的对于这本书的读书笔记，最终决定做一个比较零散的、私人化的读书笔记，激励自己。</p>
-<p>顺便，这里有我的Java读书笔记：<a href="https://github.com/bighuang624/JAVALearningNotes" target="_blank" rel="external">Kyon Huang的java学习笔记 - Github</a>，内容比较多，就不放在博客上了。大概包含了Java核心卷一的内容，之后停了有一段时间了。这学期会继续更新的。</p>
-<p>这篇博文总结了《JavaScript高级程序设计》的前三章：JavaScript简介、在HTML中使用JavaScript、基本概念。</p>
+        <p>完成了 <a href="https://github.com/baidu-ife/ife/tree/master/2015_spring/task/task0001" target="_blank" rel="external">百度前端学院2015的task1</a> 后，感觉自己之前学习CSS以及前端布局确实不太全面，有很多知识点现在才接触到，而且也很久没有用过CSS写前端布局了。查漏补缺，总结了几个以前没有注意的知识点：overflow、负边距、圣杯布局和双飞翼布局。一开始想把所有知识点总结成一篇，写着写着发现较短的篇幅不足以把这些都总结清楚，所以还是每个知识点单写一篇。</p>
+<p>顺便推荐 <a href="http://zh.learnlayout.com/" target="_blank" rel="external">学习CSS布局</a>，很好的布局学习资料，值得反复学习。用詹俊老师的话来说就是，好文不妨一看再看！</p>
   <a id="more"></a>
-<h2 id="JavaScript简介"><a href="#JavaScript简介" class="headerlink" title="JavaScript简介"></a>JavaScript简介</h2><p>1.ECMAScript 是一种开放的、国际上广为接受的脚本语言规范。它本身并不是一种脚本语言。而JavaScript 是 ECMAScript 规范的一种实现。</p>
-<p>2.一个完整的 JavaScript 实现应该由三个部分组成：<strong>核心（ECMAScript）、文档对象模型（DOM）、浏览器对象模型（BOM）</strong>。</p>
-<p>3.ECMAScript 提供核心语言功能；DOM 提供访问和操作网页内容的方法和接口；BOM 提供与浏览器交互的方法和接口。</p>
-<h2 id="在HTML中使用JavaScript"><a href="#在HTML中使用JavaScript" class="headerlink" title="在HTML中使用JavaScript"></a>在HTML中使用JavaScript</h2><p><strong><code>&lt;script&gt;</code>元素</strong></p>
-<p>1.为了避免浏览器在呈现页面时出现明显延迟，现代Web应用程序一般都把全部 JavaScript 引用放在主要内容后面，<code>&lt;/body&gt;</code>标签前面的位置。</p>
-<p>2.延迟脚本：<code>&lt;script&gt;</code>标签的 defer 属性表明脚本在执行时不会影响页面构造，会延迟到整个页面都解析完毕后再运行。延迟脚本总按指定它们的顺序执行。defer 属性只适用于外部脚本文件。</p>
-<p>3.异步脚本：<code>&lt;script&gt;</code>标签的 async 属性告诉浏览器立即下载文件，不必等待其他脚本或阻塞文档呈现，目的是不让页面等待两个脚本下载和执行，从而异步加载页面其他内容。不保证异步脚本按照页面出现的先后顺序执行。async 属性只适用于外部脚本文件。</p>
-<p><strong>嵌入代码与外部文件</strong></p>
-<p>4.使用外部文件的优点：可维护性、可缓存、适应未来。</p>
-<p><strong>文档模式</strong></p>
-<p>5.所有浏览器默认开启混杂模式，不同浏览器在这种模式下的行为差异非常大。通过文档类型（doctype）开启标准模式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!-- HTML 5 --&gt;</div><div class="line">&lt;!DOCTYPE html&gt;</div></pre></td></tr></table></figure>
-<p><strong><code>&lt;noscript&gt;</code>元素</strong></p>
-<p>6.包含在<code>&lt;noscript&gt;</code>元素中的内容只有在浏览器不支持脚本，或浏览器支持脚本但脚本被禁用时才会显示出来。因此，它用于指定在不支持脚本的浏览器中显示的替代内容。</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>严格模式</strong></p>
-<p>1.通过在顶部添加<code>&quot;use strict&quot;;</code>开启严格模式。这个编译指令告诉支持的JavaScript引擎切换到严格模式，以处理 ECMAScript3 中一些不确定的行为，并对某些不安全的操作抛出错误。</p>
-<p><strong>变量</strong></p>
-<p>2.省略<code>var</code>操作符可以定义全局变量（难维护，不推荐）。给未经声明的变量赋值在严格模式下会导致抛出 ReferenceError 错误。</p>
-<p><strong>数据类型</strong></p>
-<p>3.五种简单数据类型（基本数据类型）：Undefined、Null、Boolean、Number和String，一种复杂数据类型 Object。ECMAScript 不支持任何创建自定义类型的机制。</p>
-<ul>
-<li><p>Undefined类型：未初始化的变量会自动被赋予 undefined 值。</p>
-</li>
-<li><p>Null类型：null 值表示一个空对象指针。只要意在保存对象的变量还没有真正保存对象，就应该明确的让该变量保存 null 值，以体现 null 作为空指针对象的惯例。</p>
-</li>
-<li><p>Boolean类型：使用函数<code>Boolean()</code>将其他类型转换为Boolean类型。</p>
-</li>
-<li><p>Number类型：其他类型转换为Number类型，常用函数parseInt()，转换字符串时，如果第一个字符不是数字字符或者负号，会返回NaN，第二个可选参数表示进制（建议始终明确指定基数）。</p>
-</li>
-<li><p>String类型：不可变。其他类型转换为String类型，使用函数toString()或String()或加一个空字符串（””）。</p>
-</li>
-<li><p>Object类型：Object 的每个实例都具有下列属性和方法：</p>
-<p> – constructor：保留着用于创建当前对象的函数（即构造函数）；</p>
-<p> – hasOwnProperty(propertyName)：用于检查给定的属性在当前对象实例中是否存在（属性名必须以字符串形式指定）；</p>
-<p> – isPrototypeOf(object)：用于检查传入的对象是否是传入对象的原型；</p>
-<p> – propertyIsEnumerable(propertyName)：用于检查给定的属性是否能使用 for-in 语句来枚举；</p>
-<p> – toLocaleString()：返回对象的字符串表示，该字符串与执行环境的地区对应；</p>
-<p> – toString()：返回对象的字符串表示（null 和 undefined 伪对象没有此方法，整数 number 类型需要在整数末尾多加一个<code>.</code>再调用）；</p>
-<p> – valueOf()：返回对象的字符串、数值或布尔值表示；</p>
-</li>
-</ul>
-<p>4.typeof 操作符可检测给定变量的数据类型，包括 number、boolean、string、function、undefined。</p>
-<p>判断 Array：<code>Array.isArray(myArr);</code>。</p>
-<p>判断 null：用<code>myArr === null;</code>。</p>
-<p>补充：判断某个全局变量是否存在：<code>typeof window.myVar === &#39;undefined&#39;;</code>。</p>
-<p>判断函数内部某个变量是否存在：<code>typeof myVar === &#39;undefined === &#39;undefined&#39;；</code>。</p>
-<p><strong>操作符</strong></p>
-<p>5.如果两个操作数都是字符串，则比较两个字符串对应的字符串编码值。</p>
-<p>6.如果一个操作数是数值，则将另一个操作数转换为数值，然后执行数值比较；如果该操作数不能被转换为合理数值，则转换成 NaN。</p>
-<p>7.任何操作数与 NaN 比较，结果都是false。</p>
-<p>8.相等（==）与全等（===）：全等只在两个操作数未经转换就相等的情况下返回true。</p>
-<p><strong>语句</strong></p>
-<p>9.由于ECMAScript中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var count = 10;</div><div class="line">for (var i = ; i &lt; count; i++)&#123;</div><div class="line">    var j = 1;</div><div class="line">&#125;</div><div class="line">alert(i, j);   //10, 1</div></pre></td></tr></table></figure>
-<p>10.for-in 语句可以用来遍历对象的属性名称：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(property in expression)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>为了保证最大限度的兼容性，建议在使用 for-in 循环之前，先检测确认该对象的值不是 null 或 undefined。</p>
-<p>补充：一个 Array 数组实际也是一个对象，它的每个元素的索引被视为一个属性。所以当手动给 Array 添加额外的属性时，for-in 语句也会将其遍历。要循环集合本身的元素，建议使用 ES 6 提供的 for-of 语句。</p>
-<p>11.break 语句会立即退出循环，强制继续执行循环后面的语句；continue 语句退出循环后会从循环的顶部继续执行。break 和 continue 语句与 label 语句联合使用多发生在循环嵌套的情况下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var num = 0;</div><div class="line"></div><div class="line">outermost:</div><div class="line">for(var i=0; i &lt; 10; i++)&#123;</div><div class="line">    for(var j=0; j &lt; 10; j++)&#123;</div><div class="line">        if(i == 5 &amp;&amp; j == 5)&#123;</div><div class="line">            break outermost;</div><div class="line">        &#125;</div><div class="line">        num++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">alert(num);    //55</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var num = 0;</div><div class="line"></div><div class="line">outermost:</div><div class="line">for(var i=0; i &lt; 10; i++)&#123;</div><div class="line">    for(var j=0; j &lt; 10; j++)&#123;</div><div class="line">        if(i == 5 &amp;&amp; j == 5)&#123;</div><div class="line">            continue outermost;</div><div class="line">        &#125;</div><div class="line">        num++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">alert(num);    //95</div></pre></td></tr></table></figure>
-<p><strong>函数</strong></p>
-<p>12.ECMAScript中没有函数签名的概念，因为其函数参数是以一个包含零或多个值的数组的形式传递的。所以ECMAScript函数不能重载。</p>
-<p>13.可以向ECMAScript函数传递任意数量的参数，并通过 arguments对象来访问这些参数。没有传递值的命名参数将自动被赋予 undefined 值。arguments对象中的值与对应的命名参数的内存空间是独立的，但它们的值会同步。</p>
-<p>15.ECMAScript中的所有参数传递的都是值，不可能通过引用传递参数。</p>
+<h2 id="探究由来"><a href="#探究由来" class="headerlink" title="探究由来"></a>探究由来</h2><p>task1中有一道题是这样的：实现一个浮动布局，红色容器中每一行的蓝色容器数量随着浏览器宽度的变化而变化。很快写出代码如下：</p>
+<p>html代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> &lt;div class=&quot;red task5&quot;&gt;</div><div class="line">	&lt;div class=&quot;blue bfloat&quot;&gt;1&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;blue bfloat&quot;&gt;2&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;blue bfloat&quot;&gt;3&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;blue bfloat&quot;&gt;4&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;blue bfloat&quot;&gt;5&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;blue bfloat&quot;&gt;6&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;blue bfloat&quot;&gt;7&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;blue bfloat&quot;&gt;8&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;blue bfloat&quot;&gt;9&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>CSS代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.red&#123;</div><div class="line">	background-color: red;</div><div class="line">&#125;</div><div class="line">.blue&#123;</div><div class="line">	background-color: blue;</div><div class="line">&#125;</div><div class="line">.task5&#123;</div><div class="line">	margin-top: 10px;</div><div class="line">	height: 100px;</div><div class="line">&#125;</div><div class="line">.bfloat&#123;</div><div class="line">	height: 50px;</div><div class="line">	width: 90px;</div><div class="line">	margin: 10px;</div><div class="line">	float: left;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里说一声，根据 OO CSS 的思想，结构和样式应该相互独立（不太了解 OO CSS 的话可以看一下我之前的博文 <a href="http://kyonhuang.top/8637/">对几个前端相关概念的理解——OO CSS、语义化、CSS hack</a>）。尽管对于这种小 Demo，OO CSS显得不实用且有些累赘，我还是坚持去实现。因此我单独写了 red 和 blue 两个 class 来控制皮肤。</p>
+<p>以上代码的效果图：</p>
+<p><img src="/images/overflow/overflow.jpg"></p>
+<p>可以看到，效果图中红色容器的高度没有随着蓝色容器的行数的变化而变化，与我们理想的效果有些差距。这是因为我们在task5这个class中写死了容器的高度，而设置了浮动的蓝色容器脱离了红色容器，行数的变化无法再影响到红色容器的高度。从这里我们可以看出，所谓“浮动”不只是平面上的浮动，而是一个立体的浮动。当然，如果不写高度的话连红色容器都看不到。那怎么解决这个问题呢？我当时没有想到好的解决方法。查看了别人的代码后，发现是要把 task5 这个 class 中高度删掉，再加一行：</p>
+<p><code>overflow: hidden;</code></p>
+<h2 id="overflow-属性"><a href="#overflow-属性" class="headerlink" title="overflow 属性"></a>overflow 属性</h2><p>overflow 属性规定当内容溢出元素框时发生的事情。这个属性的默认值为 visible，这时内容不会被修剪，会呈现在元素框之外，就像之前的效果图一样；而值为 hidden 时，内容会被修剪，并且其余内容是不可见的。也就是说，如果这时height属性还设置了定值的话，超出这个定值的部分不可见。这个时候显示的效果如下(height: 100px)：</p>
+<p><img src="/images/overflow/overflow2.jpg"></p>
+<p>删掉height属性后，overflow: hidden 在这个案例的真正用途是清除浮动。这里清除的是立体的，可以理解为z轴上的浮动。因此，蓝色容器的高度现在可以受其内部，也就是红色容器的总体高度影响。现在显示的效果是符合我们要求的，实际效果图如下：</p>
+<p><img src="/images/overflow/overflow3.jpg"></p>
+<p>overflow 属性的值还可以为 scroll 和 auto。值为 scroll 时，内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。而值为 auto 时，如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。两者区别是如果值为 scroll，不论是否需要，用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。</p>
+<h2 id="浮动元素特点"><a href="#浮动元素特点" class="headerlink" title="浮动元素特点"></a>浮动元素特点</h2><p>17.04.14补充：摘自 <a href="http://efe.baidu.com/blog/float/" target="_blank" rel="external">回归CSS标准之Float</a> 。</p>
+<p>float 属性被设置为非 none 的元素：</p>
+<ol>
+<li>元素被视作块级元素，相当于 display 设置为“block”；</li>
+<li>元素具备包裹性，会根据它所包含的元素实现宽度、高度自适应；</li>
+<li>浮动元素前后的块级兄弟元素忽视浮动元素的而占据它的位置，并且元素会处在浮动元素的下层（并且无法通过 z-index 属性改变他们的层叠位置），但它的内部文字和其他行内元素都会环绕浮动元素；</li>
+<li>浮动元素前后的行内元素环绕浮动元素排列；</li>
+<li>浮动元素之前的元素如果也是浮动元素，且方向相同，它会紧跟在它们后面；父元素宽度不够，换行展示；</li>
+<li>浮动元素之间的水平间距不会重叠；</li>
+<li>当包含元素中只有浮动元素时，包含元素将会高度塌陷；</li>
+<li>浮动元素的父元素的非浮动兄弟元素，忽视浮动元素存在，覆盖浮动元素；</li>
+<li>浮动元素的父元素的浮动兄弟元素，会跟随浮动元素布局，仿佛处在同一父元素中。</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.w3school.com.cn/cssref/pr_pos_overflow.asp" target="_blank" rel="external">CSS overflow 属性</a></p>
+<p><a href="http://zh.learnlayout.com/clearfix.html" target="_blank" rel="external">CSS - 清除浮动（clearfix hack）</a></p>
+<p>17.02.07更新：</p>
+<p><a href="http://www.iyunlu.com/view/css-xhtml/55.html" target="_blank" rel="external">那些年我们一起清除过的浮动</a> 一文中将 overflow: hidden 所带来的清除浮动的效果称为“闭合浮动”，以区别于 clear: left|right|both|none 。我们通过闭合浮动来解决 wrap 高度塌陷的问题。</p>
+<p>17.04.07更新：</p>
+<p><a href="http://www.w3cplus.com/css/clear-float" target="_blank" rel="external">Clear Float</a> 介绍了解决浮动带来的高度塌陷问题的另外两种方法：“clear:both”和“clearfix”。</p>
+<p><a href="http://efe.baidu.com/blog/float/" target="_blank" rel="external">回归CSS标准之Float</a> 百度EFE的文章，加深对 float 的理解。</p>
 
       
     </div>
@@ -513,7 +487,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://kyonhuang.top/59107/" title="《JavaScript高级程序设计》读书笔记（一）">http://kyonhuang.top/59107/</a>
+      <a href="http://kyonhuang.top/something-about-overflow/" title="前端布局知识点(1)——从overflow属性看浮动">http://kyonhuang.top/something-about-overflow/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -529,13 +503,13 @@
       
         <div class="post-tags">
           
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
             <a href="/tags/前端/" rel="tag"># 前端</a>
           
-            <a href="/tags/JavaScipt/" rel="tag"># JavaScipt</a>
+            <a href="/tags/布局/" rel="tag"># 布局</a>
           
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
-          
-            <a href="/tags/《JavaScript高级程序设计》/" rel="tag"># 《JavaScript高级程序设计》</a>
+            <a href="/tags/overflow/" rel="tag"># overflow</a>
           
         </div>
       
@@ -548,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/lyrics-seaStory/" rel="next" title="【中文填词】三つ叶の结びめ -TV size.-">
-                <i class="fa fa-chevron-left"></i> 【中文填词】三つ叶の结びめ -TV size.-
+              <a href="/something-about-margin-nega/" rel="next" title="前端布局知识点(2)——负边距">
+                <i class="fa fa-chevron-left"></i> 前端布局知识点(2)——负边距
               </a>
             
           </div>
@@ -558,8 +532,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/cup-doubleWings/" rel="prev" title="前端布局知识点(3)——圣杯布局与双飞翼布局">
-                前端布局知识点(3)——圣杯布局与双飞翼布局 <i class="fa fa-chevron-right"></i>
+              <a href="/new-term/" rel="prev" title="又是一个新学期开始了">
+                又是一个新学期开始了 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -740,7 +714,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript简介"><span class="nav-number">1.</span> <span class="nav-text">JavaScript简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在HTML中使用JavaScript"><span class="nav-number">2.</span> <span class="nav-text">在HTML中使用JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">3.</span> <span class="nav-text">基本概念</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#探究由来"><span class="nav-number">1.</span> <span class="nav-text">探究由来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overflow-属性"><span class="nav-number">2.</span> <span class="nav-text">overflow 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮动元素特点"><span class="nav-number">3.</span> <span class="nav-text">浮动元素特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
