@@ -5,15 +5,109 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-04-27T14:10:31.000Z</updated>
+  <updated>2017-04-29T03:13:45.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
-    <name>大黄菌(Kyon)</name>
+    <name>Kyon Huang</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>单页面程序及组件化相关笔记</title>
+    <link href="http://kyonhuang.top/SPA-learning-notes/"/>
+    <id>http://kyonhuang.top/SPA-learning-notes/</id>
+    <published>2017-04-29T03:12:53.000Z</published>
+    <updated>2017-04-29T03:13:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>随着 Vue 文档的阅读，单页面程序、组件等概念出现地越来越频繁。但我始终感觉对这几个词缺少一种逻辑联系上的认知。直到看到 <a href="https://github.com/xufei/blog" target="_blank" rel="external">xufei</a> 在 github 上的关于这个主题的一系列博文，始有醍醐灌顶之感。综合各方面资料，自己进行一个整理，帮助自己深入理解。</p>
+<a id="more"></a>
+<p>提高开发效率的两个主要途径：</p>
+<ul>
+<li>加快开发速度：少造轮子。</li>
+<li>减少变更代价：清理模块之间的关系，合理分层。</li>
+</ul>
+<h2 id="单页面程序"><a href="#单页面程序" class="headerlink" title="单页面程序"></a>单页面程序</h2><p>SPA（单页面程序，Single Page Application）：在一个页面上集成多种功能，甚至整个系统就只有一个页面，所有的业务功能都是它的子模块，通过特定方式挂接到主页面上。</p>
+<h3 id="优越性"><a href="#优越性" class="headerlink" title="优越性"></a>优越性</h3><p>高效，体现在用户体验和运行效率上。把 AJAX 的无刷新机制发挥到极致。</p>
+<p>实现前后端的天然分离。后端不再承担模板渲染、输出页面等工作，专注于提供 API，同时不必再针对每个端作差异化设计。</p>
+<h3 id="代码合并与加载策略"><a href="#代码合并与加载策略" class="headerlink" title="代码合并与加载策略"></a>代码合并与加载策略</h3><p>典型特征：部分加载。</p>
+<p>一块界面可以是一个 HTML 片段，像请求数据一样用 AJAX 获取。如果有逻辑的 JavaScript 代码，也可以用 require 之类的<strong>异步加载机制</strong>去运行时加载。</p>
+<p>因此，如果在页面间存在可复用的代码，一般提取成单独的文件，并按照每个页面的需求去进行合并。</p>
+<h3 id="需要考虑的点"><a href="#需要考虑的点" class="headerlink" title="需要考虑的点"></a>需要考虑的点</h3><h4 id="路由与状态的管理"><a href="#路由与状态的管理" class="headerlink" title="路由与状态的管理"></a>路由与状态的管理</h4><p>界面上的各种功能区块是动态生成的，需要对路由进行管理以减少用户的导航成本。具体做法就是把产品功能分为若干状态，每个状态映射到相应的路由，然后通过 pushState 这样的机制，动态解析路由，使之与功能界面匹配。</p>
+<h4 id="缓存与本地存储"><a href="#缓存与本地存储" class="headerlink" title="缓存与本地存储"></a>缓存与本地存储</h4><p>动态加载的界面模板或 JavaScript 代码可以做一些自定义的缓存机制，在非首次的请求中直接取缓存版本，以加快加载速度。</p>
+<p>在本地存储一些临时数据可以用 localStorage。</p>
+<h4 id="服务器通信"><a href="#服务器通信" class="headerlink" title="服务器通信"></a>服务器通信</h4><p>WebSocket 可以让服务端便利地使用反向推送，前端只响应确实产生业务数据的事件，减少无意义的 AJAX 轮询。</p>
+<p>例如 socket.io 之类的库提供了在不同浏览器中的兼容方案，在不支持 WebSocket 的浏览器上会降级成使用 AJAX 或 JSONP 等方式，对业务代码完全透明、兼容。</p>
+<h3 id="困难与缺陷"><a href="#困难与缺陷" class="headerlink" title="困难与缺陷"></a>困难与缺陷</h3><p>SPA 遇到的困难：代码组织的复杂度大为提高，难以保证对一个数据的更新能够实时反馈到所有使用它的地方。</p>
+<p>缺陷：不利于 SEO；要注意内存管理。</p>
+<h2 id="样式规划"><a href="#样式规划" class="headerlink" title="样式规划"></a>样式规划</h2><h3 id="基准样式的分离"><a href="#基准样式的分离" class="headerlink" title="基准样式的分离"></a>基准样式的分离</h3><p>包括浏览器样式的重设、全局字体的设置、布局的基本约定和响应式设计。</p>
+<h3 id="组件样式的划分"><a href="#组件样式的划分" class="headerlink" title="组件样式的划分"></a>组件样式的划分</h3><p>组件样式应当尽量减少相互依赖，各组件的样式允许冗余。</p>
+<h3 id="堆叠次序的管理"><a href="#堆叠次序的管理" class="headerlink" title="堆叠次序的管理"></a>堆叠次序的管理</h3><p>在单页应用中，需要提前为各种 UI 组件规划堆叠次序（z-index）。应预先分段，不同类型的组的 z-index 落到各自的区间，以避免相互冲突。</p>
+<h2 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h2><p>整个应用形成倒置的组件树，每个组件提供对外接口，然后内部只关注自己的实现。</p>
+<p>职责更专一。可以做单元测试的覆盖以保证质量，再通过场景测试来保证整体流程。</p>
+<ul>
+<li>HTML 的组件化：界面的片段化和模版化。界面片段在动态请求得到之后，借助模版引擎之类的技术，通过某种转换，放置到主界面相应的地方。</li>
+<li>JavaScript 的组件化：目标是清晰的职责，松耦合，便于单元测试和重复利用。总的原则是先分层次，层内再作切分。</li>
+<li>CSS 的组件化：传统 CSS 为扁平的文本结构，变更成本高。把实际使用的 CSS 当作输出结果，而另有一种适合变更的方式当作中间过程。探索结果包括预处理器、后处理器。</li>
+</ul>
+<h2 id="开发框架"><a href="#开发框架" class="headerlink" title="开发框架"></a>开发框架</h2><p>jQuery 轻量、灵活，但对代码缺乏约束。</p>
+<p>需要在代码极具膨胀的情况下控制每个模块的内聚性，并适当在模块间产生数据传递与共享。</p>
+<p>因此需要做一些架构方面的提升 =&gt; 设计模式 =&gt; MVC | MVP | MVVM 框架，基本思路都是在 JS 层创建模块分层和通信机制。</p>
+<p>AngularJS, Vue：MVVM。通过类似模板的语法，描述界面状态与数据的绑定关系，然后通过内部转换，把这个结构建立起来，当界面发生变化的时候，按照配置规则去更新相应的数据，然后再根据配置好的规则，从数据更新界面状态。</p>
+<p>React：函数式。推崇单项数据流：给定原始界面（或数据），施加一个变化，就能推导出另外一个状态（界面或数据的更新）。</p>
+<p>依赖注入： </p>
+<ul>
+<li>核心理念：通过配置来实例化所依赖的组件。</li>
+<li>缺点：性能以及跟踪调试的便利性上的损失。</li>
+<li>优点：松耦合，可替代性 =&gt; 可单独测试，随手引入。</li>
+<li>应用：对从事某一领域的企业，可将所有不常变动领域模型的业务代码都用此类办法维护。</li>
+</ul>
+<h3 id="MV-框架的基本原理"><a href="#MV-框架的基本原理" class="headerlink" title="MV*框架的基本原理"></a>MV*框架的基本原理</h3><p>充当前端逻辑工具的 JavaScript 不能做入口，因此逻辑要先挂在<strong>配置文件</strong>（HTML）上，先由另外的容器（浏览器或者 Hybird 的壳）把配置文件加载起来，然后才能从某个入口开始执行逻辑。从这时起，框架启动：</p>
+<ul>
+<li>初始化自身（bootstrap）</li>
+<li>异步加载可能尚未引入的 JavaScript 代码（require）</li>
+<li>解析定义在 HTML 上的规则（template parser）</li>
+<li>实例化模型（scopr）</li>
+<li>创建模型和 DOM 的关联关系（binding, injection）</li>
+</ul>
+<p>这些是主线流程，还有一些支线，比如：</p>
+<ul>
+<li>解析 url 的 search 字符串，恢复状态（route）</li>
+<li>加载 HTML 部件模板（template url）</li>
+<li>部件模板和模型的关联（binding）</li>
+</ul>
+<h2 id="业务模型"><a href="#业务模型" class="headerlink" title="业务模型"></a>业务模型</h2><p>指所处领域中的业务数据、规则、流程的集合。即使抛开所有展示层，这一层也应当能够运作。</p>
+<p>Redux、Vuex 之类的辅助方案帮助将业务模型的每一个扰动都收敛到确切的状态。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>博文参考资料：</p>
+<p><a href="https://github.com/xufei/blog/issues/6" target="_blank" rel="external">Web应用的组件化（一）——基本思路</a></p>
+<p><a href="https://github.com/xufei/blog/issues/5" target="_blank" rel="external">构建单页Web应用</a></p>
+<p><a href="https://github.com/xufei/blog/issues/33" target="_blank" rel="external">关于新框架的学习</a></p>
+<p>延伸阅读资料：</p>
+<p><a href="https://github.com/xufei/blog/issues/7" target="_blank" rel="external">Web应用的组件化（二）——管控平台</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;随着 Vue 文档的阅读，单页面程序、组件等概念出现地越来越频繁。但我始终感觉对这几个词缺少一种逻辑联系上的认知。直到看到 &lt;a href=&quot;https://github.com/xufei/blog&quot;&gt;xufei&lt;/a&gt; 在 github 上的关于这个主题的一系列博文，始有醍醐灌顶之感。综合各方面资料，自己进行一个整理，帮助自己深入理解。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="笔记" scheme="http://kyonhuang.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="SPA" scheme="http://kyonhuang.top/tags/SPA/"/>
+    
+      <category term="单页面程序" scheme="http://kyonhuang.top/tags/%E5%8D%95%E9%A1%B5%E9%9D%A2%E7%A8%8B%E5%BA%8F/"/>
+    
+      <category term="组件化" scheme="http://kyonhuang.top/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>最近在干以及打算干些什么</title>
@@ -740,11 +834,11 @@
     
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
       <category term="WebStorm" scheme="http://kyonhuang.top/tags/WebStorm/"/>
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -913,9 +1007,9 @@
     
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
       <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
   </entry>
   
@@ -1768,76 +1862,6 @@
       <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
     
       <category term="学习之路" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>对几个前端相关概念的理解——OO CSS、语义化、CSS hack</title>
-    <link href="http://kyonhuang.top/8637/"/>
-    <id>http://kyonhuang.top/8637/</id>
-    <published>2017-02-19T06:24:51.000Z</published>
-    <updated>2017-04-28T07:48:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>极客学院的视频《CSS 在工程中改变》中讲到了OO CSS这个概念，而在知乎上看到别人的回答中提到了语义化和CSS hack这两个概念。在查找了相关资料后，我对这几个概念有了一些自己的理解。</p>
-  <a id="more"></a>
-<h2 id="OO-CSS"><a href="#OO-CSS" class="headerlink" title="OO CSS"></a>OO CSS</h2><p>OO CSS，全称为Object Oriented CSS，意为“面向对象的CSS”。</p>
-<p>OO CSS是一种书写规则，看重代码的重用性、可维护性和可扩展性。OO CSS将页面可重用元素抽象成一个类，用Class加以描述，而与其对应的HTML即可看成是此类的一个实例。</p>
-<p>OO CSS更加适合大型网站的开发，因为大型网站用到更多的可重用组件。为了更好地维护，最好给每个组件写一份说明文档。</p>
-<p>作用：</p>
-<ol>
-<li>加强代码复用以便方便维护。</li>
-<li>减小CSS体积。</li>
-<li>提升渲染效率。</li>
-<li>组件库思想、栅格布局可共用、减少选择器、方便扩展。</li>
-</ol>
-<p>注意事项：</p>
-<ol>
-<li><strong>不要直接定义子节点，应把共性声明放在父类。</strong></li>
-<li><strong>结构与样式相互独立。</strong></li>
-<li><strong>容器和内容相互独立。</strong></li>
-<li>抽象出可重用的元素，建好组件库，在组件库内寻找可用的元素组装页面。</li>
-<li>往你想要扩展的对象本身增加class而不是他的父节点。</li>
-<li><strong>对象应保持独立性。</strong></li>
-<li>避免使用ID选择器，权重太高，无法重用。（ID选择器大多数为JS服务）</li>
-<li><strong>避免位置相关的样式。</strong></li>
-<li>保证选择器相同的权重。</li>
-<li>类名应简短、清晰并保有语义。OOCSS的名字并不影响HTML语义化。</li>
-</ol>
-<p>参考资料：</p>
-<p><a href="http://www.w3cplus.com/css/oocss-concept" target="_blank" rel="external">OOCSS——概念篇</a></p>
-<h2 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h2><p><strong>语义化</strong>就是对数据和信息进行处理，使得机器可以理解。</p>
-<p>如何在开放的网络、庞大的信息资源中找到需要的信息？我们当然需要借助包括搜索引擎、爬虫在内的智能程序的力量。而为了让这些程序能够理解内容、推演逻辑、建立索引并给予较高的权值，语义化变得越来越重要。SEO最有效的一种方法就是对网页的HTML结构进行重构，实质上就是语义化。</p>
-<p>为了使机器能够尽可能理解内容，规范是必须的。程序肯定只会关注那些约定俗成的东西。某种规范被认可的程度越高，就越会成为机器算法的目标，人们就越可以根据它来实现各种功能。</p>
-<p>HTML本身也是机器可读的语义信息，但由于HTML被设计的目的并不是为了机器可读，所以不尽完美。也因此，HTML规范一直在往语义化的方向上发展。HTML5更是在之前规范的基础上，将所有表现层的语义描述都进行了修改或者删除，增加了不少可以表达更丰富语义的元素。</p>
-<p>当然，HTML5并非Web语义化唯一的规范。有很多组织都提出了有浏览器和搜索引擎支持的规范，为扩展、标准化Web语义做着自己的贡献。关于HTML5各个元素语义的描述，可参考 <a href="http://justineo.github.io/slideshows/semantic-html/#/" target="_blank" rel="external">Semantic HTML</a>。</p>
-<p>参考资料：</p>
-<p><a href="https://www.zhihu.com/question/20455165" target="_blank" rel="external">如何理解 Web 语义化？- 知乎</a></p>
-<h2 id="CSS-hack"><a href="#CSS-hack" class="headerlink" title="CSS hack"></a>CSS hack</h2><p>由于不同厂商的浏览器和浏览器的不同版本对CSS有不一样的支持和解析结果，导致我们需要针对不同的浏览器及同一浏览器的不同版本写特定的样式，以获得统一的页面效果。这个过程叫做<strong>CSS hack</strong>。</p>
-<p>使用CSS hack虽然有助于实现页面表现的一致性，但滥用会造成编码过于复杂、文档混乱不堪，增加管理和维护的负担。因此，hack要少用、慎用。等到未来浏览器厂商的标准能够完全统一时，就是hack退出历史舞台的时候了。</p>
-<p>参考资料：</p>
-<p><a href="http://blog.csdn.net/freshlover/article/details/12132801" target="_blank" rel="external">史上最全的CSS hack方式一览</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;极客学院的视频《CSS 在工程中改变》中讲到了OO CSS这个概念，而在知乎上看到别人的回答中提到了语义化和CSS hack这两个概念。在查找了相关资料后，我对这几个概念有了一些自己的理解。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="概念理解" scheme="http://kyonhuang.top/tags/%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3/"/>
-    
-      <category term="OO CSS" scheme="http://kyonhuang.top/tags/OO-CSS/"/>
-    
-      <category term="语义化" scheme="http://kyonhuang.top/tags/%E8%AF%AD%E4%B9%89%E5%8C%96/"/>
-    
-      <category term="CSS hack" scheme="http://kyonhuang.top/tags/CSS-hack/"/>
     
   </entry>
   
