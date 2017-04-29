@@ -114,7 +114,7 @@
     <link href="http://kyonhuang.top/recent-and-will/"/>
     <id>http://kyonhuang.top/recent-and-will/</id>
     <published>2017-04-26T10:22:33.000Z</published>
-    <updated>2017-04-27T14:10:31.000Z</updated>
+    <updated>2017-04-29T12:23:26.000Z</updated>
     
     <content type="html"><![CDATA[<p>这几周很忙，有种没头没脑的感觉。简单地总结一下最近干了些什么以及打算干些什么。可能很快删。</p>
 <p><img src="/images/QinSir.jpg"></p>
@@ -138,6 +138,7 @@
 <li><a href="https://github.com/xufei/blog/issues/5" target="_blank" rel="external">构建单页Web应用</a>：理解单页 Web 应用。我想这篇文章我还会再看至少两遍。</li>
 <li><a href="https://github.com/lin-xin/blog/issues/11" target="_blank" rel="external">HTML5 高级系列：web Storage</a>：了解如何通过 localStorage 和 sessionStorage 存储一些数据。</li>
 <li><a href="https://juejin.im/entry/56e1a95b731956005da35c24?utm_source=gold-miner&amp;utm_medium=readme&amp;utm_campaign=github" target="_blank" rel="external">[译] 人人须知的 jQuery 技巧</a>：介绍了一些 jQuery 代码片段，包括预加载图片、禁用输入字段、简单的手风琴效果等。建议自己整理一份类似的代码片段库。</li>
+<li><a href="https://aotu.io/notes/2016/11/22/figlet/" target="_blank" rel="external">FIGlet初识</a>：了解一下 FIGlet，不实用，但还有点意思。</li>
 </ul>
 ]]></content>
     
@@ -830,9 +831,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
@@ -847,7 +848,7 @@
     <link href="http://kyonhuang.top/css-animation/"/>
     <id>http://kyonhuang.top/css-animation/</id>
     <published>2017-03-25T07:58:01.000Z</published>
-    <updated>2017-04-25T10:44:02.000Z</updated>
+    <updated>2017-04-29T07:37:43.000Z</updated>
     
     <content type="html"><![CDATA[<p>按照传统的方式，在页面上实现动画的方式有多种，包括使用 GIF 图片、使用 JavaScript 来动态修改 DOM 的位置并加上一个定时器、使用 Flash 等。但这些方法都存在自己的问题，比如引入额外的文件会导致页面尺寸变大，这样会导致页面加载变慢，从而影响用户体验。</p>
 <p>通过浏览器对 CSS3 标准的支持，我们不必再依赖于大尺寸的外部文件，仅凭 CSS 就可以实现动画。我以前没有机会使用，所以基本没有接触功能强大的 CSS 动画。在这篇博文中系统地总结一下，后续补充几个使用示例进一步巩固。</p>
@@ -900,6 +901,8 @@
 <p><a href="http://www.runoob.com/cssref/css3-pr-animation.html" target="_blank" rel="external">CSS3 animation（动画） 属性
 </a></p>
 <p><a href="https://github.com/junruchen/junruchen.github.io/wiki/CSS-%E5%8F%98%E6%8D%A2-%E8%BF%87%E6%B8%A1-%E5%8A%A8%E7%94%BB%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B" target="_blank" rel="external">CSS 变换 过渡 动画使用案例</a></p>
+<p>补充：</p>
+<p><a href="https://aotu.io/notes/2016/11/28/css3-animation-properties/" target="_blank" rel="external">css3 animation 属性众妙</a></p>
 ]]></content>
     
     <summary type="html">
@@ -1003,9 +1006,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
