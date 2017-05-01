@@ -12,7 +12,7 @@
     <entry>
       <title><![CDATA[最近在干以及打算干些什么]]></title>
       <url>%2Frecent-and-will%2F</url>
-      <content type="text"><![CDATA[这几周很忙，有种没头没脑的感觉。简单地总结一下最近干了些什么以及打算干些什么。可能很快删。 在干什么： 写花旗杯项目前端第一版。 开始看 Vue.js 的文档。 看一些关于前端工程化的博文。 打算干什么： 对花旗项目设计效果不是很满意，想抽时间自己设计一版并实现。 继续看完 Vue.js 的文档并且找一个 Demo 做一做。 尽早看完 ES 6 新特性。 看一看 Grid。 最近看的优秀文章： CSS Modules 入门及 React 中实践 玩转 npm：介绍了常用的 npm 命令。 构建单页Web应用：理解单页 Web 应用。我想这篇文章我还会再看至少两遍。 HTML5 高级系列：web Storage：了解如何通过 localStorage 和 sessionStorage 存储一些数据。 [译] 人人须知的 jQuery 技巧：介绍了一些 jQuery 代码片段，包括预加载图片、禁用输入字段、简单的手风琴效果等。建议自己整理一份类似的代码片段库。 FIGlet初识：了解一下 FIGlet，不实用，但还有点意思。]]></content>
+      <content type="text"><![CDATA[这几周很忙，有种没头没脑的感觉。简单地总结一下最近干了些什么以及打算干些什么。可能很快删。 在干什么： 写花旗杯项目前端第一版。 开始看 Vue.js 的文档。 看一些关于前端工程化的博文。 打算干什么： 继续看完 Vue.js 的文档并且找一个 Demo 做一做。 尽早看完 ES 6 新特性。 看一看 Grid。 最近看的优秀文章： CSS Modules 入门及 React 中实践 玩转 npm：介绍了常用的 npm 命令。 构建单页Web应用：理解单页 Web 应用。我想这篇文章我还会再看至少两遍。 HTML5 高级系列：web Storage：了解如何通过 localStorage 和 sessionStorage 存储一些数据。 [译] 人人须知的 jQuery 技巧：介绍了一些 jQuery 代码片段，包括预加载图片、禁用输入字段、简单的手风琴效果等。建议自己整理一份类似的代码片段库。 FIGlet初识：了解一下 FIGlet，不实用，但还有点意思。]]></content>
     </entry>
 
     
