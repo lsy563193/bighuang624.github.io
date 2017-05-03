@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-04-29T03:13:45.000Z</updated>
+  <updated>2017-05-03T06:15:45.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从零开始的 Vue 学习之旅（更新中）</title>
+    <link href="http://kyonhuang.top/vue-start/"/>
+    <id>http://kyonhuang.top/vue-start/</id>
+    <published>2017-05-02T14:16:13.000Z</published>
+    <updated>2017-05-03T06:15:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>学期刚开始时，我给自己的计划是先学习 React。为什么现在决定转投 Vue 的怀抱了呢？一是确实自己基础没有那么好，React 的入门难度比较大，Vue 就显得简便易懂了；二是 Vue 是国人开发的，中文文档还是比较详尽的。</p>
+<p>开始写这篇博文的时候，我读到了文档的组件部分，感觉看的不是很懂了。于是决定返回重读，辅以笔记和练习来巩固。</p>
+  <a id="more"></a>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h3 id="对-Vue-的使用场合的思考"><a href="#对-Vue-的使用场合的思考" class="headerlink" title="对 Vue 的使用场合的思考"></a>对 Vue 的使用场合的思考</h3><p>文档里写道“ Vue.js 是一套构建用户界面的<strong>渐进式框架</strong>。”我对“渐进式框架”的理解是：使用 Vue 不一定就要做单页面应用，Vue 的用途在于视图和数据的绑定。鉴于用 Vue 实现的页面较难做 SEO 优化，建议在后台和用户相关界面使用。</p>
+<p>Vue 官方不建议通过 jQuery 直接操作 DOM，因为这个过程势必会造成视图数据与模型数据的不匹配。在需要的时候，完全可以用 Vue 去替代 jQuery 做交互。如果一定要两者一起用，一定要在 Vue 渲染完所有的 HTML 组件之后再通过 jQuery 处理；Vue 侧重数据绑定和视图组件，jQuery 侧重异步请求和动画效果。</p>
+<p>jQuery 与 Vue 相互配合可以非常高效的完成异步任务，首先通过 jQuery 发出 Ajax 请求，接受到服务端传递的 JSON 数据后，再通过 Vue 将数据绑定到组件上，最后由 jQuery 进行动画处理。</p>
+<h3 id="对概念的笔记"><a href="#对概念的笔记" class="headerlink" title="对概念的笔记"></a>对概念的笔记</h3><p>指令：带有前缀<code>v-</code>，会在渲染的 DOM 上应用特殊的响应式行为。</p>
+<p>props：可以是数组或对象（允许配置高级选项），用于接收来自父组件的数据。子单元通过<code>props</code>接口实现了与夫单元的解耦。</p>
+<p><a href="https://cn.vuejs.org/v2/api/" target="_blank" rel="external">Vue 的 API 文档</a></p>
+<h2 id="Vue-实例"><a href="#Vue-实例" class="headerlink" title="Vue 实例"></a>Vue 实例</h2><p><strong>实例属性和方法</strong>：Vue 实例暴露的一些有用的实例属性与方法都有前缀<code>$</code>，以进行区分。因为箭头函数绑定父上下文，不要再实例属性或者回调函数中使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>);</div></pre></td></tr></table></figure>
+<p><strong>生命周期钩子</strong>：个人理解是到了实例生命周期的这个阶段调用你在这个生命周期钩子挂载的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">created</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// `this` 指向 vm 实例</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'a is: '</span> + <span class="keyword">this</span>.a)</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">// -&gt; "a is: 1"</span></div></pre></td></tr></table></figure>
+<h2 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h2><p>v-bind 指令用于在 HTML 属性中绑定数据。</p>
+<p><strong>修饰符</strong>：<code>.</code>，用于指出一个指令应该以特殊方式绑定，例如<code>.prevent</code>。</p>
+<p><strong>缩写</strong>：v-bind 缩写：<code>:</code>；v-on 缩写：<code>@</code>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学期刚开始时，我给自己的计划是先学习 React。为什么现在决定转投 Vue 的怀抱了呢？一是确实自己基础没有那么好，React 的入门难度比较大，Vue 就显得简便易懂了；二是 Vue 是国人开发的，中文文档还是比较详尽的。&lt;/p&gt;
+&lt;p&gt;开始写这篇博文的时候，我读到了文档的组件部分，感觉看的不是很懂了。于是决定返回重读，辅以笔记和练习来巩固。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="Vue" scheme="http://kyonhuang.top/tags/Vue/"/>
+    
+  </entry>
   
   <entry>
     <title>单页面程序及组件化相关笔记</title>
@@ -776,9 +821,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="HTML" scheme="http://kyonhuang.top/tags/HTML/"/>
     
@@ -915,9 +960,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="CSS动画" scheme="http://kyonhuang.top/tags/CSS%E5%8A%A8%E7%94%BB/"/>
     
@@ -956,9 +1001,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="概念理解" scheme="http://kyonhuang.top/tags/%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3/"/>
     
@@ -1697,9 +1742,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="布局" scheme="http://kyonhuang.top/tags/%E5%B8%83%E5%B1%80/"/>
     
@@ -1744,9 +1789,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="布局" scheme="http://kyonhuang.top/tags/%E5%B8%83%E5%B1%80/"/>
     
@@ -1813,57 +1858,13 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="布局" scheme="http://kyonhuang.top/tags/%E5%B8%83%E5%B1%80/"/>
     
       <category term="overflow" scheme="http://kyonhuang.top/tags/overflow/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>又是一个新学期开始了</title>
-    <link href="http://kyonhuang.top/new-term/"/>
-    <id>http://kyonhuang.top/new-term/</id>
-    <published>2017-02-19T09:52:31.000Z</published>
-    <updated>2017-04-25T10:45:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>大二的下学期就要开始了。在寒假里，我自学了JavaScript和jQuery，看完了极客学院这两部分以及AngularJS入门的视频，廖雪峰JS教程学到underscore为止。由于缺乏系统学习和动手实践，掌握肯定不甚牢固。寒假的充实度可以说差强人意吧。</p>
-<p>新学期课感觉要比上学期略少一点，但都是专业课，也有一定难度。希望自己在课业不放松的同时尽力实现以下学习目标，并产出有质量的博文以进行总结：</p>
-<ol>
-<li><strong>前端</strong>：学习《JavaScript高级程序设计》以及ES6，研究React框架（这个放在后面）。</li>
-<li><strong>后端</strong>：继续Java的深入学习，Servlet、JSP、SSH三大框架。</li>
-<li><strong>算法</strong>：学习《算法(Java描述)》，搭配LintCode练习。</li>
-<li><strong>英语</strong>：以尽量高的分数过六级。</li>
-</ol>
-<a id="more"></a>
-<p>理论学习永远离不开实践，要经常给自己找项目。前端方面可以跟着百度前端学院2015的小项目动手试试。新学期也希望自己在包括足球、人际等各方面有所突破。</p>
-<p>新学期，新气象。写下这篇博文给自己打气！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;大二的下学期就要开始了。在寒假里，我自学了JavaScript和jQuery，看完了极客学院这两部分以及AngularJS入门的视频，廖雪峰JS教程学到underscore为止。由于缺乏系统学习和动手实践，掌握肯定不甚牢固。寒假的充实度可以说差强人意吧。&lt;/p&gt;
-&lt;p&gt;新学期课感觉要比上学期略少一点，但都是专业课，也有一定难度。希望自己在课业不放松的同时尽力实现以下学习目标，并产出有质量的博文以进行总结：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;前端&lt;/strong&gt;：学习《JavaScript高级程序设计》以及ES6，研究React框架（这个放在后面）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;后端&lt;/strong&gt;：继续Java的深入学习，Servlet、JSP、SSH三大框架。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;算法&lt;/strong&gt;：学习《算法(Java描述)》，搭配LintCode练习。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;英语&lt;/strong&gt;：以尽量高的分数过六级。&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
-    
-      <category term="学习之路" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
   </entry>
   
