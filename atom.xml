@@ -114,7 +114,7 @@
     <link href="http://kyonhuang.top/recent-and-will/"/>
     <id>http://kyonhuang.top/recent-and-will/</id>
     <published>2017-04-26T10:22:33.000Z</published>
-    <updated>2017-05-03T11:31:30.000Z</updated>
+    <updated>2017-05-04T07:06:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>这几周很忙，有种没头没脑的感觉。简单地总结一下最近干了些什么以及打算干些什么。可能很快删。</p>
 <p><img src="/images/QinSir.jpg"></p>
@@ -147,6 +147,11 @@
 <li><a href="https://www.awesomes.cn/repo/mzabriskie/axios" target="_blank" rel="external">Axios</a>：基于 Promise 的 HTTP 请求客户端，可同时在浏览器和 node.js 中使用。这个貌似很常用，看看能不能用在现在的项目中。</li>
 <li><a href="https://www.awesomes.cn/css/123" target="_blank" rel="external">一个有趣的 CSS 按钮效果</a></li>
 <li><a href="https://www.awesomes.cn/repo/IanLunn/hover" target="_blank" rel="external">Hover.css</a>：Hover.css 是一个 CSS3 的鼠标悬停效果集合，可用于超链接，按钮，logo，SVG，推荐图片等等。能够很简单地运用到我们的元素中。</li>
+</ul>
+<p>之后想做的练习（时间好少QAQ）：</p>
+<ul>
+<li><a href="http://www.cnblogs.com/coco1s/p/6802374.html" target="_blank" rel="external">谈谈一些有趣的CSS题目</a></li>
+<li><a href="http://www.fgm.cc/learn/" target="_blank" rel="external">原生JavaScript学习-实例索引</a></li>
 </ul>
 ]]></content>
     
