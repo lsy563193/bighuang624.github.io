@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/bye2016hello2017/</loc>
+    <lastmod>2017-05-07T03:06:05.000Z</lastmod>
+    <data>
+        <display>
+        <title>Bye,2016 AND Hello,2017</title>
+        <pubTime>2016-12-30T14:52:51.000Z</pubTime>
+        
+        <tag>总结</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/recent-and-will/</loc>
     <lastmod>2017-05-04T13:52:04.000Z</lastmod>
     <data>
@@ -457,9 +477,9 @@
         <title>在把玩中学习——typewriter.js</title>
         <pubTime>2017-03-17T03:28:32.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>学习笔记</tag>
+         
+        <tag>前端</tag>
          
         <tag>JavaScipt</tag>
          
@@ -483,9 +503,9 @@
         <title>初见Sass－便捷的CSS预处理器</title>
         <pubTime>2017-04-03T11:21:22.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>学习笔记</tag>
+         
+        <tag>前端</tag>
          
         <tag>随笔</tag>
          
@@ -497,26 +517,6 @@
            
              
               <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/bye2016hello2017/</loc>
-    <lastmod>2017-04-25T10:46:05.000Z</lastmod>
-    <data>
-        <display>
-        <title>Goodbye,2016 & Hello,2017</title>
-        <pubTime>2016-12-30T14:52:51.000Z</pubTime>
-        
-        <tag>总结</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>
