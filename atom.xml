@@ -460,9 +460,9 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
@@ -554,7 +554,7 @@
     <link href="http://kyonhuang.top/es6-1-notes/"/>
     <id>http://kyonhuang.top/es6-1-notes/</id>
     <published>2017-04-06T08:21:52.000Z</published>
-    <updated>2017-04-28T07:49:07.000Z</updated>
+    <updated>2017-05-12T02:08:06.000Z</updated>
     
     <content type="html"><![CDATA[<p>《ECMAScript 6 入门》是一本 JavaScript 语言教程，全面介绍 ECMAScript 6 新引入的语法特性。作者阮一峰大佬慷慨地选择将全书开源：<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>。将知识点简便地总结一下，以供后续使用时参考或复习。</p>
 <p>此博文包括：let 和 const命令、变量的解构赋值、字符串的扩展、正则的扩展、数值的扩展、数组的扩展。</p>
@@ -569,6 +569,7 @@
 <p>如果真想将对象冻结，应用<code>Object.freeze()</code>方法（对象本身和 其属性都应冻结）。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> constantize = <span class="function">(<span class="params">obj</span>) =&gt;</span> &#123;</div><div class="line">    <span class="built_in">Object</span>.freeze(obj);</div><div class="line">    <span class="built_in">Object</span>.keys(obj).forEach(<span class="function">(<span class="params">key, i</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> obj[key] === <span class="string">'object'</span>) &#123;</div><div class="line">            constantize(obj[key]);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>6.顶层对象的属性：<code>let</code>、<code>const</code>、<code>class</code>声明的全局变量不属于顶层对象的属性。</p>
+<p>补充资料：<a href="https://blog.fundebug.com/2017/05/04/why-you-should-not-use-var/" target="_blank" rel="external">ES6之”let”能替代”var”吗?</a></p>
 <h2 id="变量的结构赋值"><a href="#变量的结构赋值" class="headerlink" title="变量的结构赋值"></a>变量的结构赋值</h2><p>1.解构：按照一定模式，从数组和对象中提取值，对变量进行赋值。解构不成功，变量的值就等于<code>undefined</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [foo, [[bar], baz]] = [<span class="number">1</span>, [[<span class="number">2</span>], <span class="number">3</span>]];</div><div class="line">foo <span class="comment">// 1</span></div><div class="line">bar <span class="comment">// 2</span></div><div class="line">baz <span class="comment">// 3</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [ , , third] = [<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"baz"</span>];</div><div class="line">third <span class="comment">// "baz"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x, , y] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">x <span class="comment">// 1</span></div><div class="line">y <span class="comment">// 3</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [head, ...tail] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line">head <span class="comment">// 1</span></div><div class="line">tail <span class="comment">// [2, 3, 4]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x, y, ...z] = [<span class="string">'a'</span>];</div><div class="line">x <span class="comment">// "a"</span></div><div class="line">y <span class="comment">// undefined</span></div><div class="line">z <span class="comment">// []</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [bar, foo] = [<span class="number">1</span>];</div><div class="line">foo <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
 <p>2.不完全解构：等号左边的模式，只匹配一部分的等号右边的数组。</p>
@@ -721,9 +722,9 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
@@ -1125,9 +1126,9 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
       <category term="《JavaScript高级程序设计》" scheme="http://kyonhuang.top/tags/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/"/>
     
@@ -1200,9 +1201,9 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
       <category term="《JavaScript高级程序设计》" scheme="http://kyonhuang.top/tags/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/"/>
     
@@ -1338,9 +1339,9 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
       <category term="《JavaScript高级程序设计》" scheme="http://kyonhuang.top/tags/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/"/>
     
@@ -1498,9 +1499,9 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
       <category term="《JavaScript高级程序设计》" scheme="http://kyonhuang.top/tags/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/"/>
     
@@ -1637,9 +1638,9 @@
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
       <category term="《JavaScript高级程序设计》" scheme="http://kyonhuang.top/tags/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/"/>
     
