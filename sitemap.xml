@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://kyonhuang.top/promise/</loc>
+    <loc>http://kyonhuang.top/vue-project-practice/</loc>
     
-    <lastmod>2017-06-17T13:38:46.000Z</lastmod>
+    <lastmod>2017-06-18T03:30:43.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/pseudo_elements/</loc>
+    
+    <lastmod>2017-06-18T03:20:54.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://kyonhuang.top/pikachu-iterm/</loc>
     
-    <lastmod>2017-06-11T04:05:08.000Z</lastmod>
+    <lastmod>2017-06-17T13:45:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/promise/</loc>
+    
+    <lastmod>2017-06-17T13:38:46.000Z</lastmod>
     
   </url>
   
@@ -187,13 +201,6 @@
     <loc>http://kyonhuang.top/biliInfoCrawler/</loc>
     
     <lastmod>2017-04-25T10:43:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/5171/</loc>
-    
-    <lastmod>2017-04-05T10:46:43.000Z</lastmod>
     
   </url>
   

@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="总结," />
+  <meta name="keywords" content="总结,前端,HTML,CSS,伪元素," />
 
 
 
@@ -92,19 +92,19 @@
 
 
 
-<meta name="description" content="开始写的时候是12月30日晚上，刚刚考完的大物感觉还不错。然后马上就到了2016年的最后一天。希望能在2016年内写完这篇博文，给自己的这一年做一个回顾。更重要的是，认真地考虑一下，2017年应该去做些什么。">
-<meta name="keywords" content="总结">
+<meta name="description" content="之前也或多或少看过一些关于伪元素的资料，有些许了解。这两天练手时遇到相关的实现较多，特再查找一些资料，看过后进行总结。内容包括伪类与伪元素的区别、伪元素的优点和一些伪元素的实际应用，目标是一篇文章基本讲通。">
+<meta name="keywords" content="总结,前端,HTML,CSS,伪元素">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bye,2016 AND Hello,2017">
-<meta property="og:url" content="http://kyonhuang.top/bye2016hello2017/index.html">
+<meta property="og:title" content="探究伪元素及其用途">
+<meta property="og:url" content="http://kyonhuang.top/pseudo_elements/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="开始写的时候是12月30日晚上，刚刚考完的大物感觉还不错。然后马上就到了2016年的最后一天。希望能在2016年内写完这篇博文，给自己的这一年做一个回顾。更重要的是，认真地考虑一下，2017年应该去做些什么。">
-<meta property="og:image" content="http://kyonhuang.top/images/2017bignews.gif">
-<meta property="og:updated_time" content="2017-05-07T03:06:05.000Z">
+<meta property="og:description" content="之前也或多或少看过一些关于伪元素的资料，有些许了解。这两天练手时遇到相关的实现较多，特再查找一些资料，看过后进行总结。内容包括伪类与伪元素的区别、伪元素的优点和一些伪元素的实际应用，目标是一篇文章基本讲通。">
+<meta property="og:image" content="http://kyonhuang.top/images/section-title.png">
+<meta property="og:updated_time" content="2017-06-18T03:20:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bye,2016 AND Hello,2017">
-<meta name="twitter:description" content="开始写的时候是12月30日晚上，刚刚考完的大物感觉还不错。然后马上就到了2016年的最后一天。希望能在2016年内写完这篇博文，给自己的这一年做一个回顾。更重要的是，认真地考虑一下，2017年应该去做些什么。">
-<meta name="twitter:image" content="http://kyonhuang.top/images/2017bignews.gif">
+<meta name="twitter:title" content="探究伪元素及其用途">
+<meta name="twitter:description" content="之前也或多或少看过一些关于伪元素的资料，有些许了解。这两天练手时遇到相关的实现较多，特再查找一些资料，看过后进行总结。内容包括伪类与伪元素的区别、伪元素的优点和一些伪元素的实际应用，目标是一篇文章基本讲通。">
+<meta name="twitter:image" content="http://kyonhuang.top/images/section-title.png">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://kyonhuang.top/bye2016hello2017/"/>
+  <link rel="canonical" href="http://kyonhuang.top/pseudo_elements/"/>
 
 
 
 
 
-  <title>Bye,2016 AND Hello,2017 | 大黄菌的个人博客</title>
+  <title>探究伪元素及其用途 | 大黄菌的个人博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -321,7 +321,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/bye2016hello2017/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/pseudo_elements/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kyon Huang">
@@ -342,7 +342,7 @@
             
             
               
-                Bye,2016 AND Hello,2017
+                探究伪元素及其用途
               
             
           </h1>
@@ -357,8 +357,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-30T22:52:51+08:00">
-                2016-12-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T18:43:45+08:00">
+                2017-04-05
               </time>
             
 
@@ -380,8 +380,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序员的生活/" itemprop="url" rel="index">
-                    <span itemprop="name">程序员的生活</span>
+                  <a href="/categories/前端学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习笔记</span>
                   </a>
                 </span>
 
@@ -419,24 +419,48 @@
       
 
       
-        <p>开始写的时候是12月30日晚上，刚刚考完的大物感觉还不错。然后马上就到了2016年的最后一天。希望能在2016年内写完这篇博文，给自己的这一年做一个回顾。更重要的是，认真地考虑一下，2017年应该去做些什么。</p>
+        <p>之前也或多或少看过一些关于伪元素的资料，有些许了解。这两天练手时遇到相关的实现较多，特再查找一些资料，看过后进行总结。内容包括伪类与伪元素的区别、伪元素的优点和一些伪元素的实际应用，目标是一篇文章基本讲通。</p>
   <a id="more"></a>
-<h2 id="Goodbye-2016"><a href="#Goodbye-2016" class="headerlink" title="Goodbye,2016"></a>Goodbye,2016</h2><ol>
-<li>从软件工程的萌新变成半萌新。感觉算是摸到了大门，往内斗胆一窥，发现这个世界广阔无垠。东瞧西瞥，还没有考虑好自己今后的发展方向，目前还是打算先以java的进阶为主，向web开发方面学习。</li>
-<li>今年的学期感觉除了课业上按部就班外，在技术自学上没有激情。倒是暑假自学java有很大的收获。希望自己能够不忽视小块的时间去学习技术。当然，首先找到至少短期内的一个学习目标。</li>
-<li>大一下学期进了院长实验室，但是总觉得项目安排上有点难受。外包任务让自己没什么长进。下学期看看怎么协调一下，当然也有可能下学期会参加花旗杯。</li>
-<li>拿了一些院级活动的奖（而且基本都是产品&amp;设计方面的工作）。希望自己能做一些负责技术方面的、有价值的项目。</li>
-<li>体测比去年同期略瘦，50米快了整整一秒。希望自己能保持锻炼，还能在院队有个位置。</li>
-</ol>
-<h2 id="Hello-2017"><a href="#Hello-2017" class="headerlink" title="Hello,2017"></a>Hello,2017</h2><ol>
-<li>先顺利地过了上学期所有期末考。希望自己的绩点还能保持在3.5以上。认真复习，少浪，别懒！</li>
-<li>寒假先定个小目标，比如啃啃javascript，啃啃java的高级特性，啃啃lintcode，写几篇有用的技术博客，顺便把博客再折腾一下，最好买个域名。总之，要让27天的寒假过的有意义。寒假开始时再列个日程表。</li>
-<li>早睡早起，勤奋刻苦，下学期尽量不翘课。都是专业课，认真听。还要在课余时间继续学技术。</li>
-<li>希望能做一个真正意义上的大项目（比如花旗杯）。为了这个目标，学技术。</li>
-<li>在自己真正的兴趣上利用时间，而不是无所事事地浪费。</li>
-<li>每天过得健康、充实、开心！</li>
-</ol>
-<p><img src="/images/2017bignews.gif"></p>
+<h2 id="伪类与伪元素的区别"><a href="#伪类与伪元素的区别" class="headerlink" title="伪类与伪元素的区别"></a>伪类与伪元素的区别</h2><p>伪元素(Pseudo-elements)容易与伪类(Pseudo-classes)混淆。在 w3c 定义中，伪类用于向某些选择器添加特殊的效果，而伪元素用于将特殊的效果添加到某些选择器。可以看到从定义上来说，二者确实不好分辨。不过在种类上可以看出二者的一些不同。</p>
+<p>伪类包括：</p>
+<ul>
+<li><code>:link</code>：向未被访问的链接添加样式。</li>
+<li><code>:visited</code>：向已被访问的链接添加样式。</li>
+<li><code>:hover</code>：当鼠标悬浮在元素上方时，向元素添加样式。</li>
+<li><code>:active</code>：向被激活的元素添加样式。</li>
+<li><code>:focus</code>：向拥有键盘输入焦点的元素添加样式。</li>
+<li><code>:first-child</code>：向元素的第一个子元素添加样式。</li>
+<li><code>:lang</code>：向带有指定 lang 属性的元素添加样式。</li>
+</ul>
+<p>其中前四个因为用不同的方式显示链接的不同状态，被称为“锚伪类”。在 CSS 定义中，<code>a:hover</code>必须被置于 <code>a:link</code>和<code>a:visited</code>之后，而<code>a:active</code>必须被置于<code>a:hover</code>之后才是有效的。</p>
+<p>伪元素包括：</p>
+<ul>
+<li><code>:before</code>：在元素之前添加内容。</li>
+<li><code>:after</code>：在元素之后添加内容。</li>
+<li><code>:first-letter</code>：向文本的第一个字母添加特殊样式。</li>
+<li><code>:first-line</code>：向文本的首行添加特殊样式。</li>
+</ul>
+<p>其中前两个无疑是用的最多的。后两个也可以用于实现一些特殊效果，例如通过<code>:first-letter</code>实现段落首字母加粗或变色。</p>
+<p>两者的<strong>根本区别</strong>是：伪类可以通过<strong>直接添加一个实际的类样式</strong>达到同等效果；而伪元素的效果则需要<strong>先添加一个实际的元素，再在元素上添加样式</strong>才能达到。</p>
+<p>在 CSS 3 中修订后的伪元素使用两个冒号（<code>::</code>）以与伪类进行区分。但无论使用单冒号还是双冒号，浏览器都能识别。并且 IE 8 只支持单冒号的写法。因此为了更广泛的浏览器兼容性，还是推荐使用单冒号的写法。</p>
+<h2 id="伪元素的优点"><a href="#伪元素的优点" class="headerlink" title="伪元素的优点"></a>伪元素的优点</h2><p>最常使用的两种伪元素——<code>:before</code>和<code>:after</code>可以在内容元素的前后插入额外的元素。通过伪元素，在实现很多炫酷的视觉效果时，我们不必修改现有的 HTML 文档结构。因为 HTML 文档本身仅仅应该包含内容，而不应该包含样式，所以伪元素更应该被提倡。</p>
+<h2 id="伪元素的应用"><a href="#伪元素的应用" class="headerlink" title="伪元素的应用"></a>伪元素的应用</h2><p>鉴于伪元素应用很多时候代码相对专一，建议配合 Sass，通过设置 mixin 来使用以提高复用性（你可以通过我的上一篇博文 <a href="http://kyonhuang.top/1478/">初见Sass－便捷的CSS预处理器</a> 来了解Sass）。</p>
+<h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><p>这大概是伪元素最为常见的应用了。比起插入额外的非语义标记来清除内联元素的浮动，这种俗称“clearfix”的方式更语义化。</p>
+<p><strong>CSS</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.group:before,</div><div class="line">.group:after &#123;</div><div class="line">  content:&quot;&quot;;</div><div class="line">  display:table;</div><div class="line">&#125;</div><div class="line">.group:after &#123;</div><div class="line">  clear:both;</div><div class="line">  overflow: hidden;</div><div class="line">&#125;</div><div class="line">.group &#123;</div><div class="line">  zoom:1; /* For IE 6/7 (trigger hasLayout) */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Sass</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@mixin clearfix &#123; </div><div class="line">  @if $legacy-support-for-ie &#123; </div><div class="line">    *zoom: 1; </div><div class="line">  &#125; </div><div class="line">  &amp;:before, </div><div class="line">  &amp;:after &#123; </div><div class="line">    content: &quot;&quot;; </div><div class="line">    display: table; </div><div class="line">  &#125; </div><div class="line">  &amp;:after &#123; </div><div class="line">    clear: both; </div><div class="line">    overflow: hidden; </div><div class="line">  &#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">// 通过 @include 方法调用</div></pre></td></tr></table></figure>
+<h3 id="实现样式效果"><a href="#实现样式效果" class="headerlink" title="实现样式效果"></a>实现样式效果</h3><p>能够借助伪元素实现的样式效果数不胜数。这里举一个简单而常用的例子。</p>
+<p>很多时候我们会在每一节的标题下做一个类似下划线效果，用来强调。使用伪元素可以让我们不必添加额外的元素来实现这个效果。</p>
+<p><img src="/images/section-title.png" width="264px" height="88px"></p>
+<p>Sass 代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@mixin section-title() &#123;</div><div class="line">  font-size: 2em;</div><div class="line">  padding: 2em 0;</div><div class="line">  text-transform: uppercase;</div><div class="line">  color: #55a2dd;</div><div class="line"></div><div class="line">  &amp;:after &#123;</div><div class="line">    display: block;</div><div class="line">    content: &quot;&quot;;</div><div class="line">    background-color: #cccccc;</div><div class="line">    width: 2em;</div><div class="line">    height: .2em;</div><div class="line">    margin: .4em auto;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="设置透明度"><a href="#设置透明度" class="headerlink" title="设置透明度"></a>设置透明度</h3><p>有时我们想给一张大图设置透明度，却发现其子元素都会被继承这个透明度。以往想要消除这个属性总让我头大。现在通过伪元素，我们就可以分别为文字和图片设置不同的透明度。</p>
+<p>Sass 代码如下（来自<a href="https://juntao.gitbooks.io/3-web-designs-in-3-weeks/content/design_your_own_site/index.html" target="_blank" rel="external">第3周：设计你自己的页面</a>）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">.hero &#123;</div><div class="line">  width: 100%;</div><div class="line">  min-height: 50em;</div><div class="line">  position: relative;</div><div class="line">  background-color: $mask-color;</div><div class="line">  z-index: 1;</div><div class="line"></div><div class="line">  &amp;:after &#123;</div><div class="line">    background: url(&apos;../images/hero-1-resized.jpg&apos;);</div><div class="line">    background-size: cover;</div><div class="line">    position: absolute;</div><div class="line">    content: &quot;&quot;;</div><div class="line">    z-index: -1;</div><div class="line">    opacity: .2;</div><div class="line">    width: 100%;</div><div class="line">    height: 100%;</div><div class="line">    top: 0;</div><div class="line">    left: 0;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  h2 &#123;</div><div class="line">    font-size: 6em;</div><div class="line">    font-weight: bold;</div><div class="line">    padding: 3em 0 1em 0;</div><div class="line">    text-transform: uppercase;</div><div class="line">    color: white;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  p &#123;</div><div class="line">    max-width: 70%;</div><div class="line">    font-size: 1.5em;</div><div class="line">    font-weight: lighter;</div><div class="line">    color: #cecece;</div><div class="line">    line-height: 1.4;</div><div class="line">    margin: 0 auto;</div><div class="line">    padding: 1em 0 8em 0;</div><div class="line">    span &#123;</div><div class="line">      color: $heading-color;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>对于 .hero 这个 section，我们将其背景设置为灰色，并将 position 设置为 relative。然后为其添加了一个伪元素，这个伪元素上包含了实际的图片，并为图片设置了透明度 .2。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.w3school.com.cn/css/css_pseudo_elements.asp" target="_blank" rel="external">CSS 伪元素 - W3School</a></p>
+<p>你可以从这篇文章中了解更多伪元素的应用：<a href="http://www.w3cplus.com/css3/pseudo-element-roundup.html" target="_blank" rel="external">大放异彩的伪元素——可以做什么？</a></p>
 
       
     </div>
@@ -465,7 +489,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://kyonhuang.top/bye2016hello2017/" title="Bye,2016 AND Hello,2017">http://kyonhuang.top/bye2016hello2017/</a>
+      <a href="http://kyonhuang.top/pseudo_elements/" title="探究伪元素及其用途">http://kyonhuang.top/pseudo_elements/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -483,6 +507,14 @@
           
             <a href="/tags/总结/" rel="tag"># 总结</a>
           
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/HTML/" rel="tag"># HTML</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+            <a href="/tags/伪元素/" rel="tag"># 伪元素</a>
+          
         </div>
       
 
@@ -494,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/biliInfoCrawler/" rel="next" title="BiliBili视频信息爬虫基于Java的实现">
-                <i class="fa fa-chevron-left"></i> BiliBili视频信息爬虫基于Java的实现
+              <a href="/es6-1-notes/" rel="next" title="《ECMAScript 6 入门》读书笔记(一)">
+                <i class="fa fa-chevron-left"></i> 《ECMAScript 6 入门》读书笔记(一)
               </a>
             
           </div>
@@ -504,8 +536,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/lyrics-aircloud/" rel="prev" title="【V家中填】飛行機雲 -full ver.-">
-                【V家中填】飛行機雲 -full ver.- <i class="fa fa-chevron-right"></i>
+              <a href="/sass-begin/" rel="prev" title="初见Sass－便捷的CSS预处理器">
+                初见Sass－便捷的CSS预处理器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -686,7 +718,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Goodbye-2016"><span class="nav-number">1.</span> <span class="nav-text">Goodbye,2016</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-2017"><span class="nav-number">2.</span> <span class="nav-text">Hello,2017</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#伪类与伪元素的区别"><span class="nav-number">1.</span> <span class="nav-text">伪类与伪元素的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪元素的优点"><span class="nav-number">2.</span> <span class="nav-text">伪元素的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪元素的应用"><span class="nav-number">3.</span> <span class="nav-text">伪元素的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#清除浮动"><span class="nav-number">3.1.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现样式效果"><span class="nav-number">3.2.</span> <span class="nav-text">实现样式效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置透明度"><span class="nav-number">3.3.</span> <span class="nav-text">设置透明度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>

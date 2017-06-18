@@ -4,6 +4,76 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/vue-project-practice/</loc>
+    <lastmod>2017-06-18T03:30:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>从零开始的 Vue 实践（更新中）</title>
+        <pubTime>2017-06-18T03:23:42.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/pseudo_elements/</loc>
+    <lastmod>2017-06-18T03:20:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>探究伪元素及其用途</title>
+        <pubTime>2017-04-05T10:43:45.000Z</pubTime>
+        
+        <tag>总结</tag>
+         
+        <tag>前端</tag>
+         
+        <tag>HTML</tag>
+         
+        <tag>CSS</tag>
+         
+        <tag>伪元素</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/pikachu-iterm/</loc>
+    <lastmod>2017-06-17T13:45:28.000Z</lastmod>
+    <data>
+        <display>
+        <title>如何给终端安上炫酷的皮神黄皮肤？</title>
+        <pubTime>2017-06-10T09:11:32.000Z</pubTime>
+        
+        <tag>终端</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/promise/</loc>
     <lastmod>2017-06-17T13:38:46.000Z</lastmod>
     <data>
@@ -25,26 +95,6 @@
            
              
               <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/pikachu-iterm/</loc>
-    <lastmod>2017-06-11T04:05:08.000Z</lastmod>
-    <data>
-        <display>
-        <title>如何给终端安上炫酷的皮神黄皮肤？</title>
-        <pubTime>2017-06-10T09:11:32.000Z</pubTime>
-        
-        <tag>终端</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
           
         </display>
     </data>
@@ -549,9 +599,9 @@
         <title>在把玩中学习——typewriter.js</title>
         <pubTime>2017-03-17T03:28:32.000Z</pubTime>
         
-        <tag>学习笔记</tag>
-         
         <tag>前端</tag>
+         
+        <tag>学习笔记</tag>
          
         <tag>随笔</tag>
          
@@ -575,9 +625,9 @@
         <title>初见Sass－便捷的CSS预处理器</title>
         <pubTime>2017-04-03T11:21:22.000Z</pubTime>
         
-        <tag>学习笔记</tag>
-         
         <tag>前端</tag>
+         
+        <tag>学习笔记</tag>
          
         <tag>SASS</tag>
          
@@ -683,34 +733,6 @@
            
              
               <breadCrumb title="Java学习笔记" url="http://kyonhuang.top/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/5171/</loc>
-    <lastmod>2017-04-05T10:46:43.000Z</lastmod>
-    <data>
-        <display>
-        <title>探究伪元素及其用途</title>
-        <pubTime>2017-04-05T10:43:45.000Z</pubTime>
-        
-        <tag>总结</tag>
-         
-        <tag>前端</tag>
-         
-        <tag>HTML</tag>
-         
-        <tag>CSS</tag>
-         
-        <tag>伪元素</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
