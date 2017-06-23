@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/recent-and-will/</loc>
+    <lastmod>2017-06-23T13:06:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>最近在干以及打算干些什么</title>
+        <pubTime>2017-04-26T10:22:33.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>目标</tag>
+         
+        <tag>学习之路</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/vue-project-practice/</loc>
     <lastmod>2017-06-18T03:30:43.000Z</lastmod>
     <data>
@@ -186,30 +210,6 @@
         <pubTime>2016-12-30T14:52:51.000Z</pubTime>
         
         <tag>总结</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/recent-and-will/</loc>
-    <lastmod>2017-05-04T13:52:04.000Z</lastmod>
-    <data>
-        <display>
-        <title>最近在干以及打算干些什么</title>
-        <pubTime>2017-04-26T10:22:33.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-        <tag>目标</tag>
-         
-        <tag>学习之路</tag>
          
          
            
@@ -599,13 +599,13 @@
         <title>在把玩中学习——typewriter.js</title>
         <pubTime>2017-03-17T03:28:32.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>学习笔记</tag>
          
-        <tag>随笔</tag>
+        <tag>前端</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>随笔</tag>
          
          
            
@@ -625,15 +625,15 @@
         <title>初见Sass－便捷的CSS预处理器</title>
         <pubTime>2017-04-03T11:21:22.000Z</pubTime>
         
+        <tag>学习笔记</tag>
+         
         <tag>前端</tag>
          
-        <tag>学习笔记</tag>
+        <tag>随笔</tag>
          
         <tag>SASS</tag>
          
         <tag>WebStorm</tag>
-         
-        <tag>随笔</tag>
          
          
            
