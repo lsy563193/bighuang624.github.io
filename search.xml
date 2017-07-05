@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[简单的暑假计划]]></title>
+      <url>%2Fsummer-plan%2F</url>
+      <content type="text"><![CDATA[简单地规划一下暑假。期望自己能利用好两个月的宝贵时间，学习和实践自己感兴趣的知识，并且认真做学习笔记和总结。 整个暑假： 每天 12 点前睡觉，8 点前起床。 每天 4 面左右的《算法》，4 面左右的《JavaScript 设计模式与开发实践》，1－2 道的 LeetCode 练习。 前端各类练习题。 每天 2 面六级单词。 想做的练习： 谈谈一些有趣的CSS题目 原生JavaScript学习-实例索引 百度前端技术学院 七月： 写花旗杯项目前端。 Vue 全家桶及相关技术实践。 八月： Node.js。 如果还有时间，试试 Electron 或者 Lavas 天下武功，唯勤不破！]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[从零开始的 Vue 实践（更新中）]]></title>
       <url>%2Fvue-project-practice%2F</url>
       <content type="text"><![CDATA[到目前为止，我阅读了 Vue、Vue-router、Vuex 的官方文档并进行了一定的实践来体会，使用了 Element 和 Axios。那么在这段时间的学习基础上，我决定做一个规模较大的、基于 Vue 全家桶的项目，一方面巩固自己所学知识，另一方面继续学习一些大规模项目中要用到的工具、库、插件等等。 项目地址：bighuang624/vip 技术栈（到目前为止项目中引入的）：Vue + Vue-router + vuex + axios + Element 这个项目的工程量还是比较大的。这篇博文会记录我在这个项目中技术选型考量、使用细节和坑、项目中某些设计的缘由，等等… 技术选型坑参考资料]]></content>
