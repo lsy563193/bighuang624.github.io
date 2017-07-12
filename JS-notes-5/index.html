@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://kyonhuang.top/JS-notes-5/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="今天看了看LESS。前端要研究的东西确实有点多，压力有点大。而且发现自己动手写代码的水平也有待提高。从今天开始理论学习要给实践让让路了，加油加油。 这篇博文总结了《JavaScript高级程序设计》的20~21章：JSON、AJAX与Comet。此外，关于CORS的部分还参考了廖雪峰的JavaScript教程。">
-<meta property="og:updated_time" content="2017-04-28T07:50:32.000Z">
+<meta property="og:updated_time" content="2017-07-12T06:58:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记（五）">
 <meta name="twitter:description" content="今天看了看LESS。前端要研究的东西确实有点多，压力有点大。而且发现自己动手写代码的水平也有待提高。从今天开始理论学习要给实践让让路了，加油加油。 这篇博文总结了《JavaScript高级程序设计》的20~21章：JSON、AJAX与Comet。此外，关于CORS的部分还参考了廖雪峰的JavaScript教程。">
@@ -421,21 +421,18 @@
 <p>这篇博文总结了《JavaScript高级程序设计》的20~21章：JSON、AJAX与Comet。此外，关于CORS的部分还参考了廖雪峰的JavaScript教程。</p>
   <a id="more"></a>
 <h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>JSON是一种数据格式。虽然有相同的语法形式，但JSON不从属于JavaScript。很多编程语言都有针对JSON的解析器和序列化器。</p>
-<p><strong>语法</strong></p>
-<p>1.JSON的语法可以表示三种类型的值：简单值、对象、数组。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>1.JSON的语法可以表示三种类型的值：简单值、对象、数组。</p>
 <p>2.简单值：可表示字符串、数值、布尔值和 null，但不支持 undefined。JSON字符串必须使用双引号。</p>
 <p>3.对象：表示一组无序的键值对。没有声明变量（JSON中没有变量概念），没有末尾分号，对象属性名必须加双引号。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;name&quot;: &quot;Kyon&quot;,</div><div class="line">    &quot;age&quot;: 20,</div><div class="line">    &quot;school&quot;: &#123;</div><div class="line">        &quot;name&quot;: &quot;Wuhan University&quot;,</div><div class="line">        &quot;major&quot;: &quot;Software Engineering&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>4.数组：表示一组有序的值的列表，可以通过数值索引来访问其中的值。</p>
-<p><strong>解析与序列化</strong></p>
-<p>5.JSON对象有两个方法：<code>stringify()</code>把JavaScript对象序列化为JSON字符串，<code>parse()</code>把JSON字符串解析为原生JavaScript值。</p>
+<h3 id="解析与序列化"><a href="#解析与序列化" class="headerlink" title="解析与序列化"></a>解析与序列化</h3><p>5.JSON对象有两个方法：<code>stringify()</code>把JavaScript对象序列化为JSON字符串，<code>parse()</code>把JSON字符串解析为原生JavaScript值。</p>
 <p>6.<code>JSON.stringify()</code>还可以接收另外两个参数：第一个参数是个过滤器（数组：结果中只包含数组列出的属性；函数：传入的函数接收两个参数，属性名和属性值，根据属性名判断如何处理属性）；第二个参数控制结果中的缩进和空白符，数值表示缩进空格数，字符串被用作缩进字符。</p>
 <p>7.<code>toJSON</code>：自定义序列化。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var person = &#123;</div><div class="line">    &quot;name&quot;: &quot;Kyon&quot;,</div><div class="line">    age: 20,</div><div class="line">    toJSON: function()&#123;</div><div class="line">        return this.name;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var jsonText = JSON.stringify(person);</div></pre></td></tr></table></figure>
 <p>8.<code>JSON.parse()</code>还可以接受一个参数：将在每个键值对上调用的还原函数（与<code>JSON.stringify()</code>的过滤函数相同）。</p>
 <h2 id="AJAX与Comet"><a href="#AJAX与Comet" class="headerlink" title="AJAX与Comet"></a>AJAX与Comet</h2><p>Ajax 技术的核心是 XMLHttpRequest 对象（简称 XHR）。可以使用 XHR对象取得新数据，然后再通过 DOM 将新数据插入到页面中，无须刷新页面即可从服务器取得数据。</p>
-<p><strong>XMLHttpRequest 对象</strong></p>
-<p>1.用法：</p>
+<h3 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h3><p>1.用法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var xhr = new XMLHttpRequest();</div><div class="line">xhr.onreadystatechange = function()&#123;</div><div class="line">    if(xhr.readState === 4)&#123;</div><div class="line">        if(xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300 || xhr.status === 304)&#123;</div><div class="line">            console.log(xhr.responseText);</div><div class="line">        &#125; else &#123;</div><div class="line">            console.log(&apos;Request was unsuccessful: &apos; + xhr.status);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// GET请求</div><div class="line">xhr.open(&apos;get&apos;, &apos;example.php&apos;);</div><div class="line">xhr.send(null);</div><div class="line"></div><div class="line">// POST请求</div><div class="line">xhr.open(&apos;open&apos;, &apos;postexample.php&apos;);</div><div class="line">xhr.setRequestHeader(&apos;Content-Type&apos;, &apos;application/x-www-form-urlencoded&apos;);</div><div class="line">var form = document.getElementById(&apos;user-info&apos;);</div><div class="line">xhr.send(serialize(form));</div><div class="line">// 将ID为user-info的表单中数据序列化后发送给服务器</div></pre></td></tr></table></figure>
 <ul>
 <li>创建XHR对象：<code>new XMLHttpRequest()</code>;</li>
@@ -463,8 +460,7 @@
 <li>4：接收到全部响应数据。</li>
 </ul>
 <p>5.readystatechange事件：readystate属性的值由一个值变成另一个值，都会触发readystatechange事件。</p>
-<p><strong>跨源资源共享</strong></p>
-<p>6.跨域安全策略：XHR对象只能访问与包含它的页面位于同一个域的资源（域名、协议、端口号都要相同）。</p>
+<h3 id="跨源资源共享"><a href="#跨源资源共享" class="headerlink" title="跨源资源共享"></a>跨源资源共享</h3><p>6.跨域安全策略：XHR对象只能访问与包含它的页面位于同一个域的资源（域名、协议、端口号都要相同）。</p>
 <p>7.CORS（跨源资源共享）：HTML5规范定义的如何跨域访问资源。当JavaScript 向外域发起请求后，浏览器收到响应后首先检查<code>Access-Control-Allow-Origin</code>是否包含本域。如果不是，请求失败，JavaScript 无法获取到响应的任何数据。</p>
 <p>跨域是否成功，取决于对方服务器是否给本域设置一个正确的<code>Access-Control-Allow-Origin</code>。</p>
 <p>以上“简单请求”包括GET、HEAD和POST（POST的Content-Type类型仅限<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>和<code>text/plain</code>），并且不能出现任何自定义头。</p>
@@ -473,8 +469,7 @@
 <p>服务器必须响应并明确指出允许的Method：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Access-Control-Allow-Origin: http://my.com</div><div class="line">Access-Control-Allow-Methods: POST, GET, PUT, OPTIONS</div><div class="line">Access-Control-Max-Age: 86400</div></pre></td></tr></table></figure>
 <p>浏览器确认服务器响应的<code>Access-Control-Allow-Methods</code>头确实包含将要发送的AJAX请求的Method，才会继续发送AJAX，否则，抛出一个错误。</p>
-<p><strong>其他跨域技术</strong></p>
-<p>8.图像Ping：与服务器进行简单、单向的跨域通信的一种方式。请求的数据是通过查询字符串形式发送的，而响应可以是任意内容，但通常是像素图或204响应。</p>
+<h3 id="其他跨域技术"><a href="#其他跨域技术" class="headerlink" title="其他跨域技术"></a>其他跨域技术</h3><p>8.图像Ping：与服务器进行简单、单向的跨域通信的一种方式。请求的数据是通过查询字符串形式发送的，而响应可以是任意内容，但通常是像素图或204响应。</p>
 <p>对于</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var img = new Image();</div><div class="line">img.onload = img.onerror = function()&#123;</div><div class="line">    console.log(&quot;Done!&quot;);</div><div class="line">&#125;;</div><div class="line">// onload和onerror事件处理程序指定为同一函数，请求完成时无关响应得到通知</div><div class="line">img.src = &quot;http://www.example.com/test?name=Nicholas&quot;;</div><div class="line">// 请求从设置src属性那一刻开始</div></pre></td></tr></table></figure>
 <p>两个主要缺点：只能发送GET请求；无法访问服务器的响应文本。因此只能用于浏览器与服务器间的单向通信。</p>
@@ -485,8 +480,7 @@
 <p>补充：轮询是指通过JavaScript启动一个定时器，然后以固定的间隔给服务器发请求，询问服务器是否有新消息。缺点：(1)实时性不够；(2)频繁请求会给服务器带来极大压力。</p>
 <p>11.SSE（服务器发送事件）：一种实现Comet交互的浏览器API，既支持长轮询，也支持HTTP流。</p>
 <p>12.Web Sockets：目标是在一个单独的持久连接上提供全双工、双向通信。使用一种专为快速传输小数据设计的自定义协议。</p>
-<p><strong>安全</strong></p>
-<p>13.为确保通过XHR访问的URL安全，通行做法是验证发送请求者是否有权限访问响应的资源。有下列方式：</p>
+<h3 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h3><p>13.为确保通过XHR访问的URL安全，通行做法是验证发送请求者是否有权限访问响应的资源。有下列方式：</p>
 <ul>
 <li>要求以SSL连接来访问可以通过XHR请求的资源。</li>
 <li>要求每一次请求都要附带经过相应算法计算得到的验证码。</li>
@@ -746,7 +740,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON"><span class="nav-number">1.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX与Comet"><span class="nav-number">2.</span> <span class="nav-text">AJAX与Comet</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON"><span class="nav-number">1.</span> <span class="nav-text">JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析与序列化"><span class="nav-number">1.2.</span> <span class="nav-text">解析与序列化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX与Comet"><span class="nav-number">2.</span> <span class="nav-text">AJAX与Comet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLHttpRequest-对象"><span class="nav-number">2.1.</span> <span class="nav-text">XMLHttpRequest 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨源资源共享"><span class="nav-number">2.2.</span> <span class="nav-text">跨源资源共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他跨域技术"><span class="nav-number">2.3.</span> <span class="nav-text">其他跨域技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全"><span class="nav-number">2.4.</span> <span class="nav-text">安全</span></a></li></ol></li></ol></div>
             
 
           </div>
