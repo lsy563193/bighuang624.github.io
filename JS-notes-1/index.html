@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://kyonhuang.top/JS-notes-1/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="《JavaScript高级程序设计》，俗称红宝书。本来因为不太清楚的知识点零零碎碎，打算默默地看。但是学习热情不高，加上看到某大佬的对于这本书的读书笔记，最终决定做一个比较零散的、私人化的读书笔记，激励自己。 顺便，这里有我的Java读书笔记：Kyon Huang的java学习笔记 - Github，内容比较多，就不放在博客上了。大概包含了Java核心卷一的内容，之后停了有一段时间了。这学期会继续">
-<meta property="og:updated_time" content="2017-07-12T06:55:18.000Z">
+<meta property="og:updated_time" content="2017-07-12T08:33:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记（一）">
 <meta name="twitter:description" content="《JavaScript高级程序设计》，俗称红宝书。本来因为不太清楚的知识点零零碎碎，打算默默地看。但是学习热情不高，加上看到某大佬的对于这本书的读书笔记，最终决定做一个比较零散的、私人化的读书笔记，激励自己。 顺便，这里有我的Java读书笔记：Kyon Huang的java学习笔记 - Github，内容比较多，就不放在博客上了。大概包含了Java核心卷一的内容，之后停了有一段时间了。这学期会继续">
@@ -424,7 +424,7 @@
 <h2 id="JavaScript简介"><a href="#JavaScript简介" class="headerlink" title="JavaScript简介"></a>JavaScript简介</h2><p>1.ECMAScript 是一种开放的、国际上广为接受的脚本语言规范。它本身并不是一种脚本语言。而JavaScript 是 ECMAScript 规范的一种实现。</p>
 <p>2.一个完整的 JavaScript 实现应该由三个部分组成：<strong>核心（ECMAScript）、文档对象模型（DOM）、浏览器对象模型（BOM）</strong>。</p>
 <p>3.ECMAScript 提供核心语言功能；DOM 提供访问和操作网页内容的方法和接口；BOM 提供与浏览器交互的方法和接口。</p>
-<h2 id="在HTML中使用JavaScript"><a href="#在HTML中使用JavaScript" class="headerlink" title="在HTML中使用JavaScript"></a>在HTML中使用JavaScript</h2><h3 id="lt-script-gt-元素"><a href="#lt-script-gt-元素" class="headerlink" title="&lt;script&gt;元素"></a><code>&lt;script&gt;</code>元素</h3><p>1.为了避免浏览器在呈现页面时出现明显延迟，现代Web应用程序一般都把全部 JavaScript 引用放在主要内容后面，<code>&lt;/body&gt;</code>标签前面的位置。</p>
+<h2 id="在HTML中使用JavaScript"><a href="#在HTML中使用JavaScript" class="headerlink" title="在HTML中使用JavaScript"></a>在HTML中使用JavaScript</h2><h3 id="元素"><a href="#元素" class="headerlink" title=" 元素"></a><script> 元素</h3><p>1.为了避免浏览器在呈现页面时出现明显延迟，现代Web应用程序一般都把全部 JavaScript 引用放在主要内容后面，<code>&lt;/body&gt;</code>标签前面的位置。</p>
 <p>2.延迟脚本：<code>&lt;script&gt;</code>标签的 defer 属性表明脚本在执行时不会影响页面构造，会延迟到整个页面都解析完毕后再运行。延迟脚本总按指定它们的顺序执行。defer 属性只适用于外部脚本文件。</p>
 <p>3.异步脚本：<code>&lt;script&gt;</code>标签的 async 属性告诉浏览器立即下载文件，不必等待其他脚本或阻塞文档呈现，目的是不让页面等待两个脚本下载和执行，从而异步加载页面其他内容。不保证异步脚本按照页面出现的先后顺序执行。async 属性只适用于外部脚本文件。</p>
 <p><strong>补充</strong>：<code>defer</code>与<code>async</code>的区别是：前者要等到整个页面正常渲染结束，才会执行；后者一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。一句话，<code>defer</code>是“渲染完再执行”，<code>async</code>是“下载完就执行”。另外，如果有多个<code>defer</code>脚本，会按照它们在页面出现的顺序加载，而多个<code>async</code>脚本是不能保证加载顺序的。</p>
@@ -466,7 +466,7 @@
 <p>7.任何操作数与 NaN 比较，结果都是false。</p>
 <p>8.相等（==）与全等（===）：全等只在两个操作数未经转换就相等的情况下返回true。</p>
 <h3 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h3><p>9.由于ECMAScript中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var count = 10;</div><div class="line">for (var i = ; i &lt; count; i++)&#123;</div><div class="line">    var j = 1;</div><div class="line">&#125;</div><div class="line">alert(i, j);   //10, 1</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = ; i &lt; count; i++)&#123;</div><div class="line">    <span class="keyword">var</span> j = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">alert(i, j);   <span class="comment">//10, 1</span></div></pre></td></tr></table></figure>
 <p>10.for-in 语句可以用来遍历对象的属性名称：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(property in expression)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>为了保证最大限度的兼容性，建议在使用 for-in 循环之前，先检测确认该对象的值不是 null 或 undefined。</p>
 <p>补充：一个 Array 数组实际也是一个对象，它的每个元素的索引被视为一个属性。所以当手动给 Array 添加额外的属性时，for-in 语句也会将其遍历。要循环集合本身的元素，建议使用 ES 6 提供的 for-of 语句。</p>
@@ -476,7 +476,7 @@
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>12.ECMAScript中没有函数签名的概念，因为其函数参数是以一个包含零或多个值的数组的形式传递的。所以ECMAScript函数不能重载。</p>
 <p>13.可以向ECMAScript函数传递任意数量的参数，并通过 arguments对象来访问这些参数。没有传递值的命名参数将自动被赋予 undefined 值。arguments对象中的值与对应的命名参数的内存空间是独立的，但它们的值会同步。</p>
 <p>15.ECMAScript中的所有参数传递的都是值，不可能通过引用传递参数。</p>
-
+</script></h3>
       
     </div>
 
@@ -731,7 +731,59 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript简介"><span class="nav-number">1.</span> <span class="nav-text">JavaScript简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在HTML中使用JavaScript"><span class="nav-number">2.</span> <span class="nav-text">在HTML中使用JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-script-gt-元素"><span class="nav-number">2.1.</span> <span class="nav-text"><script>元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入代码与外部文件"><span class="nav-number">2.2.</span> <span class="nav-text">嵌入代码与外部文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档模式"><span class="nav-number">2.3.</span> <span class="nav-text">文档模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-noscript-gt-元素"><span class="nav-number">2.4.</span> <span class="nav-text"><noscript>元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">3.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#严格模式"><span class="nav-number">3.1.</span> <span class="nav-text">严格模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">3.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">3.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作符"><span class="nav-number">3.4.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语句"><span class="nav-number">3.5.</span> <span class="nav-text">语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">3.6.</span> <span class="nav-text">函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript简介"><span class="nav-number">1.</span> <span class="nav-text">JavaScript简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在HTML中使用JavaScript"><span class="nav-number">2.</span> <span class="nav-text">在HTML中使用JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元素"><span class="nav-number">2.1.</span> <span class="nav-text"> 元素</h3><p>1.为了避免浏览器在呈现页面时出现明显延迟，现代Web应用程序一般都把全部 JavaScript 引用放在主要内容后面，<code>&lt;/body&gt;</code>标签前面的位置。</p>
+<p>2.延迟脚本：<code>&lt;script&gt;</code>标签的 defer 属性表明脚本在执行时不会影响页面构造，会延迟到整个页面都解析完毕后再运行。延迟脚本总按指定它们的顺序执行。defer 属性只适用于外部脚本文件。</p>
+<p>3.异步脚本：<code>&lt;script&gt;</code>标签的 async 属性告诉浏览器立即下载文件，不必等待其他脚本或阻塞文档呈现，目的是不让页面等待两个脚本下载和执行，从而异步加载页面其他内容。不保证异步脚本按照页面出现的先后顺序执行。async 属性只适用于外部脚本文件。</p>
+<p><strong>补充</strong>：<code>defer</code>与<code>async</code>的区别是：前者要等到整个页面正常渲染结束，才会执行；后者一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。一句话，<code>defer</code>是“渲染完再执行”，<code>async</code>是“下载完就执行”。另外，如果有多个<code>defer</code>脚本，会按照它们在页面出现的顺序加载，而多个<code>async</code>脚本是不能保证加载顺序的。</p>
+<h3 id="嵌入代码与外部文件"><a href="#嵌入代码与外部文件" class="headerlink" title="嵌入代码与外部文件"></a>嵌入代码与外部文件</h3><p>4.使用外部文件的优点：可维护性、可缓存、适应未来。</p>
+<h3 id="文档模式"><a href="#文档模式" class="headerlink" title="文档模式"></a>文档模式</h3><p>5.所有浏览器默认开启混杂模式，不同浏览器在这种模式下的行为差异非常大。通过文档类型（doctype）开启标准模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!-- HTML 5 --&gt;</div><div class="line">&lt;!DOCTYPE html&gt;</div></pre></td></tr></table></figure>
+<h3 id="lt-noscript-gt-元素"><a href="#lt-noscript-gt-元素" class="headerlink" title="&lt;noscript&gt;元素"></a><code>&lt;noscript&gt;</code>元素</h3><p>6.包含在<code>&lt;noscript&gt;</code>元素中的内容只有在浏览器不支持脚本，或浏览器支持脚本但脚本被禁用时才会显示出来。因此，它用于指定在不支持脚本的浏览器中显示的替代内容。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><p>1.通过在顶部添加<code>&quot;use strict&quot;;</code>开启严格模式。这个编译指令告诉支持的JavaScript引擎切换到严格模式，以处理 ES 3 中一些不确定的行为，并对某些不安全的操作抛出错误。</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>2.省略<code>var</code>操作符可以定义全局变量（难维护，不推荐）。给未经声明的变量赋值在严格模式下会导致抛出 ReferenceError 错误。</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>3.五种简单数据类型（基本数据类型）：Undefined、Null、Boolean、Number和String，一种复杂数据类型 Object。ECMAScript 不支持任何创建自定义类型的机制。</p>
+<ul>
+<li><p>Undefined类型：未初始化的变量会自动被赋予 undefined 值。</p>
+</li>
+<li><p>Null类型：null 值表示一个空对象指针。只要意在保存对象的变量还没有真正保存对象，就应该明确的让该变量保存 null 值，以体现 null 作为空指针对象的惯例。</p>
+</li>
+<li><p>Boolean类型：使用函数<code>Boolean()</code>将其他类型转换为Boolean类型。</p>
+</li>
+<li><p>Number类型：其他类型转换为Number类型，常用函数parseInt()，转换字符串时，如果第一个字符不是数字字符或者负号，会返回NaN，第二个可选参数表示进制（建议始终明确指定基数）。</p>
+</li>
+<li><p>String类型：不可变。其他类型转换为String类型，使用函数toString()或String()或加一个空字符串（””）。</p>
+</li>
+<li><p>Object类型：Object 的每个实例都具有下列属性和方法：</p>
+<p> – constructor：保留着用于创建当前对象的函数（即构造函数）；</p>
+<p> – hasOwnProperty(propertyName)：用于检查给定的属性在当前对象实例中是否存在（属性名必须以字符串形式指定）；</p>
+<p> – isPrototypeOf(object)：用于检查传入的对象是否是传入对象的原型；</p>
+<p> – propertyIsEnumerable(propertyName)：用于检查给定的属性是否能使用 for-in 语句来枚举；</p>
+<p> – toLocaleString()：返回对象的字符串表示，该字符串与执行环境的地区对应；</p>
+<p> – toString()：返回对象的字符串表示（null 和 undefined 伪对象没有此方法，整数 number 类型需要在整数末尾多加一个<code>.</code>再调用）；</p>
+<p> – valueOf()：返回对象的字符串、数值或布尔值表示；</p>
+</li>
+</ul>
+<p>4.typeof 操作符可检测给定变量的数据类型，包括 number、boolean、string、function、undefined。</p>
+<p>判断 Array：<code>Array.isArray(myArr);</code>。</p>
+<p>判断 null：用<code>myArr === null;</code>。</p>
+<p>补充：判断某个全局变量是否存在：<code>typeof window.myVar === &#39;undefined&#39;;</code>。</p>
+<p>判断函数内部某个变量是否存在：<code>typeof myVar === &#39;undefined === &#39;undefined&#39;；</code>。</p>
+<h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><p>5.如果两个操作数都是字符串，则比较两个字符串对应的字符串编码值。</p>
+<p>6.如果一个操作数是数值，则将另一个操作数转换为数值，然后执行数值比较；如果该操作数不能被转换为合理数值，则转换成 NaN。</p>
+<p>7.任何操作数与 NaN 比较，结果都是false。</p>
+<p>8.相等（==）与全等（===）：全等只在两个操作数未经转换就相等的情况下返回true。</p>
+<h3 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h3><p>9.由于ECMAScript中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = ; i &lt; count; i++)&#123;</div><div class="line">    <span class="keyword">var</span> j = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">alert(i, j);   <span class="comment">//10, 1</span></div></pre></td></tr></table></figure>
+<p>10.for-in 语句可以用来遍历对象的属性名称：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(property in expression)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>为了保证最大限度的兼容性，建议在使用 for-in 循环之前，先检测确认该对象的值不是 null 或 undefined。</p>
+<p>补充：一个 Array 数组实际也是一个对象，它的每个元素的索引被视为一个属性。所以当手动给 Array 添加额外的属性时，for-in 语句也会将其遍历。要循环集合本身的元素，建议使用 ES 6 提供的 for-of 语句。</p>
+<p>11.break 语句会立即退出循环，强制继续执行循环后面的语句；continue 语句退出循环后会从循环的顶部继续执行。break 和 continue 语句与 label 语句联合使用多发生在循环嵌套的情况下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var num = 0;</div><div class="line"></div><div class="line">outermost:</div><div class="line">for(var i=0; i &lt; 10; i++)&#123;</div><div class="line">    for(var j=0; j &lt; 10; j++)&#123;</div><div class="line">        if(i == 5 &amp;&amp; j == 5)&#123;</div><div class="line">            break outermost;</div><div class="line">        &#125;</div><div class="line">        num++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">alert(num);    //55</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var num = 0;</div><div class="line"></div><div class="line">outermost:</div><div class="line">for(var i=0; i &lt; 10; i++)&#123;</div><div class="line">    for(var j=0; j &lt; 10; j++)&#123;</div><div class="line">        if(i == 5 &amp;&amp; j == 5)&#123;</div><div class="line">            continue outermost;</div><div class="line">        &#125;</div><div class="line">        num++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">alert(num);    //95</div></pre></td></tr></table></figure>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>12.ECMAScript中没有函数签名的概念，因为其函数参数是以一个包含零或多个值的数组的形式传递的。所以ECMAScript函数不能重载。</p>
+<p>13.可以向ECMAScript函数传递任意数量的参数，并通过 arguments对象来访问这些参数。没有传递值的命名参数将自动被赋予 undefined 值。arguments对象中的值与对应的命名参数的内存空间是独立的，但它们的值会同步。</p>
+<p>15.ECMAScript中的所有参数传递的都是值，不可能通过引用传递参数。</p>
+</span></a></li></ol></li></ol></div>
             
 
           </div>
