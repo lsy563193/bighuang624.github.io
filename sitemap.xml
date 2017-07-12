@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/JS-notes-2/</loc>
+    
+    <lastmod>2017-07-12T04:31:41.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/JS-notes-1/</loc>
+    
+    <lastmod>2017-07-12T04:29:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/JS-notes-3/</loc>
     
     <lastmod>2017-07-07T00:49:22.000Z</lastmod>
@@ -103,20 +117,6 @@
     <loc>http://kyonhuang.top/JS-notes-4/</loc>
     
     <lastmod>2017-04-28T07:50:23.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-2/</loc>
-    
-    <lastmod>2017-04-28T07:50:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-1/</loc>
-    
-    <lastmod>2017-04-28T07:49:54.000Z</lastmod>
     
   </url>
   

@@ -4,6 +4,58 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/JS-notes-2/</loc>
+    <lastmod>2017-07-12T04:31:41.000Z</lastmod>
+    <data>
+        <display>
+        <title>《JavaScript高级程序设计》读书笔记（二）</title>
+        <pubTime>2017-03-03T09:33:08.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>JavaScipt</tag>
+         
+        <tag>读书笔记</tag>
+         
+        <tag>《JavaScript高级程序设计》</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/JS-notes-1/</loc>
+    <lastmod>2017-07-12T04:29:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>《JavaScript高级程序设计》读书笔记（一）</title>
+        <pubTime>2017-02-28T00:57:45.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>JavaScipt</tag>
+         
+        <tag>读书笔记</tag>
+         
+        <tag>《JavaScript高级程序设计》</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/JS-notes-3/</loc>
     <lastmod>2017-07-07T00:49:22.000Z</lastmod>
     <data>
@@ -107,9 +159,9 @@
         <title>探究伪元素及其用途</title>
         <pubTime>2017-04-05T10:43:45.000Z</pubTime>
         
-        <tag>总结</tag>
-         
         <tag>前端</tag>
+         
+        <tag>总结</tag>
          
         <tag>HTML</tag>
          
@@ -279,9 +331,9 @@
         <title>神奇的CSS动画</title>
         <pubTime>2017-03-25T07:58:01.000Z</pubTime>
         
-        <tag>总结</tag>
-         
         <tag>前端</tag>
+         
+        <tag>总结</tag>
          
         <tag>CSS动画</tag>
          
@@ -376,58 +428,6 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/JS-notes-2/</loc>
-    <lastmod>2017-04-28T07:50:02.000Z</lastmod>
-    <data>
-        <display>
-        <title>《JavaScript高级程序设计》读书笔记（二）</title>
-        <pubTime>2017-03-03T09:33:08.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>JavaScipt</tag>
-         
-        <tag>读书笔记</tag>
-         
-        <tag>《JavaScript高级程序设计》</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-1/</loc>
-    <lastmod>2017-04-28T07:49:54.000Z</lastmod>
-    <data>
-        <display>
-        <title>《JavaScript高级程序设计》读书笔记（一）</title>
-        <pubTime>2017-02-28T00:57:45.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>JavaScipt</tag>
-         
-        <tag>读书笔记</tag>
-         
-        <tag>《JavaScript高级程序设计》</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://kyonhuang.top/es6-2-notes/</loc>
     <lastmod>2017-04-28T07:49:14.000Z</lastmod>
     <data>
@@ -489,9 +489,9 @@
         <title>对几个前端相关概念的理解——OO CSS、语义化、CSS hack</title>
         <pubTime>2017-02-19T06:24:51.000Z</pubTime>
         
-        <tag>总结</tag>
-         
         <tag>前端</tag>
+         
+        <tag>总结</tag>
          
         <tag>概念理解</tag>
          
@@ -519,9 +519,9 @@
         <title>前端布局知识点(3)——圣杯布局与双飞翼布局</title>
         <pubTime>2017-02-25T01:54:43.000Z</pubTime>
         
-        <tag>总结</tag>
-         
         <tag>前端</tag>
+         
+        <tag>总结</tag>
          
         <tag>布局</tag>
          
@@ -547,9 +547,9 @@
         <title>前端布局知识点(2)——负边距</title>
         <pubTime>2017-02-24T03:54:37.000Z</pubTime>
         
-        <tag>总结</tag>
-         
         <tag>前端</tag>
+         
+        <tag>总结</tag>
          
         <tag>布局</tag>
          
@@ -575,9 +575,9 @@
         <title>前端布局知识点(1)——从overflow属性看浮动</title>
         <pubTime>2017-02-23T02:34:12.000Z</pubTime>
         
-        <tag>总结</tag>
-         
         <tag>前端</tag>
+         
+        <tag>总结</tag>
          
         <tag>布局</tag>
          
@@ -623,13 +623,13 @@
         <title>在把玩中学习——typewriter.js</title>
         <pubTime>2017-03-17T03:28:32.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>学习笔记</tag>
          
-        <tag>JavaScipt</tag>
+        <tag>前端</tag>
          
         <tag>随笔</tag>
+         
+        <tag>JavaScipt</tag>
          
          
            
@@ -649,15 +649,15 @@
         <title>初见Sass－便捷的CSS预处理器</title>
         <pubTime>2017-04-03T11:21:22.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>学习笔记</tag>
          
-        <tag>随笔</tag>
+        <tag>前端</tag>
          
         <tag>SASS</tag>
          
         <tag>WebStorm</tag>
+         
+        <tag>随笔</tag>
          
          
            
@@ -745,13 +745,13 @@
         <title>BiliBili视频信息爬虫基于Java的实现</title>
         <pubTime>2017-01-27T10:24:19.000Z</pubTime>
         
-        <tag>学习笔记</tag>
-         
         <tag>demo</tag>
          
         <tag>爬虫</tag>
          
         <tag>Java</tag>
+         
+        <tag>学习笔记</tag>
          
          
            
@@ -771,9 +771,9 @@
         <title>探究JS中的词法作用域</title>
         <pubTime>2017-03-22T13:58:50.000Z</pubTime>
         
-        <tag>总结</tag>
-         
         <tag>前端</tag>
+         
+        <tag>总结</tag>
          
         <tag>概念理解</tag>
          
