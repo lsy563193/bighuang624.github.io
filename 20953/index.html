@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://kyonhuang.top/20953/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="这两天在对原生 JavaScript 的一些概念做一个回顾。在看一篇名为 JavaScript 语言精粹 的文章时，看到作者认为 JavaScript 的优秀思想中有一条是“函数：基于词法来划分作用域，而不是动态划分作用域”。无独有偶，在二刷廖雪峰的 JavaScript 教程时，在 箭头函数 一节中有提到“箭头函数内部的 this 是词法作用域，由上下文确定。” 这里的“词法作用域”这个概念我之">
-<meta property="og:updated_time" content="2017-03-22T14:22:53.000Z">
+<meta property="og:updated_time" content="2017-07-13T07:01:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="探究JS中的词法作用域">
 <meta name="twitter:description" content="这两天在对原生 JavaScript 的一些概念做一个回顾。在看一篇名为 JavaScript 语言精粹 的文章时，看到作者认为 JavaScript 的优秀思想中有一条是“函数：基于词法来划分作用域，而不是动态划分作用域”。无独有偶，在二刷廖雪峰的 JavaScript 教程时，在 箭头函数 一节中有提到“箭头函数内部的 this 是词法作用域，由上下文确定。” 这里的“词法作用域”这个概念我之">
@@ -424,13 +424,18 @@
 <p>“JavaScript 中的函数是通过词法来划分作用域的，而不是动态地划分作用域的。这意味着它们在定义它们的作用域里运行，而不是在执行它们的作用域里运行。当定义了一个函数，当前的作用域链就保存起来，并且成为函数的内部状态的一部分。”</p>
 <p>当然，这几句话还是玄之又玄，摸不着头脑。它还是没有具体解释“词法作用域”中的“词法”二字代表什么。不过我这学期的《编译原理》课程上经常见到这个词：编译过程被划分为词法分析、语法分析、语义分析、中间代码生成、代码优化和目标代码生成 6 个阶段（清华大学出版社《编译原理》）。在查阅资料后，我确信这个概念确实与编译有关。</p>
 <p>JavaScript 引擎在代码执行前会对其进行编译，而所谓的词法作用域指作用域是由书写代码时<strong>函数声明的位置</strong>决定，在词法解析阶段就已经确定，之后不会改变。也就是说，JS 中的“词法作用域”等同于静态作用域，即与动态作用域（运行时确定）相对。</p>
-<p>词法作用域关注函数在<strong>何处声明</strong>；而动态作用域关注函数从<strong>何处调用</strong>，其作用域链是基于运行时的调用栈的。换言之，在遇到既不是形参也不是函数内部定义的局部变量的变量时，词法作用域的函数会去函数定义时的环境中查询；而动态作用域的函数会到函数调用时的环境中查询。</p>
+<p>词法作用域关注函数在<strong>何处声明</strong>；而动态作用域关注函数从<strong>何处调用</strong>，其作用域链是基于运行时的调用栈的。换言之，在遇到既不是形参也不是函数内部定义的局部变量的变量时，词法作用域的函数会去函数<strong>定义</strong>时的环境中查询；而动态作用域的函数会到函数调用时的环境中查询。</p>
 <p>一个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    print a;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function bar()&#123;</div><div class="line">    var a = 3;</div><div class="line">    foo();</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = 2;</div><div class="line">bar();</div></pre></td></tr></table></figure>
-<p>采用词法作用域的语言会输出 2，而采用动态作用域的语言会输出 3。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    print a;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function bar()&#123;</div><div class="line">    var a = 1;</div><div class="line">    foo();</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = 2;</div><div class="line">bar();</div></pre></td></tr></table></figure>
+<p>采用词法作用域的语言会从函数定义位置开始向上层查找，最后输出 2。</p>
+<p>而采用动态作用域的语言会输出 1。</p>
 <p>顺便一提，在 JS 中<code>eval</code>和<code>with</code>可以产生动态作用域的效果。但《JavaScript 高级程序设计》不推荐使用此二者。</p>
-<p>参考资料：</p>
-<p><a href="https://www.zhihu.com/question/20032419" target="_blank" rel="external">动态作用域和词法域的区别是什么？- 知乎</a></p>
+<h2 id="强调与补充"><a href="#强调与补充" class="headerlink" title="强调与补充"></a>强调与补充</h2><p>函数的作用域基于函数<strong>定义</strong>的位置。</p>
+<p>为了去实现这种词法作用域，JavaScript 函数对象的内部状态不仅包含函数逻辑的代码，除此之外还包含当前作用域链的引用。函数对象可以通过这个作用域链相互关联起来。</p>
+<p>如此，函数体内部的变量都可以保存在函数的作用域内，在程序语言范畴内这被称为<strong>闭包</strong>。而我们常说的闭包是指<strong>让外部函数访问到内部的变量</strong>，也就是说，按照一般的做法，是<strong>使内部函数返回一个函数，然后操作其中的变量</strong>。这样做的话一是可以读取函数内部的变量，二是可以让这些变量的值始终保存在内存中。</p>
+<p>这时，调用函数的时候闭包所指向的作用域链和定义函数时的作用域链不是同一个作用域链。</p>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><p><a href="https://www.zhihu.com/question/20032419" target="_blank" rel="external">动态作用域和词法域的区别是什么？- 知乎</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/3" target="_blank" rel="external">JavaScript深入之词法作用域和动态作用域 · Issue #3 · mqyqingfeng/Blog</a></p>
 
       
     </div>
@@ -688,7 +693,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域"><span class="nav-number">1.</span> <span class="nav-text">词法作用域</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域"><span class="nav-number">1.</span> <span class="nav-text">词法作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强调与补充"><span class="nav-number">2.</span> <span class="nav-text">强调与补充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料："><span class="nav-number">3.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
             
 
           </div>
