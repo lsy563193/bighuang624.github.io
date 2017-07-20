@@ -98,39 +98,38 @@
   </entry>
   
   <entry>
-    <title>简单的暑假计划</title>
+    <title>暑假计划进行中</title>
     <link href="http://kyonhuang.top/summer-plan/"/>
     <id>http://kyonhuang.top/summer-plan/</id>
     <published>2017-07-05T13:42:53.000Z</published>
-    <updated>2017-07-06T09:16:40.000Z</updated>
+    <updated>2017-07-20T12:44:18.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>出征前內心忐忑<br>鋒利的匕首反握<br>準備殺死對手前先讓我來殺死懶惰</p>
 <p>— 艾福杰尼 / Killa4nia《酒精》</p>
 </blockquote>
 <p>简单地规划一下暑假。期望自己能利用好两个月的宝贵时间，学习和实践自己感兴趣的知识，并且认真做学习笔记和总结。</p>
-<p>整个暑假：</p>
-<ul>
+<p>07.20 更新：暑假已经过去了半个月。对暑期计划进行一些变更使其更加合理。最重要的是提高效率。</p>
+<h4 id="读书计划（脑图整理知识点）"><a href="#读书计划（脑图整理知识点）" class="headerlink" title="读书计划（脑图整理知识点）"></a>读书计划（脑图整理知识点）</h4><p>7月23日为 deadline，看完《你不知道的 JavaScript（上卷）》。</p>
+<p>8月8日为deadline， 看完《你不知道的 JavaScript（中卷）》。</p>
+<p>8月读一本 Node 方面的书。</p>
+<p>争取暑假读完《JavaScript 设计模式与开发实践》。</p>
+<h4 id="整个暑假："><a href="#整个暑假：" class="headerlink" title="整个暑假："></a>整个暑假：</h4><ul>
 <li>每天 12 点前睡觉，8 点前起床。</li>
-<li>第一阶段，每天 15 - 20 面左右的《JavaScript 设计模式与开发实践》</li>
-<li>第二阶段，每天 5 - 8 面左右的《算法》，1－2 道的 LeetCode 练习。</li>
-<li>前端各类练习题。每天 2 - 3 道原生 js 实例题。</li>
+<li>前端各类练习题。每天 2 - 3 道原生 js 实例题。学累了刷刷 <a href="https://www.nowcoder.com/5257175" target="_blank" rel="external">牛客网</a>。</li>
 <li>每天 2 面六级单词。</li>
 </ul>
-<p>想做的练习：</p>
-<ul>
+<h4 id="想做的练习："><a href="#想做的练习：" class="headerlink" title="想做的练习："></a>想做的练习：</h4><ul>
 <li><a href="http://www.cnblogs.com/coco1s/p/6802374.html" target="_blank" rel="external">谈谈一些有趣的CSS题目</a></li>
 <li><a href="http://www.fgm.cc/learn/" target="_blank" rel="external">原生JavaScript学习-实例索引</a></li>
-<li><a href="http://ife.baidu.com/" target="_blank" rel="external">百度前端技术学院</a></li>
+<li><a href="http://ife.baidu.com/" target="_blank" rel="external">百度前端技术学院</a>［可缓］</li>
 </ul>
-<p>七月：</p>
-<ul>
+<h4 id="七月："><a href="#七月：" class="headerlink" title="七月："></a>七月：</h4><ul>
 <li>写花旗杯项目前端。</li>
 <li>Vue 全家桶及相关技术实践。</li>
 </ul>
-<p>八月：</p>
-<ul>
-<li>Node.js。</li>
+<h4 id="八月："><a href="#八月：" class="headerlink" title="八月："></a>八月：</h4><ul>
+<li>Node.js学习。首先是廖雪峰的入门教程，争取一天看完。接下来选一本书看看（据说朴灵的《Node.js 深入浅出》不错…）</li>
 <li>如果还有时间，试试 Electron 或者 <a href="https://lavas.baidu.com/guide" target="_blank" rel="external">Lavas</a></li>
 </ul>
 <p>天下武功，唯勤不破！</p>
@@ -1141,9 +1140,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="HTML" scheme="http://kyonhuang.top/tags/HTML/"/>
     
@@ -1280,9 +1279,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="CSS动画" scheme="http://kyonhuang.top/tags/CSS%E5%8A%A8%E7%94%BB/"/>
     
@@ -1326,9 +1325,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="概念理解" scheme="http://kyonhuang.top/tags/%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3/"/>
     
