@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-07-22T16:18:03.000Z</updated>
+  <updated>2017-07-23T08:57:13.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,10 +20,9 @@
     <link href="http://kyonhuang.top/start-to-know-AI/"/>
     <id>http://kyonhuang.top/start-to-know-AI/</id>
     <published>2017-07-22T16:17:25.000Z</published>
-    <updated>2017-07-22T16:18:03.000Z</updated>
+    <updated>2017-07-23T08:57:13.000Z</updated>
     
     <content type="html"><![CDATA[<p>一篇人工智能及相关概念（机器学习、深度学习、神经网络）的入门知识笔记。带一点点自己的思考。</p>
-<a id="more"></a>
 <h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2><p>为什么作为一个前端学习者，我要对看似毫无关联的人工智能有所了解并进行学习？</p>
 <ol>
 <li>发挥科班优势。众所周知，机器学习等技术对数学的要求较高，对计算机组织与体系结构、操作系统等计算机基础知识也有一定要求。作为一个就读软件工程的本科生（而且还打算读研），应该充分利用自己的优势来规划职业生涯。</li>
@@ -33,9 +32,23 @@
 <p>何况，我手上还有一本蔡恒进老师的《机器崛起前传——自我意识与人类智慧的开端》没读，带签名的。既然蔡老师赠给我了，还是要抽时间读一读的。</p>
 <p>这不代表我放弃了前端的学习。在静下心来巩固 JavaScript 基础的同时，我希望自己学会放宽视野，在 20 岁之前。</p>
 <p>不要拒绝未来的任何可能性。</p>
-<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><p>一直感觉纯文字的笔记比较难以记忆，导致自己的学习吸收率不高。看到别人的读书笔记是总结了一张脑图，条理比较清晰。这里也试着用 Xmind 总结一张相关概念的脑图（P.S.画完以后觉得不是很好用，也没我预想中的美观。下次试试百度脑图…）。</p>
+<a id="more"></a>
+<h2 id="相关概念脑图"><a href="#相关概念脑图" class="headerlink" title="相关概念脑图"></a>相关概念脑图</h2><p>一直感觉纯文字的笔记比较难以记忆，导致自己的学习吸收率不高。看到别人的读书笔记是总结了一张脑图，条理比较清晰。这里也试着用 Xmind 总结一张相关概念的脑图（P.S.画完以后觉得不是很好用，也没我预想中的美观。下次试试百度脑图…）。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-a64a6eb143122930.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="人工智能相关概念.png"></p>
-<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><p>把听上去最高端的“神经网络”拿出来单独介绍。</p>
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>学习算法的输入数据，叫<strong>“训练数据”</strong>。训练数据的每一行称为一个<strong>“训练样本”（Training Sample）</strong>，通常简称“样本”（Sample）。</p>
+<p>样本的各种属性称为<strong>“特征”（Feature）</strong>。而希望学得的模型可以用来预判的信息称为样本的<strong>“标注”（Label）</strong>。</p>
+<h2 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>不是所有的机器学习问题都需要标注。根据训练数据是否有标注，机器学习问题大致划分为<strong>监督学习（Supervised Learning）</strong>和<strong>无监督学习（Unsupervised Learning）</strong>两大类（还有半监督学习、增强学习等）。</p>
+<ul>
+<li>监督学习：每个输入样本都<strong>有标注</strong>。大致分成两类：<ol>
+<li><strong>分类（Classification）</strong>问题：标注是离散值，比如用户”点击“和”不点击“。如果标注只有两个值，则称为二分类，如果标注有多个值，则称为多分类。</li>
+<li><strong>回归（Regression）</strong>问题：标注是连续值，比如如果问题是预测北京市房屋的价格，价格作为标注就是一个连续值，属于回归问题。</li>
+</ol>
+</li>
+<li>无监督学习：训练样本<strong>没有标注</strong>，无监督学习解决的典型问题是<strong>聚类（clustering）问题</strong>。比如对一个网站的用户进行聚类，看看这个网站用户的大致构成，分析下每类用户群的特点是什么。</li>
+</ul>
+<p>以上总结为脑图（感觉百度脑图稍微清晰一些）：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-e14be3cf5133d5cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="机器学习.png"></p>
+<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><p>把听上去最高端的“神经网络”放到最后介绍。</p>
 <h3 id="神经网络-1"><a href="#神经网络-1" class="headerlink" title="神经网络"></a>神经网络</h3><p>一组大致模仿人类大脑构造设计的算法，用于识别模式。神经网络通过机器感知系统解释传感器数据，能够对原始输入进行标记或聚类等操作。</p>
 <p>神经网络所能识别的模式是数值形式，因此图像、声音、文本、时间序列等一切现实世界的数据必须转换为数值。</p>
 <h3 id="感知器、权重与阈值"><a href="#感知器、权重与阈值" class="headerlink" title="感知器、权重与阈值"></a>感知器、权重与阈值</h3><p>高中的生物课上大家都学过，人类大脑思考的基础是神经元（神经细胞）。如果能够人工制造神经元，就能组成人工神经网络来模拟思考。</p>
@@ -68,6 +81,7 @@
 <h2 id="基于-JavaScript-的机器学习"><a href="#基于-JavaScript-的机器学习" class="headerlink" title="基于 JavaScript 的机器学习"></a>基于 JavaScript 的机器学习</h2><p>等待实践中，to be continued…</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="相关概念部分"><a href="#相关概念部分" class="headerlink" title="相关概念部分"></a>相关概念部分</h3><p><a href="http://blog.csdn.net/feichizhongwu888/article/details/52727958" target="_blank" rel="external">简单理解：人工智能、数据挖掘、模式识别、机器学习、深度学习 - feichizhongwu888的博客 - CSDN博客</a></p>
 <p><a href="http://36kr.com/p/5052482.html" target="_blank" rel="external">一篇文章讲清楚人工智能、机器学习和深度学习的区别</a></p>
+<h3 id="数据部分"><a href="#数据部分" class="headerlink" title="数据部分"></a>数据部分</h3><p><a href="https://zhuanlan.zhihu.com/p/25439997" target="_blank" rel="external">写给大家看的机器学习书（第二篇） - 知乎专栏</a></p>
 <h3 id="神经网络部分"><a href="#神经网络部分" class="headerlink" title="神经网络部分"></a>神经网络部分</h3><p><a href="http://www.ruanyifeng.com/blog/2017/07/neural-network.html" target="_blank" rel="external">神经网络入门 - 阮一峰的网络日志</a></p>
 <h3 id="基于-JavaScript-的机器学习-1"><a href="#基于-JavaScript-的机器学习-1" class="headerlink" title="基于 JavaScript 的机器学习"></a>基于 JavaScript 的机器学习</h3><p><a href="https://blog.fundebug.com/2017/07/03/javascript-machine-learning-regression/" target="_blank" rel="external">JavaScript机器学习之线性回归</a></p>
 <h3 id="扩展学习"><a href="#扩展学习" class="headerlink" title="扩展学习"></a>扩展学习</h3><p><a href="https://exacity.github.io/deeplearningbook-chinese/" target="_blank" rel="external">Deep Learning 中文翻译</a></p>
@@ -78,6 +92,15 @@
     <summary type="html">
     
       &lt;p&gt;一篇人工智能及相关概念（机器学习、深度学习、神经网络）的入门知识笔记。带一点点自己的思考。&lt;/p&gt;
+&lt;h2 id=&quot;为什么&quot;&gt;&lt;a href=&quot;#为什么&quot; class=&quot;headerlink&quot; title=&quot;为什么&quot;&gt;&lt;/a&gt;为什么&lt;/h2&gt;&lt;p&gt;为什么作为一个前端学习者，我要对看似毫无关联的人工智能有所了解并进行学习？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;发挥科班优势。众所周知，机器学习等技术对数学的要求较高，对计算机组织与体系结构、操作系统等计算机基础知识也有一定要求。作为一个就读软件工程的本科生（而且还打算读研），应该充分利用自己的优势来规划职业生涯。&lt;/li&gt;
+&lt;li&gt;随着人工智能的飞速发展，即使是前端也可能与之发生密切的联系。目前相关方面和前端联系的最深的就是数据的挖掘及可视化。即使不如此，作为一名软件工程师，也应该要对最前沿的技术有所了解。&lt;/li&gt;
+&lt;li&gt;确实很有意思啊，科幻小说里的人工智能什么的。自己也有时以此为基础构思一些小说的点子。个人感觉，真正的人工智能确实是会对人类的未来造成巨大影响的事物。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;何况，我手上还有一本蔡恒进老师的《机器崛起前传——自我意识与人类智慧的开端》没读，带签名的。既然蔡老师赠给我了，还是要抽时间读一读的。&lt;/p&gt;
+&lt;p&gt;这不代表我放弃了前端的学习。在静下心来巩固 JavaScript 基础的同时，我希望自己学会放宽视野，在 20 岁之前。&lt;/p&gt;
+&lt;p&gt;不要拒绝未来的任何可能性。&lt;/p&gt;
     
     </summary>
     
@@ -1273,9 +1296,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
@@ -1453,9 +1476,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
