@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-07-27T08:43:21.000Z</updated>
+  <updated>2017-07-27T12:38:03.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,12 +20,17 @@
     <link href="http://kyonhuang.top/You-Dont-Know-JS-notes-1/"/>
     <id>http://kyonhuang.top/You-Dont-Know-JS-notes-1/</id>
     <published>2017-07-27T08:47:12.000Z</published>
-    <updated>2017-07-27T08:43:21.000Z</updated>
+    <updated>2017-07-27T12:38:03.000Z</updated>
     
     <content type="html"><![CDATA[<p>这篇博文展示了我读《你不知道的 JavaScript（上卷）》所总结的脑图。以后读的书争取都用脑图做总结，以建立清晰的知识体系。</p>
   <a id="more"></a>
 <h2 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-2804c3c63580ec6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="作用域和闭包.png"></p>
-<h2 id="this-和对象原型"><a href="#this-和对象原型" class="headerlink" title="this 和对象原型"></a>this 和对象原型</h2><p>to be continued..</p>
+<p>大图：<a href="http://upload-images.jianshu.io/upload_images/2702529-2804c3c63580ec6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">作用域和闭包.png</a></p>
+<h2 id="this-和对象原型"><a href="#this-和对象原型" class="headerlink" title="this 和对象原型"></a>this 和对象原型</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-e0b5c9e70a40628d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="this和对象原型.png"></p>
+<p>大图：<a href="http://upload-images.jianshu.io/upload_images/2702529-e0b5c9e70a40628d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">this和对象原型.png</a></p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>补一张来自 <a href="https://github.com/mqyqingfeng/Blog/issues/2" target="_blank" rel="external">JavaScript深入之从原型到原型链</a>  的图，来直观地表现原型链。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-d73fdcc0c25efd7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="原型链.png"></p>
+<p>图中由相互关联的原型组成的链状结构就是原型链，也就是蓝色的这条线。</p>
 ]]></content>
     
     <summary type="html">

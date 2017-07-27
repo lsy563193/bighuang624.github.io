@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[《你不知道的 JavaScript（上卷）》脑图]]></title>
       <url>%2FYou-Dont-Know-JS-notes-1%2F</url>
-      <content type="text"><![CDATA[这篇博文展示了我读《你不知道的 JavaScript（上卷）》所总结的脑图。以后读的书争取都用脑图做总结，以建立清晰的知识体系。 作用域和闭包 this 和对象原型to be continued..]]></content>
+      <content type="text"><![CDATA[这篇博文展示了我读《你不知道的 JavaScript（上卷）》所总结的脑图。以后读的书争取都用脑图做总结，以建立清晰的知识体系。 作用域和闭包 大图：作用域和闭包.png this 和对象原型 大图：this和对象原型.png 原型链补一张来自 JavaScript深入之从原型到原型链 的图，来直观地表现原型链。 图中由相互关联的原型组成的链状结构就是原型链，也就是蓝色的这条线。]]></content>
     </entry>
 
     
