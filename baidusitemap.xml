@@ -4,8 +4,82 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/vue-project-practice/</loc>
+    <lastmod>2017-07-27T08:44:51.000Z</lastmod>
+    <data>
+        <display>
+        <title>从零开始的 Vue 实践（持续更新）</title>
+        <pubTime>2017-07-17T13:03:42.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/You-Dont-Know-JS-notes-1/</loc>
+    <lastmod>2017-07-27T08:43:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>《你不知道的 JavaScript（上卷）》脑图</title>
+        <pubTime>2017-07-27T08:47:12.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>JavaScipt</tag>
+         
+        <tag>读书笔记</tag>
+         
+        <tag>《你不知道的 JavaScript》</tag>
+         
+        <tag>脑图</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/summer-plan/</loc>
+    <lastmod>2017-07-27T08:33:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>暑假计划进行中</title>
+        <pubTime>2017-07-05T13:42:53.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>目标</tag>
+         
+        <tag>学习之路</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/start-to-know-AI/</loc>
-    <lastmod>2017-07-26T08:10:09.000Z</lastmod>
+    <lastmod>2017-07-27T08:31:04.000Z</lastmod>
     <data>
         <display>
         <title>初探人工智能</title>
@@ -37,9 +111,9 @@
         <title>探究JS中的词法作用域</title>
         <pubTime>2017-03-22T13:58:50.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>总结</tag>
+         
+        <tag>前端</tag>
          
         <tag>概念理解</tag>
          
@@ -78,52 +152,6 @@
            
              
               <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/summer-plan/</loc>
-    <lastmod>2017-07-20T12:44:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>暑假计划进行中</title>
-        <pubTime>2017-07-05T13:42:53.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-        <tag>目标</tag>
-         
-        <tag>学习之路</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/vue-project-practice/</loc>
-    <lastmod>2017-07-17T13:08:22.000Z</lastmod>
-    <data>
-        <display>
-        <title>从零开始的 Vue 实践（更新中）</title>
-        <pubTime>2017-07-17T13:03:42.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>Vue</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -266,9 +294,9 @@
         <title>探究伪元素及其用途</title>
         <pubTime>2017-04-05T10:43:45.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>总结</tag>
+         
+        <tag>前端</tag>
          
         <tag>HTML</tag>
          
@@ -438,9 +466,9 @@
         <title>神奇的CSS动画</title>
         <pubTime>2017-03-25T07:58:01.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>总结</tag>
+         
+        <tag>前端</tag>
          
         <tag>CSS动画</tag>
          
@@ -544,9 +572,9 @@
         <title>对几个前端相关概念的理解——OO CSS、语义化、CSS hack</title>
         <pubTime>2017-02-19T06:24:51.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>总结</tag>
+         
+        <tag>前端</tag>
          
         <tag>概念理解</tag>
          
@@ -574,9 +602,9 @@
         <title>前端布局知识点(3)——圣杯布局与双飞翼布局</title>
         <pubTime>2017-02-25T01:54:43.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>总结</tag>
+         
+        <tag>前端</tag>
          
         <tag>布局</tag>
          
@@ -602,9 +630,9 @@
         <title>前端布局知识点(2)——负边距</title>
         <pubTime>2017-02-24T03:54:37.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>总结</tag>
+         
+        <tag>前端</tag>
          
         <tag>布局</tag>
          
@@ -630,9 +658,9 @@
         <title>前端布局知识点(1)——从overflow属性看浮动</title>
         <pubTime>2017-02-23T02:34:12.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>总结</tag>
+         
+        <tag>前端</tag>
          
         <tag>布局</tag>
          
@@ -678,9 +706,9 @@
         <title>在把玩中学习——typewriter.js</title>
         <pubTime>2017-03-17T03:28:32.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>学习笔记</tag>
+         
+        <tag>前端</tag>
          
         <tag>随笔</tag>
          
@@ -704,9 +732,9 @@
         <title>初见Sass－便捷的CSS预处理器</title>
         <pubTime>2017-04-03T11:21:22.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>学习笔记</tag>
+         
+        <tag>前端</tag>
          
         <tag>SASS</tag>
          
@@ -800,13 +828,13 @@
         <title>BiliBili视频信息爬虫基于Java的实现</title>
         <pubTime>2017-01-27T10:24:19.000Z</pubTime>
         
-        <tag>学习笔记</tag>
-         
         <tag>demo</tag>
          
         <tag>爬虫</tag>
          
         <tag>Java</tag>
+         
+        <tag>学习笔记</tag>
          
          
            
