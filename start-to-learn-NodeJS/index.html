@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Kyon,大黄菌,大黄菌的个人博客,Web开发,kyonhuang,kyonhuang.top" />
+  <meta name="keywords" content="NodeJS,读书笔记,JavaScipt,脑图," />
 
 
 
@@ -92,16 +92,24 @@
 
 
 
-<meta name="description" content="大学软工狗/摸鱼型填词">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大黄菌的个人博客">
-<meta property="og:url" content="http://kyonhuang.top/tags/深度学习/index.html">
+<meta name="description" content="上学期曾在 NodeJS 的门槛前匆匆一瞥而不入。暑假终于有大块的时间一次入门。这篇笔记以 七天学会NodeJS 为主干，辅以廖雪峰 JavaScript 教程中相关内容以及其他渠道的一些知识整理而成。内容主要是脑图，一部分细碎知识点和代码以文字呈现。 在学习 NodeJS 过程中，感觉对软件工程基础课程的融会贯通有了更深的理解。作为 JavaScript 的服务器端环境，NodeJS 经常用于操">
+<meta name="keywords" content="NodeJS,读书笔记,JavaScipt,脑图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJS 入门笔记">
+<meta property="og:url" content="http://kyonhuang.top/start-to-learn-NodeJS/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="大学软工狗/摸鱼型填词">
+<meta property="og:description" content="上学期曾在 NodeJS 的门槛前匆匆一瞥而不入。暑假终于有大块的时间一次入门。这篇笔记以 七天学会NodeJS 为主干，辅以廖雪峰 JavaScript 教程中相关内容以及其他渠道的一些知识整理而成。内容主要是脑图，一部分细碎知识点和代码以文字呈现。 在学习 NodeJS 过程中，感觉对软件工程基础课程的融会贯通有了更深的理解。作为 JavaScript 的服务器端环境，NodeJS 经常用于操">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-81b14861f2bc2943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-a1f50c7c0c750605.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-829fee6dc736dbd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-a0e8821626a2e3cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-f46374c76abbbe98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-07-30T14:31:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大黄菌的个人博客">
-<meta name="twitter:description" content="大学软工狗/摸鱼型填词">
+<meta name="twitter:title" content="NodeJS 入门笔记">
+<meta name="twitter:description" content="上学期曾在 NodeJS 的门槛前匆匆一瞥而不入。暑假终于有大块的时间一次入门。这篇笔记以 七天学会NodeJS 为主干，辅以廖雪峰 JavaScript 教程中相关内容以及其他渠道的一些知识整理而成。内容主要是脑图，一部分细碎知识点和代码以文字呈现。 在学习 NodeJS 过程中，感觉对软件工程基础课程的融会贯通有了更深的理解。作为 JavaScript 的服务器端环境，NodeJS 经常用于操">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2702529-81b14861f2bc2943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -129,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://kyonhuang.top/tags/深度学习/"/>
+  <link rel="canonical" href="http://kyonhuang.top/start-to-learn-NodeJS/"/>
 
 
 
 
 
-  <title>标签: 深度学习 | 大黄菌的个人博客</title>
+  <title>NodeJS 入门笔记 | 大黄菌的个人博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -170,7 +178,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -308,46 +316,235 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        深度学习
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/start-to-learn-NodeJS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kyon Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                NodeJS 入门笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-30T22:29:41+08:00">
+                2017-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NodeJS-学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJS 学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user"></i>总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>上学期曾在 NodeJS 的门槛前匆匆一瞥而不入。暑假终于有大块的时间一次入门。这篇笔记以 <a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">七天学会NodeJS</a> 为主干，辅以廖雪峰 JavaScript 教程中相关内容以及其他渠道的一些知识整理而成。内容主要是脑图，一部分细碎知识点和代码以文字呈现。</p>
+<p>在学习 NodeJS 过程中，感觉对软件工程基础课程的融会贯通有了更深的理解。作为 JavaScript 的服务器端环境，NodeJS 经常用于操作文件，这一部分内容和上学期的 Unix 课程有着较高的相似性。可惜我 Unix 没有好好听过。网络操作的内容则和 HTTP 以及 Socket 协议的知识紧密联系，这些大概在大三下学期的计算机网络课程中。到时要督促自己按时到勤认真听课了。</p>
+<p>虽然总觉得大学授课的水平参差不齐，课程内容可能重要性也分三六九等，但是回头才发现全面的知识体系对今后学习的帮助，不管哪方面知识都是可以迁移的。说实话 whu iss 的专业课安排还是比较科学的（不过学长说计算机网络有点晚，应该放到大三上学期）。希望自己珍惜在学校的最后一年多的时间，不管是学业还是别的方面，不要留太多遗憾。</p>
+<a id="more"></a>
+<h2 id="NodeJS-应用领域及特点"><a href="#NodeJS-应用领域及特点" class="headerlink" title="NodeJS 应用领域及特点"></a>NodeJS 应用领域及特点</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-81b14861f2bc2943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Node.js+概念一览.png"></p>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-a1f50c7c0c750605.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="模块.png"></p>
+<h3 id="使用模块的好处"><a href="#使用模块的好处" class="headerlink" title="使用模块的好处"></a>使用模块的好处</h3><ol>
+<li>大大提高代码的可维护性；</li>
+<li>可以随时引用；</li>
+<li>避免函数名和变量名冲突；</li>
+</ol>
+<h3 id="CommonJS-规范"><a href="#CommonJS-规范" class="headerlink" title="CommonJS 规范"></a>CommonJS 规范</h3><p>每个<code>.js</code>文件都是一个模块，它们内部各自使用的变量名和函数名都互不冲突。</p>
+<p>一个模块要对外暴露变量（函数也是变量），可以用<code>module.exports = variable;</code>。一个模块要引用其他模块暴露的变量，用<code>var foo = require(&#39;module_name&#39;)</code>就拿到了引用模块的变量。</p>
+<h3 id="深入了解模块原理"><a href="#深入了解模块原理" class="headerlink" title="深入了解模块原理"></a>深入了解模块原理</h3><p>Node.js 的“模块”功能利用了 JavaScript 函数式编程的特性，通过<strong>闭包</strong>实现。</p>
+<h2 id="代码的组织和部署"><a href="#代码的组织和部署" class="headerlink" title="代码的组织和部署"></a>代码的组织和部署</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-829fee6dc736dbd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码的组织和部署.png"></p>
+<h2 id="基本模块"><a href="#基本模块" class="headerlink" title="基本模块"></a>基本模块</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-a0e8821626a2e3cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="基本模块.png"></p>
+<p>Node.js 内置的常用模块是为了实现基本的服务器功能，底层代码是用 C/C++ 在 Node.js 运行环境中实现。</p>
+<h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>Node.js 环境中唯一的全局变量。</p>
+<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><p>代表当前 Node.js 进程。</p>
+<h3 id="判断-JavaScript-执行环境"><a href="#判断-JavaScript-执行环境" class="headerlink" title="判断 JavaScript 执行环境"></a>判断 JavaScript 执行环境</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span>(<span class="built_in">window</span>) === <span class="string">'undefined'</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'node.js'</span>);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'browser'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-f46374c76abbbe98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件操作.png"></p>
+<h3 id="不同系统下路径的标准化"><a href="#不同系统下路径的标准化" class="headerlink" title="不同系统下路径的标准化"></a>不同系统下路径的标准化</h3><p>标准化之后的路径里的斜杠在 Windows 系统下是<code>\</code>，而在 Linux 系统下是<code>/</code>。如果想保证任何系统下都使用 / 作为路径分隔符的话，需要用<code>.replace(/\\/g, &#39;/&#39;)</code>再替换一下标准路径。</p>
+<h3 id="遍历目录"><a href="#遍历目录" class="headerlink" title="遍历目录"></a>遍历目录</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 同步遍历获取某一文件夹下的所有文件，用 callback 处理</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">travel</span>(<span class="params">dir, callback</span>)</span>&#123;</div><div class="line">  fs.readdirSync(dir).forEach(<span class="function">(<span class="params">file</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">var</span> pathname = path.join(dir, file);</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(fs.statSync(pathname).isDirectory())&#123;</div><div class="line">      travel(pathname, callback)；</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      callback(pathname);</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 异步遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">travel</span>(<span class="params">dir, callback, finish</span>)</span>&#123;</div><div class="line">  fs.readdir(dir, (err, files) =&gt; &#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params">i</span>)</span>&#123;</div><div class="line">      <span class="keyword">if</span>(i &lt; files.length) &#123;</div><div class="line">        <span class="keyword">var</span> pathname = path.join(dir, files[i]);</div><div class="line"></div><div class="line">        fs.stat(pathname, (err, stats) =&gt; &#123;</div><div class="line">          <span class="keyword">if</span>(stats.isDirectory())&#123;</div><div class="line">            travel(pathname, callback, () =&gt; &#123;</div><div class="line">              next(i + <span class="number">1</span>);</div><div class="line">            &#125;);</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">            callback(pathname, () =&gt; &#123;</div><div class="line">              next(i + <span class="number">1</span>);</div><div class="line">            &#125;)</div><div class="line">          &#125;</div><div class="line">        &#125;);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        finish &amp;&amp; finish();</div><div class="line">      &#125;</div><div class="line">    &#125;)(<span class="number">0</span>);</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><p>To be continued…</p>
+<h3 id="监听端口的权限问题"><a href="#监听端口的权限问题" class="headerlink" title="监听端口的权限问题"></a>监听端口的权限问题</h3><p>在 Linux 系统下，监听 1024 以下端口需要 root 权限。因此，如果想监听 80 或 443 端口的话，需要使用 sudo 命令启动程序。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="下一步学习"><a href="#下一步学习" class="headerlink" title="下一步学习"></a>下一步学习</h3><p><a href="https://github.com/alsotang/node-lessons" target="_blank" rel="external">《Node.js 包教不包会》 by alsotang</a></p>
+<p>《深入浅出Node.js》</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/start-to-know-AI/" itemprop="url">
-              
-                <span itemprop="name">初探人工智能</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-23T10:17:25+08:00"
-              content="2017-07-23" >
-          07-23
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Kyon Huang
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://kyonhuang.top/start-to-learn-NodeJS/" title="NodeJS 入门笔记">http://kyonhuang.top/start-to-learn-NodeJS/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+            <a href="/tags/JavaScipt/" rel="tag"># JavaScipt</a>
+          
+            <a href="/tags/脑图/" rel="tag"># 脑图</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/You-Dont-Know-JS-notes-1/" rel="next" title="《你不知道的 JavaScript（上卷）》脑图">
+                <i class="fa fa-chevron-left"></i> 《你不知道的 JavaScript（上卷）》脑图
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -355,6 +552,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -374,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/touxiang.jpg"
@@ -482,6 +692,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeJS-应用领域及特点"><span class="nav-number">1.</span> <span class="nav-text">NodeJS 应用领域及特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块"><span class="nav-number">2.</span> <span class="nav-text">模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用模块的好处"><span class="nav-number">2.1.</span> <span class="nav-text">使用模块的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CommonJS-规范"><span class="nav-number">2.2.</span> <span class="nav-text">CommonJS 规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深入了解模块原理"><span class="nav-number">2.3.</span> <span class="nav-text">深入了解模块原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码的组织和部署"><span class="nav-number">3.</span> <span class="nav-text">代码的组织和部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本模块"><span class="nav-number">4.</span> <span class="nav-text">基本模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#global"><span class="nav-number">4.1.</span> <span class="nav-text">global</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#process"><span class="nav-number">4.2.</span> <span class="nav-text">process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断-JavaScript-执行环境"><span class="nav-number">4.3.</span> <span class="nav-text">判断 JavaScript 执行环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件操作"><span class="nav-number">5.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不同系统下路径的标准化"><span class="nav-number">5.1.</span> <span class="nav-text">不同系统下路径的标准化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历目录"><span class="nav-number">5.2.</span> <span class="nav-text">遍历目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络操作"><span class="nav-number">6.</span> <span class="nav-text">网络操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监听端口的权限问题"><span class="nav-number">6.1.</span> <span class="nav-text">监听端口的权限问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下一步学习"><span class="nav-number">7.1.</span> <span class="nav-text">下一步学习</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -622,6 +848,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 

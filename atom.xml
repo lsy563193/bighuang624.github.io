@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-07-27T12:38:03.000Z</updated>
+  <updated>2017-07-30T14:31:10.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NodeJS 入门笔记</title>
+    <link href="http://kyonhuang.top/start-to-learn-NodeJS/"/>
+    <id>http://kyonhuang.top/start-to-learn-NodeJS/</id>
+    <published>2017-07-30T14:29:41.000Z</published>
+    <updated>2017-07-30T14:31:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>上学期曾在 NodeJS 的门槛前匆匆一瞥而不入。暑假终于有大块的时间一次入门。这篇笔记以 <a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">七天学会NodeJS</a> 为主干，辅以廖雪峰 JavaScript 教程中相关内容以及其他渠道的一些知识整理而成。内容主要是脑图，一部分细碎知识点和代码以文字呈现。</p>
+<p>在学习 NodeJS 过程中，感觉对软件工程基础课程的融会贯通有了更深的理解。作为 JavaScript 的服务器端环境，NodeJS 经常用于操作文件，这一部分内容和上学期的 Unix 课程有着较高的相似性。可惜我 Unix 没有好好听过。网络操作的内容则和 HTTP 以及 Socket 协议的知识紧密联系，这些大概在大三下学期的计算机网络课程中。到时要督促自己按时到勤认真听课了。</p>
+<p>虽然总觉得大学授课的水平参差不齐，课程内容可能重要性也分三六九等，但是回头才发现全面的知识体系对今后学习的帮助，不管哪方面知识都是可以迁移的。说实话 whu iss 的专业课安排还是比较科学的（不过学长说计算机网络有点晚，应该放到大三上学期）。希望自己珍惜在学校的最后一年多的时间，不管是学业还是别的方面，不要留太多遗憾。</p>
+<a id="more"></a>
+<h2 id="NodeJS-应用领域及特点"><a href="#NodeJS-应用领域及特点" class="headerlink" title="NodeJS 应用领域及特点"></a>NodeJS 应用领域及特点</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-81b14861f2bc2943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Node.js+概念一览.png"></p>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-a1f50c7c0c750605.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="模块.png"></p>
+<h3 id="使用模块的好处"><a href="#使用模块的好处" class="headerlink" title="使用模块的好处"></a>使用模块的好处</h3><ol>
+<li>大大提高代码的可维护性；</li>
+<li>可以随时引用；</li>
+<li>避免函数名和变量名冲突；</li>
+</ol>
+<h3 id="CommonJS-规范"><a href="#CommonJS-规范" class="headerlink" title="CommonJS 规范"></a>CommonJS 规范</h3><p>每个<code>.js</code>文件都是一个模块，它们内部各自使用的变量名和函数名都互不冲突。</p>
+<p>一个模块要对外暴露变量（函数也是变量），可以用<code>module.exports = variable;</code>。一个模块要引用其他模块暴露的变量，用<code>var foo = require(&#39;module_name&#39;)</code>就拿到了引用模块的变量。</p>
+<h3 id="深入了解模块原理"><a href="#深入了解模块原理" class="headerlink" title="深入了解模块原理"></a>深入了解模块原理</h3><p>Node.js 的“模块”功能利用了 JavaScript 函数式编程的特性，通过<strong>闭包</strong>实现。</p>
+<h2 id="代码的组织和部署"><a href="#代码的组织和部署" class="headerlink" title="代码的组织和部署"></a>代码的组织和部署</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-829fee6dc736dbd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码的组织和部署.png"></p>
+<h2 id="基本模块"><a href="#基本模块" class="headerlink" title="基本模块"></a>基本模块</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-a0e8821626a2e3cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="基本模块.png"></p>
+<p>Node.js 内置的常用模块是为了实现基本的服务器功能，底层代码是用 C/C++ 在 Node.js 运行环境中实现。</p>
+<h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>Node.js 环境中唯一的全局变量。</p>
+<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><p>代表当前 Node.js 进程。</p>
+<h3 id="判断-JavaScript-执行环境"><a href="#判断-JavaScript-执行环境" class="headerlink" title="判断 JavaScript 执行环境"></a>判断 JavaScript 执行环境</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span>(<span class="built_in">window</span>) === <span class="string">'undefined'</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'node.js'</span>);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'browser'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-f46374c76abbbe98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件操作.png"></p>
+<h3 id="不同系统下路径的标准化"><a href="#不同系统下路径的标准化" class="headerlink" title="不同系统下路径的标准化"></a>不同系统下路径的标准化</h3><p>标准化之后的路径里的斜杠在 Windows 系统下是<code>\</code>，而在 Linux 系统下是<code>/</code>。如果想保证任何系统下都使用 / 作为路径分隔符的话，需要用<code>.replace(/\\/g, &#39;/&#39;)</code>再替换一下标准路径。</p>
+<h3 id="遍历目录"><a href="#遍历目录" class="headerlink" title="遍历目录"></a>遍历目录</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 同步遍历获取某一文件夹下的所有文件，用 callback 处理</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">travel</span>(<span class="params">dir, callback</span>)</span>&#123;</div><div class="line">  fs.readdirSync(dir).forEach(<span class="function">(<span class="params">file</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">var</span> pathname = path.join(dir, file);</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(fs.statSync(pathname).isDirectory())&#123;</div><div class="line">      travel(pathname, callback)；</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      callback(pathname);</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 异步遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">travel</span>(<span class="params">dir, callback, finish</span>)</span>&#123;</div><div class="line">  fs.readdir(dir, (err, files) =&gt; &#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params">i</span>)</span>&#123;</div><div class="line">      <span class="keyword">if</span>(i &lt; files.length) &#123;</div><div class="line">        <span class="keyword">var</span> pathname = path.join(dir, files[i]);</div><div class="line"></div><div class="line">        fs.stat(pathname, (err, stats) =&gt; &#123;</div><div class="line">          <span class="keyword">if</span>(stats.isDirectory())&#123;</div><div class="line">            travel(pathname, callback, () =&gt; &#123;</div><div class="line">              next(i + <span class="number">1</span>);</div><div class="line">            &#125;);</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">            callback(pathname, () =&gt; &#123;</div><div class="line">              next(i + <span class="number">1</span>);</div><div class="line">            &#125;)</div><div class="line">          &#125;</div><div class="line">        &#125;);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        finish &amp;&amp; finish();</div><div class="line">      &#125;</div><div class="line">    &#125;)(<span class="number">0</span>);</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><p>To be continued…</p>
+<h3 id="监听端口的权限问题"><a href="#监听端口的权限问题" class="headerlink" title="监听端口的权限问题"></a>监听端口的权限问题</h3><p>在 Linux 系统下，监听 1024 以下端口需要 root 权限。因此，如果想监听 80 或 443 端口的话，需要使用 sudo 命令启动程序。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="下一步学习"><a href="#下一步学习" class="headerlink" title="下一步学习"></a>下一步学习</h3><p><a href="https://github.com/alsotang/node-lessons" target="_blank" rel="external">《Node.js 包教不包会》 by alsotang</a></p>
+<p>《深入浅出Node.js》</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上学期曾在 NodeJS 的门槛前匆匆一瞥而不入。暑假终于有大块的时间一次入门。这篇笔记以 &lt;a href=&quot;http://nqdeng.github.io/7-days-nodejs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;七天学会NodeJS&lt;/a&gt; 为主干，辅以廖雪峰 JavaScript 教程中相关内容以及其他渠道的一些知识整理而成。内容主要是脑图，一部分细碎知识点和代码以文字呈现。&lt;/p&gt;
+&lt;p&gt;在学习 NodeJS 过程中，感觉对软件工程基础课程的融会贯通有了更深的理解。作为 JavaScript 的服务器端环境，NodeJS 经常用于操作文件，这一部分内容和上学期的 Unix 课程有着较高的相似性。可惜我 Unix 没有好好听过。网络操作的内容则和 HTTP 以及 Socket 协议的知识紧密联系，这些大概在大三下学期的计算机网络课程中。到时要督促自己按时到勤认真听课了。&lt;/p&gt;
+&lt;p&gt;虽然总觉得大学授课的水平参差不齐，课程内容可能重要性也分三六九等，但是回头才发现全面的知识体系对今后学习的帮助，不管哪方面知识都是可以迁移的。说实话 whu iss 的专业课安排还是比较科学的（不过学长说计算机网络有点晚，应该放到大三上学期）。希望自己珍惜在学校的最后一年多的时间，不管是学业还是别的方面，不要留太多遗憾。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="NodeJS 学习笔记" scheme="http://kyonhuang.top/categories/NodeJS-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="NodeJS" scheme="http://kyonhuang.top/tags/NodeJS/"/>
+    
+      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>《你不知道的 JavaScript（上卷）》脑图</title>
@@ -42,15 +99,15 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="《你不知道的 JavaScript》" scheme="http://kyonhuang.top/tags/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-JavaScript%E3%80%8B/"/>
-    
-      <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
     
   </entry>
   
@@ -59,7 +116,7 @@
     <link href="http://kyonhuang.top/start-to-know-AI/"/>
     <id>http://kyonhuang.top/start-to-know-AI/</id>
     <published>2017-07-23T02:17:25.000Z</published>
-    <updated>2017-07-27T08:31:04.000Z</updated>
+    <updated>2017-07-30T08:58:07.000Z</updated>
     
     <content type="html"><![CDATA[<p>一篇人工智能及相关概念（机器学习、深度学习、神经网络）的入门知识笔记。带一点点自己的思考。</p>
 <h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2><p>为什么作为一个前端学习者，我要对看似毫无关联的人工智能有所了解并进行学习？</p>
@@ -393,11 +450,11 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
@@ -968,11 +1025,11 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
@@ -1049,9 +1106,9 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="http://kyonhuang.top/tags/jQuery/"/>
     
@@ -1230,11 +1287,11 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
@@ -1536,13 +1593,13 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
   </entry>
   
@@ -1633,11 +1690,11 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="《JavaScript高级程序设计》" scheme="http://kyonhuang.top/tags/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/"/>
     
@@ -1703,142 +1760,11 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="《JavaScript高级程序设计》" scheme="http://kyonhuang.top/tags/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《JavaScript高级程序设计》读书笔记（三）</title>
-    <link href="http://kyonhuang.top/JS-notes-3/"/>
-    <id>http://kyonhuang.top/JS-notes-3/</id>
-    <published>2017-03-10T02:23:02.000Z</published>
-    <updated>2017-07-12T06:57:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>稍微大致翻了一下这本书后续的内容。为了尽快的进入ES6以及框架部分的学习，决定暂时跳过某些章节的学习。后面打算学习的章节有6、7、13、14、20、21、22、24章，剩下的章节等到用到或者时间富余的时候再看。</p>
-<p>这篇博文总结了《JavaScript高级程序设计》的6~7章：面向对象的程序设计，以及函数表达式。</p>
-  <a id="more"></a>
-<h2 id="面向对象的程序设计"><a href="#面向对象的程序设计" class="headerlink" title="面向对象的程序设计"></a>面向对象的程序设计</h2><h3 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h3><p>1.ECMAScript中有两种属性：数据属性和访问器属性。</p>
-<p>特性：描述属性的各种特征。目的是实现JavaScript，因此在JavaScript中不能直接访问。为了表示特性是内部值，放在两对方括号中，例如<code>[[Enumerable]]</code>。</p>
-<p>2.数据属性：包含一个数据值的位置，在这个位置可以读取和写入值。</p>
-<ul>
-<li><code>[[Configurable]]</code>：表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认为 true。</li>
-<li><code>[[Enumerable]]</code>：表示能否通过 for-in 循环返回属性。默认为 true。</li>
-<li><code>[[Writable]]</code>：表示能否修改属性的值。默认为 true。</li>
-<li><code>[[Value]]</code>：包含这个属性的数据值。默认为 undefined。</li>
-</ul>
-<p><code>Object.defineProperty()</code>方法可以修改属性默认的特性。这个方法接收三个参数：属性所在的对象、属性的名字和一个描述符对象。其中，描述符对象的属性必须是：configurable、enumerable、writable 和 value 中的一或多个。</p>
-<p>3.访问器属性：</p>
-<ul>
-<li><code>[[Configurable]]</code>：表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认为 true。</li>
-<li><code>[[Enumerable]]</code>：表示能否通过 for-in 循环返回属性。默认为 true。</li>
-<li><code>[[Get]]</code>：在读取属性时调用的函数。默认为 undefined。</li>
-<li><code>[[Set]]</code>：在写入属性时调用的函数。默认为 undefined。</li>
-</ul>
-<p>访问器属性不能直接定义，必须使用<code>Object.defineProperty()</code>来定义。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> book = &#123;</div><div class="line">    <span class="attr">_year</span>: <span class="number">2016</span>,  <span class="comment">// 下划线表示只能通过对象方法访问的属性</span></div><div class="line">    edition: <span class="number">1</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.defineProperty(book, <span class="string">"year"</span>, &#123;</div><div class="line">    <span class="attr">get</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._year;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">set</span>: <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>) </span>&#123;</div><div class="line">       <span class="keyword">if</span>(newValue &gt; <span class="number">2016</span>) &#123;</div><div class="line">           <span class="keyword">this</span>._year = newValue;</div><div class="line">           <span class="keyword">this</span>.edition += newValue - <span class="number">2004</span>;</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);  <span class="comment">// year 是访问器属性</span></div><div class="line"></div><div class="line">book.year = <span class="number">2017</span>;</div><div class="line"><span class="built_in">console</span>.log(book.edition);  <span class="comment">// 2</span></div></pre></td></tr></table></figure>
-<p>4.定义多个属性可用<code>Object.defineProperties()</code>方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var book = &#123;&#125;;</div><div class="line"></div><div class="line">Object.defineProperties(book, &#123;</div><div class="line">    _year: &#123;</div><div class="line">        value: 2016</div><div class="line">    &#125;,</div><div class="line">    edition: &#123;</div><div class="line">        value: 1</div><div class="line">    &#125;,</div><div class="line">    year: &#123;</div><div class="line">        get: function()&#123;</div><div class="line">            return this._year;</div><div class="line">        &#125;,</div><div class="line">        set: function(newValue)&#123;</div><div class="line">            if(newValue &gt; 2016)&#123;</div><div class="line">                this._year = newValue;</div><div class="line">                this.edition += newValue - 2016;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p><code>Object.getOwnPropertyDescriptor()</code>方法可以取得给定属性的描述符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var descriptor = Object.getOwnPropertyDescriptor(book, &quot;_year&quot;);</div><div class="line">console.log(descriptor.value);  // 2016</div><div class="line">console.log(descriptor.configurable);  // false</div><div class="line">console.log(typeof descriptor.get);  // &quot;undefined&quot;</div></pre></td></tr></table></figure>
-<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>5.工厂模式：虽然解决了创建多个相似对象的问题，但却没有解决对象识别的问题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function createPerson(name, age, job) &#123;</div><div class="line">	var o = new Object();</div><div class="line">	o.name = name;</div><div class="line">	o.age = age;</div><div class="line">	o.job = job;</div><div class="line">	o.sayName = function () &#123;</div><div class="line">		console.log(this.name);</div><div class="line">	&#125;</div><div class="line">	return o;</div><div class="line">&#125;</div><div class="line">var p1 = createPerson(&apos;Kyon&apos;, 20, &apos;Software Engineer&apos;);</div><div class="line">var p2 = createPerson(&apos;Someone&apos;, 19, &apos;Lawyer&apos;);</div></pre></td></tr></table></figure>
-<p>6.构造函数模式：以大写字母开头。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function Person(name, age, job)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.job = job;</div><div class="line">    this.sayName = function()&#123;</div><div class="line">        console.log(this.name);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var p1 = new Person(&apos;Kyon&apos;, 20, &apos;Software Engineer&apos;);</div><div class="line">var p2 = new Person(&apos;Someone&apos;, 19, &apos;Lawyer&apos;);</div><div class="line"></div><div class="line">// 对象的constructor属性指向其构造函数</div><div class="line">console.log(p1.constructor);  // function Person(name, age, job)&#123;...</div></pre></td></tr></table></figure>
-<p>创建自定义的构造函数意味着将来可以将它的实例标识为一种特定的类型。</p>
-<p>也可以使用<code>call()</code>（或者<code>apply()</code>）在某个特殊对象的作用域中调用构造函数，调用后这个对象就拥有了所有属性和方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var o = new Object();</div><div class="line">Person.call(o, &apos;Kyon&apos;, 20, &apos;Software Engineer&apos;);</div><div class="line">o.sayName();  // &apos;Kyon&apos;</div></pre></td></tr></table></figure>
-<p>使用构造函数的主要问题：每个方法都要在每个实例上重新创建一遍。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(p1.sayName === p2.sayName);  // false</div></pre></td></tr></table></figure>
-<p>7.原型模式：每个函数都有一个 prototype（原型）属性，这个属性是一个指针，指向函数的原型对象。这个对象包含可以由该类型的所有实例共享的属性和方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Person.prototype.sayName = function()&#123;</div><div class="line">    console.log(this.name);</div><div class="line">&#125;</div><div class="line">console.log(p1.sayName === p2.sayName);  // true</div></pre></td></tr></table></figure>
-<ul>
-<li><p>理解原型对象：</p>
-<p> – 只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，指向函数的原型对象。</p>
-<p> – 默认所有原型对象都会获得一个 constructor 属性，指向 prototype 属性所在函数。</p>
-<p> – 当调用构造函数创建一个新实例后，实例将有一个 <code>__proto__</code>属性，指向构造函数的原型对象，指针叫<code>[[Prototype]]</code>，默认原型指向Object。</p>
-<p> – 实例和构造函数没有直接关系。</p>
-<p> <img src="/images/jsNotes/proto.jpg"></p>
-<p> – 读取属性：搜索先从对象实例本身开始，如果没找到，搜索原型对象。</p>
-<p> – 使用<code>isPrototype()</code>来检测构造函数和实例之间是否有关系。</p>
-<p> – <code>Object.getPrototypeOf()</code>返回<code>[[Prototype]]</code>的值。</p>
-<p> – 使用<code>hasOwnProperty()</code>来检测属性存在于实例中还是原型中。</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">function Person()&#123;&#125;</div><div class="line"></div><div class="line">Person.prototype.name = &apos;Kyon&apos;;</div><div class="line">Person.prototype.age = 29;</div><div class="line">Person.prototype.job = &apos;Software Engineer&apos;;</div><div class="line">Person.prototype.sayName = function()&#123;</div><div class="line">    console.log(this.name);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var p1 = new Person();</div><div class="line">var p2 = new Person();</div><div class="line"></div><div class="line">console.log(Person.prototype.isPrototypeOf(p1));  // true</div><div class="line"></div><div class="line">console.log(Object.getPrototypeOf(p1) === Person.prototype);  // true</div><div class="line">console.log(Object.getPrototypeOf(p1).name);  // &apos;Kyon&apos;</div><div class="line"></div><div class="line">console.log(p1.hasOwnProperty(&quot;name&quot;));  // false</div><div class="line"></div><div class="line">p1.name = &quot;someone&quot;;</div><div class="line">console.log(p1.hasOwnProperty(&quot;name&quot;));  // true</div><div class="line"></div><div class="line">delete p1.name;</div><div class="line">console.log(p1.hasOwnProperty(&quot;name&quot;));  // false</div></pre></td></tr></table></figure>
-<ul>
-<li>原型与 in 操作符：在单独使用时，in 操作符会在通过对象能够访问给定属性时返回 true，无论该属性存在于实例中还是原型中。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;name&apos; in p1);  // true</div></pre></td></tr></table></figure>
-<ul>
-<li>更简单的原型语法：用一个包含所有属性和方法的对象字面量来重写整个原型对象。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Person()&#123;&#125;</div><div class="line"></div><div class="line">Person.prototype = &#123;</div><div class="line">    constructor: Person,  // 默认的 prototype 对象被重写，需设置</div><div class="line">    name: &apos;Kyon&apos;,</div><div class="line">    age: 20,</div><div class="line">    job: &apos;Software Engineer&apos;,</div><div class="line">    sayName: function()&#123;</div><div class="line">        console.log(this.name);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>重写原型对象切断了现有原型与任何之前已经存在的对象实例之间的联系；它们引用的仍是最初的原型。</p>
-<p><img src="/images/jsNotes/yuanxingchongxie.jpg"></p>
-<ul>
-<li>原生对象的原型：通过原生对象的原型可以定义新方法。不推荐，可能导致命名冲突或意外重写原生方法。</li>
-<li>原型对象的问题：包含引用类型值的属性会被共享。</li>
-</ul>
-<p>8.<strong>组合使用构造函数模式和原型模式</strong>：创建自定义类型最常见方式。构造函数模式用于定义实例属性，原型模式用于定义方法和共享的属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 组合使用构造函数模式与原型模式</div><div class="line">function Person(name, age, job)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.job = job;</div><div class="line">    this.friends = [&quot;Sam&quot;, &quot;Judie&quot;];</div><div class="line">&#125;</div><div class="line">Person.prototype = &#123;</div><div class="line">    constructor: Person,</div><div class="line">    sayName: function()&#123;</div><div class="line">        console.log(this.name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var p1 = new Person(&apos;Kyon&apos;, 20, &apos;Software Engineer&apos;);</div><div class="line">var p2 = new Person(&apos;Someone&apos;, 19, &apos;Lawyer&apos;);</div><div class="line"></div><div class="line">p1.friends.push(&quot;Vue&quot;);</div><div class="line">console.log(p1.friends);  // &quot;Sam, Judie, Vue&quot;</div><div class="line">console.log(p2.friends);  // &quot;Sam, Judie&quot;</div><div class="line">console.log(p1.sayName === p2.sayName);  // true</div></pre></td></tr></table></figure>
-<p>9.动态原型模式、寄生构造函数模式、稳妥构造函数模式</p>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>10.许多OO语言都支持两种继承方式：接口继承（只继承方法签名）和实现继承（继承实际方法）。由于函数没有签名，ECMAScript 中无法实现接口继承，而实现继承主要依靠<strong>原型链</strong>实现。</p>
-<p>11.原型链的构造是通过将一个类型的实例赋值给另一个构造函数的原型实现的。这样，子类型就能访问超类型的所有属性和方法。</p>
-<p>12.p182开始</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function SuperType(name) &#123;</div><div class="line">	this.name = name;</div><div class="line">	this.color = [&apos;red&apos;, &apos;blue&apos;, &apos;green&apos;];</div><div class="line">&#125;</div><div class="line">SuperType.prototype.sayName = function () &#123;</div><div class="line">	console.log(this.name);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">function SubType(name, age) &#123;</div><div class="line">	SuperType.call(this, name);  // 借用构造函数</div><div class="line">	this.age = age;</div><div class="line">&#125;</div><div class="line">SubType.prototype = new SuperType();  // 原型链</div><div class="line">SubType.prototype.constructor = SubType;  // construcotr在上一句中被重写</div><div class="line">SubType.prototype.sayAge = function () &#123;</div><div class="line">	console.log(this.age);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">var instance = new SubType(&apos;Kyon&apos;, 20);</div><div class="line">instance.sayName();  // Kyon</div><div class="line">instance.sayAge();  // 20</div></pre></td></tr></table></figure>
-<p>说实话，这部分看得我脑壳疼。要不我们直接用ES6引入的class可好？等我哪一天沐浴更衣虔诚焚香再来看…</p>
-<h2 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h2><h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>1.在严格模式下，不能通过脚本访问<code>arguments.callee</code>来实现递归。可以用命名函数表达式来实现。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var factorial = (function f(num)&#123;</div><div class="line">    if(num &lt;= 1)&#123;</div><div class="line">        return 1;</div><div class="line">    &#125; else &#123;</div><div class="line">        return num * f(num-1);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>2.<strong>闭包</strong>是指有权访问另一个函数作用域中的变量的函数（匿名函数的 function 关键字后没有标识符，二者不能混用）。</p>
-<p>3.创建闭包的常见方式：在一个函数内部创建另一个函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function outer()&#123;</div><div class="line">    var name = &quot;Kyon&quot;;</div><div class="line">    return function()&#123;</div><div class="line">        console.log(name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var inner = outer();</div><div class="line">inner();  // Kyon</div><div class="line">inner = null;  // 解除对outer内部的匿名函数的引用，以释放内存</div></pre></td></tr></table></figure>
-<p>在外部函数内部定义的内部函数将外部函数的活动对象（作为变量对象使用）添加到它的作用域链中；外部函数执行完毕后，其活动对象不会被销毁，因为内部函数的作用域链仍在引用这个活动对象；外部函数执行完毕后，内部函数仍然可以访问到其定义的所有变量。</p>
-<p>4.由于闭包会携带包含它的函数的作用域，过度使用可能导致内存占用过多，要慎重使用。</p>
-<p>5.返回的函数并没有立刻执行，而是等到调用<code>f()</code>才执行。因此返回函数不能引用任何循环变量，或者后续会发生变化的变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function count()&#123;</div><div class="line">    var arr = [];</div><div class="line">    for(var i=1; i&lt;=3; i++)&#123;</div><div class="line">        arr[i] = function()&#123;</div><div class="line">             return i * i;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">    return arr;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var results = count();</div><div class="line">var f1 = results[0];</div><div class="line">var f2 = results[1];</div><div class="line">var f3 = results[2];</div><div class="line"></div><div class="line">// 返回的函数引用了变量i，但并非立即执行。执行时i已变成4</div><div class="line">f1();  // 16</div><div class="line">f2();  // 16</div><div class="line">f3();  // 16</div></pre></td></tr></table></figure>
-<p>一定要引用循环变量的方法：再创建一个匿名函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function count()&#123;</div><div class="line">    var arr = [];</div><div class="line">    for(var i=1; i&lt;=3; i++)&#123;</div><div class="line">        arr[i] = function(num)&#123;</div><div class="line">            return function()&#123;</div><div class="line">                return num;</div><div class="line">            &#125;;</div><div class="line">        &#125;(i);</div><div class="line">    &#125;</div><div class="line">    return result;</div><div class="line">&#125;</div><div class="line">// i的当前值复制给参数num，匿名函数内部又创建并返回一个访问num的闭包，使得result数组中的每个函数都有自己num变量的一个副本</div></pre></td></tr></table></figure>
-<p>这里用了一个“创建一个匿名函数并立即执行”的语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(function(x)&#123;</div><div class="line">    return x * x;</div><div class="line">&#125;)(3);  // 9</div></pre></td></tr></table></figure>
-<p>6.闭包中使用 this 对象：匿名函数的执行环境具有全局性，因此其 this 对象通常指向 window。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line"></div><div class="line">var object = &#123;</div><div class="line">    name: &quot;My Object&quot;,</div><div class="line">    getName: function()&#123;</div><div class="line">        return function()&#123;</div><div class="line">            return this.name;</div><div class="line">        &#125;; </div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">console.log(object.getName());  // &quot;The Window&quot;(非严格模式)</div></pre></td></tr></table></figure>
-<p>把外部作用域中的 this 对象保存在一个闭包能够访问的变量中，就可以让闭包访问该对象了（想访问作用域中的 arguments对象同理）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line"></div><div class="line">var object = &#123;</div><div class="line">    name: &quot;My Object&quot;,</div><div class="line">    getName: function()&#123;</div><div class="line">        var that = this;</div><div class="line">        return function()&#123;</div><div class="line">            return that.name;</div><div class="line">        &#125;; </div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">console.log(object.getName());  // &quot;My Object&quot;</div></pre></td></tr></table></figure>
-<p>7.补充：利用闭包可以实现私有变量的封装。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// 用JavaScript创建一个计数器</div><div class="line">&apos;use strict&apos;;</div><div class="line"></div><div class="line">function create_counter(initial)&#123;</div><div class="line">    var x = initial || 0;</div><div class="line">    return &#123;</div><div class="line">        inc: function()&#123;</div><div class="line">            x += 1;</div><div class="line">            return x;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 使用</div><div class="line">var c1 = create_counter();</div><div class="line">c1.inc();  // 1</div><div class="line">c1.inc();  // 2</div><div class="line">var c2 = create_counter(10);</div><div class="line">c2.inc();  // 11</div><div class="line">c2.inc();  // 12</div></pre></td></tr></table></figure>
-<h3 id="模仿块级作用域"><a href="#模仿块级作用域" class="headerlink" title="模仿块级作用域"></a>模仿块级作用域</h3><p>8.用匿名函数模仿块级作用域：</p>
-<p>JavaScript将 function 关键字当作一个函数声明的开始，而函数声明后不能加圆括号。</p>
-<p>将函数声明包含在一对圆括号中，表示它实际上是一个函数表达式。而紧随的另一对圆括号会立即调用这个函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line">    // 这里是块级作用域</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">function()&#123;</div><div class="line">    // 这里是块级作用域</div><div class="line">&#125;();  ／／ Error!</div></pre></td></tr></table></figure>
-<p>9.这种技术经常用于限制向全局作用域中添加过多的变量和函数；同时可以减少闭包占用的内存问题，因为没有指向匿名函数的引用。只要函数执行完毕，就可以立即销毁其作用域链了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line">    var now = new Date();</div><div class="line">    if(now.getMonth() == 11 &amp;&amp; now.getDate() == 25)&#123;</div><div class="line">        console.log(&quot;Merry Christmas!&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<h3 id="私有变量"><a href="#私有变量" class="headerlink" title="私有变量"></a>私有变量</h3><p>10.任何在函数中定义的变量，都可以认为是私有变量。</p>
-<p>11.有权访问私有变量和私有函数的公有方法被称为<strong>特权方法</strong>。两种在对象上创建特权方法的方式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.构造函数中定义特权方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyObject</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 私有变量和私有函数</span></div><div class="line">    <span class="keyword">var</span> privateVar = <span class="number">10</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunc</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 特权方法</span></div><div class="line">    <span class="keyword">this</span>.publicMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        privateVar++;</div><div class="line">        <span class="keyword">return</span> privateFunc();</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 2.利用私有和特权成员</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">        name = value;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>12.可以使用构造函数模式、原型模式来实现自定义类型的特权方法，也可以使用模块模式、增强的模块模式来实现单例的特权方法。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;稍微大致翻了一下这本书后续的内容。为了尽快的进入ES6以及框架部分的学习，决定暂时跳过某些章节的学习。后面打算学习的章节有6、7、13、14、20、21、22、24章，剩下的章节等到用到或者时间富余的时候再看。&lt;/p&gt;
-&lt;p&gt;这篇博文总结了《JavaScript高级程序设计》的6~7章：面向对象的程序设计，以及函数表达式。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
-      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="《JavaScript高级程序设计》" scheme="http://kyonhuang.top/tags/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/"/>
     
