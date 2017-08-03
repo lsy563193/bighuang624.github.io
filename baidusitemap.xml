@@ -4,6 +4,116 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/Generator-and-async/</loc>
+    <lastmod>2017-08-03T10:11:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>ES6 的异步操作 - Generator & async</title>
+        <pubTime>2017-08-03T10:10:53.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>JavaScipt</tag>
+         
+        <tag>异步编程</tag>
+         
+        <tag>ES 6</tag>
+         
+        <tag>《ECMAScript 6 入门》</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/promise/</loc>
+    <lastmod>2017-08-03T09:27:07.000Z</lastmod>
+    <data>
+        <display>
+        <title>Promise 对象</title>
+        <pubTime>2017-06-17T13:38:13.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>JavaScipt</tag>
+         
+        <tag>异步编程</tag>
+         
+        <tag>ES 6</tag>
+         
+        <tag>《ECMAScript 6 入门》</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/sass-begin/</loc>
+    <lastmod>2017-08-03T03:32:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>初见Sass－便捷的CSS预处理器</title>
+        <pubTime>2017-04-03T11:21:22.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>学习笔记</tag>
+         
+        <tag>SASS</tag>
+         
+        <tag>WebStorm</tag>
+         
+        <tag>随笔</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/biliInfoCrawler/</loc>
+    <lastmod>2017-08-03T03:31:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>BiliBili视频信息爬虫基于Java的实现</title>
+        <pubTime>2017-01-27T10:24:19.000Z</pubTime>
+        
+        <tag>demo</tag>
+         
+        <tag>爬虫</tag>
+         
+        <tag>Java</tag>
+         
+        <tag>学习笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java学习笔记" url="http://kyonhuang.top/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/lyrics-aircloud/</loc>
     <lastmod>2017-08-01T09:07:24.000Z</lastmod>
     <data>
@@ -33,11 +143,11 @@
         <title>《JavaScript高级程序设计》读书笔记（一）</title>
         <pubTime>2017-02-28T00:57:45.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -133,11 +243,11 @@
         <title>《你不知道的 JavaScript（上卷）》脑图</title>
         <pubTime>2017-07-27T08:47:12.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>脑图</tag>
          
@@ -236,11 +346,11 @@
         <title>《JavaScript高级程序设计》读书笔记（五）</title>
         <pubTime>2017-03-15T02:43:51.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -262,11 +372,11 @@
         <title>《JavaScript高级程序设计》读书笔记（四）</title>
         <pubTime>2017-03-12T04:13:51.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -288,11 +398,11 @@
         <title>《JavaScript高级程序设计》读书笔记（三）</title>
         <pubTime>2017-03-10T02:23:02.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -314,11 +424,11 @@
         <title>《JavaScript高级程序设计》读书笔记（二）</title>
         <pubTime>2017-03-03T09:33:08.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -405,34 +515,6 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/promise/</loc>
-    <lastmod>2017-06-17T13:38:46.000Z</lastmod>
-    <data>
-        <display>
-        <title>Promise 对象</title>
-        <pubTime>2017-06-17T13:38:13.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>读书笔记</tag>
-         
-        <tag>JavaScipt</tag>
-         
-        <tag>ES 6</tag>
-         
-        <tag>《ECMAScript 6 入门》</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://kyonhuang.top/relax-and-think/</loc>
     <lastmod>2017-06-05T07:50:52.000Z</lastmod>
     <data>
@@ -488,8 +570,6 @@
         <title>《ECMAScript 6 入门》读书笔记(一)</title>
         <pubTime>2017-04-06T08:21:52.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
@@ -497,6 +577,8 @@
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
+         
+        <tag>前端</tag>
          
          
            
@@ -588,8 +670,6 @@
         <title>《ECMAScript 6 入门》读书笔记(二)</title>
         <pubTime>2017-04-24T10:36:13.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
@@ -597,6 +677,8 @@
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
+         
+        <tag>前端</tag>
          
          
            
@@ -616,9 +698,9 @@
         <title>《精通jQuery》读书笔记</title>
         <pubTime>2017-04-21T06:50:27.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
+         
+        <tag>前端</tag>
          
         <tag>jQuery</tag>
          
@@ -754,39 +836,11 @@
         <title>在把玩中学习——typewriter.js</title>
         <pubTime>2017-03-17T03:28:32.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>JavaScipt</tag>
          
-        <tag>学习笔记</tag>
-         
-        <tag>随笔</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/sass-begin/</loc>
-    <lastmod>2017-04-25T10:47:01.000Z</lastmod>
-    <data>
-        <display>
-        <title>初见Sass－便捷的CSS预处理器</title>
-        <pubTime>2017-04-03T11:21:22.000Z</pubTime>
-        
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>SASS</tag>
-         
-        <tag>WebStorm</tag>
          
         <tag>随笔</tag>
          
@@ -840,32 +894,6 @@
            
              
               <breadCrumb title="中文填词" url="http://kyonhuang.top/categories/%E4%B8%AD%E6%96%87%E5%A1%AB%E8%AF%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/biliInfoCrawler/</loc>
-    <lastmod>2017-04-25T10:43:22.000Z</lastmod>
-    <data>
-        <display>
-        <title>BiliBili视频信息爬虫基于Java的实现</title>
-        <pubTime>2017-01-27T10:24:19.000Z</pubTime>
-        
-        <tag>demo</tag>
-         
-        <tag>爬虫</tag>
-         
-        <tag>Java</tag>
-         
-        <tag>学习笔记</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java学习笔记" url="http://kyonhuang.top/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
