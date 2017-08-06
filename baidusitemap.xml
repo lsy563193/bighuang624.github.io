@@ -4,8 +4,32 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/summer-plan/</loc>
+    <lastmod>2017-08-06T00:59:41.000Z</lastmod>
+    <data>
+        <display>
+        <title>暑假计划进行中</title>
+        <pubTime>2017-07-05T13:42:53.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>目标</tag>
+         
+        <tag>学习之路</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/Generator-and-async/</loc>
-    <lastmod>2017-08-04T00:59:27.000Z</lastmod>
+    <lastmod>2017-08-06T00:52:47.000Z</lastmod>
     <data>
         <display>
         <title>ES6 的异步操作 - Generator & async</title>
@@ -25,6 +49,28 @@
            
              
               <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/vue-project-practice/</loc>
+    <lastmod>2017-08-04T13:08:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>从零开始的 Vue 实践（持续更新）</title>
+        <pubTime>2017-07-17T13:03:42.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -257,52 +303,6 @@
            
              
               <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/vue-project-practice/</loc>
-    <lastmod>2017-07-27T08:44:51.000Z</lastmod>
-    <data>
-        <display>
-        <title>从零开始的 Vue 实践（持续更新）</title>
-        <pubTime>2017-07-17T13:03:42.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>Vue</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/summer-plan/</loc>
-    <lastmod>2017-07-27T08:33:23.000Z</lastmod>
-    <data>
-        <display>
-        <title>暑假计划进行中</title>
-        <pubTime>2017-07-05T13:42:53.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-        <tag>目标</tag>
-         
-        <tag>学习之路</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>
