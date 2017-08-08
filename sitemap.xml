@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/promise/</loc>
+    
+    <lastmod>2017-08-08T08:41:47.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/summer-plan/</loc>
     
     <lastmod>2017-08-06T00:59:41.000Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://kyonhuang.top/vue-project-practice/</loc>
     
     <lastmod>2017-08-04T13:08:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/promise/</loc>
-    
-    <lastmod>2017-08-03T09:27:07.000Z</lastmod>
     
   </url>
   
