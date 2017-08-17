@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-439f836f1c5033bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-d48f8689170c4f6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-57c2d4c89e36c4d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-07-31T12:01:31.000Z">
+<meta property="og:updated_time" content="2017-08-17T13:13:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJS 入门笔记">
 <meta name="twitter:description" content="上学期曾在 NodeJS 的门槛前匆匆一瞥而不得入，暑假终于有大块的时间一次入门。这篇笔记以 七天学会NodeJS 为主干，辅以廖雪峰 JavaScript 教程中相关内容以及其他渠道的一些知识整理而成。内容主要是脑图，一部分细碎知识点和代码以文字呈现。 在学习 NodeJS 过程中，感觉对软件工程基础课程的融会贯通有了更深的理解。作为 JavaScript 的服务器端环境，NodeJS 操作文件">
@@ -438,8 +438,12 @@
 <li>可以随时引用；</li>
 <li>避免函数名和变量名冲突；</li>
 </ol>
-<h3 id="CommonJS-规范"><a href="#CommonJS-规范" class="headerlink" title="CommonJS 规范"></a>CommonJS 规范</h3><p>每个<code>.js</code>文件都是一个模块，它们内部各自使用的变量名和函数名都互不冲突。</p>
+<h3 id="CommonJS-规范"><a href="#CommonJS-规范" class="headerlink" title="CommonJS 规范"></a>CommonJS 规范</h3><p>CommonJS 主要是在 <strong>Node 服务器端</strong>的规范。</p>
+<p>每个<code>.js</code>文件都是一个模块，它们内部各自使用的变量名和函数名都互不冲突。</p>
 <p>一个模块要对外暴露变量（函数也是变量），可以用<code>module.exports = variable;</code>。一个模块要引用其他模块暴露的变量，用<code>var foo = require(&#39;module_name&#39;)</code>就拿到了引用模块的变量。</p>
+<p><strong>模块加载会有缓存</strong>，且其根据<strong>绝对路径识别</strong>。因此同样的模块名放在不同的路径之中多次 require 不会重新加载。</p>
+<p>CommonJS 是<strong>同步加载</strong>的，在服务器端模块文件一般存放在本地，再加上有缓存，加载速度很快。而在浏览器端就可能导致“假死”，因此浏览器端采用另一种异步加载方式 - AMD（Asynchronous Module Definition）。</p>
+<p>想要进一步了解，可参考 <a href="www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html">Javascript模块化编程（二）：AMD规范 - 阮一峰的网络日志</a>。</p>
 <h3 id="深入了解模块原理"><a href="#深入了解模块原理" class="headerlink" title="深入了解模块原理"></a>深入了解模块原理</h3><p>Node.js 的“模块”功能利用了 JavaScript 函数式编程的特性，通过<strong>闭包</strong>实现。</p>
 <h2 id="代码的组织和部署"><a href="#代码的组织和部署" class="headerlink" title="代码的组织和部署"></a>代码的组织和部署</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-829fee6dc736dbd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码的组织和部署.png"></p>
 <h2 id="基本模块"><a href="#基本模块" class="headerlink" title="基本模块"></a>基本模块</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-a0e8821626a2e3cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="基本模块.png"></p>
