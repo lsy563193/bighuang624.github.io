@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/start-front-end-test/</loc>
+    
+    <lastmod>2017-08-18T08:27:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/start-to-learn-NodeJS/</loc>
     
     <lastmod>2017-08-17T13:13:07.000Z</lastmod>
