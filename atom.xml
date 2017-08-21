@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-08-18T08:27:04.000Z</updated>
+  <updated>2017-08-21T04:58:36.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,76 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用 Vue 撸一份线上简历有哪些坑</title>
+    <link href="http://kyonhuang.top/make-a-resume/"/>
+    <id>http://kyonhuang.top/make-a-resume/</id>
+    <published>2017-08-21T04:52:16.000Z</published>
+    <updated>2017-08-21T04:58:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>昨天花了一天时间，用 Vue 给自己撸了一份线上简历，并借助 Github Pages 实现了在线预览的效果。</p>
+<ul>
+<li>项目地址：<a href="https://github.com/bighuang624/resume" target="_blank" rel="external">bighuang624/resume
+</a></li>
+<li>在线预览地址：<a href="http://kyonhuang.top/resume/">http://kyonhuang.top/resume/</a></li>
+</ul>
+<p>目前实现的是最简单的效果，可以说只用了 Vue，不涉及全家桶里其他产品。从 UI、文字、性能、测试等各种角度都有改进的空间。这个小项目应该是会长期维护的。今天先总结一下，做到目前为止遇到的坑。</p>
+<a id="more"></a>
+<h2 id="在-Vue-中使用-sass"><a href="#在-Vue-中使用-sass" class="headerlink" title="在 Vue 中使用 sass"></a>在 Vue 中使用 sass</h2><p>这个步骤之前已经总结过，现在再在博客上记录一次，方便之后查找。</p>
+<p>在 Webpack 中，所有的预处理器需要匹配相应的 loader。因此要使用 sass 或 scss，首先下载依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install sass-loader node-sass --save-dev</div></pre></td></tr></table></figure>
+<p>然后在单文件组件中的<code>&lt;style&gt;</code>标签中加上<code>lang=&quot;sass&quot;</code>。<code>vue-loader</code>会根据<code>lang</code>属性推断出要使用的 loaders，并将内容交给相应的 loaders 处理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;style lang=&quot;sass&quot;&gt;</div><div class="line">  /* write sass here */</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<p>与名称相反，sass-loader 默认解析 scss 语法，因此如果想使用 sass 语法，还需要在 build/vue-loader.conf.js 配置 vue-loader 的选项：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-0e5c5d774fa3e00a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="build:vue-loader.conf.png"></p>
+<p>这样的修改不会影响 scss 的使用，记得修改<code>&lt;style&gt;</code>标签中为<code>lang=&quot;scss&quot;</code>即可。</p>
+<h2 id="项目资源无法加载"><a href="#项目资源无法加载" class="headerlink" title="项目资源无法加载"></a>项目资源无法加载</h2><p>直接<code>npm run build</code>得到的项目，默认引用资源文件的路径为<code>/static/js/app.js</code>。所以程序若不在根目录下，就会出现资源文件引用错误的情况。</p>
+<p>最简单的解决方案就是改动 webpack 的配置文件。将<code>/config</code>文件夹中的 index.js 文件中的<code>assetsPublicPath: &#39;/&#39;</code>改为<code>assetsPublicPath: &#39;./&#39;</code>即可，截图如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-52590cfcce2b12ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="config:index.png"></p>
+<p>如果你还使用了 vue-router，你需要在 router 的配置中加上一行<code>base: &#39;/[项目所在文件夹的名字]/&#39;</code>，如下所示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-e6de7fc323ef16e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="router.png"></p>
+<p>注意：如果启用了 vue-router 的 history 模式，你需要跟着 <a href="https://router.vuejs.org/zh-cn/essentials/history-mode.html" target="_blank" rel="external">vue-router 官方文档的后端配置例子</a> 对服务器进行一定的配置。</p>
+<p>这是因为在 history 模式下，router 只是通过 JS 操作 window.history 来改变浏览器地址栏里的路径，并没有发起 http 请求。但是直接在地址栏中输入形如<code>http://www.example.com/example/item/1</code>这样的地址时，就一定先要对服务器发起 http 请求。此目标在服务器上不存在，于是会返回 404。修改服务器的配置，以将所有的请求全部转发到<code>index.html</code>上。</p>
+<p>当然，这意味着单纯使用 Github Pages 的在线预览功能没办法进行这样的配置。你也可以关注知乎上的这个问题 <a href="https://www.zhihu.com/question/64173754" target="_blank" rel="external">怎样为Github pages Hack使用了vue-router history模式的vue应用？ - 知乎</a> 来看别人的解决方法。</p>
+<h2 id="iconfont-无法加载"><a href="#iconfont-无法加载" class="headerlink" title="iconfont 无法加载"></a>iconfont 无法加载</h2><p>字体图标无法正确加载。参考 <a href="https://github.com/vuejs-templates/webpack/issues/166" target="_blank" rel="external">https://github.com/vuejs-templates/webpack/issues/166</a> ，得到的解决方法是修改 build/utils.js 文件，增加一行<code>publicPath: &#39;../../&#39;</code>，如截图所示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-4154f0ddd63f0953.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="build:utils.png"></p>
+<p>保存后，<code>npm run build</code>打包得到的项目中 iconfont 就可以正常显示了。</p>
+<h2 id="实现-Github-Pages-在线预览"><a href="#实现-Github-Pages-在线预览" class="headerlink" title="实现 Github Pages 在线预览"></a>实现 Github Pages 在线预览</h2><p>参考 <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/" target="_blank" rel="external">Configuring a publishing source for GitHub Pages - User Documentation</a>，实现 Github Pages 在线预览功能有好几种方法，可以设置从<code>master</code>分支、<code>gh-pages</code>分支或者<code>master</code>分支下的<code>/docs</code>文件夹中读取。我就选择了最简单的一种方法，把<code>npm run build</code>打包下来的<code>/dist</code>文件夹改名为<code>/docs</code>。</p>
+<p>之后，在 Github 项目主页的 Settings 下的 Github pages 下进行设置 Source 为<code>master branch /docs folder</code>即可。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-ec745a361c794183.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="githubpage.png"></p>
+<p>如果你之前使用过 Github Pages 并绑定了一个域名，那么这个项目的预览地址会像<code>http://kyonhuang.top/resume/</code>这样在这个域名下，看起来很爽。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://vue-loader.vuejs.org/zh-cn/configurations/pre-processors.html" target="_blank" rel="external">预处理器 · vue-loader</a></p>
+<p><a href="http://upyang.com/2017/07/25/Vue项目上传github并预览/" target="_blank" rel="external">Vue项目打包上传到github预览</a></p>
+<p><a href="https://www.zhihu.com/question/46630687/answer/157166318" target="_blank" rel="external">vuejs怎么在服务器部署？ - 知乎</a></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>撸这份简历，是一个总结，也是一个激励。</p>
+<p>真正撸完简历，才发现自己在技术层面上的项目经历少的可怜，而技术也不敢说有什么掌握。以后看到这份简历，会让我非常想写一些拿得出手的开源项目，然后对项目经历进行修改。</p>
+<p>读完《你不知道的JavaScript（中卷）》，就给 JS 的技能条涨 5 个百分点；用 Node 开发一个支持登录注册的后台，就给 Node 的技能条涨 5 个百分点；或者再点亮一个新的技能。</p>
+<p>随着我的不断学习，希望这份简历越来越吸引人。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;昨天花了一天时间，用 Vue 给自己撸了一份线上简历，并借助 Github Pages 实现了在线预览的效果。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;项目地址：&lt;a href=&quot;https://github.com/bighuang624/resume&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;bighuang624/resume
+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;在线预览地址：&lt;a href=&quot;http://kyonhuang.top/resume/&quot;&gt;http://kyonhuang.top/resume/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目前实现的是最简单的效果，可以说只用了 Vue，不涉及全家桶里其他产品。从 UI、文字、性能、测试等各种角度都有改进的空间。这个小项目应该是会长期维护的。今天先总结一下，做到目前为止遇到的坑。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="程序猿喜欢折腾" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
+    
+    
+      <category term="Vue" scheme="http://kyonhuang.top/tags/Vue/"/>
+    
+      <category term="简历" scheme="http://kyonhuang.top/tags/%E7%AE%80%E5%8E%86/"/>
+    
+      <category term="github 预览" scheme="http://kyonhuang.top/tags/github-%E9%A2%84%E8%A7%88/"/>
+    
+  </entry>
   
   <entry>
     <title>初探前端自动化测试--以 vue 为例</title>
@@ -264,9 +334,9 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="《你不知道的 JavaScript》" scheme="http://kyonhuang.top/tags/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-JavaScript%E3%80%8B/"/>
     
@@ -1726,53 +1796,6 @@
       <category term="JavaScript" scheme="http://kyonhuang.top/tags/JavaScript/"/>
     
       <category term="词法作用域" scheme="http://kyonhuang.top/tags/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在把玩中学习——typewriter.js</title>
-    <link href="http://kyonhuang.top/typewriter/"/>
-    <id>http://kyonhuang.top/typewriter/</id>
-    <published>2017-03-17T03:28:32.000Z</published>
-    <updated>2017-04-25T10:47:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>大约两周前我在空间里发了一条说说，说感觉自己的创造力日渐枯竭。很多同学不以为然，实际上我是真的有这样的认知。我感觉自己在失去对代码之美的感知，而这种创造力的枯竭也一定程度影响着我的动手能力。我在看书、看视频，却不太愿意去写百度前端训练营里一些基础的代码（而且并不大会）。我安慰自己，我正在修炼内力，一旦出关便是绝世神功威震武林。然而事实是金庸小说中光有内力而不懂一点外家功夫的货，都只有乖乖挨揍的份，至于之后能否成功报仇又是两说。就像我昨天想写一个很简单的动画效果，却最终一筹莫展，只能暂时放弃。</p>
-<p>好吧，让我把自己从枯燥的读书笔记中暂时解放出来吧。正好有一个有趣的小 demo，从我还没有打算系统学习前端开发时就躺在收藏夹里了。不妨把玩一下，看看别人能凭借着兴趣写出怎样有意思的小东西。</p>
-<p><img src="/images/typewriter.jpg"></p>
-<a id="more"></a>
-<p>这个有打字和仿光标闪烁效果的 <a href="http://www.jq22.com/jquery-info6035" target="_blank" rel="external">typewriter.js</a> 好像是我在看什么“程序员表白利器”时加到收藏夹里的。现在学习了 js，敢看看源码了，发现 js 代码只有20行不到。作者说：“原生JavaScript就是这么牛。”确实是这样的。虽然效果也很简单，但也能从里面学到一些东西。</p>
-<p>HTML 源代码（大致结构）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=&quot;mainDiv&quot;&gt;</div><div class="line">        &lt;div id=&quot;content&quot;&gt;</div><div class="line">            &lt;div id=&quot;code&quot;&gt;</div><div class="line">                &lt;span class=&quot;comments&quot;&gt;/**&lt;/span&gt;&lt;br /&gt;</div><div class="line">                &lt;span class=&quot;space&quot;/&gt;&lt;span class=&quot;comments&quot;&gt;* We are both XXX Unversity  business administration and programmers,&lt;/span&gt;&lt;br /&gt;</div><div class="line">                &lt;span class=&quot;space&quot;/&gt;&lt;span class=&quot;comments&quot;&gt;* so I write some code to show my love to you.&lt;/span&gt;&lt;br /&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line"> document.getElementById(&quot;code&quot;).typewriter();</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
-<p>JavaScript 源代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Element.prototype.typewriter=function(a)&#123;</div><div class="line">			var d = this,</div><div class="line">				c = d.innerHTML,</div><div class="line">				b = 0;</div><div class="line">			d.innerHTML=&quot;&quot;;</div><div class="line">			var e = setInterval(function() &#123;</div><div class="line">				var f = c.substr(b, 1);</div><div class="line">				if (f == &quot;&lt;&quot;) &#123;</div><div class="line">					b = c.indexOf(&quot;&gt;&quot;, b) + 1</div><div class="line">				&#125; else &#123;</div><div class="line">					b++</div><div class="line">				&#125;</div><div class="line">				d.innerHTML=c.substring(0, b) + (b &amp; 1 ? &quot;_&quot; : &quot;&quot;);</div><div class="line">				if (b &gt;= c.length) &#123;</div><div class="line">					clearInterval(e)</div><div class="line">				&#125;</div><div class="line">			&#125;, 75)</div><div class="line">		return this</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<p>在这份 js 代码中可以学习的点：</p>
-<ol>
-<li><strong>原型模式定义方法</strong>：给 Element 添加实例方法<code>typewriter()</code>（在 html 文件中调用），这里有一个参数 a，实际上没什么用。顺便一说，源码在 head 处引入了 js 文件，这是为了先加载 js 文件。如果按照代码规范将引入放在 body 部分的最后，则有一瞬间所有字先出现再消失，不符合效果要求。可见代码规范也要根据实际来遵守。</li>
-<li>声明三个变量，d 保存当前对象（”code”）。这个操作是必要的，因为后面要给 “code” 的 innerHTML 赋值的时候有时在函数作用域中，this 取不到 “code”。</li>
-<li>代码逻辑很清晰，包括对标签的处理、光标效果的实现和定时器的清除等。要对自己想要实现的效果有一个全面的认知和大致的构思再开始写代码。</li>
-<li>末尾<code>return this</code>以<strong>支持链式操作</strong>。</li>
-</ol>
-<p>想要用功能强大的JavaScript实现一些小效果不难，但是怎样一步步规划、修改到实现对现在的我来说还是比较有挑战性的。希望自己能在欣赏、借鉴、吸收的过程中去实现一些有趣的 demo，重拾对代码的兴趣和创造力。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;大约两周前我在空间里发了一条说说，说感觉自己的创造力日渐枯竭。很多同学不以为然，实际上我是真的有这样的认知。我感觉自己在失去对代码之美的感知，而这种创造力的枯竭也一定程度影响着我的动手能力。我在看书、看视频，却不太愿意去写百度前端训练营里一些基础的代码（而且并不大会）。我安慰自己，我正在修炼内力，一旦出关便是绝世神功威震武林。然而事实是金庸小说中光有内力而不懂一点外家功夫的货，都只有乖乖挨揍的份，至于之后能否成功报仇又是两说。就像我昨天想写一个很简单的动画效果，却最终一筹莫展，只能暂时放弃。&lt;/p&gt;
-&lt;p&gt;好吧，让我把自己从枯燥的读书笔记中暂时解放出来吧。正好有一个有趣的小 demo，从我还没有打算系统学习前端开发时就躺在收藏夹里了。不妨把玩一下，看看别人能凭借着兴趣写出怎样有意思的小东西。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/typewriter.jpg&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
