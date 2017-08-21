@@ -86,11 +86,11 @@
   </entry>
   
   <entry>
-    <title>初探前端自动化测试--以 vue 为例</title>
+    <title>初探前端自动化测试--以 Vue 为例</title>
     <link href="http://kyonhuang.top/start-front-end-test/"/>
     <id>http://kyonhuang.top/start-front-end-test/</id>
     <published>2017-08-16T01:14:28.000Z</published>
-    <updated>2017-08-18T08:27:04.000Z</updated>
+    <updated>2017-08-21T06:00:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>随着前端项目规模日益膨胀，自动化测试显得越来越重要。现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。</p>
 <p>前端的测试类型分为<strong>单元测试（unit test）</strong>和<strong>端到端测试（e2e test）</strong>。<strong>单元测试</strong>将应用拆分为细小的组件（JS 中的一个函数/对象/模块等）方法，然后针对这些方法进行单独的测试工作；而 <strong>e2e 测试</strong>则模拟用户进行页面操作，通过判断页面状态的变化来检查功能是否运行正常，需要用到浏览器环境。</p>
@@ -334,9 +334,9 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
     
       <category term="《你不知道的 JavaScript》" scheme="http://kyonhuang.top/tags/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-JavaScript%E3%80%8B/"/>
     

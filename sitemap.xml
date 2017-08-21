@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://kyonhuang.top/make-a-resume/</loc>
+    <loc>http://kyonhuang.top/about/index.html</loc>
     
-    <lastmod>2017-08-21T04:58:36.000Z</lastmod>
+    <lastmod>2017-08-21T06:06:01.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://kyonhuang.top/start-front-end-test/</loc>
     
-    <lastmod>2017-08-18T08:27:04.000Z</lastmod>
+    <lastmod>2017-08-21T06:00:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/make-a-resume/</loc>
+    
+    <lastmod>2017-08-21T04:58:36.000Z</lastmod>
     
   </url>
   
@@ -103,13 +110,6 @@
     <loc>http://kyonhuang.top/js-lexical-scope/</loc>
     
     <lastmod>2017-07-26T06:17:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/about/index.html</loc>
-    
-    <lastmod>2017-07-26T06:11:57.000Z</lastmod>
     
   </url>
   

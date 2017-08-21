@@ -3,6 +3,33 @@
 
 
     
+    
+  <url>
+    <loc>http://kyonhuang.top/start-front-end-test/</loc>
+    <lastmod>2017-08-21T06:00:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>初探前端自动化测试--以 Vue 为例</title>
+        <pubTime>2017-08-16T01:14:28.000Z</pubTime>
+        
+        <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
+         
+        <tag>前端工程</tag>
+         
+        <tag>测试</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端工程" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>http://kyonhuang.top/make-a-resume/</loc>
     <lastmod>2017-08-21T04:58:36.000Z</lastmod>
@@ -21,32 +48,6 @@
            
              
               <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/start-front-end-test/</loc>
-    <lastmod>2017-08-18T08:27:04.000Z</lastmod>
-    <data>
-        <display>
-        <title>初探前端自动化测试--以 vue 为例</title>
-        <pubTime>2017-08-16T01:14:28.000Z</pubTime>
-        
-        <tag>JavaScipt</tag>
-         
-        <tag>前端</tag>
-         
-        <tag>前端工程</tag>
-         
-        <tag>测试</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端工程" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -343,9 +344,9 @@
          
         <tag>JavaScipt</tag>
          
-        <tag>脑图</tag>
-         
         <tag>前端</tag>
+         
+        <tag>脑图</tag>
          
         <tag>《你不知道的 JavaScript》</tag>
          
@@ -386,7 +387,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://kyonhuang.top/JS-notes-5/</loc>
