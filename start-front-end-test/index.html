@@ -92,20 +92,20 @@
 
 
 
-<meta name="description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。 前端的测试类型分为单元测试（unit test）和端到端测试（e2e test）。单元测试将应用拆分为细小的组件（JS 中的一个函数/对象/模块等）方法，然后针对这些方法">
+<meta name="description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高了。因此，对于稳定、多次复用以及需要长期维护的项目，自动化测试显得尤为重要。 现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端">
 <meta name="keywords" content="JavaScipt,前端,前端工程,测试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初探前端自动化测试--以 Vue 为例">
 <meta property="og:url" content="http://kyonhuang.top/start-front-end-test/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。 前端的测试类型分为单元测试（unit test）和端到端测试（e2e test）。单元测试将应用拆分为细小的组件（JS 中的一个函数/对象/模块等）方法，然后针对这些方法">
+<meta property="og:description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高了。因此，对于稳定、多次复用以及需要长期维护的项目，自动化测试显得尤为重要。 现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-50166ab65032fdd5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-298692df753ab061.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-21T06:00:42.000Z">
+<meta property="og:updated_time" content="2017-08-21T14:13:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初探前端自动化测试--以 Vue 为例">
-<meta name="twitter:description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。 前端的测试类型分为单元测试（unit test）和端到端测试（e2e test）。单元测试将应用拆分为细小的组件（JS 中的一个函数/对象/模块等）方法，然后针对这些方法">
+<meta name="twitter:description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高了。因此，对于稳定、多次复用以及需要长期维护的项目，自动化测试显得尤为重要。 现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2702529-50166ab65032fdd5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -421,14 +421,21 @@
       
 
       
-        <p>随着前端项目规模日益膨胀，自动化测试显得越来越重要。现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。</p>
-<p>前端的测试类型分为<strong>单元测试（unit test）</strong>和<strong>端到端测试（e2e test）</strong>。<strong>单元测试</strong>将应用拆分为细小的组件（JS 中的一个函数/对象/模块等）方法，然后针对这些方法进行单独的测试工作；而 <strong>e2e 测试</strong>则模拟用户进行页面操作，通过判断页面状态的变化来检查功能是否运行正常，需要用到浏览器环境。</p>
+        <p>随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高了。因此，对于稳定、多次复用以及需要长期维护的项目，自动化测试显得尤为重要。</p>
+<p>现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。</p>
+<p>前端的测试类型分为<strong>单元测试（unit testing）</strong>、<strong>集成测试（integration testing）</strong>和<strong>端到端测试（e2e testing）</strong>。</p>
+<ul>
+<li><strong>单元测试</strong>将应用拆分为细小的组件（JS 中的一个函数/对象/模块等）方法，然后针对这些方法进行单独的测试工作；</li>
+<li><strong>集成测试</strong>是针对产品的某个功能的测试，又称功能测试；</li>
+<li><strong>e2e 测试</strong>则是从用户界面直达数据库的全链路测试，模拟用户进行页面操作，通过判断页面状态的变化来检查功能是否运行正常，需要用到浏览器环境。</li>
+</ul>
 <a id="more"></a>
-<h2 id="开发模式"><a href="#开发模式" class="headerlink" title="开发模式"></a>开发模式</h2><p>先绕点路，了解一下 TDD、BDD等开发模式，有助于我们更深入地理解测试。</p>
-<h3 id="TDD"><a href="#TDD" class="headerlink" title="TDD"></a>TDD</h3><p>TDD（Test Driven Development），即测试驱动开发。其先针对每个功能点抽象出接口代码，然后编写单元测试用例代码。之后实现接口，运行单元测试代码进行测试，循环往复直至所有单元测试通过。</p>
+<h2 id="开发模式"><a href="#开发模式" class="headerlink" title="开发模式"></a>开发模式</h2><p>先绕点路，了解一下 TDD、BDD等<strong>以测试为导向的开发模式</strong>，有助于我们更深入地理解自动化测试。</p>
+<h3 id="TDD"><a href="#TDD" class="headerlink" title="TDD"></a>TDD</h3><p>TDD（Test Driven Development），即<strong>测试驱动开发</strong>。其先针对每个功能点抽象出接口代码，然后编写单元测试用例代码。之后实现接口，运行单元测试代码进行测试，循环往复直至所有单元测试通过。</p>
 <p>TDD 要求测试先于编写功能代码。测试用例不仅是对于代码的验证，更成为对代码的规范与约束，确保在开发以及未来进行修改时能够极大程度地保证该模块行为仍然是正确的。</p>
-<h3 id="BDD"><a href="#BDD" class="headerlink" title="BDD"></a>BDD</h3><p>BDD（Behavior Driven Development），即行为驱动开发。可以认为 BDD 是 TDD 的一个子集或分支，是测试驱动开发的扩展。</p>
-<p>BDD 更侧重于系统设计。客户与开发者共同考虑系统该如何运行，然后用通用的语言抽象描述系统的行为，使得双方从技术层面和业务需求都能理解，避免沟通障碍。</p>
+<h3 id="BDD"><a href="#BDD" class="headerlink" title="BDD"></a>BDD</h3><p>BDD（Behavior Driven Development），即<strong>行为驱动开发</strong>。BDD 和 TDD 一样，都要求先写测试，再写代码。可以认为 BDD 是 TDD 的一个子集或分支，是测试驱动开发的扩展。</p>
+<p>TDD 基于开发者角度，重点测试函数的输入输出；而 BDD 更侧重于使用者角度，重点测试对用户行为的反应。</p>
+<p>BDD 测试中，客户与开发者共同考虑系统该如何运行，然后用通用的语言抽象描述系统的行为，使得双方从技术层面和业务需求都能理解，避免沟通障碍。</p>
 <h2 id="测试工具"><a href="#测试工具" class="headerlink" title="测试工具"></a>测试工具</h2><h3 id="测试管理工具"><a href="#测试管理工具" class="headerlink" title="测试管理工具"></a>测试管理工具</h3><p>用来组织和运行整个测试的工具，它能够将测试框架、断言库、测试浏览器、测试代码和被测试代码组织起来，并运行被测试代码进行测试。</p>
 <p>可选择的有 Karma、Selenium、Mocha（Mocha既是测试工具，也是测试框架）。</p>
 <h3 id="测试框架"><a href="#测试框架" class="headerlink" title="测试框架"></a>测试框架</h3><p>测试框架是单元测试的核心，提供了单元测试所需的各种API，并对测试用例分组。测试框架会抓取到代码抛出的 AssertionError 并提供附加信息。</p>
@@ -447,6 +454,7 @@
 <li>自带的 e2e 测试要求装有 chrome 浏览器，否则报错<code>Error retrieving a new session from the selenium server</code>。我被这个坑折腾了半天…</li>
 </ol>
 <h2 id="测试代码编写"><a href="#测试代码编写" class="headerlink" title="测试代码编写"></a>测试代码编写</h2><p>to be continued…</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>正在写下一篇：《初探持续集成》</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="写作资料"><a href="#写作资料" class="headerlink" title="写作资料"></a>写作资料</h3><p><a href="http://www.cnblogs.com/bigdataZJ/p/AutoTesting1.html" target="_blank" rel="external">开发人员看测试之TDD和BDD - JackieZheng - 博客园</a></p>
 <p><a href="http://www.jianshu.com/p/6726c0410650" target="_blank" rel="external">前端自动化单元测试初探 - 简书</a></p>
 <h3 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h3><p><a href="http://www.infoq.com/cn/articles/virtual-panel-tdd-bdd#" target="_blank" rel="external">虚拟座谈会：代码测试比率、测试驱动开发及行为驱动开发</a></p>
@@ -604,7 +612,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -706,7 +714,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发模式"><span class="nav-number">1.</span> <span class="nav-text">开发模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TDD"><span class="nav-number">1.1.</span> <span class="nav-text">TDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BDD"><span class="nav-number">1.2.</span> <span class="nav-text">BDD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试工具"><span class="nav-number">2.</span> <span class="nav-text">测试工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试管理工具"><span class="nav-number">2.1.</span> <span class="nav-text">测试管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试框架"><span class="nav-number">2.2.</span> <span class="nav-text">测试框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断言库"><span class="nav-number">2.3.</span> <span class="nav-text">断言库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试浏览器"><span class="nav-number">2.4.</span> <span class="nav-text">测试浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试覆盖率统计工具"><span class="nav-number">2.5.</span> <span class="nav-text">测试覆盖率统计工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-cli-的配置"><span class="nav-number">3.</span> <span class="nav-text">vue-cli 的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试代码编写"><span class="nav-number">4.</span> <span class="nav-text">测试代码编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写作资料"><span class="nav-number">5.1.</span> <span class="nav-text">写作资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展阅读"><span class="nav-number">5.2.</span> <span class="nav-text">扩展阅读</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发模式"><span class="nav-number">1.</span> <span class="nav-text">开发模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TDD"><span class="nav-number">1.1.</span> <span class="nav-text">TDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BDD"><span class="nav-number">1.2.</span> <span class="nav-text">BDD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试工具"><span class="nav-number">2.</span> <span class="nav-text">测试工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试管理工具"><span class="nav-number">2.1.</span> <span class="nav-text">测试管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试框架"><span class="nav-number">2.2.</span> <span class="nav-text">测试框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断言库"><span class="nav-number">2.3.</span> <span class="nav-text">断言库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试浏览器"><span class="nav-number">2.4.</span> <span class="nav-text">测试浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试覆盖率统计工具"><span class="nav-number">2.5.</span> <span class="nav-text">测试覆盖率统计工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-cli-的配置"><span class="nav-number">3.</span> <span class="nav-text">vue-cli 的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试代码编写"><span class="nav-number">4.</span> <span class="nav-text">测试代码编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写作资料"><span class="nav-number">6.1.</span> <span class="nav-text">写作资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展阅读"><span class="nav-number">6.2.</span> <span class="nav-text">扩展阅读</span></a></li></ol></li></ol></div>
             
 
           </div>

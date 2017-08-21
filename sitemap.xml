@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://kyonhuang.top/about/index.html</loc>
+    <loc>http://kyonhuang.top/start-front-end-test/</loc>
     
-    <lastmod>2017-08-21T06:06:01.000Z</lastmod>
+    <lastmod>2017-08-21T14:13:17.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/start-front-end-test/</loc>
+    <loc>http://kyonhuang.top/css-animation/</loc>
     
-    <lastmod>2017-08-21T06:00:42.000Z</lastmod>
+    <lastmod>2017-08-21T07:11:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/about/index.html</loc>
+    
+    <lastmod>2017-08-21T06:06:01.000Z</lastmod>
     
   </url>
   
@@ -47,13 +54,6 @@
     <loc>http://kyonhuang.top/Generator-and-async/</loc>
     
     <lastmod>2017-08-06T00:52:47.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/vue-project-practice/</loc>
-    
-    <lastmod>2017-08-04T13:08:39.000Z</lastmod>
     
   </url>
   
@@ -187,13 +187,6 @@
     <loc>http://kyonhuang.top/bye2016hello2017/</loc>
     
     <lastmod>2017-05-07T03:06:05.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/css-animation/</loc>
-    
-    <lastmod>2017-04-29T07:37:43.000Z</lastmod>
     
   </url>
   
