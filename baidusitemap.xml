@@ -4,6 +4,58 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/promise/</loc>
+    <lastmod>2017-08-23T01:58:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Promise 对象</title>
+        <pubTime>2017-06-17T13:38:13.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>JavaScipt</tag>
+         
+        <tag>异步编程</tag>
+         
+        <tag>ES 6</tag>
+         
+        <tag>《ECMAScript 6 入门》</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/make-a-resume/</loc>
+    <lastmod>2017-08-23T01:45:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>用 Vue 撸一份线上简历有哪些坑</title>
+        <pubTime>2017-08-21T04:52:16.000Z</pubTime>
+        
+        <tag>简历</tag>
+         
+        <tag>Vue</tag>
+         
+        <tag>github 预览</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/something-about-overflow/</loc>
     <lastmod>2017-08-23T01:20:50.000Z</lastmod>
     <data>
@@ -125,58 +177,6 @@
            
              
               <breadCrumb title="程序猿的好伙伴" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E7%9A%84%E5%A5%BD%E4%BC%99%E4%BC%B4/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/make-a-resume/</loc>
-    <lastmod>2017-08-22T09:25:08.000Z</lastmod>
-    <data>
-        <display>
-        <title>用 Vue 撸一份线上简历有哪些坑</title>
-        <pubTime>2017-08-21T04:52:16.000Z</pubTime>
-        
-        <tag>简历</tag>
-         
-        <tag>Vue</tag>
-         
-        <tag>github 预览</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/promise/</loc>
-    <lastmod>2017-08-22T07:53:06.000Z</lastmod>
-    <data>
-        <display>
-        <title>Promise 对象</title>
-        <pubTime>2017-06-17T13:38:13.000Z</pubTime>
-        
-        <tag>读书笔记</tag>
-         
-        <tag>JavaScipt</tag>
-         
-        <tag>异步编程</tag>
-         
-        <tag>ES 6</tag>
-         
-        <tag>《ECMAScript 6 入门》</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
