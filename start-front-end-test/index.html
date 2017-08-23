@@ -92,20 +92,22 @@
 
 
 
-<meta name="description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高了。因此，对于稳定、多次复用以及需要长期维护的项目，自动化测试显得尤为重要。 现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端">
+<meta name="description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高；但对于稳定、多次复用以及需要长期维护的项目，自动化测试就尤为重要。 现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测">
 <meta name="keywords" content="JavaScipt,前端,前端工程,测试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初探前端自动化测试--以 Vue 为例">
 <meta property="og:url" content="http://kyonhuang.top/start-front-end-test/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高了。因此，对于稳定、多次复用以及需要长期维护的项目，自动化测试显得尤为重要。 现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端">
+<meta property="og:description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高；但对于稳定、多次复用以及需要长期维护的项目，自动化测试就尤为重要。 现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-50166ab65032fdd5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-298692df753ab061.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-21T14:13:17.000Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-bd0c6382e613c281.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-dbd1bfcc046e28fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-23T01:19:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初探前端自动化测试--以 Vue 为例">
-<meta name="twitter:description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高了。因此，对于稳定、多次复用以及需要长期维护的项目，自动化测试显得尤为重要。 现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端">
+<meta name="twitter:description" content="随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高；但对于稳定、多次复用以及需要长期维护的项目，自动化测试就尤为重要。 现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2702529-50166ab65032fdd5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -191,7 +193,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">To be a better man</p>
+        <p class="site-subtitle">天下武功，无勤不破 | To be a better man</p>
       
   </div>
 
@@ -421,7 +423,7 @@
       
 
       
-        <p>随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高了。因此，对于稳定、多次复用以及需要长期维护的项目，自动化测试显得尤为重要。</p>
+        <p>随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高；但对于稳定、多次复用以及需要长期维护的项目，自动化测试就尤为重要。</p>
 <p>现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。</p>
 <p>前端的测试类型分为<strong>单元测试（unit testing）</strong>、<strong>集成测试（integration testing）</strong>和<strong>端到端测试（e2e testing）</strong>。</p>
 <ul>
@@ -453,8 +455,15 @@
 <li>建议使用 cnpm 对 vue-cli 项目进行依赖安装，否则可能有些东西装不上。</li>
 <li>自带的 e2e 测试要求装有 chrome 浏览器，否则报错<code>Error retrieving a new session from the selenium server</code>。我被这个坑折腾了半天…</li>
 </ol>
-<h2 id="测试代码编写"><a href="#测试代码编写" class="headerlink" title="测试代码编写"></a>测试代码编写</h2><p>to be continued…</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>正在写下一篇：《初探持续集成》</p>
+<h2 id="开始编写测试代码"><a href="#开始编写测试代码" class="headerlink" title="开始编写测试代码"></a>开始编写测试代码</h2><p><a href="https://github.com/bighuang624/resume" target="_blank" rel="external">我的简历项目</a> 是我花了一天时间写的一个 vue-cli 初始化、只用了 Vue 的一个小项目，我们拿这个简单的小项目来入门测试代码的编写。我们直接利用 vue-cli 的初始配置，即用 Karma + Jasmine 进行单元测试，Nightwatch + Selenium 进行 E2E 测试。</p>
+<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><p><code>/test/unit/index.js</code>中可以看到，单元测试的测试代码是<code>/specs</code>文件夹下以<code>.spec.js</code>结尾的文件。将自带的<code>Hello.spec.js</code>改写为<code>LeftNav.spec.js</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</div><div class="line"><span class="keyword">import</span> LeftNav <span class="keyword">from</span> <span class="string">'@/components/LeftNav'</span>;</div><div class="line"></div><div class="line">describe(<span class="string">'LeftNav.vue'</span>, () =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> Constructor = Vue.extend(LeftNav);</div><div class="line">  <span class="keyword">const</span> vm = <span class="keyword">new</span> Constructor().$mount();</div><div class="line"></div><div class="line">  it(<span class="string">'should render correct name'</span>, () =&gt; &#123;</div><div class="line">    expect(vm.$el.querySelector(<span class="string">'.leftNav h1'</span>).textContent)</div><div class="line">      .to.equal(<span class="string">'Kyon Huang'</span>);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  it(<span class="string">'should render correct title'</span>, () =&gt; &#123;</div><div class="line">    expect(vm.$el.querySelector(<span class="string">'.leftNav h3'</span>).textContent)</div><div class="line">      .to.equal(<span class="string">'Web 开发工程师'</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="E2E-测试"><a href="#E2E-测试" class="headerlink" title="E2E 测试"></a>E2E 测试</h3><p>同理，将<code>/test/e2e/specs/test.js</code>改写为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// For authoring Nightwatch tests, see</span></div><div class="line"><span class="comment">// http://nightwatchjs.org/guide#usage</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="string">'default e2e tests'</span>: <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">browser</span>) </span>&#123;</div><div class="line">    <span class="comment">// automatically uses dev Server port from /config.index.js</span></div><div class="line">    <span class="comment">// default: http://localhost:8080</span></div><div class="line">    <span class="comment">// see nightwatch.conf.js</span></div><div class="line">    <span class="keyword">const</span> devServer = browser.globals.devServerURL;</div><div class="line"></div><div class="line">    browser</div><div class="line">      .url(devServer)</div><div class="line">      .waitForElementVisible(<span class="string">'#app'</span>, <span class="number">5000</span>)</div><div class="line">      .assert.elementPresent(<span class="string">'.leftNav'</span>)</div><div class="line">      .assert.containsText(<span class="string">'h1'</span>, <span class="string">'Kyon Huang'</span>)</div><div class="line">      .assert.elementCount(<span class="string">'img'</span>, <span class="number">1</span>)</div><div class="line">      .end();</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>测试结果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-bd0c6382e613c281.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unit-test-result.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-dbd1bfcc046e28fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="e2e-test-result.png"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>正在写下一篇：<a href="http://kyonhuang.top/start-front-end-test/">《再探前端自动化－持续集成》</a></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="写作资料"><a href="#写作资料" class="headerlink" title="写作资料"></a>写作资料</h3><p><a href="http://www.cnblogs.com/bigdataZJ/p/AutoTesting1.html" target="_blank" rel="external">开发人员看测试之TDD和BDD - JackieZheng - 博客园</a></p>
 <p><a href="http://www.jianshu.com/p/6726c0410650" target="_blank" rel="external">前端自动化单元测试初探 - 简书</a></p>
 <h3 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h3><p><a href="http://www.infoq.com/cn/articles/virtual-panel-tdd-bdd#" target="_blank" rel="external">虚拟座谈会：代码测试比率、测试驱动开发及行为驱动开发</a></p>
@@ -612,7 +621,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -623,7 +632,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -634,7 +643,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -714,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发模式"><span class="nav-number">1.</span> <span class="nav-text">开发模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TDD"><span class="nav-number">1.1.</span> <span class="nav-text">TDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BDD"><span class="nav-number">1.2.</span> <span class="nav-text">BDD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试工具"><span class="nav-number">2.</span> <span class="nav-text">测试工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试管理工具"><span class="nav-number">2.1.</span> <span class="nav-text">测试管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试框架"><span class="nav-number">2.2.</span> <span class="nav-text">测试框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断言库"><span class="nav-number">2.3.</span> <span class="nav-text">断言库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试浏览器"><span class="nav-number">2.4.</span> <span class="nav-text">测试浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试覆盖率统计工具"><span class="nav-number">2.5.</span> <span class="nav-text">测试覆盖率统计工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-cli-的配置"><span class="nav-number">3.</span> <span class="nav-text">vue-cli 的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试代码编写"><span class="nav-number">4.</span> <span class="nav-text">测试代码编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写作资料"><span class="nav-number">6.1.</span> <span class="nav-text">写作资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展阅读"><span class="nav-number">6.2.</span> <span class="nav-text">扩展阅读</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发模式"><span class="nav-number">1.</span> <span class="nav-text">开发模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TDD"><span class="nav-number">1.1.</span> <span class="nav-text">TDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BDD"><span class="nav-number">1.2.</span> <span class="nav-text">BDD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试工具"><span class="nav-number">2.</span> <span class="nav-text">测试工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试管理工具"><span class="nav-number">2.1.</span> <span class="nav-text">测试管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试框架"><span class="nav-number">2.2.</span> <span class="nav-text">测试框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断言库"><span class="nav-number">2.3.</span> <span class="nav-text">断言库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试浏览器"><span class="nav-number">2.4.</span> <span class="nav-text">测试浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试覆盖率统计工具"><span class="nav-number">2.5.</span> <span class="nav-text">测试覆盖率统计工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-cli-的配置"><span class="nav-number">3.</span> <span class="nav-text">vue-cli 的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始编写测试代码"><span class="nav-number">4.</span> <span class="nav-text">开始编写测试代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单元测试"><span class="nav-number">4.1.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E2E-测试"><span class="nav-number">4.2.</span> <span class="nav-text">E2E 测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写作资料"><span class="nav-number">6.1.</span> <span class="nav-text">写作资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展阅读"><span class="nav-number">6.2.</span> <span class="nav-text">扩展阅读</span></a></li></ol></li></ol></div>
             
 
           </div>

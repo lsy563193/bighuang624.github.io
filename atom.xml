@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>大黄菌的个人博客</title>
-  <subtitle>To be a better man</subtitle>
+  <subtitle>天下武功，无勤不破 | To be a better man</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-08-21T04:58:36.000Z</updated>
+  <updated>2017-08-23T01:18:32.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -16,11 +16,85 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>再探前端自动化－持续集成</title>
+    <link href="http://kyonhuang.top/start-front-end-test/"/>
+    <id>http://kyonhuang.top/start-front-end-test/</id>
+    <published>2017-08-23T00:47:28.000Z</published>
+    <updated>2017-08-23T01:18:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>传统开发模式中，项目经理等待所有模块都开发完成后再进行集成，出现 bug 则记录并分配责任人进行修改，之后再进行集成，直到通过测试为止持续循环。这个过程可能会出现如下问题：</p>
+<ol>
+<li>bug 总在最后才被发现（尤其是模块之间的依赖导致的 bug），并且越到项目后期，随着项目规模的膨胀，bug 变得愈发难以修复；</li>
+<li>各个环节无效的等待时间较长，加上程序需要经常变更，导致软件交付时机无法保障；</li>
+<li>用户无法随时看到项目演示原型，满意度低。</li>
+</ol>
+<p>为了解决这些问题，“持续集成”（Continuous Integration）的概念被提出。</p>
+<a id="more"></a>
+<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><p><strong>持续集成</strong>（CI）是指将所有开发者工作副本频繁地（每天多次）合并到主干，始终保持可发布状态的做法。而<strong>持续集成服务器</strong>就是能够采用自动化的手段，实现项目持续集成的工具。</p>
+<p>持续集成的具体工作流程：</p>
+<ol>
+<li><strong>本地开发（developing）</strong></li>
+<li><strong>静态代码检查（linting）</strong></li>
+<li><strong>单元测试（testing）</strong>：代码仓库对 commit 操作配置钩子（hook），只要提交代码或者合并进入主干，就会跑自动化测试。这一轮可以先只跑单元测试。</li>
+<li><strong>合并进入主干（merging）</strong></li>
+<li><strong>自动构建（building）</strong>：将源码经过安装依赖、配置各种资源（CSS、JS、images），转换为可以运行的实际代码。之后会跑全面的测试。</li>
+<li><strong>自动发布（publishing）</strong>：将可以直接部署的版本打包，发到生产服务器以启动应用。</li>
+</ol>
+<p>持续集成之后还有<strong>持续交付</strong>和<strong>持续部署</strong>，分别强调代码在任何时候都是可交付和可部署的。</p>
+<h2 id="持续集成的优点"><a href="#持续集成的优点" class="headerlink" title="持续集成的优点"></a>持续集成的优点</h2><ol>
+<li>自动化部署工作解放了重复性劳动，并减少手工集成的错误；</li>
+<li>防止分支大幅偏离主干，而导致以后的集成难度变大，甚至难以集成；</li>
+<li>持续集成缩短了开发、集成、测试、部署等各个环节的时间，从而减少等待时间，同时可以更快地发现、定位、修复问题并交付成果，使得产品可以快速迭代；</li>
+<li>集成服务器一般都提供 Code review、代码质量检测等功能，帮助开发人员提高产品质量。</li>
+</ol>
+<h2 id="持续集成服务平台-Travis"><a href="#持续集成服务平台-Travis" class="headerlink" title="持续集成服务平台 - Travis"></a>持续集成服务平台 - Travis</h2><p>很多 PaaS 平台都提供了持续集成服务。Travis CI 是其中最著名的一个，对于开源项目可以免费使用。</p>
+<p>每次跑测试时，Travis 提供的都是一个空白的环境。这个环境只有  Linux 基本的<code>build-essential</code>和<code>wget</code>、<code>git</code>那些依赖。连 Node.js 的运行时都是现跑现安装的。因为 Travis 默认带有的依赖都是每个用户的机器上都会有的，所以一旦应用能在 Travis 上跑通，别的用户就都能安装上。</p>
+<p>Travis 的使用方法如下：</p>
+<p>首先，在官网 <a href="https://travis-ci.org/" target="_blank" rel="external">https://travis-ci.org/</a> 注册后选择需要开启集成测试的仓库。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-046bd7b6765f890e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="travis.png"></p>
+<p>然后，需要在项目的根目录放一份配置文件<code>.travis.yml</code>来告诉 Travis 需要用什么版本的 Node 跑，以及跑测试的命令等信息。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="string">//</span> <span class="string">一份简单的</span> <span class="string">.travis.yml</span></div><div class="line"></div><div class="line"><span class="attr">language:</span> <span class="string">node_js</span></div><div class="line"><span class="attr">node_js:</span></div><div class="line"><span class="bullet"> -</span> <span class="string">'4.2.5'</span></div><div class="line"><span class="bullet"> -</span> <span class="string">'7.5.0'</span></div><div class="line"></div><div class="line"><span class="attr">script:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">test</span></div></pre></td></tr></table></figure>
+<p>如果有用到数据库，则<code>.travis.yml</code>还需要添加一些内容。详细内容参考 <a href="https://docs.travis-ci.com/user/database-setup/" target="_blank" rel="external">Setting up Databases - Travis CI</a>。</p>
+<p>之后将这份配置文件 push 上 github，Travis 就会被自动触发。下图是正在进行集成测试的 <a href="https://github.com/bighuang624/resume" target="_blank" rel="external">我的简历项目</a>：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-b96ac611cef2c347.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CItesting.png"></p>
+<p>P.S. e2e 测试需要装 chrome 浏览器这个坑又出现了…简直阴魂不散。是不是要用 PhantomJS 才行啊…</p>
+<p>我们先只跑单元测试好了。把<code>.travis.yml</code>更改一下：<code>script: npm run unit</code>，再 push 到 github 上。过一会就看到测试通过了。可以把 BlingBling 的 build 徽章加进项目的 README.md 中，来显示项目的构建状态了（徽章添加方案可见参考资料）：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-c8621de29eb8b3c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="badage-sample.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="写作资料"><a href="#写作资料" class="headerlink" title="写作资料"></a>写作资料</h3><p><a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" target="_blank" rel="external">持续集成是什么？ - 阮一峰的网络日志</a></p>
+<p><a href="https://juejin.im/post/599a3366518825241e221138" target="_blank" rel="external">为什么我们迫切需要持续集成？</a></p>
+<p><a href="https://github.com/alsotang/node-lessons/tree/master/lesson13" target="_blank" rel="external">《持续集成平台：travis》</a></p>
+<h3 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h3><p><a href="http://efe.baidu.com/blog/front-end-continuous-integration-tools/" target="_blank" rel="external">前端开源项目持续集成三剑客 | EFE Tech</a>：添加徽章步骤，可以说是非常具体了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;传统开发模式中，项目经理等待所有模块都开发完成后再进行集成，出现 bug 则记录并分配责任人进行修改，之后再进行集成，直到通过测试为止持续循环。这个过程可能会出现如下问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;bug 总在最后才被发现（尤其是模块之间的依赖导致的 bug），并且越到项目后期，随着项目规模的膨胀，bug 变得愈发难以修复；&lt;/li&gt;
+&lt;li&gt;各个环节无效的等待时间较长，加上程序需要经常变更，导致软件交付时机无法保障；&lt;/li&gt;
+&lt;li&gt;用户无法随时看到项目演示原型，满意度低。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;为了解决这些问题，“持续集成”（Continuous Integration）的概念被提出。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端工程" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
+    
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="前端工程" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="持续集成" scheme="http://kyonhuang.top/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用 Vue 撸一份线上简历有哪些坑</title>
     <link href="http://kyonhuang.top/make-a-resume/"/>
     <id>http://kyonhuang.top/make-a-resume/</id>
     <published>2017-08-21T04:52:16.000Z</published>
-    <updated>2017-08-21T04:58:36.000Z</updated>
+    <updated>2017-08-22T09:25:08.000Z</updated>
     
     <content type="html"><![CDATA[<p>昨天花了一天时间，用 Vue 给自己撸了一份线上简历，并借助 Github Pages 实现了在线预览的效果。</p>
 <ul>
@@ -29,6 +103,10 @@
 <li>在线预览地址：<a href="http://kyonhuang.top/resume/">http://kyonhuang.top/resume/</a></li>
 </ul>
 <p>目前实现的是最简单的效果，可以说只用了 Vue，不涉及全家桶里其他产品。从 UI、文字、性能、测试等各种角度都有改进的空间。这个小项目应该是会长期维护的。今天先总结一下，做到目前为止遇到的坑。</p>
+<p>更新记录：</p>
+<ul>
+<li>17-08-21：发布初稿</li>
+</ul>
 <a id="more"></a>
 <h2 id="在-Vue-中使用-sass"><a href="#在-Vue-中使用-sass" class="headerlink" title="在 Vue 中使用 sass"></a>在 Vue 中使用 sass</h2><p>这个步骤之前已经总结过，现在再在博客上记录一次，方便之后查找。</p>
 <p>在 Webpack 中，所有的预处理器需要匹配相应的 loader。因此要使用 sass 或 scss，首先下载依赖：</p>
@@ -71,6 +149,10 @@
 &lt;li&gt;在线预览地址：&lt;a href=&quot;http://kyonhuang.top/resume/&quot;&gt;http://kyonhuang.top/resume/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;目前实现的是最简单的效果，可以说只用了 Vue，不涉及全家桶里其他产品。从 UI、文字、性能、测试等各种角度都有改进的空间。这个小项目应该是会长期维护的。今天先总结一下，做到目前为止遇到的坑。&lt;/p&gt;
+&lt;p&gt;更新记录：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;17-08-21：发布初稿&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -90,9 +172,9 @@
     <link href="http://kyonhuang.top/start-front-end-test/"/>
     <id>http://kyonhuang.top/start-front-end-test/</id>
     <published>2017-08-16T01:14:28.000Z</published>
-    <updated>2017-08-21T14:13:17.000Z</updated>
+    <updated>2017-08-23T01:19:53.000Z</updated>
     
-    <content type="html"><![CDATA[<p>随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高了。因此，对于稳定、多次复用以及需要长期维护的项目，自动化测试显得尤为重要。</p>
+    <content type="html"><![CDATA[<p>随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高；但对于稳定、多次复用以及需要长期维护的项目，自动化测试就尤为重要。</p>
 <p>现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。</p>
 <p>前端的测试类型分为<strong>单元测试（unit testing）</strong>、<strong>集成测试（integration testing）</strong>和<strong>端到端测试（e2e testing）</strong>。</p>
 <ul>
@@ -124,8 +206,15 @@
 <li>建议使用 cnpm 对 vue-cli 项目进行依赖安装，否则可能有些东西装不上。</li>
 <li>自带的 e2e 测试要求装有 chrome 浏览器，否则报错<code>Error retrieving a new session from the selenium server</code>。我被这个坑折腾了半天…</li>
 </ol>
-<h2 id="测试代码编写"><a href="#测试代码编写" class="headerlink" title="测试代码编写"></a>测试代码编写</h2><p>to be continued…</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>正在写下一篇：《初探持续集成》</p>
+<h2 id="开始编写测试代码"><a href="#开始编写测试代码" class="headerlink" title="开始编写测试代码"></a>开始编写测试代码</h2><p><a href="https://github.com/bighuang624/resume" target="_blank" rel="external">我的简历项目</a> 是我花了一天时间写的一个 vue-cli 初始化、只用了 Vue 的一个小项目，我们拿这个简单的小项目来入门测试代码的编写。我们直接利用 vue-cli 的初始配置，即用 Karma + Jasmine 进行单元测试，Nightwatch + Selenium 进行 E2E 测试。</p>
+<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><p><code>/test/unit/index.js</code>中可以看到，单元测试的测试代码是<code>/specs</code>文件夹下以<code>.spec.js</code>结尾的文件。将自带的<code>Hello.spec.js</code>改写为<code>LeftNav.spec.js</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</div><div class="line"><span class="keyword">import</span> LeftNav <span class="keyword">from</span> <span class="string">'@/components/LeftNav'</span>;</div><div class="line"></div><div class="line">describe(<span class="string">'LeftNav.vue'</span>, () =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> Constructor = Vue.extend(LeftNav);</div><div class="line">  <span class="keyword">const</span> vm = <span class="keyword">new</span> Constructor().$mount();</div><div class="line"></div><div class="line">  it(<span class="string">'should render correct name'</span>, () =&gt; &#123;</div><div class="line">    expect(vm.$el.querySelector(<span class="string">'.leftNav h1'</span>).textContent)</div><div class="line">      .to.equal(<span class="string">'Kyon Huang'</span>);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  it(<span class="string">'should render correct title'</span>, () =&gt; &#123;</div><div class="line">    expect(vm.$el.querySelector(<span class="string">'.leftNav h3'</span>).textContent)</div><div class="line">      .to.equal(<span class="string">'Web 开发工程师'</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="E2E-测试"><a href="#E2E-测试" class="headerlink" title="E2E 测试"></a>E2E 测试</h3><p>同理，将<code>/test/e2e/specs/test.js</code>改写为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// For authoring Nightwatch tests, see</span></div><div class="line"><span class="comment">// http://nightwatchjs.org/guide#usage</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="string">'default e2e tests'</span>: <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">browser</span>) </span>&#123;</div><div class="line">    <span class="comment">// automatically uses dev Server port from /config.index.js</span></div><div class="line">    <span class="comment">// default: http://localhost:8080</span></div><div class="line">    <span class="comment">// see nightwatch.conf.js</span></div><div class="line">    <span class="keyword">const</span> devServer = browser.globals.devServerURL;</div><div class="line"></div><div class="line">    browser</div><div class="line">      .url(devServer)</div><div class="line">      .waitForElementVisible(<span class="string">'#app'</span>, <span class="number">5000</span>)</div><div class="line">      .assert.elementPresent(<span class="string">'.leftNav'</span>)</div><div class="line">      .assert.containsText(<span class="string">'h1'</span>, <span class="string">'Kyon Huang'</span>)</div><div class="line">      .assert.elementCount(<span class="string">'img'</span>, <span class="number">1</span>)</div><div class="line">      .end();</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>测试结果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-bd0c6382e613c281.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unit-test-result.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2702529-dbd1bfcc046e28fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="e2e-test-result.png"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>正在写下一篇：<a href="http://kyonhuang.top/start-front-end-test/">《再探前端自动化－持续集成》</a></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="写作资料"><a href="#写作资料" class="headerlink" title="写作资料"></a>写作资料</h3><p><a href="http://www.cnblogs.com/bigdataZJ/p/AutoTesting1.html" target="_blank" rel="external">开发人员看测试之TDD和BDD - JackieZheng - 博客园</a></p>
 <p><a href="http://www.jianshu.com/p/6726c0410650" target="_blank" rel="external">前端自动化单元测试初探 - 简书</a></p>
 <h3 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h3><p><a href="http://www.infoq.com/cn/articles/virtual-panel-tdd-bdd#" target="_blank" rel="external">虚拟座谈会：代码测试比率、测试驱动开发及行为驱动开发</a></p>
@@ -134,7 +223,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高了。因此，对于稳定、多次复用以及需要长期维护的项目，自动化测试显得尤为重要。&lt;/p&gt;
+      &lt;p&gt;随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高；但对于稳定、多次复用以及需要长期维护的项目，自动化测试就尤为重要。&lt;/p&gt;
 &lt;p&gt;现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。&lt;/p&gt;
 &lt;p&gt;前端的测试类型分为&lt;strong&gt;单元测试（unit testing）&lt;/strong&gt;、&lt;strong&gt;集成测试（integration testing）&lt;/strong&gt;和&lt;strong&gt;端到端测试（e2e testing）&lt;/strong&gt;。&lt;/p&gt;
 &lt;ul&gt;
@@ -545,7 +634,7 @@
     <link href="http://kyonhuang.top/promise/"/>
     <id>http://kyonhuang.top/promise/</id>
     <published>2017-06-17T13:38:13.000Z</published>
-    <updated>2017-08-08T08:41:47.000Z</updated>
+    <updated>2017-08-22T07:53:06.000Z</updated>
     
     <content type="html"><![CDATA[<p>Promise 是异步编程的一种解决方案，比传统的解决方案（回调函数和事件）更合理和更强大。</p>
 <p>特点：</p>
@@ -566,7 +655,17 @@
 <p><code>resolve</code>和<code>reject</code>函数由 JavaScript 引擎提供，不用自己部署。两者在改变 <code>Promise</code>对象的状态的同时，将异步操作的结果或报出的错误<strong>作为参数</strong>传递出去。</p>
 <p><code>then</code>方法可以接受两个回调函数作为参数（可以说是处理 result 和 err 的回调）。第一个在<code>Promise</code>对象状态变为<code>Resolved</code>时调用，第二个（可省）在<code>Promise</code>对象状态变为<code>Rejected</code>时调用，都接受<code>Promise</code>对象传出的值作为参数。</p>
 <p>如果调用<code>resolve</code>函数和<code>reject</code>函数时带有参数，那么它们的参数会被传递给回调函数。<code>reject</code>函数的参数通常是<code>Error</code>对象的实例，表示抛出的错误；<code>resolve</code>函数的参数除了正常的值以外，还可能是另一个<code>Promise</code>实例（决定前一个<code>Promise</code>对象的状态），表示异步操作的结果有可能是一个值，也有可能是另一个异步操作。</p>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>在创建新的 Promise 时，<strong>作为 Promise 参数传入的函数是会被立即执行</strong>的（而不是调用 then 时才执行），只是其中执行的代码可以是异步代码。</p>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><h4 id="1"><a href="#1" class="headerlink" title="1"></a>1</h4><p><code>then</code>方法会返回一个 Promise 实例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> outputPromise = promise.then(</div><div class="line">  <span class="function">(<span class="params">fulfilled</span>) =&gt;</span> &#123;...&#125;,</div><div class="line">  (rejected) =&gt; &#123;...&#125;,</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>这时，<code>outputPromise</code>变成了受<code>function(fulfilled)</code>或者 <code>function(rejected)</code>控制状态的 Promise 实例了：</p>
+<ul>
+<li>若<code>function(fulfilled)</code>或者 <code>function(rejected)</code>返回一个值（字符串、数组、对象等），那么<code>outputPromise</code>的状态变为<code>Resolved</code>；</li>
+<li>若<code>function(fulfilled)</code>或者 <code>function(rejected)</code>抛出异常（<code>throw new Error(...)</code>），那么<code>outputPromise</code>的状态变为<code>Rejected</code>；</li>
+<li>若<code>function(fulfilled)</code>或者 <code>function(rejected)</code>返回一个 Promise 实例，那么<code>outputPromise</code>就成为这个新的 Promise 实例。</li>
+</ul>
+<p>可以看 <a href="https://github.com/alsotang/node-lessons/tree/master/lesson17#promise%E7%9A%84%E4%BC%A0%E9%80%92" target="_blank" rel="external">promise的传递</a> 的例子（使用了 q）加深理解：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Q = <span class="built_in">require</span>(<span class="string">'q'</span>);</div><div class="line"><span class="keyword">var</span> defer = Q.defer();</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 通过defer获得promise</div><div class="line"> * @private</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInputPromise</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> defer.promise;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 当inputPromise状态由未完成变成fulfil时，调用function(fulfilled)</div><div class="line"> * 当inputPromise状态由未完成变成rejected时，调用function(rejected)</div><div class="line"> * 将then返回的promise赋给outputPromise</div><div class="line"> * function(fulfilled) 和 function(rejected) 通过返回字符串将outputPromise的状态由</div><div class="line"> * 未完成改变为fulfilled</div><div class="line"> * @private</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> outputPromise = getInputPromise().then(<span class="function"><span class="keyword">function</span>(<span class="params">fulfilled</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="string">'fulfilled'</span>;</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">rejected</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="string">'rejected'</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">outputPromise.then(<span class="function"><span class="keyword">function</span>(<span class="params">fulfilled</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'fulfilled: '</span> + fulfilled);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">rejected</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'rejected: '</span> + rejected);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">defer.reject(); <span class="comment">//输出 fulfilled: rejected</span></div><div class="line"></div><div class="line"><span class="comment">// defer.resolve(); //输出 fulfilled: fulfilled</span></div></pre></td></tr></table></figure>
+<h4 id="2"><a href="#2" class="headerlink" title="2"></a>2</h4><p>在创建新的 Promise 时，<strong>作为 Promise 参数传入的函数是会被立即执行</strong>的（而不是调用 then 时才执行），只是其中执行的代码可以是异步代码。</p>
 <p>虽然 Promise 作为参数接收的函数是同步执行的，但是<strong><code>then</code>方法的回调函数执行</strong>是<strong>异步</strong>的。</p>
 <p>🌰：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"create a promise"</span>);</div><div class="line">  resolve(<span class="string">"success"</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"after new Promise"</span>);</div><div class="line"></div><div class="line">p.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -577,10 +676,10 @@
 <p>一般来说，不要在<code>then</code>方法中定义<code>Reject</code>状态的回调函数，<strong>总是使用<code>catch</code>方法</strong>。因为<code>catch</code>可以捕获之前所有<code>then</code>方法执行中的错误，也更接近同步的<code>try/catch</code>写法。</p>
 <p><code>catch</code>方法返回的也是一个<code>Promise</code>对象。</p>
 <h4 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a><code>Promise.all()</code></h4><p><code>Promise.all</code>方法用于将多个<code>Promise</code>实例（否则调用<code>Promise.resolve</code>方法再处理），包装成一个新的<code>Promise</code>实例。接受一个具有<code>Iterator</code>接口，且返回的每个成员都是<code>Promise</code>实例的参数（一般为数组）。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = <span class="built_in">Promise</span>.all([p1, p2, p3]);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = <span class="built_in">Promise</span>.all([p1, p2, p3]);</div></pre></td></tr></table></figure>
 <p>只有每个成员的状态都为<code>Resolved</code>，p 的状态才为<code>Resolved</code>，所有返回值组成一个参数传递给 p 的回调函数；否则只要有一个成员被<code>rejected</code>，p 的状态为<code>Rejected</code>，第一个被<code>reject</code>的实例的返回值被传递给 p 的回调函数。</p>
 <p>如果作为参数的<code>Promise</code>实例自身定义了<code>catch</code>方法，那么它一旦被<code>rejected</code>，并不会触发<code>Promise.all()</code>的<code>catch</code>方法。</p>
-<h4 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a><code>Promise.race()</code></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = <span class="built_in">Promise</span>.race([p1, p2, p3]);</div></pre></td></tr></table></figure>
+<h4 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a><code>Promise.race()</code></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = <span class="built_in">Promise</span>.race([p1, p2, p3]);</div></pre></td></tr></table></figure>
 <p>p 的状态随第一个改变状态的成员而做相同改变，该成员返回值传递给 p 的回调函数。其他与<code>Promise.all</code>方法一致。</p>
 <h4 id="Promise-resolve"><a href="#Promise-resolve" class="headerlink" title="Promise.resolve()"></a><code>Promise.resolve()</code></h4><p>将现有对象转为<code>Promise</code>对象。根据参数分为四种情况：</p>
 <ol>
@@ -1727,53 +1826,6 @@
       <category term="JavaScript" scheme="http://kyonhuang.top/tags/JavaScript/"/>
     
       <category term="词法作用域" scheme="http://kyonhuang.top/tags/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在把玩中学习——typewriter.js</title>
-    <link href="http://kyonhuang.top/typewriter/"/>
-    <id>http://kyonhuang.top/typewriter/</id>
-    <published>2017-03-17T03:28:32.000Z</published>
-    <updated>2017-04-25T10:47:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>大约两周前我在空间里发了一条说说，说感觉自己的创造力日渐枯竭。很多同学不以为然，实际上我是真的有这样的认知。我感觉自己在失去对代码之美的感知，而这种创造力的枯竭也一定程度影响着我的动手能力。我在看书、看视频，却不太愿意去写百度前端训练营里一些基础的代码（而且并不大会）。我安慰自己，我正在修炼内力，一旦出关便是绝世神功威震武林。然而事实是金庸小说中光有内力而不懂一点外家功夫的货，都只有乖乖挨揍的份，至于之后能否成功报仇又是两说。就像我昨天想写一个很简单的动画效果，却最终一筹莫展，只能暂时放弃。</p>
-<p>好吧，让我把自己从枯燥的读书笔记中暂时解放出来吧。正好有一个有趣的小 demo，从我还没有打算系统学习前端开发时就躺在收藏夹里了。不妨把玩一下，看看别人能凭借着兴趣写出怎样有意思的小东西。</p>
-<p><img src="/images/typewriter.jpg"></p>
-<a id="more"></a>
-<p>这个有打字和仿光标闪烁效果的 <a href="http://www.jq22.com/jquery-info6035" target="_blank" rel="external">typewriter.js</a> 好像是我在看什么“程序员表白利器”时加到收藏夹里的。现在学习了 js，敢看看源码了，发现 js 代码只有20行不到。作者说：“原生JavaScript就是这么牛。”确实是这样的。虽然效果也很简单，但也能从里面学到一些东西。</p>
-<p>HTML 源代码（大致结构）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=&quot;mainDiv&quot;&gt;</div><div class="line">        &lt;div id=&quot;content&quot;&gt;</div><div class="line">            &lt;div id=&quot;code&quot;&gt;</div><div class="line">                &lt;span class=&quot;comments&quot;&gt;/**&lt;/span&gt;&lt;br /&gt;</div><div class="line">                &lt;span class=&quot;space&quot;/&gt;&lt;span class=&quot;comments&quot;&gt;* We are both XXX Unversity  business administration and programmers,&lt;/span&gt;&lt;br /&gt;</div><div class="line">                &lt;span class=&quot;space&quot;/&gt;&lt;span class=&quot;comments&quot;&gt;* so I write some code to show my love to you.&lt;/span&gt;&lt;br /&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line"> document.getElementById(&quot;code&quot;).typewriter();</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
-<p>JavaScript 源代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Element.prototype.typewriter=function(a)&#123;</div><div class="line">			var d = this,</div><div class="line">				c = d.innerHTML,</div><div class="line">				b = 0;</div><div class="line">			d.innerHTML=&quot;&quot;;</div><div class="line">			var e = setInterval(function() &#123;</div><div class="line">				var f = c.substr(b, 1);</div><div class="line">				if (f == &quot;&lt;&quot;) &#123;</div><div class="line">					b = c.indexOf(&quot;&gt;&quot;, b) + 1</div><div class="line">				&#125; else &#123;</div><div class="line">					b++</div><div class="line">				&#125;</div><div class="line">				d.innerHTML=c.substring(0, b) + (b &amp; 1 ? &quot;_&quot; : &quot;&quot;);</div><div class="line">				if (b &gt;= c.length) &#123;</div><div class="line">					clearInterval(e)</div><div class="line">				&#125;</div><div class="line">			&#125;, 75)</div><div class="line">		return this</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<p>在这份 js 代码中可以学习的点：</p>
-<ol>
-<li><strong>原型模式定义方法</strong>：给 Element 添加实例方法<code>typewriter()</code>（在 html 文件中调用），这里有一个参数 a，实际上没什么用。顺便一说，源码在 head 处引入了 js 文件，这是为了先加载 js 文件。如果按照代码规范将引入放在 body 部分的最后，则有一瞬间所有字先出现再消失，不符合效果要求。可见代码规范也要根据实际来遵守。</li>
-<li>声明三个变量，d 保存当前对象（”code”）。这个操作是必要的，因为后面要给 “code” 的 innerHTML 赋值的时候有时在函数作用域中，this 取不到 “code”。</li>
-<li>代码逻辑很清晰，包括对标签的处理、光标效果的实现和定时器的清除等。要对自己想要实现的效果有一个全面的认知和大致的构思再开始写代码。</li>
-<li>末尾<code>return this</code>以<strong>支持链式操作</strong>。</li>
-</ol>
-<p>想要用功能强大的JavaScript实现一些小效果不难，但是怎样一步步规划、修改到实现对现在的我来说还是比较有挑战性的。希望自己能在欣赏、借鉴、吸收的过程中去实现一些有趣的 demo，重拾对代码的兴趣和创造力。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;大约两周前我在空间里发了一条说说，说感觉自己的创造力日渐枯竭。很多同学不以为然，实际上我是真的有这样的认知。我感觉自己在失去对代码之美的感知，而这种创造力的枯竭也一定程度影响着我的动手能力。我在看书、看视频，却不太愿意去写百度前端训练营里一些基础的代码（而且并不大会）。我安慰自己，我正在修炼内力，一旦出关便是绝世神功威震武林。然而事实是金庸小说中光有内力而不懂一点外家功夫的货，都只有乖乖挨揍的份，至于之后能否成功报仇又是两说。就像我昨天想写一个很简单的动画效果，却最终一筹莫展，只能暂时放弃。&lt;/p&gt;
-&lt;p&gt;好吧，让我把自己从枯燥的读书笔记中暂时解放出来吧。正好有一个有趣的小 demo，从我还没有打算系统学习前端开发时就躺在收藏夹里了。不妨把玩一下，看看别人能凭借着兴趣写出怎样有意思的小东西。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/typewriter.jpg&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
