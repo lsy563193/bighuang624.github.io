@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-08-23T01:18:32.000Z</updated>
+  <updated>2017-08-24T08:28:55.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -17,18 +17,19 @@
   
   <entry>
     <title>再探前端自动化－持续集成</title>
-    <link href="http://kyonhuang.top/start-front-end-test/"/>
-    <id>http://kyonhuang.top/start-front-end-test/</id>
+    <link href="http://kyonhuang.top/start-CI/"/>
+    <id>http://kyonhuang.top/start-CI/</id>
     <published>2017-08-23T00:47:28.000Z</published>
-    <updated>2017-08-23T01:18:32.000Z</updated>
+    <updated>2017-08-24T08:28:55.000Z</updated>
     
-    <content type="html"><![CDATA[<p>传统开发模式中，项目经理等待所有模块都开发完成后再进行集成，出现 bug 则记录并分配责任人进行修改，之后再进行集成，直到通过测试为止持续循环。这个过程可能会出现如下问题：</p>
+    <content type="html"><![CDATA[<p>本篇博文承接前端工程自动化入门系列的第一篇：<a href="http://kyonhuang.top/start-front-end-test/">《初探前端自动化测试–以 Vue 为例》</a>。</p>
+<p>传统开发模式中，项目经理等待所有模块都开发完成后再进行集成，出现 bug 则记录并分配责任人进行修改，之后再进行集成，直到通过测试为止持续循环。这个过程可能会出现如下问题：</p>
 <ol>
 <li>bug 总在最后才被发现（尤其是模块之间的依赖导致的 bug），并且越到项目后期，随着项目规模的膨胀，bug 变得愈发难以修复；</li>
 <li>各个环节无效的等待时间较长，加上程序需要经常变更，导致软件交付时机无法保障；</li>
 <li>用户无法随时看到项目演示原型，满意度低。</li>
 </ol>
-<p>为了解决这些问题，“持续集成”（Continuous Integration）的概念被提出。</p>
+<p>为了解决这些问题，<strong>“持续集成”（Continuous Integration）</strong>的概念被提出。</p>
 <a id="more"></a>
 <h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><p><strong>持续集成</strong>（CI）是指将所有开发者工作副本频繁地（每天多次）合并到主干，始终保持可发布状态的做法。而<strong>持续集成服务器</strong>就是能够采用自动化的手段，实现项目持续集成的工具。</p>
 <p>持续集成的具体工作流程：</p>
@@ -68,13 +69,14 @@
     
     <summary type="html">
     
-      &lt;p&gt;传统开发模式中，项目经理等待所有模块都开发完成后再进行集成，出现 bug 则记录并分配责任人进行修改，之后再进行集成，直到通过测试为止持续循环。这个过程可能会出现如下问题：&lt;/p&gt;
+      &lt;p&gt;本篇博文承接前端工程自动化入门系列的第一篇：&lt;a href=&quot;http://kyonhuang.top/start-front-end-test/&quot;&gt;《初探前端自动化测试–以 Vue 为例》&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;传统开发模式中，项目经理等待所有模块都开发完成后再进行集成，出现 bug 则记录并分配责任人进行修改，之后再进行集成，直到通过测试为止持续循环。这个过程可能会出现如下问题：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;bug 总在最后才被发现（尤其是模块之间的依赖导致的 bug），并且越到项目后期，随着项目规模的膨胀，bug 变得愈发难以修复；&lt;/li&gt;
 &lt;li&gt;各个环节无效的等待时间较长，加上程序需要经常变更，导致软件交付时机无法保障；&lt;/li&gt;
 &lt;li&gt;用户无法随时看到项目演示原型，满意度低。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;为了解决这些问题，“持续集成”（Continuous Integration）的概念被提出。&lt;/p&gt;
+&lt;p&gt;为了解决这些问题，&lt;strong&gt;“持续集成”（Continuous Integration）&lt;/strong&gt;的概念被提出。&lt;/p&gt;
     
     </summary>
     
@@ -164,7 +166,7 @@
     <link href="http://kyonhuang.top/start-front-end-test/"/>
     <id>http://kyonhuang.top/start-front-end-test/</id>
     <published>2017-08-16T01:14:28.000Z</published>
-    <updated>2017-08-23T01:19:53.000Z</updated>
+    <updated>2017-08-24T08:28:57.000Z</updated>
     
     <content type="html"><![CDATA[<p>随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高；但对于稳定、多次复用以及需要长期维护的项目，自动化测试就尤为重要。</p>
 <p>现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。</p>
@@ -206,7 +208,8 @@
 <p>测试结果：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-bd0c6382e613c281.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unit-test-result.png"></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-dbd1bfcc046e28fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="e2e-test-result.png"></p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>正在写下一篇：<a href="http://kyonhuang.top/start-front-end-test/">《再探前端自动化－持续集成》</a></p>
+<p>可以看到，我们的单元测试和 e2e 测试都通过了。不过单元测试的覆盖率有点低，只有 25%。如何写好测试代码，需要我进一步进行学习。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>前端工程自动化入门系列下一篇：<a href="http://kyonhuang.top/start-CI/">《再探前端自动化－持续集成》</a></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="写作资料"><a href="#写作资料" class="headerlink" title="写作资料"></a>写作资料</h3><p><a href="http://www.cnblogs.com/bigdataZJ/p/AutoTesting1.html" target="_blank" rel="external">开发人员看测试之TDD和BDD - JackieZheng - 博客园</a></p>
 <p><a href="http://www.jianshu.com/p/6726c0410650" target="_blank" rel="external">前端自动化单元测试初探 - 简书</a></p>
 <h3 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h3><p><a href="http://www.infoq.com/cn/articles/virtual-panel-tdd-bdd#" target="_blank" rel="external">虚拟座谈会：代码测试比率、测试驱动开发及行为驱动开发</a></p>

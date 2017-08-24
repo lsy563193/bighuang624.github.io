@@ -4,6 +4,86 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/start-front-end-test/</loc>
+    <lastmod>2017-08-24T08:28:57.000Z</lastmod>
+    <data>
+        <display>
+        <title>初探前端自动化测试--以 Vue 为例</title>
+        <pubTime>2017-08-16T01:14:28.000Z</pubTime>
+        
+        <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
+         
+        <tag>前端工程</tag>
+         
+        <tag>测试</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端工程" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/start-CI/</loc>
+    <lastmod>2017-08-24T08:28:55.000Z</lastmod>
+    <data>
+        <display>
+        <title>再探前端自动化－持续集成</title>
+        <pubTime>2017-08-23T00:47:28.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>前端工程</tag>
+         
+        <tag>持续集成</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端工程" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/some-FE-concepts/</loc>
+    <lastmod>2017-08-24T08:23:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>对几个前端相关概念的理解——OO CSS、语义化、CSS hack</title>
+        <pubTime>2017-02-19T06:24:51.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>总结</tag>
+         
+        <tag>概念理解</tag>
+         
+        <tag>OO CSS</tag>
+         
+        <tag>语义化</tag>
+         
+        <tag>CSS hack</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/promise/</loc>
     <lastmod>2017-08-23T01:58:19.000Z</lastmod>
     <data>
@@ -75,56 +155,6 @@
            
              
               <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/start-front-end-test/</loc>
-    <lastmod>2017-08-23T01:19:53.000Z</lastmod>
-    <data>
-        <display>
-        <title>初探前端自动化测试--以 Vue 为例</title>
-        <pubTime>2017-08-16T01:14:28.000Z</pubTime>
-        
-        <tag>JavaScipt</tag>
-         
-        <tag>前端</tag>
-         
-        <tag>前端工程</tag>
-         
-        <tag>测试</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端工程" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/start-front-end-test/</loc>
-    <lastmod>2017-08-23T01:18:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>再探前端自动化－持续集成</title>
-        <pubTime>2017-08-23T00:47:28.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>前端工程</tag>
-         
-        <tag>持续集成</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端工程" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -816,36 +846,6 @@
            
              
               <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/8637/</loc>
-    <lastmod>2017-04-28T07:48:02.000Z</lastmod>
-    <data>
-        <display>
-        <title>对几个前端相关概念的理解——OO CSS、语义化、CSS hack</title>
-        <pubTime>2017-02-19T06:24:51.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>总结</tag>
-         
-        <tag>概念理解</tag>
-         
-        <tag>OO CSS</tag>
-         
-        <tag>语义化</tag>
-         
-        <tag>CSS hack</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
