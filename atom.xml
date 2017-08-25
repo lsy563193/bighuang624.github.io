@@ -166,7 +166,7 @@
     <link href="http://kyonhuang.top/start-front-end-test/"/>
     <id>http://kyonhuang.top/start-front-end-test/</id>
     <published>2017-08-16T01:14:28.000Z</published>
-    <updated>2017-08-24T08:28:57.000Z</updated>
+    <updated>2017-08-24T08:49:33.000Z</updated>
     
     <content type="html"><![CDATA[<p>随着前端项目规模日益膨胀，自动化测试显得越来越重要。在开发过程中就进行测试，可以保障代码质量和功能实现完整度，提升后期开发效率，也便于项目维护。当然，对于需求变更频繁、复用度低的内容，维护测试用例的成本就显得过高；但对于稳定、多次复用以及需要长期维护的项目，自动化测试就尤为重要。</p>
 <p>现在优秀的开源项目大多都经过了各种测试。最近我也想码一个规范性要求严格的小项目，于是兵马未动粮草先行，先对前端自动化测试进行学习，总结记录一下学习成果，以在之后项目上进行实践。</p>
@@ -201,6 +201,7 @@
 <li>自带的 e2e 测试要求装有 chrome 浏览器，否则报错<code>Error retrieving a new session from the selenium server</code>。我被这个坑折腾了半天…</li>
 </ol>
 <h2 id="开始编写测试代码"><a href="#开始编写测试代码" class="headerlink" title="开始编写测试代码"></a>开始编写测试代码</h2><p><a href="https://github.com/bighuang624/resume" target="_blank" rel="external">我的简历项目</a> 是我花了一天时间写的一个 vue-cli 初始化、只用了 Vue 的一个小项目，我们拿这个简单的小项目来入门测试代码的编写。我们直接利用 vue-cli 的初始配置，即用 Karma + Jasmine 进行单元测试，Nightwatch + Selenium 进行 E2E 测试。</p>
+<p>你可以将我的项目 clone 下来进行测试代码的编写练习，不过项目里的测试代码可能已经因为更新而何下面的示例不一样了。</p>
 <h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><p><code>/test/unit/index.js</code>中可以看到，单元测试的测试代码是<code>/specs</code>文件夹下以<code>.spec.js</code>结尾的文件。将自带的<code>Hello.spec.js</code>改写为<code>LeftNav.spec.js</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</div><div class="line"><span class="keyword">import</span> LeftNav <span class="keyword">from</span> <span class="string">'@/components/LeftNav'</span>;</div><div class="line"></div><div class="line">describe(<span class="string">'LeftNav.vue'</span>, () =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> Constructor = Vue.extend(LeftNav);</div><div class="line">  <span class="keyword">const</span> vm = <span class="keyword">new</span> Constructor().$mount();</div><div class="line"></div><div class="line">  it(<span class="string">'should render correct name'</span>, () =&gt; &#123;</div><div class="line">    expect(vm.$el.querySelector(<span class="string">'.leftNav h1'</span>).textContent)</div><div class="line">      .to.equal(<span class="string">'Kyon Huang'</span>);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  it(<span class="string">'should render correct title'</span>, () =&gt; &#123;</div><div class="line">    expect(vm.$el.querySelector(<span class="string">'.leftNav h3'</span>).textContent)</div><div class="line">      .to.equal(<span class="string">'Web 开发工程师'</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h3 id="E2E-测试"><a href="#E2E-测试" class="headerlink" title="E2E 测试"></a>E2E 测试</h3><p>同理，将<code>/test/e2e/specs/test.js</code>改写为</p>
@@ -208,7 +209,7 @@
 <p>测试结果：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-bd0c6382e613c281.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unit-test-result.png"></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-dbd1bfcc046e28fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="e2e-test-result.png"></p>
-<p>可以看到，我们的单元测试和 e2e 测试都通过了。不过单元测试的覆盖率有点低，只有 25%。如何写好测试代码，需要我进一步进行学习。</p>
+<p>可以看到，我们的单元测试和 e2e 测试都通过了。不过单元测试的覆盖率有点低，只有 25%。如何写好测试代码，需要进一步的学习。</p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>前端工程自动化入门系列下一篇：<a href="http://kyonhuang.top/start-CI/">《再探前端自动化－持续集成》</a></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="写作资料"><a href="#写作资料" class="headerlink" title="写作资料"></a>写作资料</h3><p><a href="http://www.cnblogs.com/bigdataZJ/p/AutoTesting1.html" target="_blank" rel="external">开发人员看测试之TDD和BDD - JackieZheng - 博客园</a></p>
 <p><a href="http://www.jianshu.com/p/6726c0410650" target="_blank" rel="external">前端自动化单元测试初探 - 简书</a></p>
@@ -1644,7 +1645,7 @@
     <link href="http://kyonhuang.top/sass-begin/"/>
     <id>http://kyonhuang.top/sass-begin/</id>
     <published>2017-04-03T11:21:22.000Z</published>
-    <updated>2017-08-03T03:32:03.000Z</updated>
+    <updated>2017-08-25T13:01:59.000Z</updated>
     
     <content type="html"><![CDATA[<p>发现自己又找到一本关于前端实践的优质开源书<a href="https://juntao.gitbooks.io/3-web-designs-in-3-weeks/content/index.html" target="_blank" rel="external">《3周3页面》</a>。作者通过实际项目介绍了前端必备的一些工具，教读者一步一步实现设计，而且步骤非常详细。写下这篇博文为止，我已经完成了第一个项目。在第一个项目中，作者向读者推荐了Sass，并且号称“一旦你开始使用它，你就再也回不去了。”</p>
 <a id="more"></a>
@@ -1685,11 +1686,11 @@
     
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
       <category term="WebStorm" scheme="http://kyonhuang.top/tags/WebStorm/"/>
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   

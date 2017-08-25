@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="《JavaScript高级程序设计》，俗称红宝书。本来因为不太清楚的知识点零零碎碎，打算默默地看。但是学习热情不高，加上看到某大佬的对于这本书的读书笔记，最终决定做一个比较零散的、私人化的读书笔记，激励自己。 顺便，这里有我的Java读书笔记：Kyon Huang的java学习笔记 - Github，内容比较多，就不放在博客上了。大概包含了Java核心卷一的重点内容，之后停了有一段时间了。这学期争">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-01T08:38:10.000Z">
+<meta property="og:updated_time" content="2017-08-25T13:03:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记（一）">
 <meta name="twitter:description" content="《JavaScript高级程序设计》，俗称红宝书。本来因为不太清楚的知识点零零碎碎，打算默默地看。但是学习热情不高，加上看到某大佬的对于这本书的读书笔记，最终决定做一个比较零散的、私人化的读书笔记，激励自己。 顺便，这里有我的Java读书笔记：Kyon Huang的java学习笔记 - Github，内容比较多，就不放在博客上了。大概包含了Java核心卷一的重点内容，之后停了有一段时间了。这学期争">
@@ -467,8 +467,9 @@
 <p>7.任何操作数与 NaN 比较，结果都是false。</p>
 <p>8.相等（==）与全等（===）：全等只在两个操作数未经转换就相等的情况下返回true。</p>
 <h3 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h3><p>9.由于ECMAScript中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = ; i &lt; count; i++)&#123;</div><div class="line">    <span class="keyword">var</span> j = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">alert(i, j);   <span class="comment">//10, 1</span></div></pre></td></tr></table></figure>
-<p>10.for-in 语句可以用来遍历对象的属性名称：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(property in expression)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = ; i &lt; count; i++)&#123;</div><div class="line">    <span class="keyword">var</span> j = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">alert(i, j);   <span class="comment">//10, 1</span></div></pre></td></tr></table></figure>
+<p>10.for-in 语句可以用来遍历对象的属性名称：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(property in expression)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>为了保证最大限度的兼容性，建议在使用 for-in 循环之前，先检测确认该对象的值不是 null 或 undefined。</p>
 <p>补充：一个 Array 数组实际也是一个对象，它的每个元素的索引被视为一个属性。所以当手动给 Array 添加额外的属性时，for-in 语句也会将其遍历。要循环集合本身的元素，建议使用 ES 6 提供的 for-of 语句。</p>
 <p>11.break 语句会立即退出循环，强制继续执行循环后面的语句；continue 语句退出循环后会从循环的顶部继续执行。break 和 continue 语句与 label 语句联合使用多发生在循环嵌套的情况下：</p>

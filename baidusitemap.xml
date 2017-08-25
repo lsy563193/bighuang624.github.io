@@ -4,8 +4,62 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/JS-notes-1/</loc>
+    <lastmod>2017-08-25T13:03:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>《JavaScript高级程序设计》读书笔记（一）</title>
+        <pubTime>2017-02-28T00:57:45.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
+         
+        <tag>《JavaScript高级程序设计》</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/sass-begin/</loc>
+    <lastmod>2017-08-25T13:01:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>初见Sass－便捷的CSS预处理器</title>
+        <pubTime>2017-04-03T11:21:22.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>学习笔记</tag>
+         
+        <tag>SASS</tag>
+         
+        <tag>WebStorm</tag>
+         
+        <tag>随笔</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/start-front-end-test/</loc>
-    <lastmod>2017-08-24T08:28:57.000Z</lastmod>
+    <lastmod>2017-08-24T08:49:33.000Z</lastmod>
     <data>
         <display>
         <title>初探前端自动化测试--以 Vue 为例</title>
@@ -317,34 +371,6 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/sass-begin/</loc>
-    <lastmod>2017-08-03T03:32:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>初见Sass－便捷的CSS预处理器</title>
-        <pubTime>2017-04-03T11:21:22.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>学习笔记</tag>
-         
-        <tag>随笔</tag>
-         
-        <tag>SASS</tag>
-         
-        <tag>WebStorm</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://kyonhuang.top/biliInfoCrawler/</loc>
     <lastmod>2017-08-03T03:31:19.000Z</lastmod>
     <data>
@@ -386,32 +412,6 @@
            
              
               <breadCrumb title="中文填词" url="http://kyonhuang.top/categories/%E4%B8%AD%E6%96%87%E5%A1%AB%E8%AF%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-1/</loc>
-    <lastmod>2017-08-01T08:38:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>《JavaScript高级程序设计》读书笔记（一）</title>
-        <pubTime>2017-02-28T00:57:45.000Z</pubTime>
-        
-        <tag>读书笔记</tag>
-         
-        <tag>JavaScipt</tag>
-         
-        <tag>前端</tag>
-         
-        <tag>《JavaScript高级程序设计》</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
