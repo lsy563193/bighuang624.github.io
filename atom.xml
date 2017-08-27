@@ -248,9 +248,9 @@
     <link href="http://kyonhuang.top/Generator-and-async/"/>
     <id>http://kyonhuang.top/Generator-and-async/</id>
     <published>2017-08-03T10:10:53.000Z</published>
-    <updated>2017-08-06T00:52:47.000Z</updated>
+    <updated>2017-08-27T09:45:36.000Z</updated>
     
-    <content type="html"><![CDATA[<p>继续读《ECMAScript 6 入门》。在 ES6 之前，异步编程大概有四种方法：<strong>回调函数、事件监听、发布/订阅和 Promise 对象</strong>。为了使异步操作更加清晰、简洁、方便，ES6 引入了 <strong>Generator 函数</strong>，而 ES2017 标准引入了 <strong>async 函数</strong>作为 Generator 函数的语法糖。</p>
+    <content type="html"><![CDATA[<p>继续读《ECMAScript 6 入门》。在 ES6 之前，异步编程大概有四种方法：<strong>回调函数、事件监听器模式（发布/订阅模式）、流程控制库和 Promise/Deferred 模式</strong>。为了使异步操作更加清晰、简洁、方便，ES6 引入了 <strong>Generator 函数</strong>，而 ES2017 标准引入了 <strong>async 函数</strong>作为 Generator 函数的语法糖。</p>
 <p>由于 JavaScript 是单线程，异步操作就显得格外重要。web 框架 koa 1.0 使用 Generator 实现异步，而基于 ES7 的 koa 2 完全使用 Promise 并配合 async 来实现异步。因此，在着手去了解这些基于 NodeJS 的 web 框架前，我决定先补充关于 ES6 的异步操作的知识。</p>
 <p>本博文在 <a href="http://kyonhuang.top/promise/">Promise 对象 | 大黄菌的个人博客</a> 之后食用最佳。</p>
 <p><strong>注</strong>：HTML 5 提出了 Web Worker 标准，允许 JS 脚本创建多个线程以充分利用多核 CPU 的计算能力。但子线程不得操作 DOM，且完全受主线程控制，因此此标准并没有改变 JavaScript 单线程的本质。</p>
@@ -280,7 +280,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;继续读《ECMAScript 6 入门》。在 ES6 之前，异步编程大概有四种方法：&lt;strong&gt;回调函数、事件监听、发布/订阅和 Promise 对象&lt;/strong&gt;。为了使异步操作更加清晰、简洁、方便，ES6 引入了 &lt;strong&gt;Generator 函数&lt;/strong&gt;，而 ES2017 标准引入了 &lt;strong&gt;async 函数&lt;/strong&gt;作为 Generator 函数的语法糖。&lt;/p&gt;
+      &lt;p&gt;继续读《ECMAScript 6 入门》。在 ES6 之前，异步编程大概有四种方法：&lt;strong&gt;回调函数、事件监听器模式（发布/订阅模式）、流程控制库和 Promise/Deferred 模式&lt;/strong&gt;。为了使异步操作更加清晰、简洁、方便，ES6 引入了 &lt;strong&gt;Generator 函数&lt;/strong&gt;，而 ES2017 标准引入了 &lt;strong&gt;async 函数&lt;/strong&gt;作为 Generator 函数的语法糖。&lt;/p&gt;
 &lt;p&gt;由于 JavaScript 是单线程，异步操作就显得格外重要。web 框架 koa 1.0 使用 Generator 实现异步，而基于 ES7 的 koa 2 完全使用 Promise 并配合 async 来实现异步。因此，在着手去了解这些基于 NodeJS 的 web 框架前，我决定先补充关于 ES6 的异步操作的知识。&lt;/p&gt;
 &lt;p&gt;本博文在 &lt;a href=&quot;http://kyonhuang.top/promise/&quot;&gt;Promise 对象 | 大黄菌的个人博客&lt;/a&gt; 之后食用最佳。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注&lt;/strong&gt;：HTML 5 提出了 Web Worker 标准，允许 JS 脚本创建多个线程以充分利用多核 CPU 的计算能力。但子线程不得操作 DOM，且完全受主线程控制，因此此标准并没有改变 JavaScript 单线程的本质。&lt;/p&gt;
@@ -1682,9 +1682,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     

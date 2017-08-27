@@ -875,7 +875,7 @@
 
       
         
-          <p>继续读《ECMAScript 6 入门》。在 ES6 之前，异步编程大概有四种方法：<strong>回调函数、事件监听、发布/订阅和 Promise 对象</strong>。为了使异步操作更加清晰、简洁、方便，ES6 引入了 <strong>Generator 函数</strong>，而 ES2017 标准引入了 <strong>async 函数</strong>作为 Generator 函数的语法糖。</p>
+          <p>继续读《ECMAScript 6 入门》。在 ES6 之前，异步编程大概有四种方法：<strong>回调函数、事件监听器模式（发布/订阅模式）、流程控制库和 Promise/Deferred 模式</strong>。为了使异步操作更加清晰、简洁、方便，ES6 引入了 <strong>Generator 函数</strong>，而 ES2017 标准引入了 <strong>async 函数</strong>作为 Generator 函数的语法糖。</p>
 <p>由于 JavaScript 是单线程，异步操作就显得格外重要。web 框架 koa 1.0 使用 Generator 实现异步，而基于 ES7 的 koa 2 完全使用 Promise 并配合 async 来实现异步。因此，在着手去了解这些基于 NodeJS 的 web 框架前，我决定先补充关于 ES6 的异步操作的知识。</p>
 <p>本博文在 <a href="http://kyonhuang.top/promise/">Promise 对象 | 大黄菌的个人博客</a> 之后食用最佳。</p>
 <p><strong>注</strong>：HTML 5 提出了 Web Worker 标准，允许 JS 脚本创建多个线程以充分利用多核 CPU 的计算能力。但子线程不得操作 DOM，且完全受主线程控制，因此此标准并没有改变 JavaScript 单线程的本质。</p>
