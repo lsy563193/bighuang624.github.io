@@ -3,6 +3,72 @@
 
 
     
+  <url>
+    <loc>http://kyonhuang.top/summer-time-gone/</loc>
+    <lastmod>2017-08-29T11:33:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>夏天就要过去</title>
+        <pubTime>2017-08-29T10:22:33.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>目标</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/bye2016hello2017/</loc>
+    <lastmod>2017-08-29T11:06:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>Bye,2016 AND Hello,2017</title>
+        <pubTime>2016-12-30T14:52:51.000Z</pubTime>
+        
+        <tag>总结</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/relax-and-think/</loc>
+    <lastmod>2017-08-29T11:05:51.000Z</lastmod>
+    <data>
+        <display>
+        <title>前端学习之路上的暂歇思考</title>
+        <pubTime>2017-06-05T07:22:33.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>目标</tag>
+         
+        <tag>学习之路</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://kyonhuang.top/Generator-and-async/</loc>
@@ -66,9 +132,9 @@
         <title>初见Sass－便捷的CSS预处理器</title>
         <pubTime>2017-04-03T11:21:22.000Z</pubTime>
         
-        <tag>学习笔记</tag>
-         
         <tag>前端</tag>
+         
+        <tag>学习笔记</tag>
          
         <tag>SASS</tag>
          
@@ -254,9 +320,9 @@
         
         <tag>JavaScipt</tag>
          
-        <tag>学习笔记</tag>
-         
         <tag>前端</tag>
+         
+        <tag>学习笔记</tag>
          
         <tag>随笔</tag>
          
@@ -699,30 +765,6 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/relax-and-think/</loc>
-    <lastmod>2017-06-05T07:50:52.000Z</lastmod>
-    <data>
-        <display>
-        <title>前端学习之路上的暂歇思考</title>
-        <pubTime>2017-06-05T07:22:33.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-        <tag>目标</tag>
-         
-        <tag>学习之路</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://kyonhuang.top/es6-1-notes/</loc>
     <lastmod>2017-05-12T02:08:06.000Z</lastmod>
     <data>
@@ -744,26 +786,6 @@
            
              
               <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/bye2016hello2017/</loc>
-    <lastmod>2017-05-07T03:06:05.000Z</lastmod>
-    <data>
-        <display>
-        <title>Bye,2016 AND Hello,2017</title>
-        <pubTime>2016-12-30T14:52:51.000Z</pubTime>
-        
-        <tag>总结</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>

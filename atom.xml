@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-08-24T08:28:55.000Z</updated>
+  <updated>2017-08-29T11:33:27.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>夏天就要过去</title>
+    <link href="http://kyonhuang.top/summer-time-gone/"/>
+    <id>http://kyonhuang.top/summer-time-gone/</id>
+    <published>2017-08-29T10:22:33.000Z</published>
+    <updated>2017-08-29T11:33:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>现在是 2017 年的 8 月 29 号，离 9 月还有 2 天。大三近在咫尺，而夏天就要过去。</p>
+<p>前几天的 ASL 舞台上，平野绫、茅原实里、后藤邑子三人毫无征兆地重新聚首，演唱了《凉宫春日的忧郁》的 ED《ハレ晴レユカイ（晴天好心情）》。06 年的最强动画，我最爱的动画，11 年后再看到这些人，恍如隔世。</p>
+<p><img src="/images/forever-SOS.jpg"></p>
+<p>过去是体育场旁的石板路，现在是教学楼到二食堂的小道，低头时摇曳的叶影把光束割出形状，抬头看到的是一成不变的蓝天白云。闻着空气里隐约弥漫着躁动的气息，你会产生错觉，真的以为八月是漫无止境的，度过的每一天会被慷慨归还。</p>
+<p>只是在那个古老的不再回来的夏日，所有的结局都已写好，所有的泪水也都已启程。</p>
+<p>“夏天就要过去”这句话念来，总有淡淡的感伤。也许正因如此，我才喜欢上夏天。</p>
+<a id="more"></a>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=587963&auto=1&height=66"></iframe>
+
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;现在是 2017 年的 8 月 29 号，离 9 月还有 2 天。大三近在咫尺，而夏天就要过去。&lt;/p&gt;
+&lt;p&gt;前几天的 ASL 舞台上，平野绫、茅原实里、后藤邑子三人毫无征兆地重新聚首，演唱了《凉宫春日的忧郁》的 ED《ハレ晴レユカイ（晴天好心情）》。06 年的最强动画，我最爱的动画，11 年后再看到这些人，恍如隔世。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/forever-SOS.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;过去是体育场旁的石板路，现在是教学楼到二食堂的小道，低头时摇曳的叶影把光束割出形状，抬头看到的是一成不变的蓝天白云。闻着空气里隐约弥漫着躁动的气息，你会产生错觉，真的以为八月是漫无止境的，度过的每一天会被慷慨归还。&lt;/p&gt;
+&lt;p&gt;只是在那个古老的不再回来的夏日，所有的结局都已写好，所有的泪水也都已启程。&lt;/p&gt;
+&lt;p&gt;“夏天就要过去”这句话念来，总有淡淡的感伤。也许正因如此，我才喜欢上夏天。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
+    
+  </entry>
   
   <entry>
     <title>再探前端自动化－持续集成</title>
@@ -813,7 +852,7 @@
     <link href="http://kyonhuang.top/relax-and-think/"/>
     <id>http://kyonhuang.top/relax-and-think/</id>
     <published>2017-06-05T07:22:33.000Z</published>
-    <updated>2017-06-05T07:50:52.000Z</updated>
+    <updated>2017-08-29T11:05:51.000Z</updated>
     
     <content type="html"><![CDATA[<p>又快到考试周了，大二的下学期马上要过完了。这个学期可以说是我编程学习中进步最大的一个学期，自己明确了要学习的方向并为之奔赴。不过这几周可能因为事务繁忙加上有些疲倦，学习效率比较低，也有好久没写博客了。不如暂歇一下，对自己的前端学习做一个阶段性的总结。</p>
   <a id="more"></a>
@@ -826,7 +865,7 @@
 </ol>
 <p>在之前的前端学习中也有一些问题：</p>
 <ol>
-<li>最大的问题是不太重视基础。看张鑫旭对前端的要求中，光是“掌握JS中的字符串、函数、对象、数组、字面量等基本概念，熟记所有内置的方法（包括参数和返回值）”这一条就足够我汗颜了。看的书籍虽然有笔记，但也感觉是没有过心。<strong>之后会将博客中的读书笔记再按照知识点，辅以自己的进一步学习成果拆分细化</strong>。虽然这是一个比较大的工程，但我觉得这是一个很有必要的工作。</li>
+<li>最大的问题是不太重视基础。看张鑫旭对前端的要求中，光是“掌握 JS 中的字符串、函数、对象、数组、字面量等基本概念，熟记所有内置的方法（包括参数和返回值）”这一条就足够我汗颜了。看的书籍虽然有笔记，但也感觉是没有过心。<strong>之后会将博客中的读书笔记再按照知识点，辅以自己的进一步学习成果拆分细化</strong>。虽然这是一个比较大的工程，但我觉得这是一个很有必要的工作。</li>
 <li>经典书籍读的不够多。像《你不知道的 JavaScript》、《JavaScript 设计模式与开发实践》等书都没有看。</li>
 <li>某些时候还是有些懒惰，没有抽出空余时间来学习。或者是在学习过程中在知乎、贴吧、空间、微博耗费了注意力，导致学习效率不高。</li>
 <li>包括博文和项目在内的学习产出还是不多，博文也没有特别有价值的内容。<strong>毕业前要在 github 上有一个 100+ star 的项目，还要部署到 npm 上</strong>。博客考虑备案和 SEO，以激励自己写出更有价值的文章。</li>
@@ -1682,9 +1721,9 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
@@ -1772,56 +1811,6 @@
       <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="CSS动画" scheme="http://kyonhuang.top/tags/CSS%E5%8A%A8%E7%94%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>探究JS中的词法作用域</title>
-    <link href="http://kyonhuang.top/js-lexical-scope/"/>
-    <id>http://kyonhuang.top/js-lexical-scope/</id>
-    <published>2017-03-22T13:58:50.000Z</published>
-    <updated>2017-07-26T06:17:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这两天在对原生 JavaScript 的一些概念做一个回顾。在看一篇名为 <a href="https://github.com/qibaoguang/Study-Step-by-Step/blob/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/javascript_the_good_parts.md" target="_blank" rel="external">JavaScript 语言精粹</a> 的文章时，看到作者认为 JavaScript 的优秀思想中有一条是“函数：基于词法来划分作用域，而不是动态划分作用域”。无独有偶，在二刷廖雪峰的 JavaScript 教程时，在 <a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001438565969057627e5435793645b7acaee3b6869d1374000" target="_blank" rel="external">箭头函数</a> 一节中有提到“箭头函数内部的 this 是词法作用域，由上下文确定。”</p>
-<p>这里的“词法作用域”这个概念我之前没有留意过，在《JavaScript 高级程序设计》中好像也没有看到过（也有可能是我压根没注意到）。作为一只刚入前端坑的菜鸡，我在查阅各种资料后总结了自己对词法作用域的一些理解。</p>
-<a id="more"></a>
-<h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><p>《JavaScript 权威指南》第5章“8.8.1 词法作用域”中对“词法作用域”的解释如下：</p>
-<p>“JavaScript 中的函数是通过词法来划分作用域的，而不是动态地划分作用域的。这意味着它们在定义它们的作用域里运行，而不是在执行它们的作用域里运行。当定义了一个函数，当前的作用域链就保存起来，并且成为函数的内部状态的一部分。”</p>
-<p>当然，这几句话还是玄之又玄，摸不着头脑。它还是没有具体解释“词法作用域”中的“词法”二字代表什么。不过我这学期的《编译原理》课程上经常见到这个词：编译过程被划分为词法分析、语法分析、语义分析、中间代码生成、代码优化和目标代码生成 6 个阶段（清华大学出版社《编译原理》）。在查阅资料后，我确信这个概念确实与编译有关。</p>
-<p>JavaScript 引擎在代码执行前会对其进行编译，而所谓的词法作用域指作用域是由书写代码时<strong>函数声明的位置</strong>决定，在词法解析阶段就已经确定，之后不会改变。也就是说，JS 中的“词法作用域”等同于静态作用域，即与动态作用域（运行时确定）相对。</p>
-<p>词法作用域关注函数在<strong>何处声明</strong>；而动态作用域关注函数从<strong>何处调用</strong>，其作用域链是基于运行时的调用栈的。换言之，在遇到既不是形参也不是函数内部定义的局部变量的变量时，词法作用域的函数会去函数<strong>定义</strong>时的环境中查询；而动态作用域的函数会到函数调用时的环境中查询。</p>
-<p>一个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    print a;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function bar()&#123;</div><div class="line">    var a = 1;</div><div class="line">    foo();</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = 2;</div><div class="line">bar();</div></pre></td></tr></table></figure>
-<p>采用词法作用域的语言会从函数定义位置开始向上层查找，最后输出 2。</p>
-<p>而采用动态作用域的语言会输出 1。</p>
-<p>顺便一提，在 JS 中<code>eval</code>和<code>with</code>可以产生动态作用域的效果。但《JavaScript 高级程序设计》不推荐使用此二者。</p>
-<h2 id="强调与补充"><a href="#强调与补充" class="headerlink" title="强调与补充"></a>强调与补充</h2><p>函数的作用域基于函数<strong>定义</strong>的位置。</p>
-<p>为了去实现这种词法作用域，JavaScript 函数对象的内部状态不仅包含函数逻辑的代码，除此之外还包含当前作用域链的引用。函数对象可以通过这个作用域链相互关联起来。</p>
-<p>如此，函数体内部的变量都可以保存在函数的作用域内，在程序语言范畴内这被称为<strong>闭包</strong>。而我们常说的闭包是指<strong>让外部函数访问到内部的变量</strong>，也就是说，按照一般的做法，是<strong>使内部函数返回一个函数，然后操作其中的变量</strong>。这样做的话一是可以读取函数内部的变量，二是可以让这些变量的值始终保存在内存中。</p>
-<p>这时，调用函数的时候闭包所指向的作用域链和定义函数时的作用域链不是同一个作用域链。</p>
-<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><p><a href="https://www.zhihu.com/question/20032419" target="_blank" rel="external">动态作用域和词法域的区别是什么？- 知乎</a></p>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/3" target="_blank" rel="external">JavaScript深入之词法作用域和动态作用域 · Issue #3 · mqyqingfeng/Blog</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这两天在对原生 JavaScript 的一些概念做一个回顾。在看一篇名为 &lt;a href=&quot;https://github.com/qibaoguang/Study-Step-by-Step/blob/master/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/javascript_the_good_parts.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JavaScript 语言精粹&lt;/a&gt; 的文章时，看到作者认为 JavaScript 的优秀思想中有一条是“函数：基于词法来划分作用域，而不是动态划分作用域”。无独有偶，在二刷廖雪峰的 JavaScript 教程时，在 &lt;a href=&quot;http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001438565969057627e5435793645b7acaee3b6869d1374000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;箭头函数&lt;/a&gt; 一节中有提到“箭头函数内部的 this 是词法作用域，由上下文确定。”&lt;/p&gt;
-&lt;p&gt;这里的“词法作用域”这个概念我之前没有留意过，在《JavaScript 高级程序设计》中好像也没有看到过（也有可能是我压根没注意到）。作为一只刚入前端坑的菜鸡，我在查阅各种资料后总结了自己对词法作用域的一些理解。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
-      <category term="概念理解" scheme="http://kyonhuang.top/tags/%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3/"/>
-    
-      <category term="JavaScript" scheme="http://kyonhuang.top/tags/JavaScript/"/>
-    
-      <category term="词法作用域" scheme="http://kyonhuang.top/tags/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
     
   </entry>
   
