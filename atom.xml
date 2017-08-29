@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-08-29T11:33:27.000Z</updated>
+  <updated>2017-08-29T12:20:47.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,23 +20,45 @@
     <link href="http://kyonhuang.top/summer-time-gone/"/>
     <id>http://kyonhuang.top/summer-time-gone/</id>
     <published>2017-08-29T10:22:33.000Z</published>
-    <updated>2017-08-29T11:33:27.000Z</updated>
+    <updated>2017-08-29T12:20:47.000Z</updated>
     
-    <content type="html"><![CDATA[<p>现在是 2017 年的 8 月 29 号，离 9 月还有 2 天。大三近在咫尺，而夏天就要过去。</p>
+    <content type="html"><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=587963&auto=1&height=66"></iframe>
+
+<p>现在是 2017 年的 8 月 29 号，离 9 月还有 2 天。大三近在咫尺，而夏天就要过去。</p>
 <p>前几天的 ASL 舞台上，平野绫、茅原实里、后藤邑子三人毫无征兆地重新聚首，演唱了《凉宫春日的忧郁》的 ED《ハレ晴レユカイ（晴天好心情）》。06 年的最强动画，我最爱的动画，11 年后再看到这些人，恍如隔世。</p>
 <p><img src="/images/forever-SOS.jpg"></p>
 <p>过去是体育场旁的石板路，现在是教学楼到二食堂的小道，低头时摇曳的叶影把光束割出形状，抬头看到的是一成不变的蓝天白云。闻着空气里隐约弥漫着躁动的气息，你会产生错觉，真的以为八月是漫无止境的，度过的每一天会被慷慨归还。</p>
 <p>只是在那个古老的不再回来的夏日，所有的结局都已写好，所有的泪水也都已启程。</p>
 <p>“夏天就要过去”这句话念来，总有淡淡的感伤。也许正因如此，我才喜欢上夏天。</p>
 <a id="more"></a>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=587963&auto=1&height=66"></iframe>
-
-
+<h2 id="总结与展望"><a href="#总结与展望" class="headerlink" title="总结与展望"></a>总结与展望</h2><h3 id="书籍阅读"><a href="#书籍阅读" class="headerlink" title="书籍阅读"></a>书籍阅读</h3><p>好了，矫情完毕。暑假还是老毛病，后期学习效率不高。目前成果和暑假计划写的还是有些差距。</p>
+<p>《深入浅出 Node.js》读了几章，感觉确实有些深，很多章节涉及到操作系统的知识，而且没有大量实践经验可能很难领会其精髓。所以将前四章（主要是异步 I/O 和异步编程）总结成一个笔记，然后根据需要看一下第八章-构建 Web 应用后，就先暂停这本书的阅读。</p>
+<p>之后看《你不知道的 JavaScript（中卷）》。这本因为前两章讲繁琐的强制转换的知识，看的我晕头转向（JS 里的各种显隐式转换至少从表面上看毫无规律，为人诟病），所以当时停下来了。现在还是要啃完，之后还有下卷。这一系列书还是将 JS 的细节讲的比较全面的。</p>
+<p>看完以上之后可以考虑啃《JavaScript 设计模式与开发实践》。不过可能下学期时间不太够，量力而行。还要啃一下《计算机网络－自顶向下方法》的前几章，虽然是课本，也做笔记和脑图。</p>
+<h3 id="项目练习"><a href="#项目练习" class="headerlink" title="项目练习"></a>项目练习</h3><ul>
+<li>做了一个简单的<a href="http://kyonhuang.top/resume/">在线个人简历</a>，只用到了 vue 和 axios；</li>
+<li>上手了 electron，将上述的个人简历包装成桌面程序扔到了 Github 上：<a href="https://github.com/bighuang624/electron-demo" target="_blank" rel="external">bighuang624/electron-demo
+</a>。十分粗糙，而且在 mac 上的程序大小达到 122 MB。如果有时间和兴趣可以深入研究，最好是再拿一个前后端项目来做小白鼠；</li>
+<li>今天想用 Node.js 重写之前的基于 Java 的 BiliBili 视频爬虫。不过折腾半天，感觉 B 站有了更严的反爬机制，还没有研究出怎么爬（估计之前的那个爬虫现在也不能用了）…</li>
+<li>跟着教程摸了摸 express 和 koa。准备写一个有后台的项目，成功了就买一个服务器折腾折腾挂上去。</li>
+</ul>
+<p>可以看到项目练习这一块也不算特别满意。要求自己在夏令营之前有两到三个还（neng）不（hu）错（ren）的项目。</p>
+<h3 id="保研"><a href="#保研" class="headerlink" title="保研"></a>保研</h3><p>要开始准备保研了。</p>
+<ul>
+<li>这学期要准备一下六级，争取考到 600 分以上，才不至于掉底子；</li>
+<li>找一个实验室干点活，找不到靠谱的就算了；</li>
+<li>想办法看科研和竞赛能不能有些东西；</li>
+<li>保持绩点。这学期一定不能翘课，全部争取满分。而且要稍微多选一点课，尽量不留选修课。</li>
+<li>慢慢读《算法》。天杨说笔试蛮关键的，什么数据结构与算法、操作系统、机组等知识大三下学期都要重新捡起来。</li>
+</ul>
+<p>虽然没有企望过，但也许我可以走的稍微远一点。那就开始努力吧，因为夏天就要过去。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;现在是 2017 年的 8 月 29 号，离 9 月还有 2 天。大三近在咫尺，而夏天就要过去。&lt;/p&gt;
+      &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;//music.163.com/outchain/player?type=2&amp;id=587963&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;现在是 2017 年的 8 月 29 号，离 9 月还有 2 天。大三近在咫尺，而夏天就要过去。&lt;/p&gt;
 &lt;p&gt;前几天的 ASL 舞台上，平野绫、茅原实里、后藤邑子三人毫无征兆地重新聚首，演唱了《凉宫春日的忧郁》的 ED《ハレ晴レユカイ（晴天好心情）》。06 年的最强动画，我最爱的动画，11 年后再看到这些人，恍如隔世。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/forever-SOS.jpg&quot;&gt;&lt;/p&gt;
 &lt;p&gt;过去是体育场旁的石板路，现在是教学楼到二食堂的小道，低头时摇曳的叶影把光束割出形状，抬头看到的是一成不变的蓝天白云。闻着空气里隐约弥漫着躁动的气息，你会产生错觉，真的以为八月是漫无止境的，度过的每一天会被慷慨归还。&lt;/p&gt;
@@ -472,9 +494,9 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="《你不知道的 JavaScript》" scheme="http://kyonhuang.top/tags/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-JavaScript%E3%80%8B/"/>
     
@@ -1721,15 +1743,15 @@
       <category term="前端学习笔记" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="学习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
       <category term="SASS" scheme="http://kyonhuang.top/tags/SASS/"/>
     
       <category term="WebStorm" scheme="http://kyonhuang.top/tags/WebStorm/"/>
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
