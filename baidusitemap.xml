@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/summer-time-gone/</loc>
+    <lastmod>2017-09-02T12:58:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>夏天就要过去</title>
+        <pubTime>2017-08-29T10:22:33.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>目标</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/lyrics-seaStory/</loc>
     <lastmod>2017-09-02T07:44:43.000Z</lastmod>
     <data>
@@ -71,28 +93,6 @@
            
              
               <breadCrumb title="NodeJS 学习笔记" url="http://kyonhuang.top/categories/NodeJS-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/summer-time-gone/</loc>
-    <lastmod>2017-08-29T14:11:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>夏天就要过去</title>
-        <pubTime>2017-08-29T10:22:33.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-        <tag>目标</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>
@@ -418,9 +418,9 @@
         <title>Sublime Text使用技巧笔记</title>
         <pubTime>2017-02-13T08:41:37.000Z</pubTime>
         
-        <tag>Sublime Text</tag>
-         
         <tag>笔记</tag>
+         
+        <tag>Sublime Text</tag>
          
         <tag>编辑器</tag>
          
@@ -566,9 +566,9 @@
          
         <tag>JavaScipt</tag>
          
-        <tag>脑图</tag>
-         
         <tag>前端</tag>
+         
+        <tag>脑图</tag>
          
         <tag>《你不知道的 JavaScript》</tag>
          
