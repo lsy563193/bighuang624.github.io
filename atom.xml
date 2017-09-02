@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>大黄菌的个人博客</title>
-  <subtitle>天下武功，无勤不破 | To be a better man</subtitle>
+  <subtitle>天下武功，无勤不破</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
@@ -368,7 +368,7 @@
     <link href="http://kyonhuang.top/start-to-learn-NodeJS/"/>
     <id>http://kyonhuang.top/start-to-learn-NodeJS/</id>
     <published>2017-07-30T14:29:41.000Z</published>
-    <updated>2017-09-02T01:02:15.000Z</updated>
+    <updated>2017-09-02T01:07:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>上学期曾在 NodeJS 的门槛前匆匆一瞥而不得入，暑假终于有大块的时间一次入门。这篇笔记以 <a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">七天学会NodeJS</a> 为主干，辅以廖雪峰 JavaScript 教程中相关内容以及其他渠道的一些知识整理而成。内容主要是脑图，一部分细碎知识点和代码以文字呈现。</p>
 <p>在学习 NodeJS 过程中，感觉对软件工程基础课程的融会贯通有了更深的理解。作为 JavaScript 的服务器端环境，NodeJS 操作文件、操作进程等功能和上学期的 Unix 课程有着较高的相通性。可惜我 Unix 没有好好听过。网络操作的内容则和 HTTP 以及 Socket 协议的知识紧密联系，这些大概在大三下学期的计算机网络课程中。到时要督促自己按时到勤认真听课了。</p>
@@ -460,7 +460,7 @@
 <h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><p>代表当前 Node.js 进程。</p>
 <h3 id="判断-JavaScript-执行环境"><a href="#判断-JavaScript-执行环境" class="headerlink" title="判断 JavaScript 执行环境"></a>判断 JavaScript 执行环境</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span>(<span class="built_in">window</span>) === <span class="string">'undefined'</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'node.js'</span>);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'browser'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-f46374c76abbbe98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件操作.png"></p>
-<h3 id="不同系统下路径的标准化"><a href="#不同系统下路径的标准化" class="headerlink" title="不同系统下路径的标准化"></a>不同系统下路径的标准化</h3><p>标准化之后的路径里的斜杠在 Windows 系统下是<code>\</code>，而在 Linux 系统下是<code>/</code>。如果想保证任何系统下都使用 / 作为路径分隔符的话，需要用<code>.replace(/\\/g, &#39;/&#39;)</code>再替换一下标准路径。</p>
+<h3 id="不同系统下路径的标准化"><a href="#不同系统下路径的标准化" class="headerlink" title="不同系统下路径的标准化"></a>不同系统下路径的标准化</h3><p>标准化之后的路径里的斜杠在 Windows 系统下是<code>\</code>，而在 Linux 系统下是<code>/</code>。如果想保证任何系统下都使用<code>/</code>作为路径分隔符的话，需要用<code>.replace(/\\/g, &#39;/&#39;)</code>再替换一下标准路径。</p>
 <h3 id="遍历目录"><a href="#遍历目录" class="headerlink" title="遍历目录"></a>遍历目录</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 同步遍历获取某一文件夹下的所有文件，用 callback 处理</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">travel</span>(<span class="params">dir, callback</span>)</span>&#123;</div><div class="line">  fs.readdirSync(dir).forEach(<span class="function">(<span class="params">file</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">var</span> pathname = path.join(dir, file);</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(fs.statSync(pathname).isDirectory())&#123;</div><div class="line">      travel(pathname, callback)；</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      callback(pathname);</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 异步遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">travel</span>(<span class="params">dir, callback, finish</span>)</span>&#123;</div><div class="line">  fs.readdir(dir, (err, files) =&gt; &#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params">i</span>)</span>&#123;</div><div class="line">      <span class="keyword">if</span>(i &lt; files.length) &#123;</div><div class="line">        <span class="keyword">var</span> pathname = path.join(dir, files[i]);</div><div class="line"></div><div class="line">        fs.stat(pathname, (err, stats) =&gt; &#123;</div><div class="line">          <span class="keyword">if</span>(stats.isDirectory())&#123;</div><div class="line">            travel(pathname, callback, () =&gt; &#123;</div><div class="line">              next(i + <span class="number">1</span>);</div><div class="line">            &#125;);</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">            callback(pathname, () =&gt; &#123;</div><div class="line">              next(i + <span class="number">1</span>);</div><div class="line">            &#125;)</div><div class="line">          &#125;</div><div class="line">        &#125;);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        finish &amp;&amp; finish();</div><div class="line">      &#125;</div><div class="line">    &#125;)(<span class="number">0</span>);</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-439f836f1c5033bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="网络操作.png"></p>
 <h3 id="监听端口的权限问题"><a href="#监听端口的权限问题" class="headerlink" title="监听端口的权限问题"></a>监听端口的权限问题</h3><p>在 Linux 系统下，监听 1024 以下端口需要 root 权限。因此，如果想监听 80 或 443 端口的话，需要使用 sudo 命令启动程序。</p>
@@ -564,9 +564,9 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="《你不知道的 JavaScript》" scheme="http://kyonhuang.top/tags/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-JavaScript%E3%80%8B/"/>
     

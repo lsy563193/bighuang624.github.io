@@ -92,13 +92,13 @@
 
 
 
-<meta name="description" content="大二上学期的Java实验课要求写的项目都很有意思，这里先将最后的综合大项目进行一个总结。该项目要求设计并实现一个BiliBili视频信息爬虫，并且能够将每个分类收藏数前三的视频下载至本地。  该项目使用的软件有Eclipse（IDE）、Charles（抓包工具）、MySQL（数据库）、Navicat Premium（数据库可视化工具）。以下代码截图全部基于OS X系统上自己编写的代码。">
+<meta name="description" content="该项目要求设计并实现一个 BiliBili 视频信息爬虫，并且能够将每个分类收藏数前三的视频下载至本地。  该项目使用的软件有Eclipse（IDE）、Charles（抓包工具）、MySQL（数据库）、Navicat Premium（数据库可视化工具）。以下代码截图全部基于OS X系统上自己编写的代码。">
 <meta name="keywords" content="demo,爬虫,Java,学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BiliBili视频信息爬虫基于Java的实现">
 <meta property="og:url" content="http://kyonhuang.top/biliInfoCrawler/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="大二上学期的Java实验课要求写的项目都很有意思，这里先将最后的综合大项目进行一个总结。该项目要求设计并实现一个BiliBili视频信息爬虫，并且能够将每个分类收藏数前三的视频下载至本地。  该项目使用的软件有Eclipse（IDE）、Charles（抓包工具）、MySQL（数据库）、Navicat Premium（数据库可视化工具）。以下代码截图全部基于OS X系统上自己编写的代码。">
+<meta property="og:description" content="该项目要求设计并实现一个 BiliBili 视频信息爬虫，并且能够将每个分类收藏数前三的视频下载至本地。  该项目使用的软件有Eclipse（IDE）、Charles（抓包工具）、MySQL（数据库）、Navicat Premium（数据库可视化工具）。以下代码截图全部基于OS X系统上自己编写的代码。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://kyonhuang.top/images/biliCrawler/info.jpg">
 <meta property="og:image" content="http://kyonhuang.top/images/biliCrawler/debugger.jpg">
@@ -107,10 +107,10 @@
 <meta property="og:image" content="http://kyonhuang.top/images/biliCrawler/code3.jpg">
 <meta property="og:image" content="http://kyonhuang.top/images/biliCrawler/code4.jpg">
 <meta property="og:image" content="http://kyonhuang.top/images/biliCrawler/code5.jpg">
-<meta property="og:updated_time" content="2017-08-03T03:31:19.000Z">
+<meta property="og:updated_time" content="2017-09-02T07:44:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BiliBili视频信息爬虫基于Java的实现">
-<meta name="twitter:description" content="大二上学期的Java实验课要求写的项目都很有意思，这里先将最后的综合大项目进行一个总结。该项目要求设计并实现一个BiliBili视频信息爬虫，并且能够将每个分类收藏数前三的视频下载至本地。  该项目使用的软件有Eclipse（IDE）、Charles（抓包工具）、MySQL（数据库）、Navicat Premium（数据库可视化工具）。以下代码截图全部基于OS X系统上自己编写的代码。">
+<meta name="twitter:description" content="该项目要求设计并实现一个 BiliBili 视频信息爬虫，并且能够将每个分类收藏数前三的视频下载至本地。  该项目使用的软件有Eclipse（IDE）、Charles（抓包工具）、MySQL（数据库）、Navicat Premium（数据库可视化工具）。以下代码截图全部基于OS X系统上自己编写的代码。">
 <meta name="twitter:image" content="http://kyonhuang.top/images/biliCrawler/info.jpg">
 
 
@@ -196,7 +196,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">天下武功，无勤不破 | To be a better man</p>
+        <p class="site-subtitle">天下武功，无勤不破</p>
       
   </div>
 
@@ -426,22 +426,22 @@
       
 
       
-        <p>大二上学期的Java实验课要求写的项目都很有意思，这里先将最后的综合大项目进行一个总结。该项目要求设计并实现一个BiliBili视频信息爬虫，并且能够将每个分类收藏数前三的视频下载至本地。</p>
+        <p>该项目要求设计并实现一个 BiliBili 视频信息爬虫，并且能够将每个分类收藏数前三的视频下载至本地。</p>
 <p><img src="/images/biliCrawler/info.jpg" width="700px"></p>
 <p>该项目使用的软件有Eclipse（IDE）、Charles（抓包工具）、MySQL（数据库）、Navicat Premium（数据库可视化工具）。以下代码截图全部基于OS X系统上自己编写的代码。</p>
 <a id="more"></a>
 <h2 id="了解相关知识"><a href="#了解相关知识" class="headerlink" title="了解相关知识"></a>了解相关知识</h2><p>该实验所用到的知识有且不仅限于：</p>
 <ol>
-<li>HTTP请求、响应和重定向；</li>
-<li>使用apache-httpclient来实现对服务器的请求并收到响应；</li>
-<li>用jsoup处理html文件；</li>
+<li>HTTP 请求、响应和重定向；</li>
+<li>使用 apache-httpclient 来实现对服务器的请求并收到响应；</li>
+<li>用 jsoup 处理 html 文件；</li>
 <li>数据库设计与使用；</li>
 <li>Java IO下载视频文件；</li>
-<li>同时，该程序使用了Maven来管理项目的依赖关系。</li>
+<li>同时，该程序使用了 Maven 来管理项目的依赖关系。</li>
 </ol>
-<h2 id="抓包并分析"><a href="#抓包并分析" class="headerlink" title="抓包并分析"></a>抓包并分析</h2><p>用一个抓包工具来分析浏览器打开Bilibili视频网时重要的请求与响应。这里我选用的是Charles，当然也可以使用Fiddler或者其他好用的。</p>
+<h2 id="抓包并分析"><a href="#抓包并分析" class="headerlink" title="抓包并分析"></a>抓包并分析</h2><p>用一个抓包工具来分析浏览器打开 BiliBili 视频网时重要的请求与响应。这里我选用的是 Charles，当然也可以使用 Fiddler 或者其他好用的。</p>
 <p><img src="/images/biliCrawler/debugger.jpg" width="700px"></p>
-<p>可以看到，图中选中的项即为访问Bilibili视频网分类页面时服务器向浏览器发送的json文件。路径中tid后的数字代表种类，pn后的数字代表页数。可以看到访问时浏览器发出的请求参数，爬虫程序同样也要设置这些参数使服务器认为是浏览器在访问。而在每一个json文件中，有20个视频的信息，包括我们感兴趣的av号（Bilibili视频id号）、作者、种类、收藏数、硬币数等信息。我们之后将要对json文件进行处理来获得这些信息，并把它们存进数据库。</p>
+<p>可以看到，图中选中的项即为访问 BiliBili 视频网分类页面时服务器向浏览器发送的 json 文件。路径中 tid 后的数字代表种类，pn 后的数字代表页数。可以看到访问时浏览器发出的请求参数，爬虫程序同样也要设置这些参数使服务器认为是浏览器在访问。而在每一个 json 文件中，有 20 个视频的信息，包括我们感兴趣的 av 号（Bilibili 视频 id号）、作者、种类、收藏数、硬币数等信息。我们之后将要对 json 文件进行处理来获得这些信息，并把它们存进数据库。</p>
 <h2 id="爬虫相关方法"><a href="#爬虫相关方法" class="headerlink" title="爬虫相关方法"></a>爬虫相关方法</h2><ol>
 <li><p>使用apache-httpClient来实现请求并得到响应，最终得到json文件。</p>
 <p> <img src="/images/biliCrawler/code1.jpg" width="700px"></p>
@@ -462,13 +462,12 @@
 </li>
 </ol>
 <h2 id="调用方法并开多线程加速"><a href="#调用方法并开多线程加速" class="headerlink" title="调用方法并开多线程加速"></a>调用方法并开多线程加速</h2><p>在main方法中调用之前写好的方法，并开多线程加速爬取和视频下载。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>经过反复的设计、编程、测试、修改，最终的程序能够爬取Bilibili视频网音乐区7个类别约62万个视频的信息（由于校园网波动，最后只爬了62w，实际上音乐区应该不止这么多视频），将其存入数据库，并将每个类别收藏数前三的视频下载至本地，符合实验要求。</p>
-<p>项目中参考的资料：</p>
-<ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>经过反复的设计、编程、测试、修改，最终的程序能够爬取 BiliBili 视频网音乐区 7 个类别约 62 万个视频的信息（由于校园网波动，最后只爬了62w，实际上音乐区应该不止这么多视频），将其存入数据库，并将每个类别收藏数前三的视频下载至本地，符合实验要求。</p>
+<p>完整代码已经放在我的 Github 中。由于个人水平有限，可能存在错误或者性能优化方面的问题，欢迎讨论。</p>
+<h2 id="项目中参考的资料"><a href="#项目中参考的资料" class="headerlink" title="项目中参考的资料"></a>项目中参考的资料</h2><ul>
 <li><a href="http://czj4451.iteye.com/blog/1983889" target="_blank" rel="external">普通Java工程转换成maven工程</a></li>
 <li><a href="http://www.tuicool.com/articles/fAVzu2" target="_blank" rel="external">Jsoup+json-lib解析xml带中括号的数组Json数据</a></li>
 </ul>
-<p>完整代码已经放在我的github中。由于水平有限，可能存在错误或者性能优化方面的问题，欢迎讨论。</p>
 
       
     </div>
@@ -608,7 +607,7 @@
                alt="Kyon Huang" />
           <p class="site-author-name" itemprop="name">Kyon Huang</p>
            
-              <p class="site-description motion-element" itemprop="description">大学软工狗/摸鱼型填词</p>
+              <p class="site-description motion-element" itemprop="description">软工大三狗/摸鱼型填词</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -718,7 +717,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解相关知识"><span class="nav-number">1.</span> <span class="nav-text">了解相关知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抓包并分析"><span class="nav-number">2.</span> <span class="nav-text">抓包并分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#爬虫相关方法"><span class="nav-number">3.</span> <span class="nav-text">爬虫相关方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频下载相关方法"><span class="nav-number">4.</span> <span class="nav-text">视频下载相关方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用方法并开多线程加速"><span class="nav-number">5.</span> <span class="nav-text">调用方法并开多线程加速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解相关知识"><span class="nav-number">1.</span> <span class="nav-text">了解相关知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抓包并分析"><span class="nav-number">2.</span> <span class="nav-text">抓包并分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#爬虫相关方法"><span class="nav-number">3.</span> <span class="nav-text">爬虫相关方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频下载相关方法"><span class="nav-number">4.</span> <span class="nav-text">视频下载相关方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用方法并开多线程加速"><span class="nav-number">5.</span> <span class="nav-text">调用方法并开多线程加速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目中参考的资料"><span class="nav-number">7.</span> <span class="nav-text">项目中参考的资料</span></a></li></ol></div>
             
 
           </div>
