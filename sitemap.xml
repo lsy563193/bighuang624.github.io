@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/start-to-learn-NodeJS/</loc>
+    
+    <lastmod>2017-09-02T01:02:15.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/summer-time-gone/</loc>
     
-    <lastmod>2017-08-29T12:24:54.000Z</lastmod>
+    <lastmod>2017-08-29T14:11:15.000Z</lastmod>
     
   </url>
   
@@ -110,13 +117,6 @@
     <loc>http://kyonhuang.top/css-animation/</loc>
     
     <lastmod>2017-08-21T07:11:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/start-to-learn-NodeJS/</loc>
-    
-    <lastmod>2017-08-17T13:13:07.000Z</lastmod>
     
   </url>
   
