@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/about/index.html</loc>
+    
+    <lastmod>2017-09-03T11:22:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/Node-repo-and-ideas/</loc>
+    
+    <lastmod>2017-09-03T11:21:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/async-IO-in-Node/</loc>
     
     <lastmod>2017-09-03T06:35:25.000Z</lastmod>
@@ -47,13 +61,6 @@
     <loc>http://kyonhuang.top/relax-and-think/</loc>
     
     <lastmod>2017-08-29T11:05:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/about/index.html</loc>
-    
-    <lastmod>2017-08-27T10:34:13.000Z</lastmod>
     
   </url>
   

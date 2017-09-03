@@ -3,6 +3,27 @@
 
 
     
+    
+  <url>
+    <loc>http://kyonhuang.top/Node-repo-and-ideas/</loc>
+    <lastmod>2017-09-03T11:21:09.000Z</lastmod>
+    <data>
+        <display>
+        <title>Node 学习中遇到的 repo 和 ideas（持续更新）</title>
+        <pubTime>2017-09-03T11:03:16.000Z</pubTime>
+        
+        <tag>NodeJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="NodeJS 学习笔记" url="http://kyonhuang.top/categories/NodeJS-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>http://kyonhuang.top/async-IO-in-Node/</loc>
     <lastmod>2017-09-03T06:35:25.000Z</lastmod>
@@ -166,7 +187,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://kyonhuang.top/Generator-and-async/</loc>
