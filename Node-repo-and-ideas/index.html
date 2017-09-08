@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="对 Node 有所学习后，有时感觉无所不能，真正想做一些 demo 时又自觉无能；有时突发奇想一些 ideas，有时间想敲 demo 时又有点无所事事；有时看到一些有用或者有趣的库，事后又忘的干干净净。所以专门开一篇博文，一是记录一些常用的或者没用过有机会想体验的库，二是记录一些 ideas，等着有时间、有能力、有兴趣时来实现。 repo网络请求 r2：request 模块的作者新写的 HTTP">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-03T11:21:09.000Z">
+<meta property="og:updated_time" content="2017-09-07T02:39:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node 学习中遇到的 repo 和 ideas（持续更新）">
 <meta name="twitter:description" content="对 Node 有所学习后，有时感觉无所不能，真正想做一些 demo 时又自觉无能；有时突发奇想一些 ideas，有时间想敲 demo 时又有点无所事事；有时看到一些有用或者有趣的库，事后又忘的干干净净。所以专门开一篇博文，一是记录一些常用的或者没用过有机会想体验的库，二是记录一些 ideas，等着有时间、有能力、有兴趣时来实现。 repo网络请求 r2：request 模块的作者新写的 HTTP">
@@ -420,15 +420,22 @@
       
         <p>对 Node 有所学习后，有时感觉无所不能，真正想做一些 demo 时又自觉无能；有时突发奇想一些 ideas，有时间想敲 demo 时又有点无所事事；有时看到一些有用或者有趣的库，事后又忘的干干净净。所以专门开一篇博文，一是记录一些常用的或者没用过有机会想体验的库，二是记录一些 ideas，等着有时间、有能力、有兴趣时来实现。</p>
 <h2 id="repo"><a href="#repo" class="headerlink" title="repo"></a>repo</h2><h3 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h3><ul>
-<li><a href="https://github.com/mikeal/r2" target="_blank" rel="external">r2</a>：request 模块的作者新写的 HTTP 请求模块，基于 Promise 及 async/await 实现，让 Ajax 写法更轻松：</li>
+<li><a href="https://github.com/mikeal/r2" target="_blank" rel="external">r2</a>：request 模块的作者新写的 HTTP 请求模块，基于 Promise 及 async/await 实现，让 Ajax 写法更轻松（不过功能应该和 superagent 基本一致，API 不同而已，不强迫使用）：</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> r2 = <span class="built_in">require</span>(<span class="string">'r2'</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> html = <span class="keyword">await</span> r2(<span class="string">'https://www.google.com'</span>).text</div></pre></td></tr></table></figure>
+<ul>
+<li><a href="http://visionmedia.github.io/superagent" target="_blank" rel="external">superagent</a> + <a href="https://github.com/jpodwys/superagent-cache" target="_blank" rel="external">superagent-cache</a></li>
+</ul>
+<h3 id="html-文本分析"><a href="#html-文本分析" class="headerlink" title="html 文本分析"></a>html 文本分析</h3><ul>
+<li><a href="https://github.com/cheeriojs/cheerio/blob/master/Readme.md" target="_blank" rel="external">cheerio</a>：Node 中的 jQuery</li>
+</ul>
 <h2 id="ideas"><a href="#ideas" class="headerlink" title="ideas"></a>ideas</h2><ul>
 <li>大黄说：个人短日志记录的小程序</li>
 <li>知乎爬虫：可以参考<a href="https://juejin.im/post/5943526fac502e006c71c242" target="_blank" rel="external">基于node的微小爬虫——扒了一下知乎 - 掘金</a>，需要考虑一下具体需求</li>
 <li>markdown 按格式解析成 html：这个具体结合把我的歌词变成 html</li>
 <li>与机器人实时聊天：可以参考 <a href="https://github.com/hua1995116/webchat" target="_blank" rel="external">基于vue2.0的实时聊天项目</a>，可以了解一下机器人和 Socket.io</li>
 <li>带后台和 SSR 的博客</li>
+<li>一个小工具，可以将算法的文件和笔记维护到大的 README.md 中，用一个 config.js 加以配置</li>
 </ul>
 
       
@@ -669,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#repo"><span class="nav-number">1.</span> <span class="nav-text">repo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络请求"><span class="nav-number">1.1.</span> <span class="nav-text">网络请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ideas"><span class="nav-number">2.</span> <span class="nav-text">ideas</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#repo"><span class="nav-number">1.</span> <span class="nav-text">repo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络请求"><span class="nav-number">1.1.</span> <span class="nav-text">网络请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html-文本分析"><span class="nav-number">1.2.</span> <span class="nav-text">html 文本分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ideas"><span class="nav-number">2.</span> <span class="nav-text">ideas</span></a></li></ol></div>
             
 
           </div>

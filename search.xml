@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[Node 学习中遇到的 repo 和 ideas（持续更新）]]></title>
       <url>%2FNode-repo-and-ideas%2F</url>
-      <content type="text"><![CDATA[对 Node 有所学习后，有时感觉无所不能，真正想做一些 demo 时又自觉无能；有时突发奇想一些 ideas，有时间想敲 demo 时又有点无所事事；有时看到一些有用或者有趣的库，事后又忘的干干净净。所以专门开一篇博文，一是记录一些常用的或者没用过有机会想体验的库，二是记录一些 ideas，等着有时间、有能力、有兴趣时来实现。 repo网络请求 r2：request 模块的作者新写的 HTTP 请求模块，基于 Promise 及 async/await 实现，让 Ajax 写法更轻松： 123const r2 = require('r2')let html = await r2('https://www.google.com').text ideas 大黄说：个人短日志记录的小程序 知乎爬虫：可以参考基于node的微小爬虫——扒了一下知乎 - 掘金，需要考虑一下具体需求 markdown 按格式解析成 html：这个具体结合把我的歌词变成 html 与机器人实时聊天：可以参考 基于vue2.0的实时聊天项目，可以了解一下机器人和 Socket.io 带后台和 SSR 的博客]]></content>
+      <content type="text"><![CDATA[对 Node 有所学习后，有时感觉无所不能，真正想做一些 demo 时又自觉无能；有时突发奇想一些 ideas，有时间想敲 demo 时又有点无所事事；有时看到一些有用或者有趣的库，事后又忘的干干净净。所以专门开一篇博文，一是记录一些常用的或者没用过有机会想体验的库，二是记录一些 ideas，等着有时间、有能力、有兴趣时来实现。 repo网络请求 r2：request 模块的作者新写的 HTTP 请求模块，基于 Promise 及 async/await 实现，让 Ajax 写法更轻松（不过功能应该和 superagent 基本一致，API 不同而已，不强迫使用）： 123const r2 = require('r2')let html = await r2('https://www.google.com').text superagent + superagent-cache html 文本分析 cheerio：Node 中的 jQuery ideas 大黄说：个人短日志记录的小程序 知乎爬虫：可以参考基于node的微小爬虫——扒了一下知乎 - 掘金，需要考虑一下具体需求 markdown 按格式解析成 html：这个具体结合把我的歌词变成 html 与机器人实时聊天：可以参考 基于vue2.0的实时聊天项目，可以了解一下机器人和 Socket.io 带后台和 SSR 的博客 一个小工具，可以将算法的文件和笔记维护到大的 README.md 中，用一个 config.js 加以配置]]></content>
     </entry>
 
     
