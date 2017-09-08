@@ -1,0 +1,1251 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ANTLR,解释器," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="大黄菌的个人博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/huang_full.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="新学期又迎来新课程《解释器构造实践》，通过综合应用来加深对编译原理技术的理解。该实验课最终要求设计并编制调试一个 CMM（C Minus Minus，C 语言的一个子集）程序结构的解释器，对输入的满足 CMM 语法的源程序文件进行解释执行。 课程推荐使用自动化生成工具 ANTLR，因此在这里持续记录我的解释器构造及 ANTLR 学习过程。当然也不排除之后可能会换用其他工具，或者全部自己实现。 AN">
+<meta name="keywords" content="ANTLR,解释器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解释器构造及 ANTLR v4 学习笔记（更新中）">
+<meta property="og:url" content="http://kyonhuang.top/ANTLR-learning-notes/index.html">
+<meta property="og:site_name" content="大黄菌的个人博客">
+<meta property="og:description" content="新学期又迎来新课程《解释器构造实践》，通过综合应用来加深对编译原理技术的理解。该实验课最终要求设计并编制调试一个 CMM（C Minus Minus，C 语言的一个子集）程序结构的解释器，对输入的满足 CMM 语法的源程序文件进行解释执行。 课程推荐使用自动化生成工具 ANTLR，因此在这里持续记录我的解释器构造及 ANTLR 学习过程。当然也不排除之后可能会换用其他工具，或者全部自己实现。 AN">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/antlr1.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/antlr2.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/antlr3.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/antlr4.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/antlr5.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/antlr6.jpg">
+<meta property="og:updated_time" content="2017-09-08T14:40:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解释器构造及 ANTLR v4 学习笔记（更新中）">
+<meta name="twitter:description" content="新学期又迎来新课程《解释器构造实践》，通过综合应用来加深对编译原理技术的理解。该实验课最终要求设计并编制调试一个 CMM（C Minus Minus，C 语言的一个子集）程序结构的解释器，对输入的满足 CMM 语法的源程序文件进行解释执行。 课程推荐使用自动化生成工具 ANTLR，因此在这里持续记录我的解释器构造及 ANTLR 学习过程。当然也不排除之后可能会换用其他工具，或者全部自己实现。 AN">
+<meta name="twitter:image" content="http://kyonhuang.top/images/antlr/antlr1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kyonhuang.top/ANTLR-learning-notes/"/>
+
+
+
+
+
+  <title>解释器构造及 ANTLR v4 学习笔记（更新中） | 大黄菌的个人博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38a1bce1ed7e84ef54ccd54545749913";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大黄菌的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下武功，无勤不破</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/ANTLR-learning-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kyon Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                解释器构造及 ANTLR v4 学习笔记（更新中）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-06T15:34:19+08:00">
+                2017-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/解释器构造/" itemprop="url" rel="index">
+                    <span itemprop="name">解释器构造</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user"></i>总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新学期又迎来新课程《解释器构造实践》，通过综合应用来加深对编译原理技术的理解。该实验课最终要求设计并编制调试一个 CMM（C Minus Minus，C 语言的一个子集）程序结构的解释器，对输入的满足 CMM 语法的源程序文件进行解释执行。</p>
+<p>课程推荐使用自动化生成工具 ANTLR，因此在这里持续记录我的解释器构造及 ANTLR 学习过程。当然也不排除之后可能会换用其他工具，或者全部自己实现。</p>
+<p>ANTLR 目前更新到 v4.7，有一本详尽的使用说明《The Definitive ANTLR 4 Reference》。可惜到目前为止还没有找到中文译本，只有一些零零碎碎的翻译。所幸读完前两章，感觉我的英文水平还是能支持我不用查太多的词就能理解书中所著内容。因此这篇学习笔记也会整理一些书中重要的内容（当然会加以翻译）。</p>
+<p>更新记录：</p>
+<ul>
+<li>17.09.06 《The Definitive ANTLR 4 Reference》Chapter 1、2 阅读完毕，笔记初版发布</li>
+</ul>
+<a id="more"></a>
+<h2 id="我对编译技术的认识"><a href="#我对编译技术的认识" class="headerlink" title="我对编译技术的认识"></a>我对编译技术的认识</h2><p>在正式进行 ANTLR 的学习前，先让我们聊一聊在经过上学期《编译技术及应用》的学习，以及查阅了有关资料后，我对编译技术和编译工具的一点认识。</p>
+<p>说实话，如果单单是谈在《编译技术及应用》这门课上的认识的话，我可能只能像孔乙己一样，接连便是难懂的话，什么“上下文无关文法”，什么“LL(1)”，引得各位都哄笑起来，屏幕内外充满了快活的空气…  </p>
+<p>尽管经过了计算器和 JSONCompiler 两次实验，但我们可能对编译技术的应用还没有什么认识，觉得编译器的唯一用处就是写一个能把 xx 语言翻译成 xx 然后再运行成功…</p>
+<p>基于写这篇博文的契机，我查了一下编译技术的各种应用，才发现其实“编译”这个概念应用还是很广泛的。</p>
+<p>比如我的博客是用 hexo 这个博客框架搭建的，而你现在看到的这篇博文是 hexo 将我写的 markdown 文件解析成 html 生成的，这其中自然有编译模块的功劳（感兴趣可见 <a href="http://www.jianshu.com/p/ef88b5bbb914" target="_blank" rel="external">大前端-5分钟带你读懂Hexo源码设计模式 - 简书</a>）。</p>
+<p>再比如作为一个前端，有不少我使用过或日常接触的工具、框架其实都是编译相关知识的应用：Babel 作为 ES 6 的所有新特性还没有在主流浏览器全面推广的一个暂时的解决方法，将 ES 6 编译成 ES 5 等浏览器能够运行的 JavaScript 代码；在 Vue 中频繁出现的模版引擎、<code>v-for=&quot;item in list&quot;</code>等也有编译的身影。如果真正对编译原理理解透彻，大概可以去摸摸 v8 ，帮助提高一下 Node.js 的运行效率。</p>
+<p>编程，本质上是程序员通过语言来控制计算机按照人的意志去进行各种运算和操作。自 20 世纪 50 年代早期，第一个只能进行单目运算的编译程序诞生起，编译技术一直作为人与计算机之间的传声筒，支撑着计算机语言的发展，使其更加系统化、合理化。</p>
+<p>在知乎上“编译原理学了有什么用？”这个提问下，有答主贴了一幅《C 编译器解剖》序的照片，其中有一段话：</p>
+<blockquote>
+<p>操作系统和编译器就如武侠小说中的“九阴真经”，没看过“九阴真经”的侠客也可以行走江湖，但看过并练成九阴真经的人最终才更有机会登上华山之巅。</p>
+</blockquote>
+<p>怀着对程序员之巅的心向往之，我也对编译原理更生敬畏。</p>
+<p>当然，如何让这门古老的屠龙术落地，而不至于成为学生心中虚无缥缈的空中楼阁。我个人认为可以再开设一些相关的新课题，让学生能够充分了解编译技术的实用性，从而能够自主学习、实践。我也希望《解释器构造实践》能成为一个不错的起点。</p>
+<h2 id="初识-ANTLR"><a href="#初识-ANTLR" class="headerlink" title="初识 ANTLR"></a>初识 ANTLR</h2><blockquote>
+<p>对应《The Definitive ANTLR 4 Reference》中 Chapter 1 Meet ANTLR。书里的这一章主要是介绍 ANTLR 的下载安装方法，并运行了一个简单的 demo。</p>
+</blockquote>
+<h3 id="安装-ANTLR"><a href="#安装-ANTLR" class="headerlink" title="安装 ANTLR"></a>安装 ANTLR</h3><p>ANTLR 是用 Java 写的，所以就算你想使用 C# 或者 C++ 来配合 ANTLR 生成解释器，安装 ANTLR 前也需要有 Java 环境。</p>
+<p>之后需要下载 antlr-4.0-complete.jar 并把它放在你记得住的地方。这个 jar 包包含了运行 ANTLR 工具所需要的所有依赖，还包含两个支持库：一个树状排版库，以及 StringTemplate，一个用于生成代码以及其他结构化文本的模版引擎。</p>
+<p>安装的具体步骤请直接看<a href="http://www.antlr.org/" target="_blank" rel="external">官网</a>的 Quick Start。</p>
+<h2 id="ANTLR-全貌"><a href="#ANTLR-全貌" class="headerlink" title="ANTLR 全貌"></a>ANTLR 全貌</h2><blockquote>
+<p>对应《The Definitive ANTLR 4 Reference》中 Chapter 2 The Big Picture，书中这一章介绍了从字符流到解析树的过程、ANTLR 运行流程中的一些重要术语，以及ANTLR 自带的 Listener &amp; Visitor 这两种遍历树的机制。</p>
+</blockquote>
+<p>想要实现一种语言，我们就需要构建读取句子（sentence）的应用，并对输入的元素做出正确的反应。</p>
+<p>如果应用计算或执行句子，我们就叫它<strong>解释器（interpreter）</strong>，包括计算器、配置文件读取器、Python 解释器都属于解释器。</p>
+<p>而如果我们将句子转换成另一种语言，我们就叫它<strong>翻译器（translator）</strong>，例如 Java 到 C# 的翻译器和编译器都属于翻译器。</p>
+<p>不管是解释器还是翻译器，想要正确运行，应用首先都要识别出所有有效的句子、词组、字词组等，识别语言的程序就叫<strong>解析器（parser）</strong>或<strong>语法分析器（syntax analyzer）</strong>。</p>
+<p>完全 DIY 一个解析器非常麻烦，所以我们需要 ANTLR 的帮助。ANTLR 是一种能写出程序的程序，只需编写 ANTLR 的语法（grammars）文件，描述我们要解析的语言的语法，ANTLR 就能够自动生成用来解析这种语言的解析器。而用来声明我们语言的ANTLR语言的语法，就是<strong>元语言（meta-language）</strong>。</p>
+<h3 id="最基本的解析过程"><a href="#最基本的解析过程" class="headerlink" title="最基本的解析过程"></a>最基本的解析过程</h3><p>为了简单起见，我们将解析分为两个阶段，第一阶段是<strong>词法分析（lexical analysis）</strong>，对应的分析程序叫做<em>lexer</em>，负责将符号（token）分组成<strong>符号类（token class or token type）</strong>。而第二阶段就是真正的<em>parser</em>，默认 ANTLR 会构建出一棵<strong>分析树（parse tree）</strong>或叫<strong>语法树（syntax tree）</strong>。下图展示了一个简单的赋值表达式的解析过程：</p>
+<p><img src="/images/antlr/antlr1.jpg"></p>
+<p>语法树的叶子是输入的 token，而上级结点是包含其孩子结点的词组名（phase），线性的句子其实是语法树的序列化。最终生成语法树的好处是：</p>
+<ol>
+<li>树形结构易于遍历和处理，并且容易被程序员理解，方便了应用代码做进一步处理。</li>
+<li>多种解释或翻译的应用代码都可以重用一个解析器。但 ANTLR 也支持像传统解析器生成器那样，将应用处理代码直接嵌入到语法中。</li>
+<li>对于因为计算依赖而需要多趟处理的翻译器来说，比起多次调用解析器去解析，遍历语法树多次更加高效。</li>
+</ol>
+<h3 id="深入-ANTLR-的解析过程"><a href="#深入-ANTLR-的解析过程" class="headerlink" title="深入 ANTLR 的解析过程"></a>深入 ANTLR 的解析过程</h3><p>ANTLR 生成的解析器叫做<strong>递归下降解析器（recursive-descent parser）</strong>，属于自顶向下解析器（top-down parser）的一种。</p>
+<p>顾名思义，递归下降指的就是解析过程是从语法树的根开始，向叶子（token）递归。还是以前面的赋值表达式解析为例，其递归下降解析器的代码大概是下面这个样子：</p>
+<p><img src="/images/antlr/antlr2.jpg"></p>
+<p>很酷的一点是<code>stat()</code>、<code>assign()</code>、<code>expr()</code>等方法调用所形成的图能与分析树相互对应。<code>match()</code>的调用对应树的叶子，而<code>assign()</code>方法直接顺序读取输入字符，而不用做任何选择。相比之下，<code>stat()</code>方法要复杂一些，因为在解析时，它需要<strong>向前看（lookahead）</strong>一些字符才能确认走哪个代码分支，有时甚至要读取完所有输入才能得出预测结果。</p>
+<p>虽然 ANTLR 默默地为我们处理了这整个过程，但对这个选择过程有一个基本的了解会使得对生成的解析器进行 debug 变得更加容易。</p>
+<h3 id="用解析树构建语言应用"><a href="#用解析树构建语言应用" class="headerlink" title="用解析树构建语言应用"></a>用解析树构建语言应用</h3><p>在内部，ANTLR 的数据结构会尽可能地共享数据来节约内存。如下图所示，解析树的叶子节点指向 Token 流中的 Token，而 Token 中的起止字符索引指向字符流，并不拷贝子字符串。而像空格这种不与任何 Token 相关的字符会直接被 Lexer 丢弃掉。</p>
+<p><img src="/images/antlr/antlr3.jpg"></p>
+<p>ANTLR 为每个 rule 都会生成一个 RuleNode，叫做 Context 对象，它会记录根据规则识别词组时产生的所有信息。</p>
+<h3 id="解析树的-Listener-和-Visitor-机制"><a href="#解析树的-Listener-和-Visitor-机制" class="headerlink" title="解析树的 Listener 和 Visitor 机制"></a>解析树的 Listener 和 Visitor 机制</h3><p>ANTLR 在其运行库提供了 Listener 和 Visitor 两种解析树遍历机制。</p>
+<p>Listener 的特点是全自动化，我们不必写一个解析树的遍历器，ANTLR 会生成一个 ParseTreeWalker 来主导深度优先遍历过程，我们只需处理各种事件就可以了。例如当遍历器遍历到<code>assign</code>规则的节点时，会触发<code>enterAssign()</code>并将其传递给解析树节点<code>AssignContext</code>；而当遍历器遍历完<code>assign</code>节点的所有子节点时，触发<code>exitAssign()</code>。</p>
+<p><img src="/images/antlr/antlr4.jpg"></p>
+<p><img src="/images/antlr/antlr5.jpg"></p>
+<p>而 Visitor 则提供了可控的遍历方式，我们可以自行决定是否将子结点作为参数调用<code>visit()</code>方法。</p>
+<p><img src="/images/antlr/antlr6.jpg"></p>
+<h2 id="给出使用实例，完成对计算器功能的词法语法分析器的自动实现"><a href="#给出使用实例，完成对计算器功能的词法语法分析器的自动实现" class="headerlink" title="给出使用实例，完成对计算器功能的词法语法分析器的自动实现"></a>给出使用实例，完成对计算器功能的词法语法分析器的自动实现</h2><p>To be continued…</p>
+<h2 id="分析某一具体语言的编译开关"><a href="#分析某一具体语言的编译开关" class="headerlink" title="分析某一具体语言的编译开关"></a>分析某一具体语言的编译开关</h2><p>To be continued…</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>《The Definitive ANTLR 4 Reference》</li>
+<li><a href="http://blog.csdn.net/dc_726/article/details/45399371" target="_blank" rel="external">Antlr v4入门教程和实例 - 西代零零发 - CSDN博客</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Kyon Huang
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://kyonhuang.top/ANTLR-learning-notes/" title="解释器构造及 ANTLR v4 学习笔记（更新中）">http://kyonhuang.top/ANTLR-learning-notes/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ANTLR/" rel="tag"># ANTLR</a>
+          
+            <a href="/tags/解释器/" rel="tag"># 解释器</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Node-repo-and-ideas/" rel="next" title="Node 学习中遇到的 repo 和 ideas（持续更新）">
+                <i class="fa fa-chevron-left"></i> Node 学习中遇到的 repo 和 ideas（持续更新）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/touxiang.jpg"
+               alt="Kyon Huang" />
+          <p class="site-author-name" itemprop="name">Kyon Huang</p>
+           
+              <p class="site-description motion-element" itemprop="description">软工大三狗/摸鱼型填词</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bighuang624" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5674727867" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/huang-si-teng-67" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=85145665" target="_blank" title="网易云">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  网易云
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我对编译技术的认识"><span class="nav-number">1.</span> <span class="nav-text">我对编译技术的认识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初识-ANTLR"><span class="nav-number">2.</span> <span class="nav-text">初识 ANTLR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-ANTLR"><span class="nav-number">2.1.</span> <span class="nav-text">安装 ANTLR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ANTLR-全貌"><span class="nav-number">3.</span> <span class="nav-text">ANTLR 全貌</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最基本的解析过程"><span class="nav-number">3.1.</span> <span class="nav-text">最基本的解析过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深入-ANTLR-的解析过程"><span class="nav-number">3.2.</span> <span class="nav-text">深入 ANTLR 的解析过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用解析树构建语言应用"><span class="nav-number">3.3.</span> <span class="nav-text">用解析树构建语言应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析树的-Listener-和-Visitor-机制"><span class="nav-number">3.4.</span> <span class="nav-text">解析树的 Listener 和 Visitor 机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给出使用实例，完成对计算器功能的词法语法分析器的自动实现"><span class="nav-number">4.</span> <span class="nav-text">给出使用实例，完成对计算器功能的词法语法分析器的自动实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析某一具体语言的编译开关"><span class="nav-number">5.</span> <span class="nav-text">分析某一具体语言的编译开关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kyon Huang</span>
+</div>
+
+
+<div class="powered-by">
+  blog powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      您是第
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      位访客
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- <script type="text/javascript" src="/js/src/copyright.js"></script> -->
+</body>
+</html>
