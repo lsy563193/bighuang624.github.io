@@ -107,7 +107,11 @@
 <meta property="og:image" content="http://kyonhuang.top/images/antlr/antlr5.jpg">
 <meta property="og:image" content="http://kyonhuang.top/images/antlr/antlr6.jpg">
 <meta property="og:image" content="http://kyonhuang.top/images/antlr/antlr-generation.jpg">
-<meta property="og:updated_time" content="2017-09-11T07:20:07.000Z">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/grun-the-example1.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/grun-the-example2.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/grun-the-example3.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/grun-the-example4.jpg">
+<meta property="og:updated_time" content="2017-09-11T10:41:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解释器构造及 ANTLR v4 学习笔记（更新中）">
 <meta name="twitter:description" content="新学期又迎来新课程《解释器构造实践》，通过综合应用来加深对编译原理技术的理解。该实验课最终要求设计并编制调试一个 CMM（C Minus Minus，C 语言的一个子集）程序结构的解释器，对输入的满足 CMM 语法的源程序文件进行解释执行。 课程推荐使用自动化生成工具 ANTLR，因此在这里持续记录我的解释器构造及 ANTLR 学习过程。当然也不排除之后可能会换用其他工具，或者全部自己实现。 AN">
@@ -489,18 +493,27 @@
 <h3 id="ANTLR-工具，运行库和生成代码"><a href="#ANTLR-工具，运行库和生成代码" class="headerlink" title="ANTLR 工具，运行库和生成代码"></a>ANTLR 工具，运行库和生成代码</h3><p>ANTLR 分为两个重要的部分：ANLTR 工具自身和 ANTLR 运行（runtime） API。运行 ALTLR 工具会生成能够辨认语法所描述语言的句子的代码（词法分析程序和语法分析程序）；而运行库提供了生成代码所需的一系列类与方法，例如 Parser, Lexer 和 Token。</p>
 <p>我们先对一份语法运行 ANTLR，然后借助运行库 jar 包中的运行类（runtime classes in the jar）对生成的代码进行编译。最后，编译得到的应用与运行库结合着运行。</p>
 <p>《The Definitive ANTLR 4 Reference》（后文可能简写为《Reference》）给出了一份简单的示例，让我们可以快速了解 ANTLR 所需语法的格式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** Grammers always start with a grammer header. This grammer </span></div><div class="line"> * is called ArrayInit and must match the filename: ArrayInit.g4</div><div class="line"> */</div><div class="line">grammar ArrayInit;</div><div class="line"></div><div class="line"><span class="comment">/** A rule called init that that matches comma-separated values between &#123;...&#125; */</span></div><div class="line">init : <span class="string">'&#123;'</span> value (<span class="string">','</span> value)* <span class="string">'&#125;'</span> ;  <span class="comment">// must match at least one value</span></div><div class="line"></div><div class="line"><span class="comment">/** A value can be either a nested array/struct or a simple integer (INT) */</span></div><div class="line">value : init</div><div class="line">      | INT</div><div class="line">      ;</div><div class="line">      </div><div class="line"><span class="comment">// parser rules start with lowercase letters, lexer rules with uppercase</span></div><div class="line">INT :  [<span class="number">0</span>-<span class="number">9</span>]+ ;              <span class="comment">// Define token INT as one or more digits</span></div><div class="line">WS  :  [ \t\r\n]+ -&gt; skip ;  <span class="comment">// Define whitespace rule, toss it out</span></div></pre></td></tr></table></figure>
-<p>之后通过<code>antlr4 ArrayInit.g4</code>，ANTLR 为我们生成很多一般需要我们自己手写的文件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** Grammers always start with a grammer header. This grammer </span></div><div class="line"> *** is called ArrayInit and must match the filename: ArrayInit.g4</div><div class="line"> **/</div><div class="line">grammar ArrayInit;</div><div class="line"></div><div class="line"><span class="comment">/** A rule called init that that matches comma-separated values between &#123;...&#125; */</span></div><div class="line">init : <span class="string">'&#123;'</span> value (<span class="string">','</span> value)* <span class="string">'&#125;'</span> ;  <span class="comment">// must match at least one value</span></div><div class="line"></div><div class="line"><span class="comment">/** A value can be either a nested array/struct or a simple integer (INT) */</span></div><div class="line">value : init</div><div class="line">      | INT</div><div class="line">      ;</div><div class="line">      </div><div class="line"><span class="comment">// parser rules start with lowercase letters, lexer rules with uppercase</span></div><div class="line">INT :  [<span class="number">0</span>-<span class="number">9</span>]+ ;              <span class="comment">// Define token INT as one or more digits</span></div><div class="line">WS  :  [ \t\r\n]+ -&gt; skip ;  <span class="comment">// Define whitespace rule, toss it out</span></div></pre></td></tr></table></figure>
+<p>之后通过命令行运行<code>antlr4 ArrayInit.g4</code>，ANTLR 为我们生成很多一般需要我们自己手写的文件：</p>
 <p><img src="/images/antlr/antlr-generation.jpg"></p>
 <p>这些文件的功能如下：</p>
 <ul>
-<li>ArrayInitParser.java：包含了专用于 ArrayInit 语法的解释器（parser）类的定义。</li>
+<li>ArrayInitParser.java：包含了专用于 ArrayInit 语法的解析器（parser）类的定义。</li>
 <li>ArrayInitLexer.java：包含专用的词法分析程序（lexer）类的定义。</li>
 <li>ArrayInit.tokens：对于我们定义的每个 token，ANTLR 分配了一个 token 类型码（token type number）并将这些值保存在 ArrayInit.tokens。因为这个文件的存在，当我们将较大规模的语法分割为各种小型的语法表达时，ANTLR 能够使同种 token 的类型码保持一致。</li>
-<li>ArrayInitListener.java, ArrayInitBaseListener.java：ANTLR 生成的解释器会默认根据输入构建一棵树。通过遍历这棵树，一个遍历器可以将事件（回调函数）传递给我们提供的监听者对象（listener object）。ArrayInitListener 是描述我们可以实现的回调函数的接口，而ArrayInitBaseListener 是默认空实现的集合，使我们可以方便的重写（override）那些我们感兴趣的回调函数。</li>
+<li>ArrayInitListener.java, ArrayInitBaseListener.java：ANTLR 生成的解释器会默认根据输入构建一棵树。通过遍历这棵树，一个遍历器可以将事件（回调函数）传递给我们提供的监听者对象（listener object）。ArrayInitListener 是描述我们可以实现的回调函数的接口，而ArrayInitBaseListener 是默认空实现的集合，使我们可以方便的重写（override）那些我们感兴趣的回调函数。通过<code>-visitor</code>命令行参数，ANTLR 也可以为我们生成树的 visitors。</li>
 </ul>
-<p><strong>To be continued…</strong></p>
-<h3 id="测试生成的解析器"><a href="#测试生成的解析器" class="headerlink" title="测试生成的解析器"></a>测试生成的解析器</h3><h3 id="将生成的解析器嵌入-Java-程序"><a href="#将生成的解析器嵌入-Java-程序" class="headerlink" title="将生成的解析器嵌入 Java 程序"></a>将生成的解析器嵌入 Java 程序</h3><h3 id="构建语言应用"><a href="#构建语言应用" class="headerlink" title="构建语言应用"></a>构建语言应用</h3><h2 id="给出使用实例，完成对计算器功能的词法语法分析器的自动实现"><a href="#给出使用实例，完成对计算器功能的词法语法分析器的自动实现" class="headerlink" title="给出使用实例，完成对计算器功能的词法语法分析器的自动实现"></a>给出使用实例，完成对计算器功能的词法语法分析器的自动实现</h2><p>To be continued…</p>
+<h3 id="测试生成的解析器"><a href="#测试生成的解析器" class="headerlink" title="测试生成的解析器"></a>测试生成的解析器</h3><p>之后，我们通过<code>javac *.java</code>来编译 ANTLR 生成的所有代码。UNIX 系统用户可以将以下代码写入<code>.bash_profile</code>或其他启动脚本，以免每次都要在命令行输入一遍：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> CLASSPATH=<span class="string">".:/usr/local/lib/antlr-4.7-complete.jar:<span class="variable">$CLASSPATH</span>"</span></div><div class="line"><span class="built_in">alias</span> antlr4=<span class="string">'java -jar /usr/local/lib/antlr-4.7-complete.jar'</span></div><div class="line"><span class="built_in">alias</span> grun=<span class="string">'java org.antlr.v4.gui.TestRig'</span></div></pre></td></tr></table></figure>
+<p>之后就可以通过<code>grun</code>命令来测试生成的解析器了。注意输入要以 EOF（Unix 系统 Ctrl + D，Windows 系统 Ctrl + Z）作为结束。加上<code>-tokens</code>命令行参数，输出的每一行会展示一个单独的 token 及其所有信息：</p>
+<p><img src="/images/antlr/grun-the-example1.jpg"></p>
+<p><code>-tree</code>会生成一个 Lisp 风格的简单语法分析树：</p>
+<p><img src="/images/antlr/grun-the-example2.jpg"></p>
+<p>而<code>-gui</code>会生成一个展示语法分析树的 GUI 界面：</p>
+<p><img src="/images/antlr/grun-the-example3.jpg"></p>
+<p><img src="/images/antlr/grun-the-example4.jpg"></p>
+<p>根据我们定义的语法规则，ANTLR 自动生成了这棵语法分析树。之后我们会利用 ANTLR 内置的遍历器触发<code>enterInit()</code>和<code>enterValue()</code>等各种回调函数。</p>
+<h3 id="将生成的解析器嵌入-Java-程序"><a href="#将生成的解析器嵌入-Java-程序" class="headerlink" title="将生成的解析器嵌入 Java 程序"></a>将生成的解析器嵌入 Java 程序</h3><h3 id="构建语言应用"><a href="#构建语言应用" class="headerlink" title="构建语言应用"></a>构建语言应用</h3><h2 id="给出使用实例，完成对计算器功能的词法语法分析器的自动实现"><a href="#给出使用实例，完成对计算器功能的词法语法分析器的自动实现" class="headerlink" title="给出使用实例，完成对计算器功能的词法语法分析器的自动实现"></a>给出使用实例，完成对计算器功能的词法语法分析器的自动实现</h2><p>To be continued…</p>
 <h2 id="分析某一具体语言的编译开关"><a href="#分析某一具体语言的编译开关" class="headerlink" title="分析某一具体语言的编译开关"></a>分析某一具体语言的编译开关</h2><p>To be continued…</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>《The Definitive ANTLR 4 Reference》</li>
