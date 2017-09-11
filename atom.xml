@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-09-11T10:41:57.000Z</updated>
+  <updated>2017-09-11T11:21:05.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>解释器构造及 ANTLR v4 学习笔记（更新中）</title>
-    <link href="http://kyonhuang.top/ANTLR-learning-notes/"/>
-    <id>http://kyonhuang.top/ANTLR-learning-notes/</id>
+    <title>解释器构造及 ANTLR v4 学习笔记（一）</title>
+    <link href="http://kyonhuang.top/ANTLR-learning-notes-1/"/>
+    <id>http://kyonhuang.top/ANTLR-learning-notes-1/</id>
     <published>2017-09-06T07:34:19.000Z</published>
-    <updated>2017-09-11T10:41:57.000Z</updated>
+    <updated>2017-09-11T11:21:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>新学期又迎来新课程《解释器构造实践》，通过综合应用来加深对编译原理技术的理解。该实验课最终要求设计并编制调试一个 CMM（C Minus Minus，C 语言的一个子集）程序结构的解释器，对输入的满足 CMM 语法的源程序文件进行解释执行。</p>
 <p>课程推荐使用自动化生成工具 ANTLR，因此在这里持续记录我的解释器构造及 ANTLR 学习过程。当然也不排除之后可能会换用其他工具，或者全部自己实现。</p>
@@ -85,7 +85,7 @@
 <h3 id="ANTLR-工具，运行库和生成代码"><a href="#ANTLR-工具，运行库和生成代码" class="headerlink" title="ANTLR 工具，运行库和生成代码"></a>ANTLR 工具，运行库和生成代码</h3><p>ANTLR 分为两个重要的部分：ANLTR 工具自身和 ANTLR 运行（runtime） API。运行 ALTLR 工具会生成能够辨认语法所描述语言的句子的代码（词法分析程序和语法分析程序）；而运行库提供了生成代码所需的一系列类与方法，例如 Parser, Lexer 和 Token。</p>
 <p>我们先对一份语法运行 ANTLR，然后借助运行库 jar 包中的运行类（runtime classes in the jar）对生成的代码进行编译。最后，编译得到的应用与运行库结合着运行。</p>
 <p>《The Definitive ANTLR 4 Reference》（后文可能简写为《Reference》）给出了一份简单的示例，让我们可以快速了解 ANTLR 所需语法的格式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** Grammers always start with a grammer header. This grammer </span></div><div class="line"> *** is called ArrayInit and must match the filename: ArrayInit.g4</div><div class="line"> **/</div><div class="line">grammar ArrayInit;</div><div class="line"></div><div class="line"><span class="comment">/** A rule called init that that matches comma-separated values between &#123;...&#125; */</span></div><div class="line">init : <span class="string">'&#123;'</span> value (<span class="string">','</span> value)* <span class="string">'&#125;'</span> ;  <span class="comment">// must match at least one value</span></div><div class="line"></div><div class="line"><span class="comment">/** A value can be either a nested array/struct or a simple integer (INT) */</span></div><div class="line">value : init</div><div class="line">      | INT</div><div class="line">      ;</div><div class="line">      </div><div class="line"><span class="comment">// parser rules start with lowercase letters, lexer rules with uppercase</span></div><div class="line">INT :  [<span class="number">0</span>-<span class="number">9</span>]+ ;              <span class="comment">// Define token INT as one or more digits</span></div><div class="line">WS  :  [ \t\r\n]+ -&gt; skip ;  <span class="comment">// Define whitespace rule, toss it out</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** Grammers always start with a grammer header. This grammer </span></div><div class="line"> ** is called ArrayInit and must match the filename: ArrayInit.g4</div><div class="line"> */</div><div class="line">grammar ArrayInit;</div><div class="line"></div><div class="line"><span class="comment">/** A rule called init that that matches comma-separated values between &#123;...&#125; */</span></div><div class="line">init : <span class="string">'&#123;'</span> value (<span class="string">','</span> value)* <span class="string">'&#125;'</span> ;  <span class="comment">// must match at least one value</span></div><div class="line"></div><div class="line"><span class="comment">/** A value can be either a nested array/struct or a simple integer (INT) */</span></div><div class="line">value : init</div><div class="line">      | INT</div><div class="line">      ;</div><div class="line">      </div><div class="line"><span class="comment">// parser rules start with lowercase letters, lexer rules with uppercase</span></div><div class="line">INT :  [<span class="number">0</span>-<span class="number">9</span>]+ ;              <span class="comment">// Define token INT as one or more digits</span></div><div class="line">WS  :  [ \t\r\n]+ -&gt; skip ;  <span class="comment">// Define whitespace rule, toss it out</span></div></pre></td></tr></table></figure>
 <p>之后通过命令行运行<code>antlr4 ArrayInit.g4</code>，ANTLR 为我们生成很多一般需要我们自己手写的文件：</p>
 <p><img src="/images/antlr/antlr-generation.jpg"></p>
 <p>这些文件的功能如下：</p>
@@ -105,8 +105,13 @@
 <p><img src="/images/antlr/grun-the-example3.jpg"></p>
 <p><img src="/images/antlr/grun-the-example4.jpg"></p>
 <p>根据我们定义的语法规则，ANTLR 自动生成了这棵语法分析树。之后我们会利用 ANTLR 内置的遍历器触发<code>enterInit()</code>和<code>enterValue()</code>等各种回调函数。</p>
-<h3 id="将生成的解析器嵌入-Java-程序"><a href="#将生成的解析器嵌入-Java-程序" class="headerlink" title="将生成的解析器嵌入 Java 程序"></a>将生成的解析器嵌入 Java 程序</h3><h3 id="构建语言应用"><a href="#构建语言应用" class="headerlink" title="构建语言应用"></a>构建语言应用</h3><h2 id="给出使用实例，完成对计算器功能的词法语法分析器的自动实现"><a href="#给出使用实例，完成对计算器功能的词法语法分析器的自动实现" class="headerlink" title="给出使用实例，完成对计算器功能的词法语法分析器的自动实现"></a>给出使用实例，完成对计算器功能的词法语法分析器的自动实现</h2><p>To be continued…</p>
-<h2 id="分析某一具体语言的编译开关"><a href="#分析某一具体语言的编译开关" class="headerlink" title="分析某一具体语言的编译开关"></a>分析某一具体语言的编译开关</h2><p>To be continued…</p>
+<h3 id="将生成的解析器集成进-Java-程序"><a href="#将生成的解析器集成进-Java-程序" class="headerlink" title="将生成的解析器集成进 Java 程序"></a>将生成的解析器集成进 Java 程序</h3><p>我们来写一个简单的 Java <code>main()</code>方法来集成生成的解析器，并打印出和使用<code>-tree</code>参数一样的解析树。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// import ANTLR's runtime libraries</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.*;</div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.tree.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="comment">// create a CharStream that reads from standard input</span></div><div class="line">        ANTLRInputStream input = <span class="keyword">new</span> ANTLRInputStream(System.in);</div><div class="line">        </div><div class="line">        <span class="comment">// create a lexer that feeds off of input CharStream</span></div><div class="line">        ArrayInitLexer lexer = <span class="keyword">new</span> ArrayInitLexer(input);</div><div class="line">        </div><div class="line">        <span class="comment">// create a buffer of tokens pulled from the lexer</span></div><div class="line">        CommonTokenStream tokens = <span class="keyword">new</span> CommonTokenStream(lexer);</div><div class="line">        </div><div class="line">        <span class="comment">// create a parser that feeds off the tokens buffer</span></div><div class="line">        ArrayInitParser parser = <span class="keyword">new</span> ArrayInitParser(tokens);</div><div class="line">        </div><div class="line">        ParseTree tree = parser.init();  <span class="comment">// begin parsing at init rule</span></div><div class="line">        System.out.println(tree.toStringTree(parser));  <span class="comment">// print LISP-style tree</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试结果如下。语法错误也可以被报告：</p>
+<p><img src="/images/antlr/integrating-test.jpg"></p>
+<h3 id="构建语言应用"><a href="#构建语言应用" class="headerlink" title="构建语言应用"></a>构建语言应用</h3><p>我们的目标不仅仅是识别，还想做一些翻译工作。</p>
+<p>To be continued…</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>第一篇笔记到这里就结束了。我们聊了一下我对编译技术的一点看法，并阅读了《The Definitive ANTLR 4 Reference》的前三张。之后我们会继续阅读这本书，并且可能给出使用实例，完成对计算器功能的词法语法分析器的自动实现，或是分析某一具体语言的编译开关等。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>《The Definitive ANTLR 4 Reference》</li>
 <li><a href="http://blog.csdn.net/dc_726/article/details/45399371" target="_blank" rel="external">Antlr v4入门教程和实例 - 西代零零发 - CSDN博客</a></li>
@@ -552,9 +557,9 @@
       <category term="前端工程" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="前端工程" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
     
@@ -613,11 +618,11 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
+      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
+    
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
-    
-      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -818,11 +823,11 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
     
@@ -1112,11 +1117,11 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
+      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
+    
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
-    
-      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -1683,8 +1688,6 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
@@ -1692,6 +1695,8 @@
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -1764,9 +1769,9 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="http://kyonhuang.top/tags/jQuery/"/>
     
@@ -1945,8 +1950,6 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
@@ -1954,6 +1957,8 @@
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   

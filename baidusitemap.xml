@@ -4,11 +4,11 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/ANTLR-learning-notes/</loc>
-    <lastmod>2017-09-11T10:41:57.000Z</lastmod>
+    <loc>http://kyonhuang.top/ANTLR-learning-notes-1/</loc>
+    <lastmod>2017-09-11T11:21:05.000Z</lastmod>
     <data>
         <display>
-        <title>解释器构造及 ANTLR v4 学习笔记（更新中）</title>
+        <title>解释器构造及 ANTLR v4 学习笔记（一）</title>
         <pubTime>2017-09-06T07:34:19.000Z</pubTime>
         
         <tag>ANTLR</tag>
@@ -276,11 +276,11 @@
          
         <tag>JavaScipt</tag>
          
+        <tag>异步编程</tag>
+         
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
-         
-        <tag>异步编程</tag>
          
          
            
@@ -300,11 +300,11 @@
         <title>《JavaScript高级程序设计》读书笔记（一）</title>
         <pubTime>2017-02-28T00:57:45.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -330,11 +330,11 @@
          
         <tag>学习笔记</tag>
          
-        <tag>随笔</tag>
-         
         <tag>SASS</tag>
          
         <tag>WebStorm</tag>
+         
+        <tag>随笔</tag>
          
          
            
@@ -354,9 +354,9 @@
         <title>初探前端自动化测试--以 Vue 为例</title>
         <pubTime>2017-08-16T01:14:28.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>前端工程</tag>
          
@@ -438,11 +438,11 @@
          
         <tag>JavaScipt</tag>
          
+        <tag>异步编程</tag>
+         
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
-         
-        <tag>异步编程</tag>
          
          
            
@@ -488,9 +488,9 @@
         <title>在把玩中学习——typewriter.js</title>
         <pubTime>2017-03-17T03:28:32.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>学习笔记</tag>
          
@@ -514,9 +514,9 @@
         <title>Sublime Text使用技巧笔记</title>
         <pubTime>2017-02-13T08:41:37.000Z</pubTime>
         
-        <tag>笔记</tag>
-         
         <tag>Sublime Text</tag>
+         
+        <tag>笔记</tag>
          
         <tag>编辑器</tag>
          
@@ -658,11 +658,11 @@
         <title>《你不知道的 JavaScript（上卷）》脑图</title>
         <pubTime>2017-07-27T08:47:12.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>脑图</tag>
          
@@ -714,11 +714,11 @@
         <title>《JavaScript高级程序设计》读书笔记（五）</title>
         <pubTime>2017-03-15T02:43:51.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -740,11 +740,11 @@
         <title>《JavaScript高级程序设计》读书笔记（四）</title>
         <pubTime>2017-03-12T04:13:51.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -766,11 +766,11 @@
         <title>《JavaScript高级程序设计》读书笔记（三）</title>
         <pubTime>2017-03-10T02:23:02.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -792,11 +792,11 @@
         <title>《JavaScript高级程序设计》读书笔记（二）</title>
         <pubTime>2017-03-03T09:33:08.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -890,8 +890,6 @@
         <title>《ECMAScript 6 入门》读书笔记(一)</title>
         <pubTime>2017-04-06T08:21:52.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
@@ -899,6 +897,8 @@
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
+         
+        <tag>前端</tag>
          
          
            
@@ -918,8 +918,6 @@
         <title>《ECMAScript 6 入门》读书笔记(二)</title>
         <pubTime>2017-04-24T10:36:13.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
@@ -927,6 +925,8 @@
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
+         
+        <tag>前端</tag>
          
          
            
@@ -946,9 +946,9 @@
         <title>《精通jQuery》读书笔记</title>
         <pubTime>2017-04-21T06:50:27.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
+         
+        <tag>前端</tag>
          
         <tag>jQuery</tag>
          
