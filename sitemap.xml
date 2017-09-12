@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://kyonhuang.top/lets-start-Python/</loc>
+    <loc>http://kyonhuang.top/es6-1-notes/</loc>
     
-    <lastmod>2017-09-11T15:20:05.000Z</lastmod>
+    <lastmod>2017-09-12T06:46:48.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://kyonhuang.top/ANTLR-learning-notes-1/</loc>
     
-    <lastmod>2017-09-11T15:11:01.000Z</lastmod>
+    <lastmod>2017-09-12T02:53:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/lets-start-Python/</loc>
+    
+    <lastmod>2017-09-11T15:20:05.000Z</lastmod>
     
   </url>
   
@@ -257,13 +264,6 @@
     <loc>http://kyonhuang.top/pikachu-iterm/</loc>
     
     <lastmod>2017-06-17T13:45:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/es6-1-notes/</loc>
-    
-    <lastmod>2017-05-12T02:08:06.000Z</lastmod>
     
   </url>
   
