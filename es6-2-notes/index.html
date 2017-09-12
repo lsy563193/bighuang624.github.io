@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,读书笔记,JavaScipt,ES 6,《ECMAScript 6 入门》," />
+  <meta name="keywords" content="读书笔记,JavaScipt,ES 6,《ECMAScript 6 入门》,前端," />
 
 
 
@@ -93,14 +93,14 @@
 
 
 <meta name="description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构。">
-<meta name="keywords" content="前端,读书笔记,JavaScipt,ES 6,《ECMAScript 6 入门》">
+<meta name="keywords" content="读书笔记,JavaScipt,ES 6,《ECMAScript 6 入门》,前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《ECMAScript 6 入门》读书笔记(二)">
 <meta property="og:url" content="http://kyonhuang.top/es6-2-notes/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-04-28T07:49:14.000Z">
+<meta property="og:updated_time" content="2017-09-12T20:35:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《ECMAScript 6 入门》读书笔记(二)">
 <meta name="twitter:description" content="说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《ECMAScript 6 入门》。希望能早日啃完，想去看 Vue.js 了… 此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构。">
@@ -440,25 +440,29 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span>, ...[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>)</div><div class="line"><span class="comment">// 1 2 3 4 5</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> numbers = [<span class="number">4</span>, <span class="number">35</span>];</div><div class="line">add(...numbers) <span class="comment">// 39</span></div><div class="line"></div><div class="line"><span class="comment">// 不再需要 apply 方法将数组转为函数参数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>)</span>&#123;&#125;</div><div class="line">f(...args);</div></pre></td></tr></table></figure>
 <p>7.扩展运算符的应用：</p>
 <ul>
-<li><p>合并数组：提供了新写法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="string">'c'</span>];</div><div class="line"><span class="keyword">var</span> arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>];</div><div class="line"></div><div class="line">arr1.concat(arr2, arr3);  <span class="comment">// ES 5</span></div><div class="line">[...arr1, ...arr2, ...arr3]  <span class="comment">// ES 6</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>与解构赋值结合：用于生成数组（只能放在参数最后一位）。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [first, ...rest] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">first <span class="comment">// 1</span></div><div class="line">rest  <span class="comment">// [2, 3, 4, 5]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> [first, ...rest] = [];</div><div class="line">first <span class="comment">// undefined</span></div><div class="line">rest  <span class="comment">// []:</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> [first, ...rest] = [<span class="string">"foo"</span>];</div><div class="line">first  <span class="comment">// "foo"</span></div><div class="line">rest   <span class="comment">// []</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>函数的返回值：为函数提供一种返回多个值的方法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 从数据库取出一行数据，通过扩展运算符，直接传入构造函数Date</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> dateFields = readDateFields(database);</div><div class="line"><span class="keyword">var</span> d = newDate(...dateFields);</div></pre></td></tr></table></figure>
-</li>
-<li><p>字符串：扩展运算符还可以将字符串转为真正的数组。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> str = <span class="string">'x\uD83D\uDE80y'</span>;</div><div class="line"></div><div class="line">str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</div><div class="line"><span class="comment">// 'y\uDE80\uD83Dx'</span></div><div class="line"></div><div class="line">[...str].reverse().join(<span class="string">''</span>)</div><div class="line"><span class="comment">// 'y\uD83D\uDE80x'</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>实现了 Iterator 接口的对象：可以通过扩展运算符转为真正的数组。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> nodeList = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);</div><div class="line"><span class="keyword">var</span> array = [...nodeList];</div></pre></td></tr></table></figure>
-</li>
-<li><p>Map 和 Set 结构，Generator 函数：扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符。Generator 函数运行后，返回一个遍历器对象，因此也可以使用扩展运算符。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Map结构</span></div><div class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</div><div class="line">  [<span class="number">1</span>, <span class="string">'one'</span>],</div><div class="line">  [<span class="number">2</span>, <span class="string">'two'</span>],</div><div class="line">  [<span class="number">3</span>, <span class="string">'three'</span>],</div><div class="line">]);</div><div class="line"></div><div class="line"><span class="keyword">let</span> arr = [...map.keys()]; <span class="comment">// [1, 2, 3]</span></div><div class="line"></div><div class="line"><span class="comment">// Generator 函数</span></div><div class="line"><span class="keyword">var</span> go = <span class="function"><span class="keyword">function</span>*(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">[...go()] <span class="comment">// [1, 2, 3]</span></div></pre></td></tr></table></figure>
-</li>
+<li>合并数组：提供了新写法。</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="string">'c'</span>];</div><div class="line"><span class="keyword">var</span> arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>];</div><div class="line"></div><div class="line">arr1.concat(arr2, arr3);  <span class="comment">// ES 5</span></div><div class="line">[...arr1, ...arr2, ...arr3]  <span class="comment">// ES 6</span></div></pre></td></tr></table></figure>
+<ul>
+<li>与解构赋值结合：用于生成数组（只能放在参数最后一位）。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [first, ...rest] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">first <span class="comment">// 1</span></div><div class="line">rest  <span class="comment">// [2, 3, 4, 5]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> [first, ...rest] = [];</div><div class="line">first <span class="comment">// undefined</span></div><div class="line">rest  <span class="comment">// []:</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> [first, ...rest] = [<span class="string">"foo"</span>];</div><div class="line">first  <span class="comment">// "foo"</span></div><div class="line">rest   <span class="comment">// []</span></div></pre></td></tr></table></figure>
+<ul>
+<li>函数的返回值：为函数提供一种返回多个值的方法。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 从数据库取出一行数据，通过扩展运算符，直接传入构造函数Date</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> dateFields = readDateFields(database);</div><div class="line"><span class="keyword">var</span> d = newDate(...dateFields);</div></pre></td></tr></table></figure>
+<ul>
+<li>字符串：扩展运算符还可以将字符串转为真正的数组。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> str = <span class="string">'x\uD83D\uDE80y'</span>;</div><div class="line"></div><div class="line">str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</div><div class="line"><span class="comment">// 'y\uDE80\uD83Dx'</span></div><div class="line"></div><div class="line">[...str].reverse().join(<span class="string">''</span>)</div><div class="line"><span class="comment">// 'y\uD83D\uDE80x'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>实现了 Iterator 接口的对象：可以通过扩展运算符转为真正的数组。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> nodeList = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);</div><div class="line"><span class="keyword">var</span> array = [...nodeList];</div></pre></td></tr></table></figure>
+<ul>
+<li>Map 和 Set 结构，Generator 函数：扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符。Generator 函数运行后，返回一个遍历器对象，因此也可以使用扩展运算符。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Map结构</span></div><div class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</div><div class="line">  [<span class="number">1</span>, <span class="string">'one'</span>],</div><div class="line">  [<span class="number">2</span>, <span class="string">'two'</span>],</div><div class="line">  [<span class="number">3</span>, <span class="string">'three'</span>],</div><div class="line">]);</div><div class="line"></div><div class="line"><span class="keyword">let</span> arr = [...map.keys()]; <span class="comment">// [1, 2, 3]</span></div><div class="line"></div><div class="line"><span class="comment">// Generator 函数</span></div><div class="line"><span class="keyword">var</span> go = <span class="function"><span class="keyword">function</span>*(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">[...go()] <span class="comment">// [1, 2, 3]</span></div></pre></td></tr></table></figure>
 <p>8.函数内部严格模式：ES 5 时函数内部可以设定为严格模式；ES 6 规定只要函数参数使用了<strong>默认值、解构赋值或者扩展运算符</strong>，则函数内部不能显式设定为严格模式，否则报错。</p>
 <p>原因：只有从函数体代码之中，才能知道参数代码是否应该以严格模式执行，但是参数代码却应该先于函数体代码执行。</p>
 <p>两种规避方法：全局性严格模式，将函数包在一个无参数的立即执行函数里。</p>
@@ -723,8 +727,6 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端/" rel="tag"># 前端</a>
-          
             <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
           
             <a href="/tags/JavaScipt/" rel="tag"># JavaScipt</a>
@@ -732,6 +734,8 @@
             <a href="/tags/ES-6/" rel="tag"># ES 6</a>
           
             <a href="/tags/《ECMAScript-6-入门》/" rel="tag"># 《ECMAScript 6 入门》</a>
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
           
         </div>
       
