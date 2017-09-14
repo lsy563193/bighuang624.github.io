@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-09-11T15:20:05.000Z</updated>
+  <updated>2017-09-14T15:11:54.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -16,49 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Let&#39;s start Python!</title>
-    <link href="http://kyonhuang.top/lets-start-Python/"/>
-    <id>http://kyonhuang.top/lets-start-Python/</id>
-    <published>2017-09-11T15:03:19.000Z</published>
-    <updated>2017-09-11T15:20:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>年轻的决定总是美好而不负责任的。如果曾有人发誓要成为前端工程师，那他已经把过去的影子留在了古老的不再回来的夏日。现在的我是一名光荣的 Python 初学者！</p>
-<p>今天有幸和朱卫平老师聊了一下。朱老师人很 nice，本身我也对智能爬虫的研究很感兴趣。既然要写爬虫，Python 这方面的生态环境还是要比 Node 强大不少。当然我也希望不丢掉之前的 JS 和 Node 基础，要时常写点东西或者看看书保持状态。</p>
-<p>顺便谈一下，朱老师让我学 Python 2.7，大概是有一些历史遗留问题。但是我在知乎上查了一下，还是决定先看廖雪峰 3.x 版本的 Python 教程。我觉得知乎里一个回答给的建议不错，摘抄一下：</p>
-<ul>
-<li>学习 Python 前，先了解在 Python 3 里面已经弃用的 Python 2 语法，对这些部分简单带过不要花太多时间；</li>
-<li>使用 Python 2，不要使用 Python 2.7 以前的版本；</li>
-<li>使用 Python 3，不要使用 Python 3.4 以前的版本；</li>
-<li>多了解 Python 2 的<code>__future__</code>库；</li>
-<li>对同一份代码，不要为 Python 2 和 Python 3 分别维护分支，努力在一套代码中兼容 Python 2 和 Python 3。</li>
-</ul>
-<p>根据以上建议，我在 Anaconda 配置了 2.7.13 和 3.6.0 的两种版本。当然这份回答里最重要的还有一句话：</p>
-<p><strong>stop talking, just do it！</strong></p>
-<p>这一篇大概就讲这么写废话。人生苦短，我用 python，常听到这句话，现在我就来体验啦！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;年轻的决定总是美好而不负责任的。如果曾有人发誓要成为前端工程师，那他已经把过去的影子留在了古老的不再回来的夏日。现在的我是一名光荣的 Python 初学者！&lt;/p&gt;
-&lt;p&gt;今天有幸和朱卫平老师聊了一下。朱老师人很 nice，本身我也对智能爬虫的研究很感兴趣。既然要写爬虫，P
-    
-    </summary>
-    
-      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="python" scheme="http://kyonhuang.top/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>yuki-目录文档生成工具</title>
     <link href="http://kyonhuang.top/yuki-intro/"/>
     <id>http://kyonhuang.top/yuki-intro/</id>
-    <published>2017-09-11T07:56:35.000Z</published>
-    <updated>2017-09-14T14:46:10.000Z</updated>
+    <published>2017-09-14T13:56:35.000Z</published>
+    <updated>2017-09-14T15:11:54.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>技术的学习一定要辅以代码的实践，菜鸟程序员扑在轮子上要像饥饿的人扑在面包上。<br>——沃兹基硕德</p>
@@ -70,7 +32,7 @@
 <p>这篇文章剩下来的篇幅一是介绍这个小工具的使用场景、实际用法等，二是大概谈一谈开发过程中稍微值得一记的东西。</p>
 <a id="more"></a>
 <h2 id="关于-yuki"><a href="#关于-yuki" class="headerlink" title="关于 yuki"></a>关于 yuki</h2><p>使用 Node.js 开发的项目目录管理工具，能够将项目内文件结构自动映射并生成为 README.md</p>
-<p><a href="http://kyonhuang.top"><img src="https://img.shields.io/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg" alt="Author"></a><br><a href="https://www.npmjs.com/package/yuki" target="_blank" rel="external"><img src="https://img.shields.io/npm/v/yuki.svg" alt="Version"></a><br><a href="https://github.com/bighuang624/yuki/blob/master/LICENSE" target="_blank" rel="external"><img src="https://img.shields.io/npm/l/yuki.svg" alt="License"></a></p>
+<p><a href="http://kyonhuang.top"><img src="https://img.shields.io/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg" alt="作者"></a> <a href="https://www.npmjs.com/package/yuki" target="_blank" rel="external"><img src="https://img.shields.io/npm/v/yuki.svg" alt="Version"></a> <a href="https://github.com/bighuang624/yuki/blob/master/LICENSE" target="_blank" rel="external"><img src="https://img.shields.io/npm/l/yuki.svg" alt="License"></a></p>
 <p align="center"><br><img src="https://raw.githubusercontent.com/bighuang624/yuki/master/example.gif"><br></p>
 
 <h3 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h3><p><a href="https://github.com/bighuang624/yuki" target="_blank" rel="external">bighuang624/yuki</a></p>
@@ -83,6 +45,7 @@
 <li>根据指定扩展名选择是否去掉文件名的扩展名或加上书名号</li>
 <li>让每个文件都带上 Github 的链接以方便在线跳转查看</li>
 </ul>
+<p>你可以用 yuki 帮助你轻松维护 github 上类似博客、笔记、代码汇总等项目！</p>
 <h3 id="效果示例"><a href="#效果示例" class="headerlink" title="效果示例"></a>效果示例</h3><p>我的<a href="https://github.com/bighuang624/Algorithms-notes" target="_blank" rel="external">《算法》笔记及代码</a>项目的 README.md 完全通过 yuki 生成。你可以点击以查看效果。</p>
 <h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>请确认你使用的电脑有 Node 环境，越新越好。</p>
 <h4 id="安装-yuki"><a href="#安装-yuki" class="headerlink" title="安装 yuki"></a>安装 yuki</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g yuki</div></pre></td></tr></table></figure>
@@ -161,6 +124,44 @@
       <category term="yuki" scheme="http://kyonhuang.top/tags/yuki/"/>
     
       <category term="NPM" scheme="http://kyonhuang.top/tags/NPM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Let&#39;s start Python!</title>
+    <link href="http://kyonhuang.top/lets-start-Python/"/>
+    <id>http://kyonhuang.top/lets-start-Python/</id>
+    <published>2017-09-11T15:03:19.000Z</published>
+    <updated>2017-09-11T15:20:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>年轻的决定总是美好而不负责任的。如果曾有人发誓要成为前端工程师，那他已经把过去的影子留在了古老的不再回来的夏日。现在的我是一名光荣的 Python 初学者！</p>
+<p>今天有幸和朱卫平老师聊了一下。朱老师人很 nice，本身我也对智能爬虫的研究很感兴趣。既然要写爬虫，Python 这方面的生态环境还是要比 Node 强大不少。当然我也希望不丢掉之前的 JS 和 Node 基础，要时常写点东西或者看看书保持状态。</p>
+<p>顺便谈一下，朱老师让我学 Python 2.7，大概是有一些历史遗留问题。但是我在知乎上查了一下，还是决定先看廖雪峰 3.x 版本的 Python 教程。我觉得知乎里一个回答给的建议不错，摘抄一下：</p>
+<ul>
+<li>学习 Python 前，先了解在 Python 3 里面已经弃用的 Python 2 语法，对这些部分简单带过不要花太多时间；</li>
+<li>使用 Python 2，不要使用 Python 2.7 以前的版本；</li>
+<li>使用 Python 3，不要使用 Python 3.4 以前的版本；</li>
+<li>多了解 Python 2 的<code>__future__</code>库；</li>
+<li>对同一份代码，不要为 Python 2 和 Python 3 分别维护分支，努力在一套代码中兼容 Python 2 和 Python 3。</li>
+</ul>
+<p>根据以上建议，我在 Anaconda 配置了 2.7.13 和 3.6.0 的两种版本。当然这份回答里最重要的还有一句话：</p>
+<p><strong>stop talking, just do it！</strong></p>
+<p>这一篇大概就讲这么写废话。人生苦短，我用 python，常听到这句话，现在我就来体验啦！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;年轻的决定总是美好而不负责任的。如果曾有人发誓要成为前端工程师，那他已经把过去的影子留在了古老的不再回来的夏日。现在的我是一名光荣的 Python 初学者！&lt;/p&gt;
+&lt;p&gt;今天有幸和朱卫平老师聊了一下。朱老师人很 nice，本身我也对智能爬虫的研究很感兴趣。既然要写爬虫，P
+    
+    </summary>
+    
+      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="python" scheme="http://kyonhuang.top/tags/python/"/>
     
   </entry>
   
