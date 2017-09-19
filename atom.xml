@@ -164,11 +164,11 @@
   </entry>
   
   <entry>
-    <title>解释器构造及 ANTLR v4 学习笔记（一）</title>
+    <title>ANTLR v4 学习笔记（一）－ANTLR 初体验</title>
     <link href="http://kyonhuang.top/ANTLR-learning-notes-1/"/>
     <id>http://kyonhuang.top/ANTLR-learning-notes-1/</id>
     <published>2017-09-06T07:34:19.000Z</published>
-    <updated>2017-09-12T02:53:13.000Z</updated>
+    <updated>2017-09-18T12:21:57.000Z</updated>
     
     <content type="html"><![CDATA[<p>新学期又迎来新课程《解释器构造实践》，通过综合应用来加深对编译原理技术的理解。该实验课最终要求设计并编制调试一个 CMM（C Minus Minus，C 语言的一个子集）程序结构的解释器，对输入的满足 CMM 语法的源程序文件进行解释执行。</p>
 <p>课程推荐使用自动化生成工具 ANTLR，因此在这里持续记录我的解释器构造及 ANTLR 学习过程。当然也不排除之后可能会换用其他工具，或者全部自己实现。</p>
@@ -176,7 +176,8 @@
 <p>更新记录：</p>
 <ul>
 <li>17.09.06 《The Definitive ANTLR 4 Reference》Chapter 1、2 阅读完毕，笔记初版发布</li>
-<li>17.09.11 Chapter 3 阅读完毕，增加动手上路章节。这篇就大概到此为止。</li>
+<li>17.09.11 Chapter 3 阅读完毕，增加动手上路章节。</li>
+<li>17.09.  Chapter 4 阅读完毕。</li>
 </ul>
 <a id="more"></a>
 <h2 id="我对编译技术的认识"><a href="#我对编译技术的认识" class="headerlink" title="我对编译技术的认识"></a>我对编译技术的认识</h2><p>在正式进行 ANTLR 的学习前，先让我们聊一聊在经过上学期《编译技术及应用》的学习，以及查阅了有关资料后，我对编译技术和编译工具的一点认识。</p>
@@ -269,7 +270,7 @@
 <p>javac 进行编译后就可以使用了：</p>
 <p><img src="/images/antlr/translate-test.jpg"></p>
 <p>我们可以通过传入不同的监听器来产生完全不同的输出。监听器将语法和我们的语言应用很大程度上解耦了，使语法具有了更大的重用性。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>第一篇笔记到这里就结束了。我们聊了一下我对编译技术的一点看法，并阅读了《The Definitive ANTLR 4 Reference》的前三张。之后我们会继续阅读这本书，并且可能给出使用实例，完成对计算器功能的词法语法分析器的自动实现，或是分析某一具体语言的编译开关等。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>第一篇笔记到这里就结束了。我们聊了一下我对编译技术的一点看法，并阅读了《The Definitive ANTLR 4 Reference》的前四章，也就是书的 Part I: Introducing ANTLR and Computer Languages。之后我会继续学习解释器构造，并继续写这本书的阅读笔记。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>《The Definitive ANTLR 4 Reference》</li>
 <li><a href="http://blog.csdn.net/dc_726/article/details/45399371" target="_blank" rel="external">Antlr v4入门教程和实例 - 西代零零发 - CSDN博客</a></li>
@@ -284,7 +285,8 @@
 &lt;p&gt;更新记录：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;17.09.06 《The Definitive ANTLR 4 Reference》Chapter 1、2 阅读完毕，笔记初版发布&lt;/li&gt;
-&lt;li&gt;17.09.11 Chapter 3 阅读完毕，增加动手上路章节。这篇就大概到此为止。&lt;/li&gt;
+&lt;li&gt;17.09.11 Chapter 3 阅读完毕，增加动手上路章节。&lt;/li&gt;
+&lt;li&gt;17.09.  Chapter 4 阅读完毕。&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
@@ -347,7 +349,7 @@
     <link href="http://kyonhuang.top/async-IO-in-Node/"/>
     <id>http://kyonhuang.top/async-IO-in-Node/</id>
     <published>2017-09-02T12:43:16.000Z</published>
-    <updated>2017-09-03T06:35:25.000Z</updated>
+    <updated>2017-09-19T02:29:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>在底层系统中，异步通过信号量、消息等方式有了广泛的应用。但程序员们还是习惯采用同步的方式编写应用，在绝大多数高级编程语言中，异步并不多见。Java 中用多线程来应对高并发的场景，而 PHP 甚至连多线程都不提供。</p>
 <p>Node 是首个将异步作为主要编程方式的运行平台。伴随着异步 I/O 的还有事件驱动和单线程，它们共同为 Node 的设计理念奠定基调，Node 由此成为首个大规模将异步 I/O 应用在应用层上的平台。</p>
@@ -370,6 +372,26 @@
 <p>但由于完整的 I/O 并没有完成，非阻塞 I/O 立即返回的仅仅是当前调用的状态。为了获取完整数据，需要<strong>轮询</strong>这种重复调用以判断操作是否完成的技术。</p>
 <p>现存的轮询技术包括 <strong>read</strong>（通过重复调用检查 I/O 状态，性能最低，CPU 一直等待）、<strong>select</strong>（通过对文件描述符上的事件状态进行判断）、<strong>poll</strong>（比 select 有所改进，但性能仍较低）、<strong>epoll</strong>（Linux 下<strong>效率最高</strong>的 I/O 事件通知机制，进入轮询时休眠，直到事件发生将其唤醒）和<strong>kqueue</strong>（与 epoll 类似，仅在 FreeBSD 系统存在）。</p>
 <p>虽然轮询技术能够满足了非阻塞 I/O 确保获取完整数据的需求，但应用程序依旧花费了很多时间来等待 I/O 完全返回。等待期间，CPU 要么用于<strong>遍历文件描述符的状态</strong>，要么用于<strong>休眠等待事件发生</strong>。因此，<strong>它仍然只能算是一种同步</strong>。</p>
+<h4 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h4><p>在看廖雪峰的 Python 教程的异步 IO 这一章时，在评论区看到一个对于阻塞/非阻塞和同步/异步非常精妙的解释，十分容易理解和记忆，特摘录如下：</p>
+<blockquote>
+<p>老张爱喝茶，废话不说，煮开水。</p>
+<p>出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。</p>
+<p>1 老张把水壶放到火上，立等水开。（同步阻塞）</p>
+<p>老张觉得自己有点傻</p>
+<p>2 老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）</p>
+<p>老张还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出嘀~~~~的噪音。</p>
+<p>3 老张把响水壶放到火上，立等水开。（异步阻塞）</p>
+<p>老张觉得这样傻等意义不大</p>
+<p>4 老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）</p>
+<p>老张觉得自己聪明了。</p>
+<p>所谓同步异步，只是对于水壶而言。</p>
+<p>普通水壶，同步；响水壶，异步。</p>
+<p>虽然都能干活，但响水壶可以在自己完工之后，提示老张水开了。这是普通水壶所不能及的。</p>
+<p>同步只能让调用者去轮询自己（情况2中），造成老张效率的低下。</p>
+<p>所谓阻塞非阻塞，仅仅对于老张而言。</p>
+<p>立等的老张，阻塞；看电视的老张，非阻塞。</p>
+<p>情况1和情况3中老张就是阻塞的，媳妇喊他都不知道。虽然3中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。</p>
+</blockquote>
 <h3 id="异步-I-O-的实现"><a href="#异步-I-O-的实现" class="headerlink" title="异步 I/O 的实现"></a>异步 I/O 的实现</h3><p>我们期望的完美异步 I/O 应该是：应用程序发起非阻塞调用，无需通过遍历或者事件唤醒等方式轮询，可以直接处理下一个任务，只需在 I/O 完成后通过信号或回调将数据传递给应用程序即可。</p>
 <p>Linux 原生提供 AIO 这种符合要求的异步 I/O 方式，但只有 Linux 下有，且其无法利用系统缓存。因此现实情况下，想在单线程场景完美实现异步 I/O 有些难度。</p>
 <p>而在<strong>多线程</strong>，通过<strong>让部分线程进行阻塞 I/O 或者非阻塞 I/O 加载轮询技术来完成数据获取，让一个线程进行计算处理，再通过线程间的通信将 I/O 得到的数据进行传递</strong>，可以模拟异步 I/O。</p>
