@@ -307,7 +307,7 @@
     <link href="http://kyonhuang.top/Node-repo-and-ideas/"/>
     <id>http://kyonhuang.top/Node-repo-and-ideas/</id>
     <published>2017-09-03T11:03:16.000Z</published>
-    <updated>2017-09-10T11:16:57.000Z</updated>
+    <updated>2017-09-19T12:04:58.000Z</updated>
     
     <content type="html"><![CDATA[<p>对 Node 有所学习后，有时感觉无所不能，真正想做一些 demo 时又自觉无能；有时突发奇想一些 ideas，有时间想敲 demo 时又有点无所事事；有时看到一些有用或者有趣的库，事后又忘的干干净净。所以专门开一篇博文，一是记录一些常用的或者没用过有机会想体验的库，二是记录一些 ideas，等着有时间、有能力、有兴趣时来实现。</p>
 <h2 id="repo"><a href="#repo" class="headerlink" title="repo"></a>repo</h2><h3 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h3><ul>
@@ -326,7 +326,7 @@
 <li>markdown 按格式解析成 html：这个具体结合把我的歌词变成 html</li>
 <li>与机器人实时聊天：可以参考 <a href="https://github.com/hua1995116/webchat" target="_blank" rel="external">基于vue2.0的实时聊天项目</a>，可以了解一下机器人和 Socket.io</li>
 <li>带后台和 SSR 的博客</li>
-<li>yuki：一个小工具，可以将算法的文件和笔记维护到大的 README.md 中，用一个 config.js 加以配置［开发中］</li>
+<li>yuki：一个小工具，可以将算法的文件和笔记维护到大的 README.md 中，用一个 config.js 加以配置［已开发：<a href="https://github.com/bighuang624/yuki" target="_blank" rel="external">yuki</a>］</li>
 <li>一个带前端、后台、数据库的，管理什么书单、这个 ideas，或者个人每天想法什么的 micro website。这个应该作为 node 和云服务器练手不错，然后留出接口应该还可以给第一个 idea 用。</li>
 </ul>
 ]]></content>
@@ -349,7 +349,7 @@
     <link href="http://kyonhuang.top/async-IO-in-Node/"/>
     <id>http://kyonhuang.top/async-IO-in-Node/</id>
     <published>2017-09-02T12:43:16.000Z</published>
-    <updated>2017-09-19T02:29:24.000Z</updated>
+    <updated>2017-09-20T07:03:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>在底层系统中，异步通过信号量、消息等方式有了广泛的应用。但程序员们还是习惯采用同步的方式编写应用，在绝大多数高级编程语言中，异步并不多见。Java 中用多线程来应对高并发的场景，而 PHP 甚至连多线程都不提供。</p>
 <p>Node 是首个将异步作为主要编程方式的运行平台。伴随着异步 I/O 的还有事件驱动和单线程，它们共同为 Node 的设计理念奠定基调，Node 由此成为首个大规模将异步 I/O 应用在应用层上的平台。</p>
@@ -374,23 +374,13 @@
 <p>虽然轮询技术能够满足了非阻塞 I/O 确保获取完整数据的需求，但应用程序依旧花费了很多时间来等待 I/O 完全返回。等待期间，CPU 要么用于<strong>遍历文件描述符的状态</strong>，要么用于<strong>休眠等待事件发生</strong>。因此，<strong>它仍然只能算是一种同步</strong>。</p>
 <h4 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h4><p>在看廖雪峰的 Python 教程的异步 IO 这一章时，在评论区看到一个对于阻塞/非阻塞和同步/异步非常精妙的解释，十分容易理解和记忆，特摘录如下：</p>
 <blockquote>
-<p>老张爱喝茶，废话不说，煮开水。</p>
-<p>出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。</p>
-<p>1 老张把水壶放到火上，立等水开。（同步阻塞）</p>
-<p>老张觉得自己有点傻</p>
-<p>2 老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）</p>
-<p>老张还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出嘀~~~~的噪音。</p>
-<p>3 老张把响水壶放到火上，立等水开。（异步阻塞）</p>
-<p>老张觉得这样傻等意义不大</p>
-<p>4 老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）</p>
-<p>老张觉得自己聪明了。</p>
-<p>所谓同步异步，只是对于水壶而言。</p>
-<p>普通水壶，同步；响水壶，异步。</p>
-<p>虽然都能干活，但响水壶可以在自己完工之后，提示老张水开了。这是普通水壶所不能及的。</p>
-<p>同步只能让调用者去轮询自己（情况2中），造成老张效率的低下。</p>
-<p>所谓阻塞非阻塞，仅仅对于老张而言。</p>
-<p>立等的老张，阻塞；看电视的老张，非阻塞。</p>
-<p>情况1和情况3中老张就是阻塞的，媳妇喊他都不知道。虽然3中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。</p>
+<p>老张爱喝茶，废话不说，煮开水。<br>出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。</p>
+<p>1 老张把水壶放到火上，立等水开。（同步阻塞）<br>老张觉得自己有点傻</p>
+<p>2 老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）<br>老张还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出嘀~~~~的噪音。</p>
+<p>3 老张把响水壶放到火上，立等水开。（异步阻塞）<br>老张觉得这样傻等意义不大</p>
+<p>4 老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）<br>老张觉得自己聪明了。</p>
+<p>所谓同步异步，只是对于水壶而言。<br>普通水壶，同步；响水壶，异步。<br>虽然都能干活，但响水壶可以在自己完工之后，提示老张水开了。这是普通水壶所不能及的。<br>同步只能让调用者去轮询自己（情况2中），造成老张效率的低下。</p>
+<p>所谓阻塞非阻塞，仅仅对于老张而言。<br>立等的老张，阻塞；看电视的老张，非阻塞。<br>情况1和情况3中老张就是阻塞的，媳妇喊他都不知道。虽然3中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。</p>
 </blockquote>
 <h3 id="异步-I-O-的实现"><a href="#异步-I-O-的实现" class="headerlink" title="异步 I/O 的实现"></a>异步 I/O 的实现</h3><p>我们期望的完美异步 I/O 应该是：应用程序发起非阻塞调用，无需通过遍历或者事件唤醒等方式轮询，可以直接处理下一个任务，只需在 I/O 完成后通过信号或回调将数据传递给应用程序即可。</p>
 <p>Linux 原生提供 AIO 这种符合要求的异步 I/O 方式，但只有 Linux 下有，且其无法利用系统缓存。因此现实情况下，想在单线程场景完美实现异步 I/O 有些难度。</p>
@@ -738,9 +728,9 @@
       <category term="前端工程" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
       <category term="前端工程" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
     
@@ -749,11 +739,11 @@
   </entry>
   
   <entry>
-    <title>ES6 的异步操作 - Generator &amp; async</title>
+    <title>ES6 的异步操作 - Generator 和 async</title>
     <link href="http://kyonhuang.top/Generator-and-async/"/>
     <id>http://kyonhuang.top/Generator-and-async/</id>
     <published>2017-08-03T10:10:53.000Z</published>
-    <updated>2017-08-27T09:45:36.000Z</updated>
+    <updated>2017-09-20T06:59:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>继续读《ECMAScript 6 入门》。在 ES6 之前，异步编程大概有四种方法：<strong>回调函数、事件监听器模式（发布/订阅模式）、流程控制库和 Promise/Deferred 模式</strong>。为了使异步操作更加清晰、简洁、方便，ES6 引入了 <strong>Generator 函数</strong>，而 ES2017 标准引入了 <strong>async 函数</strong>作为 Generator 函数的语法糖。</p>
 <p>由于 JavaScript 是单线程，异步操作就显得格外重要。web 框架 koa 1.0 使用 Generator 实现异步，而基于 ES7 的 koa 2 完全使用 Promise 并配合 async 来实现异步。因此，在着手去了解这些基于 NodeJS 的 web 框架前，我决定先补充关于 ES6 的异步操作的知识。</p>
@@ -799,11 +789,11 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
+    
+      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -1004,11 +994,11 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
     
@@ -1298,11 +1288,11 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
+    
+      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -1873,6 +1863,8 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
@@ -1880,8 +1872,6 @@
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
-    
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
