@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-09-21T11:26:24.000Z</updated>
+  <updated>2017-09-21T12:53:14.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,22 +20,31 @@
     <link href="http://kyonhuang.top/ANTLR-learning-notes-2/"/>
     <id>http://kyonhuang.top/ANTLR-learning-notes-2/</id>
     <published>2017-09-21T11:25:56.000Z</published>
-    <updated>2017-09-21T11:26:24.000Z</updated>
+    <updated>2017-09-21T12:53:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>继续学习解释器构造 和 ANTLR。在系列博文的上一篇 <a href="http://kyonhuang.top/ANTLR-learning-notes-1/">ANTLR v4 学习笔记（一）－ANTLR 初体验</a>，我们已经学习了如何安装 ANTLR，并研究了构建语言应用程序所需的关键过程、术语和构建块。接下来，接下来，我们将通过一个不算复杂的例子来描述 ANTLR 的功能，来让我们对 ANTLR 有个大概的感觉。</p>
 <p>我将用 ANTLR 来实现一个变种计算器（变种意指它和普遍看到的计算器不太一样），它遵循上学期编译原理课程第一次实践作业要求。稍后我也将给出对这个计算器的要求描述。</p>
 <p>这篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但示例和内容与书上有些区别。我会更多地介绍实现学习过程中的经历和错误、自己对 ANTLR 的理解，以及一些实践经验和心得等等。</p>
 <a id="more"></a>
 <h2 id="计算器描述"><a href="#计算器描述" class="headerlink" title="计算器描述"></a>计算器描述</h2><p>计算器接受四则运算表达式为输入（如下所示）。如果表达式语法正确，则输出计算结果，否则报错，指出错误位置及原因。</p>
-<pre><code>Input 1: 
-a=(10.44*356+1.28)/2+1024*1.6;
-b=a*2–a/2;
-print(b);
-print(a);
-Output 1:
-   5246.04
-   3497.36
-</code></pre><p>```<br>Input 2:<br>a=(10.44<em>356+1.28)/2+1024</em>1.6;<br>b=a*2–c/2;<br>print(b);<br>Output 2:<br>   Error(line 2,position 6): undefined identifier .<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">以上两个示例包含了这个计算器的全部特性：</div><div class="line">1.	每个语句需要以“`;`”结束；2.	涉及的操作符只要求加减乘除；支持括号；3.	操作数为整数或浮点数；4.	变量不需要先声明，可直接赋值，它的类型由右边表达式的类型决定；每个变量在使用之前必须要已经有赋值；5.	变量名可以是由数字和字母组成，但首字符必须是字母； 6.	输出语句使用`print()`函数，输出并换行；7.	`print()`函数不仅可以输出变量，还可以直接输出表达式的值，例如`print(1+2)`；8.	尽量考虑周全，顾及corner cases。例如除零；</div><div class="line">9. 程序不需要 GUI，接受一个源文件路径为命令行参数。</div><div class="line"></div><div class="line">## 匹配运算表达式的语法</div><div class="line"></div><div class="line">在经过之前的学习后，我们可以比较轻松地写出一份匹配运算表达式的 ANTLR 语法：</div><div class="line"></div><div class="line">```java</div><div class="line">/**</div><div class="line"> * Define a grammar called Calculator</div><div class="line"> */</div><div class="line">grammar Calculator;</div><div class="line">// 程序起始规则，语法分析的起点</div><div class="line">program : define* print*;</div><div class="line">// 声明</div><div class="line">define: VAR &apos;=&apos; expr &apos;;&apos;;</div><div class="line">// 计算表达式</div><div class="line">expr: expr op=(&apos;*&apos;|&apos;/&apos;) expr     # MulDiv </div><div class="line">     | expr op=(&apos;+&apos;|&apos;-&apos;) expr    # AddSub</div><div class="line">     | &apos;(&apos;expr&apos;)&apos;                # parens</div><div class="line">     | NUMBER                    # number</div><div class="line">     | VAR                       # var</div><div class="line">     ;</div><div class="line"></div><div class="line">// 输出</div><div class="line">print: (&apos;print&apos;&apos;(&apos;(VAR|expr)&apos;)&apos;&apos;;&apos;);</div><div class="line">// 操作数类别</div><div class="line">NUMBER: INT|FLOAT;</div><div class="line">VAR : [a-zA-Z][a-zA-Z0-9]*;</div><div class="line">INT : [0-9]+;</div><div class="line">FLOAT : [0-9]+&apos;.&apos;[0-9]+;</div><div class="line">WS : [ \t\r\n]+ -&gt; skip; // 跳过空格符, tabs 和换行符</div><div class="line">MUL : &apos;*&apos; ;  </div><div class="line">DIV : &apos;/&apos; ;  </div><div class="line">ADD : &apos;+&apos; ;  </div><div class="line">SUB : &apos;-&apos; ;</div></pre></td></tr></table></figure></p>
+<p>例子1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Input 1: a=(10.44*356+1.28)/2+1024*1.6;b=a*2–a/2;print(b);print(a);Output 1:   5246.04   3497.36</div></pre></td></tr></table></figure>
+<p>例子2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Input 2: a=(10.44*356+1.28)/2+1024*1.6;b=a*2–c/2;print(b);Output 2:   Error(line 2,position 6): undefined identifier .</div></pre></td></tr></table></figure>
+<p>以上两个示例包含了这个计算器的全部特性：</p>
+<ol>
+<li>每个语句需要以“<code>;</code>”结束；</li>
+<li>涉及的操作符只要求加减乘除；支持括号；</li>
+<li>操作数为整数或浮点数；</li>
+<li>变量不需要先声明，可直接赋值，它的类型由右边表达式的类型决定；每个变量在使用之前必须要已经有赋值；</li>
+<li>变量名可以是由数字和字母组成，但首字符必须是字母； </li>
+<li>输出语句使用<code>print()</code>函数，输出并换行；</li>
+<li><code>print()</code>函数不仅可以输出变量，还可以直接输出表达式的值，例如<code>print(1+2)</code>；</li>
+<li>尽量考虑周全，顾及corner cases。例如除零；</li>
+<li>程序不需要 GUI，接受一个源文件路径为命令行参数。</li>
+</ol>
+<h2 id="匹配运算表达式的语法"><a href="#匹配运算表达式的语法" class="headerlink" title="匹配运算表达式的语法"></a>匹配运算表达式的语法</h2><p>在经过之前的学习后，我们可以比较轻松地写出一份匹配运算表达式的 ANTLR 语法：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Define a grammar called Calculator</div><div class="line"> */</div><div class="line">grammar Calculator;</div><div class="line">// 程序起始规则，语法分析的起点</div><div class="line">program : define* print*;</div><div class="line">// 声明</div><div class="line">define: VAR '=' expr ';';</div><div class="line">// 计算表达式</div><div class="line">expr: expr op=('*'|'/') expr     # MulDiv </div><div class="line">     | expr op=('+'|'-') expr    # AddSub</div><div class="line">     | '('expr')'                # parens</div><div class="line">     | NUMBER                    # number</div><div class="line">     | VAR                       # var</div><div class="line">     ;</div><div class="line"></div><div class="line">// 输出</div><div class="line">print: ('print''('(VAR|expr)')'';');</div><div class="line">// 操作数类别</div><div class="line">NUMBER: INT|FLOAT;</div><div class="line">VAR : [a-zA-Z][a-zA-Z0-9]*;</div><div class="line">INT : [0-9]+;</div><div class="line">FLOAT : [0-9]+'.'[0-9]+;</div><div class="line">WS : [ \t\r\n]+ -&gt; skip; // 跳过空格符, tabs 和换行符</div><div class="line">MUL : '*' ;  </div><div class="line">DIV : '/' ;  </div><div class="line">ADD : '+' ;  </div><div class="line">SUB : '-' ;</div></pre></td></tr></table></figure>
 <p>这份语法有一些值得注意的地方：</p>
 <ul>
 <li>语法分析器的规则以小写字母开头；</li>
@@ -74,7 +83,12 @@ Output 1:
 <p>OK，现在我们的变种计算器就有了一个初步版本。打包成 jar 包后，我们可以看一下效果：</p>
 <p><img src="/images/antlr/note2/Calculator-effect.jpg"></p>
 <p>我觉得可以。</p>
-<h2 id="继续优化"><a href="#继续优化" class="headerlink" title="继续优化"></a>继续优化</h2><h3 id="To-be-continued…"><a href="#To-be-continued…" class="headerlink" title="To be continued…"></a>To be continued…</h3><h2 id="计算器实现中遇到的问题"><a href="#计算器实现中遇到的问题" class="headerlink" title="计算器实现中遇到的问题"></a>计算器实现中遇到的问题</h2><p>实现这个变种计算器的过程当然也不是一帆风顺的，尤其我是先动手摸索再看的 Chapter 4。以下这些坑可能还会有新司机踩上，特此写明：</p>
+<h2 id="继续完善"><a href="#继续完善" class="headerlink" title="继续完善"></a>继续完善</h2><p>那么这时候，一般就会有人跳出来说：“我觉得不行。我觉得很普通。”</p>
+<p>其实我也是这么认为的（阿黄真的很严格！）。</p>
+<p>实际上，我们这个计算器还有一些需要继续完善的地方。比如下面这种情况：</p>
+<p><img src="/images/antlr/note2/exception.jpg"></p>
+<p>可以看到</p>
+<h2 id="计算器实现中遇到的问题"><a href="#计算器实现中遇到的问题" class="headerlink" title="计算器实现中遇到的问题"></a>计算器实现中遇到的问题</h2><p>实现这个变种计算器的过程当然也不是一帆风顺的，尤其我是先动手摸索再看的 Chapter 4。以下这些坑可能还会有新司机踩上，特此写明：</p>
 <ul>
 <li>输出语句<code>print: (&#39;print&#39;&#39;(&#39;(VAR|expr)&#39;)&#39;&#39;;&#39;);</code>没有在<code>VAR|expr</code>外加一层括号，导致后续开发匹配错误。</li>
 <li>第一次实现时，没有给备选分支加上标签，之后实现 Visitor 时就需要自己写 if 判断，十分麻烦。通过标签来对每种输入都获得一个不同的事件是坠吼的。</li>
