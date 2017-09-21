@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-09-14T15:16:44.000Z</updated>
+  <updated>2017-09-21T11:26:24.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,99 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ANTLR v4 学习笔记（二）－实现变种计算器</title>
+    <link href="http://kyonhuang.top/ANTLR-learning-notes-2/"/>
+    <id>http://kyonhuang.top/ANTLR-learning-notes-2/</id>
+    <published>2017-09-21T11:25:56.000Z</published>
+    <updated>2017-09-21T11:26:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>继续学习解释器构造 和 ANTLR。在系列博文的上一篇 <a href="http://kyonhuang.top/ANTLR-learning-notes-1/">ANTLR v4 学习笔记（一）－ANTLR 初体验</a>，我们已经学习了如何安装 ANTLR，并研究了构建语言应用程序所需的关键过程、术语和构建块。接下来，接下来，我们将通过一个不算复杂的例子来描述 ANTLR 的功能，来让我们对 ANTLR 有个大概的感觉。</p>
+<p>我将用 ANTLR 来实现一个变种计算器（变种意指它和普遍看到的计算器不太一样），它遵循上学期编译原理课程第一次实践作业要求。稍后我也将给出对这个计算器的要求描述。</p>
+<p>这篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但示例和内容与书上有些区别。我会更多地介绍实现学习过程中的经历和错误、自己对 ANTLR 的理解，以及一些实践经验和心得等等。</p>
+<a id="more"></a>
+<h2 id="计算器描述"><a href="#计算器描述" class="headerlink" title="计算器描述"></a>计算器描述</h2><p>计算器接受四则运算表达式为输入（如下所示）。如果表达式语法正确，则输出计算结果，否则报错，指出错误位置及原因。</p>
+<pre><code>Input 1: 
+a=(10.44*356+1.28)/2+1024*1.6;
+b=a*2–a/2;
+print(b);
+print(a);
+Output 1:
+   5246.04
+   3497.36
+</code></pre><p>```<br>Input 2:<br>a=(10.44<em>356+1.28)/2+1024</em>1.6;<br>b=a*2–c/2;<br>print(b);<br>Output 2:<br>   Error(line 2,position 6): undefined identifier .<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">以上两个示例包含了这个计算器的全部特性：</div><div class="line">1.	每个语句需要以“`;`”结束；2.	涉及的操作符只要求加减乘除；支持括号；3.	操作数为整数或浮点数；4.	变量不需要先声明，可直接赋值，它的类型由右边表达式的类型决定；每个变量在使用之前必须要已经有赋值；5.	变量名可以是由数字和字母组成，但首字符必须是字母； 6.	输出语句使用`print()`函数，输出并换行；7.	`print()`函数不仅可以输出变量，还可以直接输出表达式的值，例如`print(1+2)`；8.	尽量考虑周全，顾及corner cases。例如除零；</div><div class="line">9. 程序不需要 GUI，接受一个源文件路径为命令行参数。</div><div class="line"></div><div class="line">## 匹配运算表达式的语法</div><div class="line"></div><div class="line">在经过之前的学习后，我们可以比较轻松地写出一份匹配运算表达式的 ANTLR 语法：</div><div class="line"></div><div class="line">```java</div><div class="line">/**</div><div class="line"> * Define a grammar called Calculator</div><div class="line"> */</div><div class="line">grammar Calculator;</div><div class="line">// 程序起始规则，语法分析的起点</div><div class="line">program : define* print*;</div><div class="line">// 声明</div><div class="line">define: VAR &apos;=&apos; expr &apos;;&apos;;</div><div class="line">// 计算表达式</div><div class="line">expr: expr op=(&apos;*&apos;|&apos;/&apos;) expr     # MulDiv </div><div class="line">     | expr op=(&apos;+&apos;|&apos;-&apos;) expr    # AddSub</div><div class="line">     | &apos;(&apos;expr&apos;)&apos;                # parens</div><div class="line">     | NUMBER                    # number</div><div class="line">     | VAR                       # var</div><div class="line">     ;</div><div class="line"></div><div class="line">// 输出</div><div class="line">print: (&apos;print&apos;&apos;(&apos;(VAR|expr)&apos;)&apos;&apos;;&apos;);</div><div class="line">// 操作数类别</div><div class="line">NUMBER: INT|FLOAT;</div><div class="line">VAR : [a-zA-Z][a-zA-Z0-9]*;</div><div class="line">INT : [0-9]+;</div><div class="line">FLOAT : [0-9]+&apos;.&apos;[0-9]+;</div><div class="line">WS : [ \t\r\n]+ -&gt; skip; // 跳过空格符, tabs 和换行符</div><div class="line">MUL : &apos;*&apos; ;  </div><div class="line">DIV : &apos;/&apos; ;  </div><div class="line">ADD : &apos;+&apos; ;  </div><div class="line">SUB : &apos;-&apos; ;</div></pre></td></tr></table></figure></p>
+<p>这份语法有一些值得注意的地方：</p>
+<ul>
+<li>语法分析器的规则以小写字母开头；</li>
+<li>词法分析器的规则以大写字母开头；</li>
+<li>我们使用<code>|</code>来分隔同一个语言规则的若干备选分支，并使用圆括号把一些符号组合成子规则；</li>
+<li>WS 词法规则中，<code>-&gt; skip</code>是一条指令，告诉词法分析器匹配并丢弃空白字符；</li>
+<li>你也许会注意到一些<code>#</code>开头的标签。如果备选分支上没有标签，ANTLR 就只为每条规则生成一个方法；</li>
+<li>我们为运算符等词法符号定义了一些名字，这样，在之后访问器的编写中，我们可以将这些词法符号的名字当作常量使用，使代码更加清晰。</li>
+</ul>
+<p>现在我们已经可以通过 ANTLR 内置的测试组件来进行测试。由于 Eclipse 的 ANTLR 插件里的 ANTLR 版本仍然是 4.4，所以我们还是自己通过命令行生成 java 文件并编译：</p>
+<p><img src="/images/antlr/note2/cal1.jpg"></p>
+<p>添加的<code>-gui</code>参数使我们可以看到关于输入的语法分析树：</p>
+<p><img src="/images/antlr/note2/caltree.jpg"></p>
+<p>ANTLR 语法分析器能够自动报告语法错误并从错误中恢复。例如，我们的输入少一个<code>;</code>，语法分析器会自动输出错误信息：</p>
+<p><img src="/images/antlr/note2/cal1-error.jpg"></p>
+<p>添加<code>-gui</code>参数生成的可视化语法分析树会将错误节点自动标红：</p>
+<p><img src="/images/antlr/note2/caltree-error.jpg"></p>
+<h3 id="语法优化"><a href="#语法优化" class="headerlink" title="语法优化"></a>语法优化</h3><p>这里的“优化”不是指对语法本身，而是对 ANTLR 语法文件，即<code>.g4</code>作为扩展名的文件。ANTLR 允许我们将非常大的语法拆分为多个部分，根据习惯，我们将其分为语法分析器的语法和词法分析器的语法两部分。</p>
+<p>这样做的好处是对于两种词法规则或者语法规则相同的语言，我们可以复用这些“模块”来构建语法分析器。</p>
+<p>词法规则文件 CalculatorLexerRules.g4：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 注意开头是 "lexer grammer"</span></div><div class="line">lexer grammar CalculatorLexerRules;</div><div class="line"></div><div class="line"><span class="comment">// 操作数类别</span></div><div class="line">NUMBER: INT|FLOAT;</div><div class="line">VAR : [a-zA-Z][a-zA-Z0-<span class="number">9</span>]*;</div><div class="line">INT : [<span class="number">0</span>-<span class="number">9</span>]+;</div><div class="line">FLOAT : [<span class="number">0</span>-<span class="number">9</span>]+<span class="string">'.'</span>[<span class="number">0</span>-<span class="number">9</span>]+;</div><div class="line">WS : [ \t\r\n]+ -&gt; skip; <span class="comment">// 跳过空格符, tabs 和换行符</span></div><div class="line">MUL : <span class="string">'*'</span> ;  </div><div class="line">DIV : <span class="string">'/'</span> ;  </div><div class="line">ADD : <span class="string">'+'</span> ;  </div><div class="line">SUB : <span class="string">'-'</span> ;</div></pre></td></tr></table></figure>
+<p>语法规则文件 CalculatorExpr.g4，之前语法中的词法规则全部通过 import 语句导入：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Define a grammar called CalculatorExpr</div><div class="line"> */</div><div class="line">// 注意 grammer 要和文件名相同</div><div class="line">grammar CalculatorExpr;</div><div class="line">// 引入词法规则</div><div class="line">import CalculatorLexerRules;</div><div class="line">// 程序起始规则，语法分析的起点</div><div class="line">program : define* print*;</div><div class="line">// 声明</div><div class="line">define: VAR '=' expr ';';</div><div class="line">// 计算表达式</div><div class="line">expr: expr op=('*'|'/') expr     # MulDiv </div><div class="line">     | expr op=('+'|'-') expr    # AddSub</div><div class="line">     | '('expr')'                # parens</div><div class="line">     | NUMBER                    # number</div><div class="line">     | VAR                       # var</div><div class="line">     ;</div><div class="line"></div><div class="line">// 输出</div><div class="line">print: ('print''('(VAR|expr)')'';');</div></pre></td></tr></table></figure>
+<p>要生成 java 文件，我们只需要对语法文件使用<code>antlr4</code>命令即可。这样我们就得到了和之前一样的 java 文件（测试就不贴图了）：</p>
+<p><img src="/images/antlr/note2/import-java.jpg"></p>
+<p>import 语句赋予我们编写模块化语法的能力，这使得 ANTLR 语法文件的耦合度降低，复用性提高。</p>
+<h2 id="使用-Visitor-构建计算器"><a href="#使用-Visitor-构建计算器" class="headerlink" title="使用 Visitor 构建计算器"></a>使用 Visitor 构建计算器</h2><p>我们最终的目的是将生成的语法分析器集成到程序中，因此我们需要写一些 Java 代码。我们会用 Visitor（访问者模式）来实现我们的变种计算器。</p>
+<p>由于我的实现代码基于 Calculator.g4 生成的 java 文件，而非拆分后的 CalculatorExpr.g4，所以之后的文件名、类名和方法名还是会以 Calculator 开头。当然，所有功能都是相同的，使用哪份语法文件生成的 java 文件都不会有影响。</p>
+<p>我们通过以下命令来让 ANTLR 生成 Visitor 而非 Listener：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">antlr4 -no-listener -visitor -encoding UTF-8 Calculator.g4</div></pre></td></tr></table></figure>
+<p>这样，ANTLR 会自动生成一个访问器接口文件 CalculatorVisitor.java，以及该访问器的一个默认实现类 CalculatorBaseVisitor。实现时，我们需要自己写一个 Visitor 的子类，继承<br>CalculatorBaseVisitor<float>（这样表达式的计算结果都是浮点数），并重写其中的方法。</float></p>
+<p>以下是我们实现的 Visitor 子类 MainVisitor 的完整代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainVisitor</span> <span class="keyword">extends</span> <span class="title">CalculatorBaseVisitor</span>&lt;<span class="title">Float</span>&gt; </span>&#123;</div><div class="line">    Map&lt;String, Float&gt; memory = <span class="keyword">new</span> HashMap&lt;String, Float&gt;();</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * define: VAR '=' expr ';';</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitDefine</span><span class="params">(CalculatorParser.DefineContext ctx)</span> </span>&#123;</div><div class="line">        String var = ctx.VAR().getText();</div><div class="line">        <span class="keyword">float</span> value = visit(ctx.expr());</div><div class="line">        memory.put(var, value);</div><div class="line">        <span class="keyword">return</span> value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * expr op=('*'|'/') expr</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitMulDiv</span><span class="params">(CalculatorParser.MulDivContext ctx)</span> </span>&#123;</div><div class="line">        <span class="keyword">float</span> left = visit(ctx.expr(<span class="number">0</span>));</div><div class="line">        <span class="keyword">float</span> right = visit(ctx.expr(<span class="number">1</span>));</div><div class="line">        <span class="keyword">if</span> (ctx.op.getType() == CalculatorParser.MUL)</div><div class="line">            <span class="keyword">return</span> left * right;</div><div class="line">        <span class="keyword">return</span> left / right;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * expr op=('+'|'-') expr</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitAddSub</span><span class="params">(CalculatorParser.AddSubContext ctx)</span> </span>&#123;</div><div class="line">        <span class="keyword">float</span> left = visit(ctx.expr(<span class="number">0</span>));</div><div class="line">        <span class="keyword">float</span> right = visit(ctx.expr(<span class="number">1</span>));</div><div class="line">        <span class="keyword">if</span> (ctx.op.getType() == CalculatorParser.ADD)</div><div class="line">            <span class="keyword">return</span> left + right;</div><div class="line">        <span class="keyword">return</span> left - right;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * NUMBER</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitNumber</span><span class="params">(CalculatorParser.NumberContext ctx)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Float.valueOf(ctx.NUMBER().getText());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * VAR</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitVar</span><span class="params">(CalculatorParser.VarContext ctx)</span> </span>&#123;</div><div class="line">        String var = ctx.VAR().getText();</div><div class="line">        <span class="keyword">if</span> (memory.containsKey(var))</div><div class="line">            <span class="keyword">return</span> memory.get(var);</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">float</span>) <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * '('expr')'</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitParens</span><span class="params">(CalculatorParser.ParensContext ctx)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> visit(ctx.expr());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * print: ('print''('(VAR|expr)')'';');</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitPrint</span><span class="params">(CalculatorParser.PrintContext ctx)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (ctx.VAR() != <span class="keyword">null</span>) &#123;</div><div class="line">            String var = ctx.VAR().getText();</div><div class="line">            <span class="keyword">if</span> (memory.containsKey(var))</div><div class="line">                System.out.println(memory.get(var));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (ctx.expr() != <span class="keyword">null</span>) &#123;</div><div class="line">            System.out.println(visit(ctx.expr()));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> visitChildren(ctx);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后，我们需要写一个 Main.java 来新建所需要的所有对象，并针对 program 规则启动语法分析器：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.FileInputStream;</div><div class="line"><span class="keyword">import</span> java.io.InputStream;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.*;</div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.tree.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        </div><div class="line">        String inputFile = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (args.length &gt; <span class="number">0</span>)</div><div class="line">            inputFile = args[<span class="number">0</span>];</div><div class="line">        </div><div class="line">        InputStream instream = System.in;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(inputFile != <span class="keyword">null</span>)</div><div class="line">            instream = <span class="keyword">new</span> FileInputStream(inputFile);</div><div class="line">        <span class="meta">@SuppressWarnings</span>(<span class="string">"deprecation"</span>)</div><div class="line">        ANTLRInputStream input = <span class="keyword">new</span> ANTLRInputStream(instream);</div><div class="line">        <span class="comment">// 新建词法分析器对象</span></div><div class="line">        CalculatorLexer lexer = <span class="keyword">new</span> CalculatorLexer(input);</div><div class="line">        <span class="comment">// 新建词法符号流管道</span></div><div class="line">        CommonTokenStream tokens = <span class="keyword">new</span> CommonTokenStream(lexer);</div><div class="line">        <span class="comment">// 新建语法分析器对象</span></div><div class="line">        CalculatorParser parser = <span class="keyword">new</span> CalculatorParser(tokens);</div><div class="line">        <span class="comment">// 启动语法分析器，从 program 规则开始进行语法分析</span></div><div class="line">        ParseTree tree = parser.program();</div><div class="line">        </div><div class="line">        MainVisitor cal = <span class="keyword">new</span> MainVisitor();</div><div class="line">        </div><div class="line">        cal.visit(tree);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>OK，现在我们的变种计算器就有了一个初步版本。打包成 jar 包后，我们可以看一下效果：</p>
+<p><img src="/images/antlr/note2/Calculator-effect.jpg"></p>
+<p>我觉得可以。</p>
+<h2 id="继续优化"><a href="#继续优化" class="headerlink" title="继续优化"></a>继续优化</h2><h3 id="To-be-continued…"><a href="#To-be-continued…" class="headerlink" title="To be continued…"></a>To be continued…</h3><h2 id="计算器实现中遇到的问题"><a href="#计算器实现中遇到的问题" class="headerlink" title="计算器实现中遇到的问题"></a>计算器实现中遇到的问题</h2><p>实现这个变种计算器的过程当然也不是一帆风顺的，尤其我是先动手摸索再看的 Chapter 4。以下这些坑可能还会有新司机踩上，特此写明：</p>
+<ul>
+<li>输出语句<code>print: (&#39;print&#39;&#39;(&#39;(VAR|expr)&#39;)&#39;&#39;;&#39;);</code>没有在<code>VAR|expr</code>外加一层括号，导致后续开发匹配错误。</li>
+<li>第一次实现时，没有给备选分支加上标签，之后实现 Visitor 时就需要自己写 if 判断，十分麻烦。通过标签来对每种输入都获得一个不同的事件是坠吼的。</li>
+</ul>
+<h2 id="我对-ANTLR-的理解"><a href="#我对-ANTLR-的理解" class="headerlink" title="我对 ANTLR 的理解"></a>我对 ANTLR 的理解</h2><p>选择使用 ANTLR 进行编译相关的开发工作有一个重要的原因，是它能够处理绝大部分情况下的左递归。</p>
+<p>语法文件独立于程序。访问器机制也使得一切语言识别之外的工作在我们所熟悉的 Java 领域进行。在生成的所需的语法分析器之后，就不再需要同ANTLR语法标记打交道了。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>ANTLR 学习的第二篇笔记到这里就结束了。在这之后我会继续学习解释器构造，并继续写这本书的阅读笔记，敬请期待。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>《The Definitive ANTLR 4 Reference》</li>
+<li><a href="http://blog.csdn.net/yuexiang321/article/details/52770283" target="_blank" rel="external">antlr入门实例——计算器 - Yue Xiang - CSDN博客</a></li>
+<li><a href="https://w-angler.gitbooks.io/the-definitive-antlr-4-reference-chs/content/chapter1.html" target="_blank" rel="external">拉到最后，有较多参数介绍</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;继续学习解释器构造 和 ANTLR。在系列博文的上一篇 &lt;a href=&quot;http://kyonhuang.top/ANTLR-learning-notes-1/&quot;&gt;ANTLR v4 学习笔记（一）－ANTLR 初体验&lt;/a&gt;，我们已经学习了如何安装 ANTLR，并研究了构建语言应用程序所需的关键过程、术语和构建块。接下来，接下来，我们将通过一个不算复杂的例子来描述 ANTLR 的功能，来让我们对 ANTLR 有个大概的感觉。&lt;/p&gt;
+&lt;p&gt;我将用 ANTLR 来实现一个变种计算器（变种意指它和普遍看到的计算器不太一样），它遵循上学期编译原理课程第一次实践作业要求。稍后我也将给出对这个计算器的要求描述。&lt;/p&gt;
+&lt;p&gt;这篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但示例和内容与书上有些区别。我会更多地介绍实现学习过程中的经历和错误、自己对 ANTLR 的理解，以及一些实践经验和心得等等。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="解释器构造" scheme="http://kyonhuang.top/categories/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%9E%84%E9%80%A0/"/>
+    
+    
+      <category term="ANTLR" scheme="http://kyonhuang.top/tags/ANTLR/"/>
+    
+      <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="解释器" scheme="http://kyonhuang.top/tags/%E8%A7%A3%E9%87%8A%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>yuki-目录文档生成工具</title>
@@ -130,7 +223,7 @@
     <link href="http://kyonhuang.top/lets-start-Python/"/>
     <id>http://kyonhuang.top/lets-start-Python/</id>
     <published>2017-09-11T15:03:19.000Z</published>
-    <updated>2017-09-11T15:20:05.000Z</updated>
+    <updated>2017-09-20T11:20:23.000Z</updated>
     
     <content type="html"><![CDATA[<p>年轻的决定总是美好而不负责任的。如果曾有人发誓要成为前端工程师，那他已经把过去的影子留在了古老的不再回来的夏日。现在的我是一名光荣的 Python 初学者！</p>
 <p>今天有幸和朱卫平老师聊了一下。朱老师人很 nice，本身我也对智能爬虫的研究很感兴趣。既然要写爬虫，Python 这方面的生态环境还是要比 Node 强大不少。当然我也希望不丢掉之前的 JS 和 Node 基础，要时常写点东西或者看看书保持状态。</p>
@@ -144,7 +237,7 @@
 </ul>
 <p>根据以上建议，我在 Anaconda 配置了 2.7.13 和 3.6.0 的两种版本。当然这份回答里最重要的还有一句话：</p>
 <p><strong>stop talking, just do it！</strong></p>
-<p>这一篇大概就讲这么写废话。人生苦短，我用 python，常听到这句话，现在我就来体验啦！</p>
+<p>这一篇大概就讲这么些废话。人生苦短，我用 Python，常听到这句话，现在我就来体验啦！</p>
 ]]></content>
     
     <summary type="html">
@@ -159,7 +252,7 @@
     
       <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
-      <category term="python" scheme="http://kyonhuang.top/tags/python/"/>
+      <category term="Python" scheme="http://kyonhuang.top/tags/Python/"/>
     
   </entry>
   
@@ -168,7 +261,7 @@
     <link href="http://kyonhuang.top/ANTLR-learning-notes-1/"/>
     <id>http://kyonhuang.top/ANTLR-learning-notes-1/</id>
     <published>2017-09-06T07:34:19.000Z</published>
-    <updated>2017-09-20T10:30:28.000Z</updated>
+    <updated>2017-09-21T07:35:35.000Z</updated>
     
     <content type="html"><![CDATA[<p>新学期又迎来新课程《解释器构造实践》，通过综合应用来加深对编译原理技术的理解。该实验课最终要求设计并编制调试一个 CMM（C Minus Minus，C 语言的一个子集）程序结构的解释器，对输入的满足 CMM 语法的源程序文件进行解释执行。</p>
 <p>课程推荐使用自动化生成工具 ANTLR，因此在这里持续记录我的解释器构造及 ANTLR 学习过程。当然也不排除之后可能会换用其他工具，或者全部自己实现。</p>
@@ -208,7 +301,7 @@
 <p>不管是解释器还是翻译器，想要正确运行，应用首先都要识别出所有有效的句子、词组、字词组等，识别语言的程序就叫<strong>解析器（parser）</strong>或<strong>语法分析器（syntax analyzer）</strong>。</p>
 <p>完全 DIY 一个解析器非常麻烦，所以我们需要 ANTLR 的帮助。ANTLR 是一种能写出程序的程序，只需编写 ANTLR 的语法（grammars）文件，描述我们要解析的语言的语法，ANTLR 就能够自动生成用来解析这种语言的解析器。而用来声明我们语言的ANTLR语言的语法，就是<strong>元语言（meta-language）</strong>。</p>
 <h3 id="最基本的解析过程"><a href="#最基本的解析过程" class="headerlink" title="最基本的解析过程"></a>最基本的解析过程</h3><p>为了简单起见，我们将解析分为两个阶段，第一阶段是<strong>词法分析（lexical analysis）</strong>，对应的分析程序叫做<strong>词法分析器（lexer）</strong>，负责将符号（token）分组成<strong>符号类（token class or token type）</strong>。而第二阶段就是真正的<em>语法分析</em>，默认 ANTLR 会构建出一棵<strong>语法分析树（parse tree / syntax tree）</strong>。下图展示了一个简单的赋值表达式的解析过程：</p>
-<p><img src="/images/antlr/antlr1.jpg"></p>
+<p><img src="/images/antlr/note1/antlr1.jpg"></p>
 <p>语法树的叶子是输入的 token，而上级结点是包含其孩子结点的词组名（phase），线性的句子其实是语法树的序列化。最终生成语法树的好处是：</p>
 <ol>
 <li>树形结构易于遍历和处理，并且容易被程序员理解，方便了应用代码做进一步处理。</li>
@@ -217,20 +310,20 @@
 </ol>
 <h3 id="深入-ANTLR-的解析过程"><a href="#深入-ANTLR-的解析过程" class="headerlink" title="深入 ANTLR 的解析过程"></a>深入 ANTLR 的解析过程</h3><p>ANTLR 生成的解析器叫做<strong>递归下降语法分析器（recursive-descent parser）</strong>，属于自顶向下语法分析器（top-down parser）的一种。</p>
 <p>顾名思义，递归下降指的就是解析过程是从语法树的根开始，向叶子（token）递归。还是以前面的赋值表达式解析为例，其递归下降语法分析器的代码大概是下面这个样子：</p>
-<p><img src="/images/antlr/antlr2.jpg"></p>
+<p><img src="/images/antlr/note1/antlr2.jpg"></p>
 <p>很酷的一点是<code>stat()</code>、<code>assign()</code>、<code>expr()</code>等方法调用所形成的调用栈能与语法分析树的内部节点一一对应。<code>match()</code>的调用对应树的叶子，而<code>assign()</code>方法直接顺序读取输入字符，而不用做任何选择。相比之下，<code>stat()</code>方法要复杂一些，因为在解析时，它需要<strong>向前看（lookahead）</strong>一些字符才能确认走哪个代码分支，有时甚至要读取完所有输入才能得出预测结果。</p>
 <p>虽然 ANTLR 默默地为我们处理了这整个过程，但对这个选择过程有一个基本的了解会使得对生成的解析器进行 debug 变得更加容易。</p>
 <h3 id="用语法分析树构建语言应用"><a href="#用语法分析树构建语言应用" class="headerlink" title="用语法分析树构建语言应用"></a>用语法分析树构建语言应用</h3><p>在内部，ANTLR 的数据结构会尽可能地共享数据来节约内存。如下图所示，语法分析树的叶子节点指向 token 流中的 token，而 token 中的起止字符索引指向字符流，并不拷贝子字符串。而像空格这种不与任何 token 相关的字符会直接被 Lexer 丢弃掉。</p>
-<p><img src="/images/antlr/antlr3.jpg"></p>
+<p><img src="/images/antlr/note1/antlr3.jpg"></p>
 <p>ANTLR 为每条规则都会生成一个 RuleNode，叫做<strong>上下文（Context）对象</strong>，它会记录根据规则识别词组时产生的所有上下文信息。每一个上下文对象都知道已经识别的短语的起始 token 和结束 token，并且提供了对这些短语的访问。例如，<code>AssignContext</code>提供<code>ID()</code>和<code>expr()</code>方法来访问标识符节点和表达式子树。</p>
 <h3 id="语法分析树的-Listener-和-Visitor-机制"><a href="#语法分析树的-Listener-和-Visitor-机制" class="headerlink" title="语法分析树的 Listener 和 Visitor 机制"></a>语法分析树的 Listener 和 Visitor 机制</h3><p>ANTLR 在其运行库提供了 Listener 和 Visitor 两种语法分析树遍历机制。</p>
 <h4 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h4><p>Listener 的特点是全自动化，我们不必写一个语法分析树的遍历器，ANTLR 会生成一个 ParseTreeWalker 的子类来主导深度优先遍历过程，我们只需处理各种事件就可以了。例如当遍历器遍历到<code>assign</code>规则的节点时，会触发<code>enterAssign()</code>并向其传递<code>AssignContext</code>参数；而当遍历器遍历完<code>assign</code>节点的所有子节点时，触发<code>exitAssign()</code>。下图展示了 ParseTreeWalker 如何进行深度优先遍历：</p>
-<p><img src="/images/antlr/antlr4.jpg"></p>
+<p><img src="/images/antlr/note1/antlr4.jpg"></p>
 <p>而下图展示了 ParseTreeWalker 的完整监听器方法调用队列：</p>
-<p><img src="/images/antlr/antlr5.jpg"></p>
+<p><img src="/images/antlr/note1/antlr5.jpg"></p>
 <h4 id="Visitor"><a href="#Visitor" class="headerlink" title="Visitor"></a>Visitor</h4><p>而 Visitor 则提供了可控的遍历方式，我们可以自行决定是否将子结点作为参数调用<code>visit()</code>方法。</p>
 <p>在使用 ANTLR 生成时加上参数<code>-visitor</code>，会生成带有默认实现的 Visitor 实现类。我们不必实现接口中的每一个方法，只需要覆盖我们感兴趣的方法。</p>
-<p><img src="/images/antlr/antlr6.jpg"></p>
+<p><img src="/images/antlr/note1/antlr6.jpg"></p>
 <h2 id="动手上路"><a href="#动手上路" class="headerlink" title="动手上路"></a>动手上路</h2><blockquote>
 <p>对应《The Definitive ANTLR 4 Reference》中 Chapter 3 A Starter ANTLR Project。</p>
 </blockquote>
@@ -239,7 +332,7 @@
 <p>《The Definitive ANTLR 4 Reference》（后文可能简写为《Reference》）给出了一份简单的示例，让我们可以快速了解 ANTLR 所需语法的格式：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** Grammers always start with a grammer header. This grammer */</span></div><div class="line"><span class="comment">/** is called ArrayInit and must match the filename: ArrayInit.g4 */</span></div><div class="line">grammar ArrayInit;</div><div class="line"></div><div class="line"><span class="comment">/** A rule called init that that matches comma-separated values between &#123;...&#125; */</span></div><div class="line">init : <span class="string">'&#123;'</span> value (<span class="string">','</span> value)* <span class="string">'&#125;'</span> ;  <span class="comment">// must match at least one value</span></div><div class="line"></div><div class="line"><span class="comment">/** A value can be either a nested array/struct or a simple integer (INT) */</span></div><div class="line">value : init</div><div class="line">      | INT</div><div class="line">      ;</div><div class="line">      </div><div class="line"><span class="comment">// parser rules start with lowercase letters, lexer rules with uppercase</span></div><div class="line">INT :  [<span class="number">0</span>-<span class="number">9</span>]+ ;              <span class="comment">// Define Token INT as one or more digits</span></div><div class="line">WS  :  [ \t\r\n]+ -&gt; skip ;  <span class="comment">// Define whitespace rule, toss it out</span></div></pre></td></tr></table></figure>
 <p>之后通过命令行运行<code>antlr4 ArrayInit.g4</code>，ANTLR 为我们生成很多一般需要我们自己手写的文件：</p>
-<p><img src="/images/antlr/antlr-generation.jpg"></p>
+<p><img src="/images/antlr/note1/antlr-generation.jpg"></p>
 <p>这些文件的功能如下：</p>
 <ul>
 <li>ArrayInitParser.java：包含了专用于 ArrayInit 语法的解析器（parser）类的定义。</li>
@@ -250,17 +343,17 @@
 <h3 id="测试生成的解析器"><a href="#测试生成的解析器" class="headerlink" title="测试生成的解析器"></a>测试生成的解析器</h3><p>之后，我们通过<code>javac *.java</code>来编译 ANTLR 生成的所有代码。UNIX 系统用户可以将以下代码写入<code>.bash_profile</code>或其他启动脚本，以免每次都要在命令行输入一遍：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> CLASSPATH=<span class="string">".:/usr/local/lib/antlr-4.7-complete.jar:<span class="variable">$CLASSPATH</span>"</span></div><div class="line"><span class="built_in">alias</span> antlr4=<span class="string">'java -jar /usr/local/lib/antlr-4.7-complete.jar'</span></div><div class="line"><span class="built_in">alias</span> grun=<span class="string">'java org.antlr.v4.gui.TestRig'</span></div></pre></td></tr></table></figure>
 <p>之后就可以通过<code>grun</code>命令来测试生成的解析器了。注意输入要以 EOF（Unix 系统 Ctrl + D，Windows 系统 Ctrl + Z）作为结束。加上<code>-tokens</code>命令行参数，输出的每一行会展示一个单独的 token 及其所有信息：</p>
-<p><img src="/images/antlr/grun-the-example1.jpg"></p>
+<p><img src="/images/antlr/note1/grun-the-example1.jpg"></p>
 <p><code>-tree</code>会生成一个 Lisp 风格的简单语法分析树：</p>
-<p><img src="/images/antlr/grun-the-example2.jpg"></p>
+<p><img src="/images/antlr/note1/grun-the-example2.jpg"></p>
 <p>而<code>-gui</code>会生成一个展示语法分析树的 GUI 界面：</p>
-<p><img src="/images/antlr/grun-the-example3.jpg"></p>
-<p><img src="/images/antlr/grun-the-example4.jpg"></p>
+<p><img src="/images/antlr/note1/grun-the-example3.jpg"></p>
+<p><img src="/images/antlr/note1/grun-the-example4.jpg"></p>
 <p>根据我们定义的语法规则，ANTLR 自动生成了这棵语法分析树。之后我们会利用 ANTLR 内置的遍历器触发<code>enterInit()</code>和<code>enterValue()</code>等各种回调函数。</p>
 <h3 id="将生成的解析器集成进-Java-程序"><a href="#将生成的解析器集成进-Java-程序" class="headerlink" title="将生成的解析器集成进 Java 程序"></a>将生成的解析器集成进 Java 程序</h3><p>我们来写一个简单的 Java <code>main()</code>方法来集成生成的解析器，并打印出和使用<code>-tree</code>参数一样的语法分析树。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// import ANTLR's runtime libraries</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.*;</div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.tree.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="comment">// create a CharStream that reads from standard input</span></div><div class="line">        ANTLRInputStream input = <span class="keyword">new</span> ANTLRInputStream(System.in);</div><div class="line">        </div><div class="line">        <span class="comment">// create a lexer that feeds off of input CharStream</span></div><div class="line">        ArrayInitLexer lexer = <span class="keyword">new</span> ArrayInitLexer(input);</div><div class="line">        </div><div class="line">        <span class="comment">// create a buffer of tokens pulled from the lexer</span></div><div class="line">        CommonTokenStream tokens = <span class="keyword">new</span> CommonTokenStream(lexer);</div><div class="line">        </div><div class="line">        <span class="comment">// create a parser that feeds off the tokens buffer</span></div><div class="line">        ArrayInitParser parser = <span class="keyword">new</span> ArrayInitParser(tokens);</div><div class="line">        </div><div class="line">        ParseTree tree = parser.init();  <span class="comment">// begin parsing at init rule</span></div><div class="line">        System.out.println(tree.toStringTree(parser));  <span class="comment">// print LISP-style tree</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>测试结果如下。语法错误也可以被报告：</p>
-<p><img src="/images/antlr/integrating-test.jpg"></p>
+<p><img src="/images/antlr/note1/integrating-test.jpg"></p>
 <h3 id="构建语言应用"><a href="#构建语言应用" class="headerlink" title="构建语言应用"></a>构建语言应用</h3><p>我们的目标不仅仅是识别，还想做一些翻译工作。最简单的方法是利用 ANTLR 内置的语法分析树遍历器，这样我们不需要自己去进行树遍历，大大减少了工作量。</p>
 <p>我们给 ArrayInit 加一个新需求：将 short 数组<code>{99, 3, 451}</code>翻译为字符串<code>\u0063\u0003\u01c3</code>。实现这个需求，我们只需要继承<code>ArrayInitBaseListener</code>，来实现其中的一些监听器方法。</p>
 <p>我们在 ShortToUnicodeString.java 中实现我们的监听器：</p>
@@ -270,7 +363,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// import ANTLR's runtime libraries</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.*;</div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.tree.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Translate</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="comment">// create a CharStream that reads from standard input</span></div><div class="line">        ANTLRInputStream input = <span class="keyword">new</span> ANTLRInputStream(System.in);</div><div class="line">        </div><div class="line">        <span class="comment">// create a lexer that feeds off of input CharStream</span></div><div class="line">        ArrayInitLexer lexer = <span class="keyword">new</span> ArrayInitLexer(input);</div><div class="line">        </div><div class="line">        <span class="comment">// create a buffer of tokens pulled from the lexer</span></div><div class="line">        CommonTokenStream tokens = <span class="keyword">new</span> CommonTokenStream(lexer);</div><div class="line">        </div><div class="line">        <span class="comment">// create a parser that feeds off the tokens buffer</span></div><div class="line">        ArrayInitParser parser = <span class="keyword">new</span> ArrayInitParser(tokens);</div><div class="line">        </div><div class="line">        ParseTree tree = parser.init();  <span class="comment">// begin parsing at init rule</span></div><div class="line">        </div><div class="line">        <span class="comment">// Create a generic parse tree walker that can trigger callbacks</span></div><div class="line">        ParseTreeWalker walker = <span class="keyword">new</span> ParseTreeWalker();</div><div class="line">        </div><div class="line">        <span class="comment">// Walk the tree created during the parse, trigger callbacks</span></div><div class="line">        walker.walk(<span class="keyword">new</span> ShortToUnicodeString(), tree);</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>比起上一节的主程序，我们多创建了一个树遍历器（<code>ParseTreeWalker walker</code>），并用它来遍历语法分析器返回的语法分析树，它会触发<code>ShortToUnicodeString</code>中的回调方法。</p>
 <p>javac 进行编译后就可以使用了：</p>
-<p><img src="/images/antlr/translate-test.jpg"></p>
+<p><img src="/images/antlr/note1/translate-test.jpg"></p>
 <p>我们可以通过传入不同的监听器来产生完全不同的输出。监听器将语法和我们的语言应用很大程度上解耦了，使语法具有了更大的重用性。</p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>第一篇笔记到这里就结束了。我们聊了一下我对编译技术的一点看法，并阅读了《The Definitive ANTLR 4 Reference》的前三章。而书的 Part I: Introducing ANTLR and Computer Languages 还剩第四章 A Quick Tour，根据实验课的要求，这一章我会单独写一篇学习笔记，示例与内容也会和书上有一些区别。在这之后我会继续学习解释器构造，并继续写这本书的阅读笔记，敬请期待。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
@@ -730,9 +823,9 @@
       <category term="前端工程" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="前端工程" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
     
@@ -791,11 +884,11 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
+      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
+    
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
-    
-      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -996,11 +1089,11 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
     
@@ -1290,11 +1383,11 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
+      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
+    
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
-    
-      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -1578,302 +1671,6 @@
       <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
     
       <category term="学习之路" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《ECMAScript 6 入门》读书笔记(二)</title>
-    <link href="http://kyonhuang.top/es6-2-notes/"/>
-    <id>http://kyonhuang.top/es6-2-notes/</id>
-    <published>2017-04-24T10:36:13.000Z</published>
-    <updated>2017-09-12T20:35:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a>》。希望能早日啃完，想去看 Vue.js 了…</p>
-<p>此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构。</p>
-  <a id="more"></a>
-<h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h2><h3 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h3><p>1.ES 6 允许为函数的参数设置默认值，即直接写在参数定义的后面。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x, y = <span class="string">'World'</span></span>)</span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">log(<span class="string">'Hello'</span>)  <span class="comment">// Hello World</span></div><div class="line">log(<span class="string">'Hello'</span>, <span class="string">'Kyon'</span>)  <span class="comment">// Hello Kyon</span></div><div class="line">log(<span class="string">'Hello'</span>, <span class="string">''</span>)  <span class="comment">// Hello</span></div><div class="line"></div><div class="line"><span class="comment">// 与解构赋值默认值结合使用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">&#123;x, y = <span class="number">5</span>&#125;</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(&#123;<span class="attr">x</span>: <span class="number">1</span>&#125;)  <span class="comment">// 1, 5</span></div><div class="line">foo()  <span class="comment">// TypeeError: Cannot read property 'x' of undefined</span></div><div class="line"></div><div class="line"><span class="comment">// 函数参数的默认值是空对象，但是设置了对象解构赋值的默认值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m1</span>(<span class="params">&#123;x = <span class="number">0</span>, y = <span class="number">0</span>&#125; = &#123;&#125;</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数参数的默认值是一个有具体属性的对象，但是没有设置对象解构赋值的默认值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m2</span>(<span class="params">&#123;x, y&#125; = &#123; x: <span class="number">0</span>, y: <span class="number">0</span> &#125;</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数没有参数的情况</span></div><div class="line">m1() <span class="comment">// [0, 0]</span></div><div class="line">m2() <span class="comment">// [0, 0]</span></div><div class="line"></div><div class="line"><span class="comment">// x有值，y无值的情况</span></div><div class="line">m1(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;) <span class="comment">// [3, 0]</span></div><div class="line">m2(&#123;<span class="attr">x</span>: <span class="number">3</span>&#125;) <span class="comment">// [3, undefined]</span></div><div class="line"></div><div class="line"><span class="comment">// x和y都无值的情况</span></div><div class="line">m1(&#123;&#125;) <span class="comment">// [0, 0];</span></div><div class="line">m2(&#123;&#125;) <span class="comment">// [undefined, undefined]</span></div></pre></td></tr></table></figure>
-<p>参数变量是默认声明的，所以不能用<code>let</code>或<code>const</code>再次声明；使用参数默认值时，函数不能有同名参数。</p>
-<p>定义了默认值的参数通常应该为函数的尾参数。</p>
-<p>2.函数的<code>length</code>属性：将返回没有指定默认值的参数个数。如果设置了默认值的参数不是尾参数，后面的参数也不会被计入。</p>
-<p>3.作用域：一旦<strong>设置了参数的默认值</strong>，函数进行声明初始化时，参数会形成一个单独的作用域。等到初始化结束，作用域消失。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 函数foo内部声明的内部变量与参数不是同一个作用域</span></div><div class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x, y = function(</span>)</span>&#123; x = <span class="number">2</span>; &#125;)&#123;</div><div class="line">    <span class="keyword">var</span> x = <span class="number">3</span>;</div><div class="line">    y();</div><div class="line">    <span class="built_in">console</span>.log(x);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo()  <span class="comment">// 3</span></div><div class="line">x  <span class="comment">// 1</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x, y = function(</span>)</span>&#123; x = <span class="number">2</span>; &#125;)&#123;</div><div class="line">    x = <span class="number">3</span>;</div><div class="line">    y();</div><div class="line">    <span class="built_in">console</span>.log(x);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo()  <span class="comment">// 2</span></div><div class="line">x  <span class="comment">// 1</span></div></pre></td></tr></table></figure>
-<p>4.函数参数默认值的应用：可以指定某一个参数不得省略，如果省略就抛出一个错误。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throwIfMissing</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Missing parameter'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">mustBeprovided = throwIfMissing(</span>))</span>&#123;</div><div class="line">    <span class="keyword">return</span> mustBeProvided;</div><div class="line">&#125;</div><div class="line"><span class="comment">// throwIfMissing函数名之后有一对圆括号</span></div><div class="line"><span class="comment">// 表明参数的默认值不是在定义时执行，而是在运行时执行</span></div><div class="line"><span class="comment">// 即如果参数已经赋值，默认值中的函数就不会运行</span></div><div class="line"></div><div class="line">foo()  <span class="comment">// Error: Missing parameter</span></div></pre></td></tr></table></figure>
-<p>可以将参数默认值设为undefined，表明这个参数是可以省略的。</p>
-<p>5.rest 参数：形式为”…变量名”，用于获取函数的多余参数。rest 参数中的变量代表一个数组。rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> sortNumbers = <span class="function">(<span class="params">...numbers</span>) =&gt;</span> numbers.sort();</div></pre></td></tr></table></figure>
-<p>函数的<code>length</code>属性，不包括 rest 参数。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a,...b</span>)</span>&#123;&#125;).length  <span class="comment">// 1</span></div></pre></td></tr></table></figure>
-<h3 id="函数参数的默认值-1"><a href="#函数参数的默认值-1" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h3><p>6.扩展运算符：<code>...</code>，将一个数组转为用逗号分隔的参数序列。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span>, ...[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>)</div><div class="line"><span class="comment">// 1 2 3 4 5</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> numbers = [<span class="number">4</span>, <span class="number">35</span>];</div><div class="line">add(...numbers) <span class="comment">// 39</span></div><div class="line"></div><div class="line"><span class="comment">// 不再需要 apply 方法将数组转为函数参数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>)</span>&#123;&#125;</div><div class="line">f(...args);</div></pre></td></tr></table></figure>
-<p>7.扩展运算符的应用：</p>
-<ul>
-<li>合并数组：提供了新写法。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="string">'c'</span>];</div><div class="line"><span class="keyword">var</span> arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>];</div><div class="line"></div><div class="line">arr1.concat(arr2, arr3);  <span class="comment">// ES 5</span></div><div class="line">[...arr1, ...arr2, ...arr3]  <span class="comment">// ES 6</span></div></pre></td></tr></table></figure>
-<ul>
-<li>与解构赋值结合：用于生成数组（只能放在参数最后一位）。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [first, ...rest] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">first <span class="comment">// 1</span></div><div class="line">rest  <span class="comment">// [2, 3, 4, 5]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> [first, ...rest] = [];</div><div class="line">first <span class="comment">// undefined</span></div><div class="line">rest  <span class="comment">// []:</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> [first, ...rest] = [<span class="string">"foo"</span>];</div><div class="line">first  <span class="comment">// "foo"</span></div><div class="line">rest   <span class="comment">// []</span></div></pre></td></tr></table></figure>
-<ul>
-<li>函数的返回值：为函数提供一种返回多个值的方法。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 从数据库取出一行数据，通过扩展运算符，直接传入构造函数Date</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> dateFields = readDateFields(database);</div><div class="line"><span class="keyword">var</span> d = newDate(...dateFields);</div></pre></td></tr></table></figure>
-<ul>
-<li>字符串：扩展运算符还可以将字符串转为真正的数组。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> str = <span class="string">'x\uD83D\uDE80y'</span>;</div><div class="line"></div><div class="line">str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</div><div class="line"><span class="comment">// 'y\uDE80\uD83Dx'</span></div><div class="line"></div><div class="line">[...str].reverse().join(<span class="string">''</span>)</div><div class="line"><span class="comment">// 'y\uD83D\uDE80x'</span></div></pre></td></tr></table></figure>
-<ul>
-<li>实现了 Iterator 接口的对象：可以通过扩展运算符转为真正的数组。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> nodeList = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);</div><div class="line"><span class="keyword">var</span> array = [...nodeList];</div></pre></td></tr></table></figure>
-<ul>
-<li>Map 和 Set 结构，Generator 函数：扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符。Generator 函数运行后，返回一个遍历器对象，因此也可以使用扩展运算符。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Map结构</span></div><div class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</div><div class="line">  [<span class="number">1</span>, <span class="string">'one'</span>],</div><div class="line">  [<span class="number">2</span>, <span class="string">'two'</span>],</div><div class="line">  [<span class="number">3</span>, <span class="string">'three'</span>],</div><div class="line">]);</div><div class="line"></div><div class="line"><span class="keyword">let</span> arr = [...map.keys()]; <span class="comment">// [1, 2, 3]</span></div><div class="line"></div><div class="line"><span class="comment">// Generator 函数</span></div><div class="line"><span class="keyword">var</span> go = <span class="function"><span class="keyword">function</span>*(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">[...go()] <span class="comment">// [1, 2, 3]</span></div></pre></td></tr></table></figure>
-<p>8.函数内部严格模式：ES 5 时函数内部可以设定为严格模式；ES 6 规定只要函数参数使用了<strong>默认值、解构赋值或者扩展运算符</strong>，则函数内部不能显式设定为严格模式，否则报错。</p>
-<p>原因：只有从函数体代码之中，才能知道参数代码是否应该以严格模式执行，但是参数代码却应该先于函数体代码执行。</p>
-<p>两种规避方法：全局性严格模式，将函数包在一个无参数的立即执行函数里。</p>
-<p>9.name 属性：返回该函数的函数名。</p>
-<p>如果将一个匿名函数赋值给一个变量，ES5 的 name 属性，会返回空字符串，而 ES6 的 name 属性会返回实际的函数名。</p>
-<p>如果将一个具名函数赋值给一个变量，则 ES5 和 ES6 的 name 属性都返回这个具名函数原本的名字。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> bar = <span class="function"><span class="keyword">function</span> <span class="title">baz</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">// ES 5、ES 6</span></div><div class="line">bar.name <span class="comment">// "baz"</span></div></pre></td></tr></table></figure>
-<p><code>Function</code>构造函数返回的函数实例，name 属性的值为 <code>anonymous</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="keyword">new</span> <span class="built_in">Function</span>).name <span class="comment">// "anonymous"</span></div></pre></td></tr></table></figure>
-<p><code>bind</code>返回的函数，name属性值会加上<code>bound</code>前缀。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">foo.bind(&#123;&#125;).name <span class="comment">// "bound foo"</span></div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;).bind(&#123;&#125;).name <span class="comment">// "bound "</span></div></pre></td></tr></table></figure>
-<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>10.如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用return语句返回。由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 箭头函数与变量解构结合使用</span></div><div class="line"><span class="keyword">const</span> full = <span class="function">(<span class="params">&#123; first, last &#125;</span>) =&gt;</span> first + <span class="string">' '</span> + last;</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">full</span>(<span class="params">person</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> person.first + <span class="string">' '</span> + person.last;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 简化回调函数</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">x</span> =&gt;</span> x * x);</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> x * x;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>11.箭头函数使用注意点：</p>
-<ul>
-<li>函数体内的<code>this</code>对象就是<strong>定义时所在对象</strong>，而不是使用时所在对象。</li>
-<li>不可当作构造函数（即不可使用<code>new</code>命令），否则抛出错误。</li>
-<li>不可以使用<code>arguments</code>对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。</li>
-<li>不可以使用<code>yield</code>命令，因此箭头函数不能用作 Generator 函数。</li>
-</ul>
-<p><code>this</code>指向的固定化，实际原因是箭头函数根本没有自己的<code>this</code>，导致内部的<code>this</code>就是外层代码块的<code>this</code>。也正因如此，箭头函数不能用作构造函数，也不能用<code>call()</code>、<code>apply()</code>、<code>bind()</code>这些方法去改变<code>this</code>的指向。</p>
-<p>除了<code>this</code>，<code>arguments</code>、<code>super</code>、<code>new.target</code>在箭头函数中也是不存在的，指向外层函数的对应变量。</p>
-<p>12.嵌套的箭头函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES 5</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert</span>(<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;<span class="attr">into</span>: <span class="function"><span class="keyword">function</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">after</span>: <span class="function"><span class="keyword">function</span>(<span class="params">afterValue</span>) </span>&#123;</div><div class="line">      array.splice(array.indexOf(afterValue)+<span class="number">1</span>, <span class="number">0</span>, value);</div><div class="line">      <span class="keyword">return</span> array;</div><div class="line">    &#125;&#125;;</div><div class="line">  &#125;&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">insert(<span class="number">2</span>).into([<span class="number">1</span>, <span class="number">3</span>]).after(<span class="number">1</span>);  <span class="comment">// [1, 2, 3]</span></div><div class="line"></div><div class="line"><span class="comment">// ES 6</span></div><div class="line"><span class="keyword">let</span> insert = <span class="function">(<span class="params">value</span>) =&gt;</span> (&#123;<span class="attr">into</span>: <span class="function">(<span class="params">array</span>) =&gt;</span> (&#123;<span class="attr">after</span>: <span class="function">(<span class="params">afterValue</span>) =&gt;</span> &#123;</div><div class="line">  array.splice(array.indexOf(afterValue)+<span class="number">1</span>, <span class="number">0</span>, value);</div><div class="line">  <span class="keyword">return</span> array;</div><div class="line">&#125;&#125;)&#125;);</div><div class="line"></div><div class="line">insert(<span class="number">2</span>).into([<span class="number">1</span>, <span class="number">3</span>]).after(<span class="number">1</span>);  <span class="comment">// [1, 2, 3]</span></div></pre></td></tr></table></figure>
-<p>13.函数绑定运算符：<code>::</code>，左边为对象，右边为函数。该运算符自动将左边的对象作为上下文环境（即 this 对象），绑定到右边的函数上。用来取代<code>call</code>、<code>apply</code>、<code>bind</code>调用。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">foo::bar;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line">bar.bind(foo);</div><div class="line"></div><div class="line">foo::bar(...arguments);</div><div class="line"><span class="comment">// 等同于</span></div><div class="line">bar.apply(foo, <span class="built_in">arguments</span>);</div></pre></td></tr></table></figure>
-<p>如果双冒号左边为空，右边是一个对象的方法，则等于将该方法绑定在该对象上面。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> method = obj::obj.foo;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">var</span> method = ::obj.foo;</div><div class="line"></div><div class="line"><span class="keyword">var</span> log = ::<span class="built_in">console</span>.log;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">var</span> log = <span class="built_in">console</span>.log.bind(<span class="built_in">console</span>);</div></pre></td></tr></table></figure>
-<p>由于双冒号运算符返回的还是原对象，因此可以采用链式写法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123; find, html &#125; = jake;</div><div class="line"></div><div class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">"div.myClass"</span>)</div><div class="line">::find(<span class="string">"p"</span>)</div><div class="line">::html(<span class="string">"hahaha"</span>);</div></pre></td></tr></table></figure>
-<p>该语法为已被 Babel 转码器支持的一个 ES 7 提案。</p>
-<p>14.尾调用：某个函数的最后一步是调用另一个函数。</p>
-<p>To be continued…</p>
-<h2 id="对象的扩展"><a href="#对象的扩展" class="headerlink" title="对象的扩展"></a>对象的扩展</h2><p>1.属性的简洁表示法：ES 6 允许直接写入变量和函数，作为对象的属性和方法。这时，属性名为变量名，属性值为变量值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="string">'bar'</span>;</div><div class="line"><span class="keyword">var</span> baz = &#123;foo&#125;;</div><div class="line">baz  <span class="comment">// &#123;foo: "bar"&#125;</span></div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">var</span> baz = &#123;<span class="attr">foo</span>: foo&#125;;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">  method()&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hello!"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">  <span class="attr">method</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hello!"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>如果某个方法的值是一个 Generator 函数，前面需要加上星号。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  * m()&#123;</div><div class="line">    <span class="keyword">yield</span> <span class="string">'hello world'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>2.属性名表达式：ES 6 允许字面量定义对象时，把表达式放在方括号内。表达式也可用于定义方法名。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> propKey = <span class="string">'foo'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">  [propKey]: <span class="literal">true</span>,</div><div class="line">  [<span class="string">'a'</span> + <span class="string">'bc'</span>]: <span class="number">123</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 表达式用于定义方法名</span></div><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">  [<span class="string">'h'</span> + <span class="string">'ello'</span>]() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'hi'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">obj.hello()  <span class="comment">// hi</span></div></pre></td></tr></table></figure>
-<p>但<strong>属性名</strong>表达式与简洁表达式不能同时使用。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 报错</span></div><div class="line"><span class="keyword">var</span> foo = <span class="string">'bar'</span>;</div><div class="line"><span class="keyword">var</span> bar = <span class="string">'abc'</span>;</div><div class="line"><span class="keyword">var</span> baz = &#123; [foo] &#125;;</div><div class="line"></div><div class="line"><span class="comment">// 正确</span></div><div class="line"><span class="keyword">var</span> foo = <span class="string">'bar'</span>;</div><div class="line"><span class="keyword">var</span> baz = &#123; [foo]: <span class="string">'abc'</span>&#125;;</div></pre></td></tr></table></figure>
-<p>属性名表达式如果是一个对象，默认情况下会自动将对象转为字符串<code>[object Object]</code>（即不要这么用）。</p>
-<p>3.方法的 name 属性：返回函数名。</p>
-<p>如果对象的方法使用了取值函数（<code>getter</code>）和存值函数（<code>setter</code>），则<code>name</code>属性不是在该方法上面，而是该方法的属性的描述对象的<code>get</code>和<code>set</code>属性上面，返回值是方法名前加上<code>get</code>和<code>set</code>。</p>
-<p>有两种特殊情况：<code>bind</code>方法创造的函数，<code>name</code>属性返回<code>bound</code>加上原函数的名字；<code>Function</code>构造函数创造的函数，<code>name</code>属性返回<code>anonymous</code>。</p>
-<p>如果对象的方法是一个 Symbol 值，那么<code>name</code>属性返回的是这个 Symbol 值的描述。</p>
-<p>4.<code>Object.is()</code>：比较两个值是否严格相等，与严格比较运算符（<code>===</code>）的行为基本一致（不同之处为<code>+0</code>不等于<code>-0</code>，以及<code>NaN</code>等于自身）。</p>
-<p>5.<code>Object.assign()</code>：用于对象的合并，将源对象的所有可枚举属性复制到目标对象。第一个参数是目标对象，其他参数是源对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> target = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> source1 = &#123; <span class="attr">b</span>: <span class="number">2</span> &#125;;</div><div class="line"><span class="keyword">var</span> source2 = &#123; <span class="attr">c</span>: <span class="number">3</span> &#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(target, source1, source2);</div><div class="line">target  <span class="comment">// &#123;a:1, b:2, c:3&#125;</span></div></pre></td></tr></table></figure>
-<p>如果多个对象有同名属性，后面的属性会覆盖前面的。</p>
-<p>如果只有一个参数将直接返回（参数不是对象会先转成对象）。无法转成对象的源对象将被跳过。<code>undefined</code>和<code>null</code>无法转成对象，所以不能作为目标对象（否则报错）。其他相关注意事项见文档。</p>
-<p>实行浅拷贝，即源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。对于嵌套对象，一旦遇到同名属性会被替换。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> target = &#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: <span class="string">'c'</span>, <span class="attr">d</span>: <span class="string">'e'</span>&#125; &#125;;</div><div class="line"><span class="keyword">var</span> source = &#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: <span class="string">'hello'</span> &#125; &#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(target, source);  <span class="comment">// &#123;a: &#123; b: 'hello' &#125;&#125;</span></div></pre></td></tr></table></figure>
-<p><code>Object.assign()</code>有很多用处，其中包括为对象添加属性和方法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 添加属性</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(x, y) &#123;</div><div class="line">    <span class="built_in">Object</span>.assign(<span class="keyword">this</span>, &#123;x, y&#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 添加方法</span></div><div class="line"><span class="built_in">Object</span>.assign(SomeClass.prototype, &#123;</div><div class="line">  someMethod(arg1, arg2)&#123; ... &#125;,</div><div class="line">  anotherMethod()&#123; ... &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line">SomeClass.prototype.someMethod = <span class="function"><span class="keyword">function</span>(<span class="params">arg1, arg2</span>) </span>&#123; ... &#125;;</div><div class="line">SomeClass.prototype.anotherMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; ... &#125;;</div></pre></td></tr></table></figure>
-<h3 id="属性的可枚举性与遍历"><a href="#属性的可枚举性与遍历" class="headerlink" title="属性的可枚举性与遍历"></a>属性的可枚举性与遍历</h3><p>6.<code>Object.getOwnPropertyDescriptor</code>：对象的每个属性都有一个描述对象，用来控制该属性的行为。<code>Object.getOwnPropertyDescriptor</code>方法可以获得该属性的描述对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">foo</span>: <span class="number">123</span> &#125;;</div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'foo'</span>);</div><div class="line"><span class="comment">// &#123;</span></div><div class="line"><span class="comment">//   value: 123,</span></div><div class="line"><span class="comment">//   writable: true,</span></div><div class="line"><span class="comment">//   enumerable: true,</span></div><div class="line"><span class="comment">//   configurable: true</span></div><div class="line"><span class="comment">// &#125;</span></div></pre></td></tr></table></figure>
-<p>ES 7 引入<code>Object.getOwnPropertyDescriptors</code>方法，返回指定对象所有自身属性（非继承属性）的描述对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> obj = &#123;</div><div class="line">  <span class="attr">foo</span>: <span class="number">123</span>,</div><div class="line">  get bar() &#123; <span class="keyword">return</span> <span class="string">'abc'</span>; &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptors(obj);</div><div class="line"><span class="comment">// &#123;</span></div><div class="line"><span class="comment">//   foo: &#123;</span></div><div class="line"><span class="comment">//     value: 123,</span></div><div class="line"><span class="comment">//     writable: true,</span></div><div class="line"><span class="comment">//     enumerable: true,</span></div><div class="line"><span class="comment">//     configurable: true</span></div><div class="line"><span class="comment">//   &#125;,</span></div><div class="line"><span class="comment">//   bar: &#123;</span></div><div class="line"><span class="comment">//     get: [Function: bar],</span></div><div class="line"><span class="comment">//     set: undefined,</span></div><div class="line"><span class="comment">//     enumerable: true,</span></div><div class="line"><span class="comment">//     configurable: true</span></div><div class="line"><span class="comment">//   &#125;</span></div><div class="line"><span class="comment">// &#125;</span></div></pre></td></tr></table></figure>
-<p>7.属性的可枚举性：描述对象的<code>enumerable</code>属性，成为“可枚举性”。ES 5 有三个操作会忽略<code>enumerable</code>为<code>false</code>的属性：</p>
-<ul>
-<li><code>for...in</code>循环：只遍历对象自身的和<strong>继承的</strong>可枚举的属性。</li>
-<li><code>Object.keys()</code>：返回对象自身的所有可枚举的属性的键名。</li>
-<li><code>JSON.stringify()</code>：只串行化对象自身的可枚举的属性。</li>
-</ul>
-<p>ES 6 新增<code>Object.assign()</code>，会忽略<code>enumerable</code>为<code>false</code>的属性，只拷贝对象自身的可枚举的属性。</p>
-<p><strong>当只关心对象自身的属性时，尽量不要用<code>for...in</code>循环，而用<code>Object.keys()</code>代替。</strong></p>
-<p>8.<code>Object.keys()</code>：返回一个数组，包括对象自身的（<strong>不含继承的</strong>）所有可枚举属性的<strong>键名</strong>。ES 2017 引入配套的<code>Object.values</code>和<code>Object.entries</code>作为遍历一个对象的补充手段。</p>
-<p><code>Object.values()</code>：返回一个数组，包括对象自身的（<strong>不含继承的</strong>）所有可枚举属性的<strong>键值</strong>（不含 Symbol 属性）。参数为字符串时返回各个字符组成的一个数组，参数为数值或布尔值时返回空数组（与包装对象有关）。</p>
-<p><code>Object.entries()</code>：返回一个数组，包括对象自身的（<strong>不含继承的</strong>）所有可枚举属性的<strong>键值对数组</strong>（不含 Symbol 属性）。</p>
-<p>9.属性的遍历：ES 6 共有5种遍历对象的方法。</p>
-<ol>
-<li><code>for...in</code>：循环遍历对象<strong>自身的</strong>和<strong>继承的</strong>可枚举属性（不含 Symbol 属性）。</li>
-<li><code>Object.keys(obj)</code>：返回一个数组，包括对象自身的（<strong>不含继承的</strong>）所有可枚举属性（不含 Symbol 属性）。</li>
-<li><code>Object.getOwnPropertyNames(obj)</code>：返回一个数组，包含对象自身的所有属性（不含 Symbol 属性，但<strong>包括不可枚举属性</strong>）。</li>
-<li><code>Object.getOwnPropertySymbols(obj)</code>：返回一个数组，包含对象自身的<strong>所有 Symbol 属性</strong>。</li>
-<li><code>Reflect.ownKeys(obj)</code>：返回一个数组，包含对象自身的所有属性（无论是否可枚举或者属性名是 Symbol 还是字符串）。</li>
-</ol>
-<p>以上的5种方法遍历对象的属性，都遵守同样的属性遍历的次序规则（之前一些遍历的方法也遵循此规则）。</p>
-<ul>
-<li>首先遍历所有属性名为数值的属性，按照数字排序。</li>
-<li>其次遍历所有属性名为字符串的属性，按照生成时间排序。</li>
-<li>最后遍历所有属性名为Symbol值的属性，按照生成时间排序。</li>
-</ul>
-<h3 id="proto-属性及相关方法"><a href="#proto-属性及相关方法" class="headerlink" title="__proto__属性及相关方法"></a><code>__proto__</code>属性及相关方法</h3><p>10.<code>__proto__</code>属性：用于读取或设置当前对象的<code>prototype</code>对象。内部属性，不是正式对外 API。建议使用<code>Object.setPrototypeOf()</code>（写操作）、<code>Object.getPrototype()</code>（读操作）、<code>Object.create()</code>（生成操作）代替。</p>
-<p>如果一个对象本身部署了<code>__proto__</code>属性，则该属性的值就是对象的原型。</p>
-<p>11.<code>Object.setPrototypeOf()</code>：作用与<code>__proto__</code>相同，用来设置一个对象的<code>prototype</code>对象，返回参数对象本身。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 格式</span></div><div class="line"><span class="built_in">Object</span>.setPrototypeOf(object, prototype)</div><div class="line"></div><div class="line"><span class="comment">// 用法</span></div><div class="line"><span class="keyword">var</span> o = <span class="built_in">Object</span>.setPrototypeOf(&#123;&#125;, <span class="literal">null</span>);</div></pre></td></tr></table></figure>
-<p>如果第一个参数不是对象，会自动转为对象（由于返回的还是第一个参数，故无效果）；是<code>undefined</code>或<code>null</code>则报错（无法转为对象）。</p>
-<p>12.<code>Object.getPrototypeOf()</code>：用于读取一个对象的原型对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.getPrototypeOf(obj);</div></pre></td></tr></table></figure>
-<p>如果参数不是对象，会被自动转为对象；是<code>undefined</code>或<code>null</code>则报错。</p>
-<p>13.对象的扩展运算符：ES 2017 将<code>...</code>引入对象。主要用途有：</p>
-<ul>
-<li>解构赋值：</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;x, y, ...z&#125; = &#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>, <span class="attr">a</span>: <span class="number">3</span>, <span class="attr">b</span>: <span class="number">4</span> &#125;;</div><div class="line">x  <span class="comment">// 1</span></div><div class="line">y  <span class="comment">// 2</span></div><div class="line">z  <span class="comment">// &#123; a: 3, b: 4 &#125;</span></div></pre></td></tr></table></figure>
-<p>注意解构赋值的拷贝是浅拷贝，且不会拷贝继承自原型对象的属性。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 扩展某个函数的参数，引入其他操作</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">baseFunction</span>(<span class="params">&#123; a, b &#125;</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapperFunction</span>(<span class="params">&#123; x, y, ...restConfig &#125;</span>) </span>&#123;</div><div class="line">  <span class="comment">// 使用x和y参数进行操作</span></div><div class="line">  <span class="comment">// 其余参数传给原始函数</span></div><div class="line">  <span class="keyword">return</span> baseFunction(restConfig);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>扩展运算符：取出参数对象的所有可遍历属性，拷贝到当前对象之中。等同于<code>Object.assign</code>方法。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> z = &#123; <span class="attr">a</span>: <span class="number">3</span>, <span class="attr">b</span>: <span class="number">4</span> &#125;;</div><div class="line"><span class="keyword">let</span> n = &#123; ...z &#125;;</div><div class="line">n  <span class="comment">// &#123; a: 3, b: 4 &#125;</span></div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">let</span> n = <span class="built_in">Object</span>.assign(&#123;&#125;, z);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 用于合并两个对象</span></div><div class="line"><span class="keyword">let</span> ab = &#123; ...a, ...b &#125;;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">let</span> ab = <span class="built_in">Object</span>.assign(&#123;&#125;, a, b);</div></pre></td></tr></table></figure>
-<p>如果用户自定义的属性放在扩展运算符后面，则扩展运算符内部的同名属性会被覆盖掉。因此可用于修改现有对象部分的部分属性。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> newVersion = &#123;</div><div class="line">  ...previousVersion,</div><div class="line">  <span class="attr">name</span>: <span class="string">'New Name'</span>  <span class="comment">// Override the name property</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>如果把自定义属性放在扩展运算符前面，就变成了设置新对象的默认属性值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aWithDefaults = &#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>, ...a &#125;;</div></pre></td></tr></table></figure>
-<p>扩展运算符的参数对象之中，如果有取值函数<code>get</code>，这个函数是会执行的。</p>
-<p>14.Null 传导运算符：<code>?.</code>，用于判断对象及其内部属性是否存在。仅为提案，详见文档。</p>
-<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><p>1.概述：ES 6 引入的新的原始数据类型，表示独一无二的值。至此，JS 共有七种数据类型：</p>
-<ul>
-<li>Undefined</li>
-<li>Null</li>
-<li>布尔值（Boolean）</li>
-<li>字符串（String）</li>
-<li>数值（Number）</li>
-<li>对象（Object）</li>
-<li>Symbol</li>
-</ul>
-<p>Symbol 值通过<code>Symbol</code>函数生成。即对象的属性名有两种类型：原来就有的字符串，和新增的 Symbol 类型。凡是属性名属于 Symbol 类型，就是独一无二的，不会与其他属性名产生冲突。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> s = <span class="built_in">Symbol</span>();</div><div class="line"></div><div class="line"><span class="keyword">typeof</span> s</div><div class="line"><span class="comment">// "symbol"</span></div></pre></td></tr></table></figure>
-<p>生成的 Symbol 是一个原始类型的值，不是对象。因此<code>Symbol</code>函数前不能使用<code>new</code>命令（否则报错），Symbol 值也不能添加属性。</p>
-<p><code>Symbol</code>函数可以接受一个字符串作为参数，表示对 Symbol 实例的描述。但相同参数的<code>Symbol</code>函数的返回值是<strong>不相等</strong>的。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="built_in">Symbol</span>(<span class="string">'foo'</span>);</div><div class="line"><span class="keyword">var</span> s2 = <span class="built_in">Symbol</span>(<span class="string">'bar'</span>);</div><div class="line"></div><div class="line">s1  <span class="comment">// Symbol(foo)</span></div><div class="line">s2  <span class="comment">// Symbol(bar)</span></div><div class="line"></div><div class="line">s1.toString()  <span class="comment">// "Symbol(foo)"</span></div><div class="line">s2.toString()  <span class="comment">// "Symbol(bar)"</span></div></pre></td></tr></table></figure>
-<p>如果 Symbol 的参数是一个对象，就会调用该对象的<code>toString</code>方法，将其转为字符串，然后生成一个 Symbol 值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> obj = &#123;</div><div class="line">  toString()&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'kyon'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">const</span> sym = <span class="built_in">Symbol</span>(obj);</div><div class="line">sym  <span class="comment">// Symbol(abc)</span></div></pre></td></tr></table></figure>
-<p>Symbol 值不能与其他类型的值进行运算（会报错），但可以显式转为字符串和布尔值。</p>
-<p>2.作为属性名的Symbol：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mySymbol = <span class="built_in">Symbol</span>();</div><div class="line"></div><div class="line"><span class="comment">// 第一种写法</span></div><div class="line"><span class="keyword">var</span> a = &#123;&#125;;</div><div class="line">a[mySymbol] = <span class="string">'Hello!'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 第二种写法</span></div><div class="line"><span class="keyword">var</span> a = &#123;</div><div class="line">  [mySymbol]: <span class="string">'Hello!'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 第三种写法</span></div><div class="line"><span class="keyword">var</span> a = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(a, mySymbol, &#123; <span class="attr">value</span>: <span class="string">'Hello'</span>! &#125;);</div><div class="line"></div><div class="line"><span class="comment">// 以上写法都得到同样结果</span></div><div class="line">a[mySymbol]  <span class="comment">// "Hello!"</span></div></pre></td></tr></table></figure>
-<p>Symbol 值作为对象属性名时，不能用点运算符。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mySymbol = <span class="built_in">Symbol</span>();</div><div class="line"><span class="keyword">var</span> a = &#123;&#125;;</div><div class="line"></div><div class="line">a.mySymbol = <span class="string">'Hello!'</span>;</div><div class="line">a[mySymbol]  <span class="comment">// undefined</span></div><div class="line">a[<span class="string">'mySymbol'</span>]  <span class="comment">// "Hello!"</span></div></pre></td></tr></table></figure>
-<p>Symbol 值作为属性名时，该属性是<strong>公开属性</strong>而非私有属性。</p>
-<p>3.魔术字符串：在代码中多次出现、与代码形成强耦合的某一个具体的字符串或数值。应尽量消除而改用含义清晰的变量代替。</p>
-<p><code>Symbol</code>可用于消除魔术字符串。</p>
-<p>4.属性名的遍历：Symbol 作为属性名，该属性不会出现在<code>for...in</code>、<code>for...of</code>循环中，也不会被<code>Object.keys()</code>、<code>Object.getOwnPropertyNames()</code>、<code>JSON.stringify()</code>返回。这个特性可被用于为对象定义一些非私有的、但又希望只用于内部的方法。</p>
-<p><code>Object.getOwnPropertySymbols</code>方法返回一个数组，成员是当前对象的所有用作属性名的 Symbol 值。</p>
-<p><code>Reflect.ownKeys(obj)</code>方法可以返回所有类型的键名，包括常规键名和 Symbol 键名。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">  [<span class="built_in">Symbol</span>(<span class="string">'my_key'</span>)]: <span class="number">1</span>,</div><div class="line">  <span class="attr">enum</span>: <span class="number">2</span>,</div><div class="line">  <span class="attr">nonEnum</span>: <span class="number">3</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Reflect</span>.ownKeys(obj)</div><div class="line"><span class="comment">// ["enum", "nonEnum", Symbol(my_key)]</span></div></pre></td></tr></table></figure>
-<p>5.<code>Symbol.for()</code>、<code>Symbol.keyFor()</code>：接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 Symbol 值。如果有，就返回这个 Symbol 值，否则就新建并返回一个以该字符串为名称的 Symbol 值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">'foo'</span>);</div><div class="line"><span class="keyword">var</span> s2 = <span class="built_in">Symbol</span>.for(<span class="string">'foo'</span>);</div><div class="line"></div><div class="line">s1 === s2;  <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<p><code>Symbol.for()</code>与<code>Symbol()</code>这两种写法，都会生成新的<code>Symbol</code>。它们的区别是，前者会被登记在全局环境中供搜索，后者不会。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Symbol</span>.for(<span class="string">"bar"</span>) === <span class="built_in">Symbol</span>.for(<span class="string">"bar"</span>)</div><div class="line"><span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="built_in">Symbol</span>(<span class="string">"bar"</span>) === <span class="built_in">Symbol</span>(<span class="string">"bar"</span>)</div><div class="line"><span class="comment">// false</span></div></pre></td></tr></table></figure>
-<p><code>Symbol.keyFor</code>方法返回一个<strong>已登记</strong>的 Symbol 类型值的<code>key</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">"foo"</span>);</div><div class="line"><span class="built_in">Symbol</span>.keyFor(s1);  <span class="comment">// "foo"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s2 = <span class="built_in">Symbol</span>(<span class="string">"foo"</span>)</div><div class="line"><span class="built_in">Symbol</span>.keyFor(s2);  <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>6.Singleton 模式：指调用一个类，任何时候返回的都是同一个实例。</p>
-<p>Node 中，模块文件可以看作一个类。可以使用 Symbol，通过把实例放到顶层对象<code>global</code>来实现 Singleton 模式。</p>
-<h3 id="内置的-Symbol-值-暂且略过"><a href="#内置的-Symbol-值-暂且略过" class="headerlink" title="内置的 Symbol 值(暂且略过)"></a>内置的 Symbol 值(暂且略过)</h3><p>7.<code>Symbol.hasInstance</code>属性：指向一个内部方法。</p>
-<p>8.<code>Symbol.isConcatSpreadable</code>属性：</p>
-<p>9.<code>Symbol.species</code></p>
-<p>10.<code>Symbol.match</code></p>
-<p>11.<code>Symbol.replace</code></p>
-<p>12.<code>Symbol.search</code></p>
-<p>13.<code>Symbol.split</code></p>
-<p>14.<code>Symbol.iterator</code></p>
-<p>15.<code>Symbol.toPrimitive</code></p>
-<p>16.<code>Symbol.toStringTag</code></p>
-<p>17.<code>Symbol.unscopables</code></p>
-<h2 id="Set-和-Map-数据结构"><a href="#Set-和-Map-数据结构" class="headerlink" title="Set 和 Map 数据结构"></a>Set 和 Map 数据结构</h2><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>1.基本用法：Set 结构不会添加重复的值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line"></div><div class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>].forEach(<span class="function"><span class="params">x</span> =&gt;</span> s.add(x));</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> s)&#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 2 3 5 4</span></div></pre></td></tr></table></figure>
-<p>Set 函数可以接受一个数组（或类似数组的对象）作为参数，用来初始化。因此有一种去除数组重复成员的方法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[...new <span class="built_in">Set</span>(array)]</div></pre></td></tr></table></figure>
-<p>Set 内部判断两个值是否不同，使用的算法叫做“Same-value equality”，类似精确相等运算符（<code>===</code>），主要的区别是<code>NaN</code>等于自身（<code>===</code>认为<code>NaN</code>不等于自身）。另外，两个对象总是不相等的。</p>
-<p>2.Set 实例的属性和方法：</p>
-<p>实例属性：</p>
-<ul>
-<li><code>Set.prototype.constructor</code>：构造函数，默认就是<code>Set</code>函数。</li>
-<li><code>Set.prototype.size</code>：返回<code>Set</code>实例的成员总数。</li>
-</ul>
-<p>操作方法：</p>
-<ul>
-<li><code>add(value)</code>：添加某个值，返回 Set 结构本身。</li>
-<li><code>delete(value)</code>：删除某个值，返回一个表示删除是否成功的布尔值。</li>
-<li><code>has(value)</code>：返回一个布尔值。</li>
-<li><code>clear()</code>：清除所有成员，没有返回值。</li>
-</ul>
-<p>遍历方法（Set 结构中，键名和键值是同一个值）：</p>
-<ul>
-<li><code>keys()</code>：返回键名的遍历器</li>
-<li><code>values()</code>：返回键值的遍历器</li>
-<li><code>entries()</code>：返回键值对的遍历器</li>
-<li><code>forEach()</code>：使用回调函数遍历每个成员</li>
-</ul>
-<p><code>Array.from</code>方法可以将 Set 结构转为数组。</p>
-<h3 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h3><p>3.含义：与 Set 类似，但成员只能是对象，且都是弱引用，即垃圾回收机制不考虑 WeakSet 对该对象的引用。如果其他对象都不再引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存，不考虑该对象还存在于 WeakSet 之中。</p>
-<p>ES 6 规定，WeakSet 不可遍历。</p>
-<p>4.语法：有<code>add</code>、<code>delete</code>、<code>has</code>方法；没有<code>size</code>属性。</p>
-<p>5.用处：是储存 DOM 节点，而不用担心这些节点从文档移除时，会引发内存泄漏。</p>
-<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>6.含义和基本用法：为了解决 Object 的只能用字符串当作键名的问题，ES 6 提供了 Map 数据结构。各种类型的值（包括对象）都可以当作键。</p>
-<p>有<code>set(key, value)</code>、<code>get(key)</code>、<code>has(key)</code>、<code>delete(key)</code>、<code>clear()</code>方法。</p>
-<p>作为构造函数，Map 可以接受一个数组作为参数，该数组的成员是一个个<strong>表示键值对的数组</strong>。</p>
-<p>如果对同一个键多次赋值，后面的值将覆盖前面的值；如果读取一个未知的键，则返回<code>undefined</code>。</p>
-<p>7.与其他数据结构的互相转换：</p>
-<ul>
-<li>Map 转为数组：使用扩展运算符（<code>...</code>）。</li>
-<li>数组转为 Map：使用 Map 构造函数。</li>
-<li>Map 转为对象：如果所有 Map 的键都是字符串，可以转为对象。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">strMapToObj</span>(<span class="params">strMap</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> [k, v] <span class="keyword">of</span> strMap)&#123;</div><div class="line">    obj[k] = v;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> myMap = <span class="keyword">new</span> <span class="built_in">Map</span>().set(<span class="string">'yes'</span>, <span class="literal">true</span>).set(<span class="string">'no'</span>, <span class="literal">false</span>);</div><div class="line">strMapToObj(myMap);</div><div class="line"><span class="comment">// &#123; yes: true, no: false &#125;</span></div></pre></td></tr></table></figure>
-<ul>
-<li>对象转为 Map：</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">objToStrMap</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> strMap = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> k <span class="keyword">of</span> <span class="built_in">Object</span>.keys(obj))&#123;</div><div class="line">    strMap.set(k, obj[k]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> strMap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>Map 转为 JSON：</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 情况一：Map 的键名都是字符串</span></div><div class="line"><span class="comment">// 可以转换为对象 JSON</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">strMapToJson</span>(<span class="params">strMap</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(strMapToObj(strMap));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 情况二：Map 的键名有非字符串</span></div><div class="line"><span class="comment">// 可以转换为数组 JSON</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapToArrayJSON</span>(<span class="params">map</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify([...map]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>JSON 转为 Map：逆操作。</li>
-</ul>
-<h3 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h3><p>8.含义：与 Map 类似，用于生成键值对。但只接受对象作为键名（<code>null</code>除外），且键名所指向的对象不计入垃圾回收机制。</p>
-<p>专用场合：它的键所对应的对象可能会在将来消失。<code>WeakMap</code>结构有助于防止内存泄漏。</p>
-<p>9.语法：没有遍历操作，无法清空。只有四个方法可用：<code>get()</code>、<code>set()</code>、<code>has()</code>、<code>delete()</code>。</p>
-<p>10.用处：DOM 节点作为键名。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 一个例子</span></div><div class="line"><span class="keyword">let</span> myElement = <span class="built_in">document</span>.getElementById(<span class="string">'logo'</span>);</div><div class="line"><span class="keyword">let</span> myWeakmap = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"></div><div class="line">myWeakmap.set(myElement, &#123;<span class="attr">timesClicked</span>: <span class="number">0</span>&#125;);</div><div class="line"></div><div class="line">myElement.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> logoData = myWeakmap.get(myElement);</div><div class="line">  logoData.timesClicked++;</div><div class="line">&#125;, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="comment">// 一旦这个DOM节点删除，该状态就会自动消失，不存在内存泄漏风险</span></div></pre></td></tr></table></figure>
-<p>注册监听事件的<code>listener</code>对象，就很适合用 WeakMap 实现。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> listener = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"></div><div class="line">listener.set(element1, handler1);</div><div class="line">listener.set(element2, handler2);</div><div class="line"></div><div class="line">element1.addEventListener(<span class="string">'click'</span>, listener.get(element1), <span class="literal">false</span>);</div><div class="line">element2.addEventListener(<span class="string">'click'</span>, listener.get(element2), <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="comment">// 一旦DOM对象消失，跟它绑定的监听函数也会自动消失</span></div></pre></td></tr></table></figure>
-<p>WeakMap 的另一个用处是部署私有属性。</p>
-<h2 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h2><p>暂时跳过。</p>
-<h2 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h2><p>暂时跳过。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;说实话，ES 6 新特性真的不少。感觉全部记下来都很难，更别谈消化了。继续啃《&lt;a href=&quot;http://es6.ruanyifeng.com/#README&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ECMAScript 6 入门&lt;/a&gt;》。希望能早日啃完，想去看 Vue.js 了…&lt;/p&gt;
-&lt;p&gt;此博文包括：函数的扩展、对象的扩展、Symbol、Set 和 Map 数据结构。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
-      <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
-    
-      <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
     
   </entry>
   

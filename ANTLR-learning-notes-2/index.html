@@ -1,0 +1,1255 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ANTLR,编译技术,解释器," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="大黄菌的个人博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/huang_full.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="继续学习解释器构造 和 ANTLR。在系列博文的上一篇 ANTLR v4 学习笔记（一）－ANTLR 初体验，我们已经学习了如何安装 ANTLR，并研究了构建语言应用程序所需的关键过程、术语和构建块。接下来，接下来，我们将通过一个不算复杂的例子来描述 ANTLR 的功能，来让我们对 ANTLR 有个大概的感觉。 我将用 ANTLR 来实现一个变种计算器（变种意指它和普遍看到的计算器不太一样），它遵">
+<meta name="keywords" content="ANTLR,编译技术,解释器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ANTLR v4 学习笔记（二）－实现变种计算器">
+<meta property="og:url" content="http://kyonhuang.top/ANTLR-learning-notes-2/index.html">
+<meta property="og:site_name" content="大黄菌的个人博客">
+<meta property="og:description" content="继续学习解释器构造 和 ANTLR。在系列博文的上一篇 ANTLR v4 学习笔记（一）－ANTLR 初体验，我们已经学习了如何安装 ANTLR，并研究了构建语言应用程序所需的关键过程、术语和构建块。接下来，接下来，我们将通过一个不算复杂的例子来描述 ANTLR 的功能，来让我们对 ANTLR 有个大概的感觉。 我将用 ANTLR 来实现一个变种计算器（变种意指它和普遍看到的计算器不太一样），它遵">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/note2/cal1.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/note2/caltree.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/note2/cal1-error.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/note2/caltree-error.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/note2/import-java.jpg">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/note2/Calculator-effect.jpg">
+<meta property="og:updated_time" content="2017-09-21T11:26:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ANTLR v4 学习笔记（二）－实现变种计算器">
+<meta name="twitter:description" content="继续学习解释器构造 和 ANTLR。在系列博文的上一篇 ANTLR v4 学习笔记（一）－ANTLR 初体验，我们已经学习了如何安装 ANTLR，并研究了构建语言应用程序所需的关键过程、术语和构建块。接下来，接下来，我们将通过一个不算复杂的例子来描述 ANTLR 的功能，来让我们对 ANTLR 有个大概的感觉。 我将用 ANTLR 来实现一个变种计算器（变种意指它和普遍看到的计算器不太一样），它遵">
+<meta name="twitter:image" content="http://kyonhuang.top/images/antlr/note2/cal1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kyonhuang.top/ANTLR-learning-notes-2/"/>
+
+
+
+
+
+  <title>ANTLR v4 学习笔记（二）－实现变种计算器 | 大黄菌的个人博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38a1bce1ed7e84ef54ccd54545749913";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大黄菌的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下武功，无勤不破</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/ANTLR-learning-notes-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kyon Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ANTLR v4 学习笔记（二）－实现变种计算器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-21T19:25:56+08:00">
+                2017-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/解释器构造/" itemprop="url" rel="index">
+                    <span itemprop="name">解释器构造</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user"></i>总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>继续学习解释器构造 和 ANTLR。在系列博文的上一篇 <a href="http://kyonhuang.top/ANTLR-learning-notes-1/">ANTLR v4 学习笔记（一）－ANTLR 初体验</a>，我们已经学习了如何安装 ANTLR，并研究了构建语言应用程序所需的关键过程、术语和构建块。接下来，接下来，我们将通过一个不算复杂的例子来描述 ANTLR 的功能，来让我们对 ANTLR 有个大概的感觉。</p>
+<p>我将用 ANTLR 来实现一个变种计算器（变种意指它和普遍看到的计算器不太一样），它遵循上学期编译原理课程第一次实践作业要求。稍后我也将给出对这个计算器的要求描述。</p>
+<p>这篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但示例和内容与书上有些区别。我会更多地介绍实现学习过程中的经历和错误、自己对 ANTLR 的理解，以及一些实践经验和心得等等。</p>
+<a id="more"></a>
+<h2 id="计算器描述"><a href="#计算器描述" class="headerlink" title="计算器描述"></a>计算器描述</h2><p>计算器接受四则运算表达式为输入（如下所示）。如果表达式语法正确，则输出计算结果，否则报错，指出错误位置及原因。</p>
+<pre><code>Input 1: 
+a=(10.44*356+1.28)/2+1024*1.6;
+b=a*2–a/2;
+print(b);
+print(a);
+Output 1:
+   5246.04
+   3497.36
+</code></pre><p>```<br>Input 2:<br>a=(10.44<em>356+1.28)/2+1024</em>1.6;<br>b=a*2–c/2;<br>print(b);<br>Output 2:<br>   Error(line 2,position 6): undefined identifier .<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">以上两个示例包含了这个计算器的全部特性：</div><div class="line">1.	每个语句需要以“`;`”结束；2.	涉及的操作符只要求加减乘除；支持括号；3.	操作数为整数或浮点数；4.	变量不需要先声明，可直接赋值，它的类型由右边表达式的类型决定；每个变量在使用之前必须要已经有赋值；5.	变量名可以是由数字和字母组成，但首字符必须是字母； 6.	输出语句使用`print()`函数，输出并换行；7.	`print()`函数不仅可以输出变量，还可以直接输出表达式的值，例如`print(1+2)`；8.	尽量考虑周全，顾及corner cases。例如除零；</div><div class="line">9. 程序不需要 GUI，接受一个源文件路径为命令行参数。</div><div class="line"></div><div class="line">## 匹配运算表达式的语法</div><div class="line"></div><div class="line">在经过之前的学习后，我们可以比较轻松地写出一份匹配运算表达式的 ANTLR 语法：</div><div class="line"></div><div class="line">```java</div><div class="line">/**</div><div class="line"> * Define a grammar called Calculator</div><div class="line"> */</div><div class="line">grammar Calculator;</div><div class="line">// 程序起始规则，语法分析的起点</div><div class="line">program : define* print*;</div><div class="line">// 声明</div><div class="line">define: VAR &apos;=&apos; expr &apos;;&apos;;</div><div class="line">// 计算表达式</div><div class="line">expr: expr op=(&apos;*&apos;|&apos;/&apos;) expr     # MulDiv </div><div class="line">     | expr op=(&apos;+&apos;|&apos;-&apos;) expr    # AddSub</div><div class="line">     | &apos;(&apos;expr&apos;)&apos;                # parens</div><div class="line">     | NUMBER                    # number</div><div class="line">     | VAR                       # var</div><div class="line">     ;</div><div class="line"></div><div class="line">// 输出</div><div class="line">print: (&apos;print&apos;&apos;(&apos;(VAR|expr)&apos;)&apos;&apos;;&apos;);</div><div class="line">// 操作数类别</div><div class="line">NUMBER: INT|FLOAT;</div><div class="line">VAR : [a-zA-Z][a-zA-Z0-9]*;</div><div class="line">INT : [0-9]+;</div><div class="line">FLOAT : [0-9]+&apos;.&apos;[0-9]+;</div><div class="line">WS : [ \t\r\n]+ -&gt; skip; // 跳过空格符, tabs 和换行符</div><div class="line">MUL : &apos;*&apos; ;  </div><div class="line">DIV : &apos;/&apos; ;  </div><div class="line">ADD : &apos;+&apos; ;  </div><div class="line">SUB : &apos;-&apos; ;</div></pre></td></tr></table></figure></p>
+<p>这份语法有一些值得注意的地方：</p>
+<ul>
+<li>语法分析器的规则以小写字母开头；</li>
+<li>词法分析器的规则以大写字母开头；</li>
+<li>我们使用<code>|</code>来分隔同一个语言规则的若干备选分支，并使用圆括号把一些符号组合成子规则；</li>
+<li>WS 词法规则中，<code>-&gt; skip</code>是一条指令，告诉词法分析器匹配并丢弃空白字符；</li>
+<li>你也许会注意到一些<code>#</code>开头的标签。如果备选分支上没有标签，ANTLR 就只为每条规则生成一个方法；</li>
+<li>我们为运算符等词法符号定义了一些名字，这样，在之后访问器的编写中，我们可以将这些词法符号的名字当作常量使用，使代码更加清晰。</li>
+</ul>
+<p>现在我们已经可以通过 ANTLR 内置的测试组件来进行测试。由于 Eclipse 的 ANTLR 插件里的 ANTLR 版本仍然是 4.4，所以我们还是自己通过命令行生成 java 文件并编译：</p>
+<p><img src="/images/antlr/note2/cal1.jpg"></p>
+<p>添加的<code>-gui</code>参数使我们可以看到关于输入的语法分析树：</p>
+<p><img src="/images/antlr/note2/caltree.jpg"></p>
+<p>ANTLR 语法分析器能够自动报告语法错误并从错误中恢复。例如，我们的输入少一个<code>;</code>，语法分析器会自动输出错误信息：</p>
+<p><img src="/images/antlr/note2/cal1-error.jpg"></p>
+<p>添加<code>-gui</code>参数生成的可视化语法分析树会将错误节点自动标红：</p>
+<p><img src="/images/antlr/note2/caltree-error.jpg"></p>
+<h3 id="语法优化"><a href="#语法优化" class="headerlink" title="语法优化"></a>语法优化</h3><p>这里的“优化”不是指对语法本身，而是对 ANTLR 语法文件，即<code>.g4</code>作为扩展名的文件。ANTLR 允许我们将非常大的语法拆分为多个部分，根据习惯，我们将其分为语法分析器的语法和词法分析器的语法两部分。</p>
+<p>这样做的好处是对于两种词法规则或者语法规则相同的语言，我们可以复用这些“模块”来构建语法分析器。</p>
+<p>词法规则文件 CalculatorLexerRules.g4：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 注意开头是 "lexer grammer"</span></div><div class="line">lexer grammar CalculatorLexerRules;</div><div class="line"></div><div class="line"><span class="comment">// 操作数类别</span></div><div class="line">NUMBER: INT|FLOAT;</div><div class="line">VAR : [a-zA-Z][a-zA-Z0-<span class="number">9</span>]*;</div><div class="line">INT : [<span class="number">0</span>-<span class="number">9</span>]+;</div><div class="line">FLOAT : [<span class="number">0</span>-<span class="number">9</span>]+<span class="string">'.'</span>[<span class="number">0</span>-<span class="number">9</span>]+;</div><div class="line">WS : [ \t\r\n]+ -&gt; skip; <span class="comment">// 跳过空格符, tabs 和换行符</span></div><div class="line">MUL : <span class="string">'*'</span> ;  </div><div class="line">DIV : <span class="string">'/'</span> ;  </div><div class="line">ADD : <span class="string">'+'</span> ;  </div><div class="line">SUB : <span class="string">'-'</span> ;</div></pre></td></tr></table></figure>
+<p>语法规则文件 CalculatorExpr.g4，之前语法中的词法规则全部通过 import 语句导入：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Define a grammar called CalculatorExpr</div><div class="line"> */</div><div class="line">// 注意 grammer 要和文件名相同</div><div class="line">grammar CalculatorExpr;</div><div class="line">// 引入词法规则</div><div class="line">import CalculatorLexerRules;</div><div class="line">// 程序起始规则，语法分析的起点</div><div class="line">program : define* print*;</div><div class="line">// 声明</div><div class="line">define: VAR '=' expr ';';</div><div class="line">// 计算表达式</div><div class="line">expr: expr op=('*'|'/') expr     # MulDiv </div><div class="line">     | expr op=('+'|'-') expr    # AddSub</div><div class="line">     | '('expr')'                # parens</div><div class="line">     | NUMBER                    # number</div><div class="line">     | VAR                       # var</div><div class="line">     ;</div><div class="line"></div><div class="line">// 输出</div><div class="line">print: ('print''('(VAR|expr)')'';');</div></pre></td></tr></table></figure>
+<p>要生成 java 文件，我们只需要对语法文件使用<code>antlr4</code>命令即可。这样我们就得到了和之前一样的 java 文件（测试就不贴图了）：</p>
+<p><img src="/images/antlr/note2/import-java.jpg"></p>
+<p>import 语句赋予我们编写模块化语法的能力，这使得 ANTLR 语法文件的耦合度降低，复用性提高。</p>
+<h2 id="使用-Visitor-构建计算器"><a href="#使用-Visitor-构建计算器" class="headerlink" title="使用 Visitor 构建计算器"></a>使用 Visitor 构建计算器</h2><p>我们最终的目的是将生成的语法分析器集成到程序中，因此我们需要写一些 Java 代码。我们会用 Visitor（访问者模式）来实现我们的变种计算器。</p>
+<p>由于我的实现代码基于 Calculator.g4 生成的 java 文件，而非拆分后的 CalculatorExpr.g4，所以之后的文件名、类名和方法名还是会以 Calculator 开头。当然，所有功能都是相同的，使用哪份语法文件生成的 java 文件都不会有影响。</p>
+<p>我们通过以下命令来让 ANTLR 生成 Visitor 而非 Listener：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">antlr4 -no-listener -visitor -encoding UTF-8 Calculator.g4</div></pre></td></tr></table></figure>
+<p>这样，ANTLR 会自动生成一个访问器接口文件 CalculatorVisitor.java，以及该访问器的一个默认实现类 CalculatorBaseVisitor。实现时，我们需要自己写一个 Visitor 的子类，继承<br>CalculatorBaseVisitor<float>（这样表达式的计算结果都是浮点数），并重写其中的方法。</float></p>
+<p>以下是我们实现的 Visitor 子类 MainVisitor 的完整代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainVisitor</span> <span class="keyword">extends</span> <span class="title">CalculatorBaseVisitor</span>&lt;<span class="title">Float</span>&gt; </span>&#123;</div><div class="line">    Map&lt;String, Float&gt; memory = <span class="keyword">new</span> HashMap&lt;String, Float&gt;();</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * define: VAR '=' expr ';';</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitDefine</span><span class="params">(CalculatorParser.DefineContext ctx)</span> </span>&#123;</div><div class="line">        String var = ctx.VAR().getText();</div><div class="line">        <span class="keyword">float</span> value = visit(ctx.expr());</div><div class="line">        memory.put(var, value);</div><div class="line">        <span class="keyword">return</span> value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * expr op=('*'|'/') expr</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitMulDiv</span><span class="params">(CalculatorParser.MulDivContext ctx)</span> </span>&#123;</div><div class="line">        <span class="keyword">float</span> left = visit(ctx.expr(<span class="number">0</span>));</div><div class="line">        <span class="keyword">float</span> right = visit(ctx.expr(<span class="number">1</span>));</div><div class="line">        <span class="keyword">if</span> (ctx.op.getType() == CalculatorParser.MUL)</div><div class="line">            <span class="keyword">return</span> left * right;</div><div class="line">        <span class="keyword">return</span> left / right;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * expr op=('+'|'-') expr</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitAddSub</span><span class="params">(CalculatorParser.AddSubContext ctx)</span> </span>&#123;</div><div class="line">        <span class="keyword">float</span> left = visit(ctx.expr(<span class="number">0</span>));</div><div class="line">        <span class="keyword">float</span> right = visit(ctx.expr(<span class="number">1</span>));</div><div class="line">        <span class="keyword">if</span> (ctx.op.getType() == CalculatorParser.ADD)</div><div class="line">            <span class="keyword">return</span> left + right;</div><div class="line">        <span class="keyword">return</span> left - right;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * NUMBER</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitNumber</span><span class="params">(CalculatorParser.NumberContext ctx)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Float.valueOf(ctx.NUMBER().getText());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * VAR</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitVar</span><span class="params">(CalculatorParser.VarContext ctx)</span> </span>&#123;</div><div class="line">        String var = ctx.VAR().getText();</div><div class="line">        <span class="keyword">if</span> (memory.containsKey(var))</div><div class="line">            <span class="keyword">return</span> memory.get(var);</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">float</span>) <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * '('expr')'</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitParens</span><span class="params">(CalculatorParser.ParensContext ctx)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> visit(ctx.expr());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * print: ('print''('(VAR|expr)')'';');</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Float <span class="title">visitPrint</span><span class="params">(CalculatorParser.PrintContext ctx)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (ctx.VAR() != <span class="keyword">null</span>) &#123;</div><div class="line">            String var = ctx.VAR().getText();</div><div class="line">            <span class="keyword">if</span> (memory.containsKey(var))</div><div class="line">                System.out.println(memory.get(var));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (ctx.expr() != <span class="keyword">null</span>) &#123;</div><div class="line">            System.out.println(visit(ctx.expr()));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> visitChildren(ctx);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后，我们需要写一个 Main.java 来新建所需要的所有对象，并针对 program 规则启动语法分析器：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.FileInputStream;</div><div class="line"><span class="keyword">import</span> java.io.InputStream;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.*;</div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.tree.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        </div><div class="line">        String inputFile = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (args.length &gt; <span class="number">0</span>)</div><div class="line">            inputFile = args[<span class="number">0</span>];</div><div class="line">        </div><div class="line">        InputStream instream = System.in;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(inputFile != <span class="keyword">null</span>)</div><div class="line">            instream = <span class="keyword">new</span> FileInputStream(inputFile);</div><div class="line">        <span class="meta">@SuppressWarnings</span>(<span class="string">"deprecation"</span>)</div><div class="line">        ANTLRInputStream input = <span class="keyword">new</span> ANTLRInputStream(instream);</div><div class="line">        <span class="comment">// 新建词法分析器对象</span></div><div class="line">        CalculatorLexer lexer = <span class="keyword">new</span> CalculatorLexer(input);</div><div class="line">        <span class="comment">// 新建词法符号流管道</span></div><div class="line">        CommonTokenStream tokens = <span class="keyword">new</span> CommonTokenStream(lexer);</div><div class="line">        <span class="comment">// 新建语法分析器对象</span></div><div class="line">        CalculatorParser parser = <span class="keyword">new</span> CalculatorParser(tokens);</div><div class="line">        <span class="comment">// 启动语法分析器，从 program 规则开始进行语法分析</span></div><div class="line">        ParseTree tree = parser.program();</div><div class="line">        </div><div class="line">        MainVisitor cal = <span class="keyword">new</span> MainVisitor();</div><div class="line">        </div><div class="line">        cal.visit(tree);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>OK，现在我们的变种计算器就有了一个初步版本。打包成 jar 包后，我们可以看一下效果：</p>
+<p><img src="/images/antlr/note2/Calculator-effect.jpg"></p>
+<p>我觉得可以。</p>
+<h2 id="继续优化"><a href="#继续优化" class="headerlink" title="继续优化"></a>继续优化</h2><h3 id="To-be-continued…"><a href="#To-be-continued…" class="headerlink" title="To be continued…"></a>To be continued…</h3><h2 id="计算器实现中遇到的问题"><a href="#计算器实现中遇到的问题" class="headerlink" title="计算器实现中遇到的问题"></a>计算器实现中遇到的问题</h2><p>实现这个变种计算器的过程当然也不是一帆风顺的，尤其我是先动手摸索再看的 Chapter 4。以下这些坑可能还会有新司机踩上，特此写明：</p>
+<ul>
+<li>输出语句<code>print: (&#39;print&#39;&#39;(&#39;(VAR|expr)&#39;)&#39;&#39;;&#39;);</code>没有在<code>VAR|expr</code>外加一层括号，导致后续开发匹配错误。</li>
+<li>第一次实现时，没有给备选分支加上标签，之后实现 Visitor 时就需要自己写 if 判断，十分麻烦。通过标签来对每种输入都获得一个不同的事件是坠吼的。</li>
+</ul>
+<h2 id="我对-ANTLR-的理解"><a href="#我对-ANTLR-的理解" class="headerlink" title="我对 ANTLR 的理解"></a>我对 ANTLR 的理解</h2><p>选择使用 ANTLR 进行编译相关的开发工作有一个重要的原因，是它能够处理绝大部分情况下的左递归。</p>
+<p>语法文件独立于程序。访问器机制也使得一切语言识别之外的工作在我们所熟悉的 Java 领域进行。在生成的所需的语法分析器之后，就不再需要同ANTLR语法标记打交道了。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>ANTLR 学习的第二篇笔记到这里就结束了。在这之后我会继续学习解释器构造，并继续写这本书的阅读笔记，敬请期待。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>《The Definitive ANTLR 4 Reference》</li>
+<li><a href="http://blog.csdn.net/yuexiang321/article/details/52770283" target="_blank" rel="external">antlr入门实例——计算器 - Yue Xiang - CSDN博客</a></li>
+<li><a href="https://w-angler.gitbooks.io/the-definitive-antlr-4-reference-chs/content/chapter1.html" target="_blank" rel="external">拉到最后，有较多参数介绍</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Kyon Huang
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://kyonhuang.top/ANTLR-learning-notes-2/" title="ANTLR v4 学习笔记（二）－实现变种计算器">http://kyonhuang.top/ANTLR-learning-notes-2/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ANTLR/" rel="tag"># ANTLR</a>
+          
+            <a href="/tags/编译技术/" rel="tag"># 编译技术</a>
+          
+            <a href="/tags/解释器/" rel="tag"># 解释器</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/yuki-intro/" rel="next" title="yuki-目录文档生成工具">
+                <i class="fa fa-chevron-left"></i> yuki-目录文档生成工具
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/touxiang.jpg"
+               alt="Kyon Huang" />
+          <p class="site-author-name" itemprop="name">Kyon Huang</p>
+           
+              <p class="site-description motion-element" itemprop="description">软工大三狗/摸鱼型填词</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bighuang624" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5674727867" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/huang-si-teng-67" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=85145665" target="_blank" title="网易云">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  网易云
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算器描述"><span class="nav-number">1.</span> <span class="nav-text">计算器描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法优化"><span class="nav-number">1.1.</span> <span class="nav-text">语法优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Visitor-构建计算器"><span class="nav-number">2.</span> <span class="nav-text">使用 Visitor 构建计算器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继续优化"><span class="nav-number">3.</span> <span class="nav-text">继续优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#To-be-continued…"><span class="nav-number">3.1.</span> <span class="nav-text">To be continued…</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算器实现中遇到的问题"><span class="nav-number">4.</span> <span class="nav-text">计算器实现中遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我对-ANTLR-的理解"><span class="nav-number">5.</span> <span class="nav-text">我对 ANTLR 的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kyon Huang</span>
+</div>
+
+
+<div class="powered-by">
+  blog powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      您是第
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      位访客
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      $('#local-search-input').focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- <script type="text/javascript" src="/js/src/copyright.js"></script> -->
+</body>
+</html>
