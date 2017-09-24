@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/start-to-know-AI/</loc>
+    <lastmod>2017-09-24T03:02:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>初探人工智能</title>
+        <pubTime>2017-07-23T02:17:25.000Z</pubTime>
+        
+        <tag>人工智能</tag>
+         
+        <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
+         
+        <tag>神经网络</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习笔记" url="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/ANTLR-learning-notes-2/</loc>
     <lastmod>2017-09-23T02:25:42.000Z</lastmod>
     <data>
@@ -744,32 +770,6 @@
            
              
               <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/start-to-know-AI/</loc>
-    <lastmod>2017-07-30T08:58:07.000Z</lastmod>
-    <data>
-        <display>
-        <title>初探人工智能</title>
-        <pubTime>2017-07-23T02:17:25.000Z</pubTime>
-        
-        <tag>人工智能</tag>
-         
-        <tag>机器学习</tag>
-         
-        <tag>深度学习</tag>
-         
-        <tag>神经网络</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习笔记" url="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
