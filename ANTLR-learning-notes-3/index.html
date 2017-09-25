@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,读书笔记,JavaScipt,《JavaScript高级程序设计》," />
+  <meta name="keywords" content="ANTLR,编译技术,解释器," />
 
 
 
@@ -92,18 +92,20 @@
 
 
 
-<meta name="description" content="花旗杯的团队已经组好了。自己要加快学习进度，保证不拖组织的后腿。全力以赴，尽善尽美，希望最后能够有好的成绩。 这篇博文总结了《JavaScript高级程序设计》的13~14章：事件，表单脚本。">
-<meta name="keywords" content="前端,读书笔记,JavaScipt,《JavaScript高级程序设计》">
+<meta name="description" content="继续学习解释器构造和 ANTLR。在系列博文的上一篇 ANTLR v4 学习笔记（二）－实现变种计算器，我们用 ANTLR 实现了一个变种计算器，从而对 ANTLR 语法、访问器（Visitor）机制、集成以及 ANLTR 的错误处理机制有了更深的理解。 上篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但没有覆盖">
+<meta name="keywords" content="ANTLR,编译技术,解释器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《JavaScript高级程序设计》读书笔记（四）">
-<meta property="og:url" content="http://kyonhuang.top/JS-notes-4/index.html">
+<meta property="og:title" content="ANTLR v4 学习笔记（三）－特性拾遗">
+<meta property="og:url" content="http://kyonhuang.top/ANTLR-learning-notes-3/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="花旗杯的团队已经组好了。自己要加快学习进度，保证不拖组织的后腿。全力以赴，尽善尽美，希望最后能够有好的成绩。 这篇博文总结了《JavaScript高级程序设计》的13~14章：事件，表单脚本。">
+<meta property="og:description" content="继续学习解释器构造和 ANTLR。在系列博文的上一篇 ANTLR v4 学习笔记（二）－实现变种计算器，我们用 ANTLR 实现了一个变种计算器，从而对 ANTLR 语法、访问器（Visitor）机制、集成以及 ANLTR 的错误处理机制有了更深的理解。 上篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但没有覆盖">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-12T06:58:05.000Z">
+<meta property="og:image" content="http://kyonhuang.top/images/antlr/note3/XMLLexer.jpg">
+<meta property="og:updated_time" content="2017-09-25T11:07:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记（四）">
-<meta name="twitter:description" content="花旗杯的团队已经组好了。自己要加快学习进度，保证不拖组织的后腿。全力以赴，尽善尽美，希望最后能够有好的成绩。 这篇博文总结了《JavaScript高级程序设计》的13~14章：事件，表单脚本。">
+<meta name="twitter:title" content="ANTLR v4 学习笔记（三）－特性拾遗">
+<meta name="twitter:description" content="继续学习解释器构造和 ANTLR。在系列博文的上一篇 ANTLR v4 学习笔记（二）－实现变种计算器，我们用 ANTLR 实现了一个变种计算器，从而对 ANTLR 语法、访问器（Visitor）机制、集成以及 ANLTR 的错误处理机制有了更深的理解。 上篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但没有覆盖">
+<meta name="twitter:image" content="http://kyonhuang.top/images/antlr/note3/XMLLexer.jpg">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://kyonhuang.top/JS-notes-4/"/>
+  <link rel="canonical" href="http://kyonhuang.top/ANTLR-learning-notes-3/"/>
 
 
 
 
 
-  <title>《JavaScript高级程序设计》读书笔记（四） | 大黄菌的个人博客</title>
+  <title>ANTLR v4 学习笔记（三）－特性拾遗 | 大黄菌的个人博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -320,7 +322,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/JS-notes-4/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/ANTLR-learning-notes-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kyon Huang">
@@ -341,7 +343,7 @@
             
             
               
-                《JavaScript高级程序设计》读书笔记（四）
+                ANTLR v4 学习笔记（三）－特性拾遗
               
             
           </h1>
@@ -356,8 +358,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T12:13:51+08:00">
-                2017-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-25T21:12:26+08:00">
+                2017-09-25
               </time>
             
 
@@ -379,8 +381,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
+                  <a href="/categories/解释器构造/" itemprop="url" rel="index">
+                    <span itemprop="name">解释器构造</span>
                   </a>
                 </span>
 
@@ -418,47 +420,45 @@
       
 
       
-        <p>花旗杯的团队已经组好了。自己要加快学习进度，保证不拖组织的后腿。全力以赴，尽善尽美，希望最后能够有好的成绩。</p>
-<p>这篇博文总结了《JavaScript高级程序设计》的13~14章：事件，表单脚本。</p>
-  <a id="more"></a>
-<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>1.<strong>事件流</strong>描述从页面接收事件的顺序。IE提出事件冒泡流，Netscape提出事件捕获流。</p>
-<p>2.<strong>事件冒泡</strong>：事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）。</p>
-<p>3.事件捕获：不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。由于老版本浏览器不支持，不推荐使用。</p>
-<p>4.“DOM2级事件”规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。</p>
-<h3 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h3><p>5.HTML事件处理程序：扩展作用域，在函数内部可以像访问局部变量一样访问document及该元素本身的成员。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;button&quot; value=&quot;Click Me&quot; onclick=&quot;console.log(value)&quot;&gt;</div></pre></td></tr></table></figure>
-<p>如果是一个表单输入元素，则作用域中还会包含访问表单元素的入口。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;form method=&quot;post&quot;&gt;</div><div class="line">    &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&quot;&gt;</div><div class="line">    &lt;input type=&quot;button&quot; value=&quot;Echo username&quot; onclick=&quot;console.log(username.value)&quot;&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
-<p>缺点：(1)存在时差问题，函数被解析之前就触发事件会引发错误；(2)扩展处理程序的作用域链在不同浏览器中会导致不同结果；(3)HTML和JavaScript代码紧密耦合。</p>
-<p>6.DOM0级事件处理程序：每个元素都有自己的事件处理程序属性，将其设置为一个函数，就可以指定事件处理程序。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绑定事件处理程序</span></div><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.id);  <span class="comment">// "myBtn"</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 删除事件处理程序</span></div><div class="line">btn.onclick = <span class="literal">null</span>;</div></pre></td></tr></table></figure>
-<p>以这种方式添加的事件处理程序会在事件流的冒泡阶段被处理。</p>
-<p>7.DOM2级事件处理程序：<code>addEventListener()</code>和<code>removeEventListener()</code>，接受3个参数：要处理的事件名、事件处理程序函数和一个布尔值（true表示在捕获阶段调用事件处理程序，默认为false表示冒泡阶段调用）。</p>
-<p>移除时传入的参数与添加处理程序时使用的参数相同，意味着通过<code>addEventListener()</code>添加的匿名函数无法移除。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">byn.addEventListener(&quot;click&quot;, handler, false);</div><div class="line">...</div><div class="line">btn.removeEventListener(&quot;click&quot;, handler, false);  // 有效</div></pre></td></tr></table></figure>
-<p>8.IE事件处理程序：<code>attachEvent()</code>和<code>detachEvent()</code>，接收两个参数：要处理的事件名、事件处理程序函数。事件处理程序被添加到冒泡阶段，在全局作用域中运行（this 等于 window）。支持IE事件处理程序的浏览器有 IE 和 Opera。</p>
-<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><p>9.在触发DOM上的某个事件时，会产生一个事件对象event，这个对象包含着所有与事件有关的信息。只有在事件处理程序执行期间，event 对象才会存在；一旦事件处理程序执行完成，event 对象就会被销毁。</p>
-<p>10.属性/方法：</p>
-<ul>
-<li>currentTarget：正在处理事件的那个元素。</li>
-<li>target：事件的目标。</li>
-<li>type：事件类型。</li>
-<li>cancelable：可以阻止特定事件的默认行为。</li>
-<li>preventDefault()：阻止特定事件的默认行为。</li>
-<li>stopPropagation()：停止事件在DOM层次中的传播，即取消进一步的事件捕获或冒泡。</li>
-<li>eventPhase：调用事件处理程序的阶段：捕获阶段为1，处于目标对象为2，冒泡阶段为3。</li>
+        <p>继续学习解释器构造和 ANTLR。在系列博文的上一篇 <a href="http://kyonhuang.top/ANTLR-learning-notes-2/">ANTLR v4 学习笔记（二）－实现变种计算器</a>，我们用 ANTLR 实现了一个变种计算器，从而对 ANTLR 语法、访问器（Visitor）机制、集成以及 ANLTR 的错误处理机制有了更深的理解。</p>
+<p>上篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但没有覆盖整个 Chapter 4 的所有内容。因此这篇博文将介绍一下 Chapter 4 的剩余内容——监听器（Listener）机制、代码片段嵌入语法，以及词法分析的一些很棒的特性。</p>
+<a id="more"></a>
+<h2 id="监听器机制"><a href="#监听器机制" class="headerlink" title="监听器机制"></a>监听器机制</h2><p>监听器机制和访问器机制有着很多共通的特点，我们也需要通过监听语法分析树遍历器触发的“事件”来完成某些工作。它们之间最大的区别在于，监听器的方法会被 ANTLR 提供的遍历器对象自动调用，而在访问器的方法中，必须显式调用<code>visit</code>方法来访问子节点，否则对应的子树将不会被访问。</p>
+<p>ANTLR 会自动生成一个接口 xxListener，它定义了 ANTLR 的运行库中的 ParseTreeWalker 类在遍历语法分析树时能够触发的全部方法。当然，和访问器机制一样，我们无需实现接口中的全部方法。ANTLR 自动生成一个名为 xxBaseListener 的类，我们可以继承这个类并只重写那些我们感兴趣的方法。</p>
+<h2 id="代码片段嵌入语法"><a href="#代码片段嵌入语法" class="headerlink" title="代码片段嵌入语法"></a>代码片段嵌入语法</h2><p>监听器机制和访问器一样，能够使语法分析过程和应用程序本身保持低耦合，也让语法更具有可读性。但有时候，为了满足比较苛刻的需求，我们需要将代码片段（动作）嵌入到语法中，这些动作会被拷贝到 ANTLR 自动生成的递归下降语法分析器的代码中。</p>
+<h3 id="将任意动作嵌入语法"><a href="#将任意动作嵌入语法" class="headerlink" title="将任意动作嵌入语法"></a>将任意动作嵌入语法</h3><p>拿下面这一份用于解析类表格文件的语法为例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">grammar Rows;</div><div class="line"></div><div class="line"><span class="meta">@parser</span>::members &#123;  <span class="comment">// 在生成的 RowsParser 中添加一些成员</span></div><div class="line">    <span class="keyword">int</span> col;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RowsParser</span><span class="params">(TokenStream input, <span class="keyword">int</span> col)</span> </span>&#123;  <span class="comment">// 自定义的构造器</span></div><div class="line">      <span class="keyword">this</span>(input);</div><div class="line">      <span class="keyword">this</span>.col = col;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">file: (row NL)+ ;</div><div class="line"></div><div class="line">row</div><div class="line">locals [<span class="keyword">int</span> i=<span class="number">0</span>]</div><div class="line">    : (   STUFF</div><div class="line">          &#123;</div><div class="line">          $i++;</div><div class="line">          <span class="keyword">if</span> ($i == col) System.out.println($STUFF.text);</div><div class="line">          &#125;</div><div class="line">      )+</div><div class="line">    ;</div><div class="line"></div><div class="line">TAB   : <span class="string">'\t'</span> -&gt; skip ;    <span class="comment">// 匹配但是不将其传递给语法分析器</span></div><div class="line">NL    : <span class="string">'\r'</span>? <span class="string">'\n'</span> ;      <span class="comment">// 匹配并将其传递给语法分析器</span></div><div class="line">STUFF : ~[\t\r\n]+ ;      <span class="comment">// 匹配除 tab 符和换行符之外的任何字符</span></div></pre></td></tr></table></figure>
+<p><code>@parser::members</code>表示在生成的 RowsParser 中添加一些成员，即大括号里的所有元素（包括）会原封不动的添加到 RowsParser 类中。我们通过加入的构造器来传入希望提取的列号。</p>
+<p>row 规则的<code>(...)+</code>循环放置了一些动作，访问了之前使用 locals 子句定义的局部变量<code>$i</code>。同时 row 规则也使用了<code>$STUFF.text</code>来获得刚刚匹配的 STUFF 词法符号中包含的文本。关于动作的更多内容会在 Chapter 10 深入研究。</p>
+<h3 id="用语义判定改变语法分析过程"><a href="#用语义判定改变语法分析过程" class="headerlink" title="用语义判定改变语法分析过程"></a>用语义判定改变语法分析过程</h3><p>用一个读取一列整数的语法作为例子。首先看一下需求：输入的其中的一部分整数指定了接下来的多少个整数分为一组。例如输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2 8 43 3 1 4 6</div></pre></td></tr></table></figure>
+<p>第一个数字 2 表示匹配接下来的两个数字 8 和 43，数字 3 表示匹配接下来的三个数字。</p>
+<p>语法文件如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">grammar Data;</div><div class="line"></div><div class="line">file : group+ ;</div><div class="line"></div><div class="line">group: INT sequence[$INT.<span class="keyword">int</span>] ;</div><div class="line"></div><div class="line">sequence[<span class="keyword">int</span> n]</div><div class="line">locals [<span class="keyword">int</span> i = <span class="number">1</span>;]</div><div class="line">     : ( &#123;$i&lt;=$n&#125;? INT &#123;$i++;&#125; )*  <span class="comment">// 匹配 n 个整数</span></div><div class="line">     ;</div><div class="line"></div><div class="line">INT :   [<span class="number">0</span>-<span class="number">9</span>]+ ;     <span class="comment">// 匹配整数</span></div><div class="line">WS  :   [ \t\n\r]+ -&gt; skip ;   <span class="comment">// 丢弃所有的空白字符</span></div></pre></td></tr></table></figure>
+<p>Data 语法的关键在于<code>{$i&lt;=$n}?</code>，这段动作的值是布尔类型的，它被称为一个语义判定。在匹配到 n 个输入整数之前，它的值保持为 true，其中 n 是 sequence 语法中的参数。当语义判定的值为 false 时，对应的备选分支就从语法中“消失”了，因此，它也就从生成的语法分析器中“消失”了。在本例中，语义判定的值为 false 时，<code>(...)*</code>循环终止，从 sequence 规则返回。</p>
+<h2 id="词法分析特性"><a href="#词法分析特性" class="headerlink" title="词法分析特性"></a>词法分析特性</h2><p>ANTLR 有三个与词法符号有关非常棒的特性。</p>
+<h3 id="孤岛语法：处理同一文件中的不同格式"><a href="#孤岛语法：处理同一文件中的不同格式" class="headerlink" title="孤岛语法：处理同一文件中的不同格式"></a>孤岛语法：处理同一文件中的不同格式</h3><p>有很多常见的文件格式包含了多重语言，例如 Java 文件中有注释和 Java 代码，ejs 等模板引擎有模板语言表达式和文本。不同格式的语言需要按照不同的方式进行处理，这样的现象被称为<strong>“孤岛语法”</strong>。</p>
+<p>ANTLR 提供了一个名为<strong>词法分析模式（lexical modes）</strong>的词法分析器特性，帮助我们方便地处理混合了不同格式数据的文件。它的基本思想是，当遇到特殊的“哨兵”字符序列时，执行不同模式的切换。</p>
+<p>我们不妨以 XML 作为例子。一个 XML 解析器会将除标签和实体转义（例如<code>&amp;pound;</code>）之外的内容全部当作普通文本。当看到<code>&lt;</code>时，词法分析器会切换到 “INSIDE” 模式；当看到<code>&gt;</code>或者<code>/&gt;</code>时，它就切换回默认模式。</p>
+<p>下面的语法展示了 XML 解析器的工作方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Define a lexer grammar called XMLLexer</div><div class="line"> */</div><div class="line">lexer grammar XMLLexer;</div><div class="line"></div><div class="line"><span class="comment">// 默认模式：所有在标签之外的东西</span></div><div class="line">OPEN        : <span class="string">'&lt;'</span>                 -&gt; pushMode(INSIDE) ;</div><div class="line">COMMENT     : <span class="string">'&lt;!--'</span> .*? <span class="string">'--&gt;'</span>    -&gt; skip ;</div><div class="line">EntityRef   : <span class="string">'&amp;'</span> [a-z]+ <span class="string">';'</span> ;</div><div class="line">TEXT        : ~(<span class="string">'&lt;'</span>|<span class="string">'&amp;'</span>)+ ;           <span class="comment">// 匹配任意除 &lt; 和 &amp; 之外的 16 位字符</span></div><div class="line"></div><div class="line"><span class="comment">// ----------------------    所有在标签之内的东西    ----------------------</span></div><div class="line">mode INSIDE;</div><div class="line">CLOSE       : <span class="string">'&gt;'</span>                 -&gt; popMode ;  <span class="comment">// 回到默认模式</span></div><div class="line">SLASH_CLOSE : <span class="string">'/&gt;'</span>                -&gt; popMode ;</div><div class="line">EQUALS      : <span class="string">'='</span> ;</div><div class="line">STRING      : <span class="string">'"'</span> .*? <span class="string">'"'</span> ;</div><div class="line">SlashName   : <span class="string">'/'</span> Name ;</div><div class="line">Name        : ALPHA (ALPHA|DIGIT)* ;</div><div class="line">S           : [ \t\r\n]           -&gt; skip ;</div><div class="line"></div><div class="line">fragment</div><div class="line">ALPHA       : [a-zA-Z] ;</div><div class="line"></div><div class="line">fragment</div><div class="line">DIGIT       : [<span class="number">0</span>-<span class="number">9</span>] ;</div></pre></td></tr></table></figure>
+<p>提供一份如下所示的样例输入文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tools</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tool</span> <span class="attr">name</span>=<span class="string">"ANTLR"</span>&gt;</span>A parser generator<span class="tag">&lt;/<span class="name">tool</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tools</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>测试步骤与结果如下所示：</p>
+<p><img src="/images/antlr/note3/XMLLexer.jpg"></p>
+<p>值得一提的是，在上述启动测试组件的命令行中，使用的参数是 XML tokens，在正常情况下，这里应该是一个语法名加一个起始规则名。如果需要令测试组件只运行词法分析器而不运行语法分析器，我们可以指定参数为语法名加上一个特殊的规则名<code>tokens</code>。</p>
+<h3 id="重写输入流"><a href="#重写输入流" class="headerlink" title="重写输入流"></a>重写输入流</h3><p>我们可以通过 TokenStreamRewriter 对象对输入流进行修改，然后再加以输出，从而实现对源代码插桩或重构。例如，我们可以通过以下代码实现一个监听器，来给每个类定义中加上一行序列化版本标示符（serialVersionUID）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.TokenStream;</div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.TokenStreamRewriter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertSerialIDListener</span> <span class="keyword">extends</span> <span class="title">JavaBaseListener</span> </span>&#123;</div><div class="line">    TokenStreamRewriter rewriter;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">InsertSerialIDListener</span><span class="params">(TokenStream tokens)</span> </span>&#123;</div><div class="line">        rewriter = <span class="keyword">new</span> TokenStreamRewriter(tokens);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enterClassBody</span><span class="params">(JavaParser.ClassBodyContext ctx)</span> </span>&#123;</div><div class="line">        String field = <span class="string">"\n\tpublic static final long serialVersionUID = 1L;"</span>;</div><div class="line">        rewriter.insertAfter(ctx.start, field);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后，我们在 main 程序中初始化一个 InsertSerialIDListener，并当遍历结束时打印词法符号流：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ParseTreeWalker walker = <span class="keyword">new</span> ParseTreeWalker();  <span class="comment">// 新建一个标准的遍历器</span></div><div class="line">InsertSerialIDListener extractor = <span class="keyword">new</span> InsertSerialIDListener(tokens);</div><div class="line">walker.walk(extractor, tree);  <span class="comment">// 使用监听器初始化对语法分析树的遍历</span></div><div class="line"></div><div class="line"><span class="comment">// 打印出修改后的词法符号流</span></div><div class="line">System.out.println(extractor.rewriter.getText());</div></pre></td></tr></table></figure>
+<p>注意，TokenStreamRewriter 实际上修改的是词法符号流的“视图”而非词法符号流本身。它认为所有对修改方法的调用都只是一个“指令”，然后将这些修改放入一个队列；在未来词法符号流被重新渲染为文本时，这些修改才会被执行。因此每次我们调用<code>getText()</code>的时候，rewriter 对象都会执行上述队列中的指令。</p>
+<h3 id="将-Tokens-送入不同通道"><a href="#将-Tokens-送入不同通道" class="headerlink" title="将 Tokens 送入不同通道"></a>将 Tokens 送入不同通道</h3><p>语法分析器只处理一个通道，因此当我们想要忽略但保留某些 tokens 时（例如注释和空白字符），我们可以通过在语法文件书写特殊的指令，来将其送入其他通道。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">COMMENT</div><div class="line">    :    <span class="string">'/*'</span> .*? <span class="string">'*/'</span>    -&gt; channel(HIDDEN)  <span class="comment">// 匹配 /* 和 */ 之间的任何东西</span></div><div class="line">    ;</div><div class="line">WS  :    [ \r\t\u000c\n]+ -&gt; channel(HIDDEN)</div><div class="line">    ;</div></pre></td></tr></table></figure>
+<p><code>-&gt;channel(HIDDEN)</code>和<code>-&gt;skip</code>类似，也是一个词法分析器指令。在这里，它设置了这些 tokens 的通道号。这样，这些 tokens 就会被语法分析器忽略。token 流中仍然保存着这些原始的 tokens 序列，但在向语法分析器提供数据时忽略了那些处于已关闭通道的 tokens。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>ANTLR 学习的第三篇笔记到这里就结束了。尽管这一篇笔记很短，但是涵盖了 ANTLR 实践中一些比较现实的问题的解决方式。之后，我们将进入 Part II，正式展开对使用 ANTLR 开发语言类应用程序的学习。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>《The Definitive ANTLR 4 Reference》</li>
 </ul>
-<h3 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h3><p>11.“DOM3级事件”规定了以下几类事件：</p>
-<ul>
-<li>UI（用户界面）事件，当用户与页面上的元素交互时触发：<code>load</code>、<code>unload</code>、<code>resize</code>、<code>scroll</code>。</li>
-<li>焦点事件，当元素获得或失去焦点时触发。</li>
-<li>鼠标与滚轮事件：<code>click</code>、<code>dblclick</code>、<code>mousedown</code>、<code>mouseenter</code>、<code>mouseleave</code>、<code>mouseout</code>、<code>mouseover</code>、<code>mouseup</code>。</li>
-<li>键盘与文本事件：<code>keydown</code>、<code>keypress</code>、<code>keyup</code>、<code>textInput</code>。</li>
-<li>复合事件，用于处理IME（输入法编辑器，让用户输入在物理键盘上找不到的字符）的输入序列。</li>
-<li>变动事件，当DOM中的某一部分发生变化时给出提示。</li>
-</ul>
-<h3 id="内存和性能"><a href="#内存和性能" class="headerlink" title="内存和性能"></a>内存和性能</h3><p>to be continued..</p>
-<h2 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h2><p>to be continued..</p>
 
       
     </div>
@@ -487,7 +487,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://kyonhuang.top/JS-notes-4/" title="《JavaScript高级程序设计》读书笔记（四）">http://kyonhuang.top/JS-notes-4/</a>
+      <a href="http://kyonhuang.top/ANTLR-learning-notes-3/" title="ANTLR v4 学习笔记（三）－特性拾遗">http://kyonhuang.top/ANTLR-learning-notes-3/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -503,13 +503,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端/" rel="tag"># 前端</a>
+            <a href="/tags/ANTLR/" rel="tag"># ANTLR</a>
           
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+            <a href="/tags/编译技术/" rel="tag"># 编译技术</a>
           
-            <a href="/tags/JavaScipt/" rel="tag"># JavaScipt</a>
-          
-            <a href="/tags/《JavaScript高级程序设计》/" rel="tag"># 《JavaScript高级程序设计》</a>
+            <a href="/tags/解释器/" rel="tag"># 解释器</a>
           
         </div>
       
@@ -522,8 +520,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/JS-notes-3/" rel="next" title="《JavaScript高级程序设计》读书笔记（三）">
-                <i class="fa fa-chevron-left"></i> 《JavaScript高级程序设计》读书笔记（三）
+              <a href="/ANTLR-learning-notes-2/" rel="next" title="ANTLR v4 学习笔记（二）－实现变种计算器">
+                <i class="fa fa-chevron-left"></i> ANTLR v4 学习笔记（二）－实现变种计算器
               </a>
             
           </div>
@@ -531,10 +529,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/JS-notes-5/" rel="prev" title="《JavaScript高级程序设计》读书笔记（五）">
-                《JavaScript高级程序设计》读书笔记（五） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -708,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">1.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流"><span class="nav-number">1.1.</span> <span class="nav-text">事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件处理程序"><span class="nav-number">1.2.</span> <span class="nav-text">事件处理程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件对象"><span class="nav-number">1.3.</span> <span class="nav-text">事件对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件类型"><span class="nav-number">1.4.</span> <span class="nav-text">事件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存和性能"><span class="nav-number">1.5.</span> <span class="nav-text">内存和性能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单脚本"><span class="nav-number">2.</span> <span class="nav-text">表单脚本</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#监听器机制"><span class="nav-number">1.</span> <span class="nav-text">监听器机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码片段嵌入语法"><span class="nav-number">2.</span> <span class="nav-text">代码片段嵌入语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将任意动作嵌入语法"><span class="nav-number">2.1.</span> <span class="nav-text">将任意动作嵌入语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用语义判定改变语法分析过程"><span class="nav-number">2.2.</span> <span class="nav-text">用语义判定改变语法分析过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析特性"><span class="nav-number">3.</span> <span class="nav-text">词法分析特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#孤岛语法：处理同一文件中的不同格式"><span class="nav-number">3.1.</span> <span class="nav-text">孤岛语法：处理同一文件中的不同格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重写输入流"><span class="nav-number">3.2.</span> <span class="nav-text">重写输入流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将-Tokens-送入不同通道"><span class="nav-number">3.3.</span> <span class="nav-text">将 Tokens 送入不同通道</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
