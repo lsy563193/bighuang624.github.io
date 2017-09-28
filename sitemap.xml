@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/recent-and-will/</loc>
+    
+    <lastmod>2017-09-28T08:34:43.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/Node-repo-and-ideas/</loc>
+    
+    <lastmod>2017-09-28T07:55:31.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/ANTLR-learning-notes-3/</loc>
     
     <lastmod>2017-09-25T11:07:19.000Z</lastmod>
@@ -54,13 +68,6 @@
     <loc>http://kyonhuang.top/Generator-and-async/</loc>
     
     <lastmod>2017-09-20T06:59:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/Node-repo-and-ideas/</loc>
-    
-    <lastmod>2017-09-19T12:04:58.000Z</lastmod>
     
   </url>
   
@@ -271,13 +278,6 @@
     <loc>http://kyonhuang.top/JS-notes-2/</loc>
     
     <lastmod>2017-07-12T06:56:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/recent-and-will/</loc>
-    
-    <lastmod>2017-06-23T13:06:47.000Z</lastmod>
     
   </url>
   
