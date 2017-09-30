@@ -4,12 +4,58 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/recent-and-will/</loc>
-    <lastmod>2017-09-28T08:34:43.000Z</lastmod>
+    <loc>http://kyonhuang.top/jQuery-master-notes/</loc>
+    <lastmod>2017-09-30T07:38:12.000Z</lastmod>
     <data>
         <display>
-        <title>最近在干以及打算干些什么</title>
-        <pubTime>2017-04-26T10:22:33.000Z</pubTime>
+        <title>《精通jQuery》读书笔记</title>
+        <pubTime>2017-04-21T06:50:27.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>读书笔记</tag>
+         
+        <tag>jQuery</tag>
+         
+        <tag>《精通jQuery》</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/Node-repo-and-ideas/</loc>
+    <lastmod>2017-09-30T07:33:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>Node 学习中遇到的 repo 和 ideas（持续更新）</title>
+        <pubTime>2017-09-03T11:03:16.000Z</pubTime>
+        
+        <tag>NodeJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="NodeJS 学习笔记" url="http://kyonhuang.top/categories/NodeJS-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/happy-national-day/</loc>
+    <lastmod>2017-09-30T07:32:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>十一八天乐</title>
+        <pubTime>2017-02-19T09:52:31.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -28,19 +74,51 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/Node-repo-and-ideas/</loc>
-    <lastmod>2017-09-28T07:55:31.000Z</lastmod>
+    <loc>http://kyonhuang.top/cup-doubleWings/</loc>
+    <lastmod>2017-09-30T07:32:38.000Z</lastmod>
     <data>
         <display>
-        <title>Node 学习中遇到的 repo 和 ideas（持续更新）</title>
-        <pubTime>2017-09-03T11:03:16.000Z</pubTime>
+        <title>前端布局知识点(3)——圣杯布局与双飞翼布局</title>
+        <pubTime>2017-02-25T01:54:43.000Z</pubTime>
         
-        <tag>NodeJS</tag>
+        <tag>前端</tag>
+         
+        <tag>总结</tag>
+         
+        <tag>布局</tag>
+         
+        <tag>双飞翼布局</tag>
+         
+        <tag>圣杯布局</tag>
          
          
            
              
-              <breadCrumb title="NodeJS 学习笔记" url="http://kyonhuang.top/categories/NodeJS-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/recent-and-will/</loc>
+    <lastmod>2017-09-28T08:34:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>最近在干以及打算干些什么</title>
+        <pubTime>2017-04-26T10:22:33.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>目标</tag>
+         
+        <tag>学习之路</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>
@@ -530,11 +608,11 @@
          
         <tag>学习笔记</tag>
          
+        <tag>随笔</tag>
+         
         <tag>SASS</tag>
          
         <tag>WebStorm</tag>
-         
-        <tag>随笔</tag>
          
          
            
@@ -1026,60 +1104,6 @@
            
              
               <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/jQuery-master-notes/</loc>
-    <lastmod>2017-04-28T07:48:58.000Z</lastmod>
-    <data>
-        <display>
-        <title>《精通jQuery》读书笔记</title>
-        <pubTime>2017-04-21T06:50:27.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>读书笔记</tag>
-         
-        <tag>jQuery</tag>
-         
-        <tag>《精通jQuery》</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/cup-doubleWings/</loc>
-    <lastmod>2017-04-28T07:47:14.000Z</lastmod>
-    <data>
-        <display>
-        <title>前端布局知识点(3)——圣杯布局与双飞翼布局</title>
-        <pubTime>2017-02-25T01:54:43.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>总结</tag>
-         
-        <tag>布局</tag>
-         
-        <tag>双飞翼布局</tag>
-         
-        <tag>圣杯布局</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
