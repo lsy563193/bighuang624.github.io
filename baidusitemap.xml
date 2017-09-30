@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/JS-notes-2/</loc>
+    <lastmod>2017-09-30T10:23:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>《JavaScript高级程序设计》读书笔记（二）</title>
+        <pubTime>2017-03-03T09:33:08.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
+         
+        <tag>《JavaScript高级程序设计》</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/jQuery-master-notes/</loc>
     <lastmod>2017-09-30T07:38:12.000Z</lastmod>
     <data>
@@ -11,9 +37,9 @@
         <title>《精通jQuery》读书笔记</title>
         <pubTime>2017-04-21T06:50:27.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
+         
+        <tag>前端</tag>
          
         <tag>jQuery</tag>
          
@@ -282,11 +308,11 @@
          
         <tag>JavaScipt</tag>
          
+        <tag>异步编程</tag>
+         
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
-         
-        <tag>异步编程</tag>
          
          
            
@@ -330,8 +356,6 @@
         <title>《ECMAScript 6 入门》读书笔记(二)</title>
         <pubTime>2017-04-24T10:36:13.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
@@ -339,6 +363,8 @@
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
+         
+        <tag>前端</tag>
          
          
            
@@ -358,8 +384,6 @@
         <title>《ECMAScript 6 入门》读书笔记(一)</title>
         <pubTime>2017-04-06T08:21:52.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
@@ -367,6 +391,8 @@
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
+         
+        <tag>前端</tag>
          
          
            
@@ -386,13 +412,13 @@
         <title>基于Java的BiliBili视频信息爬虫</title>
         <pubTime>2017-01-27T10:24:19.000Z</pubTime>
         
+        <tag>学习笔记</tag>
+         
         <tag>demo</tag>
          
         <tag>爬虫</tag>
          
         <tag>Java</tag>
-         
-        <tag>学习笔记</tag>
          
          
            
@@ -578,11 +604,11 @@
         <title>《JavaScript高级程序设计》读书笔记（一）</title>
         <pubTime>2017-02-28T00:57:45.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -632,9 +658,9 @@
         <title>初探前端自动化测试--以 Vue 为例</title>
         <pubTime>2017-08-16T01:14:28.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>前端工程</tag>
          
@@ -716,11 +742,11 @@
          
         <tag>JavaScipt</tag>
          
+        <tag>异步编程</tag>
+         
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
-         
-        <tag>异步编程</tag>
          
          
            
@@ -766,9 +792,9 @@
         <title>在把玩中学习——typewriter.js</title>
         <pubTime>2017-03-17T03:28:32.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>学习笔记</tag>
          
@@ -910,11 +936,11 @@
         <title>《你不知道的 JavaScript（上卷）》脑图</title>
         <pubTime>2017-07-27T08:47:12.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>脑图</tag>
          
@@ -966,11 +992,11 @@
         <title>《JavaScript高级程序设计》读书笔记（五）</title>
         <pubTime>2017-03-15T02:43:51.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -992,11 +1018,11 @@
         <title>《JavaScript高级程序设计》读书笔记（四）</title>
         <pubTime>2017-03-12T04:13:51.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -1018,37 +1044,11 @@
         <title>《JavaScript高级程序设计》读书笔记（三）</title>
         <pubTime>2017-03-10T02:23:02.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
          
-        <tag>《JavaScript高级程序设计》</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-2/</loc>
-    <lastmod>2017-07-12T06:56:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>《JavaScript高级程序设计》读书笔记（二）</title>
-        <pubTime>2017-03-03T09:33:08.000Z</pubTime>
-        
         <tag>前端</tag>
-         
-        <tag>读书笔记</tag>
-         
-        <tag>JavaScipt</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
