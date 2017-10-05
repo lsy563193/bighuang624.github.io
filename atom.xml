@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-10-04T10:56:31.000Z</updated>
+  <updated>2017-10-05T05:53:46.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,93 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>理清 Spark 2.2 的概念－RDD、Dataset、MLlib</title>
+    <link href="http://kyonhuang.top/spark2.2-with-old-conceptions/"/>
+    <id>http://kyonhuang.top/spark2.2-with-old-conceptions/</id>
+    <published>2017-10-05T02:43:16.000Z</published>
+    <updated>2017-10-05T05:53:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>根据实验室的要求，现在在啃《Spark 机器学习》。这本书和市面上大多数 Spark 书籍一样，全都基于 Spark 1.x。在 Spark 版本已经升到 2.2 的今天，敲这本书上的代码可以说是遍地是坑了，很多东西都已经变更，而且很难找到正确的解决方案，弄的我很是烦躁。</p>
+<p>没办法，问题要一点一点解决。我决定先从理清《Spark 机器学习》提到的某些 Spark 2.2 提供的概念、模块和配合工具下手，主要关心一下几点：</p>
+<ol>
+<li>RDD 是什么？在升级到 Spark2.2+ 后有什么改动？</li>
+<li>Dataset 是什么？DataFrame 又是什么？</li>
+<li>MLlib 是什么？在升级到 Spark2.2+ 后有没有变动？如何使用？</li>
+<li>IPython 是什么？如何配合 Spark2.2+ 使用？</li>
+</ol>
+<a id="more"></a>
+<h2 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h2><p>Apache Spark 是一个快速的, 多用途的集群计算系统。 它提供了 Java, Scala, Python 和 R 的高级 API，以及一个支持通用的执行图计算的优化过的引擎. 它还支持一组丰富的高级工具, 包括使用 SQL 处理结构化数据处理的 Spark SQL, 用于机器学习的 MLlib, 用于图形处理的 GraphX, 以及 Spark Streaming。</p>
+<h2 id="RDD"><a href="#RDD" class="headerlink" title="RDD"></a>RDD</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>RDD（Resilien Distributed Dataset，弹性分布式数据集）是 Spark 的核心概念之一。一个 RDD 代表一系列的“记录”（严格来说是某种类型的对象）。这些记录被分配或分区到一个集群的多个节点上（在本地模式下，可以类似地理解为单个进程里的多个线程上）。</p>
+<p>Spark 中的 RDD 具备容错性，即当某个节点或任务失败时（非用户代码错误引起，如硬件故障、网络连接失败等），RDD 会在余下的节点上自动重建，以便任务最终能够完成。</p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>RDD 可以从一个驱动程序中已存在的 Scala 集合创建，也可以基于 Hadoop 的输入源（任何其他 Hadoop 支持的文件系统）创建，以及通过转换（transforming）来创建。</p>
+<p>RDD 支持两种类型的操作：<strong>转换（transformation）</strong>和<strong>执行（action）</strong>。一般来说，转换操作是对一个数据集里的所有记录执行某种函数，从而使记录发生改变；而执行通常是运行某些计算或聚合操作，并将结果返回给驱动程序。</p>
+<p>值得注意的是，Spark 中的<strong>转换操作是懒加载的</strong>（lazy），即在 RDD 上调用一个转换操作不会立即触发相应的计算，而是会将转换操作链接起来，并在执行操作被调用时才被高效计算。</p>
+<p>调用一个 RDD 的<code>cache</code>（或<code>persist</code>）函数将会告诉 Spark 将这个 RDD 缓存在集群的内存中，以加快下一次访问数据集的速度。</p>
+<p>更多 RDD 功能及实际编程方法可见 <a href="http://spark.apachecn.org/docs/cn/2.2.0/rdd-programming-guide.html" target="_blank" rel="external">Spark 编程指南 - Spark 2.2.0 中文文档 - ApacheCN</a>里的相关部分。</p>
+<h3 id="升级变动"><a href="#升级变动" class="headerlink" title="升级变动"></a>升级变动</h3><p>在 Spark 2.0 之前，Spark 的主要编程接口是 RDD。而在 Spark 2.0 之后，RDD 被 Dataset（数据集）替换。</p>
+<p>Dataset 很像 RDD，也是强类型的，并能够使用强大的 lambda 函数。但 Dataset 在引擎盖（hood）有更好的优化，因此性能要更优于 RDD。RDD 接口仍然受支持，但是建议切换使用 Dataset。</p>
+<h2 id="Dataset-和-DataFrame"><a href="#Dataset-和-DataFrame" class="headerlink" title="Dataset 和 DataFrame"></a>Dataset 和 DataFrame</h2><h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><p>Dataset 是一个分布式的数据集合。一个 Dataset 可以从 JVM 对象来构造并使用转换功能。Dataset API 在 Scala 和 Java 是可用的，遗憾的是，Python 暂不支持 Dataset API。但是由于 Python 的动态特性, 许多 Dataset API 的优点已经可用了。</p>
+<h3 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h3><p>一个 DataFrame 是一个 Dataset 组成的指定列。它的概念与一个关系型数据库中的表或者在 R/Python 中的数据帧（data frame）是相等的，但优化得更好。</p>
+<p>DataFrames 可以从结构化的文本文件、Hive中的表、外部数据库，或者已经存在的 RDD 构造而来。DataFrame API 可以在 Scala、Java、Python 和 R 中实现。在 Scala 和 Java 中，一个 DataFrame 所代表的是一个多行的 Dataset。</p>
+<p>更多相关信息可见 <a href="http://spark.apachecn.org/docs/cn/2.2.0/sql-programming-guide.html" target="_blank" rel="external">Spark SQL and DataFrames - Spark 2.2.0 中文文档 - ApacheCN</a>。</p>
+<h2 id="MLlib"><a href="#MLlib" class="headerlink" title="MLlib"></a>MLlib</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>MLlib 是 Spark 的机器学习库。其目标是使实用的机器学习具有可扩展性并且变得容易。在较高的水平上，它提供了以下工具：</p>
+<ul>
+<li>ML Algorithms（ML 算法）：常用的学习算法，如分类，回归，聚类和协同过滤；</li>
+<li>Featurization（特征）：特征提取，变换，降维和选择；</li>
+<li>Pipelines（管道）：用于构建，评估和调整 ML Pipelines 的工具；</li>
+<li>Persistence（持久性）：保存和加载算法，模型和 Pipelines；</li>
+<li>Utilities（实用）：线性代数，统计学，数据处理等。</li>
+</ul>
+<h3 id="升级变动-1"><a href="#升级变动-1" class="headerlink" title="升级变动"></a>升级变动</h3><p>MLlib 包括基于 RDD 的 API 和基于 DataFrame 的 API。从 Spark 2.0 开始，基于 RDD 的 API 处于维护模式，这意味着这些 API 仍然被支持且会修复 bug，但不会再添加新功能。在基于 DataFrame 的 API 能够开发到相同功能时，基于 RDD 的 API 将被弃用，并预计在 Spark 3.0 中删除。</p>
+<p>更多相关信息可见 <a href="http://spark.apachecn.org/docs/cn/2.2.0/ml-guide.html" target="_blank" rel="external">MLlib: 主要指南 - Spark 2.2.0 中文文档 - ApacheCN</a>。</p>
+<h2 id="IPython"><a href="#IPython" class="headerlink" title="IPython"></a>IPython</h2><p>书中的 3.2 节开始也涉及到 IPython 的使用，并且在实际使用中也有一些坑。因此也需要了解一下。</p>
+<h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h3><p>IPython 是一个 Python 的高级交互式 shell，基于 BSD 开源，比默认的 Python shell 好用得多，支持变量自动补全，自动缩进，支持 bash shell 命令，并且内置了许多很有用的功能和函数。IPython 内置的 pylab 包括用于数值计算的 NumPy 和 SciPy，以及用于交互式绘图和可视化的 matplotlib。</p>
+<h3 id="升级变动-2"><a href="#升级变动-2" class="headerlink" title="升级变动"></a>升级变动</h3><p>书中想在启动 PySpark 终端时使用 IPython 而非标准的 Python shell。启动时也可以向 IPython 传入其他参数，包括让它启动时也启动 pylab 功能。</p>
+<p>但是实际操作时，在 Spark 主目录下输入如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IPYTHON=1 IPYTHON_OPTS=&quot;--pylab&quot; ./bin/pyspark</div></pre></td></tr></table></figure>
+<p>会报错，提示信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Error in pyspark startup:</div><div class="line">IPYTHON and IPYTHON_OPTS are removed in Spark 2.0+. Remove these from the environment and set PYSPARK_DRIVER_PYTHON and PYSPARK_DRIVER_PYTHON_OPTS instead.</div></pre></td></tr></table></figure>
+<p><strong>解决方法：</strong></p>
+<p>把输入命令变成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS=&quot;--pylab&quot; ./bin/pyspark</div></pre></td></tr></table></figure>
+<p>如果要使用 IPython 提供的 Notebook 应用，<br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS=&apos;notebook&apos; ./bin/pyspark</div></pre></td></tr></table></figure>
+<p>参考资料：<a href="https://stackoverflow.com/questions/42658694/starting-ipython-with-spark-2" target="_blank" rel="external">Starting Ipython with Spark 2 - Stack Overflow</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>《Spark 机器学习》</li>
+<li><a href="http://spark.apachecn.org/docs/cn/2.2.0/" target="_blank" rel="external">概述 - Spark 2.2.0 中文文档 - ApacheCN</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;根据实验室的要求，现在在啃《Spark 机器学习》。这本书和市面上大多数 Spark 书籍一样，全都基于 Spark 1.x。在 Spark 版本已经升到 2.2 的今天，敲这本书上的代码可以说是遍地是坑了，很多东西都已经变更，而且很难找到正确的解决方案，弄的我很是烦躁。&lt;/p&gt;
+&lt;p&gt;没办法，问题要一点一点解决。我决定先从理清《Spark 机器学习》提到的某些 Spark 2.2 提供的概念、模块和配合工具下手，主要关心一下几点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;RDD 是什么？在升级到 Spark2.2+ 后有什么改动？&lt;/li&gt;
+&lt;li&gt;Dataset 是什么？DataFrame 又是什么？&lt;/li&gt;
+&lt;li&gt;MLlib 是什么？在升级到 Spark2.2+ 后有没有变动？如何使用？&lt;/li&gt;
+&lt;li&gt;IPython 是什么？如何配合 Spark2.2+ 使用？&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="Spark 学习笔记" scheme="http://kyonhuang.top/categories/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Spark" scheme="http://kyonhuang.top/tags/Spark/"/>
+    
+      <category term="RDD" scheme="http://kyonhuang.top/tags/RDD/"/>
+    
+      <category term="Dataset" scheme="http://kyonhuang.top/tags/Dataset/"/>
+    
+      <category term="MLlib" scheme="http://kyonhuang.top/tags/MLlib/"/>
+    
+  </entry>
   
   <entry>
     <title>十一八天乐</title>
@@ -676,9 +763,9 @@
       <category term="NodeJS 学习笔记" scheme="http://kyonhuang.top/categories/NodeJS-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="NodeJS" scheme="http://kyonhuang.top/tags/NodeJS/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="NodeJS" scheme="http://kyonhuang.top/tags/NodeJS/"/>
     
       <category term="异步 I/O" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5-I-O/"/>
     
@@ -963,9 +1050,9 @@
       <category term="前端工程" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="前端工程" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
     
@@ -1024,11 +1111,11 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
+      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
+    
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
-    
-      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -1192,11 +1279,11 @@
       <category term="NodeJS 学习笔记" scheme="http://kyonhuang.top/categories/NodeJS-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="NodeJS" scheme="http://kyonhuang.top/tags/NodeJS/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="NodeJS" scheme="http://kyonhuang.top/tags/NodeJS/"/>
     
       <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
     
@@ -1229,11 +1316,11 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
+    
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
     
@@ -1533,11 +1620,11 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
+      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
+    
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
-    
-      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -1615,48 +1702,6 @@
     
     
       <category term="终端" scheme="http://kyonhuang.top/tags/%E7%BB%88%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端学习之路上的暂歇思考</title>
-    <link href="http://kyonhuang.top/relax-and-think/"/>
-    <id>http://kyonhuang.top/relax-and-think/</id>
-    <published>2017-06-05T07:22:33.000Z</published>
-    <updated>2017-08-29T11:05:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>又快到考试周了，大二的下学期马上要过完了。这个学期可以说是我编程学习中进步最大的一个学期，自己明确了要学习的方向并为之奔赴。不过这几周可能因为事务繁忙加上有些疲倦，学习效率比较低，也有好久没写博客了。不如暂歇一下，对自己的前端学习做一个阶段性的总结。</p>
-  <a id="more"></a>
-<p>到现在为止，我的前端学习之路大概插了这些旗帜：</p>
-<ol>
-<li>对前端生态有了一个大致的了解，对例如 Webpack、Babel 等常用的工具有使用经验或者大概知道是干什么的。</li>
-<li>在知乎和微博上关注了前端大佬，养成每天在掘金上看技术文章以及不时逛一些较为优秀的技术博客的习惯。</li>
-<li>看了一些前端书籍，大多是 JavaScript 相关。</li>
-<li>大致啃完了 Vue.js 的文档，正在学习 Vue-router。同时也对 i-View 等相关项目有一些了解。</li>
-</ol>
-<p>在之前的前端学习中也有一些问题：</p>
-<ol>
-<li>最大的问题是不太重视基础。看张鑫旭对前端的要求中，光是“掌握 JS 中的字符串、函数、对象、数组、字面量等基本概念，熟记所有内置的方法（包括参数和返回值）”这一条就足够我汗颜了。看的书籍虽然有笔记，但也感觉是没有过心。<strong>之后会将博客中的读书笔记再按照知识点，辅以自己的进一步学习成果拆分细化</strong>。虽然这是一个比较大的工程，但我觉得这是一个很有必要的工作。</li>
-<li>经典书籍读的不够多。像《你不知道的 JavaScript》、《JavaScript 设计模式与开发实践》等书都没有看。</li>
-<li>某些时候还是有些懒惰，没有抽出空余时间来学习。或者是在学习过程中在知乎、贴吧、空间、微博耗费了注意力，导致学习效率不高。</li>
-<li>包括博文和项目在内的学习产出还是不多，博文也没有特别有价值的内容。<strong>毕业前要在 github 上有一个 100+ star 的项目，还要部署到 npm 上</strong>。博客考虑备案和 SEO，以激励自己写出更有价值的文章。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;又快到考试周了，大二的下学期马上要过完了。这个学期可以说是我编程学习中进步最大的一个学期，自己明确了要学习的方向并为之奔赴。不过这几周可能因为事务繁忙加上有些疲倦，学习效率比较低，也有好久没写博客了。不如暂歇一下，对自己的前端学习做一个阶段性的总结。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
-    
-      <category term="学习之路" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
   </entry>
   
