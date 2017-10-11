@@ -103,45 +103,6 @@
   </entry>
   
   <entry>
-    <title>十一八天乐</title>
-    <link href="http://kyonhuang.top/happy-national-day/"/>
-    <id>http://kyonhuang.top/happy-national-day/</id>
-    <published>2017-09-30T10:54:52.000Z</published>
-    <updated>2017-10-04T10:56:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这么长的假期，当然是学习啊！</p>
-<p>列个小计划。十一结束看心情决定删不删。</p>
-<ol>
-<li><strong>看完《Spark 机器学习》</strong>。跑完所有例子。将有价值的内容（例如 spark 2.2 和 1.x 的版本差异）记录下来。<strong>每天起码看一章</strong>。</li>
-<li><strong>构造正则表达式引擎</strong>。先把轮子哥的《构造正则表达式引擎》看完，拟一个思路出来。</li>
-<li>写完创业下的互联网思维课程的论文。</li>
-<li>写知乎爬虫，WHU in Zhihu。</li>
-<li>斯坦福大学吴恩达《机器学习》课程，前 5 节。</li>
-<li>每天背背单词，做做六级题和 LeetCode。可以看一看《深入理解计算机系统》，做些笔记。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这么长的假期，当然是学习啊！&lt;/p&gt;
-&lt;p&gt;列个小计划。十一结束看心情决定删不删。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;看完《Spark 机器学习》&lt;/strong&gt;。跑完所有例子。将有价值的内容（例如 spark 2.2 和 1.x 的版本差异）记录下来。&lt;stro
-    
-    </summary>
-    
-      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
-    
-      <category term="学习之路" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>ANTLR v4 学习笔记（三）－特性拾遗</title>
     <link href="http://kyonhuang.top/ANTLR-learning-notes-3/"/>
     <id>http://kyonhuang.top/ANTLR-learning-notes-3/</id>
@@ -1702,6 +1663,48 @@
     
     
       <category term="终端" scheme="http://kyonhuang.top/tags/%E7%BB%88%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端学习之路上的暂歇思考</title>
+    <link href="http://kyonhuang.top/relax-and-think/"/>
+    <id>http://kyonhuang.top/relax-and-think/</id>
+    <published>2017-06-05T07:22:33.000Z</published>
+    <updated>2017-08-29T11:05:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>又快到考试周了，大二的下学期马上要过完了。这个学期可以说是我编程学习中进步最大的一个学期，自己明确了要学习的方向并为之奔赴。不过这几周可能因为事务繁忙加上有些疲倦，学习效率比较低，也有好久没写博客了。不如暂歇一下，对自己的前端学习做一个阶段性的总结。</p>
+  <a id="more"></a>
+<p>到现在为止，我的前端学习之路大概插了这些旗帜：</p>
+<ol>
+<li>对前端生态有了一个大致的了解，对例如 Webpack、Babel 等常用的工具有使用经验或者大概知道是干什么的。</li>
+<li>在知乎和微博上关注了前端大佬，养成每天在掘金上看技术文章以及不时逛一些较为优秀的技术博客的习惯。</li>
+<li>看了一些前端书籍，大多是 JavaScript 相关。</li>
+<li>大致啃完了 Vue.js 的文档，正在学习 Vue-router。同时也对 i-View 等相关项目有一些了解。</li>
+</ol>
+<p>在之前的前端学习中也有一些问题：</p>
+<ol>
+<li>最大的问题是不太重视基础。看张鑫旭对前端的要求中，光是“掌握 JS 中的字符串、函数、对象、数组、字面量等基本概念，熟记所有内置的方法（包括参数和返回值）”这一条就足够我汗颜了。看的书籍虽然有笔记，但也感觉是没有过心。<strong>之后会将博客中的读书笔记再按照知识点，辅以自己的进一步学习成果拆分细化</strong>。虽然这是一个比较大的工程，但我觉得这是一个很有必要的工作。</li>
+<li>经典书籍读的不够多。像《你不知道的 JavaScript》、《JavaScript 设计模式与开发实践》等书都没有看。</li>
+<li>某些时候还是有些懒惰，没有抽出空余时间来学习。或者是在学习过程中在知乎、贴吧、空间、微博耗费了注意力，导致学习效率不高。</li>
+<li>包括博文和项目在内的学习产出还是不多，博文也没有特别有价值的内容。<strong>毕业前要在 github 上有一个 100+ star 的项目，还要部署到 npm 上</strong>。博客考虑备案和 SEO，以激励自己写出更有价值的文章。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;又快到考试周了，大二的下学期马上要过完了。这个学期可以说是我编程学习中进步最大的一个学期，自己明确了要学习的方向并为之奔赴。不过这几周可能因为事务繁忙加上有些疲倦，学习效率比较低，也有好久没写博客了。不如暂歇一下，对自己的前端学习做一个阶段性的总结。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
+    
+      <category term="学习之路" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
   </entry>
   
