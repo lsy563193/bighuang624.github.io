@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-10-05T05:53:46.000Z</updated>
+  <updated>2017-10-22T04:13:01.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>虎山行</title>
+    <link href="http://kyonhuang.top/escorts-over-tiger-hill/"/>
+    <id>http://kyonhuang.top/escorts-over-tiger-hill/</id>
+    <published>2017-10-22T03:43:24.000Z</published>
+    <updated>2017-10-22T04:13:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这段时间博客更得不勤，因为实在太忙。解释器构造、系统级程序设计、Spark、公选课作业、算法、英语、大创…每天睁开眼睛就想起这么多学习任务，让人不免感觉身在虎山，危机四伏，战战兢兢。</p>
+<p>只有在这种强度的学习压力下，才会发现自己的很多问题，其中最致命的就是自己的学习效率太低了，很难集中注意力去解决手头即时的任务。快速学习和解决问题的能力是程序员必备之一，我在这方面可以说不及格。再就是还有惰性心理，贪玩，不能保持健康的作息，以至于高效学习的时间不足。</p>
+<p>同时，每天忙碌的同时也会胡思乱想：我真的适合读研吗？自己学习前端知识的时候还是比较开心的，和现在学习 Spark 的态度可能还是有一些差别，并且也在要不要向机器学习方向深入学习而犹豫。读研以后，不是说完全不可能，但是基本上以后就不会从事前端领域的工作了。确定喜欢的领域和确定喜欢的人一样，难以割舍的感觉似有若无。但是对我来说，父母和老师都给了很大的期望，自己也没有做好找工作的准备，争取保研是箭在弦上，不得不发。我能做的，只有将弦拉的更满，箭一发便是千钧之力，穿越更高的云霄。</p>
+<a id="more"></a>
+<p>说的看起来很无奈，其实我也有点享受这种每天都更厉害一点，压过更多人的感觉。“得知下一站去虎山兴奋的我睡不着”，可能是狮子座的天性在作祟吧，哈哈。</p>
+<h2 id="学期计划"><a href="#学期计划" class="headerlink" title="学期计划"></a>学期计划</h2><p>给这个最重要的学期列一个学期计划。</p>
+<h3 id="课业"><a href="#课业" class="headerlink" title="课业"></a>课业</h3><p><strong>三门必修课</strong>，解释器构造实验以及系统级程序设计的理论和实验课，<strong>必须满绩</strong>。选修课，该鸽就鸽。什么都无法舍弃的人，什么都无法改变。</p>
+<h3 id="实验室"><a href="#实验室" class="headerlink" title="实验室"></a>实验室</h3><p>积极完成朱老师布置的任务，并且和他交流。也要关心组里其他同学的工作。</p>
+<h3 id="大创"><a href="#大创" class="headerlink" title="大创"></a>大创</h3><p>除开手头这个 TTC 的大创外，自己还要申请一个国家级大创，并且做组长。可以问一下朱老师有没有什么课题。</p>
+<h3 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h3><p>阅读朱老师推荐的会议，积累感觉找方向。多和朱老师交流心得。</p>
+<p>建议每天抽时间略看一篇，也算是练习英语阅读。</p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>每天一道 LeetCode 加上自己控制页数的《算法》阅读。下学期可以做九度 OJ 和北大 OJ 练手。</p>
+<h3 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h3><p>不要放弃六级，老师们都很看重英语能力。每天还是要抽时间背背单词，有时间练习一下听力、翻译、阅读、作文等。</p>
+<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>有时间自己做一些开源小项目。没时间就算了，还是以自己参与较多的科研项目为重。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>争取组队参加美赛。</li>
+<li>可以考虑申请软件著作权（当然要有比较好的项目）。</li>
+</ul>
+<p>忙乱时方显修为，管理好自己的时间，专心于自己的事业。自己能走多远，很大程度上取决于这个学期。</p>
+<blockquote>
+<p>那就继续人间游 虽说不太平<br>明知山有虎 偏向虎山行</p>
+<p>—  GAI / 艾福杰尼 / Kungfu-Pen 《虎山行》</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这段时间博客更得不勤，因为实在太忙。解释器构造、系统级程序设计、Spark、公选课作业、算法、英语、大创…每天睁开眼睛就想起这么多学习任务，让人不免感觉身在虎山，危机四伏，战战兢兢。&lt;/p&gt;
+&lt;p&gt;只有在这种强度的学习压力下，才会发现自己的很多问题，其中最致命的就是自己的学习效率太低了，很难集中注意力去解决手头即时的任务。快速学习和解决问题的能力是程序员必备之一，我在这方面可以说不及格。再就是还有惰性心理，贪玩，不能保持健康的作息，以至于高效学习的时间不足。&lt;/p&gt;
+&lt;p&gt;同时，每天忙碌的同时也会胡思乱想：我真的适合读研吗？自己学习前端知识的时候还是比较开心的，和现在学习 Spark 的态度可能还是有一些差别，并且也在要不要向机器学习方向深入学习而犹豫。读研以后，不是说完全不可能，但是基本上以后就不会从事前端领域的工作了。确定喜欢的领域和确定喜欢的人一样，难以割舍的感觉似有若无。但是对我来说，父母和老师都给了很大的期望，自己也没有做好找工作的准备，争取保研是箭在弦上，不得不发。我能做的，只有将弦拉的更满，箭一发便是千钧之力，穿越更高的云霄。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
+    
+  </entry>
   
   <entry>
     <title>理清 Spark 2.2 的概念－RDD、Dataset、MLlib</title>
@@ -1663,48 +1712,6 @@
     
     
       <category term="终端" scheme="http://kyonhuang.top/tags/%E7%BB%88%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端学习之路上的暂歇思考</title>
-    <link href="http://kyonhuang.top/relax-and-think/"/>
-    <id>http://kyonhuang.top/relax-and-think/</id>
-    <published>2017-06-05T07:22:33.000Z</published>
-    <updated>2017-08-29T11:05:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>又快到考试周了，大二的下学期马上要过完了。这个学期可以说是我编程学习中进步最大的一个学期，自己明确了要学习的方向并为之奔赴。不过这几周可能因为事务繁忙加上有些疲倦，学习效率比较低，也有好久没写博客了。不如暂歇一下，对自己的前端学习做一个阶段性的总结。</p>
-  <a id="more"></a>
-<p>到现在为止，我的前端学习之路大概插了这些旗帜：</p>
-<ol>
-<li>对前端生态有了一个大致的了解，对例如 Webpack、Babel 等常用的工具有使用经验或者大概知道是干什么的。</li>
-<li>在知乎和微博上关注了前端大佬，养成每天在掘金上看技术文章以及不时逛一些较为优秀的技术博客的习惯。</li>
-<li>看了一些前端书籍，大多是 JavaScript 相关。</li>
-<li>大致啃完了 Vue.js 的文档，正在学习 Vue-router。同时也对 i-View 等相关项目有一些了解。</li>
-</ol>
-<p>在之前的前端学习中也有一些问题：</p>
-<ol>
-<li>最大的问题是不太重视基础。看张鑫旭对前端的要求中，光是“掌握 JS 中的字符串、函数、对象、数组、字面量等基本概念，熟记所有内置的方法（包括参数和返回值）”这一条就足够我汗颜了。看的书籍虽然有笔记，但也感觉是没有过心。<strong>之后会将博客中的读书笔记再按照知识点，辅以自己的进一步学习成果拆分细化</strong>。虽然这是一个比较大的工程，但我觉得这是一个很有必要的工作。</li>
-<li>经典书籍读的不够多。像《你不知道的 JavaScript》、《JavaScript 设计模式与开发实践》等书都没有看。</li>
-<li>某些时候还是有些懒惰，没有抽出空余时间来学习。或者是在学习过程中在知乎、贴吧、空间、微博耗费了注意力，导致学习效率不高。</li>
-<li>包括博文和项目在内的学习产出还是不多，博文也没有特别有价值的内容。<strong>毕业前要在 github 上有一个 100+ star 的项目，还要部署到 npm 上</strong>。博客考虑备案和 SEO，以激励自己写出更有价值的文章。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;又快到考试周了，大二的下学期马上要过完了。这个学期可以说是我编程学习中进步最大的一个学期，自己明确了要学习的方向并为之奔赴。不过这几周可能因为事务繁忙加上有些疲倦，学习效率比较低，也有好久没写博客了。不如暂歇一下，对自己的前端学习做一个阶段性的总结。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
-    
-      <category term="学习之路" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
   </entry>
   
