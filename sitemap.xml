@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/about/index.html</loc>
+    
+    <lastmod>2017-11-03T12:06:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/intro-to-data-preprocessing/</loc>
     
     <lastmod>2017-11-01T07:35:30.000Z</lastmod>
@@ -61,13 +68,6 @@
     <loc>http://kyonhuang.top/ANTLR-learning-notes-3/</loc>
     
     <lastmod>2017-09-25T11:07:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/about/index.html</loc>
-    
-    <lastmod>2017-09-25T02:38:27.000Z</lastmod>
     
   </url>
   

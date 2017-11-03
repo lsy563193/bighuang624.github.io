@@ -3,6 +3,7 @@
 
 
     
+    
   <url>
     <loc>http://kyonhuang.top/intro-to-data-preprocessing/</loc>
     <lastmod>2017-11-01T07:35:30.000Z</lastmod>
@@ -227,7 +228,6 @@
     </url>
 
     
-    
   <url>
     <loc>http://kyonhuang.top/start-to-know-AI/</loc>
     <lastmod>2017-09-24T03:02:18.000Z</lastmod>
@@ -236,9 +236,9 @@
         <title>初探人工智能</title>
         <pubTime>2017-07-23T02:17:25.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>人工智能</tag>
+         
+        <tag>机器学习</tag>
          
         <tag>深度学习</tag>
          
