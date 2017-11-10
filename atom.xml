@@ -101,7 +101,7 @@
     <link href="http://kyonhuang.top/escorts-over-tiger-hill/"/>
     <id>http://kyonhuang.top/escorts-over-tiger-hill/</id>
     <published>2017-10-22T03:43:24.000Z</published>
-    <updated>2017-11-09T13:08:55.000Z</updated>
+    <updated>2017-11-10T04:05:03.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>更新</strong>：10 月 26 日我跟朱老师进行了一次时间较长的近期学习成果展示，并且对于接下来的学习方向聊了一会。结合花旗杯进入决赛的事情，将此文做一次更新。</p>
 <hr>
@@ -115,10 +115,10 @@
 </ul>
 <h3 id="每周"><a href="#每周" class="headerlink" title="每周"></a>每周</h3><ul>
 <li>《算法》一节</li>
-<li>Coursera 华盛顿大学《机器学习》课程一节（尽早刷完这个）</li>
+<li>Coursera 华盛顿大学《机器学习基础：案例研究》课程一节（尽早刷完这个）</li>
 <li>六级练习题若干（有时间可以做一整套题）</li>
 <li>一篇会议论文阅读（abstract 和 introduction）［按照标准认真读，做一些简短的笔记］</li>
-<li>12 月后读薄 CSAPP 系列每周两篇</li>
+<li>12 月后<a href="http://wdxtub.com/2016/04/16/thin-csapp-0/" target="_blank" rel="external">读薄 CSAPP 系列</a>每周两篇</li>
 </ul>
 <h2 id="学期计划"><a href="#学期计划" class="headerlink" title="学期计划"></a>学期计划</h2><p>给这个最重要的学期列一个总体的学期计划。</p>
 <h3 id="课业"><a href="#课业" class="headerlink" title="课业"></a>课业</h3><p><strong>三门必修课</strong>，解释器构造实验以及系统级程序设计的理论和实验课，<strong>必须满绩</strong>。</p>
@@ -130,6 +130,14 @@
 <h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>每天一道 LeetCode 加上自己控制页数的《算法》阅读。下学期可以做九度 OJ 和北大 OJ 练手。</p>
 <h3 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h3><p>不要放弃六级，老师们都很看重英语能力。每天还是要抽时间背背单词，有时间练习一下听力、翻译、阅读、作文等。<strong>题目重在整理，而非数量。</strong></p>
 <h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>有时间自己做一些开源小项目。没时间就算了，还是以自己参与度较高的科研项目为重。</p>
+<h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h3><p>暂时考虑按照以下路径，这个学习肯定搞不定，但是要自己把握进度：</p>
+<ol>
+<li>学完 Coursera 华盛顿大学《机器学习基础：案例研究》课程并完成所有作业</li>
+<li>通过《利用Python进行数据分析》的阅读学习，掌握 sklearn、numpy、pandas、matplotlib 的使用</li>
+<li>吴恩达《机器学习》课程：绕不开的必修课</li>
+<li>建立大局观的书籍：中文：周志华老师的西瓜书《机器学习》和李航老师的《统计学习方法》；英文：《Patten Recognition and Machine Learning》，《Elements of Statistical Learning》</li>
+<li>kaggle、阿里巴巴天池实战</li>
+</ol>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
 <li>组队参加美赛。抽时间了解一下赛事信息和要求。有时间点一些技能点。</li>
 <li>可以考虑申请软件著作权（当然要有比较好的项目）。</li>
@@ -1556,9 +1564,9 @@
       <category term="机器学习笔记" scheme="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="人工智能" scheme="http://kyonhuang.top/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
-    
       <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="人工智能" scheme="http://kyonhuang.top/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
       <category term="深度学习" scheme="http://kyonhuang.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
