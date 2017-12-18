@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/Dynamic-programming/</loc>
+    
+    <lastmod>2017-12-18T12:19:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/about/index.html</loc>
     
     <lastmod>2017-12-15T11:32:43.000Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://kyonhuang.top/jQuery-master-notes/</loc>
     
     <lastmod>2017-09-30T07:38:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/Node-repo-and-ideas/</loc>
-    
-    <lastmod>2017-09-30T07:33:21.000Z</lastmod>
     
   </url>
   
