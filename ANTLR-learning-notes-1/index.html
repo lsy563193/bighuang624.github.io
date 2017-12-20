@@ -113,7 +113,7 @@
 <meta property="og:image" content="http://kyonhuang.top/images/antlr/note1/grun-the-example4.jpg">
 <meta property="og:image" content="http://kyonhuang.top/images/antlr/note1/integrating-test.jpg">
 <meta property="og:image" content="http://kyonhuang.top/images/antlr/note1/translate-test.jpg">
-<meta property="og:updated_time" content="2017-09-21T07:35:35.000Z">
+<meta property="og:updated_time" content="2017-12-20T12:57:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ANTLR v4 学习笔记（一）－ANTLR 初体验">
 <meta name="twitter:description" content="新学期又迎来新课程《解释器构造实践》，通过综合应用来加深对编译原理技术的理解。该实验课最终要求设计并编制调试一个 CMM（C Minus Minus，C 语言的一个子集）程序结构的解释器，对输入的满足 CMM 语法的源程序文件进行解释执行。 课程推荐使用自动化生成工具 ANTLR，因此在这里持续记录我的解释器构造及 ANTLR 学习过程。当然也不排除之后可能会换用其他工具，或者全部自己实现。 AN">
@@ -446,7 +446,7 @@
 <p>说实话，如果单单是谈在《编译技术及应用》这门课上的认识的话，我可能只能像孔乙己一样，接连便是难懂的话，什么“上下文无关文法”，什么“LL(1)”，引得各位都哄笑起来，屏幕内外充满了快活的空气…  </p>
 <p>尽管经过了计算器和 JSONCompiler 两次实验，但我们可能对编译技术的应用还没有什么认识，觉得编译器的唯一用处就是写一个能把 xx 语言翻译成 xx 然后再运行成功…</p>
 <p>基于写这篇博文的契机，我查了一下编译技术的各种应用，才发现其实“编译”这个概念应用还是很广泛的。</p>
-<p>比如我的博客是用 hexo 这个博客框架搭建的，而你现在看到的这篇博文是 hexo 将我写的 markdown 文件解析成 html 生成的，这其中自然有编译模块的功劳（感兴趣可见 <a href="http://www.jianshu.com/p/ef88b5bbb914" target="_blank" rel="external">大前端-5分钟带你读懂Hexo源码设计模式 - 简书</a>）。</p>
+<p>比如我的博客是用 hexo 这个博客框架搭建的，而你现在看到的这篇博文是 hexo 将我写的 markdown 文件解析成 html 生成的，这其中自然有编译模块的功劳。</p>
 <p>再比如作为一个前端，有不少我使用过或日常接触的工具、框架其实都是编译相关知识的应用：Babel 作为 ES 6 的所有新特性还没有在主流浏览器全面推广的一个暂时的解决方法，将 ES 6 编译成 ES 5 等浏览器能够运行的 JavaScript 代码；在 Vue 中频繁出现的模版引擎、<code>v-for=&quot;item in list&quot;</code>等也有编译的身影。如果真正对编译原理理解透彻，大概可以去摸摸 v8 ，帮助提高一下 Node.js 的运行效率。</p>
 <p>编程，本质上是程序员通过语言来控制计算机按照人的意志去进行各种运算和操作。自 20 世纪 50 年代早期，第一个只能进行单目运算的编译程序诞生起，编译技术一直作为人与计算机之间的传声筒，支撑着计算机语言的发展，使其更加系统化、合理化。</p>
 <p>在知乎上“编译原理学了有什么用？”这个提问下，有答主贴了一幅《C 编译器解剖》序的照片，其中有一段话：</p>
