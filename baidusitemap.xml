@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/hexo-begin/</loc>
+    <lastmod>2017-12-20T13:35:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>用hexo+github搭建这个博客的一点经验</title>
+        <pubTime>2016-12-04T11:33:57.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>博客搭建</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/Dynamic-programming/</loc>
+    <lastmod>2017-12-20T13:18:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>动态规划一篇通</title>
+        <pubTime>2017-12-18T10:23:41.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>动态规划</tag>
+         
+        <tag>DP</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法笔记" url="http://kyonhuang.top/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/ANTLR-learning-notes-1/</loc>
     <lastmod>2017-12-20T12:57:35.000Z</lastmod>
     <data>
@@ -43,30 +89,6 @@
            
              
               <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/Dynamic-programming/</loc>
-    <lastmod>2017-12-19T08:23:12.000Z</lastmod>
-    <data>
-        <display>
-        <title>动态规划一篇通</title>
-        <pubTime>2017-12-18T10:23:41.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-        <tag>动态规划</tag>
-         
-        <tag>DP</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法笔记" url="http://kyonhuang.top/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -286,9 +308,9 @@
         <title>初探人工智能</title>
         <pubTime>2017-07-23T02:17:25.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>人工智能</tag>
+         
+        <tag>机器学习</tag>
          
         <tag>深度学习</tag>
          
@@ -978,28 +1000,6 @@
            
              
               <breadCrumb title="中文填词" url="http://kyonhuang.top/categories/%E4%B8%AD%E6%96%87%E5%A1%AB%E8%AF%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/hexo-begin/</loc>
-    <lastmod>2017-08-01T08:35:26.000Z</lastmod>
-    <data>
-        <display>
-        <title>用hexo+github搭建这个博客的一点经验</title>
-        <pubTime>2016-12-04T11:33:57.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>博客搭建</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
           
         </display>
     </data>

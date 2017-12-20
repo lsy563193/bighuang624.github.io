@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-12-19T08:23:12.000Z</updated>
+  <updated>2017-12-20T13:18:39.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kyonhuang.top/Dynamic-programming/"/>
     <id>http://kyonhuang.top/Dynamic-programming/</id>
     <published>2017-12-18T10:23:41.000Z</published>
-    <updated>2017-12-19T08:23:12.000Z</updated>
+    <updated>2017-12-20T13:18:39.000Z</updated>
     
     <content type="html"><![CDATA[<p>上周四去参加了第一次校招实习考试。虽然原本只是和同学凑个热闹，但结果还是着实有点打击。算法题一点思路都没有，前端知识也基本忘干净了。回到学校反思了一下，感觉从成都回来后学习状态确实很差。</p>
 <p>另外，感觉自己把自己就预先划分到保研的身份去了。之前一直认为机器学习和前端不可兼得，自己划死了高度。实际上，很多业界人士在前端、机器学习以及其他方向都有很高水平。前端是我的兴趣，机器学习是之后可能深入研究的领域，但是如果抱着只能二选一的心态去学习，只能说明自己不够勤奋。之后的学习目标是前端达到就业水平，而机器学习方面为读研打好稳固基石。</p>
@@ -49,7 +49,7 @@
 <li>确定状态转移方程。</li>
 </ol>
 <p>如果问题看起来是个动态规划问题，但是无法定义出状态，那么试着将问题规约到一个已知的 DP 问题。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>干巴巴说了这么多，来点例题实际看看！</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>讲了这么多，让我们一起做几道题目来练练手！</p>
 <h3 id="菜鸟级"><a href="#菜鸟级" class="headerlink" title="菜鸟级"></a>菜鸟级</h3><p>这里我选了 LeetCode 的第 70 题 Climbing Stairs。说来惭愧，我第一次做这个题的时候半天没做出来，还先跳过去了。</p>
 <p>题目是这样的：假设你在爬梯子，需要 n 步爬到顶。每一次只能爬 1 或 2 格，爬到顶一共有多少种不同的方法？</p>
 <p>一步步沿着前面提到的解题思路来解题：</p>
@@ -1710,9 +1710,9 @@
       <category term="机器学习笔记" scheme="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="人工智能" scheme="http://kyonhuang.top/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
+    
+      <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="深度学习" scheme="http://kyonhuang.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
