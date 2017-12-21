@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/hexo-begin/</loc>
+    <lastmod>2017-12-21T14:25:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>用 hexo+github 搭建这个博客的一点经验</title>
+        <pubTime>2016-12-04T11:33:57.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>博客搭建</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/lyrics-aircloud/</loc>
-    <lastmod>2017-12-21T12:41:35.000Z</lastmod>
+    <lastmod>2017-12-21T14:24:29.000Z</lastmod>
     <data>
         <display>
         <title>【V家中填】飛行機雲 -full ver.-</title>
@@ -27,7 +49,7 @@
     
   <url>
     <loc>http://kyonhuang.top/lyrics-seaStory/</loc>
-    <lastmod>2017-12-21T12:41:25.000Z</lastmod>
+    <lastmod>2017-12-21T14:24:24.000Z</lastmod>
     <data>
         <display>
         <title>【中文填词】三つ叶の结びめ -TV size.-</title>
@@ -41,6 +63,34 @@
            
              
               <breadCrumb title="中文填词" url="http://kyonhuang.top/categories/%E4%B8%AD%E6%96%87%E5%A1%AB%E8%AF%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/typewriter/</loc>
+    <lastmod>2017-12-21T14:24:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>在把玩中学习——typewriter.js</title>
+        <pubTime>2017-03-17T03:28:32.000Z</pubTime>
+        
+        <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
+         
+        <tag>学习笔记</tag>
+         
+        <tag>随笔</tag>
+         
+        <tag>typewriter.js</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -96,56 +146,6 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/summer-time-gone/</loc>
-    <lastmod>2017-12-21T12:39:43.000Z</lastmod>
-    <data>
-        <display>
-        <title>夏天就要过去</title>
-        <pubTime>2017-08-29T10:22:33.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-        <tag>目标</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/typewriter/</loc>
-    <lastmod>2017-12-21T12:39:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>在把玩中学习——typewriter.js</title>
-        <pubTime>2017-03-17T03:28:32.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>JavaScipt</tag>
-         
-        <tag>学习笔记</tag>
-         
-        <tag>随笔</tag>
-         
-        <tag>typewriter.js</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端学习笔记" url="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://kyonhuang.top/sublime-text-learning/</loc>
     <lastmod>2017-12-21T12:31:39.000Z</lastmod>
     <data>
@@ -165,28 +165,6 @@
            
              
               <breadCrumb title="程序猿的好伙伴" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E7%9A%84%E5%A5%BD%E4%BC%99%E4%BC%B4/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/hexo-begin/</loc>
-    <lastmod>2017-12-21T12:31:31.000Z</lastmod>
-    <data>
-        <display>
-        <title>用 hexo+github 搭建这个博客的一点经验</title>
-        <pubTime>2016-12-04T11:33:57.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>博客搭建</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
           
         </display>
     </data>
@@ -348,11 +326,11 @@
         <title>《JavaScript高级程序设计》读书笔记（二）</title>
         <pubTime>2017-03-03T09:33:08.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -374,9 +352,9 @@
         <title>《精通jQuery》读书笔记</title>
         <pubTime>2017-04-21T06:50:27.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
+         
+        <tag>前端</tag>
          
         <tag>jQuery</tag>
          
@@ -576,11 +554,11 @@
          
         <tag>JavaScipt</tag>
          
+        <tag>异步编程</tag>
+         
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
-         
-        <tag>异步编程</tag>
          
          
            
@@ -624,8 +602,6 @@
         <title>《ECMAScript 6 入门》读书笔记(二)</title>
         <pubTime>2017-04-24T10:36:13.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
@@ -633,6 +609,8 @@
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
+         
+        <tag>前端</tag>
          
          
            
@@ -652,8 +630,6 @@
         <title>《ECMAScript 6 入门》读书笔记(一)</title>
         <pubTime>2017-04-06T08:21:52.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
@@ -661,6 +637,8 @@
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
+         
+        <tag>前端</tag>
          
          
            
@@ -804,11 +782,11 @@
         <title>《JavaScript高级程序设计》读书笔记（一）</title>
         <pubTime>2017-02-28T00:57:45.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -834,11 +812,11 @@
          
         <tag>学习笔记</tag>
          
+        <tag>随笔</tag>
+         
         <tag>SASS</tag>
          
         <tag>WebStorm</tag>
-         
-        <tag>随笔</tag>
          
          
            
@@ -858,9 +836,9 @@
         <title>初探前端自动化测试--以 Vue 为例</title>
         <pubTime>2017-08-16T01:14:28.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>前端工程</tag>
          
@@ -942,11 +920,11 @@
          
         <tag>JavaScipt</tag>
          
+        <tag>异步编程</tag>
+         
         <tag>ES 6</tag>
          
         <tag>《ECMAScript 6 入门》</tag>
-         
-        <tag>异步编程</tag>
          
          
            
@@ -1016,13 +994,13 @@
         <title>《你不知道的 JavaScript（上卷）》脑图</title>
         <pubTime>2017-07-27T08:47:12.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
          
         <tag>脑图</tag>
+         
+        <tag>前端</tag>
          
         <tag>《你不知道的 JavaScript》</tag>
          
@@ -1072,11 +1050,11 @@
         <title>《JavaScript高级程序设计》读书笔记（五）</title>
         <pubTime>2017-03-15T02:43:51.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -1098,11 +1076,11 @@
         <title>《JavaScript高级程序设计》读书笔记（四）</title>
         <pubTime>2017-03-12T04:13:51.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
@@ -1124,11 +1102,11 @@
         <title>《JavaScript高级程序设计》读书笔记（三）</title>
         <pubTime>2017-03-10T02:23:02.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>读书笔记</tag>
          
         <tag>JavaScipt</tag>
+         
+        <tag>前端</tag>
          
         <tag>《JavaScript高级程序设计》</tag>
          
