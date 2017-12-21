@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/sublime-text-learning/</loc>
+    
+    <lastmod>2017-12-21T12:31:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/hexo-begin/</loc>
     
-    <lastmod>2017-12-20T13:35:44.000Z</lastmod>
+    <lastmod>2017-12-21T12:31:31.000Z</lastmod>
     
   </url>
   
@@ -257,13 +264,6 @@
     <loc>http://kyonhuang.top/typewriter/</loc>
     
     <lastmod>2017-08-22T10:11:43.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/sublime-text-learning/</loc>
-    
-    <lastmod>2017-08-22T10:10:39.000Z</lastmod>
     
   </url>
   
