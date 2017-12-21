@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-e6de7fc323ef16e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-4154f0ddd63f0953.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-ec745a361c794183.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-09T08:56:36.000Z">
+<meta property="og:updated_time" content="2017-12-21T12:40:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用 Vue 撸一份线上简历有哪些坑">
 <meta name="twitter:description" content="昨天花了一天时间，用 Vue 给自己撸了一份线上简历，并借助 Github Pages 实现了在线预览的效果。  项目地址：bighuang624/resume  在线预览地址：http://kyonhuang.top/resume/  目前实现的是最简单的效果，可以说只用了 Vue，不涉及全家桶里其他产品。从 UI、文字、性能、测试等各种角度都有改进的空间。这个小项目应该是会长期维护的。今天先总">
@@ -436,7 +436,7 @@
 <p>在 Webpack 中，所有的预处理器需要匹配相应的 loader。因此要使用 sass 或 scss，首先下载依赖：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install sass-loader node-sass --save-dev</div></pre></td></tr></table></figure>
 <p>然后在单文件组件中的<code>&lt;style&gt;</code>标签中加上<code>lang=&quot;sass&quot;</code>。<code>vue-loader</code>会根据<code>lang</code>属性推断出要使用的 loaders，并将内容交给相应的 loaders 处理：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;style lang=&quot;sass&quot;&gt;</div><div class="line">  /* write sass here */</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"sass"</span>&gt;</span><span class="css"></span></div><div class="line">  <span class="comment">/* write sass here */</span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>与名称相反，sass-loader 默认解析 scss 语法，因此如果想使用 sass 语法，还需要在 build/vue-loader.conf.js 配置 vue-loader 的选项：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-0e5c5d774fa3e00a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="build:vue-loader.conf.png"></p>
 <p>这样的修改不会影响 scss 的使用，记得修改<code>&lt;style&gt;</code>标签中为<code>lang=&quot;scss&quot;</code>即可。</p>
@@ -629,7 +629,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">79</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -1035,13 +1035,13 @@
     <link href="http://kyonhuang.top/summer-time-gone/"/>
     <id>http://kyonhuang.top/summer-time-gone/</id>
     <published>2017-08-29T10:22:33.000Z</published>
-    <updated>2017-09-02T12:58:31.000Z</updated>
+    <updated>2017-12-21T12:39:43.000Z</updated>
     
     <content type="html"><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=587963&auto=0&height=66"></iframe>
 
 <p>现在是 2017 年的 8 月 29 号，离 9 月还有 2 天。大三近在咫尺，而夏天就要过去。</p>
 <p>前几天的 ASL 舞台上，平野绫、茅原实里、后藤邑子三人毫无征兆地重新聚首，演唱了《凉宫春日的忧郁》的 ED《ハレ晴レユカイ（晴天好心情）》。06 年的最强动画，我最爱的动画，11 年后再看到这些人，恍如隔世。</p>
-<p><img src="/images/forever-SOS.jpg"></p>
+<p><img src="./../images/forever-SOS.jpg"></p>
 <p>过去是体育场旁的石板路，现在是教学楼到二食堂的小道，低头时摇曳的叶影把光束割出形状，抬头看到的是一成不变的蓝天白云。闻着空气里隐约弥漫着躁动的气息，你会产生错觉，真的以为八月是漫无止境的，度过的每一天会被慷慨归还。</p>
 <p>只是在那个古老的不再回来的夏日，所有的结局都已写好，所有的泪水也都已启程。</p>
 <p>“夏天就要过去”这句话念来，总有淡淡的感伤。也许正因如此，我才喜欢上夏天。</p>
@@ -1075,7 +1075,7 @@
 
 &lt;p&gt;现在是 2017 年的 8 月 29 号，离 9 月还有 2 天。大三近在咫尺，而夏天就要过去。&lt;/p&gt;
 &lt;p&gt;前几天的 ASL 舞台上，平野绫、茅原实里、后藤邑子三人毫无征兆地重新聚首，演唱了《凉宫春日的忧郁》的 ED《ハレ晴レユカイ（晴天好心情）》。06 年的最强动画，我最爱的动画，11 年后再看到这些人，恍如隔世。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/forever-SOS.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./../images/forever-SOS.jpg&quot;&gt;&lt;/p&gt;
 &lt;p&gt;过去是体育场旁的石板路，现在是教学楼到二食堂的小道，低头时摇曳的叶影把光束割出形状，抬头看到的是一成不变的蓝天白云。闻着空气里隐约弥漫着躁动的气息，你会产生错觉，真的以为八月是漫无止境的，度过的每一天会被慷慨归还。&lt;/p&gt;
 &lt;p&gt;只是在那个古老的不再回来的夏日，所有的结局都已写好，所有的泪水也都已启程。&lt;/p&gt;
 &lt;p&gt;“夏天就要过去”这句话念来，总有淡淡的感伤。也许正因如此，我才喜欢上夏天。&lt;/p&gt;
@@ -1172,7 +1172,7 @@
     <link href="http://kyonhuang.top/make-a-resume/"/>
     <id>http://kyonhuang.top/make-a-resume/</id>
     <published>2017-08-21T04:52:16.000Z</published>
-    <updated>2017-09-09T08:56:36.000Z</updated>
+    <updated>2017-12-21T12:40:21.000Z</updated>
     
     <content type="html"><![CDATA[<p>昨天花了一天时间，用 Vue 给自己撸了一份线上简历，并借助 Github Pages 实现了在线预览的效果。</p>
 <ul>
@@ -1186,7 +1186,7 @@
 <p>在 Webpack 中，所有的预处理器需要匹配相应的 loader。因此要使用 sass 或 scss，首先下载依赖：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install sass-loader node-sass --save-dev</div></pre></td></tr></table></figure>
 <p>然后在单文件组件中的<code>&lt;style&gt;</code>标签中加上<code>lang=&quot;sass&quot;</code>。<code>vue-loader</code>会根据<code>lang</code>属性推断出要使用的 loaders，并将内容交给相应的 loaders 处理：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;style lang=&quot;sass&quot;&gt;</div><div class="line">  /* write sass here */</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"sass"</span>&gt;</span><span class="css"></span></div><div class="line">  <span class="comment">/* write sass here */</span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>与名称相反，sass-loader 默认解析 scss 语法，因此如果想使用 sass 语法，还需要在 build/vue-loader.conf.js 配置 vue-loader 的选项：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-0e5c5d774fa3e00a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="build:vue-loader.conf.png"></p>
 <p>这样的修改不会影响 scss 的使用，记得修改<code>&lt;style&gt;</code>标签中为<code>lang=&quot;scss&quot;</code>即可。</p>
@@ -1309,9 +1309,9 @@
       <category term="前端工程" scheme="http://kyonhuang.top/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
     
     
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
       <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
       <category term="前端工程" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B/"/>
     
@@ -1370,11 +1370,11 @@
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
     
-      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="ES 6" scheme="http://kyonhuang.top/tags/ES-6/"/>
     
       <category term="《ECMAScript 6 入门》" scheme="http://kyonhuang.top/tags/%E3%80%8AECMAScript-6-%E5%85%A5%E9%97%A8%E3%80%8B/"/>
+    
+      <category term="异步编程" scheme="http://kyonhuang.top/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -1575,11 +1575,11 @@
       <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
     
@@ -1710,9 +1710,9 @@
       <category term="机器学习笔记" scheme="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="人工智能" scheme="http://kyonhuang.top/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
+    
+      <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="深度学习" scheme="http://kyonhuang.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
