@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-12-22T12:18:41.000Z</updated>
+  <updated>2017-12-22T12:29:44.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kyonhuang.top/bye2017hello2018/"/>
     <id>http://kyonhuang.top/bye2017hello2018/</id>
     <published>2017-12-22T10:24:53.000Z</published>
-    <updated>2017-12-22T12:18:41.000Z</updated>
+    <updated>2017-12-22T12:29:44.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>2017 年过去了，我很怀念它。</p>
@@ -32,13 +32,13 @@
 <a id="more"></a>
 <h2 id="2017-年终总结"><a href="#2017-年终总结" class="headerlink" title="2017 年终总结"></a>2017 年终总结</h2><h3 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h3><p>到落笔为止，值得一提的成果有：</p>
 <ul>
-<li>2017 年更新了博客 45 篇，总访问量达到 2400 余次（估计有一半是自己贡献的）。</li>
+<li>2017 年更新了博客 45 篇，总访问量达到 2400 余次（估计有一半是自己贡献的，哈哈）。</li>
 <li>Github 有 599 次 contributions，9 个 star。</li>
 <li>LeetCode 做了 106 道题，还在每日增加中。</li>
 <li>砍下了花旗杯的三等奖，这是我第一个含金量比较高的奖，还是很有纪念意义的。</li>
 <li>必修绩点保持在 3.52，不算高，但是应该可以保研。</li>
 </ul>
-<p>学习的技术：</p>
+<p>课余学习的技术：</p>
 <ul>
 <li>大二下学期自己学习前端，主要是玩 Vue 框架以及相关生态环境；</li>
 <li>暑假在花旗杯项目开发的空余时间稍微学了一些 Node.js；</li>
@@ -77,7 +77,7 @@
 <li><p><strong>保研</strong>：尽力去追求更好的、更适合自己的。</p>
 </li>
 </ul>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>新的一年，博客继续努力更新，欢迎保持关注，经常来逛逛（如果你使用 RSS，也是极好的）。另外，你可以在博客的左边栏找到我的 Github 和知乎账号，在这里我会经常点赞、分享我看到的有价值的 repo 和文章。关注它们可以更详细地了解我最近在学什么、做什么、玩什么，也欢迎在这些地方分享、点赞我的 repo 和文章。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>新的一年，博客继续努力更新，欢迎保持关注，经常来逛逛（如果你使用 RSS，也是极好的）。另外，你可以在博客的左边栏中的“站点梗概”找到我的 <strong>Github 和知乎账号</strong>，在这里我会经常点赞、分享我看到的有价值的 repo 和文章。<strong>关注</strong>它们可以更详细地了解我最近在学什么、做什么、玩什么，也欢迎在这些地方分享、点赞我的 repo 和文章。</p>
 <p>感谢你看到这里。让更好的我们在 2018 相会！</p>
 ]]></content>
     
@@ -537,7 +537,7 @@
     <link href="http://kyonhuang.top/ANTLR-learning-notes-3/"/>
     <id>http://kyonhuang.top/ANTLR-learning-notes-3/</id>
     <published>2017-09-25T13:12:26.000Z</published>
-    <updated>2017-09-25T11:07:19.000Z</updated>
+    <updated>2017-12-22T12:27:45.000Z</updated>
     
     <content type="html"><![CDATA[<p>继续学习解释器构造和 ANTLR。在系列博文的上一篇 <a href="http://kyonhuang.top/ANTLR-learning-notes-2/">ANTLR v4 学习笔记（二）－实现变种计算器</a>，我们用 ANTLR 实现了一个变种计算器，从而对 ANTLR 语法、访问器（Visitor）机制、集成以及 ANLTR 的错误处理机制有了更深的理解。</p>
 <p>上篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但没有覆盖整个 Chapter 4 的所有内容。因此这篇博文将介绍一下 Chapter 4 的剩余内容——监听器（Listener）机制、代码片段嵌入语法，以及词法分析的一些很棒的特性。</p>
@@ -574,7 +574,7 @@
 <h3 id="将-Tokens-送入不同通道"><a href="#将-Tokens-送入不同通道" class="headerlink" title="将 Tokens 送入不同通道"></a>将 Tokens 送入不同通道</h3><p>语法分析器只处理一个通道，因此当我们想要忽略但保留某些 tokens 时（例如注释和空白字符），我们可以通过在语法文件书写特殊的指令，来将其送入其他通道。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">COMMENT</div><div class="line">    :    <span class="string">'/*'</span> .*? <span class="string">'*/'</span>    -&gt; channel(HIDDEN)  <span class="comment">// 匹配 /* 和 */ 之间的任何东西</span></div><div class="line">    ;</div><div class="line">WS  :    [ \r\t\u000c\n]+ -&gt; channel(HIDDEN)</div><div class="line">    ;</div></pre></td></tr></table></figure>
 <p><code>-&gt;channel(HIDDEN)</code>和<code>-&gt;skip</code>类似，也是一个词法分析器指令。在这里，它设置了这些 tokens 的通道号。这样，这些 tokens 就会被语法分析器忽略。token 流中仍然保存着这些原始的 tokens 序列，但在向语法分析器提供数据时忽略了那些处于已关闭通道的 tokens。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>ANTLR 学习的第三篇笔记到这里就结束了。尽管这一篇笔记很短，但是涵盖了 ANTLR 实践中一些比较现实的问题的解决方式。之后，我们将进入 Part II，正式展开对使用 ANTLR 开发语言类应用程序的学习。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>ANTLR 学习的第三篇笔记到这里就结束了。尽管这一篇笔记很短，但是涵盖了 ANTLR 实践中一些比较现实的问题的解决方式。在了解这三篇笔记所涉及的学习内容后，如果还有兴趣，就可以正式展开对使用 ANTLR 开发语言类应用程序的学习了。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>《The Definitive ANTLR 4 Reference》</li>
 </ul>

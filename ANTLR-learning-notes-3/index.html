@@ -101,7 +101,7 @@
 <meta property="og:description" content="继续学习解释器构造和 ANTLR。在系列博文的上一篇 ANTLR v4 学习笔记（二）－实现变种计算器，我们用 ANTLR 实现了一个变种计算器，从而对 ANTLR 语法、访问器（Visitor）机制、集成以及 ANLTR 的错误处理机制有了更深的理解。 上篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但没有覆盖">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://kyonhuang.top/images/antlr/note3/XMLLexer.jpg">
-<meta property="og:updated_time" content="2017-09-25T11:07:19.000Z">
+<meta property="og:updated_time" content="2017-12-22T12:27:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ANTLR v4 学习笔记（三）－特性拾遗">
 <meta name="twitter:description" content="继续学习解释器构造和 ANTLR。在系列博文的上一篇 ANTLR v4 学习笔记（二）－实现变种计算器，我们用 ANTLR 实现了一个变种计算器，从而对 ANTLR 语法、访问器（Visitor）机制、集成以及 ANLTR 的错误处理机制有了更深的理解。 上篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但没有覆盖">
@@ -464,7 +464,7 @@
 <h3 id="将-Tokens-送入不同通道"><a href="#将-Tokens-送入不同通道" class="headerlink" title="将 Tokens 送入不同通道"></a>将 Tokens 送入不同通道</h3><p>语法分析器只处理一个通道，因此当我们想要忽略但保留某些 tokens 时（例如注释和空白字符），我们可以通过在语法文件书写特殊的指令，来将其送入其他通道。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">COMMENT</div><div class="line">    :    <span class="string">'/*'</span> .*? <span class="string">'*/'</span>    -&gt; channel(HIDDEN)  <span class="comment">// 匹配 /* 和 */ 之间的任何东西</span></div><div class="line">    ;</div><div class="line">WS  :    [ \r\t\u000c\n]+ -&gt; channel(HIDDEN)</div><div class="line">    ;</div></pre></td></tr></table></figure>
 <p><code>-&gt;channel(HIDDEN)</code>和<code>-&gt;skip</code>类似，也是一个词法分析器指令。在这里，它设置了这些 tokens 的通道号。这样，这些 tokens 就会被语法分析器忽略。token 流中仍然保存着这些原始的 tokens 序列，但在向语法分析器提供数据时忽略了那些处于已关闭通道的 tokens。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>ANTLR 学习的第三篇笔记到这里就结束了。尽管这一篇笔记很短，但是涵盖了 ANTLR 实践中一些比较现实的问题的解决方式。之后，我们将进入 Part II，正式展开对使用 ANTLR 开发语言类应用程序的学习。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>ANTLR 学习的第三篇笔记到这里就结束了。尽管这一篇笔记很短，但是涵盖了 ANTLR 实践中一些比较现实的问题的解决方式。在了解这三篇笔记所涉及的学习内容后，如果还有兴趣，就可以正式展开对使用 ANTLR 开发语言类应用程序的学习了。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>《The Definitive ANTLR 4 Reference》</li>
 </ul>
