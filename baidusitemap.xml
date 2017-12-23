@@ -5,11 +5,57 @@
     
   <url>
     <loc>http://kyonhuang.top/bye2017hello2018/</loc>
-    <lastmod>2017-12-22T12:29:44.000Z</lastmod>
+    <lastmod>2017-12-23T15:21:04.000Z</lastmod>
     <data>
         <display>
         <title>Goodbye 2017, hello 2018</title>
         <pubTime>2017-12-22T10:24:53.000Z</pubTime>
+        
+        <tag>总结</tag>
+         
+        <tag>年终总结</tag>
+         
+        <tag>未来展望</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/hexo-begin/</loc>
+    <lastmod>2017-12-23T04:28:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>用 hexo+github 搭建这个博客的一点经验</title>
+        <pubTime>2016-12-04T11:33:57.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>博客搭建</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/bye2016hello2017/</loc>
+    <lastmod>2017-12-23T04:27:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>Bye,2016 and Hello,2017</title>
+        <pubTime>2016-12-30T14:52:51.000Z</pubTime>
         
         <tag>总结</tag>
          
@@ -45,52 +91,6 @@
            
              
               <breadCrumb title="解释器构造" url="http://kyonhuang.top/categories/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%9E%84%E9%80%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/bye2016hello2017/</loc>
-    <lastmod>2017-12-22T08:20:59.000Z</lastmod>
-    <data>
-        <display>
-        <title>Bye,2016 AND Hello,2017</title>
-        <pubTime>2016-12-30T14:52:51.000Z</pubTime>
-        
-        <tag>总结</tag>
-         
-        <tag>年终总结</tag>
-         
-        <tag>未来展望</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/hexo-begin/</loc>
-    <lastmod>2017-12-21T14:25:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>用 hexo+github 搭建这个博客的一点经验</title>
-        <pubTime>2016-12-04T11:33:57.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>博客搭建</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
           
         </display>
     </data>
@@ -502,9 +502,9 @@
         <title>初探人工智能</title>
         <pubTime>2017-07-23T02:17:25.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>人工智能</tag>
+         
+        <tag>机器学习</tag>
          
         <tag>深度学习</tag>
          
