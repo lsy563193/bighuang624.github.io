@@ -298,7 +298,7 @@
     <link href="http://kyonhuang.top/intro-to-data-preprocessing/"/>
     <id>http://kyonhuang.top/intro-to-data-preprocessing/</id>
     <published>2017-10-31T12:45:28.000Z</published>
-    <updated>2017-11-09T03:58:06.000Z</updated>
+    <updated>2017-12-25T14:40:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>作为互联网上最著名的数据科学竞赛平台之一，Kaggle 无疑是数据从业者和爱好者最喜欢的社区之一。最近，Kaggle 发布了 <a href="https://www.kaggle.com/amberthomas/kaggle-2017-survey-results" target="_blank" rel="external">2017 用户调查报告</a>，共有 16000 余名用户参与的这份调查可以让我们对数据工作者的各类信息有一个了解。</p>
 <p>其中，对于“工作中遇到的障碍主要是什么？”这个问题，有 49.4% 的被调查者选择了“脏数据（dirty data）”这一项，占该问题所有选项的第一位。也就是说，数据科学家一般最常见的困扰就是要对手头的数据进行大量的预处理工程。</p>
@@ -326,14 +326,14 @@
 <h3 id="无量纲化"><a href="#无量纲化" class="headerlink" title="无量纲化"></a>无量纲化</h3><p><strong>无量纲化</strong>使不同规格的数据转换到同一规格。常见的无量纲化方法有<strong>标准化</strong>和<strong>归一化</strong>。</p>
 <p>标准化的前提是特征值服从正态分布，标准化后，其转换成标准正态分布。</p>
 <p>归一化利用了边界值信息，将特征的取值区间缩放到某个特点的范围，例如[0, 1]等。</p>
-<h4 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h4><p>标准化也叫 z-score 规范化（零均值规范化）。公式如下：</p>
+<h4 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h4><p>标准化也叫 <strong>z-score</strong> 规范化（零均值规范化）。公式如下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-a1b64f8328595283.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="标准化.png"></p>
 <p>其中 \mu 是样本数据的<strong>均值（mean）</strong>， \sigma 是样本数据的<strong>标准差（std）</strong>。</p>
-<p>通过标准化，样本数据被变为一个均值为 0，方差为 1 的分布。标准化可以达到<strong>加速收敛</strong>的效果。</p>
-<h4 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h4><p><strong>归一化</strong>一般是将数据映射到指定的范围，用于<strong>去除不同维度数据的量纲以及量纲单位</strong>。</p>
-<p>最常见的归一化方法就是 Min-Max 归一化：</p>
+<p>通过标准化，样本数据被变为一个均值为 0，方差为 1 的分布。对于梯度下降，标准化可以达到<strong>加速收敛</strong>的效果，且不改变原始数据的几何分布。</p>
+<h4 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h4><p><strong>归一化</strong>一般是将数据按比例缩放到指定的范围，用于<strong>去除不同维度数据的量纲以及量纲单位</strong>。</p>
+<p>最常见的归一化方法就是 <strong>Min-Max</strong> 归一化：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-8a1730b90c9336f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="归一化.png"></p>
-<p>经过归一化处理过后的数据，不会发生某一特征因维度过高而起主导作用，从而遮盖住其他特征的问题。</p>
+<p>经过归一化处理过后的数据，各个特征维度对目标函数的影响权重是一致的，不会发生某一特征因维度过高而起主导作用，从而遮盖住其他特征的问题。</p>
 <p><strong>注意</strong>，归一化和标准化的英文都为 Normalization，需要<strong>根据其用途（或公式）的不同去理解或翻译</strong>。</p>
 <h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p><strong>编码</strong>将无法作为输入的原始类别特征或文本特征表示为数字形式。其思想为用一个变量的字典来实现变量到索引序号的映射。</p>
 <p>编码的方式也有很多，下面介绍两个常用的编码方式－One-hot 编码和哑编码。</p>
@@ -349,6 +349,7 @@
 <li><a href="https://zhuanlan.zhihu.com/p/29957294" target="_blank" rel="external">ML 入门：归一化、标准化和正则化</a></li>
 <li>《Spark 机器学习》第三章：Spark 上数据的获取、处理与准备</li>
 <li><a href="http://blog.csdn.net/big_talent/article/details/53887238" target="_blank" rel="external">关于特征工程入门中的一些基本知识（整理） - CSDN博客</a></li>
+<li><a href="http://blog.csdn.net/pipisorry/article/details/52247379" target="_blank" rel="external">数据标准化/归一化normalization - 皮皮blog - CSDN博客</a></li>
 </ul>
 ]]></content>
     

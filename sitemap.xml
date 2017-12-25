@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/intro-to-data-preprocessing/</loc>
+    
+    <lastmod>2017-12-25T14:40:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/Dynamic-programming/</loc>
     
     <lastmod>2017-12-25T10:15:56.000Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>http://kyonhuang.top/new-end-new-start/</loc>
     
     <lastmod>2017-12-04T10:14:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/intro-to-data-preprocessing/</loc>
-    
-    <lastmod>2017-11-09T03:58:06.000Z</lastmod>
     
   </url>
   
