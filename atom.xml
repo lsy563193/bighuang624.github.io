@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-12-23T15:21:04.000Z</updated>
+  <updated>2017-12-25T03:27:27.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kyonhuang.top/bye2017hello2018/"/>
     <id>http://kyonhuang.top/bye2017hello2018/</id>
     <published>2017-12-22T10:24:53.000Z</published>
-    <updated>2017-12-23T15:21:04.000Z</updated>
+    <updated>2017-12-25T03:27:27.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>2017 年过去了，我很怀念它。</p>
@@ -62,7 +62,7 @@
 <h2 id="2018-未来展望"><a href="#2018-未来展望" class="headerlink" title="2018 未来展望"></a>2018 未来展望</h2><ul>
 <li><p><strong>各领域知识的查漏补缺</strong>：数据结构与算法、Unix、数据库、计算机组织与体系结构、操作系统、计算机网络等等。因为要找实习和夏令营，这大概会是 2018 上半年的主旋律。</p>
 </li>
-<li><p><strong>前端 / ML 学习</strong>：把这两个主攻方向单独拎出来。机器学习就跟着自己的节奏保持学习进度即可，当然也要重视实践。前端方面跟身边人聊了一下，可能考虑要暂时放一下了。</p>
+<li><p><strong>前端 / ML 学习</strong>：把这两个主攻方向单独拎出来。机器学习就跟着自己的节奏保持学习进度即可，当然也要重视实践。前端方面跟身边人聊了一下，可能考虑要暂时放一下了，以科研方面的学习为主。</p>
 </li>
 <li><p><strong>博客</strong>：继续保持高质量、较频繁的更新，将自己觉得不错的文章向知乎和掘金转移。其中，一些以前的、比较乱的读书笔记可能会根据知识点进行编排重整。另外，试着做一下 SEO，关注一下各类数据。</p>
 </li>
@@ -105,11 +105,11 @@
   </entry>
   
   <entry>
-    <title>动态规划一篇通</title>
+    <title>算法一篇通——动态规划</title>
     <link href="http://kyonhuang.top/Dynamic-programming/"/>
     <id>http://kyonhuang.top/Dynamic-programming/</id>
     <published>2017-12-18T10:23:41.000Z</published>
-    <updated>2017-12-20T13:18:39.000Z</updated>
+    <updated>2017-12-25T10:15:56.000Z</updated>
     
     <content type="html"><![CDATA[<p>上周四去参加了第一次校招实习考试。虽然原本只是和同学凑个热闹，但结果还是着实有点打击。算法题一点思路都没有，前端知识也基本忘干净了。回到学校反思了一下，感觉从成都回来后学习状态确实很差。</p>
 <p>另外，感觉自己把自己就预先划分到保研的身份去了。之前一直认为机器学习和前端不可兼得，自己划死了高度。实际上，很多业界人士在前端、机器学习以及其他方向都有很高水平。前端是我的兴趣，机器学习是之后可能深入研究的领域，但是如果抱着只能二选一的心态去学习，只能说明自己不够勤奋。之后的学习目标是前端达到就业水平，而机器学习方面为读研打好稳固基石。</p>
@@ -1738,9 +1738,9 @@
       <category term="机器学习笔记" scheme="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="人工智能" scheme="http://kyonhuang.top/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
-    
       <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="人工智能" scheme="http://kyonhuang.top/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
       <category term="深度学习" scheme="http://kyonhuang.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
