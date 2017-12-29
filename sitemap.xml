@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://kyonhuang.top/intro-to-data-preprocessing/</loc>
+    <loc>http://kyonhuang.top/Greedy-algorithm/</loc>
     
-    <lastmod>2017-12-25T14:40:05.000Z</lastmod>
+    <lastmod>2017-12-29T13:58:14.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://kyonhuang.top/Dynamic-programming/</loc>
     
-    <lastmod>2017-12-25T10:15:56.000Z</lastmod>
+    <lastmod>2017-12-29T12:23:36.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/intro-to-data-preprocessing/</loc>
+    
+    <lastmod>2017-12-25T14:40:05.000Z</lastmod>
     
   </url>
   
