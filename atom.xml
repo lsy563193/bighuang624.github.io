@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2017-12-29T13:58:14.000Z</updated>
+  <updated>2017-12-29T14:19:00.000Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kyonhuang.top/Greedy-algorithm/"/>
     <id>http://kyonhuang.top/Greedy-algorithm/</id>
     <published>2017-12-29T13:24:35.000Z</published>
-    <updated>2017-12-29T13:58:14.000Z</updated>
+    <updated>2017-12-29T14:19:00.000Z</updated>
     
     <content type="html"><![CDATA[<p>之前在写<a href="http://kyonhuang.top/Dynamic-programming/">算法一篇通——动态规划</a>时，看到不少相关的资料都谈到了贪心算法。原本我对贪心算法的认知比较简单，但是越看越混，尤其是和动态规划的差异，少有文章能说的准确透彻。因此，这几天也对贪心算法加以了解学习。</p>
 <p>给出 n 个物体，第 i 个物体重量为 wi，要求选择尽量多的物体，使得总重量不超过 C。对于这个问题，我们很容易想到，因为在对总重量有要求的情况下要选择尽量多的物体，因此挑轻的肯定比挑重的划算。这样，我们将所有物体按重量从小到大排序，依次选择每个物体，直到装不下为止。</p>
@@ -61,7 +61,7 @@
 <h4 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h4><p>需要拿一个与输入数组同样大小的数组来存储每个孩子的糖果树。</p>
 <p>先从 0 开始向右遍历一次：第 0 个孩子先拿一块；i &gt; 0 时，如果 ratings[i] &gt; ratings[i-1]，那么第 i 个孩子在第 i-1 个孩子所拥有的糖果数上多拿一块，否则拿保底的一块。这一次遍历将右边的 rating 比左边大的情况全部搞定。</p>
 <p>再从 len-1 开始向左遍历一次：第 len-1 个孩子不变，如果 ratings[i] &lt; ratings[i-1]，那么，除非第 i-1 个孩子本身拥有的糖果数已经比多拿这一块后还要多，否则第 i－1 个孩子在第 i 个孩子所拥有的糖果数上多拿一块。这一次遍历将左边的 rating 比右边大的情况全部搞定，并且不会影响到上一次遍历所完成的工作。</p>
-<p>因为每一次发糖都遵循贪心选择性质，。</p>
+<p>因为每一次发糖都遵循贪心选择性质，最多多给一块，并且没有后效性，因此也是贪心算法的运用。</p>
 <p>尽管时间复杂度和空间复杂度都不是最优的，但上述解法能够 AC，并且简洁易懂。当然，这个思路还是比较巧妙的，也很难短时间内想出来。</p>
 <h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>和动态规划一样，贪心算法也扩展许多衍生的问题与算法。例如，深度学习中的梯度下降算法就是贪心的。更著名的一些如下。</p>
 <h3 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h3><p>我们可以用 01 编码串来代表一个字符，例如 a 为 0，c 为 00，f 为 1100。这样，可能因为其中一个字符的编码是另一个字符的前缀而导致歧义。满足<strong>任何一个编码都不是另一个的前缀的编码</strong>被称为<strong>前缀码（Prefix Code）</strong>。</p>
@@ -1834,9 +1834,9 @@
       <category term="机器学习笔记" scheme="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="人工智能" scheme="http://kyonhuang.top/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
-    
       <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="人工智能" scheme="http://kyonhuang.top/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
       <category term="深度学习" scheme="http://kyonhuang.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
