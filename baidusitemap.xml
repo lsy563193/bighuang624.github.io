@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/miner-for-my-website/</loc>
+    <lastmod>2018-01-12T08:47:01.881Z</lastmod>
+    <data>
+        <display>
+        <title>用浏览器也能挖矿！把力量借给我吧</title>
+        <pubTime>2018-01-12T08:46:36.000Z</pubTime>
+        
+        <tag>挖矿</tag>
+         
+        <tag>门罗币</tag>
+         
+        <tag>Coinhive</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/hexo-begin/</loc>
+    <lastmod>2018-01-12T08:08:27.597Z</lastmod>
+    <data>
+        <display>
+        <title>用 hexo+github 搭建这个博客的一点经验</title>
+        <pubTime>2016-12-04T11:33:57.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>博客搭建</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/lyrics-seaStory/</loc>
     <lastmod>2018-01-11T15:25:07.789Z</lastmod>
     <data>
@@ -137,28 +183,6 @@
            
              
               <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/hexo-begin/</loc>
-    <lastmod>2017-12-23T04:28:29.000Z</lastmod>
-    <data>
-        <display>
-        <title>用 hexo+github 搭建这个博客的一点经验</title>
-        <pubTime>2016-12-04T11:33:57.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>博客搭建</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
           
         </display>
     </data>
