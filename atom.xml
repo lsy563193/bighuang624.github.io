@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2018-01-14T03:08:43.134Z</updated>
+  <updated>2018-01-14T09:04:57.754Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>吴恩达《深度学习》系列课程个人笔记</title>
+    <link href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/"/>
+    <id>http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/</id>
+    <published>2018-01-14T08:50:29.000Z</published>
+    <updated>2018-01-14T09:04:57.754Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/Andrew-Ng-Deep-Learning-notes.png" alt="Andrew-Ng-Deep-Learning-notes"></p>
+<p>早在吴恩达（deeplearning.ai）的《深度学习》系列课程在网易云课堂刚刚发布时，它就已经躺在我的计划列表中了。当时还没有特别坚定说要深入学习这方面的知识，因此搁置了一段时间。这几个月终于下定决心，排除万难，开始对这个系列的课程进行学习。</p>
+<p>这个系列的课程给我的感觉是，对 DL 新人，以及像我这样数学不是非常好的学习者非常友好。吴恩达老师真正做到了深入浅出，但又没有抛弃那些重要的细节。在我一边看视频，一边想看看花书对应章节时，发现晦涩到根本看不动。而这个系列的课程作为入门启蒙，是再合适不过的。</p>
+<p>另外，这个系列课程的作业全都是精心设计过的，虽然难度不大，但对巩固视频所学知识、帮助理解细节非常有帮助。如果只是听课而不独立完成作业，我认为和没有学过没有什么区别。我也打算过一段时间再重新将这些作业再写一遍。</p>
+<p>在学习的同时，像网上很多同学一样，我也记录了自己的笔记，并将其发布在 Github 上。因为在 Github 上，在 md 文件中用 LaTex 写的公式不能正常显示，之前都是用 MacDown 由 md 文件生成 html，虽然公式可以看了，但是不太美观。之后，我恰好发现了 docsify ，一个可以由 md 文件动态生成文档网站的库。于是折腾了一会，将自己的笔记全部用它生成，最终效果如题图所示，非常美观（虽然折腾的途中也踩了几个小坑）。</p>
+<p>因为在学习的过程中，我也看了很多网上的笔记。它们对我起到了很大的帮助，因此我也想将我的笔记分享出来，也许能够帮助到其他的同学。两周前在学完前两门课时，我在知乎的专栏发了一篇<a href="https://zhuanlan.zhihu.com/p/32527718" target="_blank" rel="external">文章</a>（即这篇博文的前身）。到目前为止，知乎的文章收获了 147 个赞，而 Github 上的 repo 得到了 42 个 star。这对我简直是受宠若惊。因此，即使这两周是考试周，我还是抽出时间学完了第三门课，并更新了笔记。一方面，这个系列课程的内容确实非常吸引我，另一方面，也是很多同道中人的认可对我有着很大的鼓励。</p>
+<p>第四门课是有关计算机视觉和卷积神经网络的。我们知道近年来深度学习的爆红很大程度上是缘于 2012 年 ImageNet 图像识别比赛中 Hinton 课题组构建的 CNN 网络 AlexNet 有着碾压级的表现，因此我对这门课也是非常期待，希望能够在寒假结束前完成对这门课的学习。</p>
+<p>最后，再次将笔记的 Github 的 repo 地址公布如下：</p>
+<ul>
+<li>笔记：<a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/">吴恩达《深度学习》系列课程笔记</a></li>
+<li>Github 仓库（包含写完的作业）：<a href="https://github.com/bighuang624/Andrew-Ng-Deep-Learning-notes" target="_blank" rel="external">bighuang624/Andrew-Ng-Deep-Learning-notes</a></li>
+</ul>
+<p>欢迎查阅，欢迎在 Issues 中交流或提出意见，更欢迎 star 一下以兹鼓励！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/Andrew-Ng-Deep-Learning-notes.png&quot; alt=&quot;Andrew-Ng-Deep-Learning-notes&quot;&gt;&lt;/p&gt;
+&lt;p&gt;早在吴恩达（deeplearning.ai）的《深度学习》系列课程在网易云课堂刚
+    
+    </summary>
+    
+      <category term="深度学习笔记" scheme="http://kyonhuang.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="深度学习" scheme="http://kyonhuang.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="吴恩达" scheme="http://kyonhuang.top/tags/%E5%90%B4%E6%81%A9%E8%BE%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>用浏览器也能挖矿！把力量借给我吧</title>
@@ -429,7 +467,7 @@
     <link href="http://kyonhuang.top/intro-to-data-preprocessing/"/>
     <id>http://kyonhuang.top/intro-to-data-preprocessing/</id>
     <published>2017-10-31T12:45:28.000Z</published>
-    <updated>2017-12-30T05:59:30.000Z</updated>
+    <updated>2018-01-14T08:46:05.615Z</updated>
     
     <content type="html"><![CDATA[<p>作为互联网上最著名的数据科学竞赛平台之一，Kaggle 无疑是数据从业者和爱好者最喜欢的社区之一。最近，Kaggle 发布了 <a href="https://www.kaggle.com/amberthomas/kaggle-2017-survey-results" target="_blank" rel="external">2017 用户调查报告</a>，共有 16000 余名用户参与的这份调查可以让我们对数据工作者的各类信息有一个了解。</p>
 <p>其中，对于“工作中遇到的障碍主要是什么？”这个问题，有 49.4% 的被调查者选择了“脏数据（dirty data）”这一项，占该问题所有选项的第一位。也就是说，数据科学家一般最常见的困扰就是要对手头的数据进行大量的预处理工程。</p>
@@ -1705,45 +1743,6 @@
       <category term="NodeJS" scheme="http://kyonhuang.top/tags/NodeJS/"/>
     
       <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《你不知道的 JavaScript（上卷）》脑图</title>
-    <link href="http://kyonhuang.top/You-Dont-Know-JS-notes-1/"/>
-    <id>http://kyonhuang.top/You-Dont-Know-JS-notes-1/</id>
-    <published>2017-07-27T08:47:12.000Z</published>
-    <updated>2017-07-27T12:38:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这篇博文展示了我读《你不知道的 JavaScript（上卷）》所总结的脑图。以后读的书争取都用脑图做总结，以建立清晰的知识体系。</p>
-  <a id="more"></a>
-<h2 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-2804c3c63580ec6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="作用域和闭包.png"></p>
-<p>大图：<a href="http://upload-images.jianshu.io/upload_images/2702529-2804c3c63580ec6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">作用域和闭包.png</a></p>
-<h2 id="this-和对象原型"><a href="#this-和对象原型" class="headerlink" title="this 和对象原型"></a>this 和对象原型</h2><p><img src="http://upload-images.jianshu.io/upload_images/2702529-e0b5c9e70a40628d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="this和对象原型.png"></p>
-<p>大图：<a href="http://upload-images.jianshu.io/upload_images/2702529-e0b5c9e70a40628d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">this和对象原型.png</a></p>
-<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>补一张来自 <a href="https://github.com/mqyqingfeng/Blog/issues/2" target="_blank" rel="external">JavaScript深入之从原型到原型链</a>  的图，来直观地表现原型链。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2702529-d73fdcc0c25efd7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="原型链.png"></p>
-<p>图中由相互关联的原型组成的链状结构就是原型链，也就是蓝色的这条线。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这篇博文展示了我读《你不知道的 JavaScript（上卷）》所总结的脑图。以后读的书争取都用脑图做总结，以建立清晰的知识体系。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://kyonhuang.top/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="读书笔记" scheme="http://kyonhuang.top/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JavaScipt" scheme="http://kyonhuang.top/tags/JavaScipt/"/>
-    
-      <category term="前端" scheme="http://kyonhuang.top/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="脑图" scheme="http://kyonhuang.top/tags/%E8%84%91%E5%9B%BE/"/>
-    
-      <category term="《你不知道的 JavaScript》" scheme="http://kyonhuang.top/tags/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-JavaScript%E3%80%8B/"/>
     
   </entry>
   

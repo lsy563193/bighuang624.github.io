@@ -4,6 +4,82 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/</loc>
+    <lastmod>2018-01-14T09:04:57.754Z</lastmod>
+    <data>
+        <display>
+        <title>吴恩达《深度学习》系列课程个人笔记</title>
+        <pubTime>2018-01-14T08:50:29.000Z</pubTime>
+        
+        <tag>深度学习</tag>
+         
+        <tag>吴恩达</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习笔记" url="http://kyonhuang.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/intro-to-data-preprocessing/</loc>
+    <lastmod>2018-01-14T08:46:05.615Z</lastmod>
+    <data>
+        <display>
+        <title>数据预处理及常用处理方法</title>
+        <pubTime>2017-10-31T12:45:28.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>数据预处理</tag>
+         
+        <tag>特征工程</tag>
+         
+        <tag>数据分析</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习笔记" url="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/start-to-know-AI/</loc>
+    <lastmod>2018-01-14T08:43:43.306Z</lastmod>
+    <data>
+        <display>
+        <title>初探人工智能</title>
+        <pubTime>2017-07-23T02:17:25.000Z</pubTime>
+        
+        <tag>人工智能</tag>
+         
+        <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
+         
+        <tag>神经网络</tag>
+         
+        <tag>AI</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习笔记" url="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/miner-for-my-website/</loc>
     <lastmod>2018-01-14T03:08:43.134Z</lastmod>
     <data>
@@ -133,32 +209,6 @@
            
              
               <breadCrumb title="算法笔记" url="http://kyonhuang.top/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/intro-to-data-preprocessing/</loc>
-    <lastmod>2017-12-30T05:59:30.000Z</lastmod>
-    <data>
-        <display>
-        <title>数据预处理及常用处理方法</title>
-        <pubTime>2017-10-31T12:45:28.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-        <tag>数据预处理</tag>
-         
-        <tag>特征工程</tag>
-         
-        <tag>数据分析</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习笔记" url="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -534,32 +584,6 @@
            
              
               <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/start-to-know-AI/</loc>
-    <lastmod>2017-09-24T03:02:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>初探人工智能</title>
-        <pubTime>2017-07-23T02:17:25.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-        <tag>人工智能</tag>
-         
-        <tag>深度学习</tag>
-         
-        <tag>神经网络</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习笔记" url="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
