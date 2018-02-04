@@ -252,9 +252,9 @@
     <link href="http://kyonhuang.top/miner-for-my-website/"/>
     <id>http://kyonhuang.top/miner-for-my-website/</id>
     <published>2018-01-12T08:46:36.000Z</published>
-    <updated>2018-01-15T11:32:35.634Z</updated>
+    <updated>2018-02-04T07:51:14.811Z</updated>
     
-    <content type="html"><![CDATA[<p>昨天读到了余博伦老师的<a href="https://zhuanlan.zhihu.com/p/32853925" target="_blank" rel="external">前端开发者转行挖矿的特别技巧</a>一文，觉得很有意思，于是在 <a href="https://coinhive.com/" target="_blank" rel="external">Coinhive</a> 上折腾了几个小时。通过加了几行 JavaScript 代码，目前，<strong>本博客已开启挖门罗币的功能</strong>。这意味着，当你阅读本博客的同时，你电脑的 CPU 在帮我做一些计算。我把浏览器挖矿的线程调整有 70% 的空闲时间（即速度只有满速的 30%），因此一般来说对你的电脑运行不会有什么大的影响。而使用手机浏览本博客不会启动挖矿，避免因性能较差而导致手机发热。</p>
+    <content type="html"><![CDATA[<p>昨天读到了余博伦老师的<a href="https://zhuanlan.zhihu.com/p/32853925" target="_blank" rel="external">前端开发者转行挖矿的特别技巧</a>一文，觉得很有意思，于是在 <a href="https://coinhive.com/" target="_blank" rel="external">Coinhive</a> 上折腾了几个小时。通过加了几行 JavaScript 代码，尝试在本博客开启挖门罗币的功能（<strong>现已关闭，因为有些朋友访问本博客时会因为挖矿被国产浏览器拦截 :)</strong>）。这意味着，当你阅读本博客的同时，你电脑的 CPU 在帮我做一些计算。我把浏览器挖矿的线程调整有 70% 的空闲时间（即速度只有满速的 30%），因此一般来说对你的电脑运行不会有什么大的影响。而使用手机浏览本博客不会启动挖矿，避免因性能较差而导致手机发热。</p>
 <p>其实，由于本博客目前的日均 PV 只有 10 左右，因此实际上在限速后基本挖不了多少。但是这是一次非常有趣的尝试，而且，因为暂时没找到申请 Google 账号以开启 Google Analysis 的方法，我也通过把 Coinhive Dashboard 当作一个更好的访问数据统计，间接了解本博客活跃时段。</p>
 <p><img src="/images/miner/Coinhive-Dashboard-Analysis.png" alt="Coinhive-Dashboard-Analysis"></p>
 <p>通过这种方式，<strong>阅读本博客进行阅读、学习的行为本身，成为一种对博主的赞赏与激励</strong>，我认为这是一种很有趣的互惠形式的探索。尽管实质上的经济影响极小，但是<strong>你的帮助会鼓励我更勤奋地写高质量的博客</strong>，也为我接触了解现在炙手可热的加密货币提供了途径和动力。</p>
