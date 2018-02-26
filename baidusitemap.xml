@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/kaggle-titanic-1/</loc>
+    <lastmod>2018-02-26T11:12:58.593Z</lastmod>
+    <data>
+        <display>
+        <title>Kaggle Titanic 生存预测（上）--特征工程</title>
+        <pubTime>2018-02-26T11:12:03.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>Kaggle</tag>
+         
+        <tag>特征工程</tag>
+         
+        <tag>Titanic 生存预测</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习笔记" url="http://kyonhuang.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/2018-new-term/</loc>
     <lastmod>2018-02-23T03:25:24.030Z</lastmod>
     <data>
@@ -160,9 +186,9 @@
         
         <tag>机器学习</tag>
          
-        <tag>数据预处理</tag>
-         
         <tag>特征工程</tag>
+         
+        <tag>数据预处理</tag>
          
         <tag>数据分析</tag>
          
