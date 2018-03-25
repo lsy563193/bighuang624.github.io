@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://kyonhuang.top/whu-CIPS-academic-salon/</loc>
+    <loc>http://kyonhuang.top/about/index.html</loc>
     
-    <lastmod>2018-03-24T13:28:02.842Z</lastmod>
+    <lastmod>2018-03-25T11:21:25.378Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/about/index.html</loc>
+    <loc>http://kyonhuang.top/kaggle-titanic-1/</loc>
     
-    <lastmod>2018-03-14T02:50:42.779Z</lastmod>
+    <lastmod>2018-03-25T11:19:52.295Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/whu-CIPS-academic-salon/</loc>
+    
+    <lastmod>2018-03-24T13:28:02.842Z</lastmod>
     
   </url>
   
@@ -33,13 +40,6 @@
     <loc>http://kyonhuang.top/pikachu-iterm/</loc>
     
     <lastmod>2018-03-10T08:23:40.110Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/kaggle-titanic-1/</loc>
-    
-    <lastmod>2018-03-01T12:26:01.734Z</lastmod>
     
   </url>
   

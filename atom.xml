@@ -105,7 +105,7 @@
     <link href="http://kyonhuang.top/kaggle-titanic-1/"/>
     <id>http://kyonhuang.top/kaggle-titanic-1/</id>
     <published>2018-02-26T11:12:03.000Z</published>
-    <updated>2018-03-01T12:26:01.734Z</updated>
+    <updated>2018-03-25T11:19:52.295Z</updated>
     
     <content type="html"><![CDATA[<p>注册著名的数据科学竞赛平台 Kaggle 四个多月了，当初是为了要一份数据集，而一直没有参加比赛。这个寒假终于按耐不住，决定拿入门级的 Titanic: Machine Learning from Disaster 打响革命第一枪。</p>
 <p>Titanic 生存预测比赛是一个二分类问题。题目提供了一份乘客名单，包含了乘客的名字、性别、年龄、船票等级等信息，以及是否成功获救的标记，最终需要提交一份对测试集中的乘客是否成功获救的 csv 文件。</p>
@@ -213,6 +213,7 @@
 </ul>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>亲自参加一次比赛才发觉 Kaggle 是好文明，像我这种菜鸡可以通过高质量的比赛了解到数据分析的很多基本流程和方法，收获的经验远不是书上例题所能比的。而且社区讨论里面个个都是人才，分享的经验技巧又干货满满，我超喜欢里面的。</p>
 <p>这篇博文主要整理一开始所用的基本方法，以及通过特征工程实现的改良。下一步我打算试着去用模型集成去进一步提高预测准确率，并且进行总结。</p>
+<p><strong>18.03.25 补充：</strong>尝试了模型集成，但是效果没有提升（反而降了），猜想是因为 xgboost 的效果已经足够好。系列的下篇搁置中…</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://zhuanlan.zhihu.com/p/31743196" target="_blank" rel="external">Kaggle Titanic 生存预测 – 详细流程吐血梳理</a>：推荐阅读第四部分“变量转换”</li>
 <li><a href="https://zhuanlan.zhihu.com/p/33733586" target="_blank" rel="external">Kaggle Titanic 生存预测(Top1.4%)完整代码分享</a></li>
@@ -237,9 +238,9 @@
     
       <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
-    
       <category term="Kaggle" scheme="http://kyonhuang.top/tags/Kaggle/"/>
+    
+      <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
     
       <category term="Titanic 生存预测" scheme="http://kyonhuang.top/tags/Titanic-%E7%94%9F%E5%AD%98%E9%A2%84%E6%B5%8B/"/>
     
@@ -1045,9 +1046,9 @@
     
       <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="数据预处理" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
-    
       <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="数据预处理" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
     
       <category term="数据分析" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
