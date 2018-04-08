@@ -3,6 +3,52 @@
 
 
     
+  <url>
+    <loc>http://kyonhuang.top/new-end-new-start/</loc>
+    <lastmod>2018-04-08T07:33:05.268Z</lastmod>
+    <data>
+        <display>
+        <title>花旗杯-新的终点，新的起点</title>
+        <pubTime>2017-11-27T05:22:24.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+        <tag>花旗杯</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://kyonhuang.top/whu-CIPS-academic-salon/</loc>
+    <lastmod>2018-04-03T08:40:29.730Z</lastmod>
+    <data>
+        <display>
+        <title>记CIPS 青工委武汉大学系列讲座</title>
+        <pubTime>2018-03-24T11:39:29.000Z</pubTime>
+        
+        <tag>讲座</tag>
+         
+        <tag>CIPS 青工委</tag>
+         
+        <tag>NLP</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>http://kyonhuang.top/5-days-data-cleaning/</loc>
@@ -57,30 +103,6 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/whu-CIPS-academic-salon/</loc>
-    <lastmod>2018-03-29T14:40:17.196Z</lastmod>
-    <data>
-        <display>
-        <title>记CIPS 青工委武汉大学系列讲座</title>
-        <pubTime>2018-03-24T11:39:29.000Z</pubTime>
-        
-        <tag>讲座</tag>
-         
-        <tag>CIPS 青工委</tag>
-         
-        <tag>NLP</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://kyonhuang.top/kaggle-titanic-1/</loc>
     <lastmod>2018-03-25T11:19:52.295Z</lastmod>
     <data>
@@ -123,28 +145,6 @@
         <tag>学习之路</tag>
          
         <tag>观后感</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序员的生活" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/new-end-new-start/</loc>
-    <lastmod>2018-03-10T14:46:41.333Z</lastmod>
-    <data>
-        <display>
-        <title>花旗杯-新的终点，新的起点</title>
-        <pubTime>2017-11-27T05:22:24.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-        <tag>花旗杯</tag>
          
          
            
@@ -1082,11 +1082,11 @@
          
         <tag>学习笔记</tag>
          
-        <tag>随笔</tag>
-         
         <tag>SASS</tag>
          
         <tag>WebStorm</tag>
+         
+        <tag>随笔</tag>
          
          
            
