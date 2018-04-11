@@ -92,23 +92,23 @@
 
 
 
-<meta name="description" content="开始学科复习。第一门复习的课程是编译原理，因为内容不算太多，大部分计算过程可以暂时不用记录和练习，而且没什么前置知识。 选用课本是上课时用的清华大学出版社《编译原理》（其实我觉得这本书里部分概念的定义不简洁明了）。以下是记录的笔记。不求全面，只求实用。 编译程序与编译过程编译程序（Compiler） 从功能上看，一个编译程序就是一个语言翻译程序； 基本任务：将源语言程序翻译成等价的目标语言程序。">
+<meta name="description" content="开始学科复习。第一门复习的课程是编译原理，因为内容不算太多，大部分计算过程可以暂时不用记录和练习，而且没什么前置知识。 选用课本是上课时用的清华大学出版社《编译原理》（其实我觉得这本书里给部分概念下定义时没有做到简洁明了，挺难理解的）。以下是记录的笔记。不求全面，只求适合自己之后再次复习使用。">
 <meta name="keywords" content="学科复习笔记,编译技术,编译原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编译原理复习笔记">
 <meta property="og:url" content="http://kyonhuang.top/fundamentals-of-compiling-notes/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="开始学科复习。第一门复习的课程是编译原理，因为内容不算太多，大部分计算过程可以暂时不用记录和练习，而且没什么前置知识。 选用课本是上课时用的清华大学出版社《编译原理》（其实我觉得这本书里部分概念的定义不简洁明了）。以下是记录的笔记。不求全面，只求实用。 编译程序与编译过程编译程序（Compiler） 从功能上看，一个编译程序就是一个语言翻译程序； 基本任务：将源语言程序翻译成等价的目标语言程序。">
+<meta property="og:description" content="开始学科复习。第一门复习的课程是编译原理，因为内容不算太多，大部分计算过程可以暂时不用记录和练习，而且没什么前置知识。 选用课本是上课时用的清华大学出版社《编译原理》（其实我觉得这本书里给部分概念下定义时没有做到简洁明了，挺难理解的）。以下是记录的笔记。不求全面，只求适合自己之后再次复习使用。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-images.githubusercontent.com/18595460/38497042-45ebb4d0-3c32-11e8-93a6-23fe52e5a752.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/18595460/38499719-0c12b9d0-3c3b-11e8-81ee-61f038b98d32.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/18595460/38499639-d58926e2-3c3a-11e8-820d-42f6984acc18.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/18595460/38556812-8941d1b2-3cfd-11e8-8d48-4d4bdff4fef4.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/18595460/38565503-1138b43a-3d14-11e8-8275-9488c8675389.png">
-<meta property="og:updated_time" content="2018-04-11T06:40:39.641Z">
+<meta property="og:updated_time" content="2018-04-11T08:35:05.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理复习笔记">
-<meta name="twitter:description" content="开始学科复习。第一门复习的课程是编译原理，因为内容不算太多，大部分计算过程可以暂时不用记录和练习，而且没什么前置知识。 选用课本是上课时用的清华大学出版社《编译原理》（其实我觉得这本书里部分概念的定义不简洁明了）。以下是记录的笔记。不求全面，只求实用。 编译程序与编译过程编译程序（Compiler） 从功能上看，一个编译程序就是一个语言翻译程序； 基本任务：将源语言程序翻译成等价的目标语言程序。">
+<meta name="twitter:description" content="开始学科复习。第一门复习的课程是编译原理，因为内容不算太多，大部分计算过程可以暂时不用记录和练习，而且没什么前置知识。 选用课本是上课时用的清华大学出版社《编译原理》（其实我觉得这本书里给部分概念下定义时没有做到简洁明了，挺难理解的）。以下是记录的笔记。不求全面，只求适合自己之后再次复习使用。">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/18595460/38497042-45ebb4d0-3c32-11e8-93a6-23fe52e5a752.png">
 
 
@@ -434,7 +434,8 @@
 
       
         <p>开始学科复习。第一门复习的课程是编译原理，因为内容不算太多，大部分计算过程可以暂时不用记录和练习，而且没什么前置知识。</p>
-<p>选用课本是上课时用的清华大学出版社《编译原理》（其实我觉得这本书里部分概念的定义不简洁明了）。以下是记录的笔记。不求全面，只求实用。</p>
+<p>选用课本是上课时用的清华大学出版社《编译原理》（其实我觉得这本书里给部分概念下定义时没有做到简洁明了，挺难理解的）。以下是记录的笔记。不求全面，只求适合自己之后再次复习使用。</p>
+<a id="more"></a>
 <h2 id="编译程序与编译过程"><a href="#编译程序与编译过程" class="headerlink" title="编译程序与编译过程"></a>编译程序与编译过程</h2><h3 id="编译程序（Compiler）"><a href="#编译程序（Compiler）" class="headerlink" title="编译程序（Compiler）"></a>编译程序（Compiler）</h3><ul>
 <li>从功能上看，一个编译程序就是一个语言翻译程序；</li>
 <li>基本任务：将源语言程序翻译成等价的目标语言程序。</li>
