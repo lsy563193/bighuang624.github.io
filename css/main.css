@@ -1982,7 +1982,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a2eb9a;
+  background: #5411ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2683,6 +2683,9 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
+}
+.post-title {
+  font-size: 26px;
 }
 .header {
   position: relative;
