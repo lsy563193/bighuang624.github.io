@@ -200,9 +200,9 @@
       <category term="编译原理笔记" scheme="http://kyonhuang.top/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
-    
       <category term="学科复习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E7%A7%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
     
       <category term="编译原理" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
@@ -404,7 +404,7 @@
     <link href="http://kyonhuang.top/whu-CIPS-academic-salon/"/>
     <id>http://kyonhuang.top/whu-CIPS-academic-salon/</id>
     <published>2018-03-24T11:39:29.000Z</published>
-    <updated>2018-04-12T11:04:47.379Z</updated>
+    <updated>2018-04-12T15:29:18.802Z</updated>
     
     <content type="html"><![CDATA[<p>趁着余兴未尽，来将今天早上参加的讲座记录一下。很幸运周四在教学楼下看到了这次活动的海报。本次系列讲座是 CIPS 青工委（中国中文信息学会青年工作委员会）在武汉大学的一次活动，主持人是武大的李晨亮老师，嘉宾包括清华的刘洋老师、刘知远老师、张敏老师，天津大学的张鹏老师和北大的严睿老师。五名老师在其所关注的细分领域各有建树，全是自然语言处理和信息检索领域的大牛。接下来以老师报告的顺序大概介绍一下各位老师的报告内容，和我对各位老师的感受。因为我忘记带拍照用的手机了，因此没有照片，而且笔记也不完整，部分理解可能有偏差，尽请见谅。</p>
 <p>2018.04.03 更新：更新上周五中科院自动化所刘康老师的讲座笔记。</p>
@@ -505,9 +505,7 @@
 <ul>
 <li>文本分类（分析具体是哪种类型的事件 -&gt; Event Identification -&gt; 没记下来…</li>
 </ul>
-<p>159.226.21.226 是一个根据以上想法实现的 demo。</p>
-<p>这次我拍了一张刘老师以及李晨亮老师及其研究生的合影。</p>
-<p><img src="/images/CIPS.jpg"></p>
+<p>老师展示了一个根据以上想法已经成型的 Web 应用。</p>
 <h2 id="总体感受"><a href="#总体感受" class="headerlink" title="总体感受"></a>总体感受</h2><p>各位老师都介绍了各自研究的领域、面临的问题以及目前的一些工作，让我能够在走上学术之路前能够充分了解自然语言处理和信息检索的一些研究方向，对我有很大的启发。</p>
 <p>现场的人数还是比较多的，临时换了一个更大的教室。刘知远老师报告时统计了一下在场的本科生，包括我在内的大约 10 人。让我没有想到的是，在场很多的研究生确实对不同老师的方向各有见解，提出了比较有深度的问题。武大啥时候冒出这么多自然语言处理方向的研究生啊，以前完全不知道，原来计院卧虎藏龙。</p>
 <p>也不知道该怎么结束这篇博文了。给大家欣赏一下我下午摄影实习照的樱花好了。</p>
@@ -672,9 +670,9 @@
     
       <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
-    
       <category term="Kaggle" scheme="http://kyonhuang.top/tags/Kaggle/"/>
+    
+      <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
     
       <category term="Titanic 生存预测" scheme="http://kyonhuang.top/tags/Titanic-%E7%94%9F%E5%AD%98%E9%A2%84%E6%B5%8B/"/>
     
@@ -1483,9 +1481,9 @@
     
       <category term="数据科学" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
-      <category term="数据预处理" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
-    
       <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="数据预处理" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
     
       <category term="数据分析" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
@@ -1707,9 +1705,9 @@
       <category term="解释器构造" scheme="http://kyonhuang.top/categories/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%9E%84%E9%80%A0/"/>
     
     
-      <category term="ANTLR" scheme="http://kyonhuang.top/tags/ANTLR/"/>
-    
       <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="ANTLR" scheme="http://kyonhuang.top/tags/ANTLR/"/>
     
       <category term="解释器" scheme="http://kyonhuang.top/tags/%E8%A7%A3%E9%87%8A%E5%99%A8/"/>
     
@@ -1834,9 +1832,9 @@
       <category term="解释器构造" scheme="http://kyonhuang.top/categories/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%9E%84%E9%80%A0/"/>
     
     
-      <category term="ANTLR" scheme="http://kyonhuang.top/tags/ANTLR/"/>
-    
       <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="ANTLR" scheme="http://kyonhuang.top/tags/ANTLR/"/>
     
       <category term="解释器" scheme="http://kyonhuang.top/tags/%E8%A7%A3%E9%87%8A%E5%99%A8/"/>
     
