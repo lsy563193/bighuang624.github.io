@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/hexo-begin/</loc>
+    
+    <lastmod>2018-04-12T10:11:39.192Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/Evolution-of-distributed-systems/</loc>
     
     <lastmod>2018-04-11T08:37:26.582Z</lastmod>
@@ -138,13 +145,6 @@
     <loc>http://kyonhuang.top/start-to-know-AI/</loc>
     
     <lastmod>2018-01-14T08:43:43.306Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/hexo-begin/</loc>
-    
-    <lastmod>2018-01-12T08:08:27.597Z</lastmod>
     
   </url>
   
