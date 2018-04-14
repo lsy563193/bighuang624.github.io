@@ -3,6 +3,7 @@
 
 
     
+    
   <url>
     <loc>http://kyonhuang.top/whu-CIPS-academic-salon/</loc>
     <lastmod>2018-04-12T15:29:18.802Z</lastmod>
@@ -306,9 +307,9 @@
          
         <tag>数据科学</tag>
          
-        <tag>特征工程</tag>
-         
         <tag>数据预处理</tag>
+         
+        <tag>特征工程</tag>
          
         <tag>数据分析</tag>
          
@@ -332,9 +333,9 @@
         
         <tag>机器学习</tag>
          
-        <tag>Kaggle</tag>
-         
         <tag>特征工程</tag>
+         
+        <tag>Kaggle</tag>
          
         <tag>Titanic 生存预测</tag>
          
@@ -1020,13 +1021,13 @@
         <title>基于Java的BiliBili视频信息爬虫</title>
         <pubTime>2017-01-27T10:24:19.000Z</pubTime>
         
+        <tag>学习笔记</tag>
+         
         <tag>demo</tag>
          
         <tag>爬虫</tag>
          
         <tag>Java</tag>
-         
-        <tag>学习笔记</tag>
          
          
            
