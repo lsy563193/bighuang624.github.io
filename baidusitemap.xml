@@ -4,13 +4,109 @@
 
     
     
+  <url>
+    <loc>http://kyonhuang.top/capsule-networks-intro/</loc>
+    <lastmod>2018-04-26T12:22:53.318Z</lastmod>
+    <data>
+        <display>
+        <title>胶囊网络初探</title>
+        <pubTime>2018-04-26T12:07:53.000Z</pubTime>
+        
+        <tag>深度学习</tag>
+         
+        <tag>胶囊网络</tag>
+         
+        <tag>Capsule</tag>
+         
+        <tag>CapsNet</tag>
+         
+        <tag>Dynamic Routing</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习笔记" url="http://kyonhuang.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/greedy-algorithm/</loc>
+    <lastmod>2018-04-25T15:15:36.744Z</lastmod>
+    <data>
+        <display>
+        <title>算法一篇通——贪心算法</title>
+        <pubTime>2017-12-29T13:24:35.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>贪心算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法笔记" url="http://kyonhuang.top/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/dynamic-programming/</loc>
+    <lastmod>2018-04-25T15:15:12.311Z</lastmod>
+    <data>
+        <display>
+        <title>算法一篇通——动态规划</title>
+        <pubTime>2017-12-18T10:23:41.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>动态规划</tag>
+         
+        <tag>DP</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法笔记" url="http://kyonhuang.top/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/evolution-of-distributed-systems/</loc>
+    <lastmod>2018-04-25T15:14:33.642Z</lastmod>
+    <data>
+        <display>
+        <title>分布式系统演进简述</title>
+        <pubTime>2018-04-09T07:02:14.000Z</pubTime>
+        
+        <tag>分布式系统</tag>
+         
+        <tag>分布式架构</tag>
+         
+         
+           
+             
+              <breadCrumb title="架构笔记" url="http://kyonhuang.top/categories/%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://kyonhuang.top/whu-CIPS-academic-salon/</loc>
-    <lastmod>2018-04-12T15:29:18.802Z</lastmod>
+    <lastmod>2018-04-17T12:10:46.276Z</lastmod>
     <data>
         <display>
-        <title>记CIPS 青工委武汉大学系列讲座</title>
+        <title>记 CIPS 青工委武汉大学系列讲座</title>
         <pubTime>2018-03-24T11:39:29.000Z</pubTime>
         
         <tag>讲座</tag>
@@ -93,28 +189,6 @@
            
              
               <breadCrumb title="程序猿喜欢折腾" url="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%96%9C%E6%AC%A2%E6%8A%98%E8%85%BE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/Evolution-of-distributed-systems/</loc>
-    <lastmod>2018-04-11T08:37:26.582Z</lastmod>
-    <data>
-        <display>
-        <title>分布式系统演进简述</title>
-        <pubTime>2018-04-09T07:02:14.000Z</pubTime>
-        
-        <tag>分布式系统</tag>
-         
-        <tag>分布式架构</tag>
-         
-         
-           
-             
-              <breadCrumb title="架构笔记" url="http://kyonhuang.top/categories/%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -470,30 +544,6 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/Dynamic-programming/</loc>
-    <lastmod>2018-01-19T13:12:47.324Z</lastmod>
-    <data>
-        <display>
-        <title>算法一篇通——动态规划</title>
-        <pubTime>2017-12-18T10:23:41.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-        <tag>动态规划</tag>
-         
-        <tag>DP</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法笔记" url="http://kyonhuang.top/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/</loc>
     <lastmod>2018-01-14T09:04:57.754Z</lastmod>
     <data>
@@ -581,28 +631,6 @@
            
              
               <breadCrumb title="中文填词" url="http://kyonhuang.top/categories/%E4%B8%AD%E6%96%87%E5%A1%AB%E8%AF%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/Greedy-algorithm/</loc>
-    <lastmod>2017-12-30T08:47:43.000Z</lastmod>
-    <data>
-        <display>
-        <title>算法一篇通——贪心算法</title>
-        <pubTime>2017-12-29T13:24:35.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-        <tag>贪心算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法笔记" url="http://kyonhuang.top/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
