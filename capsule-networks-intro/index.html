@@ -113,12 +113,12 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-5c96a8e0b1fb2b64.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-252e3955a7502bb9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-d0469390e5f13382.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-b09707696facdfda.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-bf5baae6af4e1020.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-0b21e542874bff2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-b66e0182d94d57c0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-32d23ca1dcb57f67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-26T12:42:45.337Z">
+<meta property="og:updated_time" content="2018-04-26T12:51:25.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="胶囊网络初探">
 <meta name="twitter:description" content="如果你有关注我的 Github，可以看到我和小伙伴们正在做一个中文短文本情感分析 web 应用。恰逢 WWW 2018 收录了一篇《Sentiment Analysis by Capsules》，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为没有 GPU 等原因而无法">
@@ -492,7 +492,7 @@
 <h2 id="Capsule-的工作原理"><a href="#Capsule-的工作原理" class="headerlink" title="Capsule 的工作原理"></a>Capsule 的工作原理</h2><p>Capsule 的工作原理归纳成一句话就是，<strong>所有胶囊检测中的特征的状态的重要信息，都将以向量的形式（神经元输出的则是标量）被胶囊封装</strong>。</p>
 <p>进一步来说，一个胶囊捕捉一个特征。胶囊将特征存在的<strong>概率</strong>作为其<strong>输出向量的长度</strong>进行编码，这与目前的神经元同理。而检测出的特征的<strong>状态</strong>被编码为该向量指向的<strong>方向</strong>（“实例参数”）。因此，当检测出的特征在图像中平移或旋转，向量长度没有改变（因为概率保持不变），但它的方向改变了。</p>
 <p>从标量到向量，这是一个让人初次听闻时拍案叫绝、但仔细思考过后又觉得理所当然的改变。这种改变使得平移或旋转导致的“变化”与“不变”被转化为向量的长度与方向，从而自然分离开来，而不是像 CNN 使用最大池化一样将“变化”全部简单粗暴地抹平为“不变”。</p>
-<h2 id="Capsule-的运算步骤"><a href="#Capsule-的运算步骤" class="headerlink" title="Capsule 的运算步骤"></a>Capsule 的运算步骤</h2><p><img src="https://upload-images.jianshu.io/upload_images/2702529-d0469390e5f13382.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="胶囊vs人工神经元.jpg"></p>
+<h2 id="Capsule-的运算步骤"><a href="#Capsule-的运算步骤" class="headerlink" title="Capsule 的运算步骤"></a>Capsule 的运算步骤</h2><p><img src="https://upload-images.jianshu.io/upload_images/2702529-b09707696facdfda.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="胶囊vs人工神经元.jpg"></p>
 <p>上图中左边为胶囊，右边为普通神经元。本质上，普通神经元的运算步骤分为 3 步：</p>
 <ol>
 <li>输入标量的标量加权；</li>
