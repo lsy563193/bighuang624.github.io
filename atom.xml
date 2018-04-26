@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2018-04-26T12:22:53.318Z</updated>
+  <updated>2018-04-26T12:42:45.337Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kyonhuang.top/capsule-networks-intro/"/>
     <id>http://kyonhuang.top/capsule-networks-intro/</id>
     <published>2018-04-26T12:07:53.000Z</published>
-    <updated>2018-04-26T12:22:53.318Z</updated>
+    <updated>2018-04-26T12:42:45.337Z</updated>
     
     <content type="html"><![CDATA[<p>如果你有关注我的 Github，可以看到我和小伙伴们正在做一个<a href="https://github.com/bighuang624/sentiment-analysis-webapp" target="_blank" rel="external">中文短文本情感分析 web 应用</a>。恰逢 WWW 2018 收录了一篇<a href="https://dl.acm.org/citation.cfm?id=3186015" target="_blank" rel="external">《Sentiment Analysis by Capsules》</a>，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为没有 GPU 等原因而无法实现，了解前沿技术、吸收大牛思想也是极好的。</p>
 <p>先简单介绍一下 Capsule。NIPS 2017 发表的<a href="https://arxiv.org/pdf/1710.09829v2.pdf" target="_blank" rel="external">《Dynamic Routing Between Capsules》</a>[1]使得这一概念开始走红，虽然 Capsule 本用于 CV 领域，不过目前也已经在各领域有了积极的尝试。Capsule 是 Hinton“反 CNN”的一面旗帜，他认为导致深度学习如火如荼的 CNN 其实有着重大的缺陷。我接下来就将介绍这个缺陷、Capsule 如何通过其工作原理避免这个缺陷、Capsule 的结构，以及 Capsule 的训练算法与损失函数等。不过因为篇幅有限，这篇文章暂时不会介绍 CapsNet 的具体架构，这部分可以看一下参考资料列的一些或者直接看原论文。顺便一提，Capsule 和胶囊两个词可能在本文中互有使用，但我实际上想用它们指同一个东西。</p>
@@ -28,9 +28,9 @@
 <h2 id="CNN-的缺陷"><a href="#CNN-的缺陷" class="headerlink" title="CNN 的缺陷"></a>CNN 的缺陷</h2><p>如果你了解 CNN（不了解请移至<a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Convolutional_Neural_Networks/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">《卷积神经网络 - 吴恩达《深度学习》系列课程笔记》</a>），你会知道 CNN 依靠卷积层检测图像中的特征。前几层学习一些例如边缘的简单特征，而较深的层组合简单特征形成更为复杂的特征，最后再将复杂特征组合并输出分类预测。</p>
 <p>而在层与层之间，前一层的激活与下一层神经元的权重相乘并相加，接着传递到非线性激活函数。这种简单的加权和导致 <strong>CNN 难以察觉平移和旋转（以及类似变化）后图像的一致性</strong>，例如，将一张狗的照片旋转 5 度，训练好的 CNN 可能会认为两张图片都是狗，但是不会认为它们是同一只狗。</p>
 <p>CNN 解决这个问题的方法是使用最大池化，对于一定区域内的特征取最大值，以此缓解一定的平移和旋转的影响（平均池化同理）。事实证明，CNN 的效果惊人，以至于“它表现如此优异是一场灾难”。引号内是 Hinton 的原话，因为他认为最大池化损失了很多有价值的信息。最重要的是，CNN 只考虑简单对象的存在，而<strong>没有考虑简单对象和复杂对象之间的空间层级关系</strong>。举个例子，对于 CNN 而言，下面两张图片都是一张脸，因为它们包含相似的部件，尽管我们知道散落的器官不能被称为脸。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/hq0PKaHicMTF4UzWp2pTCnp53l08eOalFGntvkLHC0tamGafAoTZhI6axuGK0Kric17MiamzgtOV2ROvFQcYF8K9Q/?wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2702529-5c96a8e0b1fb2b64.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="人脸.jpg"></p>
 <p>以上问题导致的结果是，CNN 难以分类和辨识不同视角的同一物体。对于人类，即使你只看过几张自由女神像的照片，也能够轻松辨认不同角度的自由女神像。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/hq0PKaHicMTF4UzWp2pTCnp53l08eOalFiaxJ5UNibOXGdQUnaj5h1C7ia1MUUP6HFhgickE8UpIer9w9QkQUWiavNhQ/?wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2702529-252e3955a7502bb9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自由女神.jpg"></p>
 <p>但对于 CNN，这个任务就非常困难了，因为它没有内建对三维空间的理解。它只能与以前训练过的照片进行对比，这导致训练 CNN 往往需要百万数量级的图像才能训练出较为精准的效果，并且当遇到角度奇怪的图像时分类正确率可能受到影响。最重要的是，我们知道神经网络本就是为了尽可能还原人脑的功能，但明显人类根本不需要对每个物体都看如此规模的图片才能学会辨认。</p>
 <h2 id="Why-Capsule？"><a href="#Why-Capsule？" class="headerlink" title="Why Capsule？"></a>Why Capsule？</h2><p>基于以上分析，尽管目前 CNN 的工作看似非常出色，但是它不会是未来。实际上，Hinton 早在 2011 年就提出 Capsule 的结构[2]，但是在当时还没有提出一种算法可以实现并成功学习胶囊网络。而在[1]中，Hinton 提出一种名为<strong>动态路由（Dynamic Routing）</strong>的算法解决了这个问题。</p>
 <p>CNN 通过一层层的过滤，将信息一步步由下而上的进行抽象；而 Hinton 认为人类在识别图像时是遵循类似决策树的方式。Capsule 同样遵循这个结构的思路，每个活动的 Capsule 将选择一个上层的 Capsule 作为父节点。</p>
@@ -38,7 +38,7 @@
 <h2 id="Capsule-的工作原理"><a href="#Capsule-的工作原理" class="headerlink" title="Capsule 的工作原理"></a>Capsule 的工作原理</h2><p>Capsule 的工作原理归纳成一句话就是，<strong>所有胶囊检测中的特征的状态的重要信息，都将以向量的形式（神经元输出的则是标量）被胶囊封装</strong>。</p>
 <p>进一步来说，一个胶囊捕捉一个特征。胶囊将特征存在的<strong>概率</strong>作为其<strong>输出向量的长度</strong>进行编码，这与目前的神经元同理。而检测出的特征的<strong>状态</strong>被编码为该向量指向的<strong>方向</strong>（“实例参数”）。因此，当检测出的特征在图像中平移或旋转，向量长度没有改变（因为概率保持不变），但它的方向改变了。</p>
 <p>从标量到向量，这是一个让人初次听闻时拍案叫绝、但仔细思考过后又觉得理所当然的改变。这种改变使得平移或旋转导致的“变化”与“不变”被转化为向量的长度与方向，从而自然分离开来，而不是像 CNN 使用最大池化一样将“变化”全部简单粗暴地抹平为“不变”。</p>
-<h2 id="Capsule-的运算步骤"><a href="#Capsule-的运算步骤" class="headerlink" title="Capsule 的运算步骤"></a>Capsule 的运算步骤</h2><p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/hq0PKaHicMTHq0XDRfEoesyibIvMctWYEQHdqNdicSsInCGv6wOkspsVf7uc2yeiaxr1HrR2HKNnY6ibQHUwN6JxjVw/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<h2 id="Capsule-的运算步骤"><a href="#Capsule-的运算步骤" class="headerlink" title="Capsule 的运算步骤"></a>Capsule 的运算步骤</h2><p><img src="https://upload-images.jianshu.io/upload_images/2702529-d0469390e5f13382.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="胶囊vs人工神经元.jpg"></p>
 <p>上图中左边为胶囊，右边为普通神经元。本质上，普通神经元的运算步骤分为 3 步：</p>
 <ol>
 <li>输入标量的标量加权；</li>
@@ -63,13 +63,13 @@
 <p>这三条性质均在表明，这里的权重表示概率。</p>
 <h3 id="对加权后的向量求和"><a href="#对加权后的向量求和" class="headerlink" title="对加权后的向量求和"></a>对加权后的向量求和</h3><p>除开求的是向量的和（而非标量和），这一步与通常的神经网络没有区别。</p>
 <h3 id="对和进行非线性变换生成新向量"><a href="#对和进行非线性变换生成新向量" class="headerlink" title="对和进行非线性变换生成新向量"></a>对和进行非线性变换生成新向量</h3><p>Capsule 使用了一个新颖的非线性激活函数——squash 函数。它可以压缩输入向量的长度，而不改变其方向。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/hq0PKaHicMTHq0XDRfEoesyibIvMctWYEQMgvTBLbCdJVoOjCsLecKaREHKscr5J0Q5D8L2NZia1xg71CO0T9dKjg/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1" alt="squash非线性激活函数"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2702529-bf5baae6af4e1020.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="squash.png"></p>
 <p>容易看出，蓝色矩形部分将输入向量缩放至单位长度，而红色矩形部分进行额外的缩放操作。函数图像如下：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/hq0PKaHicMTHq0XDRfEoesyibIvMctWYEQeSS8Oyt4IyyodUhD0VRnMLC8xsIMg9NK1jic4ibk6LiaUVvO2ao9XF6iaA/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2702529-0b21e542874bff2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="suqash-function-graph.png"></p>
 <p>总结来说，对于上一个胶囊层输出的所有胶囊向量，通过转换矩阵转换为更高层的胶囊向量，最后通过动态路由算法聚合成一个胶囊向量，最后通过 squash 激活函数输出最后结果。</p>
 <h2 id="动态路由（Dynamic-Routing）算法"><a href="#动态路由（Dynamic-Routing）算法" class="headerlink" title="动态路由（Dynamic Routing）算法"></a>动态路由（Dynamic Routing）算法</h2><p>动态路由算法的思想是，低层胶囊将其输出发送给对此表示“同意”的高层胶囊。这种同意表现为<strong>向量的点积</strong>。</p>
 <p>贴一张论文中对动态路由算法的伪代码描述：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/hq0PKaHicMTFgnebb0ELh9AwmiardGSxYv4Kkv9FicjFpVaENQYFVVJ4hBUJfKabOP1jaxS4Cvu1HWogD7KzCbSjA/?wxfrom=5&amp;wx_lazy=1" alt="Dynamic Routing"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2702529-b66e0182d94d57c0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="伪代码.jpg"></p>
 <p>我们只看几个算法中的关键点：</p>
 <ul>
 <li>第一行指明算法的输入：l 是低层的层数，\hat u 是低层输出的所有胶囊向量，r 是迭代次数。</li>
@@ -78,7 +78,7 @@
 <li>第七行更新了权重，也是路由算法的本质所在。在这一步中，我们查看了每个高层胶囊 j，然后检查每个输入并根据公式更新相应的权重 bij。公式表明，胶囊 j 的当前输出和从低层胶囊 i 处接收的输入的点积，加上旧权重，等于新权重。点积检测胶囊的输入和输出之间的相似性。</li>
 </ul>
 <p>论文表示，通过在 MNIST 和 CIFAR 两个数据集上的检验，实践中建议使用 3 次迭代。更多的迭代容易导致过拟合。</p>
-<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p><img src="https://mmbiz.qpic.cn/mmbiz_png/hq0PKaHicMTGPo9Bkib8bCzJZhfMic1sD5NeueVKt5ylrpRHblar3e8Jn5Ue72f1qicwMrhGKN6bq4JMibbyNetvdwg/640?wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/2702529-32d23ca1dcb57f67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代价函数.png"></p>
 <p>对于数字 c（或者说类别 c），代价函数如上图所示。MNIST 数据集中，当数字 c 与标签对应时，Tc = 1，否则为 0；m+ = 0.9，m- = 0.1。λ 取 0.5 以确保训练中的数值稳定性。</p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>了解 CapsNet 的具体架构有助于理解以上内容，所以我还是建议看一下原论文中这部分的内容。另外，虽然原论文相对于很多深度学习论文显得简洁而易于理解，但是有些细节并没有完全解释，我会试着再找一些资料阅读。我的下一个目标是阅读文章开头提到的《Sentiment Analysis by Capsules》。显然这篇新鲜出炉的 paper 没有什么辅助我理解的文章，我打算打印下来仔细读一读。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h3><ul>
