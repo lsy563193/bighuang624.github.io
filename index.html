@@ -462,7 +462,7 @@
 
       
         
-          <p>如果你有关注我的 Github，可以看到我和小伙伴们正在做一个<a href="https://github.com/bighuang624/sentiment-analysis-webapp" target="_blank" rel="external">中文短文本情感分析 web 应用</a>。恰逢 WWW 2018 收录了一篇<a href="https://dl.acm.org/citation.cfm?id=3186015" target="_blank" rel="external">《Sentiment Analysis by Capsules》</a>，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为没有 GPU 等原因而无法实现，了解前沿技术、吸收大牛思想也是极好的。</p>
+          <p>如果你有关注我的 Github，可以看到我和小伙伴们正在做一个<a href="https://github.com/bighuang624/sentiment-analysis-webapp" target="_blank" rel="external">中文短文本情感分析 web 应用</a>。恰逢 WWW 2018 收录了一篇<a href="https://dl.acm.org/citation.cfm?id=3186015" target="_blank" rel="external">《Sentiment Analysis by Capsules》</a>，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为缺少计算资源等原因而无法实现，了解前沿技术、吸收大牛思想也是极好的。</p>
 <p>先简单介绍一下 Capsule。NIPS 2017 发表的<a href="https://arxiv.org/pdf/1710.09829v2.pdf" target="_blank" rel="external">《Dynamic Routing Between Capsules》</a>[1]使得这一概念开始走红，虽然 Capsule 本用于 CV 领域，不过目前也已经在各领域有了积极的尝试。Capsule 是 Hinton“反 CNN”的一面旗帜，他认为导致深度学习如火如荼的 CNN 其实有着重大的缺陷。我接下来就将介绍这个缺陷、Capsule 如何通过其工作原理避免这个缺陷、Capsule 的结构，以及 Capsule 的训练算法与损失函数等。不过因为篇幅有限，这篇文章暂时不会介绍 CapsNet 的具体架构，这部分可以看一下参考资料列的一些或者直接看原论文。顺便一提，Capsule 和胶囊两个词可能在本文中互有使用，但我实际上想用它们指同一个东西。</p>
           <!--noindex-->
           <div class="post-button text-center">

@@ -103,13 +103,13 @@
 
 
 
-  <meta name="description" content="如果你有关注我的 Github，可以看到我和小伙伴们正在做一个中文短文本情感分析 web 应用。恰逢 WWW 2018 收录了一篇《Sentiment Analysis by Capsules》，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为没有 GPU 等原因而无法">
+  <meta name="description" content="如果你有关注我的 Github，可以看到我和小伙伴们正在做一个中文短文本情感分析 web 应用。恰逢 WWW 2018 收录了一篇《Sentiment Analysis by Capsules》，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为缺少计算资源等原因而无法实">
 <meta name="keywords" content="深度学习,胶囊网络,Capsule,CapsNet,Dynamic Routing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="胶囊网络初探">
 <meta property="og:url" content="http://kyonhuang.top/capsule-networks-intro/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="如果你有关注我的 Github，可以看到我和小伙伴们正在做一个中文短文本情感分析 web 应用。恰逢 WWW 2018 收录了一篇《Sentiment Analysis by Capsules》，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为没有 GPU 等原因而无法">
+<meta property="og:description" content="如果你有关注我的 Github，可以看到我和小伙伴们正在做一个中文短文本情感分析 web 应用。恰逢 WWW 2018 收录了一篇《Sentiment Analysis by Capsules》，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为缺少计算资源等原因而无法实">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-5c96a8e0b1fb2b64.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-252e3955a7502bb9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -118,10 +118,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-0b21e542874bff2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-b66e0182d94d57c0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-32d23ca1dcb57f67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-26T12:51:25.066Z">
+<meta property="og:updated_time" content="2018-04-27T09:37:55.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="胶囊网络初探">
-<meta name="twitter:description" content="如果你有关注我的 Github，可以看到我和小伙伴们正在做一个中文短文本情感分析 web 应用。恰逢 WWW 2018 收录了一篇《Sentiment Analysis by Capsules》，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为没有 GPU 等原因而无法">
+<meta name="twitter:description" content="如果你有关注我的 Github，可以看到我和小伙伴们正在做一个中文短文本情感分析 web 应用。恰逢 WWW 2018 收录了一篇《Sentiment Analysis by Capsules》，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为缺少计算资源等原因而无法实">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2702529-5c96a8e0b1fb2b64.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -476,7 +476,7 @@
       
 
       
-        <p>如果你有关注我的 Github，可以看到我和小伙伴们正在做一个<a href="https://github.com/bighuang624/sentiment-analysis-webapp" target="_blank" rel="external">中文短文本情感分析 web 应用</a>。恰逢 WWW 2018 收录了一篇<a href="https://dl.acm.org/citation.cfm?id=3186015" target="_blank" rel="external">《Sentiment Analysis by Capsules》</a>，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为没有 GPU 等原因而无法实现，了解前沿技术、吸收大牛思想也是极好的。</p>
+        <p>如果你有关注我的 Github，可以看到我和小伙伴们正在做一个<a href="https://github.com/bighuang624/sentiment-analysis-webapp" target="_blank" rel="external">中文短文本情感分析 web 应用</a>。恰逢 WWW 2018 收录了一篇<a href="https://dl.acm.org/citation.cfm?id=3186015" target="_blank" rel="external">《Sentiment Analysis by Capsules》</a>，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为缺少计算资源等原因而无法实现，了解前沿技术、吸收大牛思想也是极好的。</p>
 <p>先简单介绍一下 Capsule。NIPS 2017 发表的<a href="https://arxiv.org/pdf/1710.09829v2.pdf" target="_blank" rel="external">《Dynamic Routing Between Capsules》</a>[1]使得这一概念开始走红，虽然 Capsule 本用于 CV 领域，不过目前也已经在各领域有了积极的尝试。Capsule 是 Hinton“反 CNN”的一面旗帜，他认为导致深度学习如火如荼的 CNN 其实有着重大的缺陷。我接下来就将介绍这个缺陷、Capsule 如何通过其工作原理避免这个缺陷、Capsule 的结构，以及 Capsule 的训练算法与损失函数等。不过因为篇幅有限，这篇文章暂时不会介绍 CapsNet 的具体架构，这部分可以看一下参考资料列的一些或者直接看原论文。顺便一提，Capsule 和胶囊两个词可能在本文中互有使用，但我实际上想用它们指同一个东西。</p>
 <a id="more"></a>
 <h2 id="CNN-的缺陷"><a href="#CNN-的缺陷" class="headerlink" title="CNN 的缺陷"></a>CNN 的缺陷</h2><p>如果你了解 CNN（不了解请移至<a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Convolutional_Neural_Networks/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">《卷积神经网络 - 吴恩达《深度学习》系列课程笔记》</a>），你会知道 CNN 依靠卷积层检测图像中的特征。前几层学习一些例如边缘的简单特征，而较深的层组合简单特征形成更为复杂的特征，最后再将复杂特征组合并输出分类预测。</p>
@@ -547,9 +547,10 @@
 <li><a href="https://blog.csdn.net/jessican_uestc/article/details/79587096" target="_blank" rel="external">初读Geoffrey Hinton颠覆之作《Dynamic Routing Between Capsules》 - CSDN博客</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/35409788" target="_blank" rel="external">胶囊网络（Capsule Network）在文本分类中的探索</a></li>
 </ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<h3 id="开源代码"><a href="#开源代码" class="headerlink" title="开源代码"></a>开源代码</h3><ul>
 <li><a href="https://github.com/Sarasra/models/tree/master/research/capsules" target="_blank" rel="external">Sarasra/models</a>：由《Dynamic Routing Between Capsules》第一作者编写</li>
 <li><a href="https://github.com/llSourcell/capsule_networks" target="_blank" rel="external">llSourcell/capsule_networks</a></li>
+<li><a href="https://github.com/XifengGuo/CapsNet-Keras" target="_blank" rel="external">XifengGuo/CapsNet-Keras</a></li>
 </ul>
 
       
@@ -1054,7 +1055,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CNN-的缺陷"><span class="nav-number">1.</span> <span class="nav-text">CNN 的缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Capsule？"><span class="nav-number">2.</span> <span class="nav-text">Why Capsule？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Capsule-的工作原理"><span class="nav-number">3.</span> <span class="nav-text">Capsule 的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Capsule-的运算步骤"><span class="nav-number">4.</span> <span class="nav-text">Capsule 的运算步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入向量的矩阵乘法"><span class="nav-number">4.1.</span> <span class="nav-text">输入向量的矩阵乘法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入向量的标量加权"><span class="nav-number">4.2.</span> <span class="nav-text">输入向量的标量加权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对加权后的向量求和"><span class="nav-number">4.3.</span> <span class="nav-text">对加权后的向量求和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对和进行非线性变换生成新向量"><span class="nav-number">4.4.</span> <span class="nav-text">对和进行非线性变换生成新向量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态路由（Dynamic-Routing）算法"><span class="nav-number">5.</span> <span class="nav-text">动态路由（Dynamic Routing）算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代价函数"><span class="nav-number">6.</span> <span class="nav-text">代价函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">7.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#论文"><span class="nav-number">8.1.</span> <span class="nav-text">论文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章"><span class="nav-number">8.2.</span> <span class="nav-text">文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">8.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CNN-的缺陷"><span class="nav-number">1.</span> <span class="nav-text">CNN 的缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Capsule？"><span class="nav-number">2.</span> <span class="nav-text">Why Capsule？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Capsule-的工作原理"><span class="nav-number">3.</span> <span class="nav-text">Capsule 的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Capsule-的运算步骤"><span class="nav-number">4.</span> <span class="nav-text">Capsule 的运算步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入向量的矩阵乘法"><span class="nav-number">4.1.</span> <span class="nav-text">输入向量的矩阵乘法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入向量的标量加权"><span class="nav-number">4.2.</span> <span class="nav-text">输入向量的标量加权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对加权后的向量求和"><span class="nav-number">4.3.</span> <span class="nav-text">对加权后的向量求和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对和进行非线性变换生成新向量"><span class="nav-number">4.4.</span> <span class="nav-text">对和进行非线性变换生成新向量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态路由（Dynamic-Routing）算法"><span class="nav-number">5.</span> <span class="nav-text">动态路由（Dynamic Routing）算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代价函数"><span class="nav-number">6.</span> <span class="nav-text">代价函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">7.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#论文"><span class="nav-number">8.1.</span> <span class="nav-text">论文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文章"><span class="nav-number">8.2.</span> <span class="nav-text">文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开源代码"><span class="nav-number">8.3.</span> <span class="nav-text">开源代码</span></a></li></ol></li></ol></div>
             
 
           </div>
