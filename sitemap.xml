@@ -2,9 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/jQuery-master-notes/</loc>
+    
+    <lastmod>2018-05-10T15:56:42.578Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/JS-notes-5/</loc>
+    
+    <lastmod>2018-05-10T15:55:50.566Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/JS-notes-3/</loc>
+    
+    <lastmod>2018-05-10T15:54:38.271Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/JS-notes-4/</loc>
+    
+    <lastmod>2018-05-10T15:54:04.708Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/whu-CIPS-academic-salon/</loc>
+    
+    <lastmod>2018-05-10T15:53:02.236Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/lyrics-seaStory/</loc>
+    
+    <lastmod>2018-05-10T15:51:47.071Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/lyrics-aircloud/</loc>
+    
+    <lastmod>2018-05-10T15:51:35.139Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/</loc>
+    
+    <lastmod>2018-05-10T15:51:14.964Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/SPA-learning-notes/</loc>
+    
+    <lastmod>2018-05-10T15:51:02.371Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/yuki-intro/</loc>
+    
+    <lastmod>2018-05-10T15:50:33.155Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/ANTLR-learning-notes-1/</loc>
+    
+    <lastmod>2018-05-10T15:50:04.091Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/1605-05101-notes/</loc>
     
-    <lastmod>2018-05-10T14:11:09.806Z</lastmod>
+    <lastmod>2018-05-10T15:48:09.569Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/whu-KG-technology-course/</loc>
+    
+    <lastmod>2018-05-10T14:17:30.091Z</lastmod>
     
   </url>
   
@@ -19,20 +103,6 @@
     <loc>http://kyonhuang.top/about/index.html</loc>
     
     <lastmod>2018-05-08T11:19:32.301Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/whu-KG-technology-course/</loc>
-    
-    <lastmod>2018-05-05T13:38:31.347Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/whu-CIPS-academic-salon/</loc>
-    
-    <lastmod>2018-05-05T11:50:38.703Z</lastmod>
     
   </url>
   
@@ -107,13 +177,6 @@
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/jQuery-master-notes/</loc>
-    
-    <lastmod>2018-04-08T11:32:49.280Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kyonhuang.top/start-to-learn-NodeJS/</loc>
     
     <lastmod>2018-04-08T11:27:32.004Z</lastmod>
@@ -163,13 +226,6 @@
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/JS-notes-3/</loc>
-    
-    <lastmod>2018-02-23T03:24:29.238Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kyonhuang.top/C-programming-language-notes/</loc>
     
     <lastmod>2018-02-08T01:45:30.460Z</lastmod>
@@ -184,30 +240,9 @@
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/</loc>
-    
-    <lastmod>2018-01-14T09:04:57.754Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kyonhuang.top/start-to-know-AI/</loc>
     
     <lastmod>2018-01-14T08:43:43.306Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/lyrics-seaStory/</loc>
-    
-    <lastmod>2018-01-11T15:25:07.789Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/lyrics-aircloud/</loc>
-    
-    <lastmod>2018-01-11T15:24:54.907Z</lastmod>
     
   </url>
   
@@ -229,13 +264,6 @@
     <loc>http://kyonhuang.top/sublime-text-learning/</loc>
     
     <lastmod>2017-12-21T12:31:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/ANTLR-learning-notes-1/</loc>
-    
-    <lastmod>2017-12-20T12:57:35.000Z</lastmod>
     
   </url>
   
@@ -303,13 +331,6 @@
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/yuki-intro/</loc>
-    
-    <lastmod>2017-09-14T15:16:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kyonhuang.top/es6-2-notes/</loc>
     
     <lastmod>2017-09-12T20:35:15.000Z</lastmod>
@@ -327,13 +348,6 @@
     <loc>http://kyonhuang.top/biliInfoCrawler/</loc>
     
     <lastmod>2017-09-09T08:56:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/SPA-learning-notes/</loc>
-    
-    <lastmod>2017-09-08T07:16:02.000Z</lastmod>
     
   </url>
   
@@ -404,20 +418,6 @@
     <loc>http://kyonhuang.top/js-lexical-scope/</loc>
     
     <lastmod>2017-07-26T06:17:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-5/</loc>
-    
-    <lastmod>2017-07-12T06:58:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-4/</loc>
-    
-    <lastmod>2017-07-12T06:58:05.000Z</lastmod>
     
   </url>
   

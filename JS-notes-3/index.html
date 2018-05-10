@@ -111,13 +111,13 @@
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="稍微大致翻了一下这本书后续的内容。为了尽快的进入ES6以及框架部分的学习，决定暂时跳过某些章节的学习。后面打算学习的章节有6、7、13、14、20、21、22、24章，剩下的章节等到用到或者时间富余的时候再看。 这篇博文总结了《JavaScript高级程序设计》的6~7章：面向对象的程序设计，以及函数表达式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://kyonhuang.top/images/jsNotes/proto.jpg">
-<meta property="og:image" content="http://kyonhuang.top/images/jsNotes/yuanxingchongxie.jpg">
-<meta property="og:updated_time" content="2018-02-23T03:24:29.238Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/jsNotes/proto.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/jsNotes/yuanxingchongxie.jpg">
+<meta property="og:updated_time" content="2018-05-10T15:54:38.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记（三）">
 <meta name="twitter:description" content="稍微大致翻了一下这本书后续的内容。为了尽快的进入ES6以及框架部分的学习，决定暂时跳过某些章节的学习。后面打算学习的章节有6、7、13、14、20、21、22、24章，剩下的章节等到用到或者时间富余的时候再看。 这篇博文总结了《JavaScript高级程序设计》的6~7章：面向对象的程序设计，以及函数表达式。">
-<meta name="twitter:image" content="http://kyonhuang.top/images/jsNotes/proto.jpg">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/jsNotes/proto.jpg">
 
 
 
@@ -514,7 +514,7 @@
 <p> – 默认所有原型对象都会获得一个 constructor 属性，指向 prototype 属性所在函数。</p>
 <p> – 当调用构造函数创建一个新实例后，实例将有一个 <code>__proto__</code>属性，指向构造函数的原型对象，指针叫<code>[[Prototype]]</code>，默认原型指向Object。</p>
 <p> – 实例和构造函数没有直接关系。</p>
-<p> <img src="/images/jsNotes/proto.jpg"></p>
+<p> <img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/jsNotes/proto.jpg"></p>
 <p> – 读取属性：搜索先从对象实例本身开始，如果没找到，搜索原型对象。</p>
 <p> – 使用<code>isPrototype()</code>来检测构造函数和实例之间是否有关系。</p>
 <p> – <code>Object.getPrototypeOf()</code>返回<code>[[Prototype]]</code>的值。</p>
@@ -531,7 +531,7 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line"></div><div class="line">Person.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span>: Person,  <span class="comment">// 默认的 prototype 对象被重写，需设置</span></div><div class="line">    name: <span class="string">'Kyon'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">job</span>: <span class="string">'Software Engineer'</span>,</div><div class="line">    <span class="attr">sayName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>重写原型对象切断了现有原型与任何之前已经存在的对象实例之间的联系；它们引用的仍是最初的原型。</p>
-<p><img src="/images/jsNotes/yuanxingchongxie.jpg"></p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/jsNotes/yuanxingchongxie.jpg"></p>
 <ul>
 <li>原生对象的原型：通过原生对象的原型可以定义新方法。不推荐，可能导致命名冲突或意外重写原生方法。</li>
 <li>原型对象的问题：包含引用类型值的属性会被共享。</li>

@@ -103,25 +103,25 @@
 
 
 
-  <meta name="description" content="原文链接：Recurrent Neural Network for Text Classification with Multi-Task Learning 文章来源：IJCAI 2016 简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。">
+  <meta name="description" content="原文链接：Recurrent Neural Network for Text Classification with Multi-Task Learning 文章来源：IJCAI 2016 简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。 研究概况研究背景假设多个任务之间具有相关性，多任务学习利用任务之间的相关性相互促进，通过">
 <meta name="keywords" content="多任务学习,文本分类,RNN,自然语言处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Recurrent Neural Network for Text Classification with Multi-Task Learning》阅读笔记">
 <meta property="og:url" content="http://kyonhuang.top/1605-05101-notes/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="原文链接：Recurrent Neural Network for Text Classification with Multi-Task Learning 文章来源：IJCAI 2016 简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。">
+<meta property="og:description" content="原文链接：Recurrent Neural Network for Text Classification with Multi-Task Learning 文章来源：IJCAI 2016 简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。 研究概况研究背景假设多个任务之间具有相关性，多任务学习利用任务之间的相关性相互促进，通过">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/Andrew-Ng-Deep-Learning-notes/master/docs/Structuring_Machine_Learning_Projects/Shared-Representation.png">
-<meta property="og:image" content="http://kyonhuang.top/images/1605-05101/three-architectures.png">
-<meta property="og:image" content="http://kyonhuang.top/images/1605-05101/datasets.png">
-<meta property="og:image" content="http://kyonhuang.top/images/1605-05101/results-of-model-i.png">
-<meta property="og:image" content="http://kyonhuang.top/images/1605-05101/results-of-model-ii.png">
-<meta property="og:image" content="http://kyonhuang.top/images/1605-05101/results-of-model-iii.png">
-<meta property="og:image" content="http://kyonhuang.top/images/1605-05101/compare-to-state-of-the-art.png">
-<meta property="og:updated_time" content="2018-05-10T14:11:09.806Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/three-architectures.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/datasets.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-i.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-ii.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-iii.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/compare-to-state-of-the-art.png">
+<meta property="og:updated_time" content="2018-05-10T15:48:09.569Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Recurrent Neural Network for Text Classification with Multi-Task Learning》阅读笔记">
-<meta name="twitter:description" content="原文链接：Recurrent Neural Network for Text Classification with Multi-Task Learning 文章来源：IJCAI 2016 简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。">
+<meta name="twitter:description" content="原文链接：Recurrent Neural Network for Text Classification with Multi-Task Learning 文章来源：IJCAI 2016 简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。 研究概况研究背景假设多个任务之间具有相关性，多任务学习利用任务之间的相关性相互促进，通过">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/bighuang624/Andrew-Ng-Deep-Learning-notes/master/docs/Structuring_Machine_Learning_Projects/Shared-Representation.png">
 
 
@@ -479,7 +479,6 @@
         <p>原文链接：<a href="http://www.ijcai.org/Proceedings/16/Papers/408.pdf" target="_blank" rel="external">Recurrent Neural Network for Text Classification with Multi-Task Learning</a></p>
 <p>文章来源：IJCAI 2016</p>
 <p>简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。</p>
-<a id="more"></a>
 <h2 id="研究概况"><a href="#研究概况" class="headerlink" title="研究概况"></a>研究概况</h2><h3 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h3><p>假设多个任务之间具有相关性，<strong><a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Structuring_Machine_Learning_Projects/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88ML%EF%BC%89%E7%AD%96%E7%95%A5%EF%BC%882%EF%BC%89?id=%e5%a4%9a%e4%bb%bb%e5%8a%a1%e5%ad%a6%e4%b9%a0">多任务学习</a></strong>利用任务之间的相关性相互促进，通过并行学习任务来提高分类效果。这些模型的基本的多任务架构将共享一些较低的层以确定共同的特性。在共享层之后，每个特定任务单独使用一个输出层。</p>
 <p><img src="https://raw.githubusercontent.com/bighuang624/Andrew-Ng-Deep-Learning-notes/master/docs/Structuring_Machine_Learning_Projects/Shared-Representation.png" alt="Shared-Representation"></p>
 <h3 id="前人工作和不足"><a href="#前人工作和不足" class="headerlink" title="前人工作和不足"></a>前人工作和不足</h3><p>基于神经网络的多任务学习已被用于解决 NLP 的各类任务。例如：</p>
@@ -490,7 +489,8 @@
 <p>不同于以上两种方法，本文的模型基于 RNN，对于建模变长文本序列更友好。</p>
 <h3 id="本文工作"><a href="#本文工作" class="headerlink" title="本文工作"></a>本文工作</h3><p>基于 RNN，提出了三种不同的共享信息机制，可以将信息共享到特定任务层的共享层。整个网络都是在所有这些任务上共同训练的。模型在四个基准的文本分类任务上展示了很好的效果，超过了大多数的 state-of-the-art。</p>
 <!--### 意义和创新点-->
-<h2 id="具体细节"><a href="#具体细节" class="headerlink" title="具体细节"></a>具体细节</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img src="/images/1605-05101/three-architectures.png" alt=""></p>
+<a id="more"></a>
+<h2 id="具体细节"><a href="#具体细节" class="headerlink" title="具体细节"></a>具体细节</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/three-architectures.png" alt=""></p>
 <ul>
 <li>模型一（Uniform-layer Architecture）对于所有任务只用一个共享层；</li>
 <li>模型二（Coupled-layer Architecture）对于每个任务使用一个特定任务层，但每个特定任务层可以从之前的其他特定任务层处读取信息；</li>
@@ -506,7 +506,7 @@
 <li>根据基于梯度的优化（paper 中使用 Adagrad update rule）来更新参数；</li>
 <li>重复 1-3 步。</li>
 </ol>
-<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="/images/1605-05101/datasets.png" alt=""></p>
+<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/datasets.png" alt=""></p>
 <ul>
 <li>SST-1：5个情绪类别的电影影评，来自斯坦福情感数据库</li>
 <li>SST-2：2分类电影影评，来自斯坦福数据库</li>
@@ -515,9 +515,9 @@
 </ul>
 <h3 id="超参数与训练"><a href="#超参数与训练" class="headerlink" title="超参数与训练"></a>超参数与训练</h3><p>使用 word2vec 在维基语料获得词向量，字典规模约 500,000。词嵌入在训练过程中被微调以提高性能；其他参数在 [-0.1, 0.1] 的范围随机采样，超参数将选择在验证集上性能最好的一组。对于没有验证集的数据集使用 10 折交叉验证。</p>
 <p>特定任务和共享层的嵌入大小为 64。对于模型一，每个单词有两个嵌入，大小都为 64。LSTM 的隐藏层大小为 50。初始学习率为 0.1。参数的正则化权值为 10^-5。</p>
-<h3 id="结果比较"><a href="#结果比较" class="headerlink" title="结果比较"></a>结果比较</h3><p><img src="/images/1605-05101/results-of-model-i.png" alt=""></p>
-<p><img src="/images/1605-05101/results-of-model-ii.png" alt=""></p>
-<p><img src="/images/1605-05101/results-of-model-iii.png" alt=""></p>
+<h3 id="结果比较"><a href="#结果比较" class="headerlink" title="结果比较"></a>结果比较</h3><p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-i.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-ii.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-iii.png" alt=""></p>
 <h3 id="与-state-of-the-art-相比较"><a href="#与-state-of-the-art-相比较" class="headerlink" title="与 state-of-the-art 相比较"></a>与 state-of-the-art 相比较</h3><p>将模型三和下列模型进行比较：</p>
 <!--* NBOW：对词向量求和，并应用一个非线性项，之后一个 softmax 分类层；
 * MV-RNN：
@@ -525,7 +525,7 @@
 * DCNN：
 * PV：
 * Tree-LSTM：-->
-<p><img src="/images/1605-05101/compare-to-state-of-the-art.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/compare-to-state-of-the-art.png" alt=""></p>
 <h3 id="了解模型"><a href="#了解模型" class="headerlink" title="了解模型"></a>了解模型</h3><p>从 SST-2 的测试集中采样，看在单个 LSTM 和含共享层的 LSTM 中，句子中每个单词对预测的情绪分数的影响。具体方式是观察全局门（global gates）的激活值，这个值控制一个 LSTM 分享层到一个特定任务层的信号流，使我们能够了解神经元的行为。</p>
 <p>例如，“marry”一词使得激活值升高，说明特定任务层从共享层得到很多信息，从而使预测更准确。</p>
 <p>通过分析，单个 LSTM 无法捕捉到“but … higher than”的结构，但是 paper 中的模型对其敏感，说明共享层不仅增强了特定词的意义，并且帮助特定任务学到结构信息。</p>
@@ -603,8 +603,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/whu-KG-technology-course/" rel="next" title="记知识图谱前沿技术课程暨学术研讨会（武汉大学站）">
-                <i class="fa fa-chevron-left"></i> 记知识图谱前沿技术课程暨学术研讨会（武汉大学站）
+              <a href="/whu-KG-technology-course/" rel="next" title="记知识图谱前沿技术课程（武汉大学站）">
+                <i class="fa fa-chevron-left"></i> 记知识图谱前沿技术课程（武汉大学站）
               </a>
             
           </div>

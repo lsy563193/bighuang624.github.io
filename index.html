@@ -465,6 +465,16 @@
           <p>原文链接：<a href="http://www.ijcai.org/Proceedings/16/Papers/408.pdf" target="_blank" rel="external">Recurrent Neural Network for Text Classification with Multi-Task Learning</a></p>
 <p>文章来源：IJCAI 2016</p>
 <p>简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。</p>
+<h2 id="研究概况"><a href="#研究概况" class="headerlink" title="研究概况"></a>研究概况</h2><h3 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h3><p>假设多个任务之间具有相关性，<strong><a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Structuring_Machine_Learning_Projects/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88ML%EF%BC%89%E7%AD%96%E7%95%A5%EF%BC%882%EF%BC%89?id=%e5%a4%9a%e4%bb%bb%e5%8a%a1%e5%ad%a6%e4%b9%a0">多任务学习</a></strong>利用任务之间的相关性相互促进，通过并行学习任务来提高分类效果。这些模型的基本的多任务架构将共享一些较低的层以确定共同的特性。在共享层之后，每个特定任务单独使用一个输出层。</p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/Andrew-Ng-Deep-Learning-notes/master/docs/Structuring_Machine_Learning_Projects/Shared-Representation.png" alt="Shared-Representation"></p>
+<h3 id="前人工作和不足"><a href="#前人工作和不足" class="headerlink" title="前人工作和不足"></a>前人工作和不足</h3><p>基于神经网络的多任务学习已被用于解决 NLP 的各类任务。例如：</p>
+<ul>
+<li>使用一个对于输入单词的共享表示：用途是解决词性标注、语义角色标注等传统 NLP 任务。缺点是只有一张查找表是共享的、其他查找表和层是任务特定的，并且需要用基于窗口的方法处理长度不定的文本序列；</li>
+<li>多任务 DNN 来学习表示：用途是解决查询分类和网络搜索排名任务。缺点是模型输入为词袋表示，损失了词序信息。</li>
+</ul>
+<p>不同于以上两种方法，本文的模型基于 RNN，对于建模变长文本序列更友好。</p>
+<h3 id="本文工作"><a href="#本文工作" class="headerlink" title="本文工作"></a>本文工作</h3><p>基于 RNN，提出了三种不同的共享信息机制，可以将信息共享到特定任务层的共享层。整个网络都是在所有这些任务上共同训练的。模型在四个基准的文本分类任务上展示了很好的效果，超过了大多数的 state-of-the-art。</p>
+<!--### 意义和创新点-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/1605-05101-notes/#more" rel="contents">
@@ -543,7 +553,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/whu-KG-technology-course/" itemprop="url">
-                  记知识图谱前沿技术课程暨学术研讨会（武汉大学站）
+                  记知识图谱前沿技术课程（武汉大学站）
                 </a>
               
             

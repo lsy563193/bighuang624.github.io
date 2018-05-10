@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2018-05-10T14:11:09.806Z</updated>
+  <updated>2018-05-10T15:48:09.569Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,12 +20,11 @@
     <link href="http://kyonhuang.top/1605-05101-notes/"/>
     <id>http://kyonhuang.top/1605-05101-notes/</id>
     <published>2018-05-10T14:02:13.000Z</published>
-    <updated>2018-05-10T14:11:09.806Z</updated>
+    <updated>2018-05-10T15:48:09.569Z</updated>
     
     <content type="html"><![CDATA[<p>原文链接：<a href="http://www.ijcai.org/Proceedings/16/Papers/408.pdf" target="_blank" rel="external">Recurrent Neural Network for Text Classification with Multi-Task Learning</a></p>
 <p>文章来源：IJCAI 2016</p>
 <p>简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。</p>
-<a id="more"></a>
 <h2 id="研究概况"><a href="#研究概况" class="headerlink" title="研究概况"></a>研究概况</h2><h3 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h3><p>假设多个任务之间具有相关性，<strong><a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Structuring_Machine_Learning_Projects/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88ML%EF%BC%89%E7%AD%96%E7%95%A5%EF%BC%882%EF%BC%89?id=%e5%a4%9a%e4%bb%bb%e5%8a%a1%e5%ad%a6%e4%b9%a0">多任务学习</a></strong>利用任务之间的相关性相互促进，通过并行学习任务来提高分类效果。这些模型的基本的多任务架构将共享一些较低的层以确定共同的特性。在共享层之后，每个特定任务单独使用一个输出层。</p>
 <p><img src="https://raw.githubusercontent.com/bighuang624/Andrew-Ng-Deep-Learning-notes/master/docs/Structuring_Machine_Learning_Projects/Shared-Representation.png" alt="Shared-Representation"></p>
 <h3 id="前人工作和不足"><a href="#前人工作和不足" class="headerlink" title="前人工作和不足"></a>前人工作和不足</h3><p>基于神经网络的多任务学习已被用于解决 NLP 的各类任务。例如：</p>
@@ -36,7 +35,8 @@
 <p>不同于以上两种方法，本文的模型基于 RNN，对于建模变长文本序列更友好。</p>
 <h3 id="本文工作"><a href="#本文工作" class="headerlink" title="本文工作"></a>本文工作</h3><p>基于 RNN，提出了三种不同的共享信息机制，可以将信息共享到特定任务层的共享层。整个网络都是在所有这些任务上共同训练的。模型在四个基准的文本分类任务上展示了很好的效果，超过了大多数的 state-of-the-art。</p>
 <!--### 意义和创新点-->
-<h2 id="具体细节"><a href="#具体细节" class="headerlink" title="具体细节"></a>具体细节</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img src="/images/1605-05101/three-architectures.png" alt=""></p>
+<a id="more"></a>
+<h2 id="具体细节"><a href="#具体细节" class="headerlink" title="具体细节"></a>具体细节</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/three-architectures.png" alt=""></p>
 <ul>
 <li>模型一（Uniform-layer Architecture）对于所有任务只用一个共享层；</li>
 <li>模型二（Coupled-layer Architecture）对于每个任务使用一个特定任务层，但每个特定任务层可以从之前的其他特定任务层处读取信息；</li>
@@ -52,7 +52,7 @@
 <li>根据基于梯度的优化（paper 中使用 Adagrad update rule）来更新参数；</li>
 <li>重复 1-3 步。</li>
 </ol>
-<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="/images/1605-05101/datasets.png" alt=""></p>
+<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/datasets.png" alt=""></p>
 <ul>
 <li>SST-1：5个情绪类别的电影影评，来自斯坦福情感数据库</li>
 <li>SST-2：2分类电影影评，来自斯坦福数据库</li>
@@ -61,9 +61,9 @@
 </ul>
 <h3 id="超参数与训练"><a href="#超参数与训练" class="headerlink" title="超参数与训练"></a>超参数与训练</h3><p>使用 word2vec 在维基语料获得词向量，字典规模约 500,000。词嵌入在训练过程中被微调以提高性能；其他参数在 [-0.1, 0.1] 的范围随机采样，超参数将选择在验证集上性能最好的一组。对于没有验证集的数据集使用 10 折交叉验证。</p>
 <p>特定任务和共享层的嵌入大小为 64。对于模型一，每个单词有两个嵌入，大小都为 64。LSTM 的隐藏层大小为 50。初始学习率为 0.1。参数的正则化权值为 10^-5。</p>
-<h3 id="结果比较"><a href="#结果比较" class="headerlink" title="结果比较"></a>结果比较</h3><p><img src="/images/1605-05101/results-of-model-i.png" alt=""></p>
-<p><img src="/images/1605-05101/results-of-model-ii.png" alt=""></p>
-<p><img src="/images/1605-05101/results-of-model-iii.png" alt=""></p>
+<h3 id="结果比较"><a href="#结果比较" class="headerlink" title="结果比较"></a>结果比较</h3><p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-i.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-ii.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-iii.png" alt=""></p>
 <h3 id="与-state-of-the-art-相比较"><a href="#与-state-of-the-art-相比较" class="headerlink" title="与 state-of-the-art 相比较"></a>与 state-of-the-art 相比较</h3><p>将模型三和下列模型进行比较：</p>
 <!--* NBOW：对词向量求和，并应用一个非线性项，之后一个 softmax 分类层；
 * MV-RNN：
@@ -71,7 +71,7 @@
 * DCNN：
 * PV：
 * Tree-LSTM：-->
-<p><img src="/images/1605-05101/compare-to-state-of-the-art.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/compare-to-state-of-the-art.png" alt=""></p>
 <h3 id="了解模型"><a href="#了解模型" class="headerlink" title="了解模型"></a>了解模型</h3><p>从 SST-2 的测试集中采样，看在单个 LSTM 和含共享层的 LSTM 中，句子中每个单词对预测的情绪分数的影响。具体方式是观察全局门（global gates）的激活值，这个值控制一个 LSTM 分享层到一个特定任务层的信号流，使我们能够了解神经元的行为。</p>
 <p>例如，“marry”一词使得激活值升高，说明特定任务层从共享层得到很多信息，从而使预测更准确。</p>
 <p>通过分析，单个 LSTM 无法捕捉到“but … higher than”的结构，但是 paper 中的模型对其敏感，说明共享层不仅增强了特定词的意义，并且帮助特定任务学到结构信息。</p>
@@ -88,6 +88,16 @@
       &lt;p&gt;原文链接：&lt;a href=&quot;http://www.ijcai.org/Proceedings/16/Papers/408.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Recurrent Neural Network for Text Classification with Multi-Task Learning&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;文章来源：IJCAI 2016&lt;/p&gt;
 &lt;p&gt;简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。&lt;/p&gt;
+&lt;h2 id=&quot;研究概况&quot;&gt;&lt;a href=&quot;#研究概况&quot; class=&quot;headerlink&quot; title=&quot;研究概况&quot;&gt;&lt;/a&gt;研究概况&lt;/h2&gt;&lt;h3 id=&quot;研究背景&quot;&gt;&lt;a href=&quot;#研究背景&quot; class=&quot;headerlink&quot; title=&quot;研究背景&quot;&gt;&lt;/a&gt;研究背景&lt;/h3&gt;&lt;p&gt;假设多个任务之间具有相关性，&lt;strong&gt;&lt;a href=&quot;http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Structuring_Machine_Learning_Projects/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88ML%EF%BC%89%E7%AD%96%E7%95%A5%EF%BC%882%EF%BC%89?id=%e5%a4%9a%e4%bb%bb%e5%8a%a1%e5%ad%a6%e4%b9%a0&quot;&gt;多任务学习&lt;/a&gt;&lt;/strong&gt;利用任务之间的相关性相互促进，通过并行学习任务来提高分类效果。这些模型的基本的多任务架构将共享一些较低的层以确定共同的特性。在共享层之后，每个特定任务单独使用一个输出层。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/bighuang624/Andrew-Ng-Deep-Learning-notes/master/docs/Structuring_Machine_Learning_Projects/Shared-Representation.png&quot; alt=&quot;Shared-Representation&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;前人工作和不足&quot;&gt;&lt;a href=&quot;#前人工作和不足&quot; class=&quot;headerlink&quot; title=&quot;前人工作和不足&quot;&gt;&lt;/a&gt;前人工作和不足&lt;/h3&gt;&lt;p&gt;基于神经网络的多任务学习已被用于解决 NLP 的各类任务。例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用一个对于输入单词的共享表示：用途是解决词性标注、语义角色标注等传统 NLP 任务。缺点是只有一张查找表是共享的、其他查找表和层是任务特定的，并且需要用基于窗口的方法处理长度不定的文本序列；&lt;/li&gt;
+&lt;li&gt;多任务 DNN 来学习表示：用途是解决查询分类和网络搜索排名任务。缺点是模型输入为词袋表示，损失了词序信息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不同于以上两种方法，本文的模型基于 RNN，对于建模变长文本序列更友好。&lt;/p&gt;
+&lt;h3 id=&quot;本文工作&quot;&gt;&lt;a href=&quot;#本文工作&quot; class=&quot;headerlink&quot; title=&quot;本文工作&quot;&gt;&lt;/a&gt;本文工作&lt;/h3&gt;&lt;p&gt;基于 RNN，提出了三种不同的共享信息机制，可以将信息共享到特定任务层的共享层。整个网络都是在所有这些任务上共同训练的。模型在四个基准的文本分类任务上展示了很好的效果，超过了大多数的 state-of-the-art。&lt;/p&gt;
+&lt;!--### 意义和创新点--&gt;
     
     </summary>
     
@@ -105,11 +115,11 @@
   </entry>
   
   <entry>
-    <title>记知识图谱前沿技术课程暨学术研讨会（武汉大学站）</title>
+    <title>记知识图谱前沿技术课程（武汉大学站）</title>
     <link href="http://kyonhuang.top/whu-KG-technology-course/"/>
     <id>http://kyonhuang.top/whu-KG-technology-course/</id>
     <published>2018-05-05T13:32:03.000Z</published>
-    <updated>2018-05-05T13:38:31.347Z</updated>
+    <updated>2018-05-10T14:17:30.091Z</updated>
     
     <content type="html"><![CDATA[<p>这周一（4月28日）参加了<a href="https://mp.weixin.qq.com/s?__biz=MzI0MTI1Nzk1MA==&amp;mid=2651676132&amp;idx=1&amp;sn=3965c4718e97cf4962301229c4fd877f&amp;chksm=f2f7a155c5802843c1ec73a120d6cbe506c819cf87f32b4f5fa68862dd6603a2edb66f10208b&amp;mpshare=1&amp;scene=23&amp;srcid=04209Zn8T1cUyBEYullCcwnB#rd" target="_blank" rel="external">知识图谱前沿技术课程暨学术研讨会（武汉大学站）</a>。本次研讨会邀请了很多著名学者和企业代表，结合知识图谱学界研究与业界应用的进展，系统地讲解知识图谱前沿技术及智能应用。</p>
 <p>我之前对知识图谱了解甚少，但经过一整天的讲座学习，也接触到了知识图谱的理论知识和产业实际应用，感受到了其独特的魅力。在八场主题各异的讲座中，我认为复旦大学知识工场实验室的肖仰华教授所带来的《领域知识图谱落地实践中的问题与对策》既有对知识图谱技术的概述，也有足够的深度和思考空间。因此，我基于这场讲座的内容笔记，结合自己查找的其他资料做一个整理。</p>
@@ -475,9 +485,9 @@
       <category term="编译原理笔记" scheme="http://kyonhuang.top/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
-    
       <category term="学科复习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E7%A7%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
     
       <category term="编译原理" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
@@ -680,7 +690,7 @@
     <link href="http://kyonhuang.top/whu-CIPS-academic-salon/"/>
     <id>http://kyonhuang.top/whu-CIPS-academic-salon/</id>
     <published>2018-03-24T11:39:29.000Z</published>
-    <updated>2018-05-05T11:50:38.703Z</updated>
+    <updated>2018-05-10T15:53:02.236Z</updated>
     
     <content type="html"><![CDATA[<p>趁着余兴未尽，来将今天早上参加的讲座记录一下。很幸运周四在教学楼下看到了这次活动的海报。本次系列讲座是 CIPS 青工委（中国中文信息学会青年工作委员会）在武汉大学的一次活动，主持人是武大的李晨亮老师，嘉宾包括清华的刘洋老师、刘知远老师、张敏老师，天津大学的张鹏老师和北大的严睿老师。五名老师在其所关注的细分领域各有建树，全是自然语言处理和信息检索领域的大牛。接下来以老师报告的顺序大概介绍一下各位老师的报告内容，和我对各位老师的感受。因为我忘记带拍照用的手机了，因此没有照片，而且笔记也不完整，部分理解可能有偏差，尽请见谅。</p>
 <p>2018.04.03 更新：更新上周五中科院自动化所刘康老师的讲座笔记。</p>
@@ -785,9 +795,9 @@
 <h2 id="总体感受"><a href="#总体感受" class="headerlink" title="总体感受"></a>总体感受</h2><p>各位老师都介绍了各自研究的领域、面临的问题以及目前的一些工作，让我能够在走上学术之路前能够充分了解自然语言处理和信息检索的一些研究方向，对我有很大的启发。</p>
 <p>现场的人数还是比较多的，临时换了一个更大的教室。刘知远老师报告时统计了一下在场的本科生，包括我在内的大约 10 人。让我没有想到的是，在场很多的研究生确实对不同老师的方向各有见解，提出了比较有深度的问题。武大啥时候冒出这么多自然语言处理方向的研究生啊，以前完全不知道，原来计院卧虎藏龙。</p>
 <p>也不知道该怎么结束这篇博文了。给大家欣赏一下我下午摄影实习照的樱花好了。</p>
-<p><img src="/images/sakura/1.jpg"></p>
-<p><img src="/images/sakura/2.jpg"></p>
-<p><img src="/images/sakura/3.jpg"></p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/sakura/1.jpg"></p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/sakura/2.jpg"></p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/sakura/3.jpg"></p>
 ]]></content>
     
     <summary type="html">
@@ -1231,9 +1241,9 @@
     <link href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/"/>
     <id>http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/</id>
     <published>2018-01-14T08:50:29.000Z</published>
-    <updated>2018-01-14T09:04:57.754Z</updated>
+    <updated>2018-05-10T15:51:14.964Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="/images/Andrew-Ng-Deep-Learning-notes.png" alt="Andrew-Ng-Deep-Learning-notes"></p>
+    <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/Andrew-Ng-Deep-Learning-notes.png" alt="Andrew-Ng-Deep-Learning-notes"></p>
 <p>早在吴恩达（deeplearning.ai）的《深度学习》系列课程在网易云课堂刚刚发布时，它就已经躺在我的计划列表中了。当时还没有特别坚定说要深入学习这方面的知识，因此搁置了一段时间。这几个月终于下定决心，排除万难，开始对这个系列的课程进行学习。</p>
 <p>这个系列的课程给我的感觉是，对 DL 新人，以及像我这样数学不是非常好的学习者非常友好。吴恩达老师真正做到了深入浅出，但又没有抛弃那些重要的细节。在我一边看视频，一边想看看花书对应章节时，发现晦涩到根本看不动。而这个系列的课程作为入门启蒙，是再合适不过的。</p>
 <p>另外，这个系列课程的作业全都是精心设计过的，虽然难度不大，但对巩固视频所学知识、帮助理解细节非常有帮助。如果只是听课而不独立完成作业，我认为和没有学过没有什么区别。我也打算过一段时间再重新将这些作业再写一遍。</p>
@@ -1250,8 +1260,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;/images/Andrew-Ng-Deep-Learning-notes.png&quot; alt=&quot;Andrew-Ng-Deep-Learning-notes&quot;&gt;&lt;/p&gt;
-&lt;p&gt;早在吴恩达（deeplearning.ai）的《深度学习》系列课程在网易云课堂刚
+      &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/Andrew-Ng-Deep-Learning-notes.png&quot; alt=&quot;Andre
     
     </summary>
     
@@ -1981,9 +1990,9 @@
       <category term="解释器构造" scheme="http://kyonhuang.top/categories/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%9E%84%E9%80%A0/"/>
     
     
-      <category term="ANTLR" scheme="http://kyonhuang.top/tags/ANTLR/"/>
-    
       <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="ANTLR" scheme="http://kyonhuang.top/tags/ANTLR/"/>
     
       <category term="解释器" scheme="http://kyonhuang.top/tags/%E8%A7%A3%E9%87%8A%E5%99%A8/"/>
     
