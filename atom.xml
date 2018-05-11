@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2018-05-10T15:48:09.569Z</updated>
+  <updated>2018-05-11T07:50:59.250Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kyonhuang.top/1605-05101-notes/"/>
     <id>http://kyonhuang.top/1605-05101-notes/</id>
     <published>2018-05-10T14:02:13.000Z</published>
-    <updated>2018-05-10T15:48:09.569Z</updated>
+    <updated>2018-05-11T07:50:59.250Z</updated>
     
     <content type="html"><![CDATA[<p>原文链接：<a href="http://www.ijcai.org/Proceedings/16/Papers/408.pdf" target="_blank" rel="external">Recurrent Neural Network for Text Classification with Multi-Task Learning</a></p>
 <p>文章来源：IJCAI 2016</p>
@@ -38,11 +38,11 @@
 <a id="more"></a>
 <h2 id="具体细节"><a href="#具体细节" class="headerlink" title="具体细节"></a>具体细节</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/three-architectures.png" alt=""></p>
 <ul>
-<li>模型一（Uniform-layer Architecture）对于所有任务只用一个共享层；</li>
-<li>模型二（Coupled-layer Architecture）对于每个任务使用一个特定任务层，但每个特定任务层可以从之前的其他特定任务层处读取信息；</li>
-<li>模型三（Shared-layer Architecture）对于每个任务使用一个特定任务层，并对于所有任务还有一个共享层。</li>
+<li>模型一（Uniform-layer Architecture）：对于每个分类任务，在每个输入 character 的 embedding vector 后拼上一个随机生成的可训练向量，表示该特定任务，所有任务共享 LSTM 层，最后一个 时刻的 hidden state 则作为输入传入 softmax；</li>
+<li>模型二（Coupled-layer Architecture）：每个任务具有自己独立的 LSTM 层，但是每一时刻所有任务的 hidden state 则会和下一时刻的 character 一起作为输入，最后一个时刻的 hidden state 进行分类；</li>
+<li>模型三（Shared-layer Architecture）：除了一个共享的 Bi-LSTM 层用于获取共享信息，每个任务有自己独立的 LSTM 层，LSTM 的输入包括每一时刻的 character 和 Bi-LSTM 的 hidden state。</li>
 </ul>
-<!--需要详细解释与公式-->
+<!--大概可以加公式？-->
 <h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>对于模型一和模型三，具有一个共享层。在联合学习阶段之后可以进行<strong>微调（Fine Tuning）</strong>来进一步优化每个任务的性能。</p>
 <p>对于模型三，共享层可以由无监督的预训练阶段初始化，用四个任务数据集进行语言模型的训练。</p>
 <p>训练方法：</p>
@@ -72,6 +72,7 @@
 * PV：
 * Tree-LSTM：-->
 <p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/compare-to-state-of-the-art.png" alt=""></p>
+<p>paper 中的多任务模型和其他基于 RNN 的模型（例如 Tree-LSTM）是兼容的，可以合并以扩展。</p>
 <h3 id="了解模型"><a href="#了解模型" class="headerlink" title="了解模型"></a>了解模型</h3><p>从 SST-2 的测试集中采样，看在单个 LSTM 和含共享层的 LSTM 中，句子中每个单词对预测的情绪分数的影响。具体方式是观察全局门（global gates）的激活值，这个值控制一个 LSTM 分享层到一个特定任务层的信号流，使我们能够了解神经元的行为。</p>
 <p>例如，“marry”一词使得激活值升高，说明特定任务层从共享层得到很多信息，从而使预测更准确。</p>
 <p>通过分析，单个 LSTM 无法捕捉到“but … higher than”的结构，但是 paper 中的模型对其敏感，说明共享层不仅增强了特定词的意义，并且帮助特定任务学到结构信息。</p>
@@ -485,9 +486,9 @@
       <category term="编译原理笔记" scheme="http://kyonhuang.top/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="学科复习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E7%A7%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="学科复习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E7%A7%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
       <category term="编译原理" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
@@ -1990,9 +1991,9 @@
       <category term="解释器构造" scheme="http://kyonhuang.top/categories/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%9E%84%E9%80%A0/"/>
     
     
-      <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
-    
       <category term="ANTLR" scheme="http://kyonhuang.top/tags/ANTLR/"/>
+    
+      <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
     
       <category term="解释器" scheme="http://kyonhuang.top/tags/%E8%A7%A3%E9%87%8A%E5%99%A8/"/>
     

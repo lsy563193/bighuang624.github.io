@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/1605-05101-notes/</loc>
+    <lastmod>2018-05-11T07:50:59.250Z</lastmod>
+    <data>
+        <display>
+        <title>《Recurrent Neural Network for Text Classification with Multi-Task Learning》阅读笔记</title>
+        <pubTime>2018-05-10T14:02:13.000Z</pubTime>
+        
+        <tag>多任务学习</tag>
+         
+        <tag>文本分类</tag>
+         
+        <tag>RNN</tag>
+         
+        <tag>自然语言处理</tag>
+         
+         
+           
+             
+              <breadCrumb title="论文阅读笔记" url="http://kyonhuang.top/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/jQuery-master-notes/</loc>
     <lastmod>2018-05-10T15:56:42.578Z</lastmod>
     <data>
@@ -257,9 +283,9 @@
         <title>ANTLR v4 学习笔记（一）－ANTLR 初体验</title>
         <pubTime>2017-09-06T07:34:19.000Z</pubTime>
         
-        <tag>编译技术</tag>
-         
         <tag>ANTLR</tag>
+         
+        <tag>编译技术</tag>
          
         <tag>解释器</tag>
          
@@ -267,32 +293,6 @@
            
              
               <breadCrumb title="解释器构造" url="http://kyonhuang.top/categories/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%9E%84%E9%80%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kyonhuang.top/1605-05101-notes/</loc>
-    <lastmod>2018-05-10T15:48:09.569Z</lastmod>
-    <data>
-        <display>
-        <title>《Recurrent Neural Network for Text Classification with Multi-Task Learning》阅读笔记</title>
-        <pubTime>2018-05-10T14:02:13.000Z</pubTime>
-        
-        <tag>多任务学习</tag>
-         
-        <tag>文本分类</tag>
-         
-        <tag>RNN</tag>
-         
-        <tag>自然语言处理</tag>
-         
-         
-           
-             
-              <breadCrumb title="论文阅读笔记" url="http://kyonhuang.top/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -499,9 +499,9 @@
         <title>编译原理复习笔记</title>
         <pubTime>2018-04-11T06:32:42.000Z</pubTime>
         
-        <tag>学科复习笔记</tag>
-         
         <tag>编译技术</tag>
+         
+        <tag>学科复习笔记</tag>
          
         <tag>编译原理</tag>
          
@@ -847,9 +847,9 @@
         <title>ANTLR v4 学习笔记（三）－特性拾遗</title>
         <pubTime>2017-09-25T13:12:26.000Z</pubTime>
         
-        <tag>编译技术</tag>
-         
         <tag>ANTLR</tag>
+         
+        <tag>编译技术</tag>
          
         <tag>解释器</tag>
          
@@ -1025,9 +1025,9 @@
         <title>ANTLR v4 学习笔记（二）－实现变种计算器</title>
         <pubTime>2017-09-21T11:25:56.000Z</pubTime>
         
-        <tag>编译技术</tag>
-         
         <tag>ANTLR</tag>
+         
+        <tag>编译技术</tag>
          
         <tag>解释器</tag>
          
