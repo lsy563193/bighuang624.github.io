@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/operating-system-notes/</loc>
+    
+    <lastmod>2018-05-15T08:35:34.647Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/fundamentals-of-compiling-notes/</loc>
+    
+    <lastmod>2018-05-14T15:33:03.690Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/1605-05101-notes/</loc>
     
     <lastmod>2018-05-11T07:50:59.250Z</lastmod>
@@ -152,13 +166,6 @@
     <loc>http://kyonhuang.top/hexo-begin/</loc>
     
     <lastmod>2018-04-12T10:11:39.192Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/fundamentals-of-compiling-notes/</loc>
-    
-    <lastmod>2018-04-11T08:35:05.330Z</lastmod>
     
   </url>
   

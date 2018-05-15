@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2018-05-11T07:50:59.250Z</updated>
+  <updated>2018-05-15T08:35:34.647Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,250 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统复习笔记</title>
+    <link href="http://kyonhuang.top/operating-system-notes/"/>
+    <id>http://kyonhuang.top/operating-system-notes/</id>
+    <published>2018-05-15T08:35:42.000Z</published>
+    <updated>2018-05-15T08:35:34.647Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="操作系统引论"><a href="#操作系统引论" class="headerlink" title="操作系统引论"></a>操作系统引论</h2><h3 id="操作系统的定义"><a href="#操作系统的定义" class="headerlink" title="操作系统的定义"></a>操作系统的定义</h3><p>定义一：是配置在计算机硬件上的第一层软件，是对硬件系统的首次扩充。</p>
+<p><strong>定义二</strong>：是一组控制和管理计算机硬件和软件资源、合理地对各类作业进行调度以及方便用户使用的程序的集合。</p>
+<h3 id="操作系统的作用"><a href="#操作系统的作用" class="headerlink" title="操作系统的作用"></a>操作系统的作用</h3><ol>
+<li>作为用户与计算机硬件系统之间的接口；</li>
+<li>作为计算机系统资源的管理者；</li>
+<li>实现对计算机资源的抽象。</li>
+</ol>
+<h3 id="操作系统的基本特征"><a href="#操作系统的基本特征" class="headerlink" title="操作系统的基本特征"></a>操作系统的基本特征</h3><h4 id="1-并发"><a href="#1-并发" class="headerlink" title="1. 并发*"></a>1. 并发*</h4><p>两个或多个事件在同一时间<strong>间隔</strong>内发生。</p>
+<h4 id="2-共享"><a href="#2-共享" class="headerlink" title="2. 共享"></a>2. 共享</h4><p>系统中的资源可供多个并发执行的进程共同使用。</p>
+<p>两种共享方式：</p>
+<ul>
+<li><strong>互斥共享</strong>：共享的资源称为临界资源，同一时间只允许一个进程访问。需要用同步机制来实现对临界资源的访问；</li>
+<li>同时访问：微观上交替进行。</li>
+</ul>
+<h4 id="3-虚拟"><a href="#3-虚拟" class="headerlink" title="3. 虚拟"></a>3. 虚拟</h4><p>把一个物理实体转换为多个逻辑实体。</p>
+<p>主要有两种虚拟技术：时分复用技术（如分时系统）、空分复用技术（如虚拟内存）。</p>
+<h3 id="4-异步"><a href="#4-异步" class="headerlink" title="4. 异步"></a>4. 异步</h3><p>多个作业的执行顺序和每个作业的执行时间是不确定的。</p>
+<h3 id="操作系统的主要功能"><a href="#操作系统的主要功能" class="headerlink" title="操作系统的主要功能"></a>操作系统的主要功能</h3><ol>
+<li><strong>处理器管理</strong>：处理器的运行和分配，以进程为基本单位，因此也被看作进程管理。包括进程控制、进程同步、进程通信、进程调度；</li>
+<li><strong>存储器管理</strong>：内存分配、内存保护（不相互干扰）、地址映射（逻辑 -&gt; 物理）、内存扩充（虚拟存储技术）；</li>
+<li><strong>设备管理</strong>：包括缓存管理（I/O 设备和 CPU 之间）、设备分配、设备处理；</li>
+<li><strong>文件管理</strong>：包括文件存储空间的管理、目录管理、文件读写管理和保护；</li>
+<li><strong>提供用户接口</strong>：程序接口（如 API）和用户接口（如 GUI）。</li>
+</ol>
+<a id="more"></a>
+<h3 id="多道批处理系统"><a href="#多道批处理系统" class="headerlink" title="多道批处理系统"></a>多道批处理系统</h3><ul>
+<li><p>每次由作业调度算法，从外存的后备队列中选择若干作业调入内存，共享 CPU 和各种资源。程序 A 因 I/O 操作暂停执行时，调度另一道程序 B 运行。</p>
+</li>
+<li><p>根本目的：提高 CPU 的利用率，充分发挥系统部件的并行性。</p>
+</li>
+<li><p>优点：资源利用率高；系统吞吐量大。</p>
+</li>
+<li>缺点：平均周转时间长；无用户交互能力。</li>
+</ul>
+<h3 id="分时系统"><a href="#分时系统" class="headerlink" title="分时系统"></a>分时系统</h3><p>在一台主机上连接了多个配有显示器和键盘的终端并由此所组成的系统，该系统允许多个用户同时通过自己的终端，以交互方式使用计算机，共享主机中的资源。</p>
+<h3 id="实时系统"><a href="#实时系统" class="headerlink" title="实时系统"></a>实时系统</h3><p>指系统能及时响应外部事件的请求，在规定的时间内完成对该事件的处理，并控制所有实时任务协调一致地运行。</p>
+<h2 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h2><h3 id="顺序执行与并发执行"><a href="#顺序执行与并发执行" class="headerlink" title="顺序执行与并发执行"></a>顺序执行与并发执行</h3><p>程序<strong>顺序</strong>执行时的特征：</p>
+<ol>
+<li><strong>顺序性</strong>：严格按照程序所规定的次序执行；</li>
+<li><strong>封闭性</strong>：程序在封闭环境下运行，系统中所有资源的状态只有本程序才能改变；</li>
+<li><strong>可再现性</strong>：只要初始条件相同，无论怎样执行，其结果都相同。</li>
+</ol>
+<p>程序<strong>并发</strong>执行时的特征：</p>
+<ol>
+<li><strong>间断性</strong></li>
+<li><strong>非封闭性</strong></li>
+<li><strong>不可再现性</strong></li>
+</ol>
+<h3 id="进程与线程-1"><a href="#进程与线程-1" class="headerlink" title="进程与线程"></a>进程与线程</h3><h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h4><p><strong>进程是资源分配的基本单位</strong>。进程控制块（Process Control Block，PCB）描述进程的基本信息和运行状态。所谓的创建进程和撤销进程，都是指对 PCB 的操作。</p>
+<h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h4><p><strong>线程是独立调度的基本单位</strong>。一个进程中可以有多个线程，它们共享进程的资源和内存地址空间。</p>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
+<li><p>拥有资源：进程是资源分配的基本单位，但是<strong>线程不拥有资源</strong>，线程可以访问隶属进程的资源。</p>
+</li>
+<li><p>调度：线程是独立调度的基本单位，在同一进程中，线程的切换不会引起进程切换；从一个进程内的线程切换到另一个进程中的线程时，会引起进程切换。</p>
+</li>
+<li><p>系统开销：由于创建或撤销进程时，系统都要为之分配或回收资源，如内存空间、I/O 设备等，所付出的开销远大于创建或撤销线程时的开销。类似地，在进行进程切换时，涉及当前执行进程 CPU 环境的保存及新调度进程 CPU 环境的设置，而线程切换时只需保存和设置少量寄存器内容，开销很小。</p>
+</li>
+<li><p>通信方面：进程间通信（IPC）需要进程同步和互斥手段的辅助，以保证数据的一致性。而线程间可以通过直接读/写同一进程中的数据段（如全局变量）来进行通信。</p>
+</li>
+</ul>
+<h3 id="进程的状态及转换"><a href="#进程的状态及转换" class="headerlink" title="进程的状态及转换"></a>进程的状态及转换</h3><p>进程的三种基本状态：</p>
+<ol>
+<li><strong>就绪</strong>状态：已分配除 CPU 外的所有必要资源</li>
+<li><strong>执行</strong>状态：获得 CPU，程序正在执行</li>
+<li><strong>阻塞</strong>状态：发生某事件（I/O 请求、申请缓冲空间等）暂时无法继续执行</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/18595460/40005754-5d106890-57cb-11e8-841d-2c7c9d4b4b4c.png" alt="process-state-i"></p>
+<h4 id="引入挂起操作"><a href="#引入挂起操作" class="headerlink" title="引入挂起操作"></a>引入挂起操作</h4><p><strong>挂起</strong>：当该操作用于某个进程时，意味着此时该进程处于静止状态。如果进程正在执行，它将暂停执行。若原本处于就绪状态，则该进程此时暂不接受调度。与挂起操作对应的操作是激活操作。</p>
+<p>引入原因：</p>
+<ol>
+<li>终端用户的需要；</li>
+<li>父进程请求；</li>
+<li>负荷调节的需要；</li>
+<li>操作系统的需要。</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/18595460/40005753-5cc9261a-57cb-11e8-8057-f2f19ccbdfee.png" alt="process-state-ii"></p>
+<h3 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h3><p><strong>进程同步机制的主要任务</strong>：对多个相关进程在执行次序上进行协调，使并发执行的诸进程之间能有效共享资源和相互合作，从而使程序执行具有可再现性。</p>
+<p><strong>两种形式的制约关系</strong>：间接相互制约关系（通过共享系统资源）、直接相互制约关系（源于相互合作）</p>
+<p><strong>临界资源</strong>：一段时间内仅允许一个进程使用的资源。</p>
+<p><strong>临界区</strong>：进程中访问临界资源的那段代码。</p>
+<p><strong>同步机制规则</strong>：空闲让进、忙则等待、有限等待、让权等待。</p>
+<p><strong>经典的进程同步问题</strong>：生产者-消费者问题、读者-写者问题、哲学家进餐问题（暂略，详见课本 p60）</p>
+<h4 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h4><p>信号量（Semaphore）是一个整型变量，可以对其执行<strong>P、V 原语操作</strong>：</p>
+<ul>
+<li>P：如果信号量大于 0，执行 -1 操作；如果信号量等于 0，进程阻塞，等待信号量大于 0；</li>
+<li>V：对信号量执行 +1 操作，唤醒阻塞的进程让其完成 P 操作。</li>
+</ul>
+<p>原语操作意指不可分割，通常做法是执行这些操作时屏蔽中断。</p>
+<p>如果信号量的取值只能为 0 或 1，那么即是<strong>互斥量（Mutex）</strong>。0 表示临界区已经加锁，1 表示临界区解锁。</p>
+<p><strong>发展过程</strong>：整型信号量 -&gt; 记录型信号量 -&gt; AND 型信号量 -&gt; 信号量集</p>
+<ul>
+<li>整型信号量：P 申请，V 释放；</li>
+<li>记录型信号量：增加一个等待队列；</li>
+<li>AND 型信号量：AND 同步机制将进程在整个运行过程中需要的所有资源，一次性全部分配给进程，待进程使用完后一起释放（要么全部分配，要么一个都不分配）；</li>
+<li>信号量集：对 AND 型信号量集进行扩充，允许一次申请多个资源，而且在分配之前，测试某资源的数量是否大于临界值。</li>
+</ul>
+<p><strong>信号量的应用</strong>：</p>
+<ol>
+<li>实现进程互斥；</li>
+<li>实现前趋关系。</li>
+</ol>
+<h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><h4 id="进程同步与进程通信的区别"><a href="#进程同步与进程通信的区别" class="headerlink" title="进程同步与进程通信的区别"></a>进程同步与进程通信的区别</h4><ul>
+<li>进程同步：控制多个进程按一定顺序执行；</li>
+<li>进程通信：进程间信息交换。</li>
+</ul>
+<p>进程通信是一种手段，而进程同步是一种目的。也可以说，为了能够达到进程同步的目的，需要让进程进行通信，传输一些进程同步所需要的信息。</p>
+<p>信号量也属于进程通信的一种方式，但是属于低级进程通信，因为它传输的信息非常小。</p>
+<h4 id="进程通信方式"><a href="#进程通信方式" class="headerlink" title="进程通信方式"></a>进程通信方式</h4><p>高级通信机制可归为以下四大类：</p>
+<h5 id="1-共享存储器系统"><a href="#1-共享存储器系统" class="headerlink" title="1. 共享存储器系统"></a>1. 共享存储器系统</h5><p>又可分为以下两种类型：</p>
+<ol>
+<li>基于共享数据结构的通信方式：仅适用于传递相对少量的数据，通信效率低下，属于低级通信；</li>
+<li>基于共享存储区的通信方式：高级通信。</li>
+</ol>
+<h5 id="2-管道通信系统"><a href="#2-管道通信系统" class="headerlink" title="2. 管道通信系统"></a>2. 管道通信系统</h5><p><strong>管道（pipe）</strong>：用于连接一个读进程和一个写进程以实现它们之间通信的一个共享文件。写进程以<strong>字符流</strong>形式将大量数据送入管道，而读进程从管道中接收数据。管道机制必须提供互斥、同步和确定对方是否存在的协调能力。</p>
+<h5 id="3-消息传递系统"><a href="#3-消息传递系统" class="headerlink" title="3. 消息传递系统"></a>3. 消息传递系统</h5><p>在该机制中，以格式化的消息为单位，将通信的数据封装到消息中，并利用操作系统提供的一组通信命令（原语），在进程间进行消息传递。</p>
+<p>优点：隐藏通信细节，使通信过程对用户透明化，降低了通信程序设计的复杂性和错误率。</p>
+<p>该机制是多处理机系统、分布式系统和计算机网络领域最主要的通信工具。根据实现方式不同，可进一步分为直接通信方式（直接将消息发送给目标进程）和间接通信方式（通过共享中间实体[称为邮箱]）。</p>
+<h5 id="4-客户机-服务器系统"><a href="#4-客户机-服务器系统" class="headerlink" title="4. 客户机-服务器系统"></a>4. 客户机-服务器系统</h5><p>网络环境的各种应用领域中的主流通信实现机制，主要实现方法分为：</p>
+<ol>
+<li><strong>套接字（Socket）</strong>：一个通信标识类型的数据结构，是进程通信和网络通信的基本构件；</li>
+<li><strong>远程过程调用（RPC）</strong>：一个通信协议，允许运行于本地系统上的进程调用远程系统上的进程，而对程序员表现为常规的过程调用，无需额外为此编程。</li>
+</ol>
+<h2 id="处理器调度与死锁"><a href="#处理器调度与死锁" class="headerlink" title="处理器调度与死锁"></a>处理器调度与死锁</h2><p>等待少年更新中…</p>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><p>等待少年更新中…</p>
+<h2 id="输入输出系统"><a href="#输入输出系统" class="headerlink" title="输入输出系统"></a>输入输出系统</h2><p>管理对象：I/O 设备、相应的设备控制器、通道。</p>
+<p>主要任务：完成用户提出的 I/O 请求，提高 I/O 速率，以及提高设备的利用率，并能为更高层的进程方便地使用这些设备提供手段。</p>
+<h3 id="I-O-系统的基本功能"><a href="#I-O-系统的基本功能" class="headerlink" title="I/O 系统的基本功能"></a>I/O 系统的基本功能</h3><ol>
+<li>隐藏物理设备的细节；</li>
+<li>与设备的无关性；</li>
+<li>提高处理机和 I/O 设备的利用率；</li>
+<li>对 I/O 设备进行控制；</li>
+<li>确保对设备的正确共享；</li>
+<li>错误处理。</li>
+</ol>
+<p>其中，对 I/O 设备进行控制有四种方式：</p>
+<ol>
+<li>采用轮询的可编程 I/O 方式；</li>
+<li>采用中断的可编程 I/O 方式；</li>
+<li>直接存储器访问方式；</li>
+<li>I/O 通道方式。</li>
+</ol>
+<h3 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h3><p><strong>中断</strong>是指 CPU 对 I/O 设备发来的终端信号的一种响应。CPU 暂停正在执行的程序，保留 CPU 环境后，自动转去执行该 I/O 设备的中断处理程序。执行完后，再回到断点，继续执行原来的程序。</p>
+<p>中断是<strong>多道程序</strong>实现的基础，因为进程之间的切换是通过中断来完成的；中断也是<strong>设备管理</strong>的基础，为了提高处理机的利用率和实现 CPU 与 I/O 设备并行执行，必须有中断的支持。</p>
+<h3 id="系统调用与库函数"><a href="#系统调用与库函数" class="headerlink" title="系统调用与库函数"></a>系统调用与库函数</h3><p>由 OS 向用户提供的所有功能，用户进程（应用程序）都必须通过<strong>系统调用</strong>这个中介过程来获取。C 语言首先提供了与系统调用相对应的库函数。</p>
+<h3 id="假脱机（SPOOLING）系统"><a href="#假脱机（SPOOLING）系统" class="headerlink" title="假脱机（SPOOLING）系统"></a>假脱机（SPOOLING）系统</h3><p>假脱机技术是对脱机输入/输出系统的模拟，建立在通道技术和多道程序技术的基础上，以高速随机外存（通常为磁盘）为后援存储器。通过假脱机技术，可<strong>将一台物理 I/O 设备虚拟为多台逻辑 I/O 设备</strong>，以允许多个用户共享一台物理 I/O 设备。</p>
+<p><strong>原理</strong>：用多道程序中的两道分别模拟输入/输出时的外围控制机功能，在高速磁盘和低速 I/O 设备间传送数据。</p>
+<p><strong>组成</strong>：</p>
+<ol>
+<li>输入井和输出井：在磁盘上开辟的两个存储区域，模拟脱机输入/输出时的磁盘；</li>
+<li>输入缓冲区和输出缓冲区：在内存中开辟的两个缓冲区，用于缓和 CPU 和磁盘间速度不匹配的矛盾；</li>
+<li>输入进程和输出进程：模拟脱机输入/输出时的外围控制机；</li>
+<li>井管理程序：用于控制作业与磁盘井之间信息的交换。</li>
+</ol>
+<p><strong>特点</strong>：</p>
+<ol>
+<li>提高了 I/O 的速度；</li>
+<li>将独占设备改造为共享设备；</li>
+<li>实现了虚拟设备功能。</li>
+</ol>
+<h3 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h3><p>缓冲引入的原因：</p>
+<ol>
+<li>缓和 CPU 与 I/O 设备间速度不匹配的矛盾；</li>
+<li>减少对 CPU 的中断频率，放宽对 CPU 中断响应时间的限制；</li>
+<li>解决数据粒度不匹配的问题；</li>
+<li>提高 CPU 和 I/O 设备之间的并行性。</li>
+</ol>
+<h3 id="磁盘调度算法"><a href="#磁盘调度算法" class="headerlink" title="磁盘调度算法"></a>磁盘调度算法</h3><p>磁盘访问时间包括<strong>寻道时间</strong>（主要）、<strong>旋转延迟时间</strong>和<strong>传输时间</strong>。当多个进程同时请求访问磁盘时，需要进行磁盘调度来控制对磁盘的访问。磁盘调度的目标是使磁盘的平均寻道时间最少。</p>
+<h4 id="1-先来先服务（FCFS）"><a href="#1-先来先服务（FCFS）" class="headerlink" title="1. 先来先服务（FCFS）"></a>1. 先来先服务（FCFS）</h4><p>根据进程请求访问磁盘的先后次序来进行调度。优点是公平和简单，缺点也很明显，因为未对寻道做任何优化，使平均寻道时间可能较长。</p>
+<h4 id="2-最短寻道时间优先（SSTF）"><a href="#2-最短寻道时间优先（SSTF）" class="headerlink" title="2. 最短寻道时间优先（SSTF）"></a>2. 最短寻道时间优先（SSTF）</h4><p>要求访问的磁道与当前磁头所在磁道距离最近的优先进行调度。这种算法并不能保证平均寻道时间最短，但是比 FCFS 好很多。</p>
+<p>会出现饥饿现象。当新进程请求访问的磁道与磁头所在磁道的距离总是比一个在等待的进程来的近，那么等待的进程会一直等待下去。</p>
+<h4 id="3-扫描算法"><a href="#3-扫描算法" class="headerlink" title="3. 扫描算法"></a>3. 扫描算法</h4><p>在 SSTF 算法之上考虑了磁头的移动方向，要求所请求访问的磁道在磁头当前移动方向上才能够得到调度。因为考虑了移动方向，那么一个进程请求访问的磁道一定会得到调度。</p>
+<p>当一个磁头自里向外移动时，移到最外侧会改变移动方向为自外向里，这种移动的规律类似于电梯的运行，因此又常称 SCAN 算法为电梯调度算法。</p>
+<h4 id="4-循环扫描算法"><a href="#4-循环扫描算法" class="headerlink" title="4. 循环扫描算法"></a>4. 循环扫描算法</h4><p>对 SCAN 进行了改动，要求磁头始终沿着一个方向移动。</p>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>由创建者所定义的、具有文件名的一组相关元素的集合。从逻辑结构角度分为<strong>有结构文件</strong>（由若干个相关记录组成）和<strong>无结构文件</strong>（被看成一个字符流），在文件系统中是一个最大的数据单位。</p>
+<h3 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h3><ul>
+<li><p>文件控制块（FCB）：OS 用于<strong>描述</strong>和<strong>控制</strong>文件的一个<strong>数据结构</strong>。</p>
+</li>
+<li><p>目录：文件控制块的有序集合。</p>
+</li>
+<li><p>索引节点：<strong>文件描述信息</strong>单独形成的数据结构（而不包含文件名）。由于检索目录文件只用到文件名，即用不到该文件的描述信息，因此检索目录时索引节点不用调入内存，从而大大节省了系统开销。</p>
+</li>
+</ul>
+<h3 id="文件共享"><a href="#文件共享" class="headerlink" title="文件共享"></a>文件共享</h3><p>常用的两种文件共享方法：</p>
+<ol>
+<li>基于有向无环循环图（利用索引节点）；</li>
+<li>利用符号链。</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>主要参照西安电子科技大学出版社《计算机操作系统（第四版）》。</p>
+<h4 id="比较全的"><a href="#比较全的" class="headerlink" title="比较全的"></a>比较全的</h4><ul>
+<li><a href="https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.md" target="_blank" rel="external">Interview-Notebook/notes/计算机操作系统.md</a></li>
+<li><a href="https://wenku.baidu.com/view/e181715fc77da26924c5b023.html" target="_blank" rel="external">操作系统重点知识总结_百度文库</a></li>
+</ul>
+<h4 id="可以作为补充的"><a href="#可以作为补充的" class="headerlink" title="可以作为补充的"></a>可以作为补充的</h4><ul>
+<li><a href="https://segmentfault.com/a/1190000003692840" target="_blank" rel="external">【系统架构师修炼之道】（12）：操作系统基础知识——操作系统的原理，类型和结构 - 极简小站 - SegmentFault 思否</a></li>
+<li><a href="https://blog.csdn.net/csdn_chai/article/details/78002202" target="_blank" rel="external">操作系统复习要点 - CSDN博客</a></li>
+<li><a href="https://blog.csdn.net/Sugar_Z_/article/details/51526696" target="_blank" rel="external">【操作系统】重点知识点总结 - CSDN博客</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;操作系统引论&quot;&gt;&lt;a href=&quot;#操作系统引论&quot; class=&quot;headerlink&quot; title=&quot;操作系统引论&quot;&gt;&lt;/a&gt;操作系统引论&lt;/h2&gt;&lt;h3 id=&quot;操作系统的定义&quot;&gt;&lt;a href=&quot;#操作系统的定义&quot; class=&quot;headerlink&quot; title=&quot;操作系统的定义&quot;&gt;&lt;/a&gt;操作系统的定义&lt;/h3&gt;&lt;p&gt;定义一：是配置在计算机硬件上的第一层软件，是对硬件系统的首次扩充。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义二&lt;/strong&gt;：是一组控制和管理计算机硬件和软件资源、合理地对各类作业进行调度以及方便用户使用的程序的集合。&lt;/p&gt;
+&lt;h3 id=&quot;操作系统的作用&quot;&gt;&lt;a href=&quot;#操作系统的作用&quot; class=&quot;headerlink&quot; title=&quot;操作系统的作用&quot;&gt;&lt;/a&gt;操作系统的作用&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;作为用户与计算机硬件系统之间的接口；&lt;/li&gt;
+&lt;li&gt;作为计算机系统资源的管理者；&lt;/li&gt;
+&lt;li&gt;实现对计算机资源的抽象。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;操作系统的基本特征&quot;&gt;&lt;a href=&quot;#操作系统的基本特征&quot; class=&quot;headerlink&quot; title=&quot;操作系统的基本特征&quot;&gt;&lt;/a&gt;操作系统的基本特征&lt;/h3&gt;&lt;h4 id=&quot;1-并发&quot;&gt;&lt;a href=&quot;#1-并发&quot; class=&quot;headerlink&quot; title=&quot;1. 并发*&quot;&gt;&lt;/a&gt;1. 并发*&lt;/h4&gt;&lt;p&gt;两个或多个事件在同一时间&lt;strong&gt;间隔&lt;/strong&gt;内发生。&lt;/p&gt;
+&lt;h4 id=&quot;2-共享&quot;&gt;&lt;a href=&quot;#2-共享&quot; class=&quot;headerlink&quot; title=&quot;2. 共享&quot;&gt;&lt;/a&gt;2. 共享&lt;/h4&gt;&lt;p&gt;系统中的资源可供多个并发执行的进程共同使用。&lt;/p&gt;
+&lt;p&gt;两种共享方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;互斥共享&lt;/strong&gt;：共享的资源称为临界资源，同一时间只允许一个进程访问。需要用同步机制来实现对临界资源的访问；&lt;/li&gt;
+&lt;li&gt;同时访问：微观上交替进行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;3-虚拟&quot;&gt;&lt;a href=&quot;#3-虚拟&quot; class=&quot;headerlink&quot; title=&quot;3. 虚拟&quot;&gt;&lt;/a&gt;3. 虚拟&lt;/h4&gt;&lt;p&gt;把一个物理实体转换为多个逻辑实体。&lt;/p&gt;
+&lt;p&gt;主要有两种虚拟技术：时分复用技术（如分时系统）、空分复用技术（如虚拟内存）。&lt;/p&gt;
+&lt;h3 id=&quot;4-异步&quot;&gt;&lt;a href=&quot;#4-异步&quot; class=&quot;headerlink&quot; title=&quot;4. 异步&quot;&gt;&lt;/a&gt;4. 异步&lt;/h3&gt;&lt;p&gt;多个作业的执行顺序和每个作业的执行时间是不确定的。&lt;/p&gt;
+&lt;h3 id=&quot;操作系统的主要功能&quot;&gt;&lt;a href=&quot;#操作系统的主要功能&quot; class=&quot;headerlink&quot; title=&quot;操作系统的主要功能&quot;&gt;&lt;/a&gt;操作系统的主要功能&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;处理器管理&lt;/strong&gt;：处理器的运行和分配，以进程为基本单位，因此也被看作进程管理。包括进程控制、进程同步、进程通信、进程调度；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;存储器管理&lt;/strong&gt;：内存分配、内存保护（不相互干扰）、地址映射（逻辑 -&amp;gt; 物理）、内存扩充（虚拟存储技术）；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设备管理&lt;/strong&gt;：包括缓存管理（I/O 设备和 CPU 之间）、设备分配、设备处理；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文件管理&lt;/strong&gt;：包括文件存储空间的管理、目录管理、文件读写管理和保护；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;提供用户接口&lt;/strong&gt;：程序接口（如 API）和用户接口（如 GUI）。&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="学科补完计划" scheme="http://kyonhuang.top/categories/%E5%AD%A6%E7%A7%91%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/"/>
+    
+    
+      <category term="学科复习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E7%A7%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="操作系统" scheme="http://kyonhuang.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>《Recurrent Neural Network for Text Classification with Multi-Task Learning》阅读笔记</title>
@@ -306,7 +550,7 @@
     <link href="http://kyonhuang.top/fundamentals-of-compiling-notes/"/>
     <id>http://kyonhuang.top/fundamentals-of-compiling-notes/</id>
     <published>2018-04-11T06:32:42.000Z</published>
-    <updated>2018-04-11T08:35:05.330Z</updated>
+    <updated>2018-05-14T15:33:03.690Z</updated>
     
     <content type="html"><![CDATA[<p>开始学科复习。第一门复习的课程是编译原理，因为内容不算太多，大部分计算过程可以暂时不用记录和练习，而且没什么前置知识。</p>
 <p>选用课本是上课时用的清华大学出版社《编译原理》（其实我觉得这本书里给部分概念下定义时没有做到简洁明了，挺难理解的）。以下是记录的笔记。不求全面，只求适合自己之后再次复习使用。</p>
@@ -483,12 +727,12 @@
     
     </summary>
     
-      <category term="编译原理笔记" scheme="http://kyonhuang.top/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/"/>
+      <category term="学科补完计划" scheme="http://kyonhuang.top/categories/%E5%AD%A6%E7%A7%91%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/"/>
     
-    
-      <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
     
       <category term="学科复习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E7%A7%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
     
       <category term="编译原理" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
@@ -1013,9 +1257,9 @@
       <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
       <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
     
@@ -1930,72 +2174,6 @@
       <category term="Dataset" scheme="http://kyonhuang.top/tags/Dataset/"/>
     
       <category term="MLlib" scheme="http://kyonhuang.top/tags/MLlib/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ANTLR v4 学习笔记（三）－特性拾遗</title>
-    <link href="http://kyonhuang.top/ANTLR-learning-notes-3/"/>
-    <id>http://kyonhuang.top/ANTLR-learning-notes-3/</id>
-    <published>2017-09-25T13:12:26.000Z</published>
-    <updated>2017-12-22T12:27:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>继续学习解释器构造和 ANTLR。在系列博文的上一篇 <a href="http://kyonhuang.top/ANTLR-learning-notes-2/">ANTLR v4 学习笔记（二）－实现变种计算器</a>，我们用 ANTLR 实现了一个变种计算器，从而对 ANTLR 语法、访问器（Visitor）机制、集成以及 ANLTR 的错误处理机制有了更深的理解。</p>
-<p>上篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但没有覆盖整个 Chapter 4 的所有内容。因此这篇博文将介绍一下 Chapter 4 的剩余内容——监听器（Listener）机制、代码片段嵌入语法，以及词法分析的一些很棒的特性。</p>
-<a id="more"></a>
-<h2 id="监听器机制"><a href="#监听器机制" class="headerlink" title="监听器机制"></a>监听器机制</h2><p>监听器机制和访问器机制有着很多共通的特点，我们也需要通过监听语法分析树遍历器触发的“事件”来完成某些工作。它们之间最大的区别在于，监听器的方法会被 ANTLR 提供的遍历器对象自动调用，而在访问器的方法中，必须显式调用<code>visit</code>方法来访问子节点，否则对应的子树将不会被访问。</p>
-<p>ANTLR 会自动生成一个接口 xxListener，它定义了 ANTLR 的运行库中的 ParseTreeWalker 类在遍历语法分析树时能够触发的全部方法。当然，和访问器机制一样，我们无需实现接口中的全部方法。ANTLR 自动生成一个名为 xxBaseListener 的类，我们可以继承这个类并只重写那些我们感兴趣的方法。</p>
-<h2 id="代码片段嵌入语法"><a href="#代码片段嵌入语法" class="headerlink" title="代码片段嵌入语法"></a>代码片段嵌入语法</h2><p>监听器机制和访问器一样，能够使语法分析过程和应用程序本身保持低耦合，也让语法更具有可读性。但有时候，为了满足比较苛刻的需求，我们需要将代码片段（动作）嵌入到语法中，这些动作会被拷贝到 ANTLR 自动生成的递归下降语法分析器的代码中。</p>
-<h3 id="将任意动作嵌入语法"><a href="#将任意动作嵌入语法" class="headerlink" title="将任意动作嵌入语法"></a>将任意动作嵌入语法</h3><p>拿下面这一份用于解析类表格文件的语法为例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">grammar Rows;</div><div class="line"></div><div class="line"><span class="meta">@parser</span>::members &#123;  <span class="comment">// 在生成的 RowsParser 中添加一些成员</span></div><div class="line">    <span class="keyword">int</span> col;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RowsParser</span><span class="params">(TokenStream input, <span class="keyword">int</span> col)</span> </span>&#123;  <span class="comment">// 自定义的构造器</span></div><div class="line">      <span class="keyword">this</span>(input);</div><div class="line">      <span class="keyword">this</span>.col = col;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">file: (row NL)+ ;</div><div class="line"></div><div class="line">row</div><div class="line">locals [<span class="keyword">int</span> i=<span class="number">0</span>]</div><div class="line">    : (   STUFF</div><div class="line">          &#123;</div><div class="line">          $i++;</div><div class="line">          <span class="keyword">if</span> ($i == col) System.out.println($STUFF.text);</div><div class="line">          &#125;</div><div class="line">      )+</div><div class="line">    ;</div><div class="line"></div><div class="line">TAB   : <span class="string">'\t'</span> -&gt; skip ;    <span class="comment">// 匹配但是不将其传递给语法分析器</span></div><div class="line">NL    : <span class="string">'\r'</span>? <span class="string">'\n'</span> ;      <span class="comment">// 匹配并将其传递给语法分析器</span></div><div class="line">STUFF : ~[\t\r\n]+ ;      <span class="comment">// 匹配除 tab 符和换行符之外的任何字符</span></div></pre></td></tr></table></figure>
-<p><code>@parser::members</code>表示在生成的 RowsParser 中添加一些成员，即大括号里的所有元素（包括）会原封不动的添加到 RowsParser 类中。我们通过加入的构造器来传入希望提取的列号。</p>
-<p>row 规则的<code>(...)+</code>循环放置了一些动作，访问了之前使用 locals 子句定义的局部变量<code>$i</code>。同时 row 规则也使用了<code>$STUFF.text</code>来获得刚刚匹配的 STUFF 词法符号中包含的文本。关于动作的更多内容会在 Chapter 10 深入研究。</p>
-<h3 id="用语义判定改变语法分析过程"><a href="#用语义判定改变语法分析过程" class="headerlink" title="用语义判定改变语法分析过程"></a>用语义判定改变语法分析过程</h3><p>用一个读取一列整数的语法作为例子。首先看一下需求：输入的其中的一部分整数指定了接下来的多少个整数分为一组。例如输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2 8 43 3 1 4 6</div></pre></td></tr></table></figure>
-<p>第一个数字 2 表示匹配接下来的两个数字 8 和 43，数字 3 表示匹配接下来的三个数字。</p>
-<p>语法文件如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">grammar Data;</div><div class="line"></div><div class="line">file : group+ ;</div><div class="line"></div><div class="line">group: INT sequence[$INT.<span class="keyword">int</span>] ;</div><div class="line"></div><div class="line">sequence[<span class="keyword">int</span> n]</div><div class="line">locals [<span class="keyword">int</span> i = <span class="number">1</span>;]</div><div class="line">     : ( &#123;$i&lt;=$n&#125;? INT &#123;$i++;&#125; )*  <span class="comment">// 匹配 n 个整数</span></div><div class="line">     ;</div><div class="line"></div><div class="line">INT :   [<span class="number">0</span>-<span class="number">9</span>]+ ;     <span class="comment">// 匹配整数</span></div><div class="line">WS  :   [ \t\n\r]+ -&gt; skip ;   <span class="comment">// 丢弃所有的空白字符</span></div></pre></td></tr></table></figure>
-<p>Data 语法的关键在于<code>{$i&lt;=$n}?</code>，这段动作的值是布尔类型的，它被称为一个语义判定。在匹配到 n 个输入整数之前，它的值保持为 true，其中 n 是 sequence 语法中的参数。当语义判定的值为 false 时，对应的备选分支就从语法中“消失”了，因此，它也就从生成的语法分析器中“消失”了。在本例中，语义判定的值为 false 时，<code>(...)*</code>循环终止，从 sequence 规则返回。</p>
-<h2 id="词法分析特性"><a href="#词法分析特性" class="headerlink" title="词法分析特性"></a>词法分析特性</h2><p>ANTLR 有三个与词法符号有关非常棒的特性。</p>
-<h3 id="孤岛语法：处理同一文件中的不同格式"><a href="#孤岛语法：处理同一文件中的不同格式" class="headerlink" title="孤岛语法：处理同一文件中的不同格式"></a>孤岛语法：处理同一文件中的不同格式</h3><p>有很多常见的文件格式包含了多重语言，例如 Java 文件中有注释和 Java 代码，ejs 等模板引擎有模板语言表达式和文本。不同格式的语言需要按照不同的方式进行处理，这样的现象被称为<strong>“孤岛语法”</strong>。</p>
-<p>ANTLR 提供了一个名为<strong>词法分析模式（lexical modes）</strong>的词法分析器特性，帮助我们方便地处理混合了不同格式数据的文件。它的基本思想是，当遇到特殊的“哨兵”字符序列时，执行不同模式的切换。</p>
-<p>我们不妨以 XML 作为例子。一个 XML 解析器会将除标签和实体转义（例如<code>&amp;pound;</code>）之外的内容全部当作普通文本。当看到<code>&lt;</code>时，词法分析器会切换到 “INSIDE” 模式；当看到<code>&gt;</code>或者<code>/&gt;</code>时，它就切换回默认模式。</p>
-<p>下面的语法展示了 XML 解析器的工作方式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Define a lexer grammar called XMLLexer</div><div class="line"> */</div><div class="line">lexer grammar XMLLexer;</div><div class="line"></div><div class="line"><span class="comment">// 默认模式：所有在标签之外的东西</span></div><div class="line">OPEN        : <span class="string">'&lt;'</span>                 -&gt; pushMode(INSIDE) ;</div><div class="line">COMMENT     : <span class="string">'&lt;!--'</span> .*? <span class="string">'--&gt;'</span>    -&gt; skip ;</div><div class="line">EntityRef   : <span class="string">'&amp;'</span> [a-z]+ <span class="string">';'</span> ;</div><div class="line">TEXT        : ~(<span class="string">'&lt;'</span>|<span class="string">'&amp;'</span>)+ ;           <span class="comment">// 匹配任意除 &lt; 和 &amp; 之外的 16 位字符</span></div><div class="line"></div><div class="line"><span class="comment">// ----------------------    所有在标签之内的东西    ----------------------</span></div><div class="line">mode INSIDE;</div><div class="line">CLOSE       : <span class="string">'&gt;'</span>                 -&gt; popMode ;  <span class="comment">// 回到默认模式</span></div><div class="line">SLASH_CLOSE : <span class="string">'/&gt;'</span>                -&gt; popMode ;</div><div class="line">EQUALS      : <span class="string">'='</span> ;</div><div class="line">STRING      : <span class="string">'"'</span> .*? <span class="string">'"'</span> ;</div><div class="line">SlashName   : <span class="string">'/'</span> Name ;</div><div class="line">Name        : ALPHA (ALPHA|DIGIT)* ;</div><div class="line">S           : [ \t\r\n]           -&gt; skip ;</div><div class="line"></div><div class="line">fragment</div><div class="line">ALPHA       : [a-zA-Z] ;</div><div class="line"></div><div class="line">fragment</div><div class="line">DIGIT       : [<span class="number">0</span>-<span class="number">9</span>] ;</div></pre></td></tr></table></figure>
-<p>提供一份如下所示的样例输入文件：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tools</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tool</span> <span class="attr">name</span>=<span class="string">"ANTLR"</span>&gt;</span>A parser generator<span class="tag">&lt;/<span class="name">tool</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tools</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>测试步骤与结果如下所示：</p>
-<p><img src="/images/antlr/note3/XMLLexer.jpg"></p>
-<p>值得一提的是，在上述启动测试组件的命令行中，使用的参数是 XML tokens，在正常情况下，这里应该是一个语法名加一个起始规则名。如果需要令测试组件只运行词法分析器而不运行语法分析器，我们可以指定参数为语法名加上一个特殊的规则名<code>tokens</code>。</p>
-<h3 id="重写输入流"><a href="#重写输入流" class="headerlink" title="重写输入流"></a>重写输入流</h3><p>我们可以通过 TokenStreamRewriter 对象对输入流进行修改，然后再加以输出，从而实现对源代码插桩或重构。例如，我们可以通过以下代码实现一个监听器，来给每个类定义中加上一行序列化版本标示符（serialVersionUID）：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.TokenStream;</div><div class="line"><span class="keyword">import</span> org.antlr.v4.runtime.TokenStreamRewriter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertSerialIDListener</span> <span class="keyword">extends</span> <span class="title">JavaBaseListener</span> </span>&#123;</div><div class="line">    TokenStreamRewriter rewriter;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">InsertSerialIDListener</span><span class="params">(TokenStream tokens)</span> </span>&#123;</div><div class="line">        rewriter = <span class="keyword">new</span> TokenStreamRewriter(tokens);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enterClassBody</span><span class="params">(JavaParser.ClassBodyContext ctx)</span> </span>&#123;</div><div class="line">        String field = <span class="string">"\n\tpublic static final long serialVersionUID = 1L;"</span>;</div><div class="line">        rewriter.insertAfter(ctx.start, field);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>之后，我们在 main 程序中初始化一个 InsertSerialIDListener，并当遍历结束时打印词法符号流：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ParseTreeWalker walker = <span class="keyword">new</span> ParseTreeWalker();  <span class="comment">// 新建一个标准的遍历器</span></div><div class="line">InsertSerialIDListener extractor = <span class="keyword">new</span> InsertSerialIDListener(tokens);</div><div class="line">walker.walk(extractor, tree);  <span class="comment">// 使用监听器初始化对语法分析树的遍历</span></div><div class="line"></div><div class="line"><span class="comment">// 打印出修改后的词法符号流</span></div><div class="line">System.out.println(extractor.rewriter.getText());</div></pre></td></tr></table></figure>
-<p>注意，TokenStreamRewriter 实际上修改的是词法符号流的“视图”而非词法符号流本身。它认为所有对修改方法的调用都只是一个“指令”，然后将这些修改放入一个队列；在未来词法符号流被重新渲染为文本时，这些修改才会被执行。因此每次我们调用<code>getText()</code>的时候，rewriter 对象都会执行上述队列中的指令。</p>
-<h3 id="将-Tokens-送入不同通道"><a href="#将-Tokens-送入不同通道" class="headerlink" title="将 Tokens 送入不同通道"></a>将 Tokens 送入不同通道</h3><p>语法分析器只处理一个通道，因此当我们想要忽略但保留某些 tokens 时（例如注释和空白字符），我们可以通过在语法文件书写特殊的指令，来将其送入其他通道。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">COMMENT</div><div class="line">    :    <span class="string">'/*'</span> .*? <span class="string">'*/'</span>    -&gt; channel(HIDDEN)  <span class="comment">// 匹配 /* 和 */ 之间的任何东西</span></div><div class="line">    ;</div><div class="line">WS  :    [ \r\t\u000c\n]+ -&gt; channel(HIDDEN)</div><div class="line">    ;</div></pre></td></tr></table></figure>
-<p><code>-&gt;channel(HIDDEN)</code>和<code>-&gt;skip</code>类似，也是一个词法分析器指令。在这里，它设置了这些 tokens 的通道号。这样，这些 tokens 就会被语法分析器忽略。token 流中仍然保存着这些原始的 tokens 序列，但在向语法分析器提供数据时忽略了那些处于已关闭通道的 tokens。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>ANTLR 学习的第三篇笔记到这里就结束了。尽管这一篇笔记很短，但是涵盖了 ANTLR 实践中一些比较现实的问题的解决方式。在了解这三篇笔记所涉及的学习内容后，如果还有兴趣，就可以正式展开对使用 ANTLR 开发语言类应用程序的学习了。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li>《The Definitive ANTLR 4 Reference》</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;继续学习解释器构造和 ANTLR。在系列博文的上一篇 &lt;a href=&quot;http://kyonhuang.top/ANTLR-learning-notes-2/&quot;&gt;ANTLR v4 学习笔记（二）－实现变种计算器&lt;/a&gt;，我们用 ANTLR 实现了一个变种计算器，从而对 ANTLR 语法、访问器（Visitor）机制、集成以及 ANLTR 的错误处理机制有了更深的理解。&lt;/p&gt;
-&lt;p&gt;上篇博文对应着《The Definitive ANTLR 4 Reference》中的 Chapter 4 A Quick Tour，但没有覆盖整个 Chapter 4 的所有内容。因此这篇博文将介绍一下 Chapter 4 的剩余内容——监听器（Listener）机制、代码片段嵌入语法，以及词法分析的一些很棒的特性。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="解释器构造" scheme="http://kyonhuang.top/categories/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%9E%84%E9%80%A0/"/>
-    
-    
-      <category term="ANTLR" scheme="http://kyonhuang.top/tags/ANTLR/"/>
-    
-      <category term="编译技术" scheme="http://kyonhuang.top/tags/%E7%BC%96%E8%AF%91%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="解释器" scheme="http://kyonhuang.top/tags/%E8%A7%A3%E9%87%8A%E5%99%A8/"/>
     
   </entry>
   

@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://kyonhuang.top/operating-system-notes/</loc>
+    <lastmod>2018-05-15T08:35:34.647Z</lastmod>
+    <data>
+        <display>
+        <title>操作系统复习笔记</title>
+        <pubTime>2018-05-15T08:35:42.000Z</pubTime>
+        
+        <tag>学科复习笔记</tag>
+         
+        <tag>操作系统</tag>
+         
+         
+           
+             
+              <breadCrumb title="学科补完计划" url="http://kyonhuang.top/categories/%E5%AD%A6%E7%A7%91%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kyonhuang.top/fundamentals-of-compiling-notes/</loc>
+    <lastmod>2018-05-14T15:33:03.690Z</lastmod>
+    <data>
+        <display>
+        <title>编译原理复习笔记</title>
+        <pubTime>2018-04-11T06:32:42.000Z</pubTime>
+        
+        <tag>学科复习笔记</tag>
+         
+        <tag>编译技术</tag>
+         
+        <tag>编译原理</tag>
+         
+         
+           
+             
+              <breadCrumb title="学科补完计划" url="http://kyonhuang.top/categories/%E5%AD%A6%E7%A7%91%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://kyonhuang.top/1605-05101-notes/</loc>
     <lastmod>2018-05-11T07:50:59.250Z</lastmod>
     <data>
@@ -283,9 +329,9 @@
         <title>ANTLR v4 学习笔记（一）－ANTLR 初体验</title>
         <pubTime>2017-09-06T07:34:19.000Z</pubTime>
         
-        <tag>ANTLR</tag>
-         
         <tag>编译技术</tag>
+         
+        <tag>ANTLR</tag>
          
         <tag>解释器</tag>
          
@@ -492,30 +538,6 @@
 
     
   <url>
-    <loc>http://kyonhuang.top/fundamentals-of-compiling-notes/</loc>
-    <lastmod>2018-04-11T08:35:05.330Z</lastmod>
-    <data>
-        <display>
-        <title>编译原理复习笔记</title>
-        <pubTime>2018-04-11T06:32:42.000Z</pubTime>
-        
-        <tag>编译技术</tag>
-         
-        <tag>学科复习笔记</tag>
-         
-        <tag>编译原理</tag>
-         
-         
-           
-             
-              <breadCrumb title="编译原理笔记" url="http://kyonhuang.top/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://kyonhuang.top/css-animation/</loc>
     <lastmod>2018-04-08T11:38:49.761Z</lastmod>
     <data>
@@ -701,9 +723,9 @@
         <title>寒假总结及新学期展望</title>
         <pubTime>2018-02-23T03:24:11.000Z</pubTime>
         
-        <tag>总结</tag>
-         
         <tag>随笔</tag>
+         
+        <tag>总结</tag>
          
         <tag>目标</tag>
          
@@ -847,9 +869,9 @@
         <title>ANTLR v4 学习笔记（三）－特性拾遗</title>
         <pubTime>2017-09-25T13:12:26.000Z</pubTime>
         
-        <tag>ANTLR</tag>
-         
         <tag>编译技术</tag>
+         
+        <tag>ANTLR</tag>
          
         <tag>解释器</tag>
          
@@ -1025,9 +1047,9 @@
         <title>ANTLR v4 学习笔记（二）－实现变种计算器</title>
         <pubTime>2017-09-21T11:25:56.000Z</pubTime>
         
-        <tag>ANTLR</tag>
-         
         <tag>编译技术</tag>
+         
+        <tag>ANTLR</tag>
          
         <tag>解释器</tag>
          
@@ -1179,13 +1201,13 @@
         <title>基于Java的BiliBili视频信息爬虫</title>
         <pubTime>2017-01-27T10:24:19.000Z</pubTime>
         
+        <tag>学习笔记</tag>
+         
         <tag>demo</tag>
          
         <tag>爬虫</tag>
          
         <tag>Java</tag>
-         
-        <tag>学习笔记</tag>
          
          
            
@@ -1259,11 +1281,11 @@
          
         <tag>学习笔记</tag>
          
-        <tag>随笔</tag>
-         
         <tag>SASS</tag>
          
         <tag>WebStorm</tag>
+         
+        <tag>随笔</tag>
          
          
            
