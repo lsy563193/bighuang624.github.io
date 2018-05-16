@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2018-05-15T08:35:34.647Z</updated>
+  <updated>2018-05-16T12:09:02.816Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kyonhuang.top/operating-system-notes/"/>
     <id>http://kyonhuang.top/operating-system-notes/</id>
     <published>2018-05-15T08:35:42.000Z</published>
-    <updated>2018-05-15T08:35:34.647Z</updated>
+    <updated>2018-05-16T12:09:02.816Z</updated>
     
     <content type="html"><![CDATA[<h2 id="操作系统引论"><a href="#操作系统引论" class="headerlink" title="操作系统引论"></a>操作系统引论</h2><h3 id="操作系统的定义"><a href="#操作系统的定义" class="headerlink" title="操作系统的定义"></a>操作系统的定义</h3><p>定义一：是配置在计算机硬件上的第一层软件，是对硬件系统的首次扩充。</p>
 <p><strong>定义二</strong>：是一组控制和管理计算机硬件和软件资源、合理地对各类作业进行调度以及方便用户使用的程序的集合。</p>
@@ -38,7 +38,7 @@
 </ul>
 <h4 id="3-虚拟"><a href="#3-虚拟" class="headerlink" title="3. 虚拟"></a>3. 虚拟</h4><p>把一个物理实体转换为多个逻辑实体。</p>
 <p>主要有两种虚拟技术：时分复用技术（如分时系统）、空分复用技术（如虚拟内存）。</p>
-<h3 id="4-异步"><a href="#4-异步" class="headerlink" title="4. 异步"></a>4. 异步</h3><p>多个作业的执行顺序和每个作业的执行时间是不确定的。</p>
+<h4 id="4-异步"><a href="#4-异步" class="headerlink" title="4. 异步"></a>4. 异步</h4><p>多个作业的执行顺序和每个作业的执行时间是不确定的。</p>
 <h3 id="操作系统的主要功能"><a href="#操作系统的主要功能" class="headerlink" title="操作系统的主要功能"></a>操作系统的主要功能</h3><ol>
 <li><strong>处理器管理</strong>：处理器的运行和分配，以进程为基本单位，因此也被看作进程管理。包括进程控制、进程同步、进程通信、进程调度；</li>
 <li><strong>存储器管理</strong>：内存分配、内存保护（不相互干扰）、地址映射（逻辑 -&gt; 物理）、内存扩充（虚拟存储技术）；</li>
@@ -48,12 +48,9 @@
 </ol>
 <a id="more"></a>
 <h3 id="多道批处理系统"><a href="#多道批处理系统" class="headerlink" title="多道批处理系统"></a>多道批处理系统</h3><ul>
-<li><p>每次由作业调度算法，从外存的后备队列中选择若干作业调入内存，共享 CPU 和各种资源。程序 A 因 I/O 操作暂停执行时，调度另一道程序 B 运行。</p>
-</li>
-<li><p>根本目的：提高 CPU 的利用率，充分发挥系统部件的并行性。</p>
-</li>
-<li><p>优点：资源利用率高；系统吞吐量大。</p>
-</li>
+<li>每次由作业调度算法，从外存的后备队列中选择若干作业调入内存，共享 CPU 和各种资源。程序 A 因 I/O 操作暂停执行时，调度另一道程序 B 运行。</li>
+<li>根本目的：提高 CPU 的利用率，充分发挥系统部件的并行性。</li>
+<li>优点：资源利用率高；系统吞吐量大。</li>
 <li>缺点：平均周转时间长；无用户交互能力。</li>
 </ul>
 <h3 id="分时系统"><a href="#分时系统" class="headerlink" title="分时系统"></a>分时系统</h3><p>在一台主机上连接了多个配有显示器和键盘的终端并由此所组成的系统，该系统允许多个用户同时通过自己的终端，以交互方式使用计算机，共享主机中的资源。</p>
@@ -70,8 +67,12 @@
 <li><strong>非封闭性</strong></li>
 <li><strong>不可再现性</strong></li>
 </ol>
-<h3 id="进程与线程-1"><a href="#进程与线程-1" class="headerlink" title="进程与线程"></a>进程与线程</h3><h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h4><p><strong>进程是资源分配的基本单位</strong>。进程控制块（Process Control Block，PCB）描述进程的基本信息和运行状态。所谓的创建进程和撤销进程，都是指对 PCB 的操作。</p>
-<h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h4><p><strong>线程是独立调度的基本单位</strong>。一个进程中可以有多个线程，它们共享进程的资源和内存地址空间。</p>
+<h3 id="进程与线程-1"><a href="#进程与线程-1" class="headerlink" title="进程与线程"></a>进程与线程</h3><ul>
+<li><p><strong>进程</strong>是<strong>资源分配</strong>的基本单位。进程控制块（Process Control Block，PCB）描述进程的基本信息和运行状态。所谓的创建进程和撤销进程，都是指对 PCB 的操作。</p>
+</li>
+<li><p><strong>线程</strong>是<strong>独立调度</strong>的基本单位。一个进程中可以有多个线程，它们共享进程的资源和内存地址空间。</p>
+</li>
+</ul>
 <h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
 <li><p>拥有资源：进程是资源分配的基本单位，但是<strong>线程不拥有资源</strong>，线程可以访问隶属进程的资源。</p>
 </li>
@@ -144,8 +145,151 @@
 <li><strong>套接字（Socket）</strong>：一个通信标识类型的数据结构，是进程通信和网络通信的基本构件；</li>
 <li><strong>远程过程调用（RPC）</strong>：一个通信协议，允许运行于本地系统上的进程调用远程系统上的进程，而对程序员表现为常规的过程调用，无需额外为此编程。</li>
 </ol>
-<h2 id="处理器调度与死锁"><a href="#处理器调度与死锁" class="headerlink" title="处理器调度与死锁"></a>处理器调度与死锁</h2><p>等待少年更新中…</p>
-<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><p>等待少年更新中…</p>
+<h2 id="处理机调度与死锁"><a href="#处理机调度与死锁" class="headerlink" title="处理机调度与死锁"></a>处理机调度与死锁</h2><h3 id="作业调度"><a href="#作业调度" class="headerlink" title="作业调度"></a>作业调度</h3><p>又称<strong>高级调度</strong>。主要功能是根据某种算法，从外存上后备队列中选择多个<strong>作业</strong>调入内存，为其<strong>创建进程</strong>、<strong>分配必要的资源</strong>，并插入<strong>就绪队列</strong>。</p>
+<p>主要用于多道批处理系统中，分时系统和实时系统无作业调度。</p>
+<p><strong>作业</strong>：用户提交给系统的一项相对独立的工作。操作员把其通过响应的输入设备输入到磁盘存储器，并保存在一个后备作业队列中。<strong>作业控制块</strong>是作业在系统中存在的标志，其中保存了系统对作业进行管理和调度所需的全部信息。</p>
+<p>作业调度算法：</p>
+<h4 id="1-先来先服务（FCFS）"><a href="#1-先来先服务（FCFS）" class="headerlink" title="1. 先来先服务（FCFS）"></a>1. 先来先服务（FCFS）</h4><p>调度最先进入就绪队列的作业。</p>
+<p>有利于长作业，但不利于短作业，因为短作业必须一直等待前面的长作业执行完毕才能执行，而长作业又需要执行很长时间，造成了短作业等待时间过长。</p>
+<h4 id="2-短作业优先（SJF）"><a href="#2-短作业优先（SJF）" class="headerlink" title="2. 短作业优先（SJF）"></a>2. 短作业优先（SJF）</h4><p>调度估计运行时间最短的作业。</p>
+<p>长作业可能处于一直等待短作业执行完毕的状态（饥饿）。因为如果一直有短作业到来，那么长作业永远得不到调度。</p>
+<h4 id="3-优先级调度算法（PSA）"><a href="#3-优先级调度算法（PSA）" class="headerlink" title="3. 优先级调度算法（PSA）"></a>3. 优先级调度算法（PSA）</h4><p>基于作业的紧迫程度，由外部赋予相应的优先级。</p>
+<h4 id="4-高响应比优先调度算法（HRRN）"><a href="#4-高响应比优先调度算法（HRRN）" class="headerlink" title="4. 高响应比优先调度算法（HRRN）"></a>4. 高响应比优先调度算法（HRRN）</h4><p>引入动态优先级：优先级随等待时间延长而增加。</p>
+<h3 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h3><p>又称<strong>低级调度</strong>。主要功能是在保存处理机的现场信息后，根据某种算法，决定<strong>就绪队列</strong>获得处理机的<strong>进程</strong>，使其进入运行状态。</p>
+<p>多道批处理系统、分时系统和实时系统都配置进程调度。</p>
+<h4 id="进程调度方式"><a href="#进程调度方式" class="headerlink" title="进程调度方式"></a>进程调度方式</h4><h5 id="1-非抢占方式"><a href="#1-非抢占方式" class="headerlink" title="1) 非抢占方式"></a>1) 非抢占方式</h5><p>一旦把处理机分配给某进程，则直至该进程完成或被阻塞时，才把处理机另外分配。</p>
+<h5 id="2-抢占方式"><a href="#2-抢占方式" class="headerlink" title="2) 抢占方式"></a>2) 抢占方式</h5><p>允许调度程序根据某种原则，去暂停某个正在执行的进程，并将其处理机重新分配。</p>
+<p>抢占必须遵循的原则：</p>
+<ol>
+<li>优先权原则</li>
+<li>短进程优先原则</li>
+<li>时间片原则</li>
+</ol>
+<p>进程调度算法：</p>
+<h4 id="1-轮转调度（RR）"><a href="#1-轮转调度（RR）" class="headerlink" title="1. 轮转调度（RR）"></a>1. 轮转调度（RR）</h4><p>将所有就绪进程按 FCFS 的原则排成一个队列，每次调度时分配一个 CPU 时间片给队首进程。当时间片用完时，由计时器发出时钟中断，调度程序便停止该进程的执行，并将它送往就绪队列的末尾，同时继续把 CPU 时间分配给队首的进程。</p>
+<p>轮转调度算法中，效率和时间片大小有很大关系。时间片小意味着频繁执行进程调度和进程上下文的切换，增加系统开销；时间片长则退化为 FCFS 算法，无法满足短作业和交互式用户的需求。</p>
+<h4 id="2-优先级调度"><a href="#2-优先级调度" class="headerlink" title="2. 优先级调度"></a>2. 优先级调度</h4><p>把处理机分配给就绪队列中优先级最高的进程。又可以分为非抢占式和抢占式两种。</p>
+<h4 id="3-多队列调度"><a href="#3-多队列调度" class="headerlink" title="3. 多队列调度"></a>3. 多队列调度</h4><p>将进程就绪队列拆分为多个，不同的就绪队列采用不同的调度算法，也可以设置不同的优先级。</p>
+<h4 id="4-多级反馈队列（multileved-feedback-queue）"><a href="#4-多级反馈队列（multileved-feedback-queue）" class="headerlink" title="4. 多级反馈队列（multileved feedback queue）"></a>4. 多级反馈队列（multileved feedback queue）</h4><p><img src="https://user-images.githubusercontent.com/18595460/40105062-7ef33bb8-5924-11e8-8ae2-8454f82717b2.png" alt="multileved-feedback-queue"></p>
+<ol>
+<li>设置多个就绪队列。优先级逐个降低，时间片长度依次翻倍（1，2，4，…）；</li>
+<li>每个队列采用 FCFS 算法。若在该队列中一个时间片中未完成，则转入下一队列的末尾等待调度。在最后一个队列则按 RR 运行；</li>
+<li>按队列优先级调度。仅当优先级更高的所有队列均空时，才会调度下一个队列中的进程运行。</li>
+</ol>
+<h3 id="实时调度"><a href="#实时调度" class="headerlink" title="实时调度"></a>实时调度</h3><p>又称<strong>中级调度</strong>。主要功能是将暂时不能运行的进程调至外存等待（<strong>此时进程状态为挂起</strong>），当其具备运行条件且内存有空闲时再调入（并将状态修改为就绪）。</p>
+<p>引入的主要目的是，提高内存利用率和系统吞吐量。</p>
+<h3 id="死锁概述"><a href="#死锁概述" class="headerlink" title="死锁概述"></a>死锁概述</h3><p><strong>定义</strong>：两个或多个进程由于<strong>资源竞争</strong>而造成的僵局。若无外力作用，这些进程将永远无法向前推进。</p>
+<p><strong>产生死锁的原因</strong>：</p>
+<ol>
+<li>竞争不可抢占性资源引起死锁；</li>
+<li>竞争可消耗资源引起死锁；</li>
+<li>进程推进顺序不当引起死锁：申请和释放资源的顺序不当。</li>
+</ol>
+<p><strong>产生死锁的必要条件（任一不成立则死锁不发生）</strong>：</p>
+<ol>
+<li>互斥条件：进程间必须互斥使用某些资源；</li>
+<li>请求和保持条件：进程已经占有至少一个资源，但又提出了新的资源请求；</li>
+<li>不可抢占条件：进程已获得的资源在未使用完前不得被抢占；</li>
+<li>循环等待条件：在发生死锁时，必然存在一个进程-资源的循环链。</li>
+</ol>
+<p><strong>处理死锁的基本方法</strong>：</p>
+<ol>
+<li>预防死锁：通过设置某些限制条件，破坏死锁四个必要条件中的一个或多个；</li>
+<li>避免死锁：在资源动态分配时，用某种方法防止系统进入不安全状态，从而避免死锁；</li>
+<li>检测和解除死锁：允许系统产生死锁，但能及时检测并通过某些措施解除。</li>
+</ol>
+<p>从上到下对死锁的防范程度依次减弱，但资源利用率和并发程度提高。</p>
+<p>顺便一提，大多数操作系统，包括 Unix，Linux 和 Windows，处理死锁问题的办法仅仅是忽略它。</p>
+<h3 id="避免死锁"><a href="#避免死锁" class="headerlink" title="避免死锁"></a>避免死锁</h3><p><strong>安全序列</strong>：指系统能够按照某种进程顺序，为每个进程分配其所需资源，直至满足每个进程对资源的<strong>最大需求</strong>，使每个进程都可顺利地完成。如果系统能够找到这样一个安全序列，则称其处于<strong>安全状态</strong>；反之则处于不安全状态。</p>
+<p>最有代表性的避免死锁算法是 Dijkstra 的<strong>银行家算法</strong>（暂略，详见课本 p111）。</p>
+<h2 id="存储器管理"><a href="#存储器管理" class="headerlink" title="存储器管理"></a>存储器管理</h2><h3 id="程序的装入和链接"><a href="#程序的装入和链接" class="headerlink" title="程序的装入和链接"></a>程序的装入和链接</h3><p>用户程序要在系统中运行需要经过以下几个步骤：</p>
+<ol>
+<li>编译：由编译程序（Compiler）对用户源程序进行编译，形成若干个目标模块（Object Module）；</li>
+<li>链接：由链接程序（Linker）将编译后形成的一组目标模块以及它们所需要的库函数链接在一起，形成一个完整的装入模块（Load Module）；</li>
+<li>装入：由装入程序（Loader）将装入模块装入内存。</li>
+</ol>
+<p>其中，程序<strong>装入</strong>方式有以下三种：</p>
+<ol>
+<li>绝对装入方式：目标模块采用绝对地址。即逻辑地址和实际内存地址完全相同，装入时不需对地址进行变换；</li>
+<li>可重定位装入方式（静态重定位）：在装入时，由重定位装入程序一次性完成；</li>
+<li>动态运行时装入方式：重定位推迟到程序真正执行时进行。即装入内存后的所有地址都仍是相对地址。这种方式需要硬件支持，程序可以在内存中移动（对换/紧凑），可以实现虚拟存储。</li>
+</ol>
+<p>其中，<strong>重定位</strong>是将装入模块中指令和数据的相对地址调整成相应内存单元的绝对地址。</p>
+<p>程序<strong>链接</strong>方式也有三种：</p>
+<ol>
+<li>静态链接：在程序运行前将目标模块和所需库函数链接，以后不再拆开；</li>
+<li>装入时动态链接；</li>
+<li>运行时动态链接：可加快装入过程，节省大量内存空间。</li>
+</ol>
+<h3 id="连续分配存储管理方式"><a href="#连续分配存储管理方式" class="headerlink" title="连续分配存储管理方式"></a>连续分配存储管理方式</h3><ol>
+<li>单一连续分配：内存分为系统区和用户区，用户区仅一道用户程序独占。最简单，适用于单用户、单任务 OS；</li>
+<li>固定分区分配：系统初启时将用户区划分为若干分区，大小和分界固定且每个分区只允许装入一道作业。程序道数、程序大小受限，且有较多内部碎片；</li>
+<li>动态分区分配：见下；</li>
+<li>动态可重定位分区分配：见下。</li>
+</ol>
+<h4 id="动态分区分配"><a href="#动态分区分配" class="headerlink" title="动态分区分配"></a>动态分区分配</h4><p>分区个数、大小可变。常用空闲分区表或空闲分区链来管理可用内存。</p>
+<p><strong>动态分区分配算法</strong>：</p>
+<ol>
+<li><strong>首次适应（FF）</strong>：将空闲分区按地址递增的次序排列，找第一个满足大小要求的空闲分区。优点是保留了高地址的大空闲区，缺点是低地址产生碎片，增加查找开销；</li>
+<li><strong>循环首次适应（NF）</strong>：按地址递增的次序排列，从上次找到的空闲分区的下一个空闲分区开始查找。优点是空闲分区分布更均匀，缺点是缺乏大空闲区；</li>
+<li><strong>最佳适应（BF）</strong>：按容量大小递增排序，找满足大小要求的最小空闲分区。缺点是产生大量碎片；</li>
+<li><strong>最坏适应（WF）</strong>：按容量大小递减排序，找满足大小要求的最大空闲分区。</li>
+</ol>
+<h4 id="动态可重定位分区分配"><a href="#动态可重定位分区分配" class="headerlink" title="动态可重定位分区分配"></a>动态可重定位分区分配</h4><p>在动态分区分配方式的基础上增加<strong>紧凑</strong>功能：将内存中的所有作业进行移动，将多个分散的空闲分区拼接成一个大分区。</p>
+<h3 id="对换"><a href="#对换" class="headerlink" title="对换"></a>对换</h3><p><strong>对换</strong>指把内存中<strong>暂时不能运行</strong>的进程或暂时不用的<strong>程序和数据</strong>调出到外存上，以便腾出足够的内存空间，再把<strong>已具备运行条件的进程</strong>或<strong>进程所需的程序和数据</strong>调入内存。</p>
+<p>优点：改善内存利用率，提高处理机利用率和系统吞吐量。</p>
+<p>类型：</p>
+<ul>
+<li>整体对换：以进程为单位；</li>
+<li>页面（分段）对换：以页或段为单位。</li>
+</ul>
+<h3 id="离散分配方式"><a href="#离散分配方式" class="headerlink" title="离散分配方式"></a>离散分配方式</h3><p>离散分配方式分为以下三种：</p>
+<ul>
+<li><strong>分页存储管理方式</strong></li>
+<li><strong>分段存储管理方式</strong></li>
+<li><strong>段页式存储管理方式</strong>：程序的地址空间按逻辑单位分成基本独立的段，而每一段有自己的段名，再把每段分成固定大小的若干页</li>
+</ul>
+<h3 id="分页和分段的比较"><a href="#分页和分段的比较" class="headerlink" title="分页和分段的比较"></a>分页和分段的比较</h3><ol>
+<li>页是信息的<strong>物理</strong>单位，分页是为了实现离散分配，提高内存利用率；段是信息的<strong>逻辑</strong>单位，分段是为了满足用户需求。</li>
+<li>页大小固定且由系统决定；段长度不固定，且由用户编写的程序决定。</li>
+<li>分页的地址空间是一维线性的；分段的地址空间是二维的。</li>
+</ol>
+<h2 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h2><h3 id="虚拟存储器概述"><a href="#虚拟存储器概述" class="headerlink" title="虚拟存储器概述"></a>虚拟存储器概述</h3><ul>
+<li>理论基础：局部性原理</li>
+<li>定义：具有<strong>请求调入</strong>功能和<strong>置换</strong>功能，能从<strong>逻辑</strong>上对内存容量加以扩充的一种存储器系统</li>
+<li>特性：<ul>
+<li>离散性：实现的前提；</li>
+<li>多次性：一个作业被分多次调入内存；</li>
+<li>对换性：允许在作业运行过程中换入、换出；</li>
+<li>虚拟性：能从逻辑上扩充内存容量。</li>
+</ul>
+</li>
+<li>实现：分页请求系统 / 分段请求系统</li>
+</ul>
+<h3 id="请求分页存储管理方式"><a href="#请求分页存储管理方式" class="headerlink" title="请求分页存储管理方式"></a>请求分页存储管理方式</h3><p>为了支持虚拟存储器功能，在基本分页基础上增加请求调页功能和页面置换功能。</p>
+<p>在程序运行过程中，如果要访问的页面不在内存中，就发生缺页中断从而将该页调入内存中。此时如果内存已无空闲空间，系统必须从内存中调出一个页面到磁盘对换区中来腾出空间。</p>
+<p>请求分段存储管理方式与其在实现原理及所需硬件支持上都十分相似。</p>
+<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><h4 id="1-最佳（Optimal）"><a href="#1-最佳（Optimal）" class="headerlink" title="1. 最佳（Optimal）"></a>1. 最佳（Optimal）</h4><p>将<strong>最长时间内不再被访问</strong>的页面换出。通常可以保证获得最低的缺页率，然而是一种<strong>理论上的算法</strong>，因为无法知道一个页面多长时间不再被访问。</p>
+<h4 id="2-先进先出（FIFO）"><a href="#2-先进先出（FIFO）" class="headerlink" title="2. 先进先出（FIFO）"></a>2. 先进先出（FIFO）</h4><p>将<strong>最先进入的页面</strong>换出。</p>
+<p>该算法会将那些经常被访问的页面也被换出，从而使缺页率升高。</p>
+<h4 id="3-最近最久未使用（LRU）"><a href="#3-最近最久未使用（LRU）" class="headerlink" title="3. 最近最久未使用（LRU）"></a>3. 最近最久未使用（LRU）</h4><p>将<strong>最近最久未使用</strong>的页面换出。</p>
+<p>可以用栈来实现该算法，栈中存储页面的页面号。当进程访问一个页面时，将该页面的页面号从栈移除，并将它压入栈顶。这样，最近被访问的页面总是在栈顶，而最近最久未使用的页面总是在栈底。</p>
+<h4 id="4-Clock"><a href="#4-Clock" class="headerlink" title="4. Clock"></a>4. Clock</h4><p><img src="https://user-images.githubusercontent.com/18595460/40115969-be203032-5944-11e8-9f36-cfc7bf5426d2.png" alt="clock"></p>
+<p>为每个页面设置一个<strong>访问位</strong>，当该页面被访问或首次调入内存时，将访问位置为 1。</p>
+<p>首先，将内存中的所有页面链接成一个循环队列，当缺页中断发生时，检查当前指针所指向页面的访问位，如果访问位为 0，就将该页面换出；否则将该页的访问位设置为 0，给该页面第二次的机会，移动指针继续检查。</p>
+<h3 id="“抖动”"><a href="#“抖动”" class="headerlink" title="“抖动”"></a>“抖动”</h3><ul>
+<li><strong>根本原因</strong>：同时在系统中运行的进程太多，由此分配给每个进程的物理块太少，不能满足进程正常运行的基本要求；</li>
+<li>其他原因：置换算法选择不当；全局置换使抖动传播；</li>
+<li><strong>现象</strong>：致使每个进程在运行时，频繁出现缺页；</li>
+<li><strong>后果</strong>：排队等待页面调入/调出的进程数目增加，处理机利用率极具下降，有效工作停滞。</li>
+<li>预防方法：<ul>
+<li>采取局部置换策略：缺页时只在分配给自己的内存空间进行置换，不从其他进程获得新的物理块，以限制抖动的传播；</li>
+<li>把工作集算法融入到处理机调度中：工作集指近期进程访问页面集合；</li>
+<li>利用“L=S”准则调节缺页率：L 是缺页之间的平均时间，S 是平均缺页服务时间；</li>
+<li>挂起某些优先级低的进程。</li>
+</ul>
+</li>
+</ul>
 <h2 id="输入输出系统"><a href="#输入输出系统" class="headerlink" title="输入输出系统"></a>输入输出系统</h2><p>管理对象：I/O 设备、相应的设备控制器、通道。</p>
 <p>主要任务：完成用户提出的 I/O 请求，提高 I/O 速率，以及提高设备的利用率，并能为更高层的进程方便地使用这些设备提供手段。</p>
 <h3 id="I-O-系统的基本功能"><a href="#I-O-系统的基本功能" class="headerlink" title="I/O 系统的基本功能"></a>I/O 系统的基本功能</h3><ol>
@@ -165,7 +309,8 @@
 </ol>
 <h3 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h3><p><strong>中断</strong>是指 CPU 对 I/O 设备发来的终端信号的一种响应。CPU 暂停正在执行的程序，保留 CPU 环境后，自动转去执行该 I/O 设备的中断处理程序。执行完后，再回到断点，继续执行原来的程序。</p>
 <p>中断是<strong>多道程序</strong>实现的基础，因为进程之间的切换是通过中断来完成的；中断也是<strong>设备管理</strong>的基础，为了提高处理机的利用率和实现 CPU 与 I/O 设备并行执行，必须有中断的支持。</p>
-<h3 id="系统调用与库函数"><a href="#系统调用与库函数" class="headerlink" title="系统调用与库函数"></a>系统调用与库函数</h3><p>由 OS 向用户提供的所有功能，用户进程（应用程序）都必须通过<strong>系统调用</strong>这个中介过程来获取。C 语言首先提供了与系统调用相对应的库函数。</p>
+<p>另外，还有<strong>异常</strong>（由 CPU 执行指令的内部事件引起，如非法操作码、地址越界、算术溢出等）和<strong>陷入</strong>（在用户程序中使用系统调用）。</p>
+<h3 id="系统调用与库函数"><a href="#系统调用与库函数" class="headerlink" title="系统调用与库函数"></a>系统调用与库函数</h3><p>由 OS 向用户提供的所有内核态的功能，用户进程（应用程序）都必须通过<strong>系统调用</strong>这个中介过程来获取。C 语言首先提供了与系统调用相对应的库函数。</p>
 <h3 id="假脱机（SPOOLING）系统"><a href="#假脱机（SPOOLING）系统" class="headerlink" title="假脱机（SPOOLING）系统"></a>假脱机（SPOOLING）系统</h3><p>假脱机技术是对脱机输入/输出系统的模拟，建立在通道技术和多道程序技术的基础上，以高速随机外存（通常为磁盘）为后援存储器。通过假脱机技术，可<strong>将一台物理 I/O 设备虚拟为多台逻辑 I/O 设备</strong>，以允许多个用户共享一台物理 I/O 设备。</p>
 <p><strong>原理</strong>：用多道程序中的两道分别模拟输入/输出时的外围控制机功能，在高速磁盘和低速 I/O 设备间传送数据。</p>
 <p><strong>组成</strong>：</p>
@@ -189,7 +334,7 @@
 <li>提高 CPU 和 I/O 设备之间的并行性。</li>
 </ol>
 <h3 id="磁盘调度算法"><a href="#磁盘调度算法" class="headerlink" title="磁盘调度算法"></a>磁盘调度算法</h3><p>磁盘访问时间包括<strong>寻道时间</strong>（主要）、<strong>旋转延迟时间</strong>和<strong>传输时间</strong>。当多个进程同时请求访问磁盘时，需要进行磁盘调度来控制对磁盘的访问。磁盘调度的目标是使磁盘的平均寻道时间最少。</p>
-<h4 id="1-先来先服务（FCFS）"><a href="#1-先来先服务（FCFS）" class="headerlink" title="1. 先来先服务（FCFS）"></a>1. 先来先服务（FCFS）</h4><p>根据进程请求访问磁盘的先后次序来进行调度。优点是公平和简单，缺点也很明显，因为未对寻道做任何优化，使平均寻道时间可能较长。</p>
+<h4 id="1-先来先服务（FCFS）-1"><a href="#1-先来先服务（FCFS）-1" class="headerlink" title="1. 先来先服务（FCFS）"></a>1. 先来先服务（FCFS）</h4><p>根据进程请求访问磁盘的先后次序来进行调度。优点是公平和简单，缺点也很明显，因为未对寻道做任何优化，使平均寻道时间可能较长。</p>
 <h4 id="2-最短寻道时间优先（SSTF）"><a href="#2-最短寻道时间优先（SSTF）" class="headerlink" title="2. 最短寻道时间优先（SSTF）"></a>2. 最短寻道时间优先（SSTF）</h4><p>要求访问的磁道与当前磁头所在磁道距离最近的优先进行调度。这种算法并不能保证平均寻道时间最短，但是比 FCFS 好很多。</p>
 <p>会出现饥饿现象。当新进程请求访问的磁道与磁头所在磁道的距离总是比一个在等待的进程来的近，那么等待的进程会一直等待下去。</p>
 <h4 id="3-扫描算法"><a href="#3-扫描算法" class="headerlink" title="3. 扫描算法"></a>3. 扫描算法</h4><p>在 SSTF 算法之上考虑了磁头的移动方向，要求所请求访问的磁道在磁头当前移动方向上才能够得到调度。因为考虑了移动方向，那么一个进程请求访问的磁道一定会得到调度。</p>
@@ -197,12 +342,9 @@
 <h4 id="4-循环扫描算法"><a href="#4-循环扫描算法" class="headerlink" title="4. 循环扫描算法"></a>4. 循环扫描算法</h4><p>对 SCAN 进行了改动，要求磁头始终沿着一个方向移动。</p>
 <h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>由创建者所定义的、具有文件名的一组相关元素的集合。从逻辑结构角度分为<strong>有结构文件</strong>（由若干个相关记录组成）和<strong>无结构文件</strong>（被看成一个字符流），在文件系统中是一个最大的数据单位。</p>
 <h3 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h3><ul>
-<li><p>文件控制块（FCB）：OS 用于<strong>描述</strong>和<strong>控制</strong>文件的一个<strong>数据结构</strong>。</p>
-</li>
-<li><p>目录：文件控制块的有序集合。</p>
-</li>
-<li><p>索引节点：<strong>文件描述信息</strong>单独形成的数据结构（而不包含文件名）。由于检索目录文件只用到文件名，即用不到该文件的描述信息，因此检索目录时索引节点不用调入内存，从而大大节省了系统开销。</p>
-</li>
+<li>文件控制块（FCB）：OS 用于<strong>描述</strong>和<strong>控制</strong>文件的一个<strong>数据结构</strong>。</li>
+<li>目录：文件控制块的有序集合。</li>
+<li>索引节点：<strong>文件描述信息</strong>单独形成的数据结构（而不包含文件名）。由于检索目录文件只用到文件名，即用不到该文件的描述信息，因此检索目录时索引节点不用调入内存，从而大大节省了系统开销。</li>
 </ul>
 <h3 id="文件共享"><a href="#文件共享" class="headerlink" title="文件共享"></a>文件共享</h3><p>常用的两种文件共享方法：</p>
 <ol>
@@ -210,14 +352,11 @@
 <li>利用符号链。</li>
 </ol>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>主要参照西安电子科技大学出版社《计算机操作系统（第四版）》。</p>
-<h4 id="比较全的"><a href="#比较全的" class="headerlink" title="比较全的"></a>比较全的</h4><ul>
+<p>其他参考资料：</p>
+<ul>
 <li><a href="https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.md" target="_blank" rel="external">Interview-Notebook/notes/计算机操作系统.md</a></li>
 <li><a href="https://wenku.baidu.com/view/e181715fc77da26924c5b023.html" target="_blank" rel="external">操作系统重点知识总结_百度文库</a></li>
-</ul>
-<h4 id="可以作为补充的"><a href="#可以作为补充的" class="headerlink" title="可以作为补充的"></a>可以作为补充的</h4><ul>
-<li><a href="https://segmentfault.com/a/1190000003692840" target="_blank" rel="external">【系统架构师修炼之道】（12）：操作系统基础知识——操作系统的原理，类型和结构 - 极简小站 - SegmentFault 思否</a></li>
-<li><a href="https://blog.csdn.net/csdn_chai/article/details/78002202" target="_blank" rel="external">操作系统复习要点 - CSDN博客</a></li>
-<li><a href="https://blog.csdn.net/Sugar_Z_/article/details/51526696" target="_blank" rel="external">【操作系统】重点知识点总结 - CSDN博客</a></li>
+<li><a href="http://www.baike.com/wiki/%E5%A4%84%E7%90%86%E6%9C%BA" target="_blank" rel="external">处理机_互动百科</a></li>
 </ul>
 ]]></content>
     
@@ -239,7 +378,7 @@
 &lt;/ul&gt;
 &lt;h4 id=&quot;3-虚拟&quot;&gt;&lt;a href=&quot;#3-虚拟&quot; class=&quot;headerlink&quot; title=&quot;3. 虚拟&quot;&gt;&lt;/a&gt;3. 虚拟&lt;/h4&gt;&lt;p&gt;把一个物理实体转换为多个逻辑实体。&lt;/p&gt;
 &lt;p&gt;主要有两种虚拟技术：时分复用技术（如分时系统）、空分复用技术（如虚拟内存）。&lt;/p&gt;
-&lt;h3 id=&quot;4-异步&quot;&gt;&lt;a href=&quot;#4-异步&quot; class=&quot;headerlink&quot; title=&quot;4. 异步&quot;&gt;&lt;/a&gt;4. 异步&lt;/h3&gt;&lt;p&gt;多个作业的执行顺序和每个作业的执行时间是不确定的。&lt;/p&gt;
+&lt;h4 id=&quot;4-异步&quot;&gt;&lt;a href=&quot;#4-异步&quot; class=&quot;headerlink&quot; title=&quot;4. 异步&quot;&gt;&lt;/a&gt;4. 异步&lt;/h4&gt;&lt;p&gt;多个作业的执行顺序和每个作业的执行时间是不确定的。&lt;/p&gt;
 &lt;h3 id=&quot;操作系统的主要功能&quot;&gt;&lt;a href=&quot;#操作系统的主要功能&quot; class=&quot;headerlink&quot; title=&quot;操作系统的主要功能&quot;&gt;&lt;/a&gt;操作系统的主要功能&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;处理器管理&lt;/strong&gt;：处理器的运行和分配，以进程为基本单位，因此也被看作进程管理。包括进程控制、进程同步、进程通信、进程调度；&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;存储器管理&lt;/strong&gt;：内存分配、内存保护（不相互干扰）、地址映射（逻辑 -&amp;gt; 物理）、内存扩充（虚拟存储技术）；&lt;/li&gt;
@@ -1201,9 +1340,9 @@
     
       <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
-    
       <category term="Kaggle" scheme="http://kyonhuang.top/tags/Kaggle/"/>
+    
+      <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
     
       <category term="Titanic 生存预测" scheme="http://kyonhuang.top/tags/Titanic-%E7%94%9F%E5%AD%98%E9%A2%84%E6%B5%8B/"/>
     
@@ -1940,7 +2079,7 @@
     <link href="http://kyonhuang.top/intro-to-data-preprocessing/"/>
     <id>http://kyonhuang.top/intro-to-data-preprocessing/</id>
     <published>2017-10-31T12:45:28.000Z</published>
-    <updated>2018-03-30T01:44:47.593Z</updated>
+    <updated>2018-05-15T11:59:24.435Z</updated>
     
     <content type="html"><![CDATA[<p>作为互联网上最著名的数据科学竞赛平台之一，Kaggle 无疑是数据从业者和爱好者最喜欢的社区之一。最近，Kaggle 发布了 <a href="https://www.kaggle.com/amberthomas/kaggle-2017-survey-results" target="_blank" rel="external">2017 用户调查报告</a>，共有 16000 余名用户参与的这份调查可以让我们对数据工作者的各类信息有一个了解。</p>
 <p>其中，对于“工作中遇到的障碍主要是什么？”这个问题，有 49.4% 的被调查者选择了“脏数据（dirty data）”这一项，占该问题所有选项的第一位。也就是说，数据科学家一般最常见的困扰就是要对手头的数据进行大量的预处理工程。</p>
@@ -1976,7 +2115,8 @@
 <p>最常见的归一化方法就是 <strong>Min-Max</strong> 归一化：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-8a1730b90c9336f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="归一化.png"></p>
 <p>经过归一化处理过后的数据，各个特征维度对目标函数的影响权重是一致的，不会发生某一特征因维度过高而起主导作用，从而遮盖住其他特征的问题。</p>
-<p><strong>注意</strong>，归一化和标准化的英文都为 Normalization，需要<strong>根据其用途（或公式）的不同去理解或翻译</strong>。</p>
+<p>有一点值得注意的是，在归一化测试数据时，<strong>测试集和训练集应该使用相同的归一化方法</strong>。即保存从训练集上取得的归一化参数，使用同样的公式和保存的参数来归一化测试集。这是因为我们需要保持测试集和训练集的分布一致。</p>
+<p>另外，归一化和标准化的英文都为 Normalization，需要<strong>根据其用途（或公式）的不同去理解或翻译</strong>。</p>
 <h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p><strong>编码</strong>将无法作为输入的原始类别特征或文本特征表示为数字形式。其思想为用一个变量的字典来实现变量到索引序号的映射。</p>
 <p>编码的方式也有很多，下面介绍两个常用的编码方式－One-hot 编码和哑编码。</p>
 <h4 id="One-hot-编码"><a href="#One-hot-编码" class="headerlink" title="One-hot 编码"></a>One-hot 编码</h4><p>假设变量可取的值有 k 个，如果对这些值用 1 到 k 编序，则可以用长度为 k 的二元向量来表示一个变量的取值。在这个向量里，该取值对应的序号所在的元素为 1，其他元素都为 0。</p>
@@ -2009,11 +2149,11 @@
     
       <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
+      <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
+    
       <category term="数据科学" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/"/>
     
       <category term="数据预处理" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
-    
-      <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
     
       <category term="数据分析" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     

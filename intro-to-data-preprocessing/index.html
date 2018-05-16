@@ -104,7 +104,7 @@
 
 
   <meta name="description" content="作为互联网上最著名的数据科学竞赛平台之一，Kaggle 无疑是数据从业者和爱好者最喜欢的社区之一。最近，Kaggle 发布了 2017 用户调查报告，共有 16000 余名用户参与的这份调查可以让我们对数据工作者的各类信息有一个了解。 其中，对于“工作中遇到的障碍主要是什么？”这个问题，有 49.4% 的被调查者选择了“脏数据（dirty data）”这一项，占该问题所有选项的第一位。也就是说，数">
-<meta name="keywords" content="机器学习,数据科学,数据预处理,特征工程,数据分析">
+<meta name="keywords" content="机器学习,特征工程,数据科学,数据预处理,数据分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据预处理及常用处理方法">
 <meta property="og:url" content="http://kyonhuang.top/intro-to-data-preprocessing/index.html">
@@ -113,7 +113,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-a1b64f8328595283.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2702529-8a1730b90c9336f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-30T01:44:47.593Z">
+<meta property="og:updated_time" content="2018-05-15T11:59:24.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据预处理及常用处理方法">
 <meta name="twitter:description" content="作为互联网上最著名的数据科学竞赛平台之一，Kaggle 无疑是数据从业者和爱好者最喜欢的社区之一。最近，Kaggle 发布了 2017 用户调查报告，共有 16000 余名用户参与的这份调查可以让我们对数据工作者的各类信息有一个了解。 其中，对于“工作中遇到的障碍主要是什么？”这个问题，有 49.4% 的被调查者选择了“脏数据（dirty data）”这一项，占该问题所有选项的第一位。也就是说，数">
@@ -505,7 +505,8 @@
 <p>最常见的归一化方法就是 <strong>Min-Max</strong> 归一化：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2702529-8a1730b90c9336f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="归一化.png"></p>
 <p>经过归一化处理过后的数据，各个特征维度对目标函数的影响权重是一致的，不会发生某一特征因维度过高而起主导作用，从而遮盖住其他特征的问题。</p>
-<p><strong>注意</strong>，归一化和标准化的英文都为 Normalization，需要<strong>根据其用途（或公式）的不同去理解或翻译</strong>。</p>
+<p>有一点值得注意的是，在归一化测试数据时，<strong>测试集和训练集应该使用相同的归一化方法</strong>。即保存从训练集上取得的归一化参数，使用同样的公式和保存的参数来归一化测试集。这是因为我们需要保持测试集和训练集的分布一致。</p>
+<p>另外，归一化和标准化的英文都为 Normalization，需要<strong>根据其用途（或公式）的不同去理解或翻译</strong>。</p>
 <h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p><strong>编码</strong>将无法作为输入的原始类别特征或文本特征表示为数字形式。其思想为用一个变量的字典来实现变量到索引序号的映射。</p>
 <p>编码的方式也有很多，下面介绍两个常用的编码方式－One-hot 编码和哑编码。</p>
 <h4 id="One-hot-编码"><a href="#One-hot-编码" class="headerlink" title="One-hot 编码"></a>One-hot 编码</h4><p>假设变量可取的值有 k 个，如果对这些值用 1 到 k 编序，则可以用长度为 k 的二元向量来表示一个变量的取值。在这个向量里，该取值对应的序号所在的元素为 1，其他元素都为 0。</p>
@@ -558,11 +559,11 @@
           
             <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
+            <a href="/tags/特征工程/" rel="tag"># 特征工程</a>
+          
             <a href="/tags/数据科学/" rel="tag"># 数据科学</a>
           
             <a href="/tags/数据预处理/" rel="tag"># 数据预处理</a>
-          
-            <a href="/tags/特征工程/" rel="tag"># 特征工程</a>
           
             <a href="/tags/数据分析/" rel="tag"># 数据分析</a>
           
@@ -687,7 +688,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -967,11 +968,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">110</span>
+                    <span class="site-state-item-count">108</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
