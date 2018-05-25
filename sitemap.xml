@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kyonhuang.top/computer-networks-notes/</loc>
+    
+    <lastmod>2018-05-25T02:24:24.604Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/fundamentals-of-compiling-notes/</loc>
+    
+    <lastmod>2018-05-24T02:26:36.124Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kyonhuang.top/operating-system-notes/</loc>
     
-    <lastmod>2018-05-16T12:09:02.816Z</lastmod>
+    <lastmod>2018-05-24T02:03:25.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/start-CI/</loc>
+    
+    <lastmod>2018-05-17T10:24:13.788Z</lastmod>
     
   </url>
   
@@ -26,13 +47,6 @@
     <loc>http://kyonhuang.top/intro-to-data-preprocessing/</loc>
     
     <lastmod>2018-05-15T11:59:24.435Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/fundamentals-of-compiling-notes/</loc>
-    
-    <lastmod>2018-05-14T15:33:03.690Z</lastmod>
     
   </url>
   
@@ -376,13 +390,6 @@
     <loc>http://kyonhuang.top/start-front-end-test/</loc>
     
     <lastmod>2017-08-24T08:49:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/start-CI/</loc>
-    
-    <lastmod>2017-08-24T08:28:55.000Z</lastmod>
     
   </url>
   
