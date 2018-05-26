@@ -113,7 +113,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/3939369b-3a4a-48a0-b9eb-3efae26dd400.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/426df589-6f97-4622-b74d-4a81fcb1da8e.png">
-<meta property="og:updated_time" content="2018-05-25T02:24:24.604Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/pic-repo/master/checksum.png">
+<meta property="og:updated_time" content="2018-05-26T08:52:29.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络复习笔记">
 <meta name="twitter:description" content="第三门复习的专业课是计算机网络。临近考试，因此首次发布时根据老师划的重点进行整理，后续更新时再进行补充。">
@@ -520,7 +521,7 @@
 <li>位于应用层的分组信息称为<strong>报文（message）</strong></li>
 </ul>
 </li>
-<li><strong>运输层</strong>：提供了在应用程序端点之间传送应用层报文的服务。<ul>
+<li><strong>运输层</strong>：提供了在<strong>应用程序</strong>端点之间传送应用层报文的服务。<ul>
 <li>常见运输层协议：TCP、UDP</li>
 <li>位于应用层的分组信息称为<strong>报文段（segment）</strong></li>
 </ul>
@@ -570,7 +571,15 @@
 <li><strong>HTTP 1.0 使用非持久连接</strong>，需要为每一个请求的对象建立和维护一个连接，给 Web 服务器造成较大负担，且有额外时延；<strong>HTTP 1.1 使用持久连接</strong>，通过请求头中的“Connection: Keep-Alive”实现。</li>
 <li>HTTP 1.1 还有一些性能改善措施，例如支持请求流水线，100（Continue）响应码，Host 请求头字段等。</li>
 </ul>
-<h5 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h5><h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p>cookie 技术的四个组件：</p>
+<h5 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h5><h4 id="HTTP-请求页面过程"><a href="#HTTP-请求页面过程" class="headerlink" title="HTTP 请求页面过程"></a>HTTP 请求页面过程</h4><ol>
+<li>有了 HTTP 服务器的 IP 地址之后，主机就能够生成 TCP 套接字，该套接字将用于向 Web 服务器发送 HTTP GET 报文。</li>
+<li>在生成 TCP 套接字之前，必须先与 HTTP 服务器进行三次握手来建立连接。生成一个具有目的端口 80 的 TCP SYN 报文段，并向 HTTP 服务器发送该报文段。</li>
+<li>HTTP 服务器收到该报文段之后，生成 TCP SYN ACK 报文段，发回给主机。</li>
+<li>连接建立之后，浏览器生成 HTTP GET 报文，并交付给 HTTP 服务器。</li>
+<li>HTTP 服务器从 TCP 套接字读取 HTTP GET 报文，生成一个 HTTP 响应报文，将 Web 页面内容放入报文主体中，发回给主机。</li>
+<li>浏览器收到 HTTP 响应报文后，抽取出 Web 页面内容，之后进行渲染，显示 Web 页面。</li>
+</ol>
+<h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p>cookie 技术的四个组件：</p>
 <ol>
 <li>在 HTTP 响应报文中的一个 cookie 首部行；</li>
 <li>在 HTTP 请求报文中的一个 cookie 首部行；</li>
@@ -628,7 +637,54 @@
 </ol>
 </li>
 </ul>
-<h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><h3 id="多路复用和多路分解"><a href="#多路复用和多路分解" class="headerlink" title="多路复用和多路分解"></a>多路复用和多路分解</h3><h3 id="无连接运输：UDP"><a href="#无连接运输：UDP" class="headerlink" title="无连接运输：UDP"></a>无连接运输：UDP</h3><h3 id="可靠数据传输"><a href="#可靠数据传输" class="headerlink" title="可靠数据传输"></a>可靠数据传输</h3><h3 id="面向连接的运输：TCP"><a href="#面向连接的运输：TCP" class="headerlink" title="面向连接的运输：TCP"></a>面向连接的运输：TCP</h3><h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><h2 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>主要参考机械工业出版社《计算机网络自顶向下方法（第 6 版）》。</p>
+<h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p><strong>DHCP（动态主机配置协议）</strong>提供了即插即用的连网方式，用户不再需要去手动配置 IP 地址等信息。</p>
+<p>DHCP 配置的内容不仅是 IP 地址，还包括子网掩码、默认路由器 IP 地址、域名服务器的 IP 地址。</p>
+<p>工作方式如下：需要 IP 地址的主机广播发送 DHCP 发现报文（将目的地址置为全 1，即 255.255.255.255:67，源地址设置为全 0，即 0.0.0.0:68），DHCP 服务器收到发现报文之后，则在 IP 地址池中取一个地址，发送 DHCP 提供报文给该主机。</p>
+<h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><p>可靠传输服务 =&gt; TCP   vs   非可靠传输 =&gt; UDP   如何选择？什么时候选择 TCP/UDP？<br>可靠传输服务 =&gt; 流量控制、拥塞控制（快速重传）</p>
+<p>运输层协议：</p>
+<ul>
+<li>为运行在不同主机上的应用进程之间提供了逻辑通信；</li>
+<li>在端系统中实现（而非路由器）；</li>
+<li>UDP 和 TCP 最基本的责任是，将两个端系统间 IP 的交付服务扩展为运行在端系统上的两个进程之间的交付服务。TCP 还附加提供可靠数据传输、拥塞控制等服务。</li>
+</ul>
+<h3 id="多路复用和多路分解"><a href="#多路复用和多路分解" class="headerlink" title="多路复用和多路分解"></a>多路复用和多路分解</h3><p><strong>多路分解（demultiplexing）</strong>：将运输层报文段中的数据交付到正确的套接字的工作。</p>
+<p><strong>多路复用（multiplexing）</strong>：从源主机的不同套接字中收集数据块，并为每个数据块封装上首部信息从而生成报文段，然后将报文段传递到网络层的工作。</p>
+<p>UDP 套接字：由包含目的 IP 地址和目的端口号的二元组标识。</p>
+<p>TCP 套接字：由包含源 IP 地址、源端口号、目的 IP 地址、目的端口号的四元组标识。</p>
+<p>对于两个具有相同目的 IP 地址和目的端口号，但具有不同源 IP 地址或源端口号的报文段，UDP 报文段将通过<strong>相同的目的套接字</strong>被定向到<strong>相同的目的进程</strong>；TCP 报文段将被定向到两个<strong>不同的</strong>套接字。</p>
+<h3 id="无连接运输：UDP"><a href="#无连接运输：UDP" class="headerlink" title="无连接运输：UDP"></a>无连接运输：UDP</h3><p>特点：</p>
+<ul>
+<li>尽力而为：报文段可能无序到达或丢失；</li>
+<li>无连接：发送报文段前没有握手。</li>
+</ul>
+<p>选择使用 UDP 构建应用的原因：</p>
+<ol>
+<li>应用层能更好地控制要发送的数据和发送时间（相对的，TCP 有一个拥塞控制机制）；</li>
+<li>无需连接建立（不会引入建立连接的时延）；</li>
+<li>无连接状态：不用维护连接状态或跟踪参数，可以支持更多活跃客户；</li>
+<li>分组首部开销小：TCP 报文段有 20 字节的首部开销，而 UDP 只有 8 字节。</li>
+</ol>
+<h4 id="UDP-差错检测——检验和"><a href="#UDP-差错检测——检验和" class="headerlink" title="UDP 差错检测——检验和"></a>UDP 差错检测——检验和</h4><p><strong>UDP 检验和</strong>提供<strong>差错检测</strong>功能，以检测报文段运输时的比特改变，但不提供差错恢复。</p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/pic-repo/master/checksum.png" alt="checksum.png"></p>
+<p>发送方：</p>
+<ol>
+<li>对报文段中 3 个 16 比特字求和；</li>
+<li>求和遇到的溢出被回卷（左边溢出的 1 加到最右边）；</li>
+<li>对和进行反码运算，结果放在检验和字段。</li>
+</ol>
+<p>接收方：全部的 4 个 16 比特字（包括检验和）加在一起，若没有差错，接收方处该和将是 1111 1111 1111 1111。</p>
+<h3 id="可靠数据传输"><a href="#可靠数据传输" class="headerlink" title="可靠数据传输"></a>可靠数据传输</h3><h3 id="面向连接的运输：TCP"><a href="#面向连接的运输：TCP" class="headerlink" title="面向连接的运输：TCP"></a>面向连接的运输：TCP</h3><h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><ul>
+<li>子网、寻址（大氛围 -&gt; 小范围 -&gt; 节点）</li>
+<li>路由、行进算法（路由选择算法）：链路状态、距离向量、层次</li>
+<li>行进协议（路由选择协议，三种）：RIP、OSPF、BGP</li>
+<li>IPv4，IPv6</li>
+</ul>
+<h2 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h2><ul>
+<li>交换机的控制原理 </li>
+<li>VLAN</li>
+<li>MAC（中英文全程）</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>主要参考机械工业出版社《计算机网络自顶向下方法（第 6 版）》。</p>
 <p>其他参考资料：</p>
 <ul>
 <li><a href="https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md" target="_blank" rel="external">Interview-Notebook/计算机网络.md at master · CyC2018/Interview-Notebook</a></li>
@@ -1143,7 +1199,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络与因特网"><span class="nav-number">1.</span> <span class="nav-text">计算机网络与因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络核心"><span class="nav-number">1.1.</span> <span class="nav-text">网络核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换"><span class="nav-number">1.1.1.</span> <span class="nav-text">分组交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电路交换"><span class="nav-number">1.1.2.</span> <span class="nav-text">电路交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换与电路交换的对比"><span class="nav-number">1.1.3.</span> <span class="nav-text">分组交换与电路交换的对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组交换网中的时延、丢包和吞吐量"><span class="nav-number">1.2.</span> <span class="nav-text">分组交换网中的时延、丢包和吞吐量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协议层次及其服务模型"><span class="nav-number">1.3.</span> <span class="nav-text">协议层次及其服务模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层"><span class="nav-number">2.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非重点知识"><span class="nav-number">2.1.</span> <span class="nav-text">非重点知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-1-0-1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">HTTP 1.0 / 1.1</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#报文格式"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">报文格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie"><span class="nav-number">2.2.2.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-缓存"><span class="nav-number">2.2.3.</span> <span class="nav-text">Web 缓存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FTP"><span class="nav-number">2.3.</span> <span class="nav-text">FTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS"><span class="nav-number">2.4.</span> <span class="nav-text">DNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMTP"><span class="nav-number">2.5.</span> <span class="nav-text">SMTP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运输层"><span class="nav-number">3.</span> <span class="nav-text">运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多路复用和多路分解"><span class="nav-number">3.1.</span> <span class="nav-text">多路复用和多路分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无连接运输：UDP"><span class="nav-number">3.2.</span> <span class="nav-text">无连接运输：UDP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠数据传输"><span class="nav-number">3.3.</span> <span class="nav-text">可靠数据传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向连接的运输：TCP"><span class="nav-number">3.4.</span> <span class="nav-text">面向连接的运输：TCP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层"><span class="nav-number">4.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链路层"><span class="nav-number">5.</span> <span class="nav-text">链路层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络与因特网"><span class="nav-number">1.</span> <span class="nav-text">计算机网络与因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络核心"><span class="nav-number">1.1.</span> <span class="nav-text">网络核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换"><span class="nav-number">1.1.1.</span> <span class="nav-text">分组交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电路交换"><span class="nav-number">1.1.2.</span> <span class="nav-text">电路交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换与电路交换的对比"><span class="nav-number">1.1.3.</span> <span class="nav-text">分组交换与电路交换的对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组交换网中的时延、丢包和吞吐量"><span class="nav-number">1.2.</span> <span class="nav-text">分组交换网中的时延、丢包和吞吐量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协议层次及其服务模型"><span class="nav-number">1.3.</span> <span class="nav-text">协议层次及其服务模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层"><span class="nav-number">2.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非重点知识"><span class="nav-number">2.1.</span> <span class="nav-text">非重点知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-1-0-1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">HTTP 1.0 / 1.1</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#报文格式"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">报文格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-请求页面过程"><span class="nav-number">2.2.2.</span> <span class="nav-text">HTTP 请求页面过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie"><span class="nav-number">2.2.3.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-缓存"><span class="nav-number">2.2.4.</span> <span class="nav-text">Web 缓存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FTP"><span class="nav-number">2.3.</span> <span class="nav-text">FTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS"><span class="nav-number">2.4.</span> <span class="nav-text">DNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMTP"><span class="nav-number">2.5.</span> <span class="nav-text">SMTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP"><span class="nav-number">2.6.</span> <span class="nav-text">DHCP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运输层"><span class="nav-number">3.</span> <span class="nav-text">运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多路复用和多路分解"><span class="nav-number">3.1.</span> <span class="nav-text">多路复用和多路分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无连接运输：UDP"><span class="nav-number">3.2.</span> <span class="nav-text">无连接运输：UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP-差错检测——检验和"><span class="nav-number">3.2.1.</span> <span class="nav-text">UDP 差错检测——检验和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠数据传输"><span class="nav-number">3.3.</span> <span class="nav-text">可靠数据传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向连接的运输：TCP"><span class="nav-number">3.4.</span> <span class="nav-text">面向连接的运输：TCP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层"><span class="nav-number">4.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链路层"><span class="nav-number">5.</span> <span class="nav-text">链路层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
