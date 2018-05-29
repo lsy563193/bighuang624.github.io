@@ -118,7 +118,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-0b21e542874bff2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-b66e0182d94d57c0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2702529-32d23ca1dcb57f67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-27T09:37:55.205Z">
+<meta property="og:updated_time" content="2018-05-27T01:49:51.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="胶囊网络初探">
 <meta name="twitter:description" content="如果你有关注我的 Github，可以看到我和小伙伴们正在做一个中文短文本情感分析 web 应用。恰逢 WWW 2018 收录了一篇《Sentiment Analysis by Capsules》，借着这个机会了解一下“神经网络之父” Geoffrey Hinton 大神花费近十年心血的胶囊网络（Capsule Networks）。如果能够用于我们的应用中就更好了，即使因为缺少计算资源等原因而无法实">
@@ -486,7 +486,7 @@
 <p>以上问题导致的结果是，CNN 难以分类和辨识不同视角的同一物体。对于人类，即使你只看过几张自由女神像的照片，也能够轻松辨认不同角度的自由女神像。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/2702529-252e3955a7502bb9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自由女神.jpg"></p>
 <p>但对于 CNN，这个任务就非常困难了，因为它没有内建对三维空间的理解。它只能与以前训练过的照片进行对比，这导致训练 CNN 往往需要百万数量级的图像才能训练出较为精准的效果，并且当遇到角度奇怪的图像时分类正确率可能受到影响。最重要的是，我们知道神经网络本就是为了尽可能还原人脑的功能，但明显人类根本不需要对每个物体都看如此规模的图片才能学会辨认。</p>
-<h2 id="Why-Capsule？"><a href="#Why-Capsule？" class="headerlink" title="Why Capsule？"></a>Why Capsule？</h2><p>基于以上分析，尽管目前 CNN 的工作看似非常出色，但是它不会是未来。实际上，Hinton 早在 2011 年就提出 Capsule 的结构[2]，但是在当时还没有提出一种算法可以实现并成功学习胶囊网络。而在[1]中，Hinton 提出一种名为<strong>动态路由（Dynamic Routing）</strong>的算法解决了这个问题。</p>
+<h2 id="Why-Capsule？"><a href="#Why-Capsule？" class="headerlink" title="Why Capsule？"></a>Why Capsule？</h2><p>基于以上分析，尽管目前 CNN 看似效果非常出色，但是它不会是未来。实际上，Hinton 早在 2011 年就提出 Capsule 的结构[2]，但是在当时还没有提出一种算法可以实现并成功学习胶囊网络。而在[1]中，Hinton 提出一种名为<strong>动态路由（Dynamic Routing）</strong>的算法解决了这个问题。</p>
 <p>CNN 通过一层层的过滤，将信息一步步由下而上的进行抽象；而 Hinton 认为人类在识别图像时是遵循类似决策树的方式。Capsule 同样遵循这个结构的思路，每个活动的 Capsule 将选择一个上层的 Capsule 作为父节点。</p>
 <p>Capsule 更好地建模神经网络中内部知识表示的分层关系，这使得训练它所需的数据量大大降低。关键的一点是，Capsule 背后的直觉非常简单优雅，易于理解。尽管目前训练胶囊网络速度比起已经成熟的深度学习模型来说要慢很多，但是假以时日，也许胶囊网络能够在更多训练集上快速高效训练。</p>
 <h2 id="Capsule-的工作原理"><a href="#Capsule-的工作原理" class="headerlink" title="Capsule 的工作原理"></a>Capsule 的工作原理</h2><p>Capsule 的工作原理归纳成一句话就是，<strong>所有胶囊检测中的特征的状态的重要信息，都将以向量的形式（神经元输出的则是标量）被胶囊封装</strong>。</p>
