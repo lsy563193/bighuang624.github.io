@@ -119,11 +119,12 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/55dc4e84-573d-4c13-a765-52ed1dd251f9.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/e92d0ebc-7d46-413b-aec1-34a39602f787.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/f87afe72-c2df-4c12-ac03-9b8d581a8af8.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/pic-repo/master/TCP-congestion-control-algorithm.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/910f613f-514f-4534-87dd-9b4699d59d31.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/85c05fb1-5546-4c50-9221-21f231cdc8c5.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/23ba890e-e11c-45e2-a20c-64d217f83430.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/276c31df-3b28-4ac2-b006-1e80fc86a64f.jpg">
-<meta property="og:updated_time" content="2018-05-29T08:34:08.814Z">
+<meta property="og:updated_time" content="2018-05-29T15:27:40.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络复习笔记">
 <meta name="twitter:description" content="第三门复习的专业课是计算机网络。临近考试，因此首次发布时根据老师划的重点进行整理，后续更新时再进行补充。">
@@ -771,6 +772,7 @@
 <li><strong>拥塞避免</strong>（强制）<!--：进入此状态时，cwnd /= 2。每次收到确认只将 cwnd 的值增加 1 MSS-->；</li>
 <li><strong>快速恢复</strong>（推荐）<!--：对于引起进入快速恢复状态的缺失报文段，对收到的每个冗余 ACK，cwnd += 1 MSS。最终，当丢失报文段的一个 ACK 到达时，TCP 进入**拥塞避免**。若出现**超时**，则令 ssthresh = cwnd/2，然后执行慢启动。若出现**丢包**-->；</li>
 </ol>
+<p><img src="https://raw.githubusercontent.com/bighuang624/pic-repo/master/TCP-congestion-control-algorithm.jpg" alt=""></p>
 <p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/910f613f-514f-4534-87dd-9b4699d59d31.png" alt=""></p>
 <h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>网络层的作用是将在主机间传送分组，因此需要两种重要的网络层功能：</p>
 <ul>
