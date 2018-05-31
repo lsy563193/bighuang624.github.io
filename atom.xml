@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2018-05-31T02:36:00.189Z</updated>
+  <updated>2018-05-31T03:16:48.966Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kyonhuang.top/computer-networks-notes/"/>
     <id>http://kyonhuang.top/computer-networks-notes/</id>
     <published>2018-05-24T08:35:42.000Z</published>
-    <updated>2018-05-31T02:36:00.189Z</updated>
+    <updated>2018-05-31T03:16:48.966Z</updated>
     
     <content type="html"><![CDATA[<p>第三门复习的专业课是计算机网络。临近考试，因此首次发布时根据老师划的重点进行整理，后续更新时再进行补充。</p>
 <a id="more"></a>
@@ -33,8 +33,16 @@
 <h4 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h4><p>将长报文分成较小的数据块（称为分组），在源和目的地之间，每个分组都通过通信链路和<strong>分组交换机（packet switch）</strong>传送。</p>
 <p>分组交换机主要有两类：</p>
 <ul>
-<li><strong>路由器（router）</strong>：常用于网络核心中；</li>
-<li><strong>链路层（link-layer switch）</strong>：常用于接入网中。</li>
+<li><strong>路由器（router）</strong>：常用于网络核心中，网络中大于几千台主机时使用<ul>
+<li>优点：分组不会通过路由器循环；防火墙保护</li>
+<li>缺点：不是即插即用的；对每个分组处理时间更长</li>
+</ul>
+</li>
+<li><strong>链路层交换机（link-layer switch）</strong>：常用于接入网中，网络中小于几百台主机时使用<ul>
+<li>优点：即插即用；相对高的分组过滤和转发速率</li>
+<li>缺点：大型交换网络生成可观的 ARP 流量和处理量；对广播风暴不提供任何保护措施</li>
+</ul>
+</li>
 </ul>
 <p><strong>存储转发传输（store-and-forward transmission）</strong>：交换机能够开始向输出链路传输该分组的第一个比特之前，必须接收到整个分组。因此存在一定的存储转发时延。</p>
 <h4 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h4><p>每台主机都与一台交换机直连，当两台主机通信时，该网络在两台主机之间创建一条专用的<strong>端到端连接（end-to-end connection）</strong>。</p>
@@ -503,7 +511,7 @@ UPnP（通用即插即用）：允许主机发现并配置临近 NAT 协议-->
 <p><strong>载波侦听（carrier sensing）</strong>：一个结点在传输前先听信道，如果信道上有其他帧则等待。</p>
 <p><strong>碰撞检测（collision detection）</strong>：一个传输结点在传输时一直在侦听此信道，如果检测到另一个结点正在传输干扰帧，则停止传输，随机等待一段时间。</p>
 <h3 id="交换局域网"><a href="#交换局域网" class="headerlink" title="交换局域网"></a>交换局域网</h3><h4 id="链路层编址"><a href="#链路层编址" class="headerlink" title="链路层编址"></a>链路层编址</h4><p><strong>MAC 地址</strong>是节点（主机或路由器）的适配器具有的链路层地址，长度为 6 字节，具有扁平结构。</p>
-<p><strong>地址解析协议（Address Resolution Protocol）</strong>将 IP 地址转换为 MAC 地址。ARP 可看作跨越链路层和网络层两边的协议，并且是即插即用的，无需系统管理员配置。</p>
+<p><strong>地址解析协议（ARP，Address Resolution Protocol）</strong>将 IP 地址转换为 MAC 地址。ARP 可看作跨越链路层和网络层两边的协议，并且是即插即用的，无需系统管理员配置。</p>
 <p>发送方用 ARP 解析并在子网之内发送的工作流程：</p>
 <ol>
 <li>构造 ARP 分组，包括发送、接收 IP 地址和自己的 MAC 地址；</li>
