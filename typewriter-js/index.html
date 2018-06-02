@@ -103,18 +103,20 @@
 
 
 
-  <meta name="description" content="花旗杯的团队已经组好了。自己要加快学习进度，保证不拖组织的后腿。全力以赴，尽善尽美，希望最后能够有好的成绩。 这篇博文总结了《JavaScript高级程序设计》的13~14章：事件，表单脚本。">
-<meta name="keywords" content="读书笔记,JavaScipt,前端,《JavaScript高级程序设计》">
+  <meta name="description" content="大约两周前我在空间里发了一条说说，说感觉自己的创造力日渐枯竭。很多同学不以为然，实际上我是真的有这样的认知。我感觉自己在失去对代码之美的感知，而这种创造力的枯竭也一定程度影响着我的动手能力。我在看书、看视频，却不太愿意去写百度前端训练营里一些基础的代码（而且并不大会）。我安慰自己，我正在修炼内力，一旦出关便是绝世神功威震武林。然而事实是金庸小说中光有内力而不懂一点外家功夫的货，都只有乖乖挨揍的份，">
+<meta name="keywords" content="JavaScipt,前端,学习笔记,随笔,typewriter.js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《JavaScript高级程序设计》读书笔记（四）">
-<meta property="og:url" content="http://kyonhuang.top/JS-notes-4/index.html">
+<meta property="og:title" content="在把玩中学习——typewriter.js">
+<meta property="og:url" content="http://kyonhuang.top/typewriter-js/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="花旗杯的团队已经组好了。自己要加快学习进度，保证不拖组织的后腿。全力以赴，尽善尽美，希望最后能够有好的成绩。 这篇博文总结了《JavaScript高级程序设计》的13~14章：事件，表单脚本。">
+<meta property="og:description" content="大约两周前我在空间里发了一条说说，说感觉自己的创造力日渐枯竭。很多同学不以为然，实际上我是真的有这样的认知。我感觉自己在失去对代码之美的感知，而这种创造力的枯竭也一定程度影响着我的动手能力。我在看书、看视频，却不太愿意去写百度前端训练营里一些基础的代码（而且并不大会）。我安慰自己，我正在修炼内力，一旦出关便是绝世神功威震武林。然而事实是金庸小说中光有内力而不懂一点外家功夫的货，都只有乖乖挨揍的份，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-10T15:54:04.708Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/typewriter.jpg">
+<meta property="og:updated_time" content="2018-06-02T01:44:14.277Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记（四）">
-<meta name="twitter:description" content="花旗杯的团队已经组好了。自己要加快学习进度，保证不拖组织的后腿。全力以赴，尽善尽美，希望最后能够有好的成绩。 这篇博文总结了《JavaScript高级程序设计》的13~14章：事件，表单脚本。">
+<meta name="twitter:title" content="在把玩中学习——typewriter.js">
+<meta name="twitter:description" content="大约两周前我在空间里发了一条说说，说感觉自己的创造力日渐枯竭。很多同学不以为然，实际上我是真的有这样的认知。我感觉自己在失去对代码之美的感知，而这种创造力的枯竭也一定程度影响着我的动手能力。我在看书、看视频，却不太愿意去写百度前端训练营里一些基础的代码（而且并不大会）。我安慰自己，我正在修炼内力，一旦出关便是绝世神功威震武林。然而事实是金庸小说中光有内力而不懂一点外家功夫的货，都只有乖乖挨揍的份，">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/typewriter.jpg">
 
 
 
@@ -123,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://kyonhuang.top/JS-notes-4/"/>
+  <link rel="canonical" href="http://kyonhuang.top/typewriter-js/"/>
 
 
 
@@ -133,7 +135,7 @@
   };
 </script>
 
-  <title>《JavaScript高级程序设计》读书笔记（四） | 大黄菌的个人博客</title>
+  <title>在把玩中学习——typewriter.js | 大黄菌的个人博客</title>
   
 
 
@@ -369,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/JS-notes-4/">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/typewriter-js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kyon Huang">
@@ -386,7 +388,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《JavaScript高级程序设计》读书笔记（四）
+          <h1 class="post-title" itemprop="name headline">在把玩中学习——typewriter.js
               
             
           </h1>
@@ -405,7 +407,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T12:13:51+08:00">2017-03-12</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T11:28:32+08:00">2017-03-17</time>
             
 
             
@@ -426,7 +428,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端学习笔记/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a></span>
 
                 
                 
@@ -468,47 +470,23 @@
       
 
       
-        <p>花旗杯的团队已经组好了。自己要加快学习进度，保证不拖组织的后腿。全力以赴，尽善尽美，希望最后能够有好的成绩。</p>
-<p>这篇博文总结了《JavaScript高级程序设计》的13~14章：事件，表单脚本。</p>
-  <a id="more"></a>
-<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>1.<strong>事件流</strong>描述从页面接收事件的顺序。IE提出事件冒泡流，Netscape提出事件捕获流。</p>
-<p>2.<strong>事件冒泡</strong>：事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）。</p>
-<p>3.事件捕获：不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。由于老版本浏览器不支持，不推荐使用。</p>
-<p>4.“DOM2级事件”规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。</p>
-<h3 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h3><p>5.HTML事件处理程序：扩展作用域，在函数内部可以像访问局部变量一样访问document及该元素本身的成员。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Click Me"</span> <span class="attr">onclick</span>=<span class="string">"console.log(value)"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>如果是一个表单输入元素，则作用域中还会包含访问表单元素的入口。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Echo username"</span> <span class="attr">onclick</span>=<span class="string">"console.log(username.value)"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>缺点：(1)存在时差问题，函数被解析之前就触发事件会引发错误；(2)扩展处理程序的作用域链在不同浏览器中会导致不同结果；(3)HTML和JavaScript代码紧密耦合。</p>
-<p>6.DOM0级事件处理程序：每个元素都有自己的事件处理程序属性，将其设置为一个函数，就可以指定事件处理程序。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绑定事件处理程序</span></div><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.id);  <span class="comment">// "myBtn"</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 删除事件处理程序</span></div><div class="line">btn.onclick = <span class="literal">null</span>;</div></pre></td></tr></table></figure>
-<p>以这种方式添加的事件处理程序会在事件流的冒泡阶段被处理。</p>
-<p>7.DOM2级事件处理程序：<code>addEventListener()</code>和<code>removeEventListener()</code>，接受3个参数：要处理的事件名、事件处理程序函数和一个布尔值（true表示在捕获阶段调用事件处理程序，默认为false表示冒泡阶段调用）。</p>
-<p>移除时传入的参数与添加处理程序时使用的参数相同，意味着通过<code>addEventListener()</code>添加的匿名函数无法移除。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">byn.addEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>);</div><div class="line">...</div><div class="line">btn.removeEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>);  <span class="comment">// 有效</span></div></pre></td></tr></table></figure>
-<p>8.IE事件处理程序：<code>attachEvent()</code>和<code>detachEvent()</code>，接收两个参数：要处理的事件名、事件处理程序函数。事件处理程序被添加到冒泡阶段，在全局作用域中运行（this 等于 window）。支持IE事件处理程序的浏览器有 IE 和 Opera。</p>
-<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><p>9.在触发DOM上的某个事件时，会产生一个事件对象event，这个对象包含着所有与事件有关的信息。只有在事件处理程序执行期间，event 对象才会存在；一旦事件处理程序执行完成，event 对象就会被销毁。</p>
-<p>10.属性/方法：</p>
-<ul>
-<li>currentTarget：正在处理事件的那个元素。</li>
-<li>target：事件的目标。</li>
-<li>type：事件类型。</li>
-<li>cancelable：可以阻止特定事件的默认行为。</li>
-<li>preventDefault()：阻止特定事件的默认行为。</li>
-<li>stopPropagation()：停止事件在DOM层次中的传播，即取消进一步的事件捕获或冒泡。</li>
-<li>eventPhase：调用事件处理程序的阶段：捕获阶段为1，处于目标对象为2，冒泡阶段为3。</li>
-</ul>
-<h3 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h3><p>11.“DOM3级事件”规定了以下几类事件：</p>
-<ul>
-<li>UI（用户界面）事件，当用户与页面上的元素交互时触发：<code>load</code>、<code>unload</code>、<code>resize</code>、<code>scroll</code>。</li>
-<li>焦点事件，当元素获得或失去焦点时触发。</li>
-<li>鼠标与滚轮事件：<code>click</code>、<code>dblclick</code>、<code>mousedown</code>、<code>mouseenter</code>、<code>mouseleave</code>、<code>mouseout</code>、<code>mouseover</code>、<code>mouseup</code>。</li>
-<li>键盘与文本事件：<code>keydown</code>、<code>keypress</code>、<code>keyup</code>、<code>textInput</code>。</li>
-<li>复合事件，用于处理IME（输入法编辑器，让用户输入在物理键盘上找不到的字符）的输入序列。</li>
-<li>变动事件，当DOM中的某一部分发生变化时给出提示。</li>
-</ul>
-<h3 id="内存和性能"><a href="#内存和性能" class="headerlink" title="内存和性能"></a>内存和性能</h3><p>to be continued..</p>
-<h2 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h2><p>to be continued..</p>
+        <p>大约两周前我在空间里发了一条说说，说感觉自己的创造力日渐枯竭。很多同学不以为然，实际上我是真的有这样的认知。我感觉自己在失去对代码之美的感知，而这种创造力的枯竭也一定程度影响着我的动手能力。我在看书、看视频，却不太愿意去写百度前端训练营里一些基础的代码（而且并不大会）。我安慰自己，我正在修炼内力，一旦出关便是绝世神功威震武林。然而事实是金庸小说中光有内力而不懂一点外家功夫的货，都只有乖乖挨揍的份，至于之后能否成功报仇又是两说。就像我昨天想写一个很简单的动画效果，却最终一筹莫展，只能暂时放弃。</p>
+<p>好吧，让我把自己从枯燥的读书笔记中暂时解放出来吧。正好有一个有趣的小 demo，从我还没有打算系统学习前端开发时就躺在收藏夹里了。不妨把玩一下，看看别人能凭借着兴趣写出怎样有意思的小东西。</p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/typewriter.jpg"></p>
+<a id="more"></a>
+<p>这个有打字和仿光标闪烁效果的 <a href="http://www.jq22.com/jquery-info6035" target="_blank" rel="external">typewriter.js</a> 好像是我在看什么“程序员表白利器”时加到收藏夹里的。现在学习了 js，敢看看源码了，发现 js 代码只有20行不到。作者说：“原生JavaScript就是这么牛。”确实是这样的。虽然效果也很简单，但也能从里面学到一些东西。</p>
+<p>HTML 源代码（大致结构）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"mainDiv"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"code"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"comments"</span>&gt;</span>/**<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"space"</span>/&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"comments"</span>&gt;</span>* We are both XXX Unversity  business administration and programmers,<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"space"</span>/&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"comments"</span>&gt;</span>* so I write some code to show my love to you.<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line"> <span class="built_in">document</span>.getElementById(<span class="string">"code"</span>).typewriter();</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>JavaScript 源代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Element.prototype.typewriter=<span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;</div><div class="line">			<span class="keyword">var</span> d = <span class="keyword">this</span>,</div><div class="line">				c = d.innerHTML,</div><div class="line">				b = <span class="number">0</span>;</div><div class="line">			d.innerHTML=<span class="string">""</span>;</div><div class="line">			<span class="keyword">var</span> e = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">				<span class="keyword">var</span> f = c.substr(b, <span class="number">1</span>);</div><div class="line">				<span class="keyword">if</span> (f == <span class="string">"&lt;"</span>) &#123;</div><div class="line">					b = c.indexOf(<span class="string">"&gt;"</span>, b) + <span class="number">1</span></div><div class="line">				&#125; <span class="keyword">else</span> &#123;</div><div class="line">					b++</div><div class="line">				&#125;</div><div class="line">				d.innerHTML=c.substring(<span class="number">0</span>, b) + (b &amp; <span class="number">1</span> ? <span class="string">"_"</span> : <span class="string">""</span>);</div><div class="line">				<span class="keyword">if</span> (b &gt;= c.length) &#123;</div><div class="line">					clearInterval(e)</div><div class="line">				&#125;</div><div class="line">			&#125;, <span class="number">75</span>)</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span></div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>在这份 js 代码中可以学习的点：</p>
+<ol>
+<li><strong>原型模式定义方法</strong>：给 Element 添加实例方法<code>typewriter()</code>（在 html 文件中调用），这里有一个参数 a，实际上没什么用。顺便一说，源码在 head 处引入了 js 文件，这是为了先加载 js 文件。如果按照代码规范将引入放在 body 部分的最后，则有一瞬间所有字先出现再消失，不符合效果要求。可见代码规范也要根据实际来遵守。</li>
+<li>声明三个变量，d 保存当前对象（”code”）。这个操作是必要的，因为后面要给 “code” 的 innerHTML 赋值的时候有时在函数作用域中，this 取不到 “code”。</li>
+<li>代码逻辑很清晰，包括对标签的处理、光标效果的实现和定时器的清除等。要对自己想要实现的效果有一个全面的认知和大致的构思再开始写代码。</li>
+<li>末尾<code>return this</code>以<strong>支持链式操作</strong>。</li>
+</ol>
+<p>想要用功能强大的JavaScript实现一些小效果不难，但是怎样一步步规划、修改到实现对现在的我来说还是比较有挑战性的。希望自己能在欣赏、借鉴、吸收的过程中去实现一些有趣的 demo，重拾对代码的兴趣和创造力。</p>
 
       
     </div>
@@ -530,7 +508,7 @@
     <strong>本文作者： </strong>Kyon Huang</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kyonhuang.top/JS-notes-4/" title="《JavaScript高级程序设计》读书笔记（四）">http://kyonhuang.top/JS-notes-4/</a>
+    <a href="http://kyonhuang.top/typewriter-js/" title="在把玩中学习——typewriter.js">http://kyonhuang.top/typewriter-js/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -543,13 +521,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
-          
             <a href="/tags/JavaScipt/" rel="tag"># JavaScipt</a>
           
             <a href="/tags/前端/" rel="tag"># 前端</a>
           
-            <a href="/tags/《JavaScript高级程序设计》/" rel="tag"># 《JavaScript高级程序设计》</a>
+            <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
+          
+            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+          
+            <a href="/tags/typewriter-js/" rel="tag"># typewriter.js</a>
           
         </div>
       
@@ -577,8 +557,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/JS-notes-3/" rel="next" title="《JavaScript高级程序设计》读书笔记（三）">
-                <i class="fa fa-chevron-left"></i> 《JavaScript高级程序设计》读书笔记（三）
+              <a href="/js-advanced-programming-notes-5/" rel="next" title="《JavaScript高级程序设计》读书笔记（五）">
+                <i class="fa fa-chevron-left"></i> 《JavaScript高级程序设计》读书笔记（五）
               </a>
             
           </div>
@@ -587,8 +567,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/JS-notes-5/" rel="prev" title="《JavaScript高级程序设计》读书笔记（五）">
-                《JavaScript高级程序设计》读书笔记（五） <i class="fa fa-chevron-right"></i>
+              <a href="/js-lexical-scope/" rel="prev" title="探究JS中的词法作用域">
+                探究JS中的词法作用域 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -638,17 +618,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1011,22 +982,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">1.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流"><span class="nav-number">1.1.</span> <span class="nav-text">事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件处理程序"><span class="nav-number">1.2.</span> <span class="nav-text">事件处理程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件对象"><span class="nav-number">1.3.</span> <span class="nav-text">事件对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件类型"><span class="nav-number">1.4.</span> <span class="nav-text">事件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存和性能"><span class="nav-number">1.5.</span> <span class="nav-text">内存和性能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单脚本"><span class="nav-number">2.</span> <span class="nav-text">表单脚本</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

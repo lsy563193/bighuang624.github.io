@@ -2,9 +2,114 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://kyonhuang.top/computer-networks-notes/</loc>
+    <loc>http://kyonhuang.top/promise/</loc>
     
-    <lastmod>2018-05-31T03:16:48.966Z</lastmod>
+    <lastmod>2018-06-02T01:45:38.253Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/generator-and-async/</loc>
+    
+    <lastmod>2018-06-02T01:44:51.722Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/sublime-text-learning/</loc>
+    
+    <lastmod>2018-06-02T01:44:31.243Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/typewriter-js/</loc>
+    
+    <lastmod>2018-06-02T01:44:14.277Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/recent-and-will/</loc>
+    
+    <lastmod>2018-06-02T01:43:22.932Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/bye2016hello2017/</loc>
+    
+    <lastmod>2018-06-02T01:43:16.861Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/biliInfoCrawler/</loc>
+    
+    <lastmod>2018-06-02T01:41:46.671Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/js-advanced-programming-notes-5/</loc>
+    
+    <lastmod>2018-06-02T01:38:58.032Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/js-advanced-programming-notes-4/</loc>
+    
+    <lastmod>2018-06-02T01:38:37.592Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/js-advanced-programming-notes-3/</loc>
+    
+    <lastmod>2018-06-02T01:38:31.070Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/js-advanced-programming-notes-1/</loc>
+    
+    <lastmod>2018-06-02T01:38:11.825Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/js-advanced-programming-notes-2/</loc>
+    
+    <lastmod>2018-06-02T01:37:33.448Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/you-dont-know-js-notes-1/</loc>
+    
+    <lastmod>2018-06-02T01:36:37.010Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/computer-network-notes/</loc>
+    
+    <lastmod>2018-06-02T01:36:03.493Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/operating-system-notes/</loc>
+    
+    <lastmod>2018-06-02T01:35:24.479Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyonhuang.top/fundamentals-of-compiling-notes/</loc>
+    
+    <lastmod>2018-06-02T01:35:20.310Z</lastmod>
     
   </url>
   
@@ -26,20 +131,6 @@
     <loc>http://kyonhuang.top/1605-05101-notes/</loc>
     
     <lastmod>2018-05-27T01:33:05.394Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/fundamentals-of-compiling-notes/</loc>
-    
-    <lastmod>2018-05-24T02:26:36.124Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/operating-system-notes/</loc>
-    
-    <lastmod>2018-05-24T02:03:25.688Z</lastmod>
     
   </url>
   
@@ -68,27 +159,6 @@
     <loc>http://kyonhuang.top/intro-to-data-preprocessing/</loc>
     
     <lastmod>2018-05-15T11:59:24.435Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-5/</loc>
-    
-    <lastmod>2018-05-10T15:55:50.566Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-3/</loc>
-    
-    <lastmod>2018-05-10T15:54:38.271Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-4/</loc>
-    
-    <lastmod>2018-05-10T15:54:04.708Z</lastmod>
     
   </url>
   
@@ -198,13 +268,6 @@
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/typewriter/</loc>
-    
-    <lastmod>2018-04-08T11:38:26.467Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kyonhuang.top/start-to-learn-NodeJS/</loc>
     
     <lastmod>2018-04-08T11:27:32.004Z</lastmod>
@@ -261,23 +324,9 @@
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/bye2016hello2017/</loc>
-    
-    <lastmod>2017-12-23T04:27:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kyonhuang.top/ANTLR-learning-notes-3/</loc>
     
     <lastmod>2017-12-22T12:27:45.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/sublime-text-learning/</loc>
-    
-    <lastmod>2017-12-21T12:31:39.000Z</lastmod>
     
   </url>
   
@@ -296,23 +345,9 @@
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/JS-notes-2/</loc>
-    
-    <lastmod>2017-09-30T10:23:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kyonhuang.top/cup-doubleWings/</loc>
     
     <lastmod>2017-09-30T07:32:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/recent-and-will/</loc>
-    
-    <lastmod>2017-09-28T08:34:43.000Z</lastmod>
     
   </url>
   
@@ -338,13 +373,6 @@
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/Generator-and-async/</loc>
-    
-    <lastmod>2017-09-20T06:59:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kyonhuang.top/es6-2-notes/</loc>
     
     <lastmod>2017-09-12T20:35:15.000Z</lastmod>
@@ -359,23 +387,9 @@
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/biliInfoCrawler/</loc>
-    
-    <lastmod>2017-09-09T08:56:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kyonhuang.top/relax-and-think/</loc>
     
     <lastmod>2017-08-29T11:05:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/JS-notes-1/</loc>
-    
-    <lastmod>2017-08-25T13:03:03.000Z</lastmod>
     
   </url>
   
@@ -401,23 +415,9 @@
   </url>
   
   <url>
-    <loc>http://kyonhuang.top/promise/</loc>
-    
-    <lastmod>2017-08-23T01:58:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kyonhuang.top/something-about-overflow/</loc>
     
     <lastmod>2017-08-23T01:20:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kyonhuang.top/You-Dont-Know-JS-notes-1/</loc>
-    
-    <lastmod>2017-07-27T12:38:03.000Z</lastmod>
     
   </url>
   
