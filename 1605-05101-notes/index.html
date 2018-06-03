@@ -118,7 +118,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-ii.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/results-of-model-iii.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/compare-to-state-of-the-art.png">
-<meta property="og:updated_time" content="2018-05-27T01:33:05.394Z">
+<meta property="og:updated_time" content="2018-06-03T12:34:15.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Recurrent Neural Network for Text Classification with Multi-Task Learning》阅读笔记">
 <meta name="twitter:description" content="原文链接：Recurrent Neural Network for Text Classification with Multi-Task Learning 文章来源：IJCAI 2016 简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。 研究概况研究背景假设多个任务之间具有相关性，多任务学习利用任务之间的相关性相互促进，通过">
@@ -508,10 +508,10 @@
 </ol>
 <h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/datasets.png" alt=""></p>
 <ul>
-<li>SST-1：5个情绪类别的电影影评，来自斯坦福情感数据库</li>
-<li>SST-2：2分类电影影评，来自斯坦福数据库</li>
+<li>SST-1：5 个情绪类别的电影影评，来自斯坦福情感数据库</li>
+<li>SST-2：二分类电影影评，来自斯坦福数据库</li>
 <li>SUBJ：主观性数据集，任务目的是将句子分为主观和客观</li>
-<li>IMDB：2分类的电影影评，大多数评价为长句子</li>
+<li>IMDB：二分类的电影影评，大多数评价为长句子</li>
 </ul>
 <h3 id="超参数与训练"><a href="#超参数与训练" class="headerlink" title="超参数与训练"></a>超参数与训练</h3><p>使用 word2vec 在维基语料获得词向量，字典规模约 500,000。词嵌入在训练过程中被微调以提高性能；其他参数在 [-0.1, 0.1] 的范围随机采样，超参数将选择在验证集上性能最好的一组。对于没有验证集的数据集使用 10 折交叉验证。</p>
 <p>特定任务和共享层的嵌入大小为 64。对于模型一，每个单词有两个嵌入，大小都为 64。LSTM 的隐藏层大小为 50。初始学习率为 0.1。参数的正则化权值为 10^-5。</p>
@@ -535,8 +535,9 @@
 <li>一些含有非常复杂的结构的句子不能被适当处理，例如二次否定、虚拟语气。对于这些情况，在结构上可以做一些改进，比如基于树的 LSTM；</li>
 <li>某些句子难以从书面意思判断其情绪，例如“I tried to read the time on my watch.”</li>
 </ol>
-<h2 id="个人疑惑"><a href="#个人疑惑" class="headerlink" title="个人疑惑"></a>个人疑惑</h2><p>state-of-the-art 是参考别人论文的数据，还是自己实现？如何保证自己编写程序实现的效果达到别人论文的水平（如何判断是自己的问题还是别人论文有误）？state-of-the-art 是选择数次实验的平均值还是数次实验中的最大值？多少次实验是足够的最低值？</p>
+<!--## 个人疑惑
 
+state-of-the-art 是参考别人论文的数据，还是自己实现？如何保证自己编写程序实现的效果达到别人论文的水平（如何判断是自己的问题还是别人论文有误）？state-of-the-art 是选择数次实验的平均值还是数次实验中的最大值？多少次实验是足够的最低值？-->
       
     </div>
 
@@ -1046,7 +1047,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#研究概况"><span class="nav-number">1.</span> <span class="nav-text">研究概况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#研究背景"><span class="nav-number">1.1.</span> <span class="nav-text">研究背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前人工作和不足"><span class="nav-number">1.2.</span> <span class="nav-text">前人工作和不足</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本文工作"><span class="nav-number">1.3.</span> <span class="nav-text">本文工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体细节"><span class="nav-number">2.</span> <span class="nav-text">具体细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构"><span class="nav-number">2.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-number">2.2.</span> <span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集"><span class="nav-number">2.3.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超参数与训练"><span class="nav-number">2.4.</span> <span class="nav-text">超参数与训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果比较"><span class="nav-number">2.5.</span> <span class="nav-text">结果比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与-state-of-the-art-相比较"><span class="nav-number">2.6.</span> <span class="nav-text">与 state-of-the-art 相比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解模型"><span class="nav-number">2.7.</span> <span class="nav-text">了解模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误分析"><span class="nav-number">2.8.</span> <span class="nav-text">错误分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人疑惑"><span class="nav-number">3.</span> <span class="nav-text">个人疑惑</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#研究概况"><span class="nav-number">1.</span> <span class="nav-text">研究概况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#研究背景"><span class="nav-number">1.1.</span> <span class="nav-text">研究背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前人工作和不足"><span class="nav-number">1.2.</span> <span class="nav-text">前人工作和不足</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本文工作"><span class="nav-number">1.3.</span> <span class="nav-text">本文工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体细节"><span class="nav-number">2.</span> <span class="nav-text">具体细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构"><span class="nav-number">2.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-number">2.2.</span> <span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集"><span class="nav-number">2.3.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超参数与训练"><span class="nav-number">2.4.</span> <span class="nav-text">超参数与训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果比较"><span class="nav-number">2.5.</span> <span class="nav-text">结果比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与-state-of-the-art-相比较"><span class="nav-number">2.6.</span> <span class="nav-text">与 state-of-the-art 相比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解模型"><span class="nav-number">2.7.</span> <span class="nav-text">了解模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误分析"><span class="nav-number">2.8.</span> <span class="nav-text">错误分析</span></a></li></ol></li></ol></div>
             
 
           </div>

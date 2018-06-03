@@ -403,7 +403,7 @@
     <link href="http://kyonhuang.top/1605-05101-notes/"/>
     <id>http://kyonhuang.top/1605-05101-notes/</id>
     <published>2018-05-10T14:02:13.000Z</published>
-    <updated>2018-05-27T01:33:05.394Z</updated>
+    <updated>2018-06-03T12:34:15.003Z</updated>
     
     <content type="html"><![CDATA[<p>原文链接：<a href="http://www.ijcai.org/Proceedings/16/Papers/408.pdf" target="_blank" rel="external">Recurrent Neural Network for Text Classification with Multi-Task Learning</a></p>
 <p>文章来源：IJCAI 2016</p>
@@ -437,10 +437,10 @@
 </ol>
 <h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/1605-05101/datasets.png" alt=""></p>
 <ul>
-<li>SST-1：5个情绪类别的电影影评，来自斯坦福情感数据库</li>
-<li>SST-2：2分类电影影评，来自斯坦福数据库</li>
+<li>SST-1：5 个情绪类别的电影影评，来自斯坦福情感数据库</li>
+<li>SST-2：二分类电影影评，来自斯坦福数据库</li>
 <li>SUBJ：主观性数据集，任务目的是将句子分为主观和客观</li>
-<li>IMDB：2分类的电影影评，大多数评价为长句子</li>
+<li>IMDB：二分类的电影影评，大多数评价为长句子</li>
 </ul>
 <h3 id="超参数与训练"><a href="#超参数与训练" class="headerlink" title="超参数与训练"></a>超参数与训练</h3><p>使用 word2vec 在维基语料获得词向量，字典规模约 500,000。词嵌入在训练过程中被微调以提高性能；其他参数在 [-0.1, 0.1] 的范围随机采样，超参数将选择在验证集上性能最好的一组。对于没有验证集的数据集使用 10 折交叉验证。</p>
 <p>特定任务和共享层的嵌入大小为 64。对于模型一，每个单词有两个嵌入，大小都为 64。LSTM 的隐藏层大小为 50。初始学习率为 0.1。参数的正则化权值为 10^-5。</p>
@@ -464,8 +464,9 @@
 <li>一些含有非常复杂的结构的句子不能被适当处理，例如二次否定、虚拟语气。对于这些情况，在结构上可以做一些改进，比如基于树的 LSTM；</li>
 <li>某些句子难以从书面意思判断其情绪，例如“I tried to read the time on my watch.”</li>
 </ol>
-<h2 id="个人疑惑"><a href="#个人疑惑" class="headerlink" title="个人疑惑"></a>个人疑惑</h2><p>state-of-the-art 是参考别人论文的数据，还是自己实现？如何保证自己编写程序实现的效果达到别人论文的水平（如何判断是自己的问题还是别人论文有误）？state-of-the-art 是选择数次实验的平均值还是数次实验中的最大值？多少次实验是足够的最低值？</p>
-]]></content>
+<!--## 个人疑惑
+
+state-of-the-art 是参考别人论文的数据，还是自己实现？如何保证自己编写程序实现的效果达到别人论文的水平（如何判断是自己的问题还是别人论文有误）？state-of-the-art 是选择数次实验的平均值还是数次实验中的最大值？多少次实验是足够的最低值？-->]]></content>
     
     <summary type="html">
     
