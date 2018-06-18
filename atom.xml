@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2018-06-17T09:10:02.662Z</updated>
+  <updated>2018-06-17T11:46:35.502Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -16,11 +16,130 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>面向对象程序设计复习笔记</title>
+    <link href="http://kyonhuang.top/OOP-notes/"/>
+    <id>http://kyonhuang.top/OOP-notes/</id>
+    <published>2018-06-18T00:24:35.000Z</published>
+    <updated>2018-06-17T11:46:35.502Z</updated>
+    
+    <content type="html"><![CDATA[<p>作为一个软件工程的大三学生，如果要求我立刻回答“面向对象程序设计是什么？”、“面向对象的特性是什么？”等问题，我想我是难以做到的。这是因为我们专业的“面向对象程序设计”这一门课程后有一个“(Java)”，在上这门课的时候我们可能更多地关注 Java 语法，而忽略了面向对象程序设计思想的一些精髓。实际上这些精髓映射出的是软件工程发展过程的智慧成果，只是当时我们什么也不懂。而面向对象程序设计的思想及设计模式的韵味则需要更大的代码量才能一探究竟。总之，这篇复习笔记会比较简洁地重温一下这些精髓的概念，真正去理解面向对象的思想，才会发现这些概念的设计精妙之处。</p>
+<h3 id="概念重温"><a href="#概念重温" class="headerlink" title="概念重温"></a>概念重温</h3><ul>
+<li><strong>对象</strong>：一个自包含的实体，用一组可识别的特性和行为来标识。</li>
+<li><strong>类</strong>：具有相同的属性和功能的对象的抽象的集合。</li>
+<li><strong>实例化</strong>：创建对象的过程。</li>
+<li><strong>方法重载</strong>：提供创建同名的多个方法的能力，但这些方法需使用不同的参数类型。好处是在不改变原方法的基础上，新增功能。</li>
+</ul>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><p>面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。在 OOP 中，<strong>不必关心对象的具体实现，只要能够满足用户的需求即可</strong>。</p>
+<p>传统的结构化程序设计通过设计一系列的<strong>过程</strong>（即算法）来求解问题，首先确定如何操作数据，然后再决定如何组织数据。而 OOP 则把数据放在第一位，然后再考虑操作数据的算法。</p>
+<h3 id="面向对象的好处"><a href="#面向对象的好处" class="headerlink" title="面向对象的好处"></a>面向对象的好处</h3><p><strong>封装、继承、多态</strong>，<strong>面向对象的三大特性</strong>降低了程序的耦合度，从而存在以下优点：</p>
+<ul>
+<li>可维护</li>
+<li>可复用</li>
+<li>可扩展</li>
+<li>灵活性好</li>
+</ul>
+<a id="more"></a>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p><strong>封装（encapsulation）</strong>指每个对象都包含它能进行操作所需要的所有信息，因此对象不必依赖其他对象来完成自己的操作。</p>
+<p>实现封装的关键在于绝对不能让类中的方法直接地访问其他类的实例域，程序仅通过对象的方法与对象数据进行交互。</p>
+<p>优点：</p>
+<ol>
+<li>良好的封装能减少耦合；</li>
+<li>类内部的实现可以自由修改；</li>
+<li>类具有清晰的对外接口。</li>
+</ol>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p><strong>继承（inheritance）</strong>定义了类如何相互关联，共享特性。继承的工作方式是，定义父类和子类，其中子类不但继承父类所有特性，还可以定义新的特性。</p>
+<p>在 Java 中，继承通过关键字<code>extends</code>实现。有些语言（如 C++）允许一个类有多个父类（称为多继承），而 Java 不支持多继承，而是选择用接口提供多继承的好处，并避免多继承的复杂性和低效性。</p>
+<p>如果子类继承于父类：</p>
+<ol>
+<li>子类拥有父类非<code>private</code>的属性和功能；</li>
+<li>子类具有自己的属性和功能；</li>
+<li>子类还可以以自己的方式实现父类的功能（<strong>方法重写</strong>）。</li>
+</ol>
+<p>优点：</p>
+<ol>
+<li>使得所有子类公共部分都放在父类，使得代码得到共享，避免重复；</li>
+<li>继承可使得修改或扩展继承而来的实现都较为容易。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>继承是一种类与类之间<strong>强耦合</strong>的关系。父类变，子类不得不变；</li>
+<li>继承会破坏保障，父类实现细节暴露给子类。</li>
+</ol>
+<p>如果想要阻止某个类或方法被继承，可以使用<code>final</code>修饰符。</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p><strong>多态</strong>表示不同的对象可以执行相同的动作，但要通过它们自己的实现代码来执行。</p>
+<ol>
+<li>子类以父类的身份出现；</li>
+<li>子类在工作时以自己的方式来实现；</li>
+<li>子类以父类的身份出现时，子类特有的属性和方法不可以使用。</li>
+</ol>
+<p>多态的原理是当方法被调用时，无论对象是否被转换为其父类，都只有位于对象继承链最末端的方法实现会被调用。</p>
+<p>实现多态的技术称为<strong>动态绑定（dynamic binding）</strong>，是指在执行期间判断所引用对象的实际类型，根据其实际的类型调用其相应的方法。</p>
+<ul>
+<li>静态绑定发生在编译时期，动态绑定发生在运行时；</li>
+<li>使用<code>private</code>或<code>static</code>或<code>final</code>修饰的变量或者方法，使用静态绑定。而虚方法（可以被子类重写的方法）则会根据运行时的对象进行动态绑定；</li>
+<li>静态绑定使用类信息来完成，而动态绑定则需要使用对象信息来完成；</li>
+<li>重载（Overload）的方法使用静态绑定完成，而重写（Override）的方法则使用动态绑定完成。</li>
+</ul>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p>Java 中，使用<code>abstract</code>可以声明一个<strong>抽象方法</strong>。为了提高程序的清晰度，包含一个或多个抽象方法的类本身必须被声明为<strong>抽象类</strong>。除了抽象方法之外，抽象类还可以包含具体数据和具体方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String n)</span> </span>&#123;</div><div class="line">        name = n;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">getDescription</span><span class="params">()</span></span>;  <span class="comment">// 无需实现</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>抽象方法充当着占位的角色，具体实现在子类中。若子类没有全部实现抽象方法，则子类也必须被声明为抽象类。</p>
+<p>抽象类不能被实例化，但是可以定义一个抽象类的<strong>对象变量</strong>并引用非抽象子类的对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Person p = <span class="keyword">new</span> Student(<span class="string">"Kyon Huang"</span>, <span class="string">"Software Engineering"</span>);</div></pre></td></tr></table></figure>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p><strong>接口（interface）</strong>是对类的一组需求描述，主要用来描述类具有什么功能，而并不给出每个功能的具体实现。一个类可以<strong>实现（implement）</strong>一个或多个接口，并在需要接口的地方，随时使用实现了相应接口的对象。</p>
+<p>例如，<code>Arrays</code>类中的<code>sort</code>方法承诺可以对对象数组进行排序，但前提是对象所属的类必须实现了<code>Comparable</code>接口。<code>Comparable</code>接口的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="comment">// 接口中所有方法自动为 public，不必提供关键字</span></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T other)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为了让类实现一个接口，通常需要下面两个步骤：</p>
+<ol>
+<li>将类声明为实现给定的接口（使用关键字<code>implements</code>）；</li>
+<li>对接口中的所有方法进行定义。</li>
+</ol>
+<p>在上例中，让<code>Employee</code>类实现<code>Comparable</code>接口，则有：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Employee</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Employee other)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Double.compare(salary, other.salary);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接口不是类，不能使用<code>new</code>运算符实例化一个接口。但是可以声明接口的变量，并引用实现了接口的类对象。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>《Java 核心技术卷 I》</li>
+<li>《大话设计模式》</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;作为一个软件工程的大三学生，如果要求我立刻回答“面向对象程序设计是什么？”、“面向对象的特性是什么？”等问题，我想我是难以做到的。这是因为我们专业的“面向对象程序设计”这一门课程后有一个“(Java)”，在上这门课的时候我们可能更多地关注 Java 语法，而忽略了面向对象程序设计思想的一些精髓。实际上这些精髓映射出的是软件工程发展过程的智慧成果，只是当时我们什么也不懂。而面向对象程序设计的思想及设计模式的韵味则需要更大的代码量才能一探究竟。总之，这篇复习笔记会比较简洁地重温一下这些精髓的概念，真正去理解面向对象的思想，才会发现这些概念的设计精妙之处。&lt;/p&gt;
+&lt;h3 id=&quot;概念重温&quot;&gt;&lt;a href=&quot;#概念重温&quot; class=&quot;headerlink&quot; title=&quot;概念重温&quot;&gt;&lt;/a&gt;概念重温&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;对象&lt;/strong&gt;：一个自包含的实体，用一组可识别的特性和行为来标识。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;类&lt;/strong&gt;：具有相同的属性和功能的对象的抽象的集合。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实例化&lt;/strong&gt;：创建对象的过程。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;方法重载&lt;/strong&gt;：提供创建同名的多个方法的能力，但这些方法需使用不同的参数类型。好处是在不改变原方法的基础上，新增功能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;面向对象&quot;&gt;&lt;a href=&quot;#面向对象&quot; class=&quot;headerlink&quot; title=&quot;面向对象&quot;&gt;&lt;/a&gt;面向对象&lt;/h3&gt;&lt;p&gt;面向对象的程序是由对象组成的，每个对象包含对用户公开的特定功能部分和隐藏的实现部分。在 OOP 中，&lt;strong&gt;不必关心对象的具体实现，只要能够满足用户的需求即可&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;传统的结构化程序设计通过设计一系列的&lt;strong&gt;过程&lt;/strong&gt;（即算法）来求解问题，首先确定如何操作数据，然后再决定如何组织数据。而 OOP 则把数据放在第一位，然后再考虑操作数据的算法。&lt;/p&gt;
+&lt;h3 id=&quot;面向对象的好处&quot;&gt;&lt;a href=&quot;#面向对象的好处&quot; class=&quot;headerlink&quot; title=&quot;面向对象的好处&quot;&gt;&lt;/a&gt;面向对象的好处&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;封装、继承、多态&lt;/strong&gt;，&lt;strong&gt;面向对象的三大特性&lt;/strong&gt;降低了程序的耦合度，从而存在以下优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可维护&lt;/li&gt;
+&lt;li&gt;可复用&lt;/li&gt;
+&lt;li&gt;可扩展&lt;/li&gt;
+&lt;li&gt;灵活性好&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="学科补完计划" scheme="http://kyonhuang.top/categories/%E5%AD%A6%E7%A7%91%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/"/>
+    
+    
+      <category term="Java" scheme="http://kyonhuang.top/tags/Java/"/>
+    
+      <category term="面向对象程序设计" scheme="http://kyonhuang.top/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="软件工程" scheme="http://kyonhuang.top/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《基于 Web 的问答系统综述》阅读笔记</title>
     <link href="http://kyonhuang.top/survey-on-web-based-question-answering-notes/"/>
     <id>http://kyonhuang.top/survey-on-web-based-question-answering-notes/</id>
     <published>2018-06-17T09:10:59.000Z</published>
-    <updated>2018-06-17T09:10:02.662Z</updated>
+    <updated>2018-06-17T14:16:43.895Z</updated>
     
     <content type="html"><![CDATA[<p>原文链接：<a href="http://www.jsjkx.com/jsjkx/ch/reader/create_pdf.aspx?file_no=20170601&amp;flag=&amp;journal_id=jsjkx&amp;year_id=2017" target="_blank" rel="external">基于 Web 的问答系统综述</a></p>
 <p>作者：李舟军，李水华</p>
@@ -35,7 +154,8 @@
 <li><strong>基于 Web 的问答系统（Web-based Question Answering, WQA）</strong>：以开放的互联网上的 Web 文档作为问答系统的知识来源，从搜索引擎上返回的相关网页片段中抽取出用户所提问题的答案。</li>
 </ol>
 <p>其中，WQA 系统同时具有搜索引擎和问答系统的优点，与时俱进，不断更新。</p>
-<h3 id="WQA-系统"><a href="#WQA-系统" class="headerlink" title="WQA 系统"></a>WQA 系统</h3><p>经典的 WQA 系统通常由以下 3 个模块构成：</p>
+<h3 id="WQA-系统"><a href="#WQA-系统" class="headerlink" title="WQA 系统"></a>WQA 系统</h3><p><img src="https://raw.githubusercontent.com/bighuang624/pic-repo/master/Architecture-of-question-answering-system.png" alt="Architecture-of-question-answering-system"></p>
+<p>经典的 WQA 系统通常由以下 3 个模块构成（其他 QA 系统各模块大体一致，功能有所不同。上图来源[1]）：</p>
 <ol>
 <li><strong>问题分析模块</strong>：根据用户的查询意图生成相应的查询语句，可能包含对问题的分类、提取问题的关键词或者生成一些其他描述用户查询意图的中间数据；</li>
 <li><strong>信息检索模块</strong>：将问题分析模块得到的查询语句或关键词提交给搜索引擎，并整理返回的搜索结果来得到可能包含正确答案的网页片段（性能瓶颈）；</li>
@@ -47,11 +167,17 @@
 <li>问题分类：问题的类别是反应用户提问意图的重要信息</li>
 <li>问题重写：便于搜索引擎理解问题语义</li>
 </ol>
-<h5 id="问题分类"><a href="#问题分类" class="headerlink" title="问题分类"></a>问题分类</h5><p>很多 WQA 系统采用规则分类器对问题进行分类。最简单的规则可以是通过问题是否包含某个词来分类，而比较复杂的规则包括基于语义模式匹配的问题分类[1]。如果没有一条规则能够与问题匹配成功，则借助一些统计机器学习的方法分类，例如 SVM、RNN 等。</p>
+<h5 id="问题分类"><a href="#问题分类" class="headerlink" title="问题分类"></a>问题分类</h5><p>问题分类的作用体现在：</p>
+<ul>
+<li><strong>能够有效减少候选答案空间，提高系统返回答案的准确性</strong>。例如，一个问句被分类为时间类，则在答案抽取阶段，系统把不含时间的候选句子过滤掉；</li>
+<li><strong>决定答案喧杂策略，根据不同的问句类型调节对不同问题的答案选择策略</strong>。例如，对于“安徽省的简称是什么”，分析出其询问地点类别，抽取文档库中地点类的文档作为候选答案。</li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/bighuang624/pic-repo/master/question-classifier.png" alt="问题分类体系"></p>
-<h5 id="关键词提取和扩展"><a href="#关键词提取和扩展" class="headerlink" title="关键词提取和扩展"></a>关键词提取和扩展</h5><p>关键词既可作为搜索引擎的输入，也可辅助答案的抽取过程。WQA 系统通常在分词、取出停用词之后进行关键词的提取，并将名词、动词、形容词等作为关键词。因此可以用一些简单规则提取，例如“所有带形容词的名词都是关键词”等。也可以分析问题的语法结构，抽取主语、宾语作为关键词[2]。</p>
+<p>表一为国际权威的 UIUC 问句分类体系，针对英文分类。表二是哈工大定义的中文问句分类体系。</p>
+<p>很多 WQA 系统采用规则分类器对问题进行分类。最简单的规则可以是通过问题是否包含某个词来分类，而比较复杂的规则包括基于语义模式匹配的问题分类[2]。如果没有一条规则能够与问题匹配成功，则借助一些统计机器学习的方法分类，例如 SVM、RNN 等。</p>
+<h5 id="关键词提取和扩展"><a href="#关键词提取和扩展" class="headerlink" title="关键词提取和扩展"></a>关键词提取和扩展</h5><p>关键词既可作为搜索引擎的输入，也可辅助答案的抽取过程。WQA 系统通常在分词、取出停用词之后进行关键词的提取，并将名词、动词、形容词等作为关键词。因此可以用一些简单规则提取，例如“所有带形容词的名词都是关键词”等。也可以分析问题的语法结构，抽取主语、宾语作为关键词[3]。</p>
 <p>关键词的扩展主要用于解决关键词的同义词的匹配问题，通常需要一些同义词词库进行辅助。</p>
-<h5 id="问题重写"><a href="#问题重写" class="headerlink" title="问题重写"></a>问题重写</h5><p>当问题本身（而非关键词）作为搜索引擎的输入时，可能较难领会语义，此时需要对问题进行重写。一些启发式的方法依靠简单的字符串操作（替换、拼接、删除）来实现问题重写，也有较为复杂的优化方法，例如定义一个针对问题的操作集合，然后利用概率模型选择最合适的操作来重写问题[3]。</p>
+<h5 id="问题重写"><a href="#问题重写" class="headerlink" title="问题重写"></a>问题重写</h5><p>当问题本身（而非关键词）作为搜索引擎的输入时，可能较难领会语义，此时需要对问题进行重写。一些启发式的方法依靠简单的字符串操作（替换、拼接、删除）来实现问题重写，也有较为复杂的优化方法，例如定义一个针对问题的操作集合，然后利用概率模型选择最合适的操作来重写问题[4]。</p>
 <h4 id="信息检索模块"><a href="#信息检索模块" class="headerlink" title="信息检索模块"></a>信息检索模块</h4><p>信息检索模块的实现可以调用搜索引擎提供的接口，也可以利用爬虫技术。搜索引擎所具有的高质量摘要技术能过滤原始网页的噪音数据，因此无需抓取解析原始网页。</p>
 <h4 id="答案抽取模块"><a href="#答案抽取模块" class="headerlink" title="答案抽取模块"></a>答案抽取模块</h4><p>答案抽取模块是 WQA 系统中的重点和难点，通常包括两个步骤：</p>
 <ol>
@@ -66,7 +192,7 @@
 </ol>
 <h5 id="候选答案排序"><a href="#候选答案排序" class="headerlink" title="候选答案排序"></a>候选答案排序</h5><p>候选答案排序及最佳答案选择的几种典型方法：</p>
 <ol>
-<li>采用<strong>向量空间模型（Vector Space Model, VSM）</strong>计算候选答案与问题的相似度，并以此进行排序[4]；</li>
+<li>采用<strong>向量空间模型（Vector Space Model, VSM）</strong>计算候选答案与问题的相似度，并以此进行排序[5]；</li>
 <li>根据语法结构判断候选答案与问题的匹配度，并以此进行排序；</li>
 <li>根据词汇特征、相似度特征、统计特征等多种特征进行综合排序。</li>
 </ol>
@@ -87,10 +213,11 @@
 <li>与语音识别、语音生成等工具的进一步结合；</li>
 <li>辅助机器人。</li>
 </ol>
-<h3 id="文献"><a href="#文献" class="headerlink" title="文献"></a>文献</h3><p>[1] LI X, HU D, LI H, et al. Automatic question answering from Web documents[J]. Wuhan University Journal of Natural Sciences, 2007, 12(5):875 880.</p>
-<p>[2] LIU Z J, WANG X L, CHEN Q C, et al. A Chinese question answering system based on Web search [C]. International Conference on Machine Learning and Cybernetics, Lanzhou: IEEE, 2014:816-820.</p>
-<p>[3] CHALI Y, HASAN S A, MOJAHID M. A reinforcement learning formulation to the complex question answering problem<br>[J]. Information Processing &amp; Management, 2015, 51(3):252 272.</p>
-<p>[4] 余正涛，樊孝忠，郭剑毅，等. 基于潜在语义分析的汉语问答系统答案提取[J]. 计算机学报，2006，29(10):1889—1893.</p>
+<h3 id="文献"><a href="#文献" class="headerlink" title="文献"></a>文献</h3><p>[1] 镇丽华, 王小林, 杨思春. 自动问答系统中问句分类研究综述[J]. 安徽工业大学学报(自科版), 2015, 32(1):48-54.</p>
+<p>[2] LI X, HU D, LI H, et al. Automatic question answering from Web documents[J]. Wuhan University Journal of Natural Sciences, 2007, 12(5):875 880.</p>
+<p>[3] LIU Z J, WANG X L, CHEN Q C, et al. A Chinese question answering system based on Web search [C]. International Conference on Machine Learning and Cybernetics, Lanzhou: IEEE, 2014:816-820.</p>
+<p>[4] CHALI Y, HASAN S A, MOJAHID M. A reinforcement learning formulation to the complex question answering problem<br>[J]. Information Processing &amp; Management, 2015, 51(3):252 272.</p>
+<p>[5] 余正涛，樊孝忠，郭剑毅，等. 基于潜在语义分析的汉语问答系统答案提取[J]. 计算机学报，2006，29(10):1889—1893.</p>
 ]]></content>
     
     <summary type="html">
@@ -2826,59 +2953,6 @@ state-of-the-art 是参考别人论文的数据，还是自己实现？如何保
       <category term="动态规划" scheme="http://kyonhuang.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
       <category term="DP" scheme="http://kyonhuang.top/tags/DP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>花旗杯-新的终点，新的起点</title>
-    <link href="http://kyonhuang.top/new-end-new-start/"/>
-    <id>http://kyonhuang.top/new-end-new-start/</id>
-    <published>2017-11-27T05:22:24.000Z</published>
-    <updated>2018-04-08T07:33:05.268Z</updated>
-    
-    <content type="html"><![CDATA[<p>在从成都回武汉的火车上开始写这一篇博客。</p>
-<p>历时共七个月的花旗杯终于结束了。作为创队元老，我从头到尾参与了这个项目，从每个组员的奇思妙想中挖掘出我们现在的选题，在一次次的争论中始终坚持它就是最好的选择。我也投入了大量的时间和精力，写完了整个网站前端开发的每一行代码，并参与了部分的算法研究工作。整个项目也数次从被放弃的边缘拉回来，成员也有一定的变动，可以说历经波折。</p>
-<p>到达成都后，临行前请人算了一卦的浦先生幸运地抽到答辩的最后一位，这让我们可以观摩其他队伍的答辩、对评委的关注点进行揣摩，并有较为充足的准备时间。之后，前往成都的核心队员开始昼夜不分地修改项目计划书、PPT、展示讲稿等各种材料，直到上台答辩的最后一秒。这个过程中，另外四名成员应该比我要更为辛苦，在答辩前一夜，负责算法的曹队和冯大佬更是直到凌晨三点还在讨论评委可能提出的问题（他们也确实命中了绝大部分问题，功居甚伟），而王同学也果断承担起本来属于队长的项目展示的重任。在这样的准备强度下，尽管也有遗憾，我对我们组的答辩表现可以打到 100 分，也为我们的付出感到骄傲。</p>
-<p>最终，我们的“探方网——网络文学 IP 价值评估及预测系统”获得了第十三届“花旗杯”金融创新应用大赛的三等奖。可惜的是，我们是最后一个宣布的三等奖，也就是说离二等奖仅有一步之遥。但能在全国二十强中最终名列第四，也是大赛诸多评委老师对我们项目极大肯定。</p>
-<p>从比较现实的角度来看，这次参赛经历带给我个人大学期间第一个有分量、对保研有加分的奖项，以及一点和劳动量好像不太对等的奖金。当然，我还有一些对我而言更为重要的东西与看到这篇博文的每一位分享。</p>
-<p><img src="/images/huaqi-prize.jpg" alt="huaqi-prize"></p>
-<a id="more"></a>
-<h2 id="参加比赛的经历"><a href="#参加比赛的经历" class="headerlink" title="参加比赛的经历"></a>参加比赛的经历</h2><p>在成都备战的深夜里，几名核心大佬都表示“再也不参加花旗杯这样的非技术类比赛了”。“非技术类”确实对花旗杯是一个不太正当的评价，但准备花旗的开发周期之长、团队管理之累、准备工作之繁琐，对我们这些软件工程专业的 nerd 来说，是醉心于技术的阻碍。我们花了相当比例的精力在项目的包装上，而在实际技术层面可能没有达到我们想要的高度。</p>
-<p>但我还是很享受这个过程，因为比起纯粹的技术人员，我感觉可能我会更多地接触，也更为喜欢这样的项目包装、推广过程。我认为没有任何一个成功的项目能够单纯成长在技术的温室中，项目的包装是项目真正成为<strong>产品</strong>所不得不经历的工作。通过这样的工作，让技术人的智慧成果被更多人了解、使用和赏识，我认为这是十分有意义的。何况，在花旗的答辩场上，金玉其外、败絮其中的项目都被资深的评委老师们毫不留情地迅速戳破。</p>
-<p>整个过程确实很累很苦，尤其是最末期，网站的前端基本上一天加好几个功能，我也很骄傲我坚持了下来。在走出答辩场地后，我们五个人在楼下花旗杯决赛的展牌前合影。在空间 po 出照片时，我配的字是“我感觉毕了业”。因为我在那一刻的感觉大概和《中国有嘻哈》欧阳靖在结束最后一次的表演时一样，如释重负，而又如获新生。</p>
-<p>看看自己的码云，整个前端项目都是我的 commit，哈哈：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2702529-472d42ef0cb3ff5d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="huaqi-commit.jpg"></p>
-<p>这次花旗杯的参赛经历对我来说是一次十分难忘的经历，在前端技术层面上有机会接触到很多新东西和新问题，提升很大。鉴于国软院有通知渠道并推荐参加的有含金量的比赛确实不多，我十分推荐学弟学妹们参加花旗杯。当然，下一届的学弟学妹如若进入决赛，大概要去东北挨冻了。另外，我也很欢迎有学弟学妹在明年联系我，作为项目方向、团队管理、答辩展示的一个咨询人员。</p>
-<h2 id="团队开发的经验"><a href="#团队开发的经验" class="headerlink" title="团队开发的经验"></a>团队开发的经验</h2><p><img src="/images/huaqi-team.png" alt="huaqi-team"></p>
-<p>这次花旗杯应该就是我本科中第一次，也是最后一次相对来说的大型团队开发项目了。数十人的团队开发在大学里是十分难得的经验，我也学到了很多，尤其是那些我们没有做的很好的环节，例如分工、沟通、日程规划等。以下是几条建议：</p>
-<ul>
-<li>队长应该<strong>主动</strong>和各部分负责人沟通，确定进度。</li>
-<li>工作分配和修改必须要明确到人，并且利用好在线可查看可修改的备忘文件，例如石墨文档等。</li>
-<li>日程规划应在与各负责人协调的情况下，预留一定的缓冲时间。</li>
-</ul>
-<p>作为最初始的成员，我看着团队成员不断增加，也看到有些成员因为各种原因自己选择退出了这个项目。对于中途退出的成员，我们虽然没有给他们前期的努力以回报，但理解他们并心存感激；但我也看到有极少部分成员对这个项目缺少投入。不论是因为确实身兼数职、分身乏术，还是企图偷懒、不劳而获，我都认为这是缺乏责任心的表现。我理解在接近七个月的项目开发中，感到怠惰、信心不足是正常的表现，我自己也有过这样的心理。但是在整个项目中，如果你所做的努力远远少于其他人，最终却分享同样的荣誉，这不但拖累了项目的进度，对整个项目组的士气更有着极其不良的影响。因此，选择团队成员也是修行的一种，而及时止损也是选择的一种。</p>
-<p>对我自己来说，由于我个人的交际不是很广，没有太多的参与这次项目成员的挑选过程。通过这次经历，我也认识到广交朋友的益处，会努力在保证交友质量的前提去结识更多人。另外，在以后的项目开发中，我希望在个人技术水平达标的前提下，我能够承担起组长的重任，让整个团队有更好的开发积极性和管理秩序，同时挑战自我，获得进步。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>在这七个月里，我也对自己的性格缺陷进行了审视。我不太好意思向大家列举这些性格缺陷，但它们使我在包括花旗项目在内的学习过程中，甚至是在大学生涯的为人处事、个人发展等各方面遇到了不少挫折。我对未来我在性格方面的改善和转变有一些期许。我也不是很喜欢我现在的生活方式，希望能让它变得更加多彩。</p>
-<p>我走到了花旗杯的终点。但对我来说，还有很多的起点。我希望在未来的日子里，我能够更加坚定、更加拼搏、更加成熟、更加不甘平庸。这很难，我希望我能够做到。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在从成都回武汉的火车上开始写这一篇博客。&lt;/p&gt;
-&lt;p&gt;历时共七个月的花旗杯终于结束了。作为创队元老，我从头到尾参与了这个项目，从每个组员的奇思妙想中挖掘出我们现在的选题，在一次次的争论中始终坚持它就是最好的选择。我也投入了大量的时间和精力，写完了整个网站前端开发的每一行代码，并参与了部分的算法研究工作。整个项目也数次从被放弃的边缘拉回来，成员也有一定的变动，可以说历经波折。&lt;/p&gt;
-&lt;p&gt;到达成都后，临行前请人算了一卦的浦先生幸运地抽到答辩的最后一位，这让我们可以观摩其他队伍的答辩、对评委的关注点进行揣摩，并有较为充足的准备时间。之后，前往成都的核心队员开始昼夜不分地修改项目计划书、PPT、展示讲稿等各种材料，直到上台答辩的最后一秒。这个过程中，另外四名成员应该比我要更为辛苦，在答辩前一夜，负责算法的曹队和冯大佬更是直到凌晨三点还在讨论评委可能提出的问题（他们也确实命中了绝大部分问题，功居甚伟），而王同学也果断承担起本来属于队长的项目展示的重任。在这样的准备强度下，尽管也有遗憾，我对我们组的答辩表现可以打到 100 分，也为我们的付出感到骄傲。&lt;/p&gt;
-&lt;p&gt;最终，我们的“探方网——网络文学 IP 价值评估及预测系统”获得了第十三届“花旗杯”金融创新应用大赛的三等奖。可惜的是，我们是最后一个宣布的三等奖，也就是说离二等奖仅有一步之遥。但能在全国二十强中最终名列第四，也是大赛诸多评委老师对我们项目极大肯定。&lt;/p&gt;
-&lt;p&gt;从比较现实的角度来看，这次参赛经历带给我个人大学期间第一个有分量、对保研有加分的奖项，以及一点和劳动量好像不太对等的奖金。当然，我还有一些对我而言更为重要的东西与看到这篇博文的每一位分享。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/huaqi-prize.jpg&quot; alt=&quot;huaqi-prize&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="程序员的生活" scheme="http://kyonhuang.top/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="花旗杯" scheme="http://kyonhuang.top/tags/%E8%8A%B1%E6%97%97%E6%9D%AF/"/>
     
   </entry>
   

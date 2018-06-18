@@ -111,12 +111,13 @@
 <meta property="og:site_name" content="大黄菌的个人博客">
 <meta property="og:description" content="原文链接：基于 Web 的问答系统综述 作者：李舟军，李水华 简介：详细介绍了基于 Web 的问答系统的研究背景、架构及其问题分析、信息检索、答案抽取这三大关键技术的研究进展，并分析了基于 Web 的问答系统所面临的问题。 选读原因：选了一篇中文的基于 Web 的问答系统综述，和手头上工作比较贴近，来对接下来的研究方向有个大致的了解和思考，因此记录也比较详细。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/pic-repo/master/Architecture-of-question-answering-system.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/pic-repo/master/question-classifier.png">
-<meta property="og:updated_time" content="2018-06-17T09:10:02.662Z">
+<meta property="og:updated_time" content="2018-06-17T14:16:43.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《基于 Web 的问答系统综述》阅读笔记">
 <meta name="twitter:description" content="原文链接：基于 Web 的问答系统综述 作者：李舟军，李水华 简介：详细介绍了基于 Web 的问答系统的研究背景、架构及其问题分析、信息检索、答案抽取这三大关键技术的研究进展，并分析了基于 Web 的问答系统所面临的问题。 选读原因：选了一篇中文的基于 Web 的问答系统综述，和手头上工作比较贴近，来对接下来的研究方向有个大致的了解和思考，因此记录也比较详细。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/bighuang624/pic-repo/master/question-classifier.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/bighuang624/pic-repo/master/Architecture-of-question-answering-system.png">
 
 
 
@@ -483,7 +484,8 @@
 <li><strong>基于 Web 的问答系统（Web-based Question Answering, WQA）</strong>：以开放的互联网上的 Web 文档作为问答系统的知识来源，从搜索引擎上返回的相关网页片段中抽取出用户所提问题的答案。</li>
 </ol>
 <p>其中，WQA 系统同时具有搜索引擎和问答系统的优点，与时俱进，不断更新。</p>
-<h3 id="WQA-系统"><a href="#WQA-系统" class="headerlink" title="WQA 系统"></a>WQA 系统</h3><p>经典的 WQA 系统通常由以下 3 个模块构成：</p>
+<h3 id="WQA-系统"><a href="#WQA-系统" class="headerlink" title="WQA 系统"></a>WQA 系统</h3><p><img src="https://raw.githubusercontent.com/bighuang624/pic-repo/master/Architecture-of-question-answering-system.png" alt="Architecture-of-question-answering-system"></p>
+<p>经典的 WQA 系统通常由以下 3 个模块构成（其他 QA 系统各模块大体一致，功能有所不同。上图来源[1]）：</p>
 <ol>
 <li><strong>问题分析模块</strong>：根据用户的查询意图生成相应的查询语句，可能包含对问题的分类、提取问题的关键词或者生成一些其他描述用户查询意图的中间数据；</li>
 <li><strong>信息检索模块</strong>：将问题分析模块得到的查询语句或关键词提交给搜索引擎，并整理返回的搜索结果来得到可能包含正确答案的网页片段（性能瓶颈）；</li>
@@ -495,11 +497,17 @@
 <li>问题分类：问题的类别是反应用户提问意图的重要信息</li>
 <li>问题重写：便于搜索引擎理解问题语义</li>
 </ol>
-<h5 id="问题分类"><a href="#问题分类" class="headerlink" title="问题分类"></a>问题分类</h5><p>很多 WQA 系统采用规则分类器对问题进行分类。最简单的规则可以是通过问题是否包含某个词来分类，而比较复杂的规则包括基于语义模式匹配的问题分类[1]。如果没有一条规则能够与问题匹配成功，则借助一些统计机器学习的方法分类，例如 SVM、RNN 等。</p>
+<h5 id="问题分类"><a href="#问题分类" class="headerlink" title="问题分类"></a>问题分类</h5><p>问题分类的作用体现在：</p>
+<ul>
+<li><strong>能够有效减少候选答案空间，提高系统返回答案的准确性</strong>。例如，一个问句被分类为时间类，则在答案抽取阶段，系统把不含时间的候选句子过滤掉；</li>
+<li><strong>决定答案喧杂策略，根据不同的问句类型调节对不同问题的答案选择策略</strong>。例如，对于“安徽省的简称是什么”，分析出其询问地点类别，抽取文档库中地点类的文档作为候选答案。</li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/bighuang624/pic-repo/master/question-classifier.png" alt="问题分类体系"></p>
-<h5 id="关键词提取和扩展"><a href="#关键词提取和扩展" class="headerlink" title="关键词提取和扩展"></a>关键词提取和扩展</h5><p>关键词既可作为搜索引擎的输入，也可辅助答案的抽取过程。WQA 系统通常在分词、取出停用词之后进行关键词的提取，并将名词、动词、形容词等作为关键词。因此可以用一些简单规则提取，例如“所有带形容词的名词都是关键词”等。也可以分析问题的语法结构，抽取主语、宾语作为关键词[2]。</p>
+<p>表一为国际权威的 UIUC 问句分类体系，针对英文分类。表二是哈工大定义的中文问句分类体系。</p>
+<p>很多 WQA 系统采用规则分类器对问题进行分类。最简单的规则可以是通过问题是否包含某个词来分类，而比较复杂的规则包括基于语义模式匹配的问题分类[2]。如果没有一条规则能够与问题匹配成功，则借助一些统计机器学习的方法分类，例如 SVM、RNN 等。</p>
+<h5 id="关键词提取和扩展"><a href="#关键词提取和扩展" class="headerlink" title="关键词提取和扩展"></a>关键词提取和扩展</h5><p>关键词既可作为搜索引擎的输入，也可辅助答案的抽取过程。WQA 系统通常在分词、取出停用词之后进行关键词的提取，并将名词、动词、形容词等作为关键词。因此可以用一些简单规则提取，例如“所有带形容词的名词都是关键词”等。也可以分析问题的语法结构，抽取主语、宾语作为关键词[3]。</p>
 <p>关键词的扩展主要用于解决关键词的同义词的匹配问题，通常需要一些同义词词库进行辅助。</p>
-<h5 id="问题重写"><a href="#问题重写" class="headerlink" title="问题重写"></a>问题重写</h5><p>当问题本身（而非关键词）作为搜索引擎的输入时，可能较难领会语义，此时需要对问题进行重写。一些启发式的方法依靠简单的字符串操作（替换、拼接、删除）来实现问题重写，也有较为复杂的优化方法，例如定义一个针对问题的操作集合，然后利用概率模型选择最合适的操作来重写问题[3]。</p>
+<h5 id="问题重写"><a href="#问题重写" class="headerlink" title="问题重写"></a>问题重写</h5><p>当问题本身（而非关键词）作为搜索引擎的输入时，可能较难领会语义，此时需要对问题进行重写。一些启发式的方法依靠简单的字符串操作（替换、拼接、删除）来实现问题重写，也有较为复杂的优化方法，例如定义一个针对问题的操作集合，然后利用概率模型选择最合适的操作来重写问题[4]。</p>
 <h4 id="信息检索模块"><a href="#信息检索模块" class="headerlink" title="信息检索模块"></a>信息检索模块</h4><p>信息检索模块的实现可以调用搜索引擎提供的接口，也可以利用爬虫技术。搜索引擎所具有的高质量摘要技术能过滤原始网页的噪音数据，因此无需抓取解析原始网页。</p>
 <h4 id="答案抽取模块"><a href="#答案抽取模块" class="headerlink" title="答案抽取模块"></a>答案抽取模块</h4><p>答案抽取模块是 WQA 系统中的重点和难点，通常包括两个步骤：</p>
 <ol>
@@ -514,7 +522,7 @@
 </ol>
 <h5 id="候选答案排序"><a href="#候选答案排序" class="headerlink" title="候选答案排序"></a>候选答案排序</h5><p>候选答案排序及最佳答案选择的几种典型方法：</p>
 <ol>
-<li>采用<strong>向量空间模型（Vector Space Model, VSM）</strong>计算候选答案与问题的相似度，并以此进行排序[4]；</li>
+<li>采用<strong>向量空间模型（Vector Space Model, VSM）</strong>计算候选答案与问题的相似度，并以此进行排序[5]；</li>
 <li>根据语法结构判断候选答案与问题的匹配度，并以此进行排序；</li>
 <li>根据词汇特征、相似度特征、统计特征等多种特征进行综合排序。</li>
 </ol>
@@ -535,10 +543,11 @@
 <li>与语音识别、语音生成等工具的进一步结合；</li>
 <li>辅助机器人。</li>
 </ol>
-<h3 id="文献"><a href="#文献" class="headerlink" title="文献"></a>文献</h3><p>[1] LI X, HU D, LI H, et al. Automatic question answering from Web documents[J]. Wuhan University Journal of Natural Sciences, 2007, 12(5):875 880.</p>
-<p>[2] LIU Z J, WANG X L, CHEN Q C, et al. A Chinese question answering system based on Web search [C]. International Conference on Machine Learning and Cybernetics, Lanzhou: IEEE, 2014:816-820.</p>
-<p>[3] CHALI Y, HASAN S A, MOJAHID M. A reinforcement learning formulation to the complex question answering problem<br>[J]. Information Processing &amp; Management, 2015, 51(3):252 272.</p>
-<p>[4] 余正涛，樊孝忠，郭剑毅，等. 基于潜在语义分析的汉语问答系统答案提取[J]. 计算机学报，2006，29(10):1889—1893.</p>
+<h3 id="文献"><a href="#文献" class="headerlink" title="文献"></a>文献</h3><p>[1] 镇丽华, 王小林, 杨思春. 自动问答系统中问句分类研究综述[J]. 安徽工业大学学报(自科版), 2015, 32(1):48-54.</p>
+<p>[2] LI X, HU D, LI H, et al. Automatic question answering from Web documents[J]. Wuhan University Journal of Natural Sciences, 2007, 12(5):875 880.</p>
+<p>[3] LIU Z J, WANG X L, CHEN Q C, et al. A Chinese question answering system based on Web search [C]. International Conference on Machine Learning and Cybernetics, Lanzhou: IEEE, 2014:816-820.</p>
+<p>[4] CHALI Y, HASAN S A, MOJAHID M. A reinforcement learning formulation to the complex question answering problem<br>[J]. Information Processing &amp; Management, 2015, 51(3):252 272.</p>
+<p>[5] 余正涛，樊孝忠，郭剑毅，等. 基于潜在语义分析的汉语问答系统答案提取[J]. 计算机学报，2006，29(10):1889—1893.</p>
 
       
     </div>
@@ -621,6 +630,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/OOP-notes/" rel="prev" title="面向对象程序设计复习笔记">
+                面向对象程序设计复习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -697,7 +710,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -995,7 +1008,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">117</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">119</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
