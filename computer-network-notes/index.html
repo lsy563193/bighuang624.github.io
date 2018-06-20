@@ -103,17 +103,17 @@
 
 
 
-  <meta name="description" content="第三门复习的专业课是计算机网络。临近考试，因此首次发布时根据老师划的重点进行整理，后续更新时再进行补充。">
+  <meta name="description" content="计算机网络与因特网一个协议定义了在两个或多个通信实体之间交换报文的格式与次序，以及报文发送/接收或其他事件所采取的动作。 协议层次及其服务模型因特网协议栈（Internet protocol stack）自顶向下：  应用层：网络应用程序及应用层协议存留的地方。 常见应用层协议：HTTP、DNS、FTP、SMTP、DHCP 位于应用层的分组信息称为报文（message）   运输层：负责在应用程序">
 <meta name="keywords" content="学科复习笔记,计算机网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络复习笔记">
 <meta property="og:url" content="http://kyonhuang.top/computer-network-notes/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="第三门复习的专业课是计算机网络。临近考试，因此首次发布时根据老师划的重点进行整理，后续更新时再进行补充。">
+<meta property="og:description" content="计算机网络与因特网一个协议定义了在两个或多个通信实体之间交换报文的格式与次序，以及报文发送/接收或其他事件所采取的动作。 协议层次及其服务模型因特网协议栈（Internet protocol stack）自顶向下：  应用层：网络应用程序及应用层协议存留的地方。 常见应用层协议：HTTP、DNS、FTP、SMTP、DHCP 位于应用层的分组信息称为报文（message）   运输层：负责在应用程序">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/3939369b-3a4a-48a0-b9eb-3efae26dd400.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/426df589-6f97-4622-b74d-4a81fcb1da8e.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/ac106e7e-489a-4082-abd9-dabebe48394c.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/3939369b-3a4a-48a0-b9eb-3efae26dd400.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/pic-repo/master/checksum.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5265289-0b392823b3635f5c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/55dc4e84-573d-4c13-a765-52ed1dd251f9.png">
@@ -124,11 +124,11 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/85c05fb1-5546-4c50-9221-21f231cdc8c5.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/23ba890e-e11c-45e2-a20c-64d217f83430.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/276c31df-3b28-4ac2-b006-1e80fc86a64f.jpg">
-<meta property="og:updated_time" content="2018-06-04T14:03:53.714Z">
+<meta property="og:updated_time" content="2018-06-20T04:02:49.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络复习笔记">
-<meta name="twitter:description" content="第三门复习的专业课是计算机网络。临近考试，因此首次发布时根据老师划的重点进行整理，后续更新时再进行补充。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/3939369b-3a4a-48a0-b9eb-3efae26dd400.png">
+<meta name="twitter:description" content="计算机网络与因特网一个协议定义了在两个或多个通信实体之间交换报文的格式与次序，以及报文发送/接收或其他事件所采取的动作。 协议层次及其服务模型因特网协议栈（Internet protocol stack）自顶向下：  应用层：网络应用程序及应用层协议存留的地方。 常见应用层协议：HTTP、DNS、FTP、SMTP、DHCP 位于应用层的分组信息称为报文（message）   运输层：负责在应用程序">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/426df589-6f97-4622-b74d-4a81fcb1da8e.png">
 
 
 
@@ -482,9 +482,48 @@
       
 
       
-        <p>第三门复习的专业课是计算机网络。临近考试，因此首次发布时根据老师划的重点进行整理，后续更新时再进行补充。</p>
+        <h2 id="计算机网络与因特网"><a href="#计算机网络与因特网" class="headerlink" title="计算机网络与因特网"></a>计算机网络与因特网</h2><p>一个<strong>协议</strong>定义了在两个或多个通信实体之间交换报文的格式与次序，以及报文发送/接收或其他事件所采取的动作。</p>
+<h3 id="协议层次及其服务模型"><a href="#协议层次及其服务模型" class="headerlink" title="协议层次及其服务模型"></a>协议层次及其服务模型</h3><p><strong>因特网协议栈（Internet protocol stack）</strong>自顶向下：</p>
+<ol>
+<li><strong>应用层</strong>：网络应用程序及应用层协议存留的地方。<ul>
+<li>常见应用层协议：HTTP、DNS、FTP、SMTP、DHCP</li>
+<li>位于应用层的分组信息称为<strong>报文（message）</strong></li>
+</ul>
+</li>
+<li><strong>运输层</strong>：负责在<strong>应用程序</strong>端点之间传送应用层报文。<ul>
+<li>常见运输层协议：TCP、UDP</li>
+<li>位于应用层的分组信息称为<strong>报文段（segment）</strong></li>
+</ul>
+</li>
+<li><strong>网络层</strong>：负责在<strong>主机</strong>间传送网络层的分组。<ul>
+<li>常见网络层协议：IP</li>
+<li>位于网络层的分组信息称为<strong>数据报（datagram）</strong></li>
+</ul>
+</li>
+<li><strong>链路层</strong>：负责将整个帧从一个网络元素移动到临近的网络元素。<ul>
+<li>链路层的例子包括以太网，WiFi</li>
+<li>由于分组从源到目的地传送通常要经过几条链路，所以可能被途径不同的链路层协议处理</li>
+<li>位于链路层的分组信息称为<strong>帧（frame）</strong> </li>
+</ul>
+</li>
+<li><strong>物理层</strong>：将帧中的每个比特从一个结点移动到下一结点。<ul>
+<li>与链路的实际传输媒介相关。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/426df589-6f97-4622-b74d-4a81fcb1da8e.png" alt=""></p>
+<p>ISO-OSI 模型：</p>
+<ol>
+<li>应用层</li>
+<li>表示层：使通信的应用协议能够解释交换数据的含义，提供数据压缩、数据解密、数据描述等服务；</li>
+<li>会话层：提供数据交换的定界和同步功能，包括建立检查点和恢复方案的方法；</li>
+<li>运输层</li>
+<li>网络层</li>
+<li>链路层</li>
+<li>物理层</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/ac106e7e-489a-4082-abd9-dabebe48394c.jpg" alt=""></p>
 <a id="more"></a>
-<h2 id="计算机网络与因特网"><a href="#计算机网络与因特网" class="headerlink" title="计算机网络与因特网"></a>计算机网络与因特网</h2><p>一个<strong>协议</strong>定义了在两个或多个通信实体之间交换报文的格式与次序，以及报文发送/接收或其他事件所采取的动作。</p>
 <h3 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h3><p>几种因特网的接入方式：</p>
 <ul>
 <li>家庭接入：DSL（数字用户线，Digital Subscriber）、电缆、FTTH（光纤到户，Fiber To The Home）、拨号和卫星</li>
@@ -539,46 +578,6 @@
 </ul>
 </li>
 </ul>
-<h3 id="协议层次及其服务模型"><a href="#协议层次及其服务模型" class="headerlink" title="协议层次及其服务模型"></a>协议层次及其服务模型</h3><p><strong>因特网协议栈（Internet protocol stack）</strong>自顶向下：</p>
-<ol>
-<li><strong>应用层</strong>：网络应用程序及应用层协议存留的地方。<ul>
-<li>常见应用层协议：HTTP、DNS、FTP、SMTP、DHCP</li>
-<li>位于应用层的分组信息称为<strong>报文（message）</strong></li>
-</ul>
-</li>
-<li><strong>运输层</strong>：负责在<strong>应用程序</strong>端点之间传送应用层报文。<ul>
-<li>常见运输层协议：TCP、UDP</li>
-<li>位于应用层的分组信息称为<strong>报文段（segment）</strong></li>
-</ul>
-</li>
-<li><strong>网络层</strong>：负责在<strong>主机</strong>间传送网络层的分组。<ul>
-<li>常见网络层协议：IP</li>
-<li>位于网络层的分组信息称为<strong>数据报（datagram）</strong></li>
-</ul>
-</li>
-<li><strong>链路层</strong>：负责将整个帧从一个网络元素移动到临近的网络元素。<ul>
-<li>链路层的例子包括以太网，WiFi</li>
-<li>由于分组从源到目的地传送通常要经过几条链路，所以可能被途径不同的链路层协议处理</li>
-<li>位于链路层的分组信息称为<strong>帧（frame）</strong> </li>
-</ul>
-</li>
-<li><strong>物理层</strong>：将帧中的每个比特从一个结点移动到下一结点。<ul>
-<li>与链路的实际传输媒介相关。</li>
-</ul>
-</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/426df589-6f97-4622-b74d-4a81fcb1da8e.png" alt=""></p>
-<p>ISO-OSI 模型：</p>
-<ol>
-<li>应用层</li>
-<li>表示层：使通信的应用协议能够解释交换数据的含义，提供数据压缩、数据解密、数据描述等服务；</li>
-<li>会话层：提供数据交换的定界和同步功能，包括建立检查点和恢复方案的方法；</li>
-<li>运输层</li>
-<li>网络层</li>
-<li>链路层</li>
-<li>物理层</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/ac106e7e-489a-4082-abd9-dabebe48394c.jpg" alt=""></p>
 <h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><h3 id="非重点知识"><a href="#非重点知识" class="headerlink" title="非重点知识"></a>非重点知识</h3><p>因特网为应用程序提供了两个<em>运输层</em>协议：</p>
 <ul>
 <li>TCP：面向连接、可靠数据传输、有拥塞控制机制；</li>
@@ -1183,7 +1182,7 @@ UPnP（通用即插即用）：允许主机发现并配置临近 NAT 协议-->
                 alt="Kyon Huang" />
             
               <p class="site-author-name" itemprop="name">Kyon Huang</p>
-              <p class="site-description motion-element" itemprop="description">WHU 软件工程大三狗</p>
+              <p class="site-description motion-element" itemprop="description">WHU 软件工程大三生</p>
           </div>
 
           
@@ -1495,7 +1494,9 @@ UPnP（通用即插即用）：允许主机发现并配置临近 NAT 协议-->
                     
                       
                     
-                    <span class="site-state-item-count">119</span>
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1567,7 +1568,7 @@ UPnP（通用即插即用）：允许主机发现并配置临近 NAT 协议-->
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络与因特网"><span class="nav-number">1.</span> <span class="nav-text">计算机网络与因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络边缘"><span class="nav-number">1.1.</span> <span class="nav-text">网络边缘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络核心"><span class="nav-number">1.2.</span> <span class="nav-text">网络核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换"><span class="nav-number">1.2.1.</span> <span class="nav-text">分组交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电路交换"><span class="nav-number">1.2.2.</span> <span class="nav-text">电路交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换与电路交换的对比"><span class="nav-number">1.2.3.</span> <span class="nav-text">分组交换与电路交换的对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组交换网中的时延、丢包和吞吐量"><span class="nav-number">1.3.</span> <span class="nav-text">分组交换网中的时延、丢包和吞吐量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协议层次及其服务模型"><span class="nav-number">1.4.</span> <span class="nav-text">协议层次及其服务模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层"><span class="nav-number">2.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非重点知识"><span class="nav-number">2.1.</span> <span class="nav-text">非重点知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-1-0-vs-HTTP-1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">HTTP 1.0 vs HTTP 1.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-请求页面过程"><span class="nav-number">2.2.2.</span> <span class="nav-text">HTTP 请求页面过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie"><span class="nav-number">2.2.3.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-缓存"><span class="nav-number">2.2.4.</span> <span class="nav-text">Web 缓存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FTP"><span class="nav-number">2.3.</span> <span class="nav-text">FTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS"><span class="nav-number">2.4.</span> <span class="nav-text">DNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMTP"><span class="nav-number">2.5.</span> <span class="nav-text">SMTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP"><span class="nav-number">2.6.</span> <span class="nav-text">DHCP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运输层"><span class="nav-number">3.</span> <span class="nav-text">运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多路复用和多路分解"><span class="nav-number">3.1.</span> <span class="nav-text">多路复用和多路分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无连接运输：UDP"><span class="nav-number">3.2.</span> <span class="nav-text">无连接运输：UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP-差错检测——检验和"><span class="nav-number">3.2.1.</span> <span class="nav-text">UDP 差错检测——检验和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠数据传输"><span class="nav-number">3.3.</span> <span class="nav-text">可靠数据传输</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回退-N-步协议（GBN）"><span class="nav-number">3.3.1.</span> <span class="nav-text">回退 N 步协议（GBN）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择性重传协议（SR）"><span class="nav-number">3.3.2.</span> <span class="nav-text">选择性重传协议（SR）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向连接的运输：TCP"><span class="nav-number">3.4.</span> <span class="nav-text">面向连接的运输：TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-连接"><span class="nav-number">3.4.1.</span> <span class="nav-text">TCP 连接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#报文段结构"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">报文段结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可靠数据传输-1"><span class="nav-number">3.4.2.</span> <span class="nav-text">可靠数据传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流量控制（flow-control）"><span class="nav-number">3.4.3.</span> <span class="nav-text">流量控制（flow control）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-连接管理"><span class="nav-number">3.4.4.</span> <span class="nav-text">TCP 连接管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#三次握手"><span class="nav-number">3.4.4.1.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四次挥手"><span class="nav-number">3.4.4.2.</span> <span class="nav-text">四次挥手</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拥塞控制（congestion-control）"><span class="nav-number">3.4.5.</span> <span class="nav-text">拥塞控制（congestion control）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#拥塞控制方法"><span class="nav-number">3.4.5.1.</span> <span class="nav-text">拥塞控制方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP-拥塞控制"><span class="nav-number">3.4.5.2.</span> <span class="nav-text">TCP 拥塞控制</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层"><span class="nav-number">4.</span> <span class="nav-text">网络层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚电路与数据报网络"><span class="nav-number">4.1.</span> <span class="nav-text">虚电路与数据报网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由器"><span class="nav-number">4.2.</span> <span class="nav-text">路由器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv4-vs-IPv6"><span class="nav-number">4.3.</span> <span class="nav-text">IPv4 vs IPv6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv4-数据报格式"><span class="nav-number">4.3.1.</span> <span class="nav-text">IPv4 数据报格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv4-编址"><span class="nav-number">4.3.2.</span> <span class="nav-text">IPv4 编址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv6"><span class="nav-number">4.3.3.</span> <span class="nav-text">IPv6</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由选择算法"><span class="nav-number">4.4.</span> <span class="nav-text">路由选择算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#链路状态路由选择算法（LS）"><span class="nav-number">4.4.1.</span> <span class="nav-text">链路状态路由选择算法（LS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#距离向量路由选择算法（DV）"><span class="nav-number">4.4.2.</span> <span class="nav-text">距离向量路由选择算法（DV）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#层次路由选择"><span class="nav-number">4.4.3.</span> <span class="nav-text">层次路由选择</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由选择协议"><span class="nav-number">4.5.</span> <span class="nav-text">路由选择协议!</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RIP"><span class="nav-number">4.5.1.</span> <span class="nav-text">RIP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSPF"><span class="nav-number">4.5.2.</span> <span class="nav-text">OSPF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BGP"><span class="nav-number">4.5.3.</span> <span class="nav-text">BGP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链路层"><span class="nav-number">5.</span> <span class="nav-text">链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#差错检测与纠正技术"><span class="nav-number">5.1.</span> <span class="nav-text">差错检测与纠正技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多路访问链路和协议"><span class="nav-number">5.2.</span> <span class="nav-text">多路访问链路和协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换局域网"><span class="nav-number">5.3.</span> <span class="nav-text">交换局域网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#链路层编址"><span class="nav-number">5.3.1.</span> <span class="nav-text">链路层编址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以太网"><span class="nav-number">5.3.2.</span> <span class="nav-text">以太网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链路层交换机"><span class="nav-number">5.3.3.</span> <span class="nav-text">链路层交换机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VLAN（虚拟局域网）"><span class="nav-number">5.3.4.</span> <span class="nav-text">VLAN（虚拟局域网）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络与因特网"><span class="nav-number">1.</span> <span class="nav-text">计算机网络与因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#协议层次及其服务模型"><span class="nav-number">1.1.</span> <span class="nav-text">协议层次及其服务模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络边缘"><span class="nav-number">1.2.</span> <span class="nav-text">网络边缘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络核心"><span class="nav-number">1.3.</span> <span class="nav-text">网络核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换"><span class="nav-number">1.3.1.</span> <span class="nav-text">分组交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电路交换"><span class="nav-number">1.3.2.</span> <span class="nav-text">电路交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换与电路交换的对比"><span class="nav-number">1.3.3.</span> <span class="nav-text">分组交换与电路交换的对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组交换网中的时延、丢包和吞吐量"><span class="nav-number">1.4.</span> <span class="nav-text">分组交换网中的时延、丢包和吞吐量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层"><span class="nav-number">2.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非重点知识"><span class="nav-number">2.1.</span> <span class="nav-text">非重点知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-1-0-vs-HTTP-1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">HTTP 1.0 vs HTTP 1.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-请求页面过程"><span class="nav-number">2.2.2.</span> <span class="nav-text">HTTP 请求页面过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie"><span class="nav-number">2.2.3.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-缓存"><span class="nav-number">2.2.4.</span> <span class="nav-text">Web 缓存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FTP"><span class="nav-number">2.3.</span> <span class="nav-text">FTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS"><span class="nav-number">2.4.</span> <span class="nav-text">DNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMTP"><span class="nav-number">2.5.</span> <span class="nav-text">SMTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP"><span class="nav-number">2.6.</span> <span class="nav-text">DHCP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运输层"><span class="nav-number">3.</span> <span class="nav-text">运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多路复用和多路分解"><span class="nav-number">3.1.</span> <span class="nav-text">多路复用和多路分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无连接运输：UDP"><span class="nav-number">3.2.</span> <span class="nav-text">无连接运输：UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP-差错检测——检验和"><span class="nav-number">3.2.1.</span> <span class="nav-text">UDP 差错检测——检验和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠数据传输"><span class="nav-number">3.3.</span> <span class="nav-text">可靠数据传输</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回退-N-步协议（GBN）"><span class="nav-number">3.3.1.</span> <span class="nav-text">回退 N 步协议（GBN）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择性重传协议（SR）"><span class="nav-number">3.3.2.</span> <span class="nav-text">选择性重传协议（SR）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向连接的运输：TCP"><span class="nav-number">3.4.</span> <span class="nav-text">面向连接的运输：TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-连接"><span class="nav-number">3.4.1.</span> <span class="nav-text">TCP 连接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#报文段结构"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">报文段结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可靠数据传输-1"><span class="nav-number">3.4.2.</span> <span class="nav-text">可靠数据传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流量控制（flow-control）"><span class="nav-number">3.4.3.</span> <span class="nav-text">流量控制（flow control）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-连接管理"><span class="nav-number">3.4.4.</span> <span class="nav-text">TCP 连接管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#三次握手"><span class="nav-number">3.4.4.1.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四次挥手"><span class="nav-number">3.4.4.2.</span> <span class="nav-text">四次挥手</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拥塞控制（congestion-control）"><span class="nav-number">3.4.5.</span> <span class="nav-text">拥塞控制（congestion control）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#拥塞控制方法"><span class="nav-number">3.4.5.1.</span> <span class="nav-text">拥塞控制方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP-拥塞控制"><span class="nav-number">3.4.5.2.</span> <span class="nav-text">TCP 拥塞控制</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层"><span class="nav-number">4.</span> <span class="nav-text">网络层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚电路与数据报网络"><span class="nav-number">4.1.</span> <span class="nav-text">虚电路与数据报网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由器"><span class="nav-number">4.2.</span> <span class="nav-text">路由器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv4-vs-IPv6"><span class="nav-number">4.3.</span> <span class="nav-text">IPv4 vs IPv6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv4-数据报格式"><span class="nav-number">4.3.1.</span> <span class="nav-text">IPv4 数据报格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv4-编址"><span class="nav-number">4.3.2.</span> <span class="nav-text">IPv4 编址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv6"><span class="nav-number">4.3.3.</span> <span class="nav-text">IPv6</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由选择算法"><span class="nav-number">4.4.</span> <span class="nav-text">路由选择算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#链路状态路由选择算法（LS）"><span class="nav-number">4.4.1.</span> <span class="nav-text">链路状态路由选择算法（LS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#距离向量路由选择算法（DV）"><span class="nav-number">4.4.2.</span> <span class="nav-text">距离向量路由选择算法（DV）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#层次路由选择"><span class="nav-number">4.4.3.</span> <span class="nav-text">层次路由选择</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由选择协议"><span class="nav-number">4.5.</span> <span class="nav-text">路由选择协议!</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RIP"><span class="nav-number">4.5.1.</span> <span class="nav-text">RIP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSPF"><span class="nav-number">4.5.2.</span> <span class="nav-text">OSPF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BGP"><span class="nav-number">4.5.3.</span> <span class="nav-text">BGP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链路层"><span class="nav-number">5.</span> <span class="nav-text">链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#差错检测与纠正技术"><span class="nav-number">5.1.</span> <span class="nav-text">差错检测与纠正技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多路访问链路和协议"><span class="nav-number">5.2.</span> <span class="nav-text">多路访问链路和协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换局域网"><span class="nav-number">5.3.</span> <span class="nav-text">交换局域网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#链路层编址"><span class="nav-number">5.3.1.</span> <span class="nav-text">链路层编址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以太网"><span class="nav-number">5.3.2.</span> <span class="nav-text">以太网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链路层交换机"><span class="nav-number">5.3.3.</span> <span class="nav-text">链路层交换机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VLAN（虚拟局域网）"><span class="nav-number">5.3.4.</span> <span class="nav-text">VLAN（虚拟局域网）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>

@@ -126,11 +126,11 @@
       <category term="学科补完计划" scheme="http://kyonhuang.top/categories/%E5%AD%A6%E7%A7%91%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/"/>
     
     
-      <category term="Java" scheme="http://kyonhuang.top/tags/Java/"/>
-    
       <category term="面向对象程序设计" scheme="http://kyonhuang.top/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
       <category term="软件工程" scheme="http://kyonhuang.top/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="Java" scheme="http://kyonhuang.top/tags/Java/"/>
     
   </entry>
   
@@ -232,7 +232,7 @@
       <category term="论文阅读笔记" scheme="http://kyonhuang.top/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="自然语言处理" scheme="http://kyonhuang.top/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
     
       <category term="问答系统" scheme="http://kyonhuang.top/tags/%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/"/>
     
@@ -242,7 +242,7 @@
     
       <category term="问题分析" scheme="http://kyonhuang.top/tags/%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90/"/>
     
-      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
+      <category term="自然语言处理" scheme="http://kyonhuang.top/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
@@ -354,11 +354,11 @@
       <category term="论文阅读笔记" scheme="http://kyonhuang.top/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
-    
       <category term="身份认证" scheme="http://kyonhuang.top/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/"/>
     
       <category term="行为特征" scheme="http://kyonhuang.top/tags/%E8%A1%8C%E4%B8%BA%E7%89%B9%E5%BE%81/"/>
+    
+      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
     
       <category term="生物行为统计学" scheme="http://kyonhuang.top/tags/%E7%94%9F%E7%89%A9%E8%A1%8C%E4%B8%BA%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
     
@@ -369,11 +369,50 @@
     <link href="http://kyonhuang.top/computer-network-notes/"/>
     <id>http://kyonhuang.top/computer-network-notes/</id>
     <published>2018-05-24T08:35:42.000Z</published>
-    <updated>2018-06-04T14:03:53.714Z</updated>
+    <updated>2018-06-20T04:02:49.744Z</updated>
     
-    <content type="html"><![CDATA[<p>第三门复习的专业课是计算机网络。临近考试，因此首次发布时根据老师划的重点进行整理，后续更新时再进行补充。</p>
+    <content type="html"><![CDATA[<h2 id="计算机网络与因特网"><a href="#计算机网络与因特网" class="headerlink" title="计算机网络与因特网"></a>计算机网络与因特网</h2><p>一个<strong>协议</strong>定义了在两个或多个通信实体之间交换报文的格式与次序，以及报文发送/接收或其他事件所采取的动作。</p>
+<h3 id="协议层次及其服务模型"><a href="#协议层次及其服务模型" class="headerlink" title="协议层次及其服务模型"></a>协议层次及其服务模型</h3><p><strong>因特网协议栈（Internet protocol stack）</strong>自顶向下：</p>
+<ol>
+<li><strong>应用层</strong>：网络应用程序及应用层协议存留的地方。<ul>
+<li>常见应用层协议：HTTP、DNS、FTP、SMTP、DHCP</li>
+<li>位于应用层的分组信息称为<strong>报文（message）</strong></li>
+</ul>
+</li>
+<li><strong>运输层</strong>：负责在<strong>应用程序</strong>端点之间传送应用层报文。<ul>
+<li>常见运输层协议：TCP、UDP</li>
+<li>位于应用层的分组信息称为<strong>报文段（segment）</strong></li>
+</ul>
+</li>
+<li><strong>网络层</strong>：负责在<strong>主机</strong>间传送网络层的分组。<ul>
+<li>常见网络层协议：IP</li>
+<li>位于网络层的分组信息称为<strong>数据报（datagram）</strong></li>
+</ul>
+</li>
+<li><strong>链路层</strong>：负责将整个帧从一个网络元素移动到临近的网络元素。<ul>
+<li>链路层的例子包括以太网，WiFi</li>
+<li>由于分组从源到目的地传送通常要经过几条链路，所以可能被途径不同的链路层协议处理</li>
+<li>位于链路层的分组信息称为<strong>帧（frame）</strong> </li>
+</ul>
+</li>
+<li><strong>物理层</strong>：将帧中的每个比特从一个结点移动到下一结点。<ul>
+<li>与链路的实际传输媒介相关。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/426df589-6f97-4622-b74d-4a81fcb1da8e.png" alt=""></p>
+<p>ISO-OSI 模型：</p>
+<ol>
+<li>应用层</li>
+<li>表示层：使通信的应用协议能够解释交换数据的含义，提供数据压缩、数据解密、数据描述等服务；</li>
+<li>会话层：提供数据交换的定界和同步功能，包括建立检查点和恢复方案的方法；</li>
+<li>运输层</li>
+<li>网络层</li>
+<li>链路层</li>
+<li>物理层</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/ac106e7e-489a-4082-abd9-dabebe48394c.jpg" alt=""></p>
 <a id="more"></a>
-<h2 id="计算机网络与因特网"><a href="#计算机网络与因特网" class="headerlink" title="计算机网络与因特网"></a>计算机网络与因特网</h2><p>一个<strong>协议</strong>定义了在两个或多个通信实体之间交换报文的格式与次序，以及报文发送/接收或其他事件所采取的动作。</p>
 <h3 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h3><p>几种因特网的接入方式：</p>
 <ul>
 <li>家庭接入：DSL（数字用户线，Digital Subscriber）、电缆、FTTH（光纤到户，Fiber To The Home）、拨号和卫星</li>
@@ -428,46 +467,6 @@
 </ul>
 </li>
 </ul>
-<h3 id="协议层次及其服务模型"><a href="#协议层次及其服务模型" class="headerlink" title="协议层次及其服务模型"></a>协议层次及其服务模型</h3><p><strong>因特网协议栈（Internet protocol stack）</strong>自顶向下：</p>
-<ol>
-<li><strong>应用层</strong>：网络应用程序及应用层协议存留的地方。<ul>
-<li>常见应用层协议：HTTP、DNS、FTP、SMTP、DHCP</li>
-<li>位于应用层的分组信息称为<strong>报文（message）</strong></li>
-</ul>
-</li>
-<li><strong>运输层</strong>：负责在<strong>应用程序</strong>端点之间传送应用层报文。<ul>
-<li>常见运输层协议：TCP、UDP</li>
-<li>位于应用层的分组信息称为<strong>报文段（segment）</strong></li>
-</ul>
-</li>
-<li><strong>网络层</strong>：负责在<strong>主机</strong>间传送网络层的分组。<ul>
-<li>常见网络层协议：IP</li>
-<li>位于网络层的分组信息称为<strong>数据报（datagram）</strong></li>
-</ul>
-</li>
-<li><strong>链路层</strong>：负责将整个帧从一个网络元素移动到临近的网络元素。<ul>
-<li>链路层的例子包括以太网，WiFi</li>
-<li>由于分组从源到目的地传送通常要经过几条链路，所以可能被途径不同的链路层协议处理</li>
-<li>位于链路层的分组信息称为<strong>帧（frame）</strong> </li>
-</ul>
-</li>
-<li><strong>物理层</strong>：将帧中的每个比特从一个结点移动到下一结点。<ul>
-<li>与链路的实际传输媒介相关。</li>
-</ul>
-</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/426df589-6f97-4622-b74d-4a81fcb1da8e.png" alt=""></p>
-<p>ISO-OSI 模型：</p>
-<ol>
-<li>应用层</li>
-<li>表示层：使通信的应用协议能够解释交换数据的含义，提供数据压缩、数据解密、数据描述等服务；</li>
-<li>会话层：提供数据交换的定界和同步功能，包括建立检查点和恢复方案的方法；</li>
-<li>运输层</li>
-<li>网络层</li>
-<li>链路层</li>
-<li>物理层</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/ac106e7e-489a-4082-abd9-dabebe48394c.jpg" alt=""></p>
 <h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><h3 id="非重点知识"><a href="#非重点知识" class="headerlink" title="非重点知识"></a>非重点知识</h3><p>因特网为应用程序提供了两个<em>运输层</em>协议：</p>
 <ul>
 <li>TCP：面向连接、可靠数据传输、有拥塞控制机制；</li>
@@ -932,7 +931,47 @@ UPnP（通用即插即用）：允许主机发现并配置临近 NAT 协议-->
     
     <summary type="html">
     
-      &lt;p&gt;第三门复习的专业课是计算机网络。临近考试，因此首次发布时根据老师划的重点进行整理，后续更新时再进行补充。&lt;/p&gt;
+      &lt;h2 id=&quot;计算机网络与因特网&quot;&gt;&lt;a href=&quot;#计算机网络与因特网&quot; class=&quot;headerlink&quot; title=&quot;计算机网络与因特网&quot;&gt;&lt;/a&gt;计算机网络与因特网&lt;/h2&gt;&lt;p&gt;一个&lt;strong&gt;协议&lt;/strong&gt;定义了在两个或多个通信实体之间交换报文的格式与次序，以及报文发送/接收或其他事件所采取的动作。&lt;/p&gt;
+&lt;h3 id=&quot;协议层次及其服务模型&quot;&gt;&lt;a href=&quot;#协议层次及其服务模型&quot; class=&quot;headerlink&quot; title=&quot;协议层次及其服务模型&quot;&gt;&lt;/a&gt;协议层次及其服务模型&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;因特网协议栈（Internet protocol stack）&lt;/strong&gt;自顶向下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;应用层&lt;/strong&gt;：网络应用程序及应用层协议存留的地方。&lt;ul&gt;
+&lt;li&gt;常见应用层协议：HTTP、DNS、FTP、SMTP、DHCP&lt;/li&gt;
+&lt;li&gt;位于应用层的分组信息称为&lt;strong&gt;报文（message）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;运输层&lt;/strong&gt;：负责在&lt;strong&gt;应用程序&lt;/strong&gt;端点之间传送应用层报文。&lt;ul&gt;
+&lt;li&gt;常见运输层协议：TCP、UDP&lt;/li&gt;
+&lt;li&gt;位于应用层的分组信息称为&lt;strong&gt;报文段（segment）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;网络层&lt;/strong&gt;：负责在&lt;strong&gt;主机&lt;/strong&gt;间传送网络层的分组。&lt;ul&gt;
+&lt;li&gt;常见网络层协议：IP&lt;/li&gt;
+&lt;li&gt;位于网络层的分组信息称为&lt;strong&gt;数据报（datagram）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;链路层&lt;/strong&gt;：负责将整个帧从一个网络元素移动到临近的网络元素。&lt;ul&gt;
+&lt;li&gt;链路层的例子包括以太网，WiFi&lt;/li&gt;
+&lt;li&gt;由于分组从源到目的地传送通常要经过几条链路，所以可能被途径不同的链路层协议处理&lt;/li&gt;
+&lt;li&gt;位于链路层的分组信息称为&lt;strong&gt;帧（frame）&lt;/strong&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;物理层&lt;/strong&gt;：将帧中的每个比特从一个结点移动到下一结点。&lt;ul&gt;
+&lt;li&gt;与链路的实际传输媒介相关。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/426df589-6f97-4622-b74d-4a81fcb1da8e.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ISO-OSI 模型：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;应用层&lt;/li&gt;
+&lt;li&gt;表示层：使通信的应用协议能够解释交换数据的含义，提供数据压缩、数据解密、数据描述等服务；&lt;/li&gt;
+&lt;li&gt;会话层：提供数据交换的定界和同步功能，包括建立检查点和恢复方案的方法；&lt;/li&gt;
+&lt;li&gt;运输层&lt;/li&gt;
+&lt;li&gt;网络层&lt;/li&gt;
+&lt;li&gt;链路层&lt;/li&gt;
+&lt;li&gt;物理层&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/ac106e7e-489a-4082-abd9-dabebe48394c.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -1423,13 +1462,13 @@ state-of-the-art 是参考别人论文的数据，还是自己实现？如何保
       <category term="论文阅读笔记" scheme="http://kyonhuang.top/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="自然语言处理" scheme="http://kyonhuang.top/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
       <category term="多任务学习" scheme="http://kyonhuang.top/tags/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="文本分类" scheme="http://kyonhuang.top/tags/%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/"/>
     
       <category term="RNN" scheme="http://kyonhuang.top/tags/RNN/"/>
-    
-      <category term="自然语言处理" scheme="http://kyonhuang.top/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
@@ -2275,9 +2314,9 @@ state-of-the-art 是参考别人论文的数据，还是自己实现？如何保
     
       <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
-    
       <category term="Kaggle" scheme="http://kyonhuang.top/tags/Kaggle/"/>
+    
+      <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
     
       <category term="Titanic 生存预测" scheme="http://kyonhuang.top/tags/Titanic-%E7%94%9F%E5%AD%98%E9%A2%84%E6%B5%8B/"/>
     

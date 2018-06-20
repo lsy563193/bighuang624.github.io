@@ -103,16 +103,16 @@
 
 
 
-  <meta name="description" content="WHU 软件工程大三狗">
+  <meta name="description" content="WHU 软件工程大三生">
 <meta property="og:type" content="website">
 <meta property="og:title" content="大黄菌的个人博客">
 <meta property="og:url" content="http://kyonhuang.top/index.html">
 <meta property="og:site_name" content="大黄菌的个人博客">
-<meta property="og:description" content="WHU 软件工程大三狗">
+<meta property="og:description" content="WHU 软件工程大三生">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大黄菌的个人博客">
-<meta name="twitter:description" content="WHU 软件工程大三狗">
+<meta name="twitter:description" content="WHU 软件工程大三生">
 
 
 
@@ -954,7 +954,47 @@
 
       
         
-          <p>第三门复习的专业课是计算机网络。临近考试，因此首次发布时根据老师划的重点进行整理，后续更新时再进行补充。</p>
+          <h2 id="计算机网络与因特网"><a href="#计算机网络与因特网" class="headerlink" title="计算机网络与因特网"></a>计算机网络与因特网</h2><p>一个<strong>协议</strong>定义了在两个或多个通信实体之间交换报文的格式与次序，以及报文发送/接收或其他事件所采取的动作。</p>
+<h3 id="协议层次及其服务模型"><a href="#协议层次及其服务模型" class="headerlink" title="协议层次及其服务模型"></a>协议层次及其服务模型</h3><p><strong>因特网协议栈（Internet protocol stack）</strong>自顶向下：</p>
+<ol>
+<li><strong>应用层</strong>：网络应用程序及应用层协议存留的地方。<ul>
+<li>常见应用层协议：HTTP、DNS、FTP、SMTP、DHCP</li>
+<li>位于应用层的分组信息称为<strong>报文（message）</strong></li>
+</ul>
+</li>
+<li><strong>运输层</strong>：负责在<strong>应用程序</strong>端点之间传送应用层报文。<ul>
+<li>常见运输层协议：TCP、UDP</li>
+<li>位于应用层的分组信息称为<strong>报文段（segment）</strong></li>
+</ul>
+</li>
+<li><strong>网络层</strong>：负责在<strong>主机</strong>间传送网络层的分组。<ul>
+<li>常见网络层协议：IP</li>
+<li>位于网络层的分组信息称为<strong>数据报（datagram）</strong></li>
+</ul>
+</li>
+<li><strong>链路层</strong>：负责将整个帧从一个网络元素移动到临近的网络元素。<ul>
+<li>链路层的例子包括以太网，WiFi</li>
+<li>由于分组从源到目的地传送通常要经过几条链路，所以可能被途径不同的链路层协议处理</li>
+<li>位于链路层的分组信息称为<strong>帧（frame）</strong> </li>
+</ul>
+</li>
+<li><strong>物理层</strong>：将帧中的每个比特从一个结点移动到下一结点。<ul>
+<li>与链路的实际传输媒介相关。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/426df589-6f97-4622-b74d-4a81fcb1da8e.png" alt=""></p>
+<p>ISO-OSI 模型：</p>
+<ol>
+<li>应用层</li>
+<li>表示层：使通信的应用协议能够解释交换数据的含义，提供数据压缩、数据解密、数据描述等服务；</li>
+<li>会话层：提供数据交换的定界和同步功能，包括建立检查点和恢复方案的方法；</li>
+<li>运输层</li>
+<li>网络层</li>
+<li>链路层</li>
+<li>物理层</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/CyC2018/Interview-Notebook/master/pics/ac106e7e-489a-4082-abd9-dabebe48394c.jpg" alt=""></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/computer-network-notes/#more" rel="contents">
@@ -1699,7 +1739,7 @@
                 alt="Kyon Huang" />
             
               <p class="site-author-name" itemprop="name">Kyon Huang</p>
-              <p class="site-description motion-element" itemprop="description">WHU 软件工程大三狗</p>
+              <p class="site-description motion-element" itemprop="description">WHU 软件工程大三生</p>
           </div>
 
           
@@ -2011,7 +2051,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">119</span>
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

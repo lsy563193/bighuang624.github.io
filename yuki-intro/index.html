@@ -104,7 +104,7 @@
 
 
   <meta name="description" content="技术的学习一定要辅以代码的实践，菜鸟程序员扑在轮子上要像饥饿的人扑在面包上。——沃兹基硕德  受到掘金上看到的 yddict：一个命令行查单词的工具 的启发，原来摸一个 Node.js 的 demo 不一定非要写一个服务器。恰逢最近开始看《算法（第4版）》，把练习代码和笔记传到 github 上时需要在 README.md 里放一份带链接的目录，方便在线跳转查阅。两者综合，就有了开发一个能够将项">
-<meta name="keywords" content="NodeJS,yuki,NPM">
+<meta name="keywords" content="NodeJS,yuki,NPM,cli-app">
 <meta property="og:type" content="article">
 <meta property="og:title" content="yuki-目录文档生成工具">
 <meta property="og:url" content="http://kyonhuang.top/yuki-intro/index.html">
@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/yuki/Yuki.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/yuki/master/example.gif">
 <meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/yuki/give-him-first.jpg">
-<meta property="og:updated_time" content="2018-05-10T15:50:33.155Z">
+<meta property="og:updated_time" content="2018-06-19T07:42:39.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yuki-目录文档生成工具">
 <meta name="twitter:description" content="技术的学习一定要辅以代码的实践，菜鸟程序员扑在轮子上要像饥饿的人扑在面包上。——沃兹基硕德  受到掘金上看到的 yddict：一个命令行查单词的工具 的启发，原来摸一个 Node.js 的 demo 不一定非要写一个服务器。恰逢最近开始看《算法（第4版）》，把练习代码和笔记传到 github 上时需要在 README.md 里放一份带链接的目录，方便在线跳转查阅。两者综合，就有了开发一个能够将项">
@@ -545,7 +545,7 @@
 <h3 id="先遍历文件再深度遍历文件夹"><a href="#先遍历文件再深度遍历文件夹" class="headerlink" title="先遍历文件再深度遍历文件夹"></a>先遍历文件再深度遍历文件夹</h3><p>开发的过程中发现一个问题：遍历文件夹 a 下的所有文件时，经常先深度遍历了其中的文件夹，导致文件排在这些文件夹深度遍历的结果之后，在生成的 README 中无法看出其准确位置。</p>
 <p>解决方法还比较简单，就是在每一次递归的遍历方法中都建立一个队列，遍历到文件夹先推入队列，遍历到文件则展示。所有文件遍历结束后，将队列中的文件夹依次取出并遍历。这样既满足了要求，也没有对深度优先遍历造成影响。</p>
 <p>更好的是，JS 的数组原生支持了<code>push</code>方法，使得我不用再写一个队列的实现。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>尽管只是一个微不足道的小工具，我还是很开心能够根据自己的实际需求开发了 yuki，更开心有机会开发一个能在名字中夹私货的项目（早在看到 vue 的版本名时我就一直心心念念了）。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>尽管只是一个微不足道的小工具，我还是很开心能够根据自己的实际需求开发了 yuki，更开心的是，我有机会能在项目中夹带一点私货。早在看到尤大给 Vue 定下的版本名时，我就非常羡慕。这次终于如愿以偿。</p>
 <p>如果你觉得这个小工具还不错，或者使用时觉得很方便、减轻了重复的工作负担，那么不妨为 <a href="https://github.com/bighuang624/yuki" target="_blank" rel="external">yuki</a> 点一个 star，因为我憧憬着能在毕业前拥有一个自己的 100+ star 项目。</p>
 <p><img src="https://raw.githubusercontent.com/bighuang624/bighuang624.github.io/master/images/yuki/give-him-first.jpg"></p>
 <p>当然，我更希望这些 star 是凭借我自己的开发创意和技术所得到的认可的。而我的开发经验确实不太足，所以如果你觉得这个工具不太好使、代码糟糕、发现了 bug，或是有可以增加的功能，也欢迎你开 issue 或者提交 PR 来告知我。</p>
@@ -588,6 +588,8 @@
             <a href="/tags/yuki/" rel="tag"># yuki</a>
           
             <a href="/tags/NPM/" rel="tag"># NPM</a>
+          
+            <a href="/tags/cli-app/" rel="tag"># cli-app</a>
           
         </div>
       
@@ -695,7 +697,7 @@
                 alt="Kyon Huang" />
             
               <p class="site-author-name" itemprop="name">Kyon Huang</p>
-              <p class="site-description motion-element" itemprop="description">WHU 软件工程大三狗</p>
+              <p class="site-description motion-element" itemprop="description">WHU 软件工程大三生</p>
           </div>
 
           
@@ -1007,7 +1009,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">119</span>
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
