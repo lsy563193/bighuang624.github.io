@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2018-06-17T11:46:35.502Z</updated>
+  <updated>2018-06-21T14:22:39.633Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,156 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>中文短文本情感分析 web 应用开发记录（一）</title>
+    <link href="http://kyonhuang.top/sentiment-analysis-webapp-record1/"/>
+    <id>http://kyonhuang.top/sentiment-analysis-webapp-record1/</id>
+    <published>2018-06-21T14:22:05.000Z</published>
+    <updated>2018-06-21T14:22:39.633Z</updated>
+    
+    <content type="html"><![CDATA[<p>“中文短文本情感分析 web 应用”是我带领的小组在《软件工程》这门课的大作业选题。按照这门课大作业的传统风格，就是做一个比较寻常的网站/APP，不过我这次提议另辟蹊径，一是我个人对情感分析这个方面比较感兴趣，想要借此机会进行了解和实践；二是组内成员都志在继续深造，做一个带有科研意味的项目或许能为简历添色。</p>
+<p>先简单介绍一下我们的项目。该 web 应用可分析用户输入的中文短文本中蕴含的情感，并输出数值化结果。前端使用 Vue.js 开发，后台使用 Flask 开发。算法部分目前包含自主实现的词袋模型和引入的 SnowNLP。项目地址如下（目前服务器关了，想要尝试效果可以将项目 clone 到本地，照着 README 运行）：</p>
+<ul>
+<li><a href="http://kyonhuang.top/sentiment-analysis-webapp/">在线使用地址</a></li>
+<li><a href="https://github.com/bighuang624/sentiment-analysis-webapp" target="_blank" rel="external">项目地址</a></li>
+</ul>
+<p>截止这篇博文写作时，这个项目算是成型，也在 Github 上获得了 7 个 star。但是也遇到了一些问题，当然最大的问题就是分析效果不好。效果不好的原因包括很多，后文会一一介绍，当然其中一个是我们目前的算法部分还没有涉及到深度学习，不过我正在争取在近期用 LSTM 等实现效果较好的模型。</p>
+<p>这篇博文首先会简单介绍情感分析的概念、技术和难点。之后针对我们的项目，详细介绍我们使用的算法、迄今为止遇到的问题和一些改进措施。</p>
+<a id="more"></a>
+<h2 id="什么是情感分析？"><a href="#什么是情感分析？" class="headerlink" title="什么是情感分析？"></a>什么是情感分析？</h2><p><strong>情感分析（Sentiment analysis）</strong>或意见挖掘（Opinion mining）是对人群对于产品、服务、组织、个体、问题、事件、话题等实体的意见、情感、情绪、评价、态度的计算研究。鉴于网络社交媒体的风行，我们拥有了海量的情绪化数据。情感分析已经成为自然语言处理中最有吸引力的研究领域之一，它与管理科学、社会科学领域有交集。情感分析在现实中的典型应用包括舆情分析、民意调查、产品意见调查、预测股票市场行情等等。</p>
+<p>最典型的情感分析会分析一段文本对某个对象的情感是正面的还是负面。更细致的处理包括情感的分类（快乐、愤怒、恐惧、悲哀等）和情感的程度。意见挖掘可能还需要从文本中挖掘出对象的属性，再分析对应属性的情感。</p>
+<p>早期的情感分析技术包括监督方法（支持向量机、最大熵、朴素贝叶斯等监督机器学习方法）和非监督方法（包括利用情感词汇、语法分析和句法模式的各种方法），而深度学习走红后，其应用到情感分析的出色效果催生大量基于深度学习的情感分析研究[1]。</p>
+<h2 id="中文情感分析的难点"><a href="#中文情感分析的难点" class="headerlink" title="中文情感分析的难点"></a>中文情感分析的难点</h2><p>以下是我在查阅资料后总结的一些中文情感分析的难点：</p>
+<ol>
+<li>很多情感的表达是隐晦的，没有特别明显的代表性词语。例如“蓝屏”这个词一般不会出现在情感词典之中，但这个词明显表达了不满的情绪。因此需要另外根据具体领域构建针对性的情感词典。</li>
+<li>同一个词在不同语境或领域里有不同的意思，可能表达不同的情感态度，例如“我家洗衣机声音很大”这些很可能是差评，而“我家音响声音很大”很可能就是好评。</li>
+<li>有些反讽的表达难以判断，例如“你行你上啊”。</li>
+<li>以上三条在做英语情感分析时也会遇到。但是中文独有的问题是缺少高质量的相关有标注数据集。相比起来，英文情感分析有公认的数据集 <a href="http://ai.stanford.edu/~amaas/data/sentiment/" target="_blank" rel="external">IMDB</a>。此外，可能还需要一些高质量的情感词典，英文有 SentiWordNet，但是中文的词典资源质量不高，不细致，另外缺乏主客观词典。当然，因为有监督的机器学习方法的风行，现在情感分析也不一定非要情感词典。</li>
+<li>网络流行语等新词也会影响情感分析，比如“给力”、“不明觉厉”、“累觉不爱”等，这些词利用传统的分词一般都会被切开，而且会影响词性标注，如果想避免只能加入人工干预，修改分词的粒度和词性标注的结果。</li>
+</ol>
+<p>因为我们的项目主要还是拿文本分类的方法进行处理，所以以上问题不是都遇到了，仅停留在了解层面，如有谬误欢迎指出。</p>
+<h2 id="初步尝试"><a href="#初步尝试" class="headerlink" title="初步尝试"></a>初步尝试</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>首先谈谈数据。根据前文所述，中文的有标注数据集很难找。我前两周和做过类似工作的学长交流时，他的做法是自行标注。而我们选择的做法是自己用 Python 编写爬虫爬取各类含评论的网站，将评论正文作为数据，评论的星级作为标签：</p>
+<p><img src="https://raw.githubusercontent.com/bighuang624/pic-repo/master/douban-comment.png" alt=""></p>
+<p>我们最终爬取了豆瓣的 146856 条电影评论和蜂窝网的 174055 条酒店评论作为我们的数据集。你可以在 <a href="https://github.com/bighuang624/sentiment-analysis-webapp/tree/master/training" target="_blank" rel="external">sentiment-analysis-webapp/training/</a> 找到这两份数据以及训练模型的代码。</p>
+<p>我们希望最终给出的结果也能反应情感的程度，而不是单纯的正负二元分类。因此，我们没有对标签做后续处理。</p>
+<h3 id="算法部分实现过程"><a href="#算法部分实现过程" class="headerlink" title="算法部分实现过程"></a>算法部分实现过程</h3><h4 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h4><p>既然是使用监督机器学习算法，那么自然需要特征。计算机是看不懂自然语言的，<strong>从文本中提取特征</strong>最终的结果一般是将文本转换为<strong>向量</strong>，而这一步不管是使用什么算法，都需要首先对文本进行分词。</p>
+<p>成熟的中文分词工具还是比较多的，包括 <a href="https://github.com/FudanNLP/fnlp" target="_blank" rel="external">FudanNLP</a>、结巴分词、THULAC、Stanford CoreNLP。其中 Stanford CoreNLP 是重量级工具，需要自备数据集、数据字典等，不太方便；另外三个工具经过简单的比较后，我们最终选用了结巴分词，因为确实很容易使用，分词效果也很好。</p>
+<p>分词的相关代码：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> jieba</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">chinese_word_cut</span><span class="params">(mytext)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="string">" "</span>.join(jieba.cut(mytext))</div><div class="line">    </div><div class="line">X[<span class="string">'cutted_comment'</span>]=X.comment.apply(chinese_word_cut)</div></pre></td></tr></table></figure>
+<h4 id="向量化"><a href="#向量化" class="headerlink" title="向量化"></a>向量化</h4><p>我们的算法都是使用 scikit-learn 实现的，其中从文本中提取特征的方法在<code>sklearn.feature_extraction.text</code>包中。</p>
+<p>比较典型的自然语言向量化方法有词袋模型（带或不带 TF-IDF）、词嵌入等等，在这里可以简单的介绍一下。</p>
+<h5 id="词袋模型"><a href="#词袋模型" class="headerlink" title="词袋模型"></a>词袋模型</h5><p><strong>词袋模型（bag of words）</strong>不考虑词语的出现顺序，也不考虑词语和前后词语之间的连接。每个词都被当作一个独立的特征来看待。这样，每个句子被编码成一个 $R^{|V| \times 1}$向量，其中 $|V|$是语料库中所有单词的数量。所有单词组成一个词汇表，每个句子向量的第 $i$ 位即是词汇表中第 $i$ 个词在句子中出现的次数。</p>
+<p>词袋模型可以以单个词语做单位，也可以以 n 个连续的单词做单位（被称为 n-gram）。词袋模型的一大问题是文本中单词顺序和上下文所蕴含的信息被完全丢弃。</p>
+<p>词袋模型的相关代码如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</div><div class="line"></div><div class="line">max_df=<span class="number">0.8</span> <span class="comment">#在超过这一比例的文档中出现的关键词过于平凡，去除掉</span></div><div class="line">min_df=<span class="number">3</span> <span class="comment">#在低于这一数量的文档中出现的关键词过于独特，去除掉</span></div><div class="line"></div><div class="line">vect = CountVectorizer(max_df=max_df, min_df=min_df, token_pattern=<span class="string">u'(?u)\\b[^\\d\\W]\\w+\\b'</span>)</div><div class="line">term_matrix = pd.DataFrame(vect.fit_transform(X_train.cutted_comment).toarray(), columns=vect.get_feature_names())</div></pre></td></tr></table></figure>
+<h5 id="TF-IDF"><a href="#TF-IDF" class="headerlink" title="TF-IDF"></a>TF-IDF</h5><p>TF-IDF 是在词袋模型的基础上<strong>度量词语重要性</strong>的指标。在度量词语重要性时，我们的直觉是在同一文档中，最频繁出现的词语应该最重要。但实际上，出现最频繁的大部分词语肯定是类似于“the”、“and”等常见停用词（后文会谈停用词是什么）。并且，这些词在其他文档中也频繁出现。而最能描述文档主题的词一般在本文档中频繁出现，但在整个语料库中出现次数相对较少。</p>
+<p>根据以上思想，我们通过 TF-IDF 这个指标来寻找重要的词语。TF（Term Frequency）指<strong>词项频率</strong>，IDF（Inverse Document Frequency）指<strong>逆文档频率</strong>。TF-IDF 通过以下方法计算：假定文档集中有 $N$ 篇文档，$f_{ij}$ 为词项 $i$ 在文档 $j$ 中出现的频率（即次数），则词项 $i$ 在文档 $j$ 中的词项频率 $TF_{ij}$ 定义为</p>
+<p>$$TF_{ij} = \frac{f_{ij}}{max_kf_{kj}}$$</p>
+<p>这里有一个归一化的操作，通过除以同一文档中出现最多的词项（可能不考虑停用词的频率）的频率来计算。</p>
+<p>假定词项 $i$ 在文档集的 $n_i$ 篇文档中出现，那么词项 $i$ 的 IDF 定义如下：</p>
+<p>$$IDF_i = log_2{\frac{N}{n_i}}$$</p>
+<p>于是词项 $i$ 在文档中的得分被定义为 $TF_{ij} \times IDF_i$。相关代码如下（其实就是将<code>sklearn.feature_extraction.text</code>提供的<code>CountVectorizer</code>换为<code>TfidfVectorizer</code>）：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</div><div class="line"></div><div class="line">max_df=<span class="number">0.8</span> <span class="comment">#在超过这一比例的文档中出现的关键词过于平凡，去除掉</span></div><div class="line">min_df=<span class="number">3</span> <span class="comment">#在低于这一数量的文档中出现的关键词过于独特，去除掉</span></div><div class="line"></div><div class="line">vect = TfidfVectorizer(max_df=max_df, min_df=min_df, token_pattern=<span class="string">u'(?u)\\b[^\\d\\W]\\w+\\b'</span>)</div><div class="line">term_matrix = pd.DataFrame(vect.fit_transform(X_train.cutted_comment).toarray(), columns=vect.get_feature_names())</div></pre></td></tr></table></figure>
+<h5 id="词嵌入"><a href="#词嵌入" class="headerlink" title="词嵌入"></a>词嵌入</h5><p><strong>词嵌入（Word Embedding）</strong>是指把一个维数为所有词的数量的高维空间（one-hot 形式表示的词）“嵌入”到一个维数低得多的连续向量空间中，每个单词或词组被映射为实数域上的向量。因为我们暂时还没用到相关技术，所以不对学习词嵌入的方法进行介绍了（可能会在下一篇博文谈论）。想要了解更多可以看<a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Sequence_Models/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E4%B8%8E%E8%AF%8D%E5%B5%8C%E5%85%A5">自然语言处理与词嵌入 - 吴恩达《深度学习》系列课程笔记</a>。</p>
+<h4 id="停用词"><a href="#停用词" class="headerlink" title="停用词"></a>停用词</h4><p>谈一下停用词的问题。无论是处理中文还是英文，都需要处理停用词。<strong>停用词指那些用于辅助表达但本身不携带任何含义的词</strong>，比如英文中的定冠词“the”。这些词经常在文本中大量出现，如果将其和那些包含信息更丰富的词汇放在一起统计，就容易对我们把握文本的特征形成干扰。所以在文本分类中，一般要首先在文本数据中去掉这些停用词。</p>
+<p>scikit-learn 中自带了英文停用词。如果想做中文停用词的处理，可以用一些机构开源的停用词表。哈工大、四川大学、百度都有类似的词表，可以在<a href="https://github.com/chdd/weibo/tree/master/stopwords" target="_blank" rel="external">这里</a>找到。</p>
+<p>不过一个值得讨论的问题是，我们做的是情感分析工作，而非单纯的文本分类。实际上，很多语气词和标点等都是停用词，但是却对句子的情感表达有着很大的影响。因此，一般在做情感分析工作时，倾向于不去处理停用词。我们会在后文的效果展示中讨论是否去除停用词对我们实际的模型效果的影响。</p>
+<p>还是放一下处理停用词的相关代码：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_custom_stopwords</span><span class="params">(stop_words_file)</span>:</span></div><div class="line">    <span class="keyword">with</span> open(stop_words_file) <span class="keyword">as</span> f:</div><div class="line">        stopwords = f.read()</div><div class="line">    stopwords_list = stopwords.split(<span class="string">'\n'</span>)</div><div class="line">    custom_stopwords_list = [i <span class="keyword">for</span> i <span class="keyword">in</span> stopwords_list]</div><div class="line">    <span class="keyword">return</span> custom_stopwords_list</div><div class="line">    </div><div class="line">stop_words_file = <span class="string">"stopwords.dat"</span> <span class="comment"># 停用词表文件名</span></div><div class="line">stopwords = get_custom_stopwords(stop_words_file)</div><div class="line"></div><div class="line"><span class="comment"># 注意这里增加了一个选项</span></div><div class="line">vect = CountVectorizer(max_df = max_df, </div><div class="line">                       min_df = min_df, </div><div class="line">                       token_pattern=<span class="string">u'(?u)\\b[^\\d\\W]\\w+\\b'</span>, </div><div class="line">                       stop_words=frozenset(stopwords))</div></pre></td></tr></table></figure>
+<h4 id="分类器"><a href="#分类器" class="headerlink" title="分类器"></a>分类器</h4><p>我们初期使用的分类算法是<a href="http://kyonhuang.top/Machine-learning-in-action-notes/#/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF">朴素贝叶斯</a>，相关代码如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> MultinomialNB</div><div class="line">nb = MultinomialNB()</div><div class="line">nb.fit(X_train.cutted_comment, y_train)</div></pre></td></tr></table></figure>
+<h4 id="管道和模型持久化"><a href="#管道和模型持久化" class="headerlink" title="管道和模型持久化"></a>管道和模型持久化</h4><p>scikit-learn 提供<strong>管道</strong>功能，可以将处理流程中的工作顺序连接，隐藏其中的功能，从外部一次调用，就能完成顺序定义的全部工作。这样做可以简化调用过程，减少出错几率。</p>
+<p>同时，scikit-learn 也支持<strong>模型持久化</strong>，即将训练好的模型保存到硬盘，待后台程序启动时可以直接加载到内存。这样，就不必每次启动后台程序时都要花费大量时间和资源进行训练了。相关代码如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> make_pipeline</div><div class="line"><span class="keyword">from</span> sklearn.externals <span class="keyword">import</span> joblib</div><div class="line">pipe = make_pipeline(vect, nb)</div><div class="line">pipe.fit(X_train.cutted_comment, y_train)</div><div class="line">y_pred=pipe.predict(X_test.cutted_comment)</div><div class="line">joblib.dump(pipe, <span class="string">"hotel_comment.pkl"</span>)</div></pre></td></tr></table></figure>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p>为了量化模型效果，需要模型实际预测输出和样本真是输出之间的差异（即<strong>误差</strong>）。因为过拟合的存在，训练误差不适合作为模型选择标准，因此需要从数据集中划分出与训练集互斥的测试集，以测试误差作为泛化误差的近似。</p>
+<p>这里，我们选用<strong>交叉验证法（cross-validation）</strong>，这是一种十分常用的模型评估方法。<strong>k 折交叉验证（k-fold CV）</strong>指划分 k 个互斥子集，每次用 k-1 个子集作训练集，余下一个子集作测试集，进行 k 次训练与测试并取均值。其优点是结果准确，Kaggle 的参赛者大多会提交 CV 分最高的模型，而非在官方提供的测试集上得分最高的模型；缺点是计算量比较大。</p>
+<p>常用的 k 值包括 5、10、20。这里我们统一用 5 折交叉验证来分析各种搭配得到的模型效果。其中所使用的停用词为<a href="https://github.com/dongxiexidian/Chinese/blob/master/stopwords.dat" target="_blank" rel="external">这份</a>。</p>
+<p>对于豆瓣数据集，各种模型的评分如下：</p>
+<ul>
+<li>CountVectorizer + 不去除停用词：0.505020743656528</li>
+<li>CountVectorizer + 去除停用词：0.4937080095876466</li>
+<li>TfidfVectorizer + 不去除停用词：0.49594151903667905</li>
+</ul>
+<p>而对于酒店数据集，各种模型的评分如下：</p>
+<ul>
+<li>CountVectorizer + 不去除停用词：0.5133750057452774</li>
+<li>CountVectorizer + 去除停用词：0.5060018311093455</li>
+<li>TfidfVectorizer + 不去除停用词：0.5297950445100629</li>
+</ul>
+<p>可以看到，去除停用词的效果普遍比不去除停用词要差。而词袋模型和 TF-IDF 的效果比较结果则与数据集有关，这也说明需要针对具体问题选择合适的学习算法。</p>
+<h2 id="问题和改进措施"><a href="#问题和改进措施" class="headerlink" title="问题和改进措施"></a>问题和改进措施</h2><p>从之前 CV 的分数，可以判断我们模型的正确率大概在 50% 左右，相比起在 5 种给分中随机预测的 20% 看似要好很多，但实际表现为不管输入的是正面还是负面情感句子、程度如何，基本上都给 5 分，偶尔会给 4 分。</p>
+<h3 id="样本类别不均衡"><a href="#样本类别不均衡" class="headerlink" title="样本类别不均衡"></a>样本类别不均衡</h3><p>从模型经常给出高分预测的表现，我们很容易做出样本中<strong>正负类别样本不均衡</strong>的判断。实际上，我们的酒店评论数据集中，有 148939 条标签值大于 3，而只有 6895 条标签值小于 3，比例达到 21.6 : 1。豆瓣数据集情况略好，但正负面评论数比例也达到了 5.69 : 1。数据集中样本类别不均衡导致训练出的模型偏向于给出正面预测，以减小损失函数。</p>
+<p>处理样本不均衡的方式包括以下几种：</p>
+<ul>
+<li><p><strong>尝试其他评价指标</strong>：当样本类别不均衡时，准确度这个指标不但没有说服力，反而会对分类器的好坏产生误导。这时，<strong>精确率（Precision）</strong>、<strong>召回率（Recall）</strong>以及 <strong>F1 得分（F1 Score，精确率与召回率的调和平均）</strong>作为评价指标会更加有效。</p>
+</li>
+<li><p><strong>对数据集进行过采样和欠采样</strong>：</p>
+<ul>
+<li><strong>过采样（over-sampling）</strong>指采样个数大于该类样本个数，适用于小类的数据样本。具体表现为添加部分样本的副本；</li>
+<li><strong>欠采样（under-sampling）</strong>指采样个数小于该类样本个数，适用于大类的数据样本。具体表现为删除部分样本。</li>
+</ul>
+</li>
+<li><p><strong>数据增强</strong>：数据增强是 CV 中经常使用的方式，联系到 NLP 领域，可以将文本进行句子顺序打乱、句内词序打乱、同义词替换等操作来增加相应类别的样本量。</p>
+</li>
+</ul>
+<h3 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h3><p>使用 scikit-learn 提供的方法，我们来计算一下在原始酒店数据集上用 TfidfVectorizer + 不去除停用词训练出来的模型的精确率、召回率和 F1 得分：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</div><div class="line">metrics.accuracy_score(y_test, y_pred)</div><div class="line"><span class="string">'''</span></div><div class="line">0.5307027623293653</div><div class="line">'''</div><div class="line">metrics.confusion_matrix(y_test, y_pred)</div><div class="line"><span class="string">'''</span></div><div class="line">array([[    0,     0,   151,   237,    27],</div><div class="line">       [    0,     0,   227,  1017,   106],</div><div class="line">       [    0,     0,   530,  3603,   507],</div><div class="line">       [    0,     1,   327, 12089,  6894],</div><div class="line">       [    0,     0,    58,  7266, 10474]])</div><div class="line">'''</div><div class="line">metrics.precision_score(y_test, y_pred, average=<span class="string">'macro'</span>)</div><div class="line"><span class="string">'''</span></div><div class="line">0.29816554278872476</div><div class="line">'''</div><div class="line">metrics.recall_score(y_test, y_pred, average=<span class="string">'micro'</span>)</div><div class="line"><span class="string">'''</span></div><div class="line">0.5307027623293653</div><div class="line">'''</div><div class="line">metrics.f1_score(y_test, y_pred, average=<span class="string">'weighted'</span>)  </div><div class="line"><span class="string">'''</span></div><div class="line">0.5048778200537771</div><div class="line">'''</div></pre></td></tr></table></figure>
+<p>可以看到精确率相对来说比较低。</p>
+<!--1. 说明什么？
+2. 进一步处理数据-->
+<h3 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h3><p>解决了样本类别不均衡以及模型评估的问题，我们很容易想到，我们一开始采用的朴素贝叶斯是否是在这个问题上表现最好的机器学习模型？SVM、随机森林或者 Kaggle 前任大杀器 XGBoost 会不会有更出色的结果？</p>
+<p>To be continued…</p>
+<h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><p>文本分类中常见的特征选择方法除开 TF-IDF 外，还包括信息增益、互信息、期望交叉熵、CHI 统计等[2]。根据清华大学刘知远老师在博士阶段的研究，TF-IDF 具有较强的普适性，能够满足绝大部分的中文场景下的需求。不过也有其他研究工作表明使用信息增益的性能表现也很优秀。由于我们之后会使用深度学习模型在做端到端的学习，并且特征选择不是目前的瓶颈，因此这里不进行深入研究。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>通过这个项目，我感觉我确实很喜欢情感分析这个研究方向。我也因此承担了绝大部分的算法研究开发工作，查阅了很多文献和网络资料，由此对情感分析研究现状乃至自然语言处理的一些基础知识有了比较深入的了解，可谓受益匪浅。</p>
+<p>比较可惜的是，我们在课程作业结题时实现的版本还不尽人意，而且因为事务忙碌和自身安排原因，深度学习模型计划了很久都没有动手实现。写这篇博文一是对现有工作做一个总结，同时有些算法写的比较详细，巩固一下所学知识；二就是督促自己尽早实现基于深度学习的模型，届时也会出该系列的第二篇博文。也欢迎看到这里的读者在 Github 和这里继续关注我们的工作。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="引用文献"><a href="#引用文献" class="headerlink" title="引用文献"></a>引用文献</h3><ul>
+<li>[1] <a href="https://arxiv.org/abs/1801.07883" target="_blank" rel="external">Deep Learning for Sentiment Analysis : A Survey</a>. Lei Zhang, Shuai Wang, Bing Liu.</li>
+<li>[2] 徐泓洋, 杨国为. <a href="http://www.wanfangdata.com.cn/details/detail.do?_type=perio&amp;id=gykzjsj201711038" target="_blank" rel="external">中文文本特征选择方法研究综述</a>[J]. 工业控制计算机, 2017, 30(11):80-81.</li>
+</ul>
+<h3 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h3><ul>
+<li>《互联网大规模数据挖掘与分布式处理》 1.3.1</li>
+</ul>
+<h3 id="网络资料"><a href="#网络资料" class="headerlink" title="网络资料"></a>网络资料</h3><ul>
+<li><a href="https://www.zhihu.com/question/20700012" target="_blank" rel="external">中文情感分析 (Sentiment Analysis) 的难点在哪？现在做得比较好的有哪几家？ - 知乎</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/34482959" target="_blank" rel="external">如何用Python和机器学习训练中文文本情感分类模型？</a></li>
+<li><a href="https://blog.csdn.net/simona081/article/details/80275506" target="_blank" rel="external">处理文本分类中样本不均衡的问题 - CSDN博客</a></li>
+</ul>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']]}
+});
+</script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=default"></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;“中文短文本情感分析 web 应用”是我带领的小组在《软件工程》这门课的大作业选题。按照这门课大作业的传统风格，就是做一个比较寻常的网站/APP，不过我这次提议另辟蹊径，一是我个人对情感分析这个方面比较感兴趣，想要借此机会进行了解和实践；二是组内成员都志在继续深造，做一个带有科研意味的项目或许能为简历添色。&lt;/p&gt;
+&lt;p&gt;先简单介绍一下我们的项目。该 web 应用可分析用户输入的中文短文本中蕴含的情感，并输出数值化结果。前端使用 Vue.js 开发，后台使用 Flask 开发。算法部分目前包含自主实现的词袋模型和引入的 SnowNLP。项目地址如下（目前服务器关了，想要尝试效果可以将项目 clone 到本地，照着 README 运行）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://kyonhuang.top/sentiment-analysis-webapp/&quot;&gt;在线使用地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/bighuang624/sentiment-analysis-webapp&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;项目地址&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;截止这篇博文写作时，这个项目算是成型，也在 Github 上获得了 7 个 star。但是也遇到了一些问题，当然最大的问题就是分析效果不好。效果不好的原因包括很多，后文会一一介绍，当然其中一个是我们目前的算法部分还没有涉及到深度学习，不过我正在争取在近期用 LSTM 等实现效果较好的模型。&lt;/p&gt;
+&lt;p&gt;这篇博文首先会简单介绍情感分析的概念、技术和难点。之后针对我们的项目，详细介绍我们使用的算法、迄今为止遇到的问题和一些改进措施。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="开源小项目" scheme="http://kyonhuang.top/categories/%E5%BC%80%E6%BA%90%E5%B0%8F%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+      <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="自然语言处理" scheme="http://kyonhuang.top/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="文本分类" scheme="http://kyonhuang.top/tags/%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="情感分析" scheme="http://kyonhuang.top/tags/%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90/"/>
+    
+      <category term="情感计算" scheme="http://kyonhuang.top/tags/%E6%83%85%E6%84%9F%E8%AE%A1%E7%AE%97/"/>
+    
+  </entry>
   
   <entry>
     <title>面向对象程序设计复习笔记</title>
@@ -232,8 +382,6 @@
       <category term="论文阅读笔记" scheme="http://kyonhuang.top/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
-    
       <category term="问答系统" scheme="http://kyonhuang.top/tags/%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/"/>
     
       <category term="信息检索" scheme="http://kyonhuang.top/tags/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2/"/>
@@ -241,6 +389,8 @@
       <category term="答案抽取" scheme="http://kyonhuang.top/tags/%E7%AD%94%E6%A1%88%E6%8A%BD%E5%8F%96/"/>
     
       <category term="问题分析" scheme="http://kyonhuang.top/tags/%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90/"/>
+    
+      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
     
       <category term="自然语言处理" scheme="http://kyonhuang.top/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
@@ -354,11 +504,11 @@
       <category term="论文阅读笔记" scheme="http://kyonhuang.top/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
+    
       <category term="身份认证" scheme="http://kyonhuang.top/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/"/>
     
       <category term="行为特征" scheme="http://kyonhuang.top/tags/%E8%A1%8C%E4%B8%BA%E7%89%B9%E5%BE%81/"/>
-    
-      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
     
       <category term="生物行为统计学" scheme="http://kyonhuang.top/tags/%E7%94%9F%E7%89%A9%E8%A1%8C%E4%B8%BA%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
     
@@ -2181,7 +2331,7 @@ state-of-the-art 是参考别人论文的数据，还是自己实现？如何保
     <link href="http://kyonhuang.top/kaggle-titanic-1/"/>
     <id>http://kyonhuang.top/kaggle-titanic-1/</id>
     <published>2018-02-26T11:12:03.000Z</published>
-    <updated>2018-05-29T03:08:31.731Z</updated>
+    <updated>2018-06-21T14:19:14.690Z</updated>
     
     <content type="html"><![CDATA[<p>注册著名的数据科学竞赛平台 Kaggle 四个多月了，当初是为了要一份数据集，而一直没有参加比赛。这个寒假终于按耐不住，决定拿入门级的 Titanic: Machine Learning from Disaster 打响革命第一枪。</p>
 <p>Titanic 生存预测比赛是一个二分类问题。题目提供了一份乘客名单，包含了乘客的名字、性别、年龄、船票等级等信息，以及是否成功获救的标记，最终需要提交一份对测试集中的乘客是否成功获救的 csv 文件。</p>
@@ -2269,7 +2419,7 @@ state-of-the-art 是参考别人论文的数据，还是自己实现？如何保
 <p>比较结果如图：</p>
 <p><img src="data:image/png;base64,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%0A" alt=""></p>
 <p>根据这幅图，第三次提交时我选用了效果相对较好的 SVC 分类器。</p>
-<h3 id="思考与总结"><a href="#思考与总结" class="headerlink" title="思考与总结"></a>思考与总结</h3><h4 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h4><p>在上述代码中我们没有进行数据可视化，一是因为这次的数据还是比较容易去分析，不太需要数据可视化；二是我对 matplotlib、seaborn 的使用还不太熟练。</p>
+<h3 id="思考与总结"><a href="#思考与总结" class="headerlink" title="思考与总结"></a>思考与总结</h3><h4 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h4><p>在上述代码中我们基本没有进行数据可视化，一是因为这次的数据还是比较容易去分析，不太需要数据可视化；二是我对 matplotlib、seaborn 的使用还不太熟练。</p>
 <p>实际上，数据可视化是数据科学的核心技术之一。有效的数据可视化可以帮助深入地研究变量，因此通过数据可视化来对数据集和单独的特征进行了解应该成为机器学习项目的第一步。如果想要了解如何在这个项目中使用数据可视化进行分析，可以在最下面的参考资料中查看别人的方案；如果想全面的学习数据可视化，Kaggle 也提供了数据可视化的<a href="https://www.kaggle.com/learn/data-visualisation" target="_blank" rel="external">课程</a>。</p>
 <h4 id="关于缺失值"><a href="#关于缺失值" class="headerlink" title="关于缺失值"></a>关于缺失值</h4><p>不同的机器学习模型对缺失值的敏感度不同。实际上，xgboost 对缺失值有默认的处理方法。根据作者 Tianqi Chen 在论文中的介绍，xgboost 把缺失值当做稀疏矩阵来对待，本身的在节点分裂时不考虑的缺失值的数值。缺失值数据会被分到左子树和右子树分别计算损失，选择较优的那一个。如果训练中没有数据缺失，预测时出现了数据缺失，那么默认被分类到右子树。</p>
 <p>根据知乎上<a href="https://www.zhihu.com/question/58230411" target="_blank" rel="external">怎么理解决策树、xgboost能处理缺失值？而有的模型(svm)对缺失值比较敏感呢?</a>问题赞同数最高的回答，有一些经验法则可供参考：</p>
@@ -2296,7 +2446,7 @@ state-of-the-art 是参考别人论文的数据，还是自己实现？如何保
 <li><a href="https://zhuanlan.zhihu.com/p/27550334" target="_blank" rel="external">分分钟，杀入Kaggle TOP 5% 系列（1）</a></li>
 <li><a href="https://www.kaggle.com/sinakhorami/titanic-best-working-classifier" target="_blank" rel="external">Titanic best working Classifier | Kaggle</a></li>
 </ul>
-<p>推荐一下这个 kernel：<a href="https://www.kaggle.com/kanncaa1/data-sciencetutorial-for-beginners/notebook" target="_blank" rel="external">Data ScienceTutorial for Beginners
+<p>最后推荐一下这个 kernel：<a href="https://www.kaggle.com/kanncaa1/data-sciencetutorial-for-beginners/notebook" target="_blank" rel="external">Data ScienceTutorial for Beginners
 </a>。包含了包括数据可视化、Python 基本语法、pandas 基本用法等 Kaggle 比赛所需要的基础知识。很全面，而且主要的数据集是精灵宝可梦数据，加分。</p>
 ]]></content>
     
@@ -2314,9 +2464,9 @@ state-of-the-art 是参考别人论文的数据，还是自己实现？如何保
     
       <category term="机器学习" scheme="http://kyonhuang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="Kaggle" scheme="http://kyonhuang.top/tags/Kaggle/"/>
-    
       <category term="特征工程" scheme="http://kyonhuang.top/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="Kaggle" scheme="http://kyonhuang.top/tags/Kaggle/"/>
     
       <category term="Titanic 生存预测" scheme="http://kyonhuang.top/tags/Titanic-%E7%94%9F%E5%AD%98%E9%A2%84%E6%B5%8B/"/>
     
@@ -2849,149 +2999,6 @@ state-of-the-art 是参考别人论文的数据，还是自己实现？如何保
       <category term="年终总结" scheme="http://kyonhuang.top/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
     
       <category term="未来展望" scheme="http://kyonhuang.top/tags/%E6%9C%AA%E6%9D%A5%E5%B1%95%E6%9C%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法一篇通——动态规划</title>
-    <link href="http://kyonhuang.top/dynamic-programming/"/>
-    <id>http://kyonhuang.top/dynamic-programming/</id>
-    <published>2017-12-18T10:23:41.000Z</published>
-    <updated>2018-04-25T15:15:12.311Z</updated>
-    
-    <content type="html"><![CDATA[<p>上周四去参加了第一次校招实习考试。虽然原本只是和同学凑个热闹，但结果还是着实有点打击。算法题一点思路都没有，前端知识也基本忘干净了。回到学校反思了一下，感觉从成都回来后学习状态确实很差。</p>
-<p>另外，感觉自己把自己就预先划分到保研的身份去了。之前一直认为机器学习和前端不可兼得，自己划死了高度。实际上，很多业界人士在前端、机器学习以及其他方向都有很高水平。前端是我的兴趣，机器学习是之后可能深入研究的领域，但是如果抱着只能二选一的心态去学习，只能说明自己不够勤奋。之后的学习目标首先是为读研打好稳固基石，然后也要涉及多方面的知识。</p>
-<p>回到正题。这次实习考试的第一题在当时没有思路，出来后同学讨论说要用到动态规划思想。之前有听过几次这个词，但是没有去了解，恰逢这个机会（以及为之后的美赛做准备），查阅了很多资料。在此总结一下我对动态规划的了解，以及用几个例子来说明，希望能尽可能地把动态规划给弄通。</p>
-<a id="more"></a>
-<h2 id="概念理解"><a href="#概念理解" class="headerlink" title="概念理解"></a>概念理解</h2><p><strong>动态规划（Dynamic programming）</strong>是一种在数学、计算机科学和经济学中使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法，常用于求解<strong>最优化问题（Optimization problem）</strong>。动态规划常常适用于有<strong>重叠子问题</strong>和<strong>最优子结构性质</strong>的问题，动态规划方法所耗时间往往远少于朴素解法。</p>
-<p>当我们遇到一个大问题时，总是习惯把问题的规模变小，这样便于分析讨论。这个规模变小后的问题和原来的问题是同质的，除了规模变小，其它的都是一样的，本质上它还是同一个问题，我们就称其为原问题的<strong>子问题</strong>。</p>
-<p><strong>动态规划的核心</strong>是<strong>状态</strong>和<strong>状态转移方程</strong>：</p>
-<ul>
-<li><p><strong>状态</strong>：描述该问题的子问题的解，即根据子问题来定义状态。</p>
-</li>
-<li><p><strong>状态转移方程</strong>：状态和状态之间的关系式。大部分情况下，某个状态只与它前面出现的状态有关，而独立于后面的状态（<strong>无后效性</strong>）。</p>
-</li>
-</ul>
-<p>能使用动态规划思想解决的问题都有最优子结构性质和重叠子问题：</p>
-<ul>
-<li><p><strong>最优子结构（Optimal substructure）</strong>性质：如果问题的最优解所包含的子问题的解也是最优的，而这些子问题可以独立求解，我们就称该问题具有最优子结构性质。其包含“<strong>全局最优解包含局部最优解</strong>”的思想。</p>
-</li>
-<li><p>重叠子问题：指在用<strong>递归</strong>算法自顶向下对问题进行求解时，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。动态规划算法正是利用了这种子问题的重叠性质，对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简单地查看一下结果，从而获得较高的效率。</p>
-</li>
-</ul>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>动态规划的解题思路如下：</p>
-<ol>
-<li>将原问题分解为子问题；</li>
-<li>确定状态：状态不是随便定义的，一般定义完就要找到状态转移方程；</li>
-<li>确定一些初始状态（边界状态）的值；</li>
-<li>确定状态转移方程。</li>
-</ol>
-<p>如果问题看起来是个动态规划问题，但是无法定义出状态，那么试着将问题规约到一个已知的 DP 问题。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>讲了这么多，让我们一起做几道题目来练练手！</p>
-<h3 id="菜鸟级"><a href="#菜鸟级" class="headerlink" title="菜鸟级"></a>菜鸟级</h3><p>这里我选了 LeetCode 的第 70 题 Climbing Stairs。说来惭愧，我第一次做这个题的时候半天没做出来，还先跳过去了。</p>
-<p>题目是这样的：假设你在爬梯子，需要 n 步爬到顶。每一次只能爬 1 或 2 格，爬到顶一共有多少种不同的方法？</p>
-<p>一步步沿着前面提到的解题思路来解题：</p>
-<ol>
-<li>将原问题分解为子问题：这里的子问题即“爬到 i 格共有多少种不同的方法（i &lt; n）”；</li>
-<li>确定状态：我们通常用一个函数表达式来表示状态。这里我们可以用<code>d(i)</code>来表示“爬到 i 格共有的不同的方法数”；</li>
-<li>确定一些初始状态（边界状态）的值：<code>d(1) = 1</code>、<code>d(2) = 2</code>；</li>
-<li>确定状态转移方程：当我们得知<code>d(i-2)</code>时，再往上爬一次 2 格即可到达 i 格；当我们得知<code>d(i-1)</code>时，再往上爬一次 1 格即可到达 i 格。因此有<code>d(i) = d(i - 1) + d(i - 2)</code>。没有重叠的解法，因为最后一步要么爬 1 格，要么爬 2 格，我们将这两种自然分开了。</li>
-</ol>
-<p>使用递归，我们写出如下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">    <span class="keyword">return</span> climbStairs(n-<span class="number">1</span>) + climbStairs(n-<span class="number">2</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Submit 就可以看到红红的 Time Limit Exceeded。计算时间超了，这是因为对于每一个 i，由于递归调用，我们反复求解相同的子问题，使得所作的工作量爆炸性增长。想要节省这些计算，我们可以采用拿空间换时间的方法，用一个大小为 n 的数组来记录子问题的计算结果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n+<span class="number">1</span>; i++)</div><div class="line">        fill(i, arr);</div><div class="line">    <span class="keyword">return</span> arr[n];</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fill</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[] arr)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)</div><div class="line">        arr[n] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">2</span>)</div><div class="line">        arr[n] = <span class="number">2</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        arr[n] = arr[n-<span class="number">1</span>] + arr[n-<span class="number">2</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>AC，Run Time 5ms。</p>
-<p>也可以用递推法来解决，本质是一个 fibonacci。这里借 Discuss 里的解法一用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="comment">// base cases</span></div><div class="line">    <span class="keyword">if</span>(n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> one_step_before = <span class="number">2</span>;</div><div class="line">    <span class="keyword">int</span> two_steps_before = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> all_ways = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;n; i++)&#123;</div><div class="line">    	all_ways = one_step_before + two_steps_before;</div><div class="line">    	two_steps_before = one_step_before;</div><div class="line">        one_step_before = all_ways;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> all_ways;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="普通级"><a href="#普通级" class="headerlink" title="普通级"></a>普通级</h3><p>稍微加点难度，来试一下 LeetCode 的第 198 题 House Robber。</p>
-<p>题目：你是一个超高校级的小偷，唯一能阻止你的是你同一夜不能偷相邻的两家，否则警报装置会响。给一个全是非负整数的数组来代表每家有的钱，求你在不惊动警报的基础上今晚的最大收获。</p>
-<p>还是一步步沿着动态规划的解题思路来解题：</p>
-<ol>
-<li>将原问题分解为子问题：假设数组长度为 n，则这里的子问题即“有 i 家可偷时最大收获（i &lt; n）”；</li>
-<li>确定状态：用<code>g(i)</code>代表第 i 家有的钱，用<code>d(i)</code>来表示“有 i 家可偷时最大收获”；</li>
-<li>确定一些初始状态（边界状态）的值：<code>d(1) = g(1)</code>、<code>d(2) = max(g(1), g(2))</code>；</li>
-<li>确定状态转移方程：可以想到，到第 i（i &gt; 2）间屋子时，可能之前偷了第 i-1 间，那这间就不能偷；如果没偷第 i-1 间，那这间可以偷。于是有<code>d(i) = max(d(i-2)+g(i), d(i-1))</code>。</li>
-</ol>
-<p>用数组来记录偷过第 i 间屋子时最大收获，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> n = nums.length;</div><div class="line">    <span class="keyword">int</span>[] d = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">        fill(d, nums, i);</div><div class="line">    <span class="keyword">return</span> d[n-<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fill</span><span class="params">(<span class="keyword">int</span>[] d, <span class="keyword">int</span>[] nums, <span class="keyword">int</span> i)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(i == <span class="number">0</span>)</div><div class="line">        d[i] = nums[<span class="number">0</span>];</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">1</span>)</div><div class="line">        d[i] = Math.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>]);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        d[i] = Math.max(d[i-<span class="number">2</span>]+nums[i], d[i-<span class="number">1</span>]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Run Time 接近 0，非常理想。</p>
-<p>也有非常巧妙的递推方案，空间复杂度 O(1)：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>[] num)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> prevNo = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> prevYes = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> n : num) &#123;</div><div class="line">        <span class="keyword">int</span> temp = prevNo;</div><div class="line">        prevNo = Math.max(prevNo, prevYes);</div><div class="line">        prevYes = n + temp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> Math.max(prevNo, prevYes);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="挑战者级"><a href="#挑战者级" class="headerlink" title="挑战者级"></a>挑战者级</h3><p>来试试 LeetCode 的第 646 题 Maximum Length of Pair Chain。这是一道难度为 medium 的题，建议先跳过这一小节，看完“扩展”中的“<a href="http://kyonhuang.top/Dynamic-programming/#%E6%9C%80%E9%95%BF%E9%9D%9E%E9%99%8D%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%88LIS%EF%BC%89">最长非降子序列（LIS）</a>”再回来，有助于解决和理解这道题。</p>
-<p>题目：给定 n 对数，每一对中前一个数总小于后一个数。现在，我们定义当且仅当<code>b &lt; c</code>时<code>(c, d)</code>可以跟在<code>(a, b)</code>后，来形成一条链。给定一系列对，求出<em>用上述方法形成的链条的最大长度</em>。不需要用完所有的给定对，而且可以以任意顺序选取。</p>
-<p>可以看到，这题和 LIS 问题比较相似，但又有一些不同。由于可以以任意顺序选取，而非 LIS 问题中选取最长非降子序列的顺序固定，因此需要对一系列数对进行一个从小到大的排序。</p>
-<p>状态转移方程为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d(i) = max&#123;1, d(j)+1&#125;，其中 j &lt; i，pairs[j][1] &lt; pairs[i][0]</div></pre></td></tr></table></figure>
-<p>想要求<code>d(i)</code>，就把 i 前面的各个链中，最后一个数对的最大值不大于<code>pairs[i][0]</code>的序列长度加 1，然后取出最大的长度即为<code>d(i)</code>。当然，有可能 i 前面的各个链中最后一个数对的最大值都大于<code>pairs[i][0]</code>，那么<code>d(i)=1</code>，即它自身成为一个长度为 1 的子序列。</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLongestChain</span><span class="params">(<span class="keyword">int</span>[][] pairs)</span> </span>&#123;</div><div class="line">    Arrays.sort(pairs, (a, b) -&gt; (a[<span class="number">1</span>] - b[<span class="number">1</span>]));</div><div class="line">    <span class="keyword">int</span> len = pairs.length;</div><div class="line">    <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[len];</div><div class="line">    <span class="keyword">int</span> l = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        arr[i] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)</div><div class="line">            <span class="keyword">if</span>(pairs[j][<span class="number">1</span>] &lt; pairs[i][<span class="number">0</span>] &amp;&amp; arr[j] + <span class="number">1</span> &gt; arr[i])</div><div class="line">                arr[i] = arr[j] + <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span>(arr[i] &gt; l)</div><div class="line">            l = arr[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> l;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>时间复杂度是 O(n^2)，不是最佳解法。由于根据数对的最大值排好了序，因此可以直接用下列方法来完成：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLongestChain</span><span class="params">(<span class="keyword">int</span>[][] pairs)</span> </span>&#123;</div><div class="line">    Arrays.sort(pairs, (a,b) -&gt; a[<span class="number">1</span>] - b[<span class="number">1</span>]);</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>, n = pairs.length, i = -<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (++i &lt; n) &#123;</div><div class="line">        sum++;</div><div class="line">        <span class="keyword">int</span> curEnd = pairs[i][<span class="number">1</span>];</div><div class="line">        <span class="keyword">while</span> (i+<span class="number">1</span> &lt; n &amp;&amp; pairs[i+<span class="number">1</span>][<span class="number">0</span>] &lt;= curEnd) i++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="具体实现方法总结"><a href="#具体实现方法总结" class="headerlink" title="具体实现方法总结"></a>具体实现方法总结</h2><p>经过以上三个例题的锻炼，一般难度的动态规划问题应该都能解决了。总结一下，动态规划思想具体实现有以下两种方法：</p>
-<ol>
-<li><p>可以用<strong>带备忘的自顶向下法（top-down with memoization）</strong>的方法计算状态转移方程。此方法仍然按自然的递归形式编写过程，但是用一个数组或者散列表来存储每个子问题的解，当需要时先检查是否已经保存过此解并取用。</p>
-</li>
-<li><p>还可以采用<strong>递推法</strong>自底向上地计算状态转移方程。递推的关键是边界和计算顺序，将子问题按照规模从小到大进行求解，当求解某个子问题时，其所依赖的更小的子问题都已求解完毕。在多数情况下，递推法的时间复杂度是：状态总数 <em> 每个状态的决策个数 </em> 决策时间。如果不同状态的决策个数不同，需具体问题具体分析。注意递归和递推的区别：一个自顶向下，一个自底向上。</p>
-</li>
-</ol>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="最长非降子序列（LIS）"><a href="#最长非降子序列（LIS）" class="headerlink" title="最长非降子序列（LIS）"></a>最长非降子序列（LIS）</h3><p>给定一个序列<code>A[1]、A[2]、...、A[n]</code>，求其最长非降子序列（LIS，longest increasing subsequence）的长度。这是讲动态规划时基本都会讲到的一个问题。</p>
-<p>其最小子问题即求<code>A[1]、A[2]、...、A[i]</code>的最长非降子序列的长度，其中<code>i &lt; N</code>；而状态则定义有<code>d(i)</code>表示前 i 个数中以<code>A[i]</code>结尾的最长非降子序列。</p>
-<p>当要考虑初始状态（边界状态）的值时，最好是以一个实际输入为例。假定要求的序列是：<code>5, 3, 4, 8, 6, 7</code>，则有：</p>
-<ul>
-<li>前 1 个数的 LIS 长度<code>d(1) = 1</code>；</li>
-<li>前 2 个数的 LIS 长度<code>d(2) = 1</code>（序列：3；3 前面没有比 3 小的）；</li>
-<li>前 3 个数的 LIS 长度<code>d(3) = 2</code>（序列：3，4；4 前面有个比它小的 3，所以<code>d(3)=d(2)+1</code>）；</li>
-<li>前 4 个数的 LIS 长度<code>d(1) = 1</code>（序列：3，4，8；8 前面比它小的有 3 个数，所以<code>d(4) = max{d(1),d(2),d(3)}+1 = 3</code>）；</li>
-</ul>
-<p>由此得到状态转移方程：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d(i) = max&#123;1, d(j) + 1&#125;，其中 i &gt; j，A[i] &gt;= A[j]</div></pre></td></tr></table></figure>
-<p>想要求<code>d(i)</code>，就把 i 前面的各个子序列中，最后一个数不大于<code>A[i]</code>的序列长度加 1，然后取出最大的长度即为<code>d(i)</code>。当然，有可能 i 前面的各个子序列中最后一个数都大于<code>A[i]</code>，那么<code>d(i)=1</code>，即它自身成为一个长度为 1 的子序列。</p>
-<p>代码实现如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">lis</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> n = A.length;</div><div class="line">    <span class="keyword">int</span> len = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span>[] d = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">        d[i] = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) </div><div class="line">            <span class="keyword">if</span>(A[j] &lt;= A[i])</div><div class="line">                d[i] = Math.max(d[i], d[j] + <span class="number">1</span>);</div><div class="line">        len = Math.max(d[i], len);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> len;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>时间复杂度为 O(n^2)，不是最优解法。可以看看<a href="https://www.felix021.com/blog/read.php?1587" target="_blank" rel="external">最长递增子序列 O(NlogN)算法</a>，有点复杂，这里就不多谈了。</p>
-<h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3><p>0-1 背包问题是最广为人知的动态规划问题之一，拥有很多变形。</p>
-<p>有 n 种物品，每种只有一个。第 i 种物品的体积为 V[i]，价值为 W[i]。选一些物品装到一个容量为 C 的背包，使得背包内物品在总体积不超过 C 的前提下价值尽量大。1 &lt;= n &lt;= 100，1 &lt;= V[i] &lt;= C &lt;= 10000，1 &lt;= W[i] &lt;= 10^6。</p>
-<p>将原问题分解为子问题后，状态还是比较好找的。我们可以用<code>d(i, j)</code>来表示前 i 个物品装到剩余体积为 j 的背包里能达到的最大价值。</p>
-<p>对于第 i 个物品，可以装进或不装进背包。不装进背包，则背包中物品最大总价值为<code>d(i-1, j)</code>；而如果装进背包，对于前 i-1 个物品的空间就只有 j-V[i] 了。</p>
-<p>由此得到状态转移方程：</p>
-<p><code>d(i, j) = max{d(i-1, j), d(i-1, j-V[i]) + W[i]}</code></p>
-<p>得到状态转移方程后，代码也不难写出了。这里就不贴了，有兴趣可以自己试试。</p>
-<h3 id="Dijkstra-算法"><a href="#Dijkstra-算法" class="headerlink" title="Dijkstra 算法"></a>Dijkstra 算法</h3><p>Dijkstra 算法也是以动态规划为基础的。你可以到我《算法》笔记的相关章节对 Dijkstra 算法进行进一步了解：<a href="https://github.com/bighuang624/Algorithms-notes/blob/master/%E7%AC%94%E8%AE%B0/4.4_%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84.md" target="_blank" rel="external">Algorithms-notes/笔记/4.4 最短路径
-</a>（Dijkstra 算法相关内容正在添加中）。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>动态规划有着很强的理论性和实践性，可以考验出算法能力，因此经常在各类算法竞赛、面试题中出现。想要完全掌握，光搞定这一篇博客的几个例题远远不够，只有多做经典题目，才能当再碰到动态规划相关题目的时候做到游刃有余。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="写作参考"><a href="#写作参考" class="headerlink" title="写作参考"></a>写作参考</h3><ul>
-<li><a href="http://www.hawstein.com/posts/dp-novice-to-advanced.html" target="_blank" rel="external">动态规划：从新手到专家</a></li>
-<li><a href="http://blog.csdn.net/baidu_28312631/article/details/47418773" target="_blank" rel="external">教你彻底学会动态规划——入门篇 - CSDN博客</a></li>
-<li>《算法竞赛入门经典（第 2 版）》第 9 章</li>
-</ul>
-<h3 id="学习参考"><a href="#学习参考" class="headerlink" title="学习参考"></a>学习参考</h3><ul>
-<li><a href="https://juejin.im/post/5a29d52cf265da43333e4da7" target="_blank" rel="external">漫画：什么是动态规划？ - 掘金</a>：可以借助这个漫画来理解动态规划，并了解动态规划在某些背包问题的特例上计算速度的局限性。</li>
-<li><a href="http://www.hawstein.com/posts/dp-knapsack.html" target="_blank" rel="external">动态规划之背包问题（一）</a></li>
-<li><a href="https://www.zhihu.com/question/23995189" target="_blank" rel="external">什么是动态规划？动态规划的意义是什么？ - 知乎</a></li>
-<li><a href="https://segmentfault.com/a/1190000012829866" target="_blank" rel="external">javascript背包问题详解 - 个人文章 - SegmentFault</a></li>
-</ul>
-<h3 id="姊妹篇"><a href="#姊妹篇" class="headerlink" title="姊妹篇"></a>姊妹篇</h3><ul>
-<li><a href="http://kyonhuang.top/Greedy-algorithm/">算法一篇通——贪心算法</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;上周四去参加了第一次校招实习考试。虽然原本只是和同学凑个热闹，但结果还是着实有点打击。算法题一点思路都没有，前端知识也基本忘干净了。回到学校反思了一下，感觉从成都回来后学习状态确实很差。&lt;/p&gt;
-&lt;p&gt;另外，感觉自己把自己就预先划分到保研的身份去了。之前一直认为机器学习和前端不可兼得，自己划死了高度。实际上，很多业界人士在前端、机器学习以及其他方向都有很高水平。前端是我的兴趣，机器学习是之后可能深入研究的领域，但是如果抱着只能二选一的心态去学习，只能说明自己不够勤奋。之后的学习目标首先是为读研打好稳固基石，然后也要涉及多方面的知识。&lt;/p&gt;
-&lt;p&gt;回到正题。这次实习考试的第一题在当时没有思路，出来后同学讨论说要用到动态规划思想。之前有听过几次这个词，但是没有去了解，恰逢这个机会（以及为之后的美赛做准备），查阅了很多资料。在此总结一下我对动态规划的了解，以及用几个例子来说明，希望能尽可能地把动态规划给弄通。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法笔记" scheme="http://kyonhuang.top/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="算法" scheme="http://kyonhuang.top/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="动态规划" scheme="http://kyonhuang.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-      <category term="DP" scheme="http://kyonhuang.top/tags/DP/"/>
     
   </entry>
   
