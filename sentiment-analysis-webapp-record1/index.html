@@ -112,7 +112,7 @@
 <meta property="og:description" content="“中文短文本情感分析 web 应用”是我带领的小组在《软件工程》这门课的大作业选题。按照这门课大作业的传统风格，就是做一个比较寻常的网站/APP，不过我这次提议另辟蹊径，一是我个人对情感分析这个方面比较感兴趣，想要借此机会进行了解和实践；二是组内成员都志在继续深造，做一个带有科研意味的项目或许能为简历添色。 先简单介绍一下我们的项目。该 web 应用可分析用户输入的中文短文本中蕴含的情感，并输出数">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/bighuang624/pic-repo/master/douban-comment.png">
-<meta property="og:updated_time" content="2018-06-21T14:22:39.633Z">
+<meta property="og:updated_time" content="2018-06-29T02:32:42.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中文短文本情感分析 web 应用开发记录（一）">
 <meta name="twitter:description" content="“中文短文本情感分析 web 应用”是我带领的小组在《软件工程》这门课的大作业选题。按照这门课大作业的传统风格，就是做一个比较寻常的网站/APP，不过我这次提议另辟蹊径，一是我个人对情感分析这个方面比较感兴趣，想要借此机会进行了解和实践；二是组内成员都志在继续深造，做一个带有科研意味的项目或许能为简历添色。 先简单介绍一下我们的项目。该 web 应用可分析用户输入的中文短文本中蕴含的情感，并输出数">
@@ -485,10 +485,9 @@
 <h2 id="中文情感分析的难点"><a href="#中文情感分析的难点" class="headerlink" title="中文情感分析的难点"></a>中文情感分析的难点</h2><p>以下是我在查阅资料后总结的一些中文情感分析的难点：</p>
 <ol>
 <li>很多情感的表达是隐晦的，没有特别明显的代表性词语。例如“蓝屏”这个词一般不会出现在情感词典之中，但这个词明显表达了不满的情绪。因此需要另外根据具体领域构建针对性的情感词典。</li>
-<li>同一个词在不同语境或领域里有不同的意思，可能表达不同的情感态度，例如“我家洗衣机声音很大”这些很可能是差评，而“我家音响声音很大”很可能就是好评。</li>
-<li>有些反讽的表达难以判断，例如“你行你上啊”。</li>
-<li>以上三条在做英语情感分析时也会遇到。但是中文独有的问题是缺少高质量的相关有标注数据集。相比起来，英文情感分析有公认的数据集 <a href="http://ai.stanford.edu/~amaas/data/sentiment/" target="_blank" rel="external">IMDB</a>。此外，可能还需要一些高质量的情感词典，英文有 SentiWordNet，但是中文的词典资源质量不高，不细致，另外缺乏主客观词典。当然，因为有监督的机器学习方法的风行，现在情感分析也不一定非要情感词典。</li>
+<li>同一个词在不同语境或领域里有不同的意思，可能表达不同的情感态度，例如“我家洗衣机声音很大”这些很可能是差评，而“我家音响声音很大”很可能就是好评。反讽的表达同理。</li>
 <li>网络流行语等新词也会影响情感分析，比如“给力”、“不明觉厉”、“累觉不爱”等，这些词利用传统的分词一般都会被切开，而且会影响词性标注，如果想避免只能加入人工干预，修改分词的粒度和词性标注的结果。</li>
+<li>以上三条在做英语情感分析时也会遇到。但是中文独有的问题是缺少高质量的有标注数据集。相比起来，英文情感分析有公认的数据集 <a href="http://ai.stanford.edu/~amaas/data/sentiment/" target="_blank" rel="external">IMDB</a>。此外，可能还需要一些高质量的情感词典，英文有 SentiWordNet，但是中文的词典资源质量不高，不细致，另外缺乏主客观词典。当然，因为有监督的机器学习方法的风行，现在情感分析也不一定非要情感词典。</li>
 </ol>
 <p>因为我们的项目主要还是拿文本分类的方法进行处理，所以以上问题不是都遇到了，仅停留在了解层面，如有谬误欢迎指出。</p>
 <h2 id="初步尝试"><a href="#初步尝试" class="headerlink" title="初步尝试"></a>初步尝试</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>首先谈谈数据。根据前文所述，中文的有标注数据集很难找。我前两周和做过类似工作的学长交流时，他的做法是自行标注。而我们选择的做法是自己用 Python 编写爬虫爬取各类含评论的网站，将评论正文作为数据，评论的星级作为标签：</p>
@@ -663,6 +662,10 @@ MathJax.Hub.Config({
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018-summer-and-after/" rel="prev" title="从大三的暑假往后望">
+                从大三的暑假往后望 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -739,7 +742,7 @@ MathJax.Hub.Config({
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-count">67</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
