@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyonhuang.top/"/>
-  <updated>2018-06-30T13:20:59.186Z</updated>
+  <updated>2018-07-02T11:24:38.198Z</updated>
   <id>http://kyonhuang.top/</id>
   
   <author>
@@ -14,6 +14,235 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据库系统复习笔记</title>
+    <link href="http://kyonhuang.top/database-systems-notes/"/>
+    <id>http://kyonhuang.top/database-systems-notes/</id>
+    <published>2018-07-02T11:22:42.000Z</published>
+    <updated>2018-07-02T11:24:38.198Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单地复习一下数据库系统。重在思想，基本不会涉及到 SQL 语句，有需要可以在文末的参考资料中找到相应资料。</p>
+<h2 id="数据库简介"><a href="#数据库简介" class="headerlink" title="数据库简介"></a>数据库简介</h2><h3 id="基于文件系统的局限根源"><a href="#基于文件系统的局限根源" class="headerlink" title="基于文件系统的局限根源"></a>基于文件系统的局限根源</h3><p><strong>基于文件的系统</strong>存在的局限性（分离孤立、冗余、依赖性、文件格式不相容）可以归结为两个原因：</p>
+<ul>
+<li>数据的定义被嵌入到应用程序中，而不是分开和独立地存储；</li>
+<li>除了应用程序规定之外的那些数据访问和操作无法得到控制。</li>
+</ul>
+<p>因此，引入数据库和数据库管理系统。</p>
+<h3 id="数据库与数据库管理系统"><a href="#数据库与数据库管理系统" class="headerlink" title="数据库与数据库管理系统"></a>数据库与数据库管理系统</h3><ul>
+<li><strong>数据库</strong>：为满足某个组织机构的信息要求而设计的一个逻辑相关数据及其描述的共享集。<ul>
+<li>数据库是“逻辑相关的”，当分析一个组织需要的信息时，总是试图找出实体、属性和联系；</li>
+<li><strong>实体</strong>是组织中一个独立的、将要在数据库中体现出来的对象（人、地点、东西、概念、事件）；</li>
+<li><strong>属性</strong>描述我们想要记录的对象的某一方面的特性；</li>
+<li><strong>联系</strong>描述实体之间的关联。</li>
+</ul>
+</li>
+<li><strong>数据库管理系统（DBMS）</strong>：一个支持用户对数据库进行定义、创建、维护及控制访问的软件系统。<ul>
+<li>允许用户定义数据库，通常是通过<strong>数据定义语言（DDL）</strong>；</li>
+<li>允许用户在数据库中对数据进行增删改查，通常通过<strong>数据操作语言（DML）</strong>，最常见的查询语言是<strong>结构化查询语言（SQL）</strong>。</li>
+<li>提供数据库的受控访问。</li>
+</ul>
+</li>
+</ul>
+<p>DBMS 的功能：</p>
+<ul>
+<li>数据存储、检索和更新；</li>
+<li>提供用户可访问的目录；</li>
+<li>提供事务支持；</li>
+<li>并发控制的服务；</li>
+<li>恢复服务、授权服务、完整性服务；</li>
+<li>提高数据独立性的服务；</li>
+<li>支持数据通信。</li>
+</ul>
+<p>DBMS 的优点：</p>
+<ul>
+<li>受控的数据冗余；</li>
+<li>数据一致性；</li>
+<li>相同数据量表示更多信息；</li>
+<li>数据共享；</li>
+<li>增强的数据完整性；</li>
+<li>增强的安全性；</li>
+<li>强制执行标准；</li>
+<li>经济合算的规模；</li>
+<li>平衡各种需求冲突；</li>
+<li>增强的数据可访问性和响应性；</li>
+<li>提高的生产率；</li>
+<li>通过数据的独立性增强可维护性；</li>
+<li>提高的并发性；</li>
+<li>增强的备份和恢复服务。</li>
+</ul>
+<p>DBMS 的缺点：</p>
+<ul>
+<li>复杂性高；</li>
+<li>规模大；</li>
+<li>DBMS 的费用高；</li>
+<li>需要附加的硬件费用；</li>
+<li>转化费用大；</li>
+<li>性能相对较低；</li>
+<li>故障带来的影响较大。</li>
+</ul>
+<a id="more"></a>
+<h2 id="数据库环境"><a href="#数据库环境" class="headerlink" title="数据库环境"></a>数据库环境</h2><h3 id="ANSI-SPARC-三层体系结构"><a href="#ANSI-SPARC-三层体系结构" class="headerlink" title="ANSI-SPARC 三层体系结构"></a>ANSI-SPARC 三层体系结构</h3><p><strong>三层体系结构</strong>包括<strong>外部层</strong>、<strong>概念层</strong>和<strong>内部层</strong>：</p>
+<ul>
+<li><strong>外部层</strong>：数据库的用户视图。这一层描述与每一个用户相关的数据库部分。</li>
+<li><strong>概念层</strong>：数据库的整体视图。这一层描述了哪些数据被存储在数据库中，以及这些数据库之间的联系。</li>
+<li><strong>内部层</strong>：数据库在计算机上的物理表示。这一层描述数据是如何存储在数据库中的。</li>
+</ul>
+<p>内部层之下的是<strong>物理层</strong>，物理层可能在 DBMS 的指导下受操作系统的控制。</p>
+<p>三层体系结构的目的是将用户的数据库视图与数据库的物理描述分离开，以保证<strong>数据独立性</strong>。这意味着对较低层的修改不会对较高层造成影响。有两种类型的数据独立性：<strong>逻辑数据独立性</strong>和<strong>物理数据独立性</strong>：</p>
+<ul>
+<li><strong>逻辑数据独立性</strong>：指外部模式不受概念模式变化（例如添加或删除实体、属性或者联系）的影响；</li>
+<li><strong>物理数据独立性</strong>：指概念模式不受内部模式变化（例如使用不同的文件组织方式或者存储结构、使用不同的存储设备、修改索引或散列算法）的影响。</li>
+</ul>
+<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p><strong>数据模型</strong>是一组集成的概念，用于描述和操纵组织机构内的数据、数据间联系以及对数据的约束。其包含下列三个组件：</p>
+<ul>
+<li><strong>结构部分</strong>，由一组创建数据库的规则组成。</li>
+<li><strong>操纵部分</strong>，定义允许对数据进行的操作的种类；</li>
+<li><strong>一组完整性约束</strong>，确保数据的准确性。</li>
+</ul>
+<p>数据模型的分类：</p>
+<ul>
+<li>基于对象的数据模型：用到实体、属性和联系等概念<ul>
+<li>实体-联系（ER）模型</li>
+<li>语义模型</li>
+<li>函数模型</li>
+<li>面向对象模型</li>
+</ul>
+</li>
+<li>基于记录的数据模型：数据库由不同类型的固定格式记录组成<ul>
+<li>关系数据模型</li>
+<li>网状数据模型</li>
+<li>层次数据模型</li>
+</ul>
+</li>
+<li>物理数据模型：描述数据如何存储在计算机中</li>
+</ul>
+<h2 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h2><h3 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h3><h4 id="关系数据结构"><a href="#关系数据结构" class="headerlink" title="关系数据结构"></a>关系数据结构</h4><ul>
+<li><strong>关系</strong>：由行和列组成的表；</li>
+<li><strong>属性</strong>：关系中命名的列；</li>
+<li><strong>域</strong>：一个或多个属性的取值集合；</li>
+<li><strong>元组</strong>：关系中的每一行；</li>
+<li><strong>维数</strong>：关系所包含的属性的个数；</li>
+<li><strong>基数</strong>：关系所包含的元组的个数；</li>
+<li><strong>关系模式</strong>：用一组属性和域名对定义的具名的关系。</li>
+</ul>
+<h4 id="关系关键字"><a href="#关系关键字" class="headerlink" title="关系关键字"></a>关系关键字</h4><ul>
+<li><strong>超关键字（superkey）</strong>：一个属性或属性集合，它能唯一地标识出关系中的每个元组；</li>
+<li><strong>候选关键字（candidate key）</strong>：最小的超关键字；</li>
+<li><strong>主关键字（primary key）</strong>：被选用于唯一标识关系中各元组的候选关键字。没有被选为主关键字的候选关键字称为<strong>可替换关键字（alternate key）</strong>；</li>
+<li><strong>外部关键字（foreign key）</strong>：当一个关系中的某个属性或属性集合与另一个关系（也可能就是自己）的候选关键字匹配时，就称这个属性或属性集合为外部关键字。</li>
+</ul>
+<h3 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h3><p><strong>域约束</strong>：限定关系中各个属性的取值集合。</p>
+<p><strong>实体完整性</strong>：在基本关系中，主关键字的属性不能为空；</p>
+<p><strong>引用完整性</strong>：如果在关系中存在某个外部关键字，则它的值与主关系中某个元组的候选关键字取值相等（或者全为空）。</p>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>在关系模型中，“<strong>视图</strong>”指<strong>虚关系</strong>或称<strong>导出关系</strong>，即无需单独存在，必要时可从一或多个基本关系中<strong>动态地</strong>将其导出。</p>
+<p>需要视图机制的原因有：</p>
+<ul>
+<li>通过对特定用户隐藏部分数据库信息，提供了一个强大而灵活的安全机制；</li>
+<li>允许用户根据自己的需求自定义访问数据的方法；</li>
+<li>可以简化对基本关系的复杂操作。</li>
+</ul>
+<p>不是所有的视图都可更新。</p>
+<h2 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h2><p><strong>事务</strong>指由一个或多个 SQL 语句组成的<strong>逻辑操作单位</strong>，可视为一组操作，通过<code>COMMIT</code>语句提交，通过<code>ROLLBACK</code>语句回退。其满足 ACID 特性：</p>
+<ul>
+<li><strong>原子性（Atomicity）</strong>：事务被视为不可分割的最小单元，要么全部执行，要么都不执行。</li>
+<li><strong>一致性（Consistency）</strong>：数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对一个数据的读取结果都是相同的。</li>
+<li><strong>隔离性（Isolation）</strong>：事务的执行相互独立。未完成事务的中间结果对其它事务是不可见的。由并发控制子系统负责保证事务的隔离性。</li>
+<li><strong>持久性（Durability）</strong>：成功完成（提交）的事务的结果要永久地记录在数据库中，不能因以后的故障而丢失。可以通过数据库备份和数据恢复来保证事务的持久性。</li>
+</ul>
+<!--## 实体-联系建模（E-R）-->
+<!--12、13章-->
+<h2 id="规范化"><a href="#规范化" class="headerlink" title="规范化"></a>规范化</h2><h3 id="规范化的目的"><a href="#规范化的目的" class="headerlink" title="规范化的目的"></a>规范化的目的</h3><p><strong>规范化</strong>是一种能够生成一组既具有所期望的特性又能满足企业数据需求的关系的技术，也是一种<strong>依靠关键字和属性之间的函数依赖对关系进行验证</strong>的形式化技术。</p>
+<h3 id="数据冗余与更新异常"><a href="#数据冗余与更新异常" class="headerlink" title="数据冗余与更新异常"></a>数据冗余与更新异常</h3><p>存在数据冗余的关系可能产生<strong>更新异常</strong>问题，更新异常可分为<strong>插入异常</strong>、<strong>删除异常</strong>和<strong>修改异常</strong>。</p>
+<h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><p>规范化的一个重要的概念是<strong>函数依赖</strong>，函数依赖描述了属性之间的联系。例如，加入 A 和 B 是关系 R 的属性（或属性组），如果 A 的每个值都仅与 B 中的一个值对应，那么 B 就函数依赖于 A（记为 A -&gt; B）。函数依赖的<strong>决定方</strong>是位于箭头左端的属性或属性组。</p>
+<p><strong>完全函数依赖</strong>：假设 A 和 B 是某一关系的属性（组），若 B 函数依赖于 A，但不函数依赖于 A 的任一真子集，则称 B 完全函数依赖于 A。</p>
+<p><strong>传递依赖</strong>：假设 A、B、C 是某一关系的属性，若 A -&gt; B，B -&gt; C，则称 C 通过 B 传递依赖于 A（假设 A 并不函数依赖于 B 或 C）。</p>
+<p>在规范化时使用的函数依赖具有以下特性：依赖左右两边的属性（组）之间具有一对一的联系，且恒成立，并且右边完全函数依赖于左边。</p>
+<p>确定关系函数依赖集的<strong>主要目的</strong>是确定该关系必须满足的完整性约束集，从而确定候选关键字和主关键字。</p>
+<h3 id="规范化过程"><a href="#规范化过程" class="headerlink" title="规范化过程"></a>规范化过程</h3><p><strong>非范式（UNF）</strong>是一个包含了一个或多个重复组的表</p>
+<p><strong>第一范式（1NF）</strong>是指每一行和每一列相交的位置有且仅有一个值的关系。</p>
+<p><strong>第二范式（2NF）</strong>是指已经是第一范式且每个非关键字属性都完全函数依赖于主关键字的关系。</p>
+<p><strong>第三范式（3NF）</strong>是满足第一范式和第二范式的要求且所有非关键字属性都不传递依赖于主关键字的关系。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>主要参考机械工业出版社《数据库系统–设计、实现与管理（基础篇）》。</p>
+<p>其他参考资料：</p>
+<ul>
+<li><a href="https://github.com/CyC2018/Interview-Notebook/blob/master/notes/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86.md" target="_blank" rel="external">Interview-Notebook/数据库系统原理.md at master · CyC2018/Interview-Notebook</a></li>
+<li><a href="https://github.com/CyC2018/Interview-Notebook/blob/master/notes/SQL.md" target="_blank" rel="external">Interview-Notebook/SQL.md at master · CyC2018/Interview-Notebook</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单地复习一下数据库系统。重在思想，基本不会涉及到 SQL 语句，有需要可以在文末的参考资料中找到相应资料。&lt;/p&gt;
+&lt;h2 id=&quot;数据库简介&quot;&gt;&lt;a href=&quot;#数据库简介&quot; class=&quot;headerlink&quot; title=&quot;数据库简介&quot;&gt;&lt;/a&gt;数据库简介&lt;/h2&gt;&lt;h3 id=&quot;基于文件系统的局限根源&quot;&gt;&lt;a href=&quot;#基于文件系统的局限根源&quot; class=&quot;headerlink&quot; title=&quot;基于文件系统的局限根源&quot;&gt;&lt;/a&gt;基于文件系统的局限根源&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;基于文件的系统&lt;/strong&gt;存在的局限性（分离孤立、冗余、依赖性、文件格式不相容）可以归结为两个原因：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据的定义被嵌入到应用程序中，而不是分开和独立地存储；&lt;/li&gt;
+&lt;li&gt;除了应用程序规定之外的那些数据访问和操作无法得到控制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此，引入数据库和数据库管理系统。&lt;/p&gt;
+&lt;h3 id=&quot;数据库与数据库管理系统&quot;&gt;&lt;a href=&quot;#数据库与数据库管理系统&quot; class=&quot;headerlink&quot; title=&quot;数据库与数据库管理系统&quot;&gt;&lt;/a&gt;数据库与数据库管理系统&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据库&lt;/strong&gt;：为满足某个组织机构的信息要求而设计的一个逻辑相关数据及其描述的共享集。&lt;ul&gt;
+&lt;li&gt;数据库是“逻辑相关的”，当分析一个组织需要的信息时，总是试图找出实体、属性和联系；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实体&lt;/strong&gt;是组织中一个独立的、将要在数据库中体现出来的对象（人、地点、东西、概念、事件）；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;属性&lt;/strong&gt;描述我们想要记录的对象的某一方面的特性；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;联系&lt;/strong&gt;描述实体之间的关联。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据库管理系统（DBMS）&lt;/strong&gt;：一个支持用户对数据库进行定义、创建、维护及控制访问的软件系统。&lt;ul&gt;
+&lt;li&gt;允许用户定义数据库，通常是通过&lt;strong&gt;数据定义语言（DDL）&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;允许用户在数据库中对数据进行增删改查，通常通过&lt;strong&gt;数据操作语言（DML）&lt;/strong&gt;，最常见的查询语言是&lt;strong&gt;结构化查询语言（SQL）&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;提供数据库的受控访问。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DBMS 的功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据存储、检索和更新；&lt;/li&gt;
+&lt;li&gt;提供用户可访问的目录；&lt;/li&gt;
+&lt;li&gt;提供事务支持；&lt;/li&gt;
+&lt;li&gt;并发控制的服务；&lt;/li&gt;
+&lt;li&gt;恢复服务、授权服务、完整性服务；&lt;/li&gt;
+&lt;li&gt;提高数据独立性的服务；&lt;/li&gt;
+&lt;li&gt;支持数据通信。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DBMS 的优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;受控的数据冗余；&lt;/li&gt;
+&lt;li&gt;数据一致性；&lt;/li&gt;
+&lt;li&gt;相同数据量表示更多信息；&lt;/li&gt;
+&lt;li&gt;数据共享；&lt;/li&gt;
+&lt;li&gt;增强的数据完整性；&lt;/li&gt;
+&lt;li&gt;增强的安全性；&lt;/li&gt;
+&lt;li&gt;强制执行标准；&lt;/li&gt;
+&lt;li&gt;经济合算的规模；&lt;/li&gt;
+&lt;li&gt;平衡各种需求冲突；&lt;/li&gt;
+&lt;li&gt;增强的数据可访问性和响应性；&lt;/li&gt;
+&lt;li&gt;提高的生产率；&lt;/li&gt;
+&lt;li&gt;通过数据的独立性增强可维护性；&lt;/li&gt;
+&lt;li&gt;提高的并发性；&lt;/li&gt;
+&lt;li&gt;增强的备份和恢复服务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DBMS 的缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;复杂性高；&lt;/li&gt;
+&lt;li&gt;规模大；&lt;/li&gt;
+&lt;li&gt;DBMS 的费用高；&lt;/li&gt;
+&lt;li&gt;需要附加的硬件费用；&lt;/li&gt;
+&lt;li&gt;转化费用大；&lt;/li&gt;
+&lt;li&gt;性能相对较低；&lt;/li&gt;
+&lt;li&gt;故障带来的影响较大。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="学科补完计划" scheme="http://kyonhuang.top/categories/%E5%AD%A6%E7%A7%91%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/"/>
+    
+    
+      <category term="学科复习笔记" scheme="http://kyonhuang.top/tags/%E5%AD%A6%E7%A7%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="数据库系统" scheme="http://kyonhuang.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>从大三的暑假往后望</title>
@@ -441,8 +670,6 @@ MathJax.Hub.Config({
       <category term="论文阅读笔记" scheme="http://kyonhuang.top/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
-    
       <category term="问答系统" scheme="http://kyonhuang.top/tags/%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/"/>
     
       <category term="信息检索" scheme="http://kyonhuang.top/tags/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2/"/>
@@ -450,6 +677,8 @@ MathJax.Hub.Config({
       <category term="答案抽取" scheme="http://kyonhuang.top/tags/%E7%AD%94%E6%A1%88%E6%8A%BD%E5%8F%96/"/>
     
       <category term="问题分析" scheme="http://kyonhuang.top/tags/%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90/"/>
+    
+      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
     
       <category term="自然语言处理" scheme="http://kyonhuang.top/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
@@ -563,11 +792,11 @@ MathJax.Hub.Config({
       <category term="论文阅读笔记" scheme="http://kyonhuang.top/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
+    
       <category term="身份认证" scheme="http://kyonhuang.top/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/"/>
     
       <category term="行为特征" scheme="http://kyonhuang.top/tags/%E8%A1%8C%E4%B8%BA%E7%89%B9%E5%BE%81/"/>
-    
-      <category term="综述" scheme="http://kyonhuang.top/tags/%E7%BB%BC%E8%BF%B0/"/>
     
       <category term="生物行为统计学" scheme="http://kyonhuang.top/tags/%E7%94%9F%E7%89%A9%E8%A1%8C%E4%B8%BA%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
     
@@ -2580,9 +2809,9 @@ state-of-the-art 是参考别人论文的数据，还是自己实现？如何保
       <category term="翻滚吧大学生" scheme="http://kyonhuang.top/categories/%E7%BF%BB%E6%BB%9A%E5%90%A7%E5%A4%A7%E5%AD%A6%E7%94%9F/"/>
     
     
-      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
       <category term="总结" scheme="http://kyonhuang.top/tags/%E6%80%BB%E7%BB%93/"/>
+    
+      <category term="随笔" scheme="http://kyonhuang.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
       <category term="目标" scheme="http://kyonhuang.top/tags/%E7%9B%AE%E6%A0%87/"/>
     
@@ -2878,98 +3107,6 @@ state-of-the-art 是参考别人论文的数据，还是自己实现？如何保
       <category term="门罗币" scheme="http://kyonhuang.top/tags/%E9%97%A8%E7%BD%97%E5%B8%81/"/>
     
       <category term="Coinhive" scheme="http://kyonhuang.top/tags/Coinhive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法一篇通——贪心算法</title>
-    <link href="http://kyonhuang.top/greedy-algorithm/"/>
-    <id>http://kyonhuang.top/greedy-algorithm/</id>
-    <published>2017-12-29T13:24:35.000Z</published>
-    <updated>2018-04-25T15:15:36.744Z</updated>
-    
-    <content type="html"><![CDATA[<p>之前在写<a href="http://kyonhuang.top/dynamic-programming/">算法一篇通——动态规划</a>时，看到不少相关的资料都谈到了贪心算法。原本我对贪心算法的认知比较简单，但是越看越混，尤其是和动态规划的差异，少有文章能说的准确透彻。因此，这几天也对贪心算法加以了解学习。</p>
-<p>给出 n 个物体，第 i 个物体重量为 wi，要求选择尽量多的物体，使得总重量不超过 C。对于这个问题，我们很容易想到，因为在对总重量有要求的情况下要选择尽量多的物体，因此挑轻的肯定比挑重的划算。这样，我们将所有物体按重量从小到大排序，依次选择每个物体，直到装不下为止。</p>
-<p>这就一种典型的贪心算法，只顾眼前利益，做出局部最优的选择，寄希望于这样的选择能导致全局最优解。</p>
-<a id="more"></a>
-<h2 id="概念理解"><a href="#概念理解" class="headerlink" title="概念理解"></a>概念理解</h2><p><strong>贪心算法（Greedy Algorithm，又称贪婪算法）</strong>，指在对问题求解时，不从整体最优上加以考虑，而总是做出在当前看来是最好的选择。也就是说，所做出的是在某种意义上的<strong>局部最优解</strong>。</p>
-<p>贪心算法<strong>不是对所有问题都能得到整体最优解</strong>，关键是贪心策略的选择，选择的贪心策略必须具备<strong>无后效性</strong>，即某个状态只与它前面出现的状态有关，而独立于后面的状态。</p>
-<p>贪心算法的两个性质是<strong>贪心选择性质</strong>和<strong>最优子结构性质</strong>：</p>
-<ul>
-<li><p><strong>贪心选择性质</strong>：指所求的问题的整体最优解可以通过一系列局部最优的选择，即贪心选择来得到。贪心选择是采用从顶向下、以迭代的方法做出相继选择，每做一次贪心选择，就将所求问题简化为一个规模更小的子问题。</p>
-</li>
-<li><p><strong>最优子结构（optimal substructure）性质</strong>：如果<strong>原问题的最优解包含的子问题的最优解</strong>，而这些子问题可以独立求解，我们就称该问题具有最优子结构性质。其包含“<strong>全局最优解包含局部最优解</strong>”的思想。</p>
-</li>
-</ul>
-<h2 id="贪心算法与动态规划的区别"><a href="#贪心算法与动态规划的区别" class="headerlink" title="贪心算法与动态规划的区别"></a>贪心算法与动态规划的区别</h2><ol>
-<li>贪心算法的每一次操作都<strong>对结果产生直接影响</strong>，而动态规划则不是。</li>
-<li>贪心算法对每个子问题的解决方案都做出选择，<strong>不能回退</strong>；动态规划则会根据以前的选择结果对当前进行选择，有回退功能。</li>
-<li>动态规划主要运用于二维或三维问题，而贪心一般是一维问题。</li>
-</ol>
-<p>实际上，贪心算法是一种特殊的动态规划，由于其具有贪心选择性质，保证了子问题只会被计算一次，不会被多次计算。</p>
-<p>尽管贪心算法和动态规划都有最优子结构性质，我认为这个性质在两种算法中有着不太一样的含义：贪心的局部最优能达成全局最优，而动态规划的全局最优值中不一定全是局部最优，只是求解全局最优时要以局部最优作为基础。或者，我们可以认为，贪心算法通常都是自顶向下进行设计的，而动态规划则自顶向上。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>贪心算法的基本思路是从问题的某一个初始解出发一步一步地进行，根据某个优化测度，每一步都要确保能获得局部最优解。每一步只考虑一个数据，<strong>选取应该满足局部优化的条件</strong>。若下一个数据和部分最优解连在一起不再是可行解时，就不把该数据添加到部分解中，直到把所有数据枚举完，或者不能再添加算法停止。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="/images/brush-is-the-best.png"></p>
-<h3 id="菜鸟级"><a href="#菜鸟级" class="headerlink" title="菜鸟级"></a>菜鸟级</h3><p>这里我选了 LeetCode 的第 122 题 Best Time to Buy and Sell Stock II。题目是这样的：给定一个数组，第 i 个元素代表第 i 天石头的买卖价。找到一种赚取最大利润的方法，你可以进行任意次交易，但是不能同时处于两笔交易中（即必须先将手上的石头卖出去才能再买）。</p>
-<h4 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h4><p>根据贪心选择的性质，只要能赚到钱，我们就卖掉手上的石头。那么，只要后一天的价格比前一天高，我们就做买入卖出这一笔买卖。于是有代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> total = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length-<span class="number">1</span>; i++)</div><div class="line">        <span class="keyword">if</span> (prices[i+<span class="number">1</span>] &gt; prices[i]) </div><div class="line">            total += prices[i+<span class="number">1</span>]-prices[i];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> total;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样的思路是简单粗暴而有效的，但是可能需要结合多种情况考虑一下，为什么这样做是对的（我们设第 i 天的价格为 s[i]）：</p>
-<ul>
-<li>s[i] &lt; s[i+1] &lt; s[i+2]：这样的话，按照之前的解法，相当于省略掉中间那一笔卖出买入，只考虑第 i 天和第 i+2 天；</li>
-<li>s[i] &gt; s[i+1] &lt; s[i+2]：这样的话，我们的算法会当作没有买入过第 i 天的石头。</li>
-</ul>
-<h3 id="普通级"><a href="#普通级" class="headerlink" title="普通级"></a>普通级</h3><h3 id="挑战者级"><a href="#挑战者级" class="headerlink" title="挑战者级"></a>挑战者级</h3><p>这里我选择的是 LeetCode 的第 135 题，是一道 hard 难度的题目。N 个小朋友排排坐，每个小朋友有一个分值。你需要给小朋友发糖，遵循以下规则：</p>
-<ul>
-<li>每个小朋友保底一块糖；</li>
-<li>若比左右邻居得分高，则得到的糖更多。</li>
-</ul>
-<p>求最少发多少糖。</p>
-<h4 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h4><p>需要拿一个与输入数组同样大小的数组来存储每个孩子的糖果树。</p>
-<p>先从 0 开始向右遍历一次：第 0 个孩子先拿一块；i &gt; 0 时，如果 ratings[i] &gt; ratings[i-1]，那么第 i 个孩子在第 i-1 个孩子所拥有的糖果数上多拿一块，否则拿保底的一块。这一次遍历将右边的 rating 比左边大的情况全部搞定。</p>
-<p>再从 len-1 开始向左遍历一次：第 len-1 个孩子不变，如果 ratings[i] &lt; ratings[i-1]，那么，除非第 i-1 个孩子本身拥有的糖果数已经比多拿这一块后还要多，否则第 i－1 个孩子在第 i 个孩子所拥有的糖果数上多拿一块。这一次遍历将左边的 rating 比右边大的情况全部搞定，并且不会影响到上一次遍历所完成的工作。</p>
-<p>因为每一次发糖都遵循贪心选择性质，最多多给一块，并且没有后效性，因此也是贪心算法的运用。</p>
-<p>尽管时间复杂度和空间复杂度都不是最优的，但上述解法能够 AC，并且简洁易懂。当然，这个思路还是比较巧妙的，也很难短时间内想出来。</p>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>和动态规划一样，贪心算法也扩展许多衍生的问题与算法。例如，深度学习中的梯度下降算法就是贪心的。更著名的一些如下。</p>
-<h3 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h3><p>我们可以用 01 编码串来代表一个字符，例如 a 为 0，c 为 00，f 为 1100。这样，可能因为其中一个字符的编码是另一个字符的前缀而导致歧义。满足<strong>任何一个编码都不是另一个的前缀的编码</strong>被称为<strong>前缀码（Prefix Code）</strong>。</p>
-<p>这样，我们很容易想到，给定 n 个字符在文件中的出现频率 ci，求一套总长度（每个字符的频率与编码长度乘积的总和）尽量小的编码。根据一个已知结论：<strong>任何一个前缀编码都可以表示成每个非叶结点恰好有两个子结点的二叉树</strong>，我们可以通过构造一棵最优的编码树来解决这个问题。</p>
-<p><strong>Huffman 算法</strong>：把每个字符看作一个单结点子树放在一个树集合中，每棵子树的权值等于对应字符的频率。每次取权值最小的两棵子树合并成一棵新树，并重新放到集合中。新树的权值等于两棵子树权值之和。</p>
-<p>从以下结论可以体现 Huffman 算法是一种贪心算法：</p>
-<ul>
-<li>设 x 与 y 是频率最小的两个字符，则存在前缀码使得 x 和 y 具有相同码长，且仅有最后一位编码不同。这体现了贪心算法的<strong>贪心选择性质</strong>。</li>
-<li>设 T 是加权字符集 C 的最优编码树，x 和 y 是树 T 中的两个叶子，且互为兄弟结点，z 是它们的父结点。若把 z 看作具有频率 f(z) = f(x) + f(y) 的字符，则树 T’ = T - {x, y} 是字符集 C’ = C - {x, y}U{z} 的一棵最优编码树。这体现了贪心算法的<strong>最优子结构性质</strong>。</li>
-</ul>
-<h3 id="Prim-算法-和-Kruskal-算法"><a href="#Prim-算法-和-Kruskal-算法" class="headerlink" title="Prim 算法 和 Kruskal 算法"></a>Prim 算法 和 Kruskal 算法</h3><p>Prim 算法 和 Kruskal 算法都是在加权无向图找到最小生成树的算法，它们也都是贪心算法。</p>
-<p><strong>Prim 算法</strong>：每一步都会为一棵生长中的树添加一条边。一开始这棵树只有一个顶点，然后会向它添加 V-1 条边，每次总是将下一条<strong>连接树中的顶点与不在树中的顶点且权重最小的边加入树中</strong>。</p>
-<p><strong>Kruskal 算法</strong>：按照边的权重顺序（从小到大）处理它们，将边加入最小生成树中，<strong>加入的边不会与已经加入的边构成环</strong>，直到树中含有 V-1 条边为止。我们从一片由 V 棵单顶点的树构成的森林开始并不断将两颗树合并（用可以找到的最短边），直到只剩下一棵树，它就是最小生成树。</p>
-<p>如果你想要更详细地了解这部分内容，可以查看我《算法》笔记的相关章节：<a href="https://github.com/bighuang624/Algorithms-notes/blob/master/%E7%AC%94%E8%AE%B0/4.3_%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91.md" target="_blank" rel="external">Algorithms-notes/笔记/4.3 最小生成树
-</a>。</p>
-<h3 id="启发式算法"><a href="#启发式算法" class="headerlink" title="启发式算法"></a>启发式算法</h3><p>很多的<strong>启发式算法</strong>（也叫智能算法），例如遗传算法，模拟退火算法，本质上就是<strong>贪心算法和随机化算法结合</strong>。这样的算法结果虽然也是局部最优解，但是比单纯的贪心算法更佳靠近最优解。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>随着第二篇算法学习的总结笔记出炉，我发现除开大二上学期《算法与数据结构》课程提到的基础而有限的算法之外，还有很多算法处于我的认知边缘之外。我准备把对这些算法的学习全部汇总到一个系列，取名为“算法一篇通”，希望写作效果能够恰如其名。</p>
-<p>贪心算法也不简单。之后我可能还会再做一些这个方面的题，届时再进行补充。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="写作参考"><a href="#写作参考" class="headerlink" title="写作参考"></a>写作参考</h3><ul>
-<li><a href="https://baike.baidu.com/item/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/5411800?fr=aladdin" target="_blank" rel="external">贪心算法_百度百科</a></li>
-<li>《算法竞赛入门经典（第 2 版）》第 8 章</li>
-<li>《算法导论》第 16 章</li>
-</ul>
-<h3 id="学习参考"><a href="#学习参考" class="headerlink" title="学习参考"></a>学习参考</h3><ul>
-<li><a href="http://www.cnblogs.com/heaad/archive/2010/12/20/1911614.html" target="_blank" rel="external">大白话解析模拟退火算法 - 苍梧 - 博客园</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之前在写&lt;a href=&quot;http://kyonhuang.top/dynamic-programming/&quot;&gt;算法一篇通——动态规划&lt;/a&gt;时，看到不少相关的资料都谈到了贪心算法。原本我对贪心算法的认知比较简单，但是越看越混，尤其是和动态规划的差异，少有文章能说的准确透彻。因此，这几天也对贪心算法加以了解学习。&lt;/p&gt;
-&lt;p&gt;给出 n 个物体，第 i 个物体重量为 wi，要求选择尽量多的物体，使得总重量不超过 C。对于这个问题，我们很容易想到，因为在对总重量有要求的情况下要选择尽量多的物体，因此挑轻的肯定比挑重的划算。这样，我们将所有物体按重量从小到大排序，依次选择每个物体，直到装不下为止。&lt;/p&gt;
-&lt;p&gt;这就一种典型的贪心算法，只顾眼前利益，做出局部最优的选择，寄希望于这样的选择能导致全局最优解。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法笔记" scheme="http://kyonhuang.top/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="算法" scheme="http://kyonhuang.top/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="贪心算法" scheme="http://kyonhuang.top/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   

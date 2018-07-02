@@ -366,6 +366,219 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/database-systems-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kyon Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大黄菌的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/database-systems-notes/" itemprop="url">
+                  数据库系统复习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+                
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-02T19:22:42+08:00">2018-07-02</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学科补完计划/" itemprop="url" rel="index"><span itemprop="name">学科补完计划</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>简单地复习一下数据库系统。重在思想，基本不会涉及到 SQL 语句，有需要可以在文末的参考资料中找到相应资料。</p>
+<h2 id="数据库简介"><a href="#数据库简介" class="headerlink" title="数据库简介"></a>数据库简介</h2><h3 id="基于文件系统的局限根源"><a href="#基于文件系统的局限根源" class="headerlink" title="基于文件系统的局限根源"></a>基于文件系统的局限根源</h3><p><strong>基于文件的系统</strong>存在的局限性（分离孤立、冗余、依赖性、文件格式不相容）可以归结为两个原因：</p>
+<ul>
+<li>数据的定义被嵌入到应用程序中，而不是分开和独立地存储；</li>
+<li>除了应用程序规定之外的那些数据访问和操作无法得到控制。</li>
+</ul>
+<p>因此，引入数据库和数据库管理系统。</p>
+<h3 id="数据库与数据库管理系统"><a href="#数据库与数据库管理系统" class="headerlink" title="数据库与数据库管理系统"></a>数据库与数据库管理系统</h3><ul>
+<li><strong>数据库</strong>：为满足某个组织机构的信息要求而设计的一个逻辑相关数据及其描述的共享集。<ul>
+<li>数据库是“逻辑相关的”，当分析一个组织需要的信息时，总是试图找出实体、属性和联系；</li>
+<li><strong>实体</strong>是组织中一个独立的、将要在数据库中体现出来的对象（人、地点、东西、概念、事件）；</li>
+<li><strong>属性</strong>描述我们想要记录的对象的某一方面的特性；</li>
+<li><strong>联系</strong>描述实体之间的关联。</li>
+</ul>
+</li>
+<li><strong>数据库管理系统（DBMS）</strong>：一个支持用户对数据库进行定义、创建、维护及控制访问的软件系统。<ul>
+<li>允许用户定义数据库，通常是通过<strong>数据定义语言（DDL）</strong>；</li>
+<li>允许用户在数据库中对数据进行增删改查，通常通过<strong>数据操作语言（DML）</strong>，最常见的查询语言是<strong>结构化查询语言（SQL）</strong>。</li>
+<li>提供数据库的受控访问。</li>
+</ul>
+</li>
+</ul>
+<p>DBMS 的功能：</p>
+<ul>
+<li>数据存储、检索和更新；</li>
+<li>提供用户可访问的目录；</li>
+<li>提供事务支持；</li>
+<li>并发控制的服务；</li>
+<li>恢复服务、授权服务、完整性服务；</li>
+<li>提高数据独立性的服务；</li>
+<li>支持数据通信。</li>
+</ul>
+<p>DBMS 的优点：</p>
+<ul>
+<li>受控的数据冗余；</li>
+<li>数据一致性；</li>
+<li>相同数据量表示更多信息；</li>
+<li>数据共享；</li>
+<li>增强的数据完整性；</li>
+<li>增强的安全性；</li>
+<li>强制执行标准；</li>
+<li>经济合算的规模；</li>
+<li>平衡各种需求冲突；</li>
+<li>增强的数据可访问性和响应性；</li>
+<li>提高的生产率；</li>
+<li>通过数据的独立性增强可维护性；</li>
+<li>提高的并发性；</li>
+<li>增强的备份和恢复服务。</li>
+</ul>
+<p>DBMS 的缺点：</p>
+<ul>
+<li>复杂性高；</li>
+<li>规模大；</li>
+<li>DBMS 的费用高；</li>
+<li>需要附加的硬件费用；</li>
+<li>转化费用大；</li>
+<li>性能相对较低；</li>
+<li>故障带来的影响较大。</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/database-systems-notes/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/2018-summer-and-after/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1533,175 +1746,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kyonhuang.top/1605-05101-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kyon Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大黄菌的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/1605-05101-notes/" itemprop="url">
-                  《Recurrent Neural Network for Text Classification with Multi-Task Learning》阅读笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-                
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T22:02:13+08:00">2018-05-10</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文阅读笔记/" itemprop="url" rel="index"><span itemprop="name">论文阅读笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>原文链接：<a href="http://www.ijcai.org/Proceedings/16/Papers/408.pdf" target="_blank" rel="external">Recurrent Neural Network for Text Classification with Multi-Task Learning</a></p>
-<p>作者：Pengfei Liu, Xipeng Qiu, Xuanjing Huang</p>
-<p>单位：复旦大学 自然语言处理与深度学习组</p>
-<p>文章来源：IJCAI 2016</p>
-<p>简介：本文针对文本多分类任务，提出了基于 RNN 的三种不同的共享信息机制，在四个基准的文本分类任务中取得了较好的结果。</p>
-<h2 id="研究概况"><a href="#研究概况" class="headerlink" title="研究概况"></a>研究概况</h2><h3 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h3><p>假设多个任务之间具有相关性，<strong><a href="http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/Structuring_Machine_Learning_Projects/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88ML%EF%BC%89%E7%AD%96%E7%95%A5%EF%BC%882%EF%BC%89?id=%e5%a4%9a%e4%bb%bb%e5%8a%a1%e5%ad%a6%e4%b9%a0">多任务学习</a></strong>利用任务之间的相关性相互促进，通过并行学习任务来提高分类效果。这些模型的基本的多任务架构将共享一些较低的层以确定共同的特性。在共享层之后，每个特定任务单独使用一个输出层。</p>
-<p><img src="https://raw.githubusercontent.com/bighuang624/Andrew-Ng-Deep-Learning-notes/master/docs/Structuring_Machine_Learning_Projects/Shared-Representation.png" alt="Shared-Representation"></p>
-<h3 id="前人工作和不足"><a href="#前人工作和不足" class="headerlink" title="前人工作和不足"></a>前人工作和不足</h3><p>基于神经网络的多任务学习已被用于解决 NLP 的各类任务。例如：</p>
-<ul>
-<li>使用一个对于输入单词的共享表示：用途是解决词性标注、语义角色标注等传统 NLP 任务。缺点是只有一张查找表是共享的、其他查找表和层是任务特定的，并且需要用基于窗口的方法处理长度不定的文本序列；</li>
-<li>多任务 DNN 来学习表示：用途是解决查询分类和网络搜索排名任务。缺点是模型输入为词袋表示，损失了词序信息。</li>
-</ul>
-<p>不同于以上两种方法，本文的模型基于 RNN，对于建模变长文本序列更友好。</p>
-<h3 id="本文工作"><a href="#本文工作" class="headerlink" title="本文工作"></a>本文工作</h3><p>基于 RNN，提出了三种不同的共享信息机制，可以将信息共享到特定任务层的共享层。整个网络都是在所有这些任务上共同训练的。模型在四个基准的文本分类任务上展示了很好的效果，超过了大多数的 state-of-the-art。</p>
-<!--### 意义和创新点-->
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/1605-05101-notes/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1753,7 +1797,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">67</span>
+                    <span class="site-state-item-count">68</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2061,7 +2105,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">122</span>
+                      
+                    
+                    <span class="site-state-item-count">123</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
